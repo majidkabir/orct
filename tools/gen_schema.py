@@ -39,7 +39,7 @@ COLUMNS = ["object", "entry", "exit", "vehicle_class", "time_class", "user_class
 COMPONENTS = ["infrastructure", "air_pollution", "noise", "air_pollution_noise", "co2", "congestion", "markup",
               "access", "carbon_price", "unspecified", "other"]
 FEATURES = ["type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
-            "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "criteria.any_of", "rule.exemption",
+            "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "rule.exemption",
             "rule.included_in", "rule.passage_group", "rule.factor", "rule.discount", "rule.minimum", "rule.cap"]
 charge = obj({
     "id": ID, "name": {"type": "string"},

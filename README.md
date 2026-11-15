@@ -4,7 +4,7 @@ An open format for road charges (tolls, vignettes, zone and congestion
 charges, external-cost charges and carbon prices on fuel), and a normative
 method to compute the charges of one vehicle's trip from them.
 
-**Status: 0.2, working draft for 1.0.** The format may still change before 1.0.
+**Status: 0.2, working draft for 1.0.** Until 1.0 anything may change, without backward compatibility.
 
 ## Why
 

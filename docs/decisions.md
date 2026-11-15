@@ -192,10 +192,12 @@ rules kept in one must be listed in coverage.
 
 ## D14. Versioning
 
-**Decision.** `orct` holds the specification version. Minor versions only add
-optional members; major versions may break. Until 1.0 the format may still
-change. Datasets are immutable once published: a change is a new dataset with
-a new `valid_from` or a new `version`.
+**Decision.** `orct` holds the specification version. Until 1.0, the first
+version offered for adoption, any change may break existing datasets and
+calculators: no backward compatibility is kept, and nothing is added only to
+spare earlier drafts. From 1.0, minor versions only add optional members and
+major versions may break. Datasets are immutable once published: a change is
+a new dataset with a new `valid_from` or a new `version`.
 
 ## D15. Licences and governance
 

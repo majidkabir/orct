@@ -174,11 +174,6 @@ def check(d):
             if k in p and not (isinstance(p[k], str) and DECIMAL.match(p[k])):
                 errs.append(f"rule {r['id']}: {k} must be a decimal string")
 
-    def any_of(x):  # criteria.any_of anywhere
-        return isinstance(x, dict) and ("any_of" in x or any(any_of(v) for v in x.values())) or \
-            isinstance(x, list) and any(any_of(v) for v in x)
-    if any_of([d["liable_vehicles"], d["vehicle_class_sets"], [r["params"] for r in d.get("rules", [])]]):
-        used.add("criteria.any_of")
     depth = {"Point": 0, "MultiPoint": 1, "LineString": 1, "MultiLineString": 2, "Polygon": 2, "MultiPolygon": 3}
 
     def positions(c, n):  # RFC 7946 nesting; yields positions, or None on a bad shape

@@ -10,7 +10,7 @@
   "timezone": "Europe/Paris",
   "license": "CC0-1.0",
   "method": "Invented values for testing calculators against clause 8 of the specification.",
-  "required_features": ["calendars", "criteria.any_of", "rounding", "rule.cap", "rule.discount", "rule.exemption", "rule.factor",
+  "required_features": ["calendars", "rounding", "rule.cap", "rule.discount", "rule.exemption", "rule.factor",
                         "rule.included_in", "rule.minimum", "rule.passage_group", "time_classes", "type.area",
                         "type.distance", "type.od", "type.od.chain", "type.period", "type.point", "type.quantity",
                         "type.section", "user_classes"]

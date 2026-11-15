@@ -165,7 +165,6 @@
        "calendars",
        "user_classes",
        "rounding",
-       "criteria.any_of",
        "rule.exemption",
        "rule.included_in",
        "rule.passage_group",

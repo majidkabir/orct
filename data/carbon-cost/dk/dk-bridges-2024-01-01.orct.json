@@ -22,7 +22,7 @@
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/dk-bridges-2024-01-01.json"
   },
-  "required_features": ["criteria.any_of", "rounding", "rule.discount", "type.od", "user_classes"]
+  "required_features": ["rounding", "rule.discount", "type.od", "user_classes"]
  },
  "sources": [
   {

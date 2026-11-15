@@ -14,7 +14,7 @@ from decimal import ROUND_CEILING, ROUND_DOWN, ROUND_FLOOR, ROUND_HALF_EVEN, ROU
 from zoneinfo import ZoneInfo
 
 IMPLEMENTED = {"type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
-               "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "criteria.any_of", "rule.exemption",
+               "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "rule.exemption",
                "rule.included_in", "rule.passage_group", "rule.factor", "rule.discount", "rule.minimum", "rule.cap"}
 NULL_RANK = 10 ** 6
 MINOR_UNITS = {"JPY": 0, "KRW": 0, "ISK": 0, "CLP": 0, "BHD": 3, "KWD": 3, "OMR": 3, "TND": 3, "JOD": 3}

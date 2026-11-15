@@ -530,7 +530,8 @@ rule kind is not implemented.
 
 ## 10 Versioning and extensions
 
-**10.1 Versions.** `orct` is `MAJOR.MINOR`. A minor version only adds
+**10.1 Versions.** `orct` is `MAJOR.MINOR`. Until 1.0, any version may change
+anything, without backward compatibility. From 1.0, a minor version only adds
 optional members; a major version may change meaning. Readers shall ignore
 unknown members, except as 10.3 says. Published datasets should not change;
 corrections increase `dataset.version`.
@@ -543,7 +544,7 @@ extension shall list that part in `coverage` as `partial`.
 **10.3 Features.** Feature identifiers: `type.distance`, `type.section`,
 `type.od`, `type.od.chain`, `type.point`, `type.area`, `type.period`,
 `type.quantity`, `time_classes`, `calendars`, `user_classes`, `rounding`,
-`criteria.any_of`, `rule.exemption`, `rule.included_in`, `rule.passage_group`, `rule.factor`,
+`rule.exemption`, `rule.included_in`, `rule.passage_group`, `rule.factor`,
 `rule.discount`, `rule.minimum`, `rule.cap`. A dataset shall list every
 feature it uses in `required_features`.
 

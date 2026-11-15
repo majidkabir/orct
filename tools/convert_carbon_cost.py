@@ -446,7 +446,6 @@ def convert_system(b, i, s):
                 if any(c.values())]
         if len(alts) == 2:
             p["criteria"] = {"any_of": alts}
-            b.features.add("criteria.any_of")
         elif alts:
             p["criteria"] = alts[0]
         b.rule("discount", [cid], p)
