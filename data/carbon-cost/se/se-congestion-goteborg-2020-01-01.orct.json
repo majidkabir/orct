@@ -5563,8 +5563,8 @@
    "congestion": {
     "july": "free"
    },
-   "crossings": true,
-   "osm_extract": "2026-11-08"
+   "osm_extract": "2026-11-08",
+   "crossings": true
   }
  }
 }

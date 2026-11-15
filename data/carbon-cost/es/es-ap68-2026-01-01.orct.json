@@ -7057,8 +7057,8 @@
  ],
  "extensions": {
   "x-carbon-cost": {
-   "crossings": true,
-   "osm_extract": "2026-11-14"
+   "osm_extract": "2026-11-14",
+   "crossings": true
   }
  }
 }
