@@ -2,7 +2,7 @@
  "orct": "0.2",
  "derived_from": {
   "url": "https://github.com/majidkabir/carbon-cost",
-  "commit": "4ae60d9f4c80daebcaaf54ded72efdf024600786"
+  "commit": "3deadd1093a170f7d08bd40278c841af8aa75185"
  },
  "datasets": [
   {
@@ -1827,20 +1827,20 @@
    "file": "no/no-2024-01-01.orct.json",
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
    "valid_from": "2024-01-01",
-   "valid_to": "2026-11-02",
-   "sha256": "4f2b2440d045892278f67be1ecde8cfea6ddd0a34fdc9cd6b7626b1fa872b747",
-   "coverage": "partial"
+   "valid_to": "2026-11-11",
+   "sha256": "6b19e83dc9d7fb6c515ab5ed227a6974f3799284db9c5da3ac2c7cba13edda0b",
+   "coverage": "complete"
   },
   {
-   "id": "carbon-cost/no/2026-11-03",
+   "id": "carbon-cost/no/2026-11-12",
    "scheme": "no",
    "country": "NO",
-   "file": "no/no-2026-11-03.orct.json",
+   "file": "no/no-2026-11-12.orct.json",
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
-   "valid_from": "2026-11-03",
+   "valid_from": "2026-11-12",
    "valid_to": null,
-   "sha256": "23c500a3b045f95b0f56d896c022cf0337586a49a32d930783431d7fb6d2370e",
-   "coverage": "partial"
+   "sha256": "cc24c89d82932734c1287fc69e7af35d5939929c32853cd01b168075de98872c",
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/pl/2024-01-01",

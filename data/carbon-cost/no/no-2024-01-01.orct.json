@@ -13,11 +13,11 @@
    "url": "https://github.com/majidkabir/carbon-cost"
   },
   "valid_from": "2024-01-01",
-  "valid_to": "2026-11-02",
+  "valid_to": "2026-11-11",
   "currency": "NOK",
   "timezone": "Europe/Oslo",
   "license": "MIT",
-  "method": "Veglova § 27 and the toll projects' Storting decisions; prices per passage for large vehicles (takstgruppe 2, over 3,500 kg) as registered for each AutoPASS toll station in NVDB, Statens vegvesen's national road database (object type 45 Bomstasjon), every version of each station with the dates it was registered for, with the charged direction and the hour rule (timesregel: after a paid passage the project's other stations are free for the time given). A station's version is the one in force on the trip's date. Rush-hour prices are higher at some stations: the off-peak price is used. Tolls carry no VAT.",
+  "method": "Veglova § 27 and the toll projects' Storting decisions; prices per passage for large vehicles (takstgruppe 2, over 3,500 kg) as registered for each AutoPASS toll station in NVDB, Statens vegvesen's national road database (object type 45 Bomstasjon), every version of each station with the dates it was registered for, with the charged direction and the hour rule (timesregel: after a paid passage the project's other stations are free for the time given; where the tariff decision says so, at Fjellinjen and in Bypakke Bergen, the hour's highest price is charged). A station's version is the one in force on the trip's date. Rush-hour prices (Rushtidstakst stor bil) apply in the rush hours of each project's tariff decision, Monday to Friday except public holidays (offentlige fridager), Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday (Takstretningslinjer for bompengeprosjekt på offentlig veg, Vegdirektoratet, July 2025, § 3.3), at Fjellinjen not in July. Tolls carry no VAT.",
   "derived_from": {
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/no-2024-01-01.json"
@@ -29,6 +29,51 @@
    "id": "s1",
    "title": "NVDB API: Bomstasjon (Statens vegvesen), all versions",
    "url": "https://nvdbapiles.atlas.vegvesen.no/vegobjekter/api/v4/vegobjekter/45?alle_versjoner=true"
+  },
+  {
+   "id": "s2",
+   "title": "Norway: Takstretningslinjer for bompengeprosjekt på offentlig veg (Vegdirektoratet, July 2025), § 3.3 the days without rush-hour prices",
+   "url": "https://www.autopass.no/siteassets/filer-og-vedlegg/04.-takstretningslinjene/takstretninglinjer-juli-2025.pdf"
+  },
+  {
+   "id": "s3",
+   "title": "Norway: Fjellinjen, Tariffs and toll stations (rush hours; not on Saturdays, Sundays, public holidays or in July)",
+   "url": "https://www.fjellinjen.no/en/tariffs-and-toll-stations"
+  },
+  {
+   "id": "s4",
+   "title": "Norway: Fjellinjen, takstkunngjøring from 1 January 2025 (the hour rule charges the highest tariff)",
+   "url": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2024/11/21/632799_B%C3%B8rsmelding%20Takstkunngj%C3%B8ring%2001.01.25.pdf"
+  },
+  {
+   "id": "s5",
+   "title": "Norway: Ferde, Bergen toll stations and prices (rush hours)",
+   "url": "https://ferde.no/en/toll-stations-and-prices/bergen"
+  },
+  {
+   "id": "s6",
+   "title": "Norway: Vegdirektoratet, takstvedtak Bypakke Bergen 24.11.2025, 22/33576-18 (the hour rule charges the highest tariff)",
+   "url": "https://cdn.sanity.io/files/6d3nulko/production/c9b5b450af19c7153cf03a8ee79376d2f66f7d04.pdf"
+  },
+  {
+   "id": "s7",
+   "title": "Norway: Vegdirektoratet, takstvedtak Samferdselspakke for Kristiansandsregionen fase 2, 29.06.2021, 20/5876-21 (rush hours)",
+   "url": "https://cdn.sanity.io/files/6d3nulko/production/92146f48ce9d1aae9556bb25fead7ed480e18126.pdf"
+  },
+  {
+   "id": "s8",
+   "title": "Norway: Vegdirektoratet, takstvedtak Miljøpakke Trondheim (Vegamot), rush hours and rush-free days",
+   "url": "https://www.vegamot.no/wp-content/uploads/2025/09/TakstvedtakMiljopakkeTrondheimfortungenullutslippskjoretoy.pdf"
+  },
+  {
+   "id": "s9",
+   "title": "Norway: Vegdirektoratet, takstvedtak Bypakke Tenk Tromsø 2026 (rush hours; the hour rule charges the first passage)",
+   "url": "https://bpsnord.no/wp-content/uploads/2026/07/Takstvedtak-nullutslipp-Bypakke-Tenk-Tromso.pdf"
+  },
+  {
+   "id": "s10",
+   "title": "Norway: Bypakke Grenland (Vegfinans), AutoPASS household brochure (rush hours Monday to Friday except public holidays)",
+   "url": "https://www.bamble.kommune.no/contentassets/a909827d89de4a2da2ef3f09732d2ec1/tefy_autopass-a4_hustandsbrosjyre_ma_webny.pdf"
   }
  ],
  "tax": {
@@ -56,10 +101,75 @@
  ],
  "time_classes": [
   {
-   "id": "rush-hours",
-   "label": "Rush hours",
-   "defined": false,
-   "note": "The station charges more in rush hours; the hours aren't in the source table."
+   "id": "rush",
+   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["06:30", "09:00"], ["14:30", "16:30"]]
+  },
+  {
+   "id": "rush-2",
+   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday, not in July",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "months": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["06:30", "09:00"], ["15:00", "17:00"]]
+  },
+  {
+   "id": "rush-3",
+   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["07:00", "09:00"], ["15:00", "17:00"]]
+  },
+  {
+   "id": "rush-4",
+   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["06:30", "09:00"], ["14:30", "17:00"]]
+  },
+  {
+   "id": "rush-5",
+   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["06:30", "09:00"], ["15:00", "17:00"]]
   }
  ],
  "charge_objects": [
@@ -13497,6 +13607,19 @@
   {
    "id": "pt1078",
    "type": "point",
+   "name": "E16 Skaret",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [10.33251, 59.974332]
+    },
+    "heading": 303.2
+   },
+   "note": "Toll project: E16 Bjørum - Skaret"
+  },
+  {
+   "id": "pt1079",
+   "type": "point",
    "name": "Fv. Skaret",
    "location": {
     "geometry": {
@@ -13507,7 +13630,7 @@
    "note": "Toll project: Fv. Skaret"
   },
   {
-   "id": "pt1079",
+   "id": "pt1080",
    "type": "point",
    "name": "E16 Avtjerna",
    "location": {
@@ -13520,7 +13643,7 @@
    "note": "Toll project: E16 Avtjerna"
   },
   {
-   "id": "pt1080",
+   "id": "pt1081",
    "type": "point",
    "name": "NVDB 1026090503",
    "location": {
@@ -13531,7 +13654,7 @@
    }
   },
   {
-   "id": "pt1081",
+   "id": "pt1082",
    "type": "point",
    "name": "Fv. Avtjerna",
    "location": {
@@ -13542,19 +13665,6 @@
     "heading": 174.8
    },
    "note": "Toll project: E16 Bjørum - Skaret"
-  },
-  {
-   "id": "pt1082",
-   "type": "point",
-   "name": "FV44 Gausel mot sør (bussvei)",
-   "location": {
-    "geometry": {
-     "type": "Point",
-     "coordinates": [5.726395, 58.912516]
-    },
-    "heading": 152.7
-   },
-   "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
   },
   {
    "id": "pt1083",
@@ -13572,13 +13682,13 @@
   {
    "id": "pt1084",
    "type": "point",
-   "name": "FV44 Gausel mot sør (bilvei)",
+   "name": "FV44 Gausel mot sør (bussvei)",
    "location": {
     "geometry": {
      "type": "Point",
-     "coordinates": [5.726343, 58.912333]
+     "coordinates": [5.726395, 58.912516]
     },
-    "heading": 157.8
+    "heading": 152.7
    },
    "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
   },
@@ -13598,6 +13708,19 @@
   {
    "id": "pt1086",
    "type": "point",
+   "name": "FV44 Gausel mot sør (bilvei)",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [5.726343, 58.912333]
+    },
+    "heading": 157.8
+   },
+   "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
+  },
+  {
+   "id": "pt1087",
+   "type": "point",
    "name": "Rv. 4 Lygna",
    "location": {
     "geometry": {
@@ -13606,18 +13729,6 @@
     }
    },
    "note": "Toll project: Vegfinans Rv4 Oppland AS"
-  },
-  {
-   "id": "pt1087",
-   "type": "point",
-   "name": "E39_Storemyr",
-   "location": {
-    "geometry": {
-     "type": "Point",
-     "coordinates": [7.860738, 58.12288]
-    }
-   },
-   "note": "Toll project: Ferde AS - E39 Kristiansand Vest - Lyngdal Vest"
   },
   {
    "id": "pt1088",
@@ -13634,14 +13745,14 @@
   {
    "id": "pt1089",
    "type": "point",
-   "name": "E39 Herdal",
+   "name": "E39_Storemyr",
    "location": {
     "geometry": {
      "type": "Point",
-     "coordinates": [7.135212, 58.15658]
+     "coordinates": [7.860738, 58.12288]
     }
    },
-   "note": "Toll project: Ferde AS - E39 Kristiansand Vest- Lyngdal Vest"
+   "note": "Toll project: Ferde AS - E39 Kristiansand Vest - Lyngdal Vest"
   },
   {
    "id": "pt1090",
@@ -13658,6 +13769,18 @@
   {
    "id": "pt1091",
    "type": "point",
+   "name": "E39 Herdal",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [7.135212, 58.15658]
+    }
+   },
+   "note": "Toll project: Ferde AS - E39 Kristiansand Vest- Lyngdal Vest"
+  },
+  {
+   "id": "pt1092",
+   "type": "point",
    "name": "Fv4852 Salhusvegen",
    "location": {
     "geometry": {
@@ -13668,7 +13791,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1092",
+   "id": "pt1093",
    "type": "point",
    "name": "Fv554 T-forbindelsen",
    "location": {
@@ -13680,7 +13803,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1093",
+   "id": "pt1094",
    "type": "point",
    "name": "E134 Karmsundgata/Norheim",
    "location": {
@@ -13692,7 +13815,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1094",
+   "id": "pt1095",
    "type": "point",
    "name": "Fv47 Karmsundgata",
    "location": {
@@ -13704,7 +13827,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1095",
+   "id": "pt1096",
    "type": "point",
    "name": "Fv4856 Skjoldavegen",
    "location": {
@@ -13716,7 +13839,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1096",
+   "id": "pt1097",
    "type": "point",
    "name": "Fv4862 Skeisvollvegen",
    "location": {
@@ -13728,7 +13851,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1097",
+   "id": "pt1098",
    "type": "point",
    "name": "Fv4802 Spannavegen/Spannakalven",
    "location": {
@@ -13740,7 +13863,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1098",
+   "id": "pt1099",
    "type": "point",
    "name": "E134 Raglamyr/Biltema",
    "location": {
@@ -13752,7 +13875,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1099",
+   "id": "pt1100",
    "type": "point",
    "name": "Fv4848 Vormedalsvegen",
    "location": {
@@ -13764,7 +13887,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1100",
+   "id": "pt1101",
    "type": "point",
    "name": "Fv4802 Spannavegen/Hemningstad",
    "location": {
@@ -13776,7 +13899,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1101",
+   "id": "pt1102",
    "type": "point",
    "name": "Fv47 Tittelsnesvegen",
    "location": {
@@ -13788,7 +13911,7 @@
    "note": "Toll project: Bypakke Haugesund og fastlands-Karmøy"
   },
   {
-   "id": "pt1102",
+   "id": "pt1103",
    "type": "point",
    "name": "Rv.70 Nordsundbrua",
    "location": {
@@ -13800,7 +13923,7 @@
    "note": "Toll project: Bypakke Kristiansund"
   },
   {
-   "id": "pt1103",
+   "id": "pt1104",
    "type": "point",
    "name": "Rv.70 Omsundbrua",
    "location": {
@@ -13812,7 +13935,7 @@
    "note": "Toll project: Bypakke Kristiansund"
   },
   {
-   "id": "pt1104",
+   "id": "pt1105",
    "type": "point",
    "name": "Fv. 300 Auli",
    "location": {
@@ -13824,7 +13947,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1105",
+   "id": "pt1106",
    "type": "point",
    "name": "Fv. 308 Kanalbrua",
    "location": {
@@ -13836,7 +13959,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1106",
+   "id": "pt1107",
    "type": "point",
    "name": "Fv. 311 Presterødbakken",
    "location": {
@@ -13849,7 +13972,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1107",
+   "id": "pt1108",
    "type": "point",
    "name": "Fv. 3160 Velleveien",
    "location": {
@@ -13861,7 +13984,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1108",
+   "id": "pt1109",
    "type": "point",
    "name": "Fv. 311 Presterødbakken",
    "location": {
@@ -13874,7 +13997,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1109",
+   "id": "pt1110",
    "type": "point",
    "name": "Fv. 325 Gressbanen",
    "location": {
@@ -13886,7 +14009,7 @@
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
   },
   {
-   "id": "pt1110",
+   "id": "pt1111",
    "type": "point",
    "name": "Fv. 308 Jarlsberglinna",
    "location": {
@@ -13896,19 +14019,6 @@
     }
    },
    "note": "Toll project: Vegfinans Bypakke Tønsberg-regionen"
-  },
-  {
-   "id": "pt1111",
-   "type": "point",
-   "name": "Fv. 44 Forussletta, mot Nord - Forus",
-   "location": {
-    "geometry": {
-     "type": "Point",
-     "coordinates": [5.724869, 58.875214]
-    },
-    "heading": 351.2
-   },
-   "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
   },
   {
    "id": "pt1112",
@@ -13922,6 +14032,32 @@
     "heading": 351.2
    },
    "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
+  },
+  {
+   "id": "pt1113",
+   "type": "point",
+   "name": "Fv. 44 Forussletta, mot Nord - Forus",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [5.724869, 58.875214]
+    },
+    "heading": 351.2
+   },
+   "note": "Toll project: Ferde AS - Bymiljøpakken Nord Jæren"
+  },
+  {
+   "id": "pt1114",
+   "type": "point",
+   "name": "Fv. Skaret",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [10.333521, 59.972682]
+    },
+    "heading": 157.7
+   },
+   "note": "Toll project: Fv. Skaret"
   }
  ],
  "charges": [
@@ -13933,7 +14069,7 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt50", null, "113"],
-    ["pt50", "rush-hours", "150"],
+    ["pt50", "rush-2", "150"],
     ["pt116", null, "136"],
     ["pt129", null, "44"],
     ["pt194", null, "48"],
@@ -13946,9 +14082,9 @@
     ["pt217", null, "48"],
     ["pt218", null, "50"],
     ["pt299", null, "113"],
-    ["pt299", "rush-hours", "150"],
+    ["pt299", "rush-2", "150"],
     ["pt302", null, "113"],
-    ["pt302", "rush-hours", "150"],
+    ["pt302", "rush-2", "150"],
     ["pt321", null, "32"],
     ["pt322", null, "63"],
     ["pt323", null, "76"],
@@ -13958,24 +14094,24 @@
     ["pt522", null, "48"],
     ["pt523", null, "48"],
     ["pt546", null, "113"],
-    ["pt546", "rush-hours", "150"],
+    ["pt546", "rush-2", "150"],
     ["pt559", null, "113"],
-    ["pt559", "rush-hours", "150"],
+    ["pt559", "rush-2", "150"],
     ["pt568", null, "113"],
-    ["pt568", "rush-hours", "150"],
+    ["pt568", "rush-2", "150"],
     ["pt625", null, "113"],
-    ["pt625", "rush-hours", "150"],
+    ["pt625", "rush-2", "150"],
     ["pt626", null, "113"],
-    ["pt626", "rush-hours", "150"],
+    ["pt626", "rush-2", "150"],
     ["pt706", null, "113"],
-    ["pt706", "rush-hours", "150"],
+    ["pt706", "rush-2", "150"],
     ["pt709", null, "113"],
-    ["pt709", "rush-hours", "150"],
+    ["pt709", "rush-2", "150"],
     ["pt715", null, "109"],
     ["pt741", null, "63"],
     ["pt771", null, "76"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -13986,7 +14122,7 @@
    "valid_to": "2024-01-23",
    "columns": ["object", "amount"],
    "rows": [["pt100", "60"], ["pt102", "60"], ["pt679", "0"], ["pt682", "0"], ["pt685", "0"], ["pt688", "0"], ["pt691", "0"], ["pt700", "0"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -13998,66 +14134,66 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt75", null, "33"],
-    ["pt75", "rush-hours", "42"],
+    ["pt75", "rush-3", "42"],
     ["pt78", null, "33"],
-    ["pt78", "rush-hours", "42"],
+    ["pt78", "rush-3", "42"],
     ["pt81", null, "46"],
-    ["pt81", "rush-hours", "92"],
+    ["pt81", "rush-3", "92"],
     ["pt84", null, "46"],
-    ["pt84", "rush-hours", "92"],
+    ["pt84", "rush-3", "92"],
     ["pt87", null, "46"],
-    ["pt87", "rush-hours", "92"],
+    ["pt87", "rush-3", "92"],
     ["pt130", null, "46"],
-    ["pt130", "rush-hours", "92"],
+    ["pt130", "rush-3", "92"],
     ["pt133", null, "46"],
-    ["pt133", "rush-hours", "92"],
+    ["pt133", "rush-3", "92"],
     ["pt136", null, "33"],
-    ["pt136", "rush-hours", "42"],
+    ["pt136", "rush-3", "42"],
     ["pt139", null, "33"],
-    ["pt139", "rush-hours", "42"],
+    ["pt139", "rush-3", "42"],
     ["pt142", null, "33"],
-    ["pt142", "rush-hours", "42"],
+    ["pt142", "rush-3", "42"],
     ["pt145", null, "33"],
-    ["pt145", "rush-hours", "42"],
+    ["pt145", "rush-3", "42"],
     ["pt148", null, "33"],
-    ["pt148", "rush-hours", "42"],
+    ["pt148", "rush-3", "42"],
     ["pt151", null, "33"],
-    ["pt151", "rush-hours", "42"],
+    ["pt151", "rush-3", "42"],
     ["pt154", null, "33"],
-    ["pt154", "rush-hours", "42"],
+    ["pt154", "rush-3", "42"],
     ["pt157", null, "33"],
-    ["pt157", "rush-hours", "42"],
+    ["pt157", "rush-3", "42"],
     ["pt160", null, "33"],
-    ["pt160", "rush-hours", "42"],
+    ["pt160", "rush-3", "42"],
     ["pt163", null, "33"],
-    ["pt163", "rush-hours", "42"],
+    ["pt163", "rush-3", "42"],
     ["pt166", null, "33"],
-    ["pt166", "rush-hours", "42"],
+    ["pt166", "rush-3", "42"],
     ["pt191", null, "33"],
-    ["pt191", "rush-hours", "42"],
+    ["pt191", "rush-3", "42"],
     ["pt303", null, "33"],
-    ["pt303", "rush-hours", "42"],
+    ["pt303", "rush-3", "42"],
     ["pt306", null, "33"],
-    ["pt306", "rush-hours", "42"],
+    ["pt306", "rush-3", "42"],
     ["pt309", null, "33"],
-    ["pt309", "rush-hours", "42"],
+    ["pt309", "rush-3", "42"],
     ["pt312", null, "33"],
-    ["pt312", "rush-hours", "42"],
+    ["pt312", "rush-3", "42"],
     ["pt519", null, "46"],
-    ["pt519", "rush-hours", "92"],
+    ["pt519", "rush-3", "92"],
     ["pt669", null, "46"],
-    ["pt669", "rush-hours", "92"],
+    ["pt669", "rush-3", "92"],
     ["pt716", null, "112"],
     ["pt720", null, "59"],
     ["pt723", null, "96"],
     ["pt926", null, "55"],
     ["pt929", null, "75"],
     ["pt986", null, "34"],
-    ["pt986", "rush-hours", "61"],
+    ["pt986", "rush-3", "61"],
     ["pt989", null, "34"],
-    ["pt989", "rush-hours", "61"]
+    ["pt989", "rush-3", "61"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14080,7 +14216,7 @@
     ["pt855", "62"],
     ["pt859", "57"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14091,7 +14227,7 @@
    "valid_to": "2024-02-14",
    "columns": ["object", "amount"],
    "rows": [["pt1", "84"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14103,17 +14239,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt825", null, "33"],
-    ["pt825", "rush-hours", "50"],
+    ["pt825", "rush-4", "50"],
     ["pt829", null, "33"],
-    ["pt829", "rush-hours", "50"],
+    ["pt829", "rush-4", "50"],
     ["pt833", null, "33"],
-    ["pt833", "rush-hours", "50"],
+    ["pt833", "rush-4", "50"],
     ["pt837", null, "33"],
-    ["pt837", "rush-hours", "50"],
+    ["pt837", "rush-4", "50"],
     ["pt841", null, "33"],
-    ["pt841", "rush-hours", "50"]
+    ["pt841", "rush-4", "50"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14124,7 +14260,7 @@
    "valid_to": "2024-05-12",
    "columns": ["object", "amount"],
    "rows": [["pt117", "45"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14189,7 +14325,7 @@
     ["pt744", "38"],
     ["pt767", "66"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14210,39 +14346,39 @@
     ["pt940", null, "110"],
     ["pt944", null, "110"],
     ["pt948", null, "24"],
-    ["pt948", "rush-hours", "72"],
+    ["pt948", "rush-5", "72"],
     ["pt950", null, "24"],
-    ["pt950", "rush-hours", "72"],
+    ["pt950", "rush-5", "72"],
     ["pt952", null, "24"],
-    ["pt952", "rush-hours", "72"],
+    ["pt952", "rush-5", "72"],
     ["pt954", null, "24"],
-    ["pt954", "rush-hours", "72"],
+    ["pt954", "rush-5", "72"],
     ["pt956", null, "24"],
-    ["pt956", "rush-hours", "72"],
+    ["pt956", "rush-5", "72"],
     ["pt958", null, "24"],
-    ["pt958", "rush-hours", "72"],
+    ["pt958", "rush-5", "72"],
     ["pt960", null, "24"],
-    ["pt960", "rush-hours", "72"],
+    ["pt960", "rush-5", "72"],
     ["pt962", null, "24"],
-    ["pt962", "rush-hours", "72"],
+    ["pt962", "rush-5", "72"],
     ["pt964", null, "24"],
-    ["pt964", "rush-hours", "72"],
+    ["pt964", "rush-5", "72"],
     ["pt966", null, "24"],
-    ["pt966", "rush-hours", "72"],
+    ["pt966", "rush-5", "72"],
     ["pt968", null, "24"],
-    ["pt968", "rush-hours", "72"],
+    ["pt968", "rush-5", "72"],
     ["pt970", null, "24"],
-    ["pt970", "rush-hours", "72"],
+    ["pt970", "rush-5", "72"],
     ["pt972", null, "24"],
-    ["pt972", "rush-hours", "72"],
+    ["pt972", "rush-5", "72"],
     ["pt974", null, "24"],
-    ["pt974", "rush-hours", "72"],
+    ["pt974", "rush-5", "72"],
     ["pt976", null, "24"],
-    ["pt976", "rush-hours", "72"],
+    ["pt976", "rush-5", "72"],
     ["pt978", null, "24"],
-    ["pt978", "rush-hours", "72"]
+    ["pt978", "rush-5", "72"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14253,7 +14389,7 @@
    "valid_to": "2024-06-20",
    "columns": ["object", "amount"],
    "rows": [["pt92", "34"], ["pt96", "34"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14264,7 +14400,7 @@
    "valid_to": "2024-06-30",
    "columns": ["object", "amount"],
    "rows": [["pt125", "385"], ["pt259", "70"], ["pt263", "70"], ["pt267", "70"], ["pt271", "70"], ["pt275", "70"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14295,7 +14431,7 @@
     ["pt731", "44"],
     ["pt814", "48"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14318,7 +14454,7 @@
     ["pt876", "53"],
     ["pt879", "53"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14330,27 +14466,27 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt2", null, "82"],
-    ["pt2", "rush-hours", "145"],
+    ["pt2", "rush", "145"],
     ["pt5", null, "82"],
-    ["pt5", "rush-hours", "145"],
+    ["pt5", "rush", "145"],
     ["pt8", null, "82"],
-    ["pt8", "rush-hours", "145"],
+    ["pt8", "rush", "145"],
     ["pt11", null, "82"],
-    ["pt11", "rush-hours", "145"],
+    ["pt11", "rush", "145"],
     ["pt14", null, "82"],
-    ["pt14", "rush-hours", "145"],
+    ["pt14", "rush", "145"],
     ["pt17", null, "82"],
-    ["pt17", "rush-hours", "145"],
+    ["pt17", "rush", "145"],
     ["pt26", null, "82"],
-    ["pt26", "rush-hours", "145"],
+    ["pt26", "rush", "145"],
     ["pt29", null, "82"],
-    ["pt29", "rush-hours", "145"],
+    ["pt29", "rush", "145"],
     ["pt32", null, "82"],
-    ["pt32", "rush-hours", "145"],
+    ["pt32", "rush", "145"],
     ["pt35", null, "82"],
-    ["pt35", "rush-hours", "145"],
+    ["pt35", "rush", "145"],
     ["pt118", null, "82"],
-    ["pt118", "rush-hours", "145"],
+    ["pt118", "rush", "145"],
     ["pt474", null, "82"],
     ["pt477", null, "82"],
     ["pt480", null, "82"],
@@ -14378,11 +14514,11 @@
     ["pt914", null, "52"],
     ["pt920", null, "52"],
     ["pt980", null, "82"],
-    ["pt980", "rush-hours", "145"],
+    ["pt980", "rush", "145"],
     ["pt983", null, "82"],
-    ["pt983", "rush-hours", "145"]
+    ["pt983", "rush", "145"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14393,7 +14529,7 @@
    "valid_to": "2025-02-27",
    "columns": ["object", "amount"],
    "rows": [["pt171", "175"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14405,15 +14541,15 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt104", null, "82"],
-    ["pt104", "rush-hours", "145"],
+    ["pt104", "rush", "145"],
     ["pt822", null, "82"],
-    ["pt822", "rush-hours", "145"],
+    ["pt822", "rush", "145"],
     ["pt885", null, "52"],
     ["pt908", null, "52"],
     ["pt917", null, "52"],
     ["pt923", null, "52"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14424,7 +14560,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt179", "82"], ["pt182", "82"], ["pt185", "82"], ["pt188", "82"], ["pt992", "82"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14435,7 +14571,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt55", "22"], ["pt57", "22"], ["pt59", "22"], ["pt61", "22"], ["pt63", "22"], ["pt65", "22"], ["pt67", "22"], ["pt69", "22"], ["pt71", "22"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14446,7 +14582,7 @@
    "valid_to": "2025-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt90", "20"], ["pt114", "26"], ["pt175", "13"], ["pt177", "14"], ["pt196", "11"], ["pt198", "24"], ["pt327", "15"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14457,7 +14593,7 @@
    "valid_to": "2026-02-25",
    "columns": ["object", "amount"],
    "rows": [["pt107", "75"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14469,17 +14605,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt587", null, "113"],
-    ["pt587", "rush-hours", "150"],
+    ["pt587", "rush-2", "150"],
     ["pt599", null, "113"],
-    ["pt599", "rush-hours", "150"],
+    ["pt599", "rush-2", "150"],
     ["pt629", null, "113"],
-    ["pt629", "rush-hours", "150"],
+    ["pt629", "rush-2", "150"],
     ["pt631", null, "113"],
-    ["pt631", "rush-hours", "150"],
+    ["pt631", "rush-2", "150"],
     ["pt651", null, "113"],
-    ["pt651", "rush-hours", "150"]
+    ["pt651", "rush-2", "150"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14491,165 +14627,165 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt20", null, "113"],
-    ["pt20", "rush-hours", "150"],
+    ["pt20", "rush-2", "150"],
     ["pt22", null, "113"],
-    ["pt22", "rush-hours", "150"],
+    ["pt22", "rush-2", "150"],
     ["pt24", null, "113"],
-    ["pt24", "rush-hours", "150"],
+    ["pt24", "rush-2", "150"],
     ["pt38", null, "113"],
-    ["pt38", "rush-hours", "150"],
+    ["pt38", "rush-2", "150"],
     ["pt40", null, "113"],
-    ["pt40", "rush-hours", "150"],
+    ["pt40", "rush-2", "150"],
     ["pt42", null, "113"],
-    ["pt42", "rush-hours", "150"],
+    ["pt42", "rush-2", "150"],
     ["pt44", null, "113"],
-    ["pt44", "rush-hours", "150"],
+    ["pt44", "rush-2", "150"],
     ["pt46", null, "113"],
-    ["pt46", "rush-hours", "150"],
+    ["pt46", "rush-2", "150"],
     ["pt48", null, "113"],
-    ["pt48", "rush-hours", "150"],
+    ["pt48", "rush-2", "150"],
     ["pt51", null, "113"],
-    ["pt51", "rush-hours", "150"],
+    ["pt51", "rush-2", "150"],
     ["pt53", null, "113"],
-    ["pt53", "rush-hours", "150"],
+    ["pt53", "rush-2", "150"],
     ["pt300", null, "113"],
-    ["pt300", "rush-hours", "150"],
+    ["pt300", "rush-2", "150"],
     ["pt524", null, "113"],
-    ["pt524", "rush-hours", "150"],
+    ["pt524", "rush-2", "150"],
     ["pt526", null, "113"],
-    ["pt526", "rush-hours", "150"],
+    ["pt526", "rush-2", "150"],
     ["pt528", null, "113"],
-    ["pt528", "rush-hours", "150"],
+    ["pt528", "rush-2", "150"],
     ["pt530", null, "113"],
-    ["pt530", "rush-hours", "150"],
+    ["pt530", "rush-2", "150"],
     ["pt532", null, "113"],
-    ["pt532", "rush-hours", "150"],
+    ["pt532", "rush-2", "150"],
     ["pt534", null, "113"],
-    ["pt534", "rush-hours", "150"],
+    ["pt534", "rush-2", "150"],
     ["pt536", null, "113"],
-    ["pt536", "rush-hours", "150"],
+    ["pt536", "rush-2", "150"],
     ["pt538", null, "113"],
-    ["pt538", "rush-hours", "150"],
+    ["pt538", "rush-2", "150"],
     ["pt540", null, "113"],
-    ["pt540", "rush-hours", "150"],
+    ["pt540", "rush-2", "150"],
     ["pt542", null, "113"],
-    ["pt542", "rush-hours", "150"],
+    ["pt542", "rush-2", "150"],
     ["pt544", null, "113"],
-    ["pt544", "rush-hours", "150"],
+    ["pt544", "rush-2", "150"],
     ["pt547", null, "113"],
-    ["pt547", "rush-hours", "150"],
+    ["pt547", "rush-2", "150"],
     ["pt549", null, "113"],
-    ["pt549", "rush-hours", "150"],
+    ["pt549", "rush-2", "150"],
     ["pt551", null, "113"],
-    ["pt551", "rush-hours", "150"],
+    ["pt551", "rush-2", "150"],
     ["pt553", null, "113"],
-    ["pt553", "rush-hours", "150"],
+    ["pt553", "rush-2", "150"],
     ["pt555", null, "113"],
-    ["pt555", "rush-hours", "150"],
+    ["pt555", "rush-2", "150"],
     ["pt557", null, "113"],
-    ["pt557", "rush-hours", "150"],
+    ["pt557", "rush-2", "150"],
     ["pt560", null, "113"],
-    ["pt560", "rush-hours", "150"],
+    ["pt560", "rush-2", "150"],
     ["pt562", null, "113"],
-    ["pt562", "rush-hours", "150"],
+    ["pt562", "rush-2", "150"],
     ["pt564", null, "113"],
-    ["pt564", "rush-hours", "150"],
+    ["pt564", "rush-2", "150"],
     ["pt566", null, "113"],
-    ["pt566", "rush-hours", "150"],
+    ["pt566", "rush-2", "150"],
     ["pt569", null, "113"],
-    ["pt569", "rush-hours", "150"],
+    ["pt569", "rush-2", "150"],
     ["pt571", null, "113"],
-    ["pt571", "rush-hours", "150"],
+    ["pt571", "rush-2", "150"],
     ["pt573", null, "113"],
-    ["pt573", "rush-hours", "150"],
+    ["pt573", "rush-2", "150"],
     ["pt575", null, "113"],
-    ["pt575", "rush-hours", "150"],
+    ["pt575", "rush-2", "150"],
     ["pt577", null, "113"],
-    ["pt577", "rush-hours", "150"],
+    ["pt577", "rush-2", "150"],
     ["pt579", null, "113"],
-    ["pt579", "rush-hours", "150"],
+    ["pt579", "rush-2", "150"],
     ["pt581", null, "113"],
-    ["pt581", "rush-hours", "150"],
+    ["pt581", "rush-2", "150"],
     ["pt583", null, "113"],
-    ["pt583", "rush-hours", "150"],
+    ["pt583", "rush-2", "150"],
     ["pt585", null, "113"],
-    ["pt585", "rush-hours", "150"],
+    ["pt585", "rush-2", "150"],
     ["pt589", null, "113"],
-    ["pt589", "rush-hours", "150"],
+    ["pt589", "rush-2", "150"],
     ["pt591", null, "113"],
-    ["pt591", "rush-hours", "150"],
+    ["pt591", "rush-2", "150"],
     ["pt593", null, "113"],
-    ["pt593", "rush-hours", "150"],
+    ["pt593", "rush-2", "150"],
     ["pt595", null, "113"],
-    ["pt595", "rush-hours", "150"],
+    ["pt595", "rush-2", "150"],
     ["pt597", null, "113"],
-    ["pt597", "rush-hours", "150"],
+    ["pt597", "rush-2", "150"],
     ["pt601", null, "113"],
-    ["pt601", "rush-hours", "150"],
+    ["pt601", "rush-2", "150"],
     ["pt603", null, "113"],
-    ["pt603", "rush-hours", "150"],
+    ["pt603", "rush-2", "150"],
     ["pt605", null, "113"],
-    ["pt605", "rush-hours", "150"],
+    ["pt605", "rush-2", "150"],
     ["pt607", null, "113"],
-    ["pt607", "rush-hours", "150"],
+    ["pt607", "rush-2", "150"],
     ["pt609", null, "113"],
-    ["pt609", "rush-hours", "150"],
+    ["pt609", "rush-2", "150"],
     ["pt611", null, "113"],
-    ["pt611", "rush-hours", "150"],
+    ["pt611", "rush-2", "150"],
     ["pt613", null, "113"],
-    ["pt613", "rush-hours", "150"],
+    ["pt613", "rush-2", "150"],
     ["pt615", null, "113"],
-    ["pt615", "rush-hours", "150"],
+    ["pt615", "rush-2", "150"],
     ["pt617", null, "113"],
-    ["pt617", "rush-hours", "150"],
+    ["pt617", "rush-2", "150"],
     ["pt619", null, "113"],
-    ["pt619", "rush-hours", "150"],
+    ["pt619", "rush-2", "150"],
     ["pt621", null, "113"],
-    ["pt621", "rush-hours", "150"],
+    ["pt621", "rush-2", "150"],
     ["pt623", null, "113"],
-    ["pt623", "rush-hours", "150"],
+    ["pt623", "rush-2", "150"],
     ["pt627", null, "113"],
-    ["pt627", "rush-hours", "150"],
+    ["pt627", "rush-2", "150"],
     ["pt633", null, "113"],
-    ["pt633", "rush-hours", "150"],
+    ["pt633", "rush-2", "150"],
     ["pt635", null, "113"],
-    ["pt635", "rush-hours", "150"],
+    ["pt635", "rush-2", "150"],
     ["pt637", null, "113"],
-    ["pt637", "rush-hours", "150"],
+    ["pt637", "rush-2", "150"],
     ["pt639", null, "113"],
-    ["pt639", "rush-hours", "150"],
+    ["pt639", "rush-2", "150"],
     ["pt641", null, "113"],
-    ["pt641", "rush-hours", "150"],
+    ["pt641", "rush-2", "150"],
     ["pt643", null, "113"],
-    ["pt643", "rush-hours", "150"],
+    ["pt643", "rush-2", "150"],
     ["pt645", null, "113"],
-    ["pt645", "rush-hours", "150"],
+    ["pt645", "rush-2", "150"],
     ["pt647", null, "113"],
-    ["pt647", "rush-hours", "150"],
+    ["pt647", "rush-2", "150"],
     ["pt649", null, "113"],
-    ["pt649", "rush-hours", "150"],
+    ["pt649", "rush-2", "150"],
     ["pt653", null, "113"],
-    ["pt653", "rush-hours", "150"],
+    ["pt653", "rush-2", "150"],
     ["pt655", null, "113"],
-    ["pt655", "rush-hours", "150"],
+    ["pt655", "rush-2", "150"],
     ["pt657", null, "113"],
-    ["pt657", "rush-hours", "150"],
+    ["pt657", "rush-2", "150"],
     ["pt659", null, "113"],
-    ["pt659", "rush-hours", "150"],
+    ["pt659", "rush-2", "150"],
     ["pt661", null, "113"],
-    ["pt661", "rush-hours", "150"],
+    ["pt661", "rush-2", "150"],
     ["pt663", null, "113"],
-    ["pt663", "rush-hours", "150"],
+    ["pt663", "rush-2", "150"],
     ["pt665", null, "113"],
-    ["pt665", "rush-hours", "150"],
+    ["pt665", "rush-2", "150"],
     ["pt667", null, "113"],
-    ["pt667", "rush-hours", "150"],
+    ["pt667", "rush-2", "150"],
     ["pt707", null, "113"],
-    ["pt707", "rush-hours", "150"],
+    ["pt707", "rush-2", "150"],
     ["pt845", null, "113"],
-    ["pt845", "rush-hours", "150"]
+    ["pt845", "rush-2", "150"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14661,33 +14797,33 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt233", null, "27"],
-    ["pt233", "rush-hours", "38"],
+    ["pt233", "rush-3", "38"],
     ["pt235", null, "27"],
-    ["pt235", "rush-hours", "38"],
+    ["pt235", "rush-3", "38"],
     ["pt237", null, "27"],
-    ["pt237", "rush-hours", "38"],
+    ["pt237", "rush-3", "38"],
     ["pt239", null, "27"],
-    ["pt239", "rush-hours", "38"],
+    ["pt239", "rush-3", "38"],
     ["pt241", null, "27"],
-    ["pt241", "rush-hours", "38"],
+    ["pt241", "rush-3", "38"],
     ["pt243", null, "27"],
-    ["pt243", "rush-hours", "38"],
+    ["pt243", "rush-3", "38"],
     ["pt245", null, "27"],
-    ["pt245", "rush-hours", "38"],
+    ["pt245", "rush-3", "38"],
     ["pt247", null, "27"],
-    ["pt247", "rush-hours", "38"],
+    ["pt247", "rush-3", "38"],
     ["pt249", null, "27"],
-    ["pt249", "rush-hours", "38"],
+    ["pt249", "rush-3", "38"],
     ["pt251", null, "27"],
-    ["pt251", "rush-hours", "38"],
+    ["pt251", "rush-3", "38"],
     ["pt253", null, "27"],
-    ["pt253", "rush-hours", "38"],
+    ["pt253", "rush-3", "38"],
     ["pt255", null, "27"],
-    ["pt255", "rush-hours", "38"],
+    ["pt255", "rush-3", "38"],
     ["pt257", null, "27"],
-    ["pt257", "rush-hours", "38"]
+    ["pt257", "rush-3", "38"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14698,7 +14834,7 @@
    "valid_to": "2026-10-26",
    "columns": ["object", "amount"],
    "rows": [["pt734", "109"], ["pt736", "109"], ["pt820", "109"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14710,7 +14846,7 @@
    "valid_to": "2025-11-06",
    "columns": ["object", "amount"],
    "rows": [["pt995", "64"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14722,7 +14858,7 @@
    "valid_to": "2025-02-06",
    "columns": ["object", "amount"],
    "rows": [["pt101", "64"], ["pt103", "64"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14758,7 +14894,7 @@
     ["pt1026", "64"],
     ["pt1028", "64"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14771,41 +14907,41 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt82", null, "48"],
-    ["pt82", "rush-hours", "95"],
+    ["pt82", "rush-3", "95"],
     ["pt131", null, "48"],
-    ["pt131", "rush-hours", "95"],
+    ["pt131", "rush-3", "95"],
     ["pt134", null, "48"],
-    ["pt134", "rush-hours", "95"],
+    ["pt134", "rush-3", "95"],
     ["pt140", null, "34"],
-    ["pt140", "rush-hours", "44"],
+    ["pt140", "rush-3", "44"],
     ["pt143", null, "34"],
-    ["pt143", "rush-hours", "44"],
+    ["pt143", "rush-3", "44"],
     ["pt146", null, "34"],
-    ["pt146", "rush-hours", "44"],
+    ["pt146", "rush-3", "44"],
     ["pt149", null, "34"],
-    ["pt149", "rush-hours", "44"],
+    ["pt149", "rush-3", "44"],
     ["pt152", null, "34"],
-    ["pt152", "rush-hours", "44"],
+    ["pt152", "rush-3", "44"],
     ["pt155", null, "34"],
-    ["pt155", "rush-hours", "44"],
+    ["pt155", "rush-3", "44"],
     ["pt161", null, "34"],
-    ["pt161", "rush-hours", "44"],
+    ["pt161", "rush-3", "44"],
     ["pt164", null, "34"],
-    ["pt164", "rush-hours", "44"],
+    ["pt164", "rush-3", "44"],
     ["pt167", null, "34"],
-    ["pt167", "rush-hours", "44"],
+    ["pt167", "rush-3", "44"],
     ["pt192", null, "34"],
-    ["pt192", "rush-hours", "44"],
+    ["pt192", "rush-3", "44"],
     ["pt520", null, "48"],
-    ["pt520", "rush-hours", "95"],
+    ["pt520", "rush-3", "95"],
     ["pt927", null, "61"],
     ["pt930", null, "82"],
     ["pt987", null, "35"],
-    ["pt987", "rush-hours", "64"],
+    ["pt987", "rush-3", "64"],
     ["pt990", null, "35"],
-    ["pt990", "rush-hours", "64"]
+    ["pt990", "rush-3", "64"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14817,7 +14953,7 @@
    "valid_to": "2024-12-04",
    "columns": ["object", "amount"],
    "rows": [["pt717", "118"], ["pt721", "62"], ["pt724", "101"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14828,8 +14964,8 @@
    "valid_from": "2024-02-01",
    "valid_to": "2025-02-12",
    "columns": ["object", "time_class", "amount"],
-   "rows": [["pt76", null, "54"], ["pt76", "rush-hours", "73"], ["pt79", null, "54"], ["pt79", "rush-hours", "73"], ["pt85", null, "48"], ["pt85", "rush-hours", "95"]],
-   "sources": ["s1"],
+   "rows": [["pt76", null, "54"], ["pt76", "rush-3", "73"], ["pt79", null, "54"], ["pt79", "rush-3", "73"], ["pt85", null, "48"], ["pt85", "rush-3", "95"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14842,23 +14978,23 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt88", null, "48"],
-    ["pt88", "rush-hours", "95"],
+    ["pt88", "rush-3", "95"],
     ["pt137", null, "34"],
-    ["pt137", "rush-hours", "44"],
+    ["pt137", "rush-3", "44"],
     ["pt158", null, "34"],
-    ["pt158", "rush-hours", "44"],
+    ["pt158", "rush-3", "44"],
     ["pt304", null, "34"],
-    ["pt304", "rush-hours", "44"],
+    ["pt304", "rush-3", "44"],
     ["pt307", null, "34"],
-    ["pt307", "rush-hours", "44"],
+    ["pt307", "rush-3", "44"],
     ["pt310", null, "34"],
-    ["pt310", "rush-hours", "44"],
+    ["pt310", "rush-3", "44"],
     ["pt313", null, "34"],
-    ["pt313", "rush-hours", "44"],
+    ["pt313", "rush-3", "44"],
     ["pt670", null, "48"],
-    ["pt670", "rush-hours", "95"]
+    ["pt670", "rush-3", "95"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14870,7 +15006,7 @@
    "valid_to": "2024-06-30",
    "columns": ["object", "amount"],
    "rows": [["pt773", "491"], ["pt779", "491"], ["pt785", "89"], ["pt791", "89"], ["pt797", "89"], ["pt803", "89"], ["pt809", "89"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14882,7 +15018,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt848", "93"], ["pt852", "129"], ["pt856", "75"], ["pt860", "84"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14895,17 +15031,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt826", null, "36"],
-    ["pt826", "rush-hours", "55"],
+    ["pt826", "rush-4", "55"],
     ["pt830", null, "36"],
-    ["pt830", "rush-hours", "55"],
+    ["pt830", "rush-4", "55"],
     ["pt834", null, "36"],
-    ["pt834", "rush-hours", "55"],
+    ["pt834", "rush-4", "55"],
     ["pt838", null, "36"],
-    ["pt838", "rush-hours", "55"],
+    ["pt838", "rush-4", "55"],
     ["pt842", null, "36"],
-    ["pt842", "rush-hours", "55"]
+    ["pt842", "rush-4", "55"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14917,7 +15053,7 @@
    "valid_to": "2024-06-14",
    "columns": ["object", "amount"],
    "rows": [["pt1030", "33"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14928,7 +15064,7 @@
    "valid_from": "2024-05-31",
    "columns": ["object", "amount"],
    "rows": [["pt714", "86"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14940,7 +15076,7 @@
    "valid_to": "2024-08-14",
    "columns": ["object", "amount"],
    "rows": [["pt412", "69"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14952,7 +15088,7 @@
    "valid_to": "2024-08-31",
    "columns": ["object", "amount"],
    "rows": [["pt406", "71"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -14964,7 +15100,7 @@
    "valid_to": "2024-11-11",
    "columns": ["object", "amount"],
    "rows": [["pt223", "27"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15015,7 +15151,7 @@
     ["pt676", "33"],
     ["pt768", "69"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15039,7 +15175,7 @@
     ["pt739", "44"],
     ["pt745", "44"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15051,39 +15187,39 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt949", null, "28"],
-    ["pt949", "rush-hours", "84"],
+    ["pt949", "rush-5", "84"],
     ["pt951", null, "28"],
-    ["pt951", "rush-hours", "84"],
+    ["pt951", "rush-5", "84"],
     ["pt953", null, "28"],
-    ["pt953", "rush-hours", "84"],
+    ["pt953", "rush-5", "84"],
     ["pt955", null, "28"],
-    ["pt955", "rush-hours", "84"],
+    ["pt955", "rush-5", "84"],
     ["pt957", null, "28"],
-    ["pt957", "rush-hours", "84"],
+    ["pt957", "rush-5", "84"],
     ["pt959", null, "28"],
-    ["pt959", "rush-hours", "84"],
+    ["pt959", "rush-5", "84"],
     ["pt961", null, "28"],
-    ["pt961", "rush-hours", "84"],
+    ["pt961", "rush-5", "84"],
     ["pt963", null, "28"],
-    ["pt963", "rush-hours", "84"],
+    ["pt963", "rush-5", "84"],
     ["pt965", null, "28"],
-    ["pt965", "rush-hours", "84"],
+    ["pt965", "rush-5", "84"],
     ["pt967", null, "28"],
-    ["pt967", "rush-hours", "84"],
+    ["pt967", "rush-5", "84"],
     ["pt969", null, "28"],
-    ["pt969", "rush-hours", "84"],
+    ["pt969", "rush-5", "84"],
     ["pt971", null, "28"],
-    ["pt971", "rush-hours", "84"],
+    ["pt971", "rush-5", "84"],
     ["pt973", null, "28"],
-    ["pt973", "rush-hours", "84"],
+    ["pt973", "rush-5", "84"],
     ["pt975", null, "28"],
-    ["pt975", "rush-hours", "84"],
+    ["pt975", "rush-5", "84"],
     ["pt977", null, "28"],
-    ["pt977", "rush-hours", "84"],
+    ["pt977", "rush-5", "84"],
     ["pt979", null, "28"],
-    ["pt979", "rush-hours", "84"]
+    ["pt979", "rush-5", "84"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15095,7 +15231,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt933", "121"], ["pt937", "121"], ["pt941", "121"], ["pt945", "121"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15107,7 +15243,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt748", "38"], ["pt752", "38"], ["pt756", "38"], ["pt760", "38"], ["pt764", "38"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15119,7 +15255,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt1031", "38"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15131,7 +15267,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt93", "38"], ["pt97", "38"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15143,7 +15279,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt827", "49"], ["pt831", "49"], ["pt835", "49"], ["pt839", "49"], ["pt843", "49"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15155,7 +15291,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt126", "402"], ["pt260", "75"], ["pt264", "75"], ["pt268", "75"], ["pt272", "75"], ["pt276", "75"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15167,7 +15303,7 @@
    "valid_to": "2025-06-08",
    "columns": ["object", "amount"],
    "rows": [["pt774", "501"], ["pt780", "501"], ["pt786", "91"], ["pt792", "91"], ["pt798", "91"], ["pt804", "91"], ["pt810", "91"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15179,7 +15315,7 @@
    "valid_to": "2024-12-04",
    "columns": ["object", "amount"],
    "rows": [["pt1034", "79"], ["pt1035", "79"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15190,7 +15326,7 @@
    "valid_from": "2024-07-15",
    "columns": ["object", "amount"],
    "rows": [["pt1036", "52"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15202,7 +15338,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt413", "69"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15214,7 +15350,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt1037", "69"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15225,7 +15361,7 @@
    "valid_from": "2024-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt295", "28"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15237,7 +15373,7 @@
    "valid_to": "2025-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt316", "91"], ["pt319", "91"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15249,7 +15385,7 @@
    "valid_to": "2025-10-23",
    "columns": ["object", "amount"],
    "rows": [["pt109", "33"], ["pt112", "42"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15276,7 +15412,7 @@
     ["pt732", "52"],
     ["pt815", "52"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15288,44 +15424,44 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt83", null, "53"],
-    ["pt83", "rush-hours", "106"],
+    ["pt83", "rush-3", "106"],
     ["pt132", null, "53"],
-    ["pt132", "rush-hours", "106"],
+    ["pt132", "rush-3", "106"],
     ["pt135", null, "53"],
-    ["pt135", "rush-hours", "106"],
+    ["pt135", "rush-3", "106"],
     ["pt141", null, "38"],
-    ["pt141", "rush-hours", "48"],
+    ["pt141", "rush-3", "48"],
     ["pt144", null, "38"],
-    ["pt144", "rush-hours", "48"],
+    ["pt144", "rush-3", "48"],
     ["pt147", null, "38"],
-    ["pt147", "rush-hours", "48"],
+    ["pt147", "rush-3", "48"],
     ["pt150", null, "38"],
-    ["pt150", "rush-hours", "48"],
+    ["pt150", "rush-3", "48"],
     ["pt153", null, "38"],
-    ["pt153", "rush-hours", "48"],
+    ["pt153", "rush-3", "48"],
     ["pt156", null, "38"],
-    ["pt156", "rush-hours", "48"],
+    ["pt156", "rush-3", "48"],
     ["pt162", null, "38"],
-    ["pt162", "rush-hours", "48"],
+    ["pt162", "rush-3", "48"],
     ["pt165", null, "38"],
-    ["pt165", "rush-hours", "48"],
+    ["pt165", "rush-3", "48"],
     ["pt168", null, "38"],
-    ["pt168", "rush-hours", "48"],
+    ["pt168", "rush-3", "48"],
     ["pt170", null, "321"],
     ["pt193", null, "38"],
-    ["pt193", "rush-hours", "48"],
+    ["pt193", "rush-3", "48"],
     ["pt521", null, "53"],
-    ["pt521", "rush-hours", "106"],
+    ["pt521", "rush-3", "106"],
     ["pt743", null, "104"],
     ["pt864", null, "252"],
     ["pt872", null, "58"],
     ["pt928", null, "65"],
     ["pt988", null, "39"],
-    ["pt988", "rush-hours", "70"],
+    ["pt988", "rush-3", "70"],
     ["pt991", null, "39"],
-    ["pt991", "rush-hours", "70"]
+    ["pt991", "rush-3", "70"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15337,7 +15473,7 @@
    "valid_to": "2025-08-24",
    "columns": ["object", "amount"],
    "rows": [["pt74", "118"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15349,7 +15485,7 @@
    "valid_to": "2026-05-05",
    "columns": ["object", "amount"],
    "rows": [["pt931", "91"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15361,7 +15497,7 @@
    "valid_to": "2026-10-04",
    "columns": ["object", "amount"],
    "rows": [["pt866", "58"], ["pt869", "58"], ["pt874", "160"], ["pt877", "58"], ["pt880", "58"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15373,7 +15509,7 @@
    "valid_to": "2026-10-14",
    "columns": ["object", "amount"],
    "rows": [["pt818", "78"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15384,7 +15520,7 @@
    "valid_from": "2024-12-05",
    "columns": ["object", "amount"],
    "rows": [["pt722", "68"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15396,7 +15532,7 @@
    "valid_to": "2026-01-31",
    "columns": ["object", "amount"],
    "rows": [["pt718", "130"], ["pt725", "111"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15408,7 +15544,7 @@
    "valid_to": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt1040", "79"], ["pt1042", "79"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15420,7 +15556,7 @@
    "valid_to": "2025-08-26",
    "columns": ["object", "amount"],
    "rows": [["pt904", "60"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15433,27 +15569,27 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt3", null, "85"],
-    ["pt3", "rush-hours", "149"],
+    ["pt3", "rush", "149"],
     ["pt6", null, "85"],
-    ["pt6", "rush-hours", "149"],
+    ["pt6", "rush", "149"],
     ["pt9", null, "85"],
-    ["pt9", "rush-hours", "149"],
+    ["pt9", "rush", "149"],
     ["pt12", null, "85"],
-    ["pt12", "rush-hours", "149"],
+    ["pt12", "rush", "149"],
     ["pt15", null, "85"],
-    ["pt15", "rush-hours", "149"],
+    ["pt15", "rush", "149"],
     ["pt18", null, "85"],
-    ["pt18", "rush-hours", "149"],
+    ["pt18", "rush", "149"],
     ["pt27", null, "85"],
-    ["pt27", "rush-hours", "149"],
+    ["pt27", "rush", "149"],
     ["pt30", null, "85"],
-    ["pt30", "rush-hours", "149"],
+    ["pt30", "rush", "149"],
     ["pt33", null, "85"],
-    ["pt33", "rush-hours", "149"],
+    ["pt33", "rush", "149"],
     ["pt36", null, "85"],
-    ["pt36", "rush-hours", "149"],
+    ["pt36", "rush", "149"],
     ["pt119", null, "85"],
-    ["pt119", "rush-hours", "149"],
+    ["pt119", "rush", "149"],
     ["pt475", null, "85"],
     ["pt478", null, "85"],
     ["pt481", null, "85"],
@@ -15470,11 +15606,11 @@
     ["pt514", null, "85"],
     ["pt517", null, "85"],
     ["pt981", null, "85"],
-    ["pt981", "rush-hours", "149"],
+    ["pt981", "rush", "149"],
     ["pt984", null, "85"],
-    ["pt984", "rush-hours", "149"]
+    ["pt984", "rush", "149"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15486,7 +15622,7 @@
    "valid_to": "2026-01-01",
    "columns": ["object", "amount"],
    "rows": [["pt889", "60"], ["pt895", "60"], ["pt898", "60"], ["pt901", "60"], ["pt906", "60"], ["pt912", "60"], ["pt915", "60"], ["pt921", "60"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15498,7 +15634,7 @@
    "valid_to": "2026-01-31",
    "columns": ["object", "amount"],
    "rows": [["pt883", "531"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15510,7 +15646,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt892", "60"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15520,8 +15656,8 @@
    "unit": "passage",
    "valid_from": "2025-02-13",
    "columns": ["object", "time_class", "amount"],
-   "rows": [["pt77", null, "60"], ["pt77", "rush-hours", "81"], ["pt80", null, "60"], ["pt80", "rush-hours", "81"], ["pt86", null, "53"], ["pt86", "rush-hours", "106"]],
-   "sources": ["s1"],
+   "rows": [["pt77", null, "60"], ["pt77", "rush-3", "81"], ["pt80", null, "60"], ["pt80", "rush-3", "81"], ["pt86", null, "53"], ["pt86", "rush-3", "106"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15533,7 +15669,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1054", "49"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15545,7 +15681,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1044", "49"], ["pt1046", "49"], ["pt1048", "49"], ["pt1050", "49"], ["pt1056", "49"], ["pt1058", "49"], ["pt1060", "49"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15557,23 +15693,23 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt89", null, "53"],
-    ["pt89", "rush-hours", "106"],
+    ["pt89", "rush-3", "106"],
     ["pt138", null, "38"],
-    ["pt138", "rush-hours", "48"],
+    ["pt138", "rush-3", "48"],
     ["pt159", null, "38"],
-    ["pt159", "rush-hours", "48"],
+    ["pt159", "rush-3", "48"],
     ["pt305", null, "38"],
-    ["pt305", "rush-hours", "48"],
+    ["pt305", "rush-3", "48"],
     ["pt308", null, "38"],
-    ["pt308", "rush-hours", "48"],
+    ["pt308", "rush-3", "48"],
     ["pt311", null, "38"],
-    ["pt311", "rush-hours", "48"],
+    ["pt311", "rush-3", "48"],
     ["pt314", null, "38"],
-    ["pt314", "rush-hours", "48"],
+    ["pt314", "rush-3", "48"],
     ["pt671", null, "53"],
-    ["pt671", "rush-hours", "106"]
+    ["pt671", "rush-3", "106"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15584,8 +15720,8 @@
    "valid_from": "2025-04-03",
    "valid_to": "2025-12-31",
    "columns": ["object", "time_class", "amount"],
-   "rows": [["pt105", null, "85"], ["pt105", "rush-hours", "149"], ["pt823", null, "85"], ["pt823", "rush-hours", "149"]],
-   "sources": ["s1"],
+   "rows": [["pt105", null, "85"], ["pt105", "rush", "149"], ["pt823", null, "85"], ["pt823", "rush", "149"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15597,7 +15733,7 @@
    "valid_to": "2026-01-01",
    "columns": ["object", "amount"],
    "rows": [["pt886", "60"], ["pt924", "60"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15609,7 +15745,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt909", "60"], ["pt918", "60"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15621,7 +15757,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1052", "49"], ["pt1062", "49"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15632,7 +15768,7 @@
    "valid_from": "2025-05-23",
    "columns": ["object", "amount"],
    "rows": [["pt674", "74"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15644,7 +15780,7 @@
    "valid_to": "2026-05-19",
    "columns": ["object", "amount"],
    "rows": [["pt180", "86"], ["pt183", "86"], ["pt186", "86"], ["pt189", "86"], ["pt993", "86"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15656,7 +15792,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt123", "186"], ["pt849", "98"], ["pt853", "136"], ["pt857", "79"], ["pt861", "89"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15668,7 +15804,7 @@
    "valid_to": "2026-05-21",
    "columns": ["object", "amount"],
    "rows": [["pt677", "34"], ["pt934", "126"], ["pt938", "126"], ["pt942", "126"], ["pt946", "126"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15680,7 +15816,7 @@
    "valid_to": "2026-05-28",
    "columns": ["object", "amount"],
    "rows": [["pt380", "71"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15728,7 +15864,7 @@
     ["pt470", "71"],
     ["pt769", "71"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15740,7 +15876,7 @@
    "valid_to": "2026-03-29",
    "columns": ["object", "amount"],
    "rows": [["pt56", "23"], ["pt58", "23"], ["pt60", "23"], ["pt62", "23"], ["pt64", "23"], ["pt66", "23"], ["pt68", "23"], ["pt70", "23"], ["pt72", "23"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15766,7 +15902,7 @@
     ["pt765", "39"],
     ["pt1032", "39"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15778,7 +15914,7 @@
    "valid_to": "2026-05-21",
    "columns": ["object", "amount"],
    "rows": [["pt127", "417"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15790,7 +15926,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt1064", "106"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15802,7 +15938,7 @@
    "valid_to": "2025-07-02",
    "columns": ["object", "amount"],
    "rows": [["pt775", "519"], ["pt781", "519"], ["pt787", "94"], ["pt793", "94"], ["pt799", "94"], ["pt805", "94"], ["pt811", "94"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15814,7 +15950,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt776", "348"], ["pt782", "348"], ["pt788", "63"], ["pt794", "63"], ["pt800", "63"], ["pt806", "63"], ["pt812", "63"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15826,7 +15962,7 @@
    "valid_to": "2026-05-31",
    "columns": ["object", "amount"],
    "rows": [["pt1066", "27"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15861,7 +15997,7 @@
     ["pt1027", "68"],
     ["pt1029", "68"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15873,7 +16009,7 @@
    "valid_to": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt1068", "118"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15896,7 +16032,7 @@
     ["pt1070", "65"],
     ["pt1071", "91"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15907,7 +16043,7 @@
    "valid_from": "2025-10-24",
    "columns": ["object", "amount"],
    "rows": [["pt110", "0"], ["pt113", "0"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15919,7 +16055,7 @@
    "valid_to": "2026-10-26",
    "columns": ["object", "amount"],
    "rows": [["pt1072", "179"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15931,7 +16067,7 @@
    "valid_to": "2026-01-15",
    "columns": ["object", "amount"],
    "rows": [["pt1074", "110"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15942,7 +16078,7 @@
    "valid_from": "2025-12-03",
    "columns": ["object", "amount"],
    "rows": [["pt1076", "90"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15952,8 +16088,8 @@
    "unit": "passage",
    "valid_from": "2025-12-18",
    "columns": ["object", "amount"],
-   "rows": [["pt1080", "70"]],
-   "sources": ["s1"],
+   "rows": [["pt1081", "70"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15963,8 +16099,20 @@
    "unit": "passage",
    "valid_from": "2025-12-19",
    "columns": ["object", "amount"],
-   "rows": [["pt1077", "102"], ["pt1078", "102"], ["pt1079", "102"], ["pt1081", "102"]],
-   "sources": ["s1"],
+   "rows": [["pt1080", "102"], ["pt1082", "102"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "basis": "transcribed"
+  },
+  {
+   "id": "points@2025-12-19..2026-11-02",
+   "type": "point",
+   "component": "unspecified",
+   "unit": "passage",
+   "valid_from": "2025-12-19",
+   "valid_to": "2026-11-02",
+   "columns": ["object", "amount"],
+   "rows": [["pt1077", "102"], ["pt1079", "102"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -15976,29 +16124,29 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt4", null, "88"],
-    ["pt4", "rush-hours", "154"],
+    ["pt4", "rush", "154"],
     ["pt7", null, "88"],
-    ["pt7", "rush-hours", "154"],
+    ["pt7", "rush", "154"],
     ["pt10", null, "88"],
-    ["pt10", "rush-hours", "154"],
+    ["pt10", "rush", "154"],
     ["pt13", null, "88"],
-    ["pt13", "rush-hours", "154"],
+    ["pt13", "rush", "154"],
     ["pt16", null, "88"],
-    ["pt16", "rush-hours", "154"],
+    ["pt16", "rush", "154"],
     ["pt19", null, "88"],
-    ["pt19", "rush-hours", "154"],
+    ["pt19", "rush", "154"],
     ["pt28", null, "88"],
-    ["pt28", "rush-hours", "154"],
+    ["pt28", "rush", "154"],
     ["pt31", null, "88"],
-    ["pt31", "rush-hours", "154"],
+    ["pt31", "rush", "154"],
     ["pt34", null, "88"],
-    ["pt34", "rush-hours", "154"],
+    ["pt34", "rush", "154"],
     ["pt37", null, "88"],
-    ["pt37", "rush-hours", "154"],
+    ["pt37", "rush", "154"],
     ["pt106", null, "88"],
-    ["pt106", "rush-hours", "154"],
+    ["pt106", "rush", "154"],
     ["pt120", null, "88"],
-    ["pt120", "rush-hours", "154"],
+    ["pt120", "rush", "154"],
     ["pt476", null, "88"],
     ["pt479", null, "88"],
     ["pt482", null, "88"],
@@ -16015,13 +16163,13 @@
     ["pt515", null, "88"],
     ["pt518", null, "88"],
     ["pt824", null, "88"],
-    ["pt824", "rush-hours", "154"],
+    ["pt824", "rush", "154"],
     ["pt982", null, "88"],
-    ["pt982", "rush-hours", "154"],
+    ["pt982", "rush", "154"],
     ["pt985", null, "88"],
-    ["pt985", "rush-hours", "154"]
+    ["pt985", "rush", "154"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16043,7 +16191,7 @@
     ["pt922", "61"],
     ["pt925", "61"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16054,7 +16202,7 @@
    "valid_from": "2026-01-16",
    "columns": ["object", "amount"],
    "rows": [["pt1075", "110"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16065,7 +16213,7 @@
    "valid_from": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt719", "133"], ["pt884", "557"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16077,7 +16225,7 @@
    "valid_to": "2026-03-09",
    "columns": ["object", "amount"],
    "rows": [["pt726", "66"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16088,7 +16236,7 @@
    "valid_from": "2026-02-02",
    "columns": ["object", "amount"],
    "rows": [["pt1041", "87"], ["pt1043", "87"], ["pt1069", "121"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16099,8 +16247,8 @@
    "valid_from": "2026-02-09",
    "valid_to": "2026-08-03",
    "columns": ["object", "amount"],
-   "rows": [["pt1082", "71"], ["pt1084", "71"]],
-   "sources": ["s1"],
+   "rows": [["pt1083", "71"], ["pt1085", "71"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16110,8 +16258,8 @@
    "unit": "passage",
    "valid_from": "2026-02-26",
    "columns": ["object", "amount"],
-   "rows": [["pt1086", "110"]],
-   "sources": ["s1"],
+   "rows": [["pt1087", "110"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16122,7 +16270,7 @@
    "valid_from": "2026-03-05",
    "columns": ["object", "amount"],
    "rows": [["pt893", "61"], ["pt910", "61"], ["pt919", "61"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16134,7 +16282,7 @@
    "valid_to": "2026-08-03",
    "columns": ["object", "amount"],
    "rows": [["pt1038", "71"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16146,17 +16294,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt588", null, "161"],
-    ["pt588", "rush-hours", "223"],
+    ["pt588", "rush-2", "223"],
     ["pt600", null, "161"],
-    ["pt600", "rush-hours", "223"],
+    ["pt600", "rush-2", "223"],
     ["pt630", null, "161"],
-    ["pt630", "rush-hours", "223"],
+    ["pt630", "rush-2", "223"],
     ["pt632", null, "161"],
-    ["pt632", "rush-hours", "223"],
+    ["pt632", "rush-2", "223"],
     ["pt652", null, "161"],
-    ["pt652", "rush-hours", "223"]
+    ["pt652", "rush-2", "223"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16168,166 +16316,166 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt21", null, "161"],
-    ["pt21", "rush-hours", "223"],
+    ["pt21", "rush-2", "223"],
     ["pt23", null, "161"],
-    ["pt23", "rush-hours", "223"],
+    ["pt23", "rush-2", "223"],
     ["pt25", null, "161"],
-    ["pt25", "rush-hours", "223"],
+    ["pt25", "rush-2", "223"],
     ["pt39", null, "161"],
-    ["pt39", "rush-hours", "223"],
+    ["pt39", "rush-2", "223"],
     ["pt41", null, "161"],
-    ["pt41", "rush-hours", "223"],
+    ["pt41", "rush-2", "223"],
     ["pt43", null, "161"],
-    ["pt43", "rush-hours", "223"],
+    ["pt43", "rush-2", "223"],
     ["pt45", null, "161"],
-    ["pt45", "rush-hours", "223"],
+    ["pt45", "rush-2", "223"],
     ["pt47", null, "161"],
-    ["pt47", "rush-hours", "223"],
+    ["pt47", "rush-2", "223"],
     ["pt49", null, "161"],
-    ["pt49", "rush-hours", "223"],
+    ["pt49", "rush-2", "223"],
     ["pt52", null, "161"],
-    ["pt52", "rush-hours", "223"],
+    ["pt52", "rush-2", "223"],
     ["pt54", null, "161"],
-    ["pt54", "rush-hours", "223"],
+    ["pt54", "rush-2", "223"],
     ["pt301", null, "161"],
-    ["pt301", "rush-hours", "223"],
+    ["pt301", "rush-2", "223"],
     ["pt525", null, "161"],
-    ["pt525", "rush-hours", "223"],
+    ["pt525", "rush-2", "223"],
     ["pt527", null, "161"],
-    ["pt527", "rush-hours", "223"],
+    ["pt527", "rush-2", "223"],
     ["pt529", null, "161"],
-    ["pt529", "rush-hours", "223"],
+    ["pt529", "rush-2", "223"],
     ["pt531", null, "161"],
-    ["pt531", "rush-hours", "223"],
+    ["pt531", "rush-2", "223"],
     ["pt533", null, "161"],
-    ["pt533", "rush-hours", "223"],
+    ["pt533", "rush-2", "223"],
     ["pt535", null, "161"],
-    ["pt535", "rush-hours", "223"],
+    ["pt535", "rush-2", "223"],
     ["pt537", null, "161"],
-    ["pt537", "rush-hours", "223"],
+    ["pt537", "rush-2", "223"],
     ["pt539", null, "161"],
-    ["pt539", "rush-hours", "223"],
+    ["pt539", "rush-2", "223"],
     ["pt541", null, "161"],
-    ["pt541", "rush-hours", "223"],
+    ["pt541", "rush-2", "223"],
     ["pt543", null, "161"],
-    ["pt543", "rush-hours", "223"],
+    ["pt543", "rush-2", "223"],
     ["pt545", null, "161"],
-    ["pt545", "rush-hours", "223"],
+    ["pt545", "rush-2", "223"],
     ["pt548", null, "161"],
-    ["pt548", "rush-hours", "223"],
+    ["pt548", "rush-2", "223"],
     ["pt550", null, "161"],
-    ["pt550", "rush-hours", "223"],
+    ["pt550", "rush-2", "223"],
     ["pt552", null, "161"],
-    ["pt552", "rush-hours", "223"],
+    ["pt552", "rush-2", "223"],
     ["pt554", null, "161"],
-    ["pt554", "rush-hours", "223"],
+    ["pt554", "rush-2", "223"],
     ["pt556", null, "161"],
-    ["pt556", "rush-hours", "223"],
+    ["pt556", "rush-2", "223"],
     ["pt558", null, "161"],
-    ["pt558", "rush-hours", "223"],
+    ["pt558", "rush-2", "223"],
     ["pt561", null, "161"],
-    ["pt561", "rush-hours", "223"],
+    ["pt561", "rush-2", "223"],
     ["pt563", null, "161"],
-    ["pt563", "rush-hours", "223"],
+    ["pt563", "rush-2", "223"],
     ["pt565", null, "161"],
-    ["pt565", "rush-hours", "223"],
+    ["pt565", "rush-2", "223"],
     ["pt567", null, "161"],
-    ["pt567", "rush-hours", "223"],
+    ["pt567", "rush-2", "223"],
     ["pt570", null, "161"],
-    ["pt570", "rush-hours", "223"],
+    ["pt570", "rush-2", "223"],
     ["pt572", null, "161"],
-    ["pt572", "rush-hours", "223"],
+    ["pt572", "rush-2", "223"],
     ["pt574", null, "161"],
-    ["pt574", "rush-hours", "223"],
+    ["pt574", "rush-2", "223"],
     ["pt576", null, "161"],
-    ["pt576", "rush-hours", "223"],
+    ["pt576", "rush-2", "223"],
     ["pt578", null, "161"],
-    ["pt578", "rush-hours", "223"],
+    ["pt578", "rush-2", "223"],
     ["pt580", null, "161"],
-    ["pt580", "rush-hours", "223"],
+    ["pt580", "rush-2", "223"],
     ["pt582", null, "161"],
-    ["pt582", "rush-hours", "223"],
+    ["pt582", "rush-2", "223"],
     ["pt584", null, "161"],
-    ["pt584", "rush-hours", "223"],
+    ["pt584", "rush-2", "223"],
     ["pt586", null, "161"],
-    ["pt586", "rush-hours", "223"],
+    ["pt586", "rush-2", "223"],
     ["pt590", null, "161"],
-    ["pt590", "rush-hours", "223"],
+    ["pt590", "rush-2", "223"],
     ["pt592", null, "161"],
-    ["pt592", "rush-hours", "223"],
+    ["pt592", "rush-2", "223"],
     ["pt594", null, "161"],
-    ["pt594", "rush-hours", "223"],
+    ["pt594", "rush-2", "223"],
     ["pt596", null, "161"],
-    ["pt596", "rush-hours", "223"],
+    ["pt596", "rush-2", "223"],
     ["pt598", null, "161"],
-    ["pt598", "rush-hours", "223"],
+    ["pt598", "rush-2", "223"],
     ["pt602", null, "161"],
-    ["pt602", "rush-hours", "223"],
+    ["pt602", "rush-2", "223"],
     ["pt604", null, "161"],
-    ["pt604", "rush-hours", "223"],
+    ["pt604", "rush-2", "223"],
     ["pt606", null, "161"],
-    ["pt606", "rush-hours", "223"],
+    ["pt606", "rush-2", "223"],
     ["pt608", null, "161"],
-    ["pt608", "rush-hours", "223"],
+    ["pt608", "rush-2", "223"],
     ["pt610", null, "161"],
-    ["pt610", "rush-hours", "223"],
+    ["pt610", "rush-2", "223"],
     ["pt612", null, "161"],
-    ["pt612", "rush-hours", "223"],
+    ["pt612", "rush-2", "223"],
     ["pt614", null, "161"],
-    ["pt614", "rush-hours", "223"],
+    ["pt614", "rush-2", "223"],
     ["pt616", null, "161"],
-    ["pt616", "rush-hours", "223"],
+    ["pt616", "rush-2", "223"],
     ["pt618", null, "161"],
-    ["pt618", "rush-hours", "223"],
+    ["pt618", "rush-2", "223"],
     ["pt620", null, "161"],
-    ["pt620", "rush-hours", "223"],
+    ["pt620", "rush-2", "223"],
     ["pt622", null, "161"],
-    ["pt622", "rush-hours", "223"],
+    ["pt622", "rush-2", "223"],
     ["pt624", null, "161"],
-    ["pt624", "rush-hours", "223"],
+    ["pt624", "rush-2", "223"],
     ["pt628", null, "161"],
-    ["pt628", "rush-hours", "223"],
+    ["pt628", "rush-2", "223"],
     ["pt634", null, "161"],
-    ["pt634", "rush-hours", "223"],
+    ["pt634", "rush-2", "223"],
     ["pt636", null, "161"],
-    ["pt636", "rush-hours", "223"],
+    ["pt636", "rush-2", "223"],
     ["pt638", null, "161"],
-    ["pt638", "rush-hours", "223"],
+    ["pt638", "rush-2", "223"],
     ["pt640", null, "161"],
-    ["pt640", "rush-hours", "223"],
+    ["pt640", "rush-2", "223"],
     ["pt642", null, "161"],
-    ["pt642", "rush-hours", "223"],
+    ["pt642", "rush-2", "223"],
     ["pt644", null, "161"],
-    ["pt644", "rush-hours", "223"],
+    ["pt644", "rush-2", "223"],
     ["pt646", null, "161"],
-    ["pt646", "rush-hours", "223"],
+    ["pt646", "rush-2", "223"],
     ["pt648", null, "161"],
-    ["pt648", "rush-hours", "223"],
+    ["pt648", "rush-2", "223"],
     ["pt650", null, "161"],
-    ["pt650", "rush-hours", "223"],
+    ["pt650", "rush-2", "223"],
     ["pt654", null, "161"],
-    ["pt654", "rush-hours", "223"],
+    ["pt654", "rush-2", "223"],
     ["pt656", null, "161"],
-    ["pt656", "rush-hours", "223"],
+    ["pt656", "rush-2", "223"],
     ["pt658", null, "161"],
-    ["pt658", "rush-hours", "223"],
+    ["pt658", "rush-2", "223"],
     ["pt660", null, "161"],
-    ["pt660", "rush-hours", "223"],
+    ["pt660", "rush-2", "223"],
     ["pt662", null, "161"],
-    ["pt662", "rush-hours", "223"],
+    ["pt662", "rush-2", "223"],
     ["pt664", null, "161"],
-    ["pt664", "rush-hours", "223"],
+    ["pt664", "rush-2", "223"],
     ["pt666", null, "161"],
-    ["pt666", "rush-hours", "223"],
+    ["pt666", "rush-2", "223"],
     ["pt668", null, "161"],
-    ["pt668", "rush-hours", "223"],
+    ["pt668", "rush-2", "223"],
     ["pt708", null, "161"],
-    ["pt708", "rush-hours", "223"],
+    ["pt708", "rush-2", "223"],
     ["pt727", null, "114"],
     ["pt846", null, "161"],
-    ["pt846", "rush-hours", "223"]
+    ["pt846", "rush-2", "223"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16338,8 +16486,8 @@
    "valid_from": "2026-03-30",
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
-   "rows": [["pt1087", "79"], ["pt1089", "106"]],
-   "sources": ["s1"],
+   "rows": [["pt1088", "79"], ["pt1090", "106"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16350,7 +16498,6 @@
    "valid_from": "2026-04-28",
    "columns": ["object", "amount"],
    "rows": [
-    ["pt1091", "31"],
     ["pt1092", "31"],
     ["pt1093", "31"],
     ["pt1094", "31"],
@@ -16360,9 +16507,10 @@
     ["pt1098", "31"],
     ["pt1099", "31"],
     ["pt1100", "31"],
-    ["pt1101", "31"]
+    ["pt1101", "31"],
+    ["pt1102", "31"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16374,33 +16522,33 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt234", null, "42"],
-    ["pt234", "rush-hours", "58"],
+    ["pt234", "rush-3", "58"],
     ["pt236", null, "42"],
-    ["pt236", "rush-hours", "58"],
+    ["pt236", "rush-3", "58"],
     ["pt238", null, "42"],
-    ["pt238", "rush-hours", "58"],
+    ["pt238", "rush-3", "58"],
     ["pt240", null, "42"],
-    ["pt240", "rush-hours", "58"],
+    ["pt240", "rush-3", "58"],
     ["pt242", null, "42"],
-    ["pt242", "rush-hours", "58"],
+    ["pt242", "rush-3", "58"],
     ["pt244", null, "42"],
-    ["pt244", "rush-hours", "58"],
+    ["pt244", "rush-3", "58"],
     ["pt246", null, "42"],
-    ["pt246", "rush-hours", "58"],
+    ["pt246", "rush-3", "58"],
     ["pt248", null, "42"],
-    ["pt248", "rush-hours", "58"],
+    ["pt248", "rush-3", "58"],
     ["pt250", null, "42"],
-    ["pt250", "rush-hours", "58"],
+    ["pt250", "rush-3", "58"],
     ["pt252", null, "42"],
-    ["pt252", "rush-hours", "58"],
+    ["pt252", "rush-3", "58"],
     ["pt254", null, "42"],
-    ["pt254", "rush-hours", "58"],
+    ["pt254", "rush-3", "58"],
     ["pt256", null, "42"],
-    ["pt256", "rush-hours", "58"],
+    ["pt256", "rush-3", "58"],
     ["pt258", null, "42"],
-    ["pt258", "rush-hours", "58"]
+    ["pt258", "rush-3", "58"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16430,7 +16578,7 @@
     ["pt994", "88"],
     ["pt1033", "40"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16454,10 +16602,10 @@
     ["pt858", "81"],
     ["pt862", "91"],
     ["pt1065", "111"],
-    ["pt1088", "81"],
-    ["pt1090", "111"]
+    ["pt1089", "81"],
+    ["pt1091", "111"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16468,7 +16616,7 @@
    "valid_from": "2026-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt128", "428"], ["pt678", "35"], ["pt935", "129"], ["pt939", "129"], ["pt943", "129"], ["pt947", "129"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16506,7 +16654,7 @@
     ["pt816", "54"],
     ["pt1067", "32"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16533,7 +16681,7 @@
     ["pt1061", "51"],
     ["pt1063", "51"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16543,8 +16691,8 @@
    "unit": "passage",
    "valid_from": "2026-06-08",
    "columns": ["object", "amount"],
-   "rows": [["pt1102", "68"], ["pt1103", "68"]],
-   "sources": ["s1"],
+   "rows": [["pt1103", "68"], ["pt1104", "68"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16554,8 +16702,8 @@
    "unit": "passage",
    "valid_from": "2026-07-01",
    "columns": ["object", "amount"],
-   "rows": [["pt1104", "42"], ["pt1105", "42"], ["pt1106", "42"], ["pt1107", "42"], ["pt1108", "42"], ["pt1109", "42"], ["pt1110", "42"]],
-   "sources": ["s1"],
+   "rows": [["pt1105", "42"], ["pt1106", "42"], ["pt1107", "42"], ["pt1108", "42"], ["pt1109", "42"], ["pt1110", "42"], ["pt1111", "42"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16602,10 +16750,10 @@
     ["pt471", "76"],
     ["pt770", "76"],
     ["pt1039", "76"],
-    ["pt1083", "76"],
-    ["pt1085", "76"]
+    ["pt1084", "76"],
+    ["pt1086", "76"]
    ],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16616,8 +16764,8 @@
    "valid_from": "2026-08-04",
    "valid_to": "2026-08-04",
    "columns": ["object", "amount"],
-   "rows": [["pt1111", "71"]],
-   "sources": ["s1"],
+   "rows": [["pt1112", "71"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16627,8 +16775,8 @@
    "unit": "passage",
    "valid_from": "2026-08-05",
    "columns": ["object", "amount"],
-   "rows": [["pt1112", "76"]],
-   "sources": ["s1"],
+   "rows": [["pt1113", "76"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16639,7 +16787,7 @@
    "valid_from": "2026-10-05",
    "columns": ["object", "amount"],
    "rows": [["pt867", "63"], ["pt870", "63"], ["pt875", "170"], ["pt878", "63"], ["pt881", "63"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16650,7 +16798,7 @@
    "valid_from": "2026-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt819", "81"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   },
   {
@@ -16661,7 +16809,18 @@
    "valid_from": "2026-10-27",
    "columns": ["object", "amount"],
    "rows": [["pt735", "119"], ["pt737", "119"], ["pt821", "119"], ["pt1073", "187"]],
-   "sources": ["s1"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "basis": "transcribed"
+  },
+  {
+   "id": "points@2026-11-03..",
+   "type": "point",
+   "component": "unspecified",
+   "unit": "passage",
+   "valid_from": "2026-11-03",
+   "columns": ["object", "amount"],
+   "rows": [["pt1078", "102"], ["pt1114", "102"]],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
    "basis": "transcribed"
   }
  ],
@@ -16770,6 +16929,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -16797,7 +16957,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -16980,12 +17141,12 @@
      "pt1037",
      "pt1038",
      "pt1039",
-     "pt1082",
      "pt1083",
      "pt1084",
      "pt1085",
-     "pt1111",
-     "pt1112"
+     "pt1086",
+     "pt1112",
+     "pt1113"
     ],
     "minutes": 60,
     "pays": "first"
@@ -17095,6 +17256,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17122,7 +17284,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -17259,6 +17422,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17286,7 +17450,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt87", "pt88", "pt89", "pt519", "pt520", "pt521", "pt669", "pt670", "pt671"],
@@ -17398,6 +17563,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17425,7 +17591,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt84", "pt85", "pt86", "pt986", "pt987", "pt988", "pt989", "pt990", "pt991"],
@@ -17537,6 +17704,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17564,7 +17732,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -17713,6 +17882,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17740,7 +17910,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt81", "pt82", "pt83"],
@@ -17852,6 +18023,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -17879,7 +18051,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt139", "pt140", "pt141", "pt142", "pt143", "pt144", "pt151", "pt152", "pt153"],
@@ -17991,6 +18164,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18018,7 +18192,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt136", "pt137", "pt138", "pt309", "pt310", "pt311", "pt312", "pt313", "pt314"],
@@ -18130,6 +18305,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18157,7 +18333,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt130", "pt131", "pt132", "pt133", "pt134", "pt135"],
@@ -18269,6 +18446,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18296,7 +18474,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt55", "pt56", "pt57", "pt58", "pt59", "pt60", "pt61", "pt62", "pt63", "pt64", "pt65", "pt66", "pt67", "pt68", "pt69", "pt70", "pt71", "pt72"],
@@ -18408,6 +18587,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18435,7 +18615,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -18588,6 +18769,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18615,7 +18797,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -18755,7 +18938,7 @@
      "pt846"
     ],
     "minutes": 60,
-    "pays": "first"
+    "pays": "highest"
    }
   },
   {
@@ -18862,6 +19045,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -18889,7 +19073,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -18939,7 +19124,7 @@
      "pt656"
     ],
     "minutes": 60,
-    "pays": "first"
+    "pays": "highest"
    }
   },
   {
@@ -19046,6 +19231,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19073,7 +19259,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -19169,7 +19356,7 @@
      "pt985"
     ],
     "minutes": 60,
-    "pays": "first"
+    "pays": "highest"
    }
   },
   {
@@ -19276,6 +19463,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19303,7 +19491,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt212", "pt213", "pt214", "pt215", "pt216", "pt217", "pt522", "pt523"],
@@ -19415,6 +19604,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19442,7 +19632,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -19611,6 +19802,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19638,7 +19830,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt92", "pt93", "pt94", "pt95", "pt96", "pt97", "pt98", "pt99"],
@@ -19750,6 +19943,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19777,7 +19971,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt117"],
@@ -19889,6 +20084,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -19916,7 +20112,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt121", "pt122", "pt123", "pt124"],
@@ -20028,6 +20225,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20055,7 +20253,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt865", "pt866", "pt867", "pt871", "pt872", "pt876", "pt877", "pt878"],
@@ -20167,6 +20366,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20194,7 +20394,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": ["pt179", "pt180", "pt181", "pt182", "pt183", "pt184", "pt185", "pt186", "pt187", "pt188", "pt189", "pt190"],
@@ -20306,6 +20507,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20333,7 +20535,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -20478,6 +20681,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20505,7 +20709,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -20644,6 +20849,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20671,7 +20877,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -20804,6 +21011,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20831,7 +21039,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -20964,6 +21173,7 @@
     "points@2025-12-03..",
     "points@2025-12-18..",
     "points@2025-12-19..",
+    "points@2025-12-19..2026-11-02",
     "points@2026-01-01..",
     "points@2026-01-02..",
     "points@2026-01-16..",
@@ -20991,7 +21201,8 @@
     "points@2026-08-05..",
     "points@2026-10-05..",
     "points@2026-10-15..",
-    "points@2026-10-27.."
+    "points@2026-10-27..",
+    "points@2026-11-03.."
    ],
    "params": {
     "objects": [
@@ -21044,9 +21255,8 @@
  ],
  "coverage": [
   {
-   "scope": "rush-hours",
-   "status": "partial",
-   "reason": "372 toll points charge more in rush hours, whose hours aren't in the source table"
+   "scope": "dataset",
+   "status": "complete"
   }
  ]
 }
