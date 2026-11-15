@@ -156,7 +156,7 @@
       "train_axles": {
        "max": 2
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -235,7 +235,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -315,7 +315,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -388,7 +388,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -447,7 +447,7 @@
       "train_axles": {
        "max": 2
       },
-      "euro_class": ["4", "5", "6"]
+      "euro_class": ["4", "5", "EEV", "6"]
      }
     },
     {
@@ -497,7 +497,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["4", "5", "6"]
+      "euro_class": ["4", "5", "EEV", "6"]
      }
     },
     {
@@ -547,7 +547,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["4", "5", "6"]
+      "euro_class": ["4", "5", "EEV", "6"]
      }
     },
     {
@@ -592,7 +592,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["4", "5", "6"]
+      "euro_class": ["4", "5", "EEV", "6"]
      }
     }
    ]
@@ -609,33 +609,69 @@
   {
    "id": "road:motorway",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["motorway"]
    }
   },
   {
-   "id": "road:other",
+   "id": "road:interurban",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
-    "road_types": ["other"]
+    "area": "interurban"
+   }
+  },
+  {
+   "id": "road:motorway:interurban",
+   "type": "network",
+   "parents": ["road:motorway", "road:interurban"],
+   "network": {
+    "road_types": ["motorway"],
+    "area": "interurban"
    }
   },
   {
    "id": "road:suburban",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "area": "suburban"
    }
   },
   {
-   "id": "road:interurban",
+   "id": "road:motorway:suburban",
    "type": "network",
-   "parent": "roads",
+   "parents": ["road:motorway", "road:suburban"],
    "network": {
+    "road_types": ["motorway"],
+    "area": "suburban"
+   }
+  },
+  {
+   "id": "road:other",
+   "type": "network",
+   "parents": ["roads"],
+   "network": {
+    "road_types": ["other"]
+   }
+  },
+  {
+   "id": "road:other:interurban",
+   "type": "network",
+   "parents": ["road:other", "road:interurban"],
+   "network": {
+    "road_types": ["other"],
     "area": "interurban"
+   }
+  },
+  {
+   "id": "road:other:suburban",
+   "type": "network",
+   "parents": ["road:other", "road:suburban"],
+   "network": {
+    "road_types": ["other"],
+    "area": "suburban"
    }
   }
  ],

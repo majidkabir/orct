@@ -292,7 +292,7 @@
     ["st1:Troncal Corral Almaguer", "st1:Pedernoso", "sys1-1.Pesados-2", "electronic", null, null, "15.7025"],
     ["st1:Troncal Corral Almaguer", "st1:Quintanar Orden", "sys1-1.Pesados-1", "electronic", null, null, "6.281"],
     ["st1:Troncal Corral Almaguer", "st1:Quintanar Orden", "sys1-1.Pesados-2", "electronic", null, null, "8.7603"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3"],
    "basis": "transcribed"
@@ -476,7 +476,7 @@
     ["st2:Águilas", "st2:Pulpí", "sys1-1.Pesados-2", "electronic", null, null, "2.0248"],
     ["st2:Águilas", "st2:Ramonete", "sys1-1.Pesados-1", "electronic", null, null, "2.5207"],
     ["st2:Águilas", "st2:Ramonete", "sys1-1.Pesados-2", "electronic", null, null, "3.5124"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3"],
    "basis": "transcribed"

@@ -127,7 +127,7 @@
        "min": 3001,
        "max": 3500
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -177,7 +177,7 @@
        "min": 3501,
        "max": 12000
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -235,7 +235,7 @@
       "train_axles": {
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -295,7 +295,7 @@
       "train_axles": {
        "min": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {

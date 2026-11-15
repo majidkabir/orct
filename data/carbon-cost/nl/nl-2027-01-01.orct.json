@@ -113,7 +113,7 @@
        "min": 3501,
        "max": 11999
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -230,7 +230,7 @@
        "min": 12000,
        "max": 17999
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -347,7 +347,7 @@
        "min": 18000,
        "max": 32000
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -458,7 +458,7 @@
       "train_mass_kg": {
        "min": 32001
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1]
      }
     },

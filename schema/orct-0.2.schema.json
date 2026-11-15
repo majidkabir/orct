@@ -1,6 +1,6 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://github.com/majidkabir/orct/schema/orct-0.2.schema.json",
+ "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.2.schema.json",
  "title": "ORCT 0.2 dataset",
  "type": "object",
  "properties": {
@@ -165,6 +165,7 @@
        "calendars",
        "user_classes",
        "rounding",
+       "criteria.any_of",
        "rule.exemption",
        "rule.included_in",
        "rule.passage_group",
@@ -185,7 +186,8 @@
     "currency",
     "timezone",
     "license",
-    "method"
+    "method",
+    "required_features"
    ]
   },
   "sources": {
@@ -571,10 +573,15 @@
        "jurisdiction"
       ]
      },
-     "parent": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "^\\S(.*\\S)?$"
+     "parents": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+       "type": "string",
+       "minLength": 1,
+       "pattern": "^\\S(.*\\S)?$"
+      }
      },
      "name": {
       "type": "string"
@@ -740,6 +747,294 @@
      "kind",
      "applies_to",
      "params"
+    ],
+    "allOf": [
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "exemption"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "criteria": {
+           "$ref": "#/$defs/criteria"
+          },
+          "from": {
+           "type": "string",
+           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "until": {
+           "type": "string",
+           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "criteria"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "included_in"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "charge": {
+           "type": "string",
+           "minLength": 1,
+           "pattern": "^\\S(.*\\S)?$"
+          },
+          "objects": {
+           "type": "array",
+           "minItems": 1,
+           "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(.*\\S)?$"
+           }
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "charge"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "passage_group"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "objects": {
+           "type": "array",
+           "minItems": 1,
+           "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(.*\\S)?$"
+           }
+          },
+          "minutes": {
+           "type": "integer",
+           "minimum": 1
+          },
+          "pays": {
+           "enum": [
+            "first",
+            "highest"
+           ]
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "objects",
+          "minutes",
+          "pays"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "factor"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "object": {
+           "type": "string",
+           "minLength": 1,
+           "pattern": "^\\S(.*\\S)?$"
+          },
+          "factor": {
+           "type": "string",
+           "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "object",
+          "factor"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "discount"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "name": {
+           "type": "string"
+          },
+          "percent": {
+           "type": "string",
+           "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "criteria": {
+           "$ref": "#/$defs/criteria"
+          },
+          "user_class": {
+           "type": "string",
+           "minLength": 1,
+           "pattern": "^\\S(.*\\S)?$"
+          },
+          "payment": {
+           "type": "array",
+           "minItems": 1,
+           "items": {
+            "enum": [
+             "electronic",
+             "account",
+             "card",
+             "cash"
+            ]
+           }
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "name",
+          "percent"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "minimum"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "per": {
+           "enum": [
+            "trip"
+           ]
+          },
+          "amount": {
+           "type": "string",
+           "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "per",
+          "amount"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "if": {
+       "properties": {
+        "kind": {
+         "const": "cap"
+        }
+       }
+      },
+      "then": {
+       "properties": {
+        "params": {
+         "type": "object",
+         "properties": {
+          "per": {
+           "enum": [
+            "day",
+            "month",
+            "trip"
+           ]
+          },
+          "amount": {
+           "type": "string",
+           "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "time_class": {
+           "type": "string",
+           "minLength": 1,
+           "pattern": "^\\S(.*\\S)?$"
+          },
+          "note": {
+           "type": "string"
+          }
+         },
+         "additionalProperties": false,
+         "required": [
+          "per",
+          "amount"
+         ]
+        }
+       }
+      }
+     }
     ]
    }
   },
@@ -1017,6 +1312,13 @@
     },
     "trailer": {
      "type": "boolean"
+    },
+    "any_of": {
+     "type": "array",
+     "minItems": 2,
+     "items": {
+      "$ref": "#/$defs/criteria"
+     }
     }
    },
    "additionalProperties": false

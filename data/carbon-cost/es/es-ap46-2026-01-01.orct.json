@@ -125,7 +125,7 @@
     ["pt1", "pt-1.1", "high-season", null, "6.281"],
     ["pt1", "pt-1.2", null, null, "7.1901"],
     ["pt1", "pt-1.2", "high-season", null, "9.3802"],
-    ["pt1", null, "free", 1, "0"]
+    ["pt1", null, "free", 2, "0"]
    ],
    "sources": ["s1", "s2"],
    "basis": "transcribed"

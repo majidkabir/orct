@@ -433,7 +433,7 @@
    "name": "Danish km-based road toll (vejafgift)",
    "valid_from": "2025-01-01",
    "valid_to": "2025-12-31",
-   "coverage": "partial"
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/dk/2026-01-01",
@@ -443,7 +443,7 @@
    "name": "Danish km-based road toll (vejafgift)",
    "valid_from": "2026-01-01",
    "valid_to": "2027-12-31",
-   "coverage": "partial"
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/dk-bridges/2024-01-01",
@@ -1893,7 +1893,7 @@
    "name": "Göteborg congestion tax (trängselskatt)",
    "valid_from": "2020-01-01",
    "valid_to": null,
-   "coverage": "partial"
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/se-congestion-stockholm/2020-01-01",
@@ -1903,7 +1903,7 @@
    "name": "Stockholm congestion tax (trängselskatt)",
    "valid_from": "2020-01-01",
    "valid_to": null,
-   "coverage": "partial"
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/si/2024-01-01",

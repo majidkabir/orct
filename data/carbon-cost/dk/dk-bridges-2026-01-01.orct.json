@@ -22,7 +22,7 @@
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/dk-bridges-2026-01-01.json"
   },
-  "required_features": ["rule.discount", "type.od", "user_classes"]
+  "required_features": ["criteria.any_of", "rounding", "rule.discount", "type.od", "user_classes"]
  },
  "sources": [
   {
@@ -163,6 +163,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Storebæltsforbindelsen: prices set by the transport minister (lov om Sund & Bælt Holding A/S); A/S Storebælt's business price list 2026, DKK including 25% VAT, here excluding it. Green discount (Grøn rabat) 13% for EURO VI and electric or hydrogen trucks on a Storebælt Erhverv agreement paying automatically.",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st1:Storebælt", "st1:Storebælt", "sys1-1.10-20-m", "816"],
@@ -201,8 +206,14 @@
     "percent": "13",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["6"],
-     "co2_class": [5]
+     "any_of": [
+      {
+       "euro_class": ["6"]
+      },
+      {
+       "co2_class": [5]
+      }
+     ]
     }
    }
   }

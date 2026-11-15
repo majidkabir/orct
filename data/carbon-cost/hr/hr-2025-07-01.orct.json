@@ -22,7 +22,7 @@
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/hr-2025-07-01.json"
   },
-  "required_features": ["rule.discount", "type.od"]
+  "required_features": ["rounding", "rule.discount", "type.od"]
  },
  "sources": [
   {
@@ -1101,6 +1101,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a1), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st1:Benkovac", "st1:Bisko", "sys1-1.III", "12.88"],
@@ -4395,6 +4400,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a2), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st2:Krapina", "st2:Mokrice", "sys1-1.III", "1.28"],
@@ -4469,6 +4479,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a3), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st3:Babina Greda", "st3:Ivanić Grad", "sys1-1.III", "22.56"],
@@ -5407,6 +5422,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a4), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st4:Breznički Hum", "st4:Goričan", "sys1-1.III", "6.56"],
@@ -5565,6 +5585,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a11), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
     ["st5:Buševec", "st5:Lekenik", "sys1-1.III", "1.2"],
@@ -5591,6 +5616,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates bregana), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [["st6:Bregana", "st6:Bregana", "sys1-1.III", "1.36"], ["st6:Bregana", "st6:Bregana", "sys1-1.IV", "2.64"]],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
@@ -5604,6 +5634,11 @@
    "unit": "trip",
    "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates rupa), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
+   "rounding": {
+    "increment": "0.01",
+    "mode": "half_up",
+    "stage": "line"
+   },
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [["st7:Rupa", "st7:Rupa", "sys1-1.III", "2.08"], ["st7:Rupa", "st7:Rupa", "sys1-1.IV", "3.44"]],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
@@ -5630,7 +5665,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5666,7 +5701,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5702,7 +5737,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5738,7 +5773,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5774,7 +5809,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5810,7 +5845,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },
@@ -5846,7 +5881,7 @@
     "percent": "3",
     "payment": ["electronic"],
     "criteria": {
-     "euro_class": ["5"]
+     "euro_class": ["5", "EEV"]
     }
    }
   },

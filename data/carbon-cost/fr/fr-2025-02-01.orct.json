@@ -69722,6 +69722,91 @@
    "scope": "system1",
    "status": "partial",
    "reason": "17 stations in the tariff aren't placed on the map; their pairs can't be matched to a route"
+  },
+  {
+   "scope": "st1:ANGERS",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:BEAULIEU",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS - LA VEUVE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS LA VEUVE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS MOURMELON",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHARMONT",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:DRUYE (CANDE)",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:EPERNAY",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:LA FOLIE-B/PARIS",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:NANTES",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:PARIS (LA FOLIE BESSIN)",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:REIMS - TAISSY",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:SAINT AMAND",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MARTIN BELLEVUE A41 N",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MICHEL MAURIENNE ECH",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Six-Fours-Les Plages",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Toulon-ouest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
   }
  ]
 }

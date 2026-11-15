@@ -66,11 +66,15 @@ def check(t, d):
             misses.append(f"point {j} {p['name']} not placed")
             continue
         want = [p["rate"]] if not p.get("classes") and not p.get("schedule") else []
-        want += [c[k] for c in p.get("classes", []) for k in ("rate", "etc_rate", "high_rate", "night_rate") if c.get(k)]
+        want += [c[k] for c in p.get("classes", []) for k in ("rate", "etc_rate", "high_rate", "high_etc_rate", "night_rate",
+                                                              "night_etc_rate") if c.get(k)]
         want += [p["peak_rate"]] if p.get("peak_rate") and not p.get("classes") else []
         sched = (t.get("congestion") or {}).get("schedules", {}).get(p.get("schedule"), [])
-        want += [ta["amount"] for ta in sched]
+        want += [ta["amount"] for ta in sched] + [ta["high"] for ta in sched if ta.get("high")]
         misses += [f"point {j} amount {w}" for w in want if D(w) not in point_rows.get(f"pt{j}", set())]
+    caps = {D(r["params"]["amount"]) for r in d.get("rules", []) if r["kind"] == "cap"}
+    cong = t.get("congestion") or {}
+    misses += [f"congestion {k} {cong[k]}" for k in ("day_cap", "day_cap_high") if cong.get(k) and D(cong[k]) not in caps]
 
     # Sections: every tariff value and every Slovenian class value on its section.
     sec_rows = {}

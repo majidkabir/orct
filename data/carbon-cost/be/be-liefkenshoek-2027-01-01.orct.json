@@ -91,12 +91,12 @@
    "type": "point",
    "component": "unspecified",
    "unit": "passage",
-   "columns": ["object", "vehicle_class", "user_class", "time_class", "amount"],
+   "columns": ["object", "vehicle_class", "user_class", "time_class", "priority", "amount"],
    "rows": [
-    ["pt1", "pt-1.1", null, null, "25"],
-    ["pt1", "pt-1.1", "electronic", null, "17.95"],
-    ["pt1", "pt-1.1", null, "night", "8"],
-    ["pt1", "pt-1.1", "electronic", "night", "4.49"]
+    ["pt1", "pt-1.1", null, null, null, "25"],
+    ["pt1", "pt-1.1", "electronic", null, null, "17.95"],
+    ["pt1", "pt-1.1", null, "night", 1, "8"],
+    ["pt1", "pt-1.1", "electronic", "night", 1, "4.49"]
    ],
    "sources": ["s1"],
    "basis": "transcribed"

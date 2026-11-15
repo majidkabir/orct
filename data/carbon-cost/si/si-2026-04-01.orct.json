@@ -676,14 +676,9 @@
    }
   },
   {
-   "id": "group:interurban:none",
-   "type": "network",
-   "parent": "area:interurban"
-  },
-  {
    "id": "sec:a1-001",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Meja Avstrija–Šentilj",
    "road": "A1",
    "from": {
@@ -705,7 +700,7 @@
   {
    "id": "sec:a1-002",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Šentilj–Pesnica",
    "road": "A1",
    "from": {
@@ -732,14 +727,9 @@
    }
   },
   {
-   "id": "group:suburban:none",
-   "type": "network",
-   "parent": "area:suburban"
-  },
-  {
    "id": "sec:a1-003",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Pesnica–Dragučova",
    "road": "A1",
    "from": {
@@ -761,7 +751,7 @@
   {
    "id": "sec:a1-004",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Dragučova–MB (Zrkovska)",
    "road": "A1",
    "from": {
@@ -783,7 +773,7 @@
   {
    "id": "sec:a1-005",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "MB (Zrkovska–Ptujska)",
    "road": "A1",
    "from": {
@@ -805,7 +795,7 @@
   {
    "id": "sec:a1-006",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "MB (Ptujska)–Rogoza",
    "road": "A1",
    "from": {
@@ -827,7 +817,7 @@
   {
    "id": "sec:a1-007",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Rogoza–Slivnica",
    "road": "A1",
    "from": {
@@ -849,7 +839,7 @@
   {
    "id": "sec:a1-008",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Slivnica–Fram",
    "road": "A1",
    "from": {
@@ -871,7 +861,7 @@
   {
    "id": "sec:a1-009",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Fram–Sl. Bistrica Sever",
    "road": "A1",
    "from": {
@@ -893,7 +883,7 @@
   {
    "id": "sec:a1-010",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sl. Bistrica Sever–Sl. Bistrica Jug",
    "road": "A1",
    "from": {
@@ -915,7 +905,7 @@
   {
    "id": "sec:a1-011",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sl. Bistrica Jug–Sl. Konjice",
    "road": "A1",
    "from": {
@@ -937,7 +927,7 @@
   {
    "id": "sec:a1-012",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sl. Konjice–Dramlje",
    "road": "A1",
    "from": {
@@ -959,7 +949,7 @@
   {
    "id": "sec:a1-013",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Dramlje–Ljubečna",
    "road": "A1",
    "from": {
@@ -981,7 +971,7 @@
   {
    "id": "sec:a1-014",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Ljubečna–Celje",
    "road": "A1",
    "from": {
@@ -1003,7 +993,7 @@
   {
    "id": "sec:a1-015",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Celje–Celje Zahod",
    "road": "A1",
    "from": {
@@ -1025,7 +1015,7 @@
   {
    "id": "sec:a1-016",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Celje Zahod–Arja Vas",
    "road": "A1",
    "from": {
@@ -1047,7 +1037,7 @@
   {
    "id": "sec:a1-017",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Arja Vas–Šempeter",
    "road": "A1",
    "from": {
@@ -1069,7 +1059,7 @@
   {
    "id": "sec:a1-018",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Šempeter–Šentrupert",
    "road": "A1",
    "from": {
@@ -1089,14 +1079,14 @@
    "length_km": 2.141
   },
   {
-   "id": "group:interurban:b",
+   "id": "tier:b",
    "type": "network",
-   "parent": "area:interurban"
+   "name": "Sections of surcharge tier b"
   },
   {
    "id": "sec:a1-019",
    "type": "section",
-   "parent": "group:interurban:b",
+   "parents": ["area:interurban", "tier:b"],
    "name": "Šentrupert–Vransko",
    "road": "A1",
    "from": {
@@ -1118,7 +1108,7 @@
   {
    "id": "sec:a1-020",
    "type": "section",
-   "parent": "group:interurban:b",
+   "parents": ["area:interurban", "tier:b"],
    "name": "Vransko–Trojane",
    "road": "A1",
    "from": {
@@ -1140,7 +1130,7 @@
   {
    "id": "sec:a1-021",
    "type": "section",
-   "parent": "group:interurban:b",
+   "parents": ["area:interurban", "tier:b"],
    "name": "Trojane–Blagovica",
    "road": "A1",
    "from": {
@@ -1162,7 +1152,7 @@
   {
    "id": "sec:a1-022",
    "type": "section",
-   "parent": "group:interurban:b",
+   "parents": ["area:interurban", "tier:b"],
    "name": "Blagovica–Lukovica",
    "road": "A1",
    "from": {
@@ -1182,14 +1172,9 @@
    "length_km": 8.821
   },
   {
-   "id": "group:suburban:b",
-   "type": "network",
-   "parent": "area:suburban"
-  },
-  {
    "id": "sec:a1-023",
    "type": "section",
-   "parent": "group:suburban:b",
+   "parents": ["area:suburban", "tier:b"],
    "name": "Lukovica–Krtina",
    "road": "A1",
    "from": {
@@ -1211,7 +1196,7 @@
   {
    "id": "sec:a1-024",
    "type": "section",
-   "parent": "group:suburban:b",
+   "parents": ["area:suburban", "tier:b"],
    "name": "Krtina–Domžale",
    "road": "A1",
    "from": {
@@ -1233,7 +1218,7 @@
   {
    "id": "sec:a1-025",
    "type": "section",
-   "parent": "group:suburban:b",
+   "parents": ["area:suburban", "tier:b"],
    "name": "Domžale–Šentjakob",
    "road": "A1",
    "from": {
@@ -1255,7 +1240,7 @@
   {
    "id": "sec:a1-026",
    "type": "section",
-   "parent": "group:suburban:b",
+   "parents": ["area:suburban", "tier:b"],
    "name": "Šentjakob–Sneberje",
    "road": "A1",
    "from": {
@@ -1277,7 +1262,7 @@
   {
    "id": "sec:a1-027",
    "type": "section",
-   "parent": "group:suburban:b",
+   "parents": ["area:suburban", "tier:b"],
    "name": "Sneberje–LJ (Zadobrova)",
    "road": "A1",
    "from": {
@@ -1297,14 +1282,14 @@
    "length_km": 1.737
   },
   {
-   "id": "group:suburban:a",
+   "id": "tier:a",
    "type": "network",
-   "parent": "area:suburban"
+   "name": "Sections of surcharge tier a"
   },
   {
    "id": "sec:a1-028",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Zadobrova–Zaloška)",
    "road": "A1",
    "from": {
@@ -1326,7 +1311,7 @@
   {
    "id": "sec:a1-029",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Zaloška–Litijska)",
    "road": "A1",
    "from": {
@@ -1348,7 +1333,7 @@
   {
    "id": "sec:a1-030",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Litijska–Malence)",
    "road": "A1",
    "from": {
@@ -1370,7 +1355,7 @@
   {
    "id": "sec:a1-031",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Malence–Peruzzijeva)",
    "road": "A1",
    "from": {
@@ -1392,7 +1377,7 @@
   {
    "id": "sec:a1-032",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Peruzzijeva–Barjanska)",
    "road": "A1",
    "from": {
@@ -1414,7 +1399,7 @@
   {
    "id": "sec:a1-033",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Barjanska–Kozarje)",
    "road": "A1",
    "from": {
@@ -1436,7 +1421,7 @@
   {
    "id": "sec:a1-034",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Kozarje)–Brezovica",
    "road": "A1",
    "from": {
@@ -1458,7 +1443,7 @@
   {
    "id": "sec:a1-035",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "Brezovica–Dragomer",
    "road": "A1",
    "from": {
@@ -1480,7 +1465,7 @@
   {
    "id": "sec:a1-036",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "Dragomer–Vrhnika",
    "road": "A1",
    "from": {
@@ -1500,14 +1485,9 @@
    "length_km": 9.843
   },
   {
-   "id": "group:interurban:a",
-   "type": "network",
-   "parent": "area:interurban"
-  },
-  {
    "id": "sec:a1-037",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Vrhnika–Logatec",
    "road": "A1",
    "from": {
@@ -1529,7 +1509,7 @@
   {
    "id": "sec:a1-038",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Logatec–Unec",
    "road": "A1",
    "from": {
@@ -1551,7 +1531,7 @@
   {
    "id": "sec:a1-039",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Unec–Postojna",
    "road": "A1",
    "from": {
@@ -1573,7 +1553,7 @@
   {
    "id": "sec:a1-040",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Postojna–Razdrto",
    "road": "A1",
    "from": {
@@ -1595,7 +1575,7 @@
   {
    "id": "sec:a1-041",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Razdrto–Razcep Nanos",
    "road": "A1",
    "from": {
@@ -1617,7 +1597,7 @@
   {
    "id": "sec:a1-042",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Razcep Nanos–Senožeče",
    "road": "A1",
    "from": {
@@ -1639,7 +1619,7 @@
   {
    "id": "sec:a1-043",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Senožeče–Gabrk",
    "road": "A1",
    "from": {
@@ -1661,7 +1641,7 @@
   {
    "id": "sec:a1-044",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Gabrk–Divača",
    "road": "A1",
    "from": {
@@ -1683,7 +1663,7 @@
   {
    "id": "sec:a1-045",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Divača–Kozina",
    "road": "A1",
    "from": {
@@ -1705,7 +1685,7 @@
   {
    "id": "sec:a1-046",
    "type": "section",
-   "parent": "group:interurban:a",
+   "parents": ["area:interurban", "tier:a"],
    "name": "Kozina–Kastelec",
    "road": "A1",
    "from": {
@@ -1727,7 +1707,7 @@
   {
    "id": "sec:a1-047",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "Kastelec–Črni Kal",
    "road": "A1",
    "from": {
@@ -1749,7 +1729,7 @@
   {
    "id": "sec:a1-048",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "Črni Kal–Srmin",
    "road": "A1",
    "from": {
@@ -1771,7 +1751,7 @@
   {
    "id": "sec:a2-049",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Hrušica–Lipce",
    "road": "A2",
    "from": {
@@ -1793,7 +1773,7 @@
   {
    "id": "sec:a2-050",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Lipce–Lesce",
    "road": "A2",
    "from": {
@@ -1815,7 +1795,7 @@
   {
    "id": "sec:a2-051",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Lesce–Radovljica",
    "road": "A2",
    "from": {
@@ -1837,7 +1817,7 @@
   {
    "id": "sec:a2-052",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Radovljica–Brezje",
    "road": "A2",
    "from": {
@@ -1859,7 +1839,7 @@
   {
    "id": "sec:a2-053",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Brezje–Podtabor",
    "road": "A2",
    "from": {
@@ -1881,7 +1861,7 @@
   {
    "id": "sec:a2-054",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Podtabor–Naklo",
    "road": "A2",
    "from": {
@@ -1903,7 +1883,7 @@
   {
    "id": "sec:a2-055",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Naklo–Kranj Zahod",
    "road": "A2",
    "from": {
@@ -1925,7 +1905,7 @@
   {
    "id": "sec:a2-056",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Kranj Zahod–Kranj Vzhod",
    "road": "A2",
    "from": {
@@ -1947,7 +1927,7 @@
   {
    "id": "sec:a2-057",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Kranj Vzhod–Brnik",
    "road": "A2",
    "from": {
@@ -1969,7 +1949,7 @@
   {
    "id": "sec:a2-058",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Brnik–Vodice",
    "road": "A2",
    "from": {
@@ -1991,7 +1971,7 @@
   {
    "id": "sec:a2-059",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Vodice–LJ (Šmartno)",
    "road": "A2",
    "from": {
@@ -2013,7 +1993,7 @@
   {
    "id": "sec:a2-060",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "LJ (Šmartno–Šentvid)",
    "road": "A2",
    "from": {
@@ -2035,7 +2015,7 @@
   {
    "id": "sec:a2-061",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "LJ (Šentvid–Koseze)",
    "road": "A2",
    "from": {
@@ -2057,7 +2037,7 @@
   {
    "id": "sec:a2-062",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Koseze–Brdo)",
    "road": "A2",
    "from": {
@@ -2079,7 +2059,7 @@
   {
    "id": "sec:a2-063",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Brdo–Kozarje)",
    "road": "A2",
    "from": {
@@ -2101,7 +2081,7 @@
   {
    "id": "sec:a2-064",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "LJ (Malence)–Šmarje-Sap",
    "road": "A2",
    "from": {
@@ -2123,7 +2103,7 @@
   {
    "id": "sec:a2-065",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Šmarje-Sap–Cikava",
    "road": "A2",
    "from": {
@@ -2145,7 +2125,7 @@
   {
    "id": "sec:a2-066",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Cikava–Grosuplje",
    "road": "A2",
    "from": {
@@ -2167,7 +2147,7 @@
   {
    "id": "sec:a2-067",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Grosuplje–Višnja Gora",
    "road": "A2",
    "from": {
@@ -2189,7 +2169,7 @@
   {
    "id": "sec:a2-068",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Višnja Gora–Ivančna Gorica",
    "road": "A2",
    "from": {
@@ -2211,7 +2191,7 @@
   {
    "id": "sec:a2-069",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Ivančna Gorica–Bič",
    "road": "A2",
    "from": {
@@ -2233,7 +2213,7 @@
   {
    "id": "sec:a2-070",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Bič–Trebnje Zahod",
    "road": "A2",
    "from": {
@@ -2255,7 +2235,7 @@
   {
    "id": "sec:a2-071",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Trebnje Zahod–Trebnje Vzhod",
    "road": "A2",
    "from": {
@@ -2277,7 +2257,7 @@
   {
    "id": "sec:a2-072",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Trebnje Vzhod–Mirna Peč",
    "road": "A2",
    "from": {
@@ -2299,7 +2279,7 @@
   {
    "id": "sec:a2-073",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Mirna Peč–Novo Mesto Zahod",
    "road": "A2",
    "from": {
@@ -2321,7 +2301,7 @@
   {
    "id": "sec:a2-074",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Novo Mesto Zahod–Novo Mesto Vzhod",
    "road": "A2",
    "from": {
@@ -2343,7 +2323,7 @@
   {
    "id": "sec:a2-075",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Novo Mesto Vzhod–Kronovo",
    "road": "A2",
    "from": {
@@ -2365,7 +2345,7 @@
   {
    "id": "sec:a2-076",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Kronovo–Dobruška Vas",
    "road": "A2",
    "from": {
@@ -2387,7 +2367,7 @@
   {
    "id": "sec:a2-077",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Dobruška Vas–Smednik",
    "road": "A2",
    "from": {
@@ -2409,7 +2389,7 @@
   {
    "id": "sec:a2-078",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Smednik–Drnovo",
    "road": "A2",
    "from": {
@@ -2431,7 +2411,7 @@
   {
    "id": "sec:a2-079",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Drnovo–Brežice",
    "road": "A2",
    "from": {
@@ -2453,7 +2433,7 @@
   {
    "id": "sec:a2-080",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Brežice–Obrežje",
    "road": "A2",
    "from": {
@@ -2475,7 +2455,7 @@
   {
    "id": "sec:a2-081",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Obrežje–MP Obrežje",
    "road": "A2",
    "from": {
@@ -2497,7 +2477,7 @@
   {
    "id": "sec:a3-082",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Gabrk–Sežana Vzhod",
    "road": "A3",
    "from": {
@@ -2519,7 +2499,7 @@
   {
    "id": "sec:a3-083",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sežana Vzhod–Sežana Zahod",
    "road": "A3",
    "from": {
@@ -2541,7 +2521,7 @@
   {
    "id": "sec:a3-084",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sežana Zahod–MP Fernetiči",
    "road": "A3",
    "from": {
@@ -2563,7 +2543,7 @@
   {
    "id": "sec:a4-085",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Slivnica–Letališče Maribor",
    "road": "A4",
    "from": {
@@ -2585,7 +2565,7 @@
   {
    "id": "sec:a4-086",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Letališče Maribor–Marjeta",
    "road": "A4",
    "from": {
@@ -2607,7 +2587,7 @@
   {
    "id": "sec:a4-087",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Marjeta–Zlatoličje",
    "road": "A4",
    "from": {
@@ -2629,7 +2609,7 @@
   {
    "id": "sec:a4-088",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Zlatoličje–Hajdina",
    "road": "A4",
    "from": {
@@ -2651,7 +2631,7 @@
   {
    "id": "sec:a4-089",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Hajdina–Draženci",
    "road": "A4",
    "from": {
@@ -2673,7 +2653,7 @@
   {
    "id": "sec:a4-090",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Draženci–Lancova Vas",
    "road": "A4",
    "from": {
@@ -2695,7 +2675,7 @@
   {
    "id": "sec:a4-091",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Lancova Vas–Podlehnik",
    "road": "A4",
    "from": {
@@ -2717,7 +2697,7 @@
   {
    "id": "sec:a4-092",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Podlehnik–Stanošina",
    "road": "A4",
    "from": {
@@ -2739,7 +2719,7 @@
   {
    "id": "sec:a4-093",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Stanošina–RH Meja",
    "road": "A4",
    "from": {
@@ -2761,7 +2741,7 @@
   {
    "id": "sec:a5-094",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Dragučova–Pernica",
    "road": "A5",
    "from": {
@@ -2783,7 +2763,7 @@
   {
    "id": "sec:a5-095",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Pernica–Lenart",
    "road": "A5",
    "from": {
@@ -2805,7 +2785,7 @@
   {
    "id": "sec:a5-096",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Lenart–Sv. Trojica",
    "road": "A5",
    "from": {
@@ -2827,7 +2807,7 @@
   {
    "id": "sec:a5-097",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sv. Trojica–Cerkvenjak",
    "road": "A5",
    "from": {
@@ -2849,7 +2829,7 @@
   {
    "id": "sec:a5-098",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Cerkvenjak–Sv. Jurij Ob Ščavnici",
    "road": "A5",
    "from": {
@@ -2871,7 +2851,7 @@
   {
    "id": "sec:a5-099",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Sv. Jurij Ob Ščavnici–Vučja Vas",
    "road": "A5",
    "from": {
@@ -2893,7 +2873,7 @@
   {
    "id": "sec:a5-100",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Vučja Vas–Murska Sobota",
    "road": "A5",
    "from": {
@@ -2915,7 +2895,7 @@
   {
    "id": "sec:a5-101",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Murska Sobota–Lipovci",
    "road": "A5",
    "from": {
@@ -2937,7 +2917,7 @@
   {
    "id": "sec:a5-102",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Lipovci–Gančani",
    "road": "A5",
    "from": {
@@ -2959,7 +2939,7 @@
   {
    "id": "sec:a5-103",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Gančani–Turnišče",
    "road": "A5",
    "from": {
@@ -2981,7 +2961,7 @@
   {
    "id": "sec:a5-104",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Turnišče–Dolga Vas",
    "road": "A5",
    "from": {
@@ -3003,7 +2983,7 @@
   {
    "id": "sec:a5-105",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Dolga Vas–Lendava",
    "road": "A5",
    "from": {
@@ -3025,7 +3005,7 @@
   {
    "id": "sec:a5-106",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Lendava–MP Pince",
    "road": "A5",
    "from": {
@@ -3047,7 +3027,7 @@
   {
    "id": "sec:h3-107",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Zadobrova–Šmartinska)",
    "road": "H3",
    "from": {
@@ -3069,7 +3049,7 @@
   {
    "id": "sec:h3-108",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Šmartinska–Tomačevo)",
    "road": "H3",
    "from": {
@@ -3091,7 +3071,7 @@
   {
    "id": "sec:h3-109",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Tomačevo–Dunajska)",
    "road": "H3",
    "from": {
@@ -3113,7 +3093,7 @@
   {
    "id": "sec:h3-110",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Dunajska–Celovška)",
    "road": "H3",
    "from": {
@@ -3135,7 +3115,7 @@
   {
    "id": "sec:h3-111",
    "type": "section",
-   "parent": "group:suburban:a",
+   "parents": ["area:suburban", "tier:a"],
    "name": "LJ (Celovška–Koseze)",
    "road": "H3",
    "from": {
@@ -3157,7 +3137,7 @@
   {
    "id": "sec:h4-112",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Nanos–Vipava",
    "road": "H4",
    "from": {
@@ -3179,7 +3159,7 @@
   {
    "id": "sec:h4-113",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Vipava–Ajdovščina",
    "road": "H4",
    "from": {
@@ -3201,7 +3181,7 @@
   {
    "id": "sec:h4-114",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Ajdovščina–Selo",
    "road": "H4",
    "from": {
@@ -3223,7 +3203,7 @@
   {
    "id": "sec:h4-115",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Selo–Vogrsko",
    "road": "H4",
    "from": {
@@ -3245,7 +3225,7 @@
   {
    "id": "sec:h4-116",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Vogrsko–Šempeter",
    "road": "H4",
    "from": {
@@ -3267,7 +3247,7 @@
   {
    "id": "sec:h4-117",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Šempeter–MP Vrtojba",
    "road": "H4",
    "from": {
@@ -3289,7 +3269,7 @@
   {
    "id": "sec:h7-118",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "A5–Dolga Vas",
    "road": "H7",
    "from": {
@@ -3311,7 +3291,7 @@
   {
    "id": "sec:h7-119",
    "type": "section",
-   "parent": "group:interurban:none",
+   "parents": ["area:interurban"],
    "name": "Dolga Vas–Rondo Dolga Vas",
    "road": "H7",
    "from": {
@@ -3333,7 +3313,7 @@
   {
    "id": "sec:r2-430-120",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Pesnica–Maribor Center",
    "road": "R2-430",
    "from": {
@@ -3355,7 +3335,7 @@
   {
    "id": "sec:r2-430-121",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Maribor (Center–Pobrežje)",
    "road": "R2-430",
    "from": {
@@ -3377,7 +3357,7 @@
   {
    "id": "sec:r2-430-122",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Maribor (Pobrežje–Tezno)",
    "road": "R2-430",
    "from": {
@@ -3399,7 +3379,7 @@
   {
    "id": "sec:g1-11-123",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "MP Škofije–Škofije",
    "road": "G1-11",
    "from": {
@@ -3421,7 +3401,7 @@
   {
    "id": "sec:g1-11-124",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Škofije–Srmin",
    "road": "G1-11",
    "from": {
@@ -3443,7 +3423,7 @@
   {
    "id": "sec:g1-11-125",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Srmin–Bertoki",
    "road": "G1-11",
    "from": {
@@ -3465,7 +3445,7 @@
   {
    "id": "sec:g1-11-126",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Bertoki–Koper (Škocjan)",
    "road": "G1-11",
    "from": {
@@ -3487,7 +3467,7 @@
   {
    "id": "sec:g2-111-127",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Koper (Slavček–Semedela)",
    "road": "G2-111",
    "from": {
@@ -3509,7 +3489,7 @@
   {
    "id": "sec:g2-111-128",
    "type": "section",
-   "parent": "group:suburban:none",
+   "parents": ["area:suburban"],
    "name": "Koper (Semedela)–Izola",
    "road": "G2-111",
    "from": {
@@ -7098,18 +7078,12 @@
    "component_label": "rail_surcharge",
    "columns": ["object", "vehicle_class", "amount"],
    "rows": [
-    ["group:suburban:a", "si-tier-1.R2", "0.018921"],
-    ["group:interurban:a", "si-tier-1.R2", "0.018921"],
-    ["group:interurban:b", "si-tier-1.R2", "0.006307"],
-    ["group:suburban:b", "si-tier-1.R2", "0.006307"],
-    ["group:suburban:a", "si-tier-1.R3", "0.020829"],
-    ["group:interurban:a", "si-tier-1.R3", "0.020829"],
-    ["group:interurban:b", "si-tier-1.R3", "0.006943"],
-    ["group:suburban:b", "si-tier-1.R3", "0.006943"],
-    ["group:suburban:a", "si-tier-1.R4", "0.040179"],
-    ["group:interurban:a", "si-tier-1.R4", "0.040179"],
-    ["group:interurban:b", "si-tier-1.R4", "0.013393"],
-    ["group:suburban:b", "si-tier-1.R4", "0.013393"]
+    ["tier:a", "si-tier-1.R2", "0.018921"],
+    ["tier:b", "si-tier-1.R2", "0.006307"],
+    ["tier:a", "si-tier-1.R3", "0.020829"],
+    ["tier:b", "si-tier-1.R3", "0.006943"],
+    ["tier:a", "si-tier-1.R4", "0.040179"],
+    ["tier:b", "si-tier-1.R4", "0.013393"]
    ],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
    "basis": "transcribed"

@@ -369,7 +369,7 @@
     ["st1:Troncal Corral Almaguer", "st1:Pedernoso", "sys1-1.Pesados-2", "electronic", null, null, "16.0331"],
     ["st1:Troncal Corral Almaguer", "st1:Quintanar Orden", "sys1-1.Pesados-1", "electronic", null, null, "6.405"],
     ["st1:Troncal Corral Almaguer", "st1:Quintanar Orden", "sys1-1.Pesados-2", "electronic", null, null, "8.9669"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4"],
    "basis": "transcribed"
@@ -505,7 +505,7 @@
     ["st2:Villaseca", "st2:Serranillos", "sys1-1.Pesados-2", "electronic", null, null, "6.157"],
     ["st2:Villaseca", "st2:Villaluenga", "sys1-1.Pesados-1", "electronic", null, null, "1.1157"],
     ["st2:Villaseca", "st2:Villaluenga", "sys1-1.Pesados-2", "electronic", null, null, "1.5289"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4"],
    "basis": "transcribed"
@@ -689,7 +689,7 @@
     ["st3:Águilas", "st3:Pulpí", "sys1-1.Pesados-2", "electronic", null, null, "2.0661"],
     ["st3:Águilas", "st3:Ramonete", "sys1-1.Pesados-1", "electronic", null, null, "2.562"],
     ["st3:Águilas", "st3:Ramonete", "sys1-1.Pesados-2", "electronic", null, null, "3.5537"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4"],
    "basis": "transcribed"

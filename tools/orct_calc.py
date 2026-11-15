@@ -5,14 +5,16 @@ Usage: orct_calc.py <usage.json> <dataset.orct.json> ...   prints the charge sta
 
 It favours clarity over speed: every step names the clause it implements.
 """
+import calendar
 import json
+import re
 import sys
 from datetime import date, datetime, timedelta
 from decimal import ROUND_CEILING, ROUND_DOWN, ROUND_FLOOR, ROUND_HALF_EVEN, ROUND_HALF_UP, ROUND_UP, Decimal
 from zoneinfo import ZoneInfo
 
 IMPLEMENTED = {"type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
-               "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "rule.exemption",
+               "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "criteria.any_of", "rule.exemption",
                "rule.included_in", "rule.passage_group", "rule.factor", "rule.discount", "rule.minimum", "rule.cap"}
 NULL_RANK = 10 ** 6
 MINOR_UNITS = {"JPY": 0, "KRW": 0, "ISK": 0, "CLP": 0, "BHD": 3, "KWD": 3, "OMR": 3, "TND": 3, "JOD": 3}
@@ -36,7 +38,11 @@ def easter(y):
 
 
 class Unknown(Exception):
-    """A value the data or the usage doesn't give (8.9)."""
+    """A value the data or the usage doesn't give (8.9); kind is "vehicle" or "time"."""
+
+    def __init__(self, message, kind="vehicle"):
+        super().__init__(message)
+        self.kind = kind
 
 
 class Dataset:
@@ -46,6 +52,7 @@ class Dataset:
         self.tz = ZoneInfo(doc["dataset"]["timezone"])
         self.currency = doc["dataset"]["currency"]
         self.objects = {o["id"]: o for o in doc["charge_objects"]}
+        self._anc = {}
         self.sets = doc["vehicle_class_sets"]
         self.set_of = {c["id"]: s["id"] for s in self.sets for c in s["classes"]}
         self.classes = {c["id"]: c for s in self.sets for c in s["classes"]}
@@ -56,12 +63,20 @@ class Dataset:
         self.partial = {c["scope"] for c in doc["coverage"] if c["status"] != "complete"}
 
     def ancestors(self, oid):
-        """oid, its parent, its parent's parent ... (6.9)."""
-        out = []
-        while oid and oid not in out:
-            out.append(oid)
-            oid = self.objects.get(oid, {}).get("parent")
-        return out
+        """{object: parent steps} for oid and everything above it, by the shortest path (6.9)."""
+        if oid in self._anc:
+            return self._anc[oid]
+        dist, frontier = {oid: 0}, [oid]
+        while frontier:
+            nxt = []
+            for o in frontier:
+                for p in self.objects.get(o, {}).get("parents", []):
+                    if p not in dist:
+                        dist[p] = dist[o] + 1
+                        nxt.append(p)
+            frontier = nxt
+        self._anc[oid] = dist
+        return dist
 
     def local(self, ts):
         return datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(self.tz)
@@ -86,7 +101,7 @@ class Dataset:
             for cid in sel.get("calendars", []):
                 cal = self.calendars[cid]
                 if iso > cal["covers_to"]:
-                    raise Unknown(f"calendar {cid} is complete only to {cal['covers_to']}")
+                    raise Unknown(f"calendar {cid} is complete only to {cal['covers_to']}", "time")
                 hit |= iso in cal["dates"]
             if not hit:
                 return False
@@ -98,7 +113,7 @@ class Dataset:
     def in_time_class(self, tid, t):
         tc = self.times[tid]
         if tc.get("defined") is False:
-            raise Unknown(f"time class {tid} is not defined")
+            raise Unknown(f"time class {tid} is not defined", "time")
         hm = t.strftime("%H:%M")
         if not tc.get("times"):
             return self.day_selected(tc, t.date())
@@ -116,21 +131,39 @@ class Dataset:
 
 # 6.6 vehicle classes --------------------------------------------------------
 def meets(criteria, vehicle):
-    """True, False, or raises Unknown when a tested parameter is missing (6.6.2)."""
+    """True or False; raises Unknown when no condition fails but a tested parameter is missing (6.6.2)."""
+    result, missing = _meets(criteria, vehicle)
+    if result is None:
+        raise Unknown(f"vehicle parameter {missing} is missing", "vehicle")
+    return result
+
+
+def _meets(criteria, vehicle):
+    """(True | False | None, a missing parameter): three-valued, None is unknown."""
+    missing = None
     for param, cond in criteria.items():
+        if param == "any_of":
+            results = [_meets(alt, vehicle) for alt in cond]
+            if any(r is True for r, _ in results):
+                continue
+            if all(r is False for r, _ in results):
+                return False, None
+            missing = missing or next(m for r, m in results if r is None)
+            continue
         if param not in vehicle:
-            raise Unknown(f"vehicle parameter {param} is missing")
+            missing = missing or param
+            continue
         v = vehicle[param]
         if isinstance(cond, dict):
             if ("min" in cond and v < cond["min"]) or ("max" in cond and v > cond["max"]) or \
                ("gt" in cond and not v > cond["gt"]) or ("lt" in cond and not v < cond["lt"]):
-                return False
+                return False, None
         elif isinstance(cond, list):
             if v not in cond:
-                return False
+                return False, None
         elif v != cond:
-            return False
-    return True
+            return False, None
+    return (None, missing) if missing else (True, None)
 
 
 def classify(ds, vehicle):
@@ -165,13 +198,16 @@ class Calc:
 
     # 6.10.3 row selection --------------------------------------------------------
     def select(self, ds, ch, use, vclass, held):
-        """use: {object|entry|exit, time, product}. Returns (row index, row) or None; may raise Unknown."""
+        """use: {object|entry|exit, time, product}. Returns (row index, row) or None.
+
+        A row with an unknown key (missing vehicle parameter, undefined time class) is only
+        a problem if it would have been selected (8.9): then a missing vehicle parameter
+        makes the use unpriced, and an unknown time class makes the result incomplete."""
         cols = ch["columns"]
-        best, best_key, ties, undefined = None, None, [], None
+        cands = []
         for n, r in enumerate(ch["rows"]):
             row = dict(zip(cols, r))
-            ranks = []
-            ok = True
+            ranks, unknown, ok = [], None, True
             for c in cols:
                 if c in ("amount", "priority"):
                     continue
@@ -179,26 +215,25 @@ class Calc:
                 if v is None:
                     ranks.append(NULL_RANK)
                     continue
+                rank = None
                 if c in ("object", "entry", "exit"):
-                    chain = ds.ancestors(use.get(c))
-                    rank = chain.index(v) if v in chain else None
+                    rank = ds.ancestors(use.get(c)).get(v)
                 elif c == "vehicle_class":
-                    rank = None
                     cur = vclass.get(ds.set_of.get(v))
                     if isinstance(cur, Unknown):
-                        raise cur
-                    seen = 0
-                    while cur:
-                        if cur == v:
-                            rank = seen
-                            break
-                        cur, seen = ds.classes[cur].get("fallback"), seen + 1
+                        unknown, rank = unknown or cur, 0
+                    else:
+                        seen = 0
+                        while cur:
+                            if cur == v:
+                                rank = seen
+                                break
+                            cur, seen = ds.classes[cur].get("fallback"), seen + 1
                 elif c == "time_class":
                     try:
                         rank = 0 if ds.in_time_class(v, use["time"]) else None
                     except Unknown as e:
-                        undefined = undefined or e
-                        rank = None
+                        unknown, rank = unknown or e, 0
                 elif c == "user_class":
                     rank = 0 if v in held else None
                 elif c == "product":
@@ -207,21 +242,22 @@ class Calc:
                     ok = False
                     break
                 ranks.append(rank)
-            if not ok:
-                continue
-            key = (-(row.get("priority") or 0), ranks)
-            if best is None or key < best_key:
-                best, best_key, ties = (n, row), key, []
-            elif key == best_key:
-                ties.append((n, row))
-        if ties:
-            pool = [best] + ties
-            user_only = all(dict(zip(cols, ch["rows"][i])).get("user_class") for i, _ in pool)
-            if not user_only:
-                self.issue("ambiguous_rows", f"rows {[i for i, _ in pool]} tie", ds.id, ch["id"])
-            best = min(pool, key=lambda x: Decimal(x[1]["amount"]))
-        if undefined is not None:
-            self.issue("undefined_time_class", str(undefined), ds.id, ch["id"])
+            if ok:
+                cands.append(((-(row.get("priority") or 0), ranks), n, row, unknown))
+        known = sorted((c for c in cands if c[3] is None), key=lambda c: c[0])
+        best = None
+        if known:
+            top = [c for c in known if c[0] == known[0][0]]
+            if len(top) > 1 and not all(c[2].get("user_class") for c in top):
+                self.issue("ambiguous_rows", f"rows {[c[1] for c in top]} tie", ds.id, ch["id"])
+            pick = min(top, key=lambda c: Decimal(c[2]["amount"]))
+            best = (pick[1], pick[2])
+        for key, n, row, unk in cands:
+            if unk is not None and (not known or key <= known[0][0]):
+                if unk.kind == "vehicle":
+                    raise unk
+                self.issue("unknown_time_class", str(unk), ds.id, ch["id"])
+                break
         return best
 
     # 8.4 uses per charge type ------------------------------------------------------
@@ -272,7 +308,8 @@ class Calc:
         if t == "quantity":
             return [({"object": q["object"], "time": ds.local(q["time"])}, Decimal(q["value"]), [q["object"]], q)
                     for q in self.usage.get("quantities", []) if q["dataset"] == ds.id and q["object"] in objs
-                    and q["unit"] == ch["unit"]]
+                    and q["unit"] == ch["unit"]
+                    and ch.get("valid_from", "0000") <= ds.local(q["time"]).date().isoformat() <= ch.get("valid_to", "9999-12-31")]
         return []
 
     def od_uses(self, ds, ch, events):
@@ -357,15 +394,14 @@ class Calc:
         rules = doc.get("rules", [])
         lines = []
         for ch in doc["charges"]:
-            if not self.charge_valid(ds, ch, valid):
-                continue
+            in_force = [e for e in valid if ch.get("valid_from", "0000") <= ds.local(e["time"]).date().isoformat()
+                        <= ch.get("valid_to", "9999-12-31")]
             try:
-                mine = self.price_charge(ds, ch, valid)
+                mine = self.price_charge(ds, ch, in_force)
             except Unknown as e:
                 self.issue("unpriced", str(e), ds.id, ch["id"])
                 continue
-            if mine and not self.exempt(ds, ch, rules, valid):
-                lines += mine
+            lines += self.exempt(ds, ch, rules, mine)
         priced = {l["charge"] for l in lines}
         for scope in sorted(ds.partial & (touched | {"dataset"} | priced)):
             self.issue("partial_coverage", f"coverage of {scope} is partial", ds.id)
@@ -373,24 +409,24 @@ class Calc:
         self.round_lines(ds, lines)
         self.lines += lines
 
-    def charge_valid(self, ds, ch, events):
-        if not events:
-            return ch["type"] == "quantity"
-        d = ds.local(events[0]["time"]).date().isoformat()
-        return ch.get("valid_from", "0000") <= d <= ch.get("valid_to", "9999-12-31")
+    def line_date(self, ds, l):
+        t = l["_event"]["time"]
+        return (ds.local(t).date() if "T" in t else date.fromisoformat(t[:10])).isoformat()
 
-    def exempt(self, ds, ch, rules, events):
+    def exempt(self, ds, ch, rules, lines):
+        """6.11 exemption: drop the lines of exempt vehicles dated within the rule's dates."""
         for r in rules:
-            if r["kind"] != "exemption" or ch["id"] not in r["applies_to"] or not events:
+            if r["kind"] != "exemption" or ch["id"] not in r["applies_to"] or not lines:
                 continue
-            d = ds.local(events[0]["time"]).date().isoformat()
             p = r["params"]
             try:
-                if meets(p.get("criteria", {}), self.vehicle) and p.get("from", "0000") <= d <= p.get("until", "9999-12-31"):
-                    return True
+                if not meets(p.get("criteria", {}), self.vehicle):
+                    continue
             except Unknown as e:
                 self.issue("missing_parameter", str(e), ds.id, ch["id"])
-        return False
+                continue
+            lines = [l for l in lines if not p.get("from", "0000") <= self.line_date(ds, l) <= p.get("until", "9999-12-31")]
+        return lines
 
     def line(self, ds, ch, objs, row_n, row, q, event):
         tax = ch.get("tax") or ds.doc["tax"]
@@ -454,7 +490,7 @@ class Calc:
         for i in range(len(days) - 1, -1, -1):
             cands = []
             for p, (length, (n, row)) in products.items():
-                end = days[i] + timedelta(days=length)
+                end = product_end(days[i], p)
                 j = next((k for k in range(i, len(days)) if days[k] >= end), len(days))
                 cost, buys = best[j]
                 cands.append((cost + Decimal(row["amount"]), [(p, n, row, days[i])] + buys))
@@ -494,12 +530,12 @@ class Calc:
     def rule_passage_group(self, ds, r, lines):
         p = r["params"]
         objs, span = set(p["objects"]), timedelta(minutes=p["minutes"])
-        group = sorted((l for l in lines if l["charge"] in r["applies_to"] and set(l["objects"]) & objs),
+        group = sorted((l for l in lines if l["charge"] in r["applies_to"] and set(l["objects"]) & objs and l["amount"] > 0),
                        key=lambda l: l["_event"]["time"])
         run_start, run = None, []
         for l in group + [None]:
             t = ds.local(l["_event"]["time"]) if l else None
-            if l is None or run_start is None or t - run_start > span:
+            if l is None or run_start is None or t - run_start >= span:
                 if run:
                     keep = run[0] if p.get("pays", "first") == "first" else max(run, key=lambda x: x["amount"])
                     for x in run:
@@ -554,8 +590,11 @@ class Calc:
             groups.setdefault(key, []).append(l)
         return groups
 
-    def adjustment(self, ds, r, amount, sample, note):
-        return {**{k: sample[k] for k in ("dataset", "currency", "tax_basis", "sources")}, "charge": r["applies_to"][0],
+    def adjustment(self, ds, r, amount, group, note):
+        """A line of its own (9.2), on the first charge of the rule's applies_to among the lines it adjusts."""
+        charge = next(c for c in r["applies_to"] if any(l["charge"] == c for l in group))
+        sample = next(l for l in group if l["charge"] == charge)
+        return {**{k: sample[k] for k in ("dataset", "currency", "tax_basis", "sources")}, "charge": charge,
                 "component": sample["component"], "objects": [], "quantity": Decimal(1), "unit": "rule",
                 "amount": amount, "notes": [note], "_event": sample["_event"]}
 
@@ -564,18 +603,22 @@ class Calc:
             total = sum(l["amount"] for l in group)
             m = Decimal(r["params"]["amount"])
             if total < m:
-                lines.append(self.adjustment(ds, r, m - total, group[0], f"minimum {r['id']}"))
+                lines.append(self.adjustment(ds, r, m - total, group, f"minimum {r['id']}"))
         return lines
 
     def rule_cap(self, ds, r, lines):
         tc = r["params"].get("time_class")
+        cap = Decimal(r["params"]["amount"])
         for key, group in self.periods(ds, r, lines).items():
-            if tc and not ds.in_time_class(tc, ds.local(group[0]["_event"]["time"])):
-                continue
+            if tc:
+                try:
+                    group = [l for l in group if ds.in_time_class(tc, ds.local(l["_event"]["time"]))]
+                except Unknown as e:
+                    self.issue("unknown_time_class", str(e), ds.id)
+                    continue
             total = sum(l["amount"] for l in group)
-            cap = Decimal(r["params"]["amount"])
-            if total > cap:
-                lines.append(self.adjustment(ds, r, cap - total, group[0], f"cap {r['id']}"))
+            if group and total > cap:
+                lines.append(self.adjustment(ds, r, cap - total, group, f"cap {r['id']}"))
         return lines
 
     # 8.7 rounding ------------------------------------------------------------------------
@@ -592,7 +635,7 @@ class Calc:
                 total = sum(l["amount"] for l in mine)
                 diff = quantize(total, rd) - total
                 if diff:
-                    lines.append({**self.adjustment(ds, {"applies_to": [ch["id"]]}, diff, mine[0], "rounding")})
+                    lines.append(self.adjustment(ds, {"applies_to": [ch["id"]]}, diff, mine, "rounding"))
             elif rd["stage"] == "statement":
                 self._statement_rounding = rd
 
@@ -617,12 +660,26 @@ class Calc:
                 "issues": self.issues}
 
 
+DURATION = re.compile(r"P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)W)?(?:(\d+)D)?")
+
+
 def duration_days(p):
-    import re
-    m = re.fullmatch(r"P(?:(\d+)W)?(?:(\d+)D)?", p)
-    if not m or not (m.group(1) or m.group(2)):
+    """A product's duration as (years, months, days), or None if it isn't PnYnMnWnD."""
+    m = DURATION.fullmatch(p)
+    if not m or not any(m.groups()):
         return None
-    return int(m.group(1) or 0) * 7 + int(m.group(2) or 0)
+    y, mo, w, d = (int(x or 0) for x in m.groups())
+    return y, mo, w * 7 + d
+
+
+def product_end(start, p):
+    """8.4: the first instant (or date) a product bought at start no longer covers. Months and years end
+    on the same day of the month, or on the month's last day if it has no such day."""
+    y, mo, d = duration_days(p)
+    months = start.month - 1 + mo + 12 * y
+    year, month = start.year + months // 12, months % 12 + 1
+    last = calendar.monthrange(year, month)[1]
+    return start.replace(year=year, month=month, day=min(start.day, last)) + timedelta(days=d)
 
 
 MODES = {"half_up": ROUND_HALF_UP, "half_even": ROUND_HALF_EVEN, "up": ROUND_UP, "down": ROUND_DOWN,

@@ -1,6 +1,6 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://github.com/majidkabir/orct/schema/orct-statement-0.2.schema.json",
+ "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.2.schema.json",
  "title": "ORCT 0.2 charge statement",
  "type": "object",
  "properties": {

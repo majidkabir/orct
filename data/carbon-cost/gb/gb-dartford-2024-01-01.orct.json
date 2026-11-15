@@ -135,13 +135,13 @@
    "rows": [
     ["pt1", "pt-1.1", null, null, "3"],
     ["pt1", "pt-1.2", null, null, "6"],
-    ["pt1", null, "free", 1, "0"],
+    ["pt1", null, "free", 2, "0"],
     ["pt2", "pt-1.1", null, null, "3"],
     ["pt2", "pt-1.2", null, null, "6"],
-    ["pt2", null, "free", 1, "0"],
+    ["pt2", null, "free", 2, "0"],
     ["pt3", "pt-1.1", null, null, "3"],
     ["pt3", "pt-1.2", null, null, "6"],
-    ["pt3", null, "free", 1, "0"]
+    ["pt3", null, "free", 2, "0"]
    ],
    "sources": ["s1", "s2"],
    "basis": "transcribed"

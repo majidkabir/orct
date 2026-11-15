@@ -1,7 +1,8 @@
 name: Data
 
 # Regenerates data/carbon-cost from carbon-cost's tables, validates it,
-# checks nothing was lost, and commits the result if it changed.
+# checks nothing was lost and that it prices as carbon-cost does, and commits
+# the result if it changed.
 on:
   push:
     branches: [main]
@@ -36,8 +37,19 @@ jobs:
           python3 tools/convert_carbon_cost.py _carbon-cost data/carbon-cost --commit "$(git -C _carbon-cost rev-parse HEAD)"
       - name: Validate
         run: python3 tools/validate.py data/carbon-cost tests/fixtures
+      - name: Schemas match their generator
+        run: python3 tools/gen_schema.py && git diff --exit-code schema
       - name: Check nothing was lost
         run: python3 tools/check_lossless.py _carbon-cost data/carbon-cost
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: _carbon-cost/go.mod
+          cache-dependency-path: _carbon-cost/go.sum
+      - name: Compare with carbon-cost's own engine (every 10th case)
+        run: |
+          mkdir -p _carbon-cost/cmd/orctoracle && cp tools/oracle/main.go _carbon-cost/cmd/orctoracle/
+          (cd _carbon-cost && go run ./cmd/orctoracle) > /tmp/oracle.jsonl
+          python3 tools/check_oracle.py /tmp/oracle.jsonl data/carbon-cost --every 10
       - name: Conformance vectors
         run: python3 tests/run_vectors.py
       - name: Price every charge once

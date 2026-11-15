@@ -54,13 +54,13 @@
     {
      "id": "zone-1.1",
      "criteria": {
-      "euro_class": ["6"]
+      "euro_class": ["6", "7"]
      }
     },
     {
      "id": "zone-1.2",
      "criteria": {
-      "euro_class": ["4", "5"]
+      "euro_class": ["4", "5", "EEV"]
      }
     },
     {

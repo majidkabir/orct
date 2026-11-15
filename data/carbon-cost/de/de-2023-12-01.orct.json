@@ -152,7 +152,7 @@
        "min": 7500,
        "max": 11999
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1, 2, 3, 4]
      }
     },
@@ -163,7 +163,7 @@
        "min": 12000,
        "max": 18000
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1, 2, 3, 4]
      }
     },
@@ -176,7 +176,7 @@
       "train_axles": {
        "max": 3
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1, 2, 3, 4]
      }
     },
@@ -189,7 +189,7 @@
       "train_axles": {
        "min": 4
       },
-      "euro_class": ["5"],
+      "euro_class": ["5", "EEV"],
       "co2_class": [1, 2, 3, 4]
      }
     },
@@ -565,7 +565,7 @@
        "min": 7500,
        "max": 11999
       },
-      "euro_class": ["4", "5"],
+      "euro_class": ["4", "5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -576,7 +576,7 @@
        "min": 12000,
        "max": 18000
       },
-      "euro_class": ["4", "5"],
+      "euro_class": ["4", "5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -589,7 +589,7 @@
       "train_axles": {
        "max": 3
       },
-      "euro_class": ["4", "5"],
+      "euro_class": ["4", "5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -603,7 +603,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["4", "5"],
+      "euro_class": ["4", "5", "EEV"],
       "co2_class": [1]
      }
     },
@@ -616,7 +616,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["4", "5"],
+      "euro_class": ["4", "5", "EEV"],
       "co2_class": [1]
      }
     },

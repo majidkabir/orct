@@ -207,6 +207,14 @@
    "network": {
     "description": "Road segments listed in the law's Annex 1 (about 10,900 km in 2025-2027: state roads incl. motorways, and parts of municipal roads). From 1 January 2028 the whole public road network (about 75,000 km)."
    }
+  },
+  {
+   "id": "env-zones",
+   "type": "network",
+   "name": "Tolled roads in environmental zones",
+   "network": {
+    "description": "Added on Annex 1 segments in environmental zones, except segments on the TEN-T network or motorways (§ 4)."
+   }
   }
  ],
  "charges": [
@@ -296,21 +304,21 @@
    "component_label": "env_zone_surcharge",
    "columns": ["object", "vehicle_class", "amount"],
    "rows": [
-    ["roads", "infrastructure-1.1", "0.43"],
-    ["roads", "infrastructure-1.2", "0.5"],
-    ["roads", "infrastructure-1.3", "0.55"],
-    ["roads", "infrastructure-1.4", "0.4"],
-    ["roads", "infrastructure-1.5", "0.46"],
-    ["roads", "infrastructure-1.6", "0.51"],
-    ["roads", "infrastructure-1.7", "0.35"],
-    ["roads", "infrastructure-1.8", "0.41"],
-    ["roads", "infrastructure-1.9", "0.46"],
-    ["roads", "infrastructure-1.10", "0.23"],
-    ["roads", "infrastructure-1.11", "0.27"],
-    ["roads", "infrastructure-1.12", "0.29"],
-    ["roads", "infrastructure-1.13", "0.07"],
-    ["roads", "infrastructure-1.14", "0.07"],
-    ["roads", "infrastructure-1.15", "0.07"]
+    ["env-zones", "infrastructure-1.1", "0.43"],
+    ["env-zones", "infrastructure-1.2", "0.5"],
+    ["env-zones", "infrastructure-1.3", "0.55"],
+    ["env-zones", "infrastructure-1.4", "0.4"],
+    ["env-zones", "infrastructure-1.5", "0.46"],
+    ["env-zones", "infrastructure-1.6", "0.51"],
+    ["env-zones", "infrastructure-1.7", "0.35"],
+    ["env-zones", "infrastructure-1.8", "0.41"],
+    ["env-zones", "infrastructure-1.9", "0.46"],
+    ["env-zones", "infrastructure-1.10", "0.23"],
+    ["env-zones", "infrastructure-1.11", "0.27"],
+    ["env-zones", "infrastructure-1.12", "0.29"],
+    ["env-zones", "infrastructure-1.13", "0.07"],
+    ["env-zones", "infrastructure-1.14", "0.07"],
+    ["env-zones", "infrastructure-1.15", "0.07"]
    ],
    "sources": ["s1", "s2"],
    "basis": "transcribed"
@@ -319,13 +327,7 @@
  "coverage": [
   {
    "scope": "dataset",
-   "status": "partial",
-   "reason": "env_zone_surcharge is kept as an extension (no ORCT field yet)"
+   "status": "complete"
   }
- ],
- "extensions": {
-  "io.github.majidkabir.carboncost": {
-   "env_zone_surcharge": "Added on Annex 1 segments in environmental zones, except segments on the TEN-T network or motorways (§ 4)."
-  }
- }
+ ]
 }

@@ -91,6 +91,16 @@ for name, veh, want in (("40t-euro6-co2-1", V40, "34.80"), ("40t-euro5", {**V40,
                         ("40t-co2-4", {**V40, "co2_class": 4}, "26.90"), ("7t", {**V7, "train_mass_kg": 7000}, "15.10")):
     add(f"de-{name}", f"German HGV toll, {name}, 100 km: {want}. " + src, ["8.4"], [DE],
         usage(veh, [{"dataset": DEID, "object": "roads", "time": "2026-11-03T10:00:00+01:00", "km": 100}]), want)
+add("od-discount-any-of", "The 10% discount names alternatives (CO2 class 4, or Euro 7): a Euro 7 vehicle of CO2 class 1 gets it. 10.00 less 10%: 9.00.",
+    ["6.6.2", "6.11"], [SYN], usage({**V40, "euro_class": "7"}, OD("st-a", "st-b")), "9.00")
+add("od-discount-any-of-unknown", "Euro VI without a CO2 class: one alternative fails and the other can't be decided, so the discount is unknown and the statement incomplete.",
+    ["6.6.2", "8.9"], [SYN], usage({k: v for k, v in V40.items() if k != "co2_class"}, OD("st-a", "st-b")), "10.00", complete=False)
+add("point-passage-group-free-first", "A free passage (Sunday) starts no run: the paid passage 40 minutes later, on Monday, pays 8.40.",
+    ["6.11"], [SYN], usage(V40, [ev("gate", "2026-11-15T23:30:00+01:00"), ev("gate", "2026-11-16T00:10:00+01:00")]), "8.40")
+add("section-cap-time-class", "A day cap of 20 for night uses only: the two night uses (24) are capped at 20, the day use (12) is not. Section uses 32, plus 3 x 1.25 per km: 35.75.",
+    ["6.11"], [SYN], usage(V40, [ev("sec1", "2026-11-17T10:00:00+01:00"), ev("sec1", "2026-11-17T22:30:00+01:00"),
+                                ev("sec1", "2026-11-17T23:30:00+01:00")]), "35.75",
+    lines=[("sec", "12"), ("sec", "12"), ("sec", "12"), ("seckm", "1.25"), ("seckm", "1.25"), ("seckm", "1.25"), ("sec", "-4")])
 for i, (name, v) in enumerate(V, 1):
     with open(f"tests/vectors/{i:03d}-{name}.json", "w") as fh:
         json.dump(v, fh, indent=1, ensure_ascii=False); fh.write("\n")

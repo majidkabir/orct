@@ -79,7 +79,7 @@
        "min": 3501,
        "max": 11999
       },
-      "euro_class": ["5", "6"]
+      "euro_class": ["5", "EEV", "6"]
      }
     },
     {
@@ -118,7 +118,7 @@
        "min": 2,
        "max": 2
       },
-      "euro_class": ["5", "6"]
+      "euro_class": ["5", "EEV", "6"]
      }
     },
     {
@@ -157,7 +157,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5", "6"]
+      "euro_class": ["5", "EEV", "6"]
      }
     },
     {
@@ -196,7 +196,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["5", "6"]
+      "euro_class": ["5", "EEV", "6"]
      }
     },
     {
@@ -232,7 +232,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["5", "6"]
+      "euro_class": ["5", "EEV", "6"]
      }
     }
    ]
@@ -249,7 +249,7 @@
   {
    "id": "road:motorway",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["motorway"]
    }
@@ -257,7 +257,7 @@
   {
    "id": "road:other",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["other"]
    }

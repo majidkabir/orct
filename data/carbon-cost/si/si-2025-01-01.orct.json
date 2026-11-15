@@ -784,18 +784,14 @@
    "length_km": 2.141
   },
   {
-   "id": "area:none",
-   "type": "network"
-  },
-  {
-   "id": "group:none:b",
+   "id": "tier:b",
    "type": "network",
-   "parent": "area:none"
+   "name": "Sections of surcharge tier b"
   },
   {
    "id": "sec:a1-019",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Šentrupert–Vransko",
    "road": "A1",
    "from": {
@@ -817,7 +813,7 @@
   {
    "id": "sec:a1-020",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Vransko–Trojane",
    "road": "A1",
    "from": {
@@ -839,7 +835,7 @@
   {
    "id": "sec:a1-021",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Trojane–Blagovica",
    "road": "A1",
    "from": {
@@ -861,7 +857,7 @@
   {
    "id": "sec:a1-022",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Blagovica–Lukovica",
    "road": "A1",
    "from": {
@@ -883,7 +879,7 @@
   {
    "id": "sec:a1-023",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Lukovica–Krtina",
    "road": "A1",
    "from": {
@@ -905,7 +901,7 @@
   {
    "id": "sec:a1-024",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Krtina–Domžale",
    "road": "A1",
    "from": {
@@ -927,7 +923,7 @@
   {
    "id": "sec:a1-025",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Domžale–Šentjakob",
    "road": "A1",
    "from": {
@@ -949,7 +945,7 @@
   {
    "id": "sec:a1-026",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Šentjakob–Sneberje",
    "road": "A1",
    "from": {
@@ -971,7 +967,7 @@
   {
    "id": "sec:a1-027",
    "type": "section",
-   "parent": "group:none:b",
+   "parents": ["tier:b"],
    "name": "Sneberje–LJ (Zadobrova)",
    "road": "A1",
    "from": {
@@ -991,14 +987,14 @@
    "length_km": 1.737
   },
   {
-   "id": "group:none:a",
+   "id": "tier:a",
    "type": "network",
-   "parent": "area:none"
+   "name": "Sections of surcharge tier a"
   },
   {
    "id": "sec:a1-028",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Zadobrova–Zaloška)",
    "road": "A1",
    "from": {
@@ -1020,7 +1016,7 @@
   {
    "id": "sec:a1-029",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Zaloška–Litijska)",
    "road": "A1",
    "from": {
@@ -1042,7 +1038,7 @@
   {
    "id": "sec:a1-030",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Litijska–Malence)",
    "road": "A1",
    "from": {
@@ -1064,7 +1060,7 @@
   {
    "id": "sec:a1-031",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Malence–Peruzzijeva)",
    "road": "A1",
    "from": {
@@ -1086,7 +1082,7 @@
   {
    "id": "sec:a1-032",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Peruzzijeva–Barjanska)",
    "road": "A1",
    "from": {
@@ -1108,7 +1104,7 @@
   {
    "id": "sec:a1-033",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Barjanska–Kozarje)",
    "road": "A1",
    "from": {
@@ -1130,7 +1126,7 @@
   {
    "id": "sec:a1-034",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Kozarje)–Brezovica",
    "road": "A1",
    "from": {
@@ -1152,7 +1148,7 @@
   {
    "id": "sec:a1-brezovica-vrhnika",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Brezovica–Vrhnika",
    "road": "A1",
    "from": {
@@ -1174,7 +1170,7 @@
   {
    "id": "sec:a1-037",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Vrhnika–Logatec",
    "road": "A1",
    "from": {
@@ -1196,7 +1192,7 @@
   {
    "id": "sec:a1-038",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Logatec–Unec",
    "road": "A1",
    "from": {
@@ -1218,7 +1214,7 @@
   {
    "id": "sec:a1-039",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Unec–Postojna",
    "road": "A1",
    "from": {
@@ -1240,7 +1236,7 @@
   {
    "id": "sec:a1-040",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Postojna–Razdrto",
    "road": "A1",
    "from": {
@@ -1262,7 +1258,7 @@
   {
    "id": "sec:a1-041",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Razdrto–Razcep Nanos",
    "road": "A1",
    "from": {
@@ -1284,7 +1280,7 @@
   {
    "id": "sec:a1-042",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Razcep Nanos–Senožeče",
    "road": "A1",
    "from": {
@@ -1306,7 +1302,7 @@
   {
    "id": "sec:a1-043",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Senožeče–Gabrk",
    "road": "A1",
    "from": {
@@ -1328,7 +1324,7 @@
   {
    "id": "sec:a1-044",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Gabrk–Divača",
    "road": "A1",
    "from": {
@@ -1350,7 +1346,7 @@
   {
    "id": "sec:a1-045",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Divača–Kozina",
    "road": "A1",
    "from": {
@@ -1372,7 +1368,7 @@
   {
    "id": "sec:a1-046",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Kozina–Kastelec",
    "road": "A1",
    "from": {
@@ -1394,7 +1390,7 @@
   {
    "id": "sec:a1-047",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Kastelec–Črni Kal",
    "road": "A1",
    "from": {
@@ -1416,7 +1412,7 @@
   {
    "id": "sec:a1-048",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "Črni Kal–Srmin",
    "road": "A1",
    "from": {
@@ -1711,7 +1707,7 @@
   {
    "id": "sec:a2-062",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Koseze–Brdo)",
    "road": "A2",
    "from": {
@@ -1733,7 +1729,7 @@
   {
    "id": "sec:a2-063",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Brdo–Kozarje)",
    "road": "A2",
    "from": {
@@ -2721,7 +2717,7 @@
   {
    "id": "sec:h3-107",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Zadobrova–Šmartinska)",
    "road": "H3",
    "from": {
@@ -2743,7 +2739,7 @@
   {
    "id": "sec:h3-108",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Šmartinska–Tomačevo)",
    "road": "H3",
    "from": {
@@ -2765,7 +2761,7 @@
   {
    "id": "sec:h3-109",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Tomačevo–Dunajska)",
    "road": "H3",
    "from": {
@@ -2787,7 +2783,7 @@
   {
    "id": "sec:h3-110",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Dunajska–Celovška)",
    "road": "H3",
    "from": {
@@ -2809,7 +2805,7 @@
   {
    "id": "sec:h3-111",
    "type": "section",
-   "parent": "group:none:a",
+   "parents": ["tier:a"],
    "name": "LJ (Celovška–Koseze)",
    "road": "H3",
    "from": {
@@ -6603,12 +6599,12 @@
    "component_label": "rail_surcharge",
    "columns": ["object", "vehicle_class", "amount"],
    "rows": [
-    ["group:none:a", "si-tier-1.R2", "0.018681"],
-    ["group:none:b", "si-tier-1.R2", "0.006227"],
-    ["group:none:a", "si-tier-1.R3", "0.020477"],
-    ["group:none:b", "si-tier-1.R3", "0.006825"],
-    ["group:none:a", "si-tier-1.R4", "0.039304"],
-    ["group:none:b", "si-tier-1.R4", "0.013101"]
+    ["tier:a", "si-tier-1.R2", "0.018681"],
+    ["tier:b", "si-tier-1.R2", "0.006227"],
+    ["tier:a", "si-tier-1.R3", "0.020477"],
+    ["tier:b", "si-tier-1.R3", "0.006825"],
+    ["tier:a", "si-tier-1.R4", "0.039304"],
+    ["tier:b", "si-tier-1.R4", "0.013101"]
    ],
    "sources": ["s1", "s2", "s3"],
    "basis": "transcribed"

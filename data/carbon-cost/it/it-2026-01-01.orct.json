@@ -212,7 +212,7 @@
   {
    "id": "road:motorway",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["motorway"]
    }
@@ -220,108 +220,108 @@
   {
    "id": "op:Consorzio per le Autostrade Siciliane",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Consorzio per le Autostrade Siciliane"
   },
   {
    "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Milano Serravalle - Milano Tangenziali S.p.A."
   },
   {
    "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A50",
    "type": "network",
-   "parent": "op:Milano Serravalle - Milano Tangenziali S.p.A.",
+   "parents": ["op:Milano Serravalle - Milano Tangenziali S.p.A."],
    "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
    "road": "A50"
   },
   {
    "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A51",
    "type": "network",
-   "parent": "op:Milano Serravalle - Milano Tangenziali S.p.A.",
+   "parents": ["op:Milano Serravalle - Milano Tangenziali S.p.A."],
    "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
    "road": "A51"
   },
   {
    "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A52",
    "type": "network",
-   "parent": "op:Milano Serravalle - Milano Tangenziali S.p.A.",
+   "parents": ["op:Milano Serravalle - Milano Tangenziali S.p.A."],
    "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
    "road": "A52"
   },
   {
    "id": "op:Autostrada del Brennero S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autostrada del Brennero S.p.A."
   },
   {
    "id": "op:Autostrada Asti-Cuneo S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autostrada Asti-Cuneo S.p.A."
   },
   {
    "id": "op:Ivrea Torino Piacenza S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Ivrea Torino Piacenza S.p.A."
   },
   {
    "id": "op:Autostrada dei Fiori S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autostrada dei Fiori S.p.A."
   },
   {
    "id": "op:Società Autostrade Alto Adriatico S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Società Autostrade Alto Adriatico S.p.A."
   },
   {
    "id": "op:Autovia Padana S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autovia Padana S.p.A."
   },
   {
    "id": "op:Società di Progetto Brebemi S.p.A",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Società di Progetto Brebemi S.p.A"
   },
   {
    "id": "op:Autostrada Brescia Verona Vicenza Padova S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autostrada Brescia Verona Vicenza Padova S.p.A."
   },
   {
    "id": "op:CAV S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "CAV S.p.A."
   },
   {
    "id": "op:CAV S.p.A.|A57",
    "type": "network",
-   "parent": "op:CAV S.p.A.",
+   "parents": ["op:CAV S.p.A."],
    "operator": "CAV S.p.A.",
    "road": "A57"
   },
   {
    "id": "op:CAV S.p.A.|A4",
    "type": "network",
-   "parent": "op:CAV S.p.A.",
+   "parents": ["op:CAV S.p.A."],
    "operator": "CAV S.p.A.",
    "road": "A4"
   },
   {
    "id": "op:CAV S.p.A.|A4|Passante",
    "type": "network",
-   "parent": "op:CAV S.p.A.|A4",
+   "parents": ["op:CAV S.p.A.|A4"],
    "operator": "CAV S.p.A.",
    "road": "A4",
    "name": "Passante"
@@ -329,92 +329,92 @@
   {
    "id": "op:Concessioni del Tirreno S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Concessioni del Tirreno S.p.A."
   },
   {
    "id": "op:Concessioni del Tirreno S.p.A.|A10",
    "type": "network",
-   "parent": "op:Concessioni del Tirreno S.p.A.",
+   "parents": ["op:Concessioni del Tirreno S.p.A."],
    "operator": "Concessioni del Tirreno S.p.A.",
    "road": "A10"
   },
   {
    "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A7",
    "type": "network",
-   "parent": "op:Milano Serravalle - Milano Tangenziali S.p.A.",
+   "parents": ["op:Milano Serravalle - Milano Tangenziali S.p.A."],
    "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
    "road": "A7"
   },
   {
    "id": "op:Autostrada Pedemontana Lombarda S.p.A .",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Autostrada Pedemontana Lombarda S.p.A ."
   },
   {
    "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A36",
    "type": "network",
-   "parent": "op:Autostrada Pedemontana Lombarda S.p.A .",
+   "parents": ["op:Autostrada Pedemontana Lombarda S.p.A ."],
    "operator": "Autostrada Pedemontana Lombarda S.p.A .",
    "road": "A36"
   },
   {
    "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A59",
    "type": "network",
-   "parent": "op:Autostrada Pedemontana Lombarda S.p.A .",
+   "parents": ["op:Autostrada Pedemontana Lombarda S.p.A ."],
    "operator": "Autostrada Pedemontana Lombarda S.p.A .",
    "road": "A59"
   },
   {
    "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A60",
    "type": "network",
-   "parent": "op:Autostrada Pedemontana Lombarda S.p.A .",
+   "parents": ["op:Autostrada Pedemontana Lombarda S.p.A ."],
    "operator": "Autostrada Pedemontana Lombarda S.p.A .",
    "road": "A60"
   },
   {
    "id": "op:RAV Raccordo Autostradale Valle d'Aosta S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "RAV Raccordo Autostradale Valle d'Aosta S.p.A."
   },
   {
    "id": "op:Società Autostrada Ligure Toscana p.a.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Società Autostrada Ligure Toscana p.a."
   },
   {
    "id": "op:Società Autostrada Ligure Toscana p.a.|A15",
    "type": "network",
-   "parent": "op:Società Autostrada Ligure Toscana p.a.",
+   "parents": ["op:Società Autostrada Ligure Toscana p.a."],
    "operator": "Società Autostrada Ligure Toscana p.a.",
    "road": "A15"
   },
   {
    "id": "op:SAT p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "SAT p.A."
   },
   {
    "id": "op:SATAP S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "SATAP S.p.A."
   },
   {
    "id": "op:SATAP S.p.A.|A4",
    "type": "network",
-   "parent": "op:SATAP S.p.A.",
+   "parents": ["op:SATAP S.p.A."],
    "operator": "SATAP S.p.A.",
    "road": "A4"
   },
   {
    "id": "op:SATAP S.p.A.|A4|Novara Est-Milano",
    "type": "network",
-   "parent": "op:SATAP S.p.A.|A4",
+   "parents": ["op:SATAP S.p.A.|A4"],
    "operator": "SATAP S.p.A.",
    "road": "A4",
    "name": "Novara Est-Milano"
@@ -422,39 +422,39 @@
   {
    "id": "op:Ivrea Torino Piacenza S.p.A.|A21",
    "type": "network",
-   "parent": "op:Ivrea Torino Piacenza S.p.A.",
+   "parents": ["op:Ivrea Torino Piacenza S.p.A."],
    "operator": "Ivrea Torino Piacenza S.p.A.",
    "road": "A21"
   },
   {
    "id": "op:Società Autostrade Valdostane S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Società Autostrade Valdostane S.p.A."
   },
   {
    "id": "op:SITAF S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "SITAF S.p.A."
   },
   {
    "id": "op:SITAF S.p.A.|A32",
    "type": "network",
-   "parent": "op:SITAF S.p.A.",
+   "parents": ["op:SITAF S.p.A."],
    "operator": "SITAF S.p.A.",
    "road": "A32"
   },
   {
    "id": "op:Strada dei Parchi S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Strada dei Parchi S.p.A."
   },
   {
    "id": "op:Tangenziale Esterna S.p.A.",
    "type": "network",
-   "parent": "road:motorway",
+   "parents": ["road:motorway"],
    "operator": "Tangenziale Esterna S.p.A."
   }
  ],

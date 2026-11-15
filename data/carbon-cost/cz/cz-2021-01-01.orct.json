@@ -118,7 +118,7 @@
        "min": 2,
        "max": 2
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -132,7 +132,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -146,7 +146,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -159,7 +159,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -283,7 +283,7 @@
        "min": 2,
        "max": 2
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -297,7 +297,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -311,7 +311,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -324,7 +324,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -443,7 +443,7 @@
        "min": 2,
        "max": 2
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -456,7 +456,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -469,7 +469,7 @@
        "min": 4,
        "max": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -481,7 +481,7 @@
       "train_axles": {
        "min": 5
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -549,7 +549,7 @@
   {
    "id": "road:motorway",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["motorway"]
    }
@@ -557,7 +557,7 @@
   {
    "id": "road:other",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["other"]
    }

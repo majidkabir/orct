@@ -222,7 +222,7 @@
       "train_axles": {
        "max": 2
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      },
      "fallback": "sys1-1.3"
     },
@@ -326,7 +326,7 @@
        "min": 3,
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      },
      "fallback": "sys1-1.4"
     },
@@ -425,7 +425,7 @@
       "train_axles": {
        "min": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      },
      "fallback": "sys1-1.4"
     },
@@ -101028,6 +101028,256 @@
    "scope": "system1",
    "status": "partial",
    "reason": "50 stations in the tariff aren't placed on the map; their pairs can't be matched to a route"
+  },
+  {
+   "scope": "st1:A 20 limite de concession",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:A13",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ADOUR NORD",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ADOUR SUD",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ANGERS",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ARGENTAN SUD",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Aix ouest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:BEAULIEU",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Bd d’Estienne d’Orves",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Bifurcation A46S/A43 vers A43 ou A46",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Bifurcation A46S/A7/A47 vers Lyon ou St-Étienne",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Blaye",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Bordeaux limite de concession",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Bretelle de Verfeil",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CAEN",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS - LA VEUVE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS LA VEUVE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS MOURMELON",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHARMONT",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Clermont-Ferrand limite de concession",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:DRUYE (CANDE)",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:EPERNAY",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:FALAISE OUEST",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:FALAISE SUD",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:FREYMING-MERLEBACH",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Fort de St-Priest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Frontière Espagnole",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Hanipet",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:LA FOLIE-B/PARIS",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:LA RIVIÈRE-SAINT-SAUVEUR",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Libourne ouest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Libourne/St-Antoine",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:METZ",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:MORTRÉE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Modane (vers l’Italie)",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:NANTES",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:PARIS (LA FOLIE BESSIN)",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:POISSY / ORGEVAL à MANTES-SUD",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:PONT L'EVÊQUE, DEAUVILLE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Péage de Toulouse nord/est",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Péage de Toulouse sud/ouest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:REIMS - TAISSY",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:SAINT AMAND",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MARTIN BELLEVUE A41 N",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MICHEL MAURIENNE ECH",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Six-Fours-Les Plages",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:TANCARVILLE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:TOULOUSE-NORD/EST",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Toulon-ouest",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:Vienne nord",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
   }
  ]
 }

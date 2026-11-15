@@ -64,7 +64,7 @@
        "min": 3501,
        "max": 12000
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -108,7 +108,7 @@
       "train_axles": {
        "max": 3
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -156,7 +156,7 @@
       "train_axles": {
        "min": 4
       },
-      "euro_class": ["5"]
+      "euro_class": ["5", "EEV"]
      }
     },
     {
@@ -197,7 +197,7 @@
   {
    "id": "road:motorway",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["motorway"]
    }
@@ -205,7 +205,7 @@
   {
    "id": "road:other",
    "type": "network",
-   "parent": "roads",
+   "parents": ["roads"],
    "network": {
     "road_types": ["other"]
    }

@@ -52,20 +52,56 @@ def check(d):
     users = unique(d.get("user_classes", []), "user class")
     objects = {o["id"]: o for o in d["charge_objects"]}
     unique(d["charge_objects"], "charge object")
-    for oid, o in objects.items():
-        seen, p = {oid}, o.get("parent")
-        while p:
+    state = {}
+
+    def visit(oid):  # depth-first search for unknown parents and cycles
+        state[oid] = 1
+        for p in objects[oid].get("parents", []):
             if p not in objects:
                 errs.append(f"object {oid}: parent {p} unknown")
-                break
-            if p in seen:
-                errs.append(f"object {oid}: parents form a cycle")
-                break
-            seen.add(p)
-            p = objects[p].get("parent")
+            elif state.get(p) == 1:
+                errs.append(f"object {oid}: parents form a cycle through {p}")
+            elif p not in state:
+                visit(p)
+        state[oid] = 2
+
+    for oid in objects:
+        if oid not in state:
+            visit(oid)
     charges = {c["id"]: c for c in d["charges"]}
     unique(d["charges"], "charge")
     rules = unique(d.get("rules", []), "rule")
+
+    # A use of an object with several parents must not reach two rows that differ only in their
+    # object, through different parents at the same distance (6.10.3).
+    multi = [o for o in objects if len(objects[o].get("parents", [])) > 1]
+    if multi:
+        def dist(oid):
+            out, frontier = {oid: 0}, [oid]
+            while frontier:
+                nxt = []
+                for o in frontier:
+                    for p in objects.get(o, {}).get("parents", []):
+                        if p not in out:
+                            out[p] = out[o] + 1
+                            nxt.append(p)
+                frontier = nxt
+            return out
+        for c in d["charges"]:
+            if "object" not in c["columns"]:
+                continue
+            oi = c["columns"].index("object")
+            groups = {}
+            for r in c["rows"]:
+                groups.setdefault(tuple(v for i, v in enumerate(r) if i != oi and c["columns"][i] != "amount"), set()).add(r[oi])
+            for oid in multi:
+                dd = dist(oid)
+                for objs in groups.values():
+                    reach = [(dd[o], o) for o in objs if o in dd]
+                    if reach:
+                        m = min(x for x, _ in reach)
+                        if len({o for x, o in reach if x == m}) > 1:
+                            errs.append(f"charge {c['id']}: object {oid} reaches rows of {sorted(o for x, o in reach if x == m)} at the same distance")
 
     used = set()
     for c in d["charges"]:
@@ -130,9 +166,73 @@ def check(d):
         for o in ([p["object"]] if "object" in p else []) + p.get("objects", []):
             if o not in objects:
                 errs.append(f"rule {r['id']}: object {o} unknown")
+        if p.get("time_class") is not None and p["time_class"] not in times:
+            errs.append(f"rule {r['id']}: time class {p['time_class']} unknown")
+        if p.get("user_class") is not None and p["user_class"] not in users:
+            errs.append(f"rule {r['id']}: user class {p['user_class']} unknown")
         for k in ("percent", "factor", "amount"):
             if k in p and not (isinstance(p[k], str) and DECIMAL.match(p[k])):
                 errs.append(f"rule {r['id']}: {k} must be a decimal string")
+
+    def any_of(x):  # criteria.any_of anywhere
+        return isinstance(x, dict) and ("any_of" in x or any(any_of(v) for v in x.values())) or \
+            isinstance(x, list) and any(any_of(v) for v in x)
+    if any_of([d["liable_vehicles"], d["vehicle_class_sets"], [r["params"] for r in d.get("rules", [])]]):
+        used.add("criteria.any_of")
+    depth = {"Point": 0, "MultiPoint": 1, "LineString": 1, "MultiLineString": 2, "Polygon": 2, "MultiPolygon": 3}
+
+    def positions(c, n):  # RFC 7946 nesting; yields positions, or None on a bad shape
+        if n == 0:
+            yield c if isinstance(c, list) and len(c) in (2, 3) and all(isinstance(v, (int, float)) for v in c) else None
+        elif not isinstance(c, list) or not c:
+            yield None
+        else:
+            for x in c:
+                yield from positions(x, n - 1)
+
+    def geometry_errors(where, g):
+        out = []
+        pos = list(positions(g["coordinates"], depth[g["type"]]))
+        if None in pos:
+            return [f"{where}: {g['type']} coordinates are not nested as RFC 7946 says"]
+        if any(not (-180 <= x[0] <= 180 and -90 <= x[1] <= 90) for x in pos):
+            out.append(f"{where}: a position is outside longitude -180..180, latitude -90..90")
+        rings = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"] if g["type"] == "MultiPolygon" else []
+        if any(len(r) < 4 or r[0] != r[-1] for poly in rings for r in poly):
+            out.append(f"{where}: a polygon ring is not closed or has fewer than 4 positions")
+        return out
+    for oid, o in objects.items():
+        for part in ("location", "from", "to"):
+            g = (o.get(part) or {}).get("geometry") if part != "location" else o.get("location", {}).get("geometry")
+            if g:
+                errs += geometry_errors(f"object {oid} {part}", g)
+    scopes = {c["scope"] for c in d["coverage"]}
+    for oid, o in objects.items():  # 6.9: an unlocated station, point, area or section is in coverage
+        located = (o.get("location", {}).get("geometry") if o["type"] in ("station", "point", "area")
+                   else (o.get("location", {}).get("geometry")
+                         or (o.get("from", {}).get("geometry") and o.get("to", {}).get("geometry")))
+                   if o["type"] == "section" else True)
+        if not located and oid not in scopes:
+            errs.append(f"object {oid}: no location and not in coverage")
+    for t in d.get("time_classes", []):
+        for a, b in t.get("times", []):
+            if a == "24:00":
+                errs.append(f"time class {t['id']}: an interval can't start at 24:00")
+        for sel in t.get("days", []):
+            for part in (sel, sel.get("exclude", {})):
+                for a, b in part.get("date_ranges", []):
+                    if len(a) != len(b):
+                        errs.append(f"time class {t['id']}: date range {a}..{b} mixes MM-DD and YYYY-MM-DD")
+                    elif len(a) == 10 and a > b:
+                        errs.append(f"time class {t['id']}: date range {a}..{b} ends before it starts")
+                for a, b in part.get("easter", []):
+                    if a > b:
+                        errs.append(f"time class {t['id']}: Easter range {a}..{b} ends before it starts")
+        if t.get("defined") is False and t["id"] not in scopes:
+            errs.append(f"time class {t['id']}: not defined and not in coverage")
+    for cal in d.get("calendars", []):
+        if any(x > cal["covers_to"] for x in cal["dates"]):
+            errs.append(f"calendar {cal['id']}: dates after covers_to")
     ids = {"dataset"} | set(objects) | set(charges) | rules | times | users | set(class_set) | calendars
     errs += [f"coverage: scope {c['scope']} unknown" for c in d["coverage"] if c["scope"] not in ids]
     missing = used - set(d["dataset"].get("required_features", []))

@@ -13,6 +13,7 @@ import json
 import os
 import re
 import sys
+from datetime import date, timedelta
 from decimal import Decimal
 
 REPO = "https://github.com/majidkabir/carbon-cost"
@@ -103,10 +104,21 @@ def criteria_of(r, motor_axles=False):
     if r.get("min_length_m") or r.get("max_length_m"):
         c["train_length_m"] = rng(hi=r.get("max_length_m"), gt=r.get("min_length_m"))
     if r.get("euro"):
-        c["euro_class"] = [str(e) for e in r["euro"]]
+        c["euro_class"] = euro_list(r["euro"])
     if r.get("co2_class"):
         c["co2_class"] = r["co2_class"]
     return clean(c)
+
+
+def euro_list(euros, or_later=False):
+    """carbon-cost Euro numbers as ORCT euro classes: carbon-cost counts EEV as Euro V,
+    and "this standard or a later one" includes Euro 7."""
+    out = [str(e) for e in sorted(euros)]
+    if 5 in euros:
+        out.insert(out.index("5") + 1, "EEV")
+    if or_later and 6 in euros:
+        out.append("7")
+    return out
 
 
 def season_days(s):
@@ -149,6 +161,7 @@ class Builder:
         self.users = {}
         self.objects, self.object_ids = [], set()
         self.charges, self.rules, self.coverage, self.ext = [], [], [], {}
+        self.calendars = []
         self.features = set()
 
     def class_set(self, prefix, classes):
@@ -211,6 +224,8 @@ class Builder:
         ch.setdefault("basis", self.basis)
         self.charges.append(ch)
         self.features.add("type." + ch["type"])
+        if ch.get("rounding"):
+            self.features.add("rounding")
         return ch["id"]
 
     def rule(self, kind, applies_to, params):
@@ -219,6 +234,11 @@ class Builder:
 
     def partial(self, scope, reason):
         self.coverage.append({"scope": scope, "status": "partial", "reason": reason})
+
+    def calendar(self, cid, name, dates, covers_to):
+        self.calendars.append({"id": cid, "name": name, "dates": dates, "covers_to": covers_to})
+        self.features.add("calendars")
+        return cid
 
     def keep(self, key, value, reason=None):
         self.ext[key] = value
@@ -238,6 +258,7 @@ class Builder:
             "liable_vehicles": liable,
             "vehicle_class_sets": self.sets or [{"id": "all", "classes": [{"id": "any", "criteria": {}}]}],
             "time_classes": self.times,
+            "calendars": self.calendars,
             "user_classes": list(self.users.values()),
             "charge_objects": self.objects,
             "charges": self.charges,
@@ -256,12 +277,13 @@ def convert_table(t, path):
     used = {"country", "region", "currency", "valid_from", "valid_to", "name", "law", "sources", "vehicles",
             "min_kg", "tolled_roads", "motor_axles", "rows", "per_tonne_km", "max_chargeable_kg", "per_day", "day",
             "exemptions", "surcharges", "closed_systems", "toll_points", "point_match_km", "sections", "congestion",
-            "motorway_share", "suburban_share", "crossings", "osm_extract"}
+            "motorway_share", "suburban_share", "crossings", "osm_extract", "env_zone_surcharge"}
     motor = bool(t.get("motor_axles"))
     liable = {"description": t.get("vehicles", ""), "criteria": clean({"train_mass_kg": rng(t.get("min_kg"))})}
 
     row_charges = convert_rows(b, t, motor)
-    all_rows = sorted({c for ids in row_charges.values() for c in ids})
+    # carbon-cost's exemptions don't reach the environmental-zone surcharge.
+    all_rows = sorted({c for comp, ids in row_charges.items() if comp != "env_zone_surcharge" for c in ids})
     for e in t.get("exemptions", []):
         b.rule("exemption", all_rows, {"criteria": {"co2_class": e["co2_class"]}, "until": e["until"], "note": e.get("note", "")})
     for s in t.get("surcharges", []):
@@ -289,25 +311,47 @@ def convert_rows(b, t, motor):
     if not t.get("rows"):
         return {}
     roads = b.obj({"id": "roads", "type": "network", "network": {"description": t.get("tolled_roads", "")}})
+
+    def road_obj(road):
+        return b.obj({"id": "road:" + road, "type": "network", "parents": [roads],
+                      "network": {"road_types": ["motorway" if road == "motorway" else "other"]}})
+
+    def area_obj(area):
+        return b.obj({"id": "road:" + area, "type": "network", "parents": [roads], "network": {"area": area}})
+
+    # Road type and area are two independent dimensions: a km is on one road type and in one area, so the
+    # cells "road:<type>:<area>" have both as parents and reach the rows of each.
+    road_types = sorted({r.get("road") for r in t["rows"] if r.get("road")} | ({"motorway"} if any(r.get("operator") for r in t["rows"]) else set()))
+    areas = sorted({r.get("area") for r in t["rows"] if r.get("area")})
+    for rt in road_types:
+        for area in areas:
+            b.obj({"id": f"road:{rt}:{area}", "type": "network", "parents": [road_obj(rt), area_obj(area)],
+                   "network": {"road_types": ["motorway" if rt == "motorway" else "other"], "area": area}})
     groups = {}
     for r in t["rows"]:
         road, area, op = r.get("road", ""), r.get("area", ""), r.get("operator", "")
-        oid = roads
-        if road:
-            oid = b.obj({"id": "road:" + road, "type": "network", "parent": oid,
-                         "network": {"road_types": ["motorway" if road == "motorway" else "other"]}})
-        if area:
-            oid = b.obj({"id": f"{oid}:{area}" if oid != roads else f"road:{area}", "type": "network", "parent": oid,
-                         "network": {"area": area}})
-        if op:
+        if r["component"] == "env_zone_surcharge":
+            # Charged on the km a trip drives on tolled roads inside environmental zones, given apart.
+            oid = b.obj({"id": "env-zones", "type": "network", "name": "Tolled roads in environmental zones",
+                         "network": {"description": t.get("env_zone_surcharge", "Tolled roads in environmental zones")}})
+        elif op:  # an operator's rows apply to motorway km on its ways
+            oid = road_obj("motorway")
             parts = op.split("|")
             for n in range(1, len(parts) + 1):
-                o = {"id": "op:" + "|".join(parts[:n]), "type": "network", "parent": oid, "operator": parts[0]}
+                o = {"id": "op:" + "|".join(parts[:n]), "type": "network", "parents": [oid], "operator": parts[0]}
                 if n >= 2:
                     o["road"] = parts[1]
                 if n == 3:
                     o["name"] = parts[2]
                 oid = b.obj(o)
+        elif road and area:
+            oid = f"road:{road}:{area}"
+        elif road:
+            oid = road_obj(road)
+        elif area:
+            oid = area_obj(area)
+        else:
+            oid = roads
         groups.setdefault(r["component"], {}).setdefault(oid, []).append(r)
 
     out = {}
@@ -361,7 +405,8 @@ def convert_system(b, i, s):
     etc, night = s.get("etc_prices") or {}, s.get("night_prices") or {}
     tnight = b.time_class(f"sys{i}-night", times=hours(s["night_hours"]), label="Night tariff") if s.get("night_hours") else None
     rows, odd, unplaced = [], {}, set()
-    for table, extra in ((s["prices"], {}), (etc, {"user_class": "electronic"}), (night, {"time_class": tnight})):
+    # At night the night prices replace both the prices and the electronic prices.
+    for table, extra in ((s["prices"], {}), (etc, {"user_class": "electronic"}), (night, {"time_class": tnight, "priority": 1})):
         if table is etc and etc:
             b.electronic()
         for key in sorted(table):
@@ -378,7 +423,7 @@ def convert_system(b, i, s):
                              "amount": dec(price)})
     if s.get("free_hours"):
         tfree = b.time_class(f"sys{i}-free", times=hours(s["free_hours"]), label="No charge")
-        rows.append({"time_class": tfree, "priority": 1, "amount": "0"})
+        rows.append({"time_class": tfree, "priority": 2, "amount": "0"})
     ch = {"id": cid, "name": s["name"], "type": "od", "component": "unspecified", "unit": "trip",
           "pairing": "chain" if s.get("chain") else "single_ticket"}
     if s.get("law"):
@@ -387,21 +432,109 @@ def convert_system(b, i, s):
         ch["directed"] = True
     if s.get("chain"):
         b.features.add("type.od.chain")
+    if s.get("discounts") and all(Decimal(r["amount"]).as_tuple().exponent >= -2 for r in rows):
+        # carbon-cost rounds a discounted price to the cent; with whole-cent prices that is the same as
+        # rounding every line.
+        ch["rounding"] = {"increment": "0.01", "mode": "half_up", "stage": "line"}
     b.charge(ch, rows)
     for d in s.get("discounts", []):
         p = {"name": d["name"], "percent": dec(d["percent"])}
         if d.get("etc"):
             p["payment"] = ["electronic"]
-        crit = clean({"euro_class": [str(e) for e in d.get("euro", [])], "co2_class": d.get("co2_class")})
-        if crit:
-            p["criteria"] = crit
+        # carbon-cost: a discount with both lists applies to a truck in either (Discount.Applies)
+        alts = [c for c in ({"euro_class": euro_list(d.get("euro", []))}, {"co2_class": d.get("co2_class")})
+                if any(c.values())]
+        if len(alts) == 2:
+            p["criteria"] = {"any_of": alts}
+            b.features.add("criteria.any_of")
+        elif alts:
+            p["criteria"] = alts[0]
         b.rule("discount", [cid], p)
     if unplaced:
         b.partial(cid, f"{len(unplaced)} stations in the tariff aren't placed on the map; their pairs can't be matched to a route")
+        for name in sorted(unplaced):
+            b.partial(stations[name], "the tariff prices this station but no source places it")
     if odd:
         b.ext.setdefault("closed_system_prices_not_mapped", {})[s["name"]] = odd
         b.partial(cid, "some prices name a vehicle group the system doesn't list; kept as an extension")
     return cid
+
+
+# Swedish congestion tax days (Lag 2004:629), reckoned as carbon-cost's rates/congestion.go does, listed to
+# CALENDAR_TO; a passage after it is reported incomplete (spec 6.7).
+CALENDAR_TO = "2035-12-31"
+
+
+def easter_sunday(y):
+    """Anonymous Gregorian algorithm, as congestion.go."""
+    a, b, c = y % 19, y // 100, y % 100
+    d, e = b // 4, b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    return date(y, (h + l - 7 * m + 114) // 31, (h + l - 7 * m + 114) % 31 + 1)
+
+
+def se_holidays(y):
+    """The public holidays of Lag (1989:253) other than ordinary Sundays (congestion.go's SwedishHolidays)."""
+    e = easter_sunday(y)
+
+    def saturday_from(m, d):
+        x = date(y, m, d)
+        return x + timedelta((5 - x.weekday()) % 7)
+    return {"new_year": date(y, 1, 1), "epiphany": date(y, 1, 6), "good_friday": e - timedelta(2), "easter": e,
+            "easter_monday": e + timedelta(1), "may_1": date(y, 5, 1), "ascension": e + timedelta(39),
+            "pentecost": e + timedelta(49), "june_6": date(y, 6, 6), "midsummer": saturday_from(6, 20),
+            "all_saints": saturday_from(10, 31), "christmas": date(y, 12, 25), "boxing_day": date(y, 12, 26)}
+
+
+def se_taxed(c, d):
+    """congestion.go's Congestion.Taxed."""
+    if d.weekday() >= 5 or d in se_holidays(d.year).values():
+        return False
+    n = d + timedelta(1)
+    if any(h == n and k not in c.get("eve_taxed", []) for k, h in se_holidays(n.year).items()):
+        return False
+    if d.month == 7 and c.get("july") == "free":
+        return False
+    if d.month == 7 and c.get("july") == "first5" and sum(date(d.year, 7, x).weekday() < 5 for x in range(1, d.day + 1)) > 5:
+        return False
+    return True
+
+
+def se_high(c, d):
+    """congestion.go's Congestion.High."""
+    def md(x):
+        if x == "midsummer_eve-1":
+            return se_holidays(d.year)["midsummer"] - timedelta(2)
+        return date(d.year, int(x[:2]), int(x[3:]))
+    return any(md(a) <= d <= md(z) for a, z in c.get("high_season", []))
+
+
+def congestion_days(b, t):
+    """The calendar of weekdays without the tax, and the high season as date ranges, from the table's start."""
+    if not hasattr(b, "_congestion_days"):
+        c = t["congestion"]
+        d, end = date.fromisoformat(t["valid_from"]), date.fromisoformat(min(t.get("valid_to") or CALENDAR_TO, CALENDAR_TO))
+        free, high, run = [], [], None
+        while d <= end:
+            if d.weekday() < 5 and not se_taxed(c, d):
+                free.append(d.isoformat())
+            if se_high(c, d):
+                run = [run[0], d.isoformat()] if run else [d.isoformat(), d.isoformat()]
+            elif run:
+                high.append(run)
+                run = None
+            d += timedelta(1)
+        if run:
+            high.append(run)
+        cal = b.calendar("no-tax", "Weekdays without the tax: public holidays, the days before them and July as the act says",
+                         free, end.isoformat())
+        b._congestion_days = (cal, high)
+    return b._congestion_days
 
 
 def convert_points(b, t, systems, motor):
@@ -427,22 +560,31 @@ def convert_points(b, t, systems, motor):
             sched = cong.get("schedules", {}).get(p["schedule"])
             if sched is None:
                 b.partial(oid, f"schedule {p['schedule']} isn't in the table")
+            no_tax, high = congestion_days(b, t)
             for ta in sched or []:
-                tc = b.time_class(f"{p['schedule']}-{ta['from'].replace(':', '')}", days=[{"weekdays": [1, 2, 3, 4, 5]}],
-                                  times=[[ta["from"], plus_minute(ta["to"])]])
+                hint, times = f"{p['schedule']}-{ta['from'].replace(':', '')}", [[ta["from"], plus_minute(ta["to"])]]
+                split = high and ta.get("high") and ta["high"] != ta["amount"]
+                tc = b.time_class(hint, times=times, days=[{"weekdays": [1, 2, 3, 4, 5], "exclude": clean(
+                    {"calendars": [no_tax], "date_ranges": high if split else None})}])
                 rows.append({"object": oid, "time_class": tc, "amount": dec(ta["amount"])})
+                if split:
+                    th = b.time_class(hint + "-high", times=times, days=[{"weekdays": [1, 2, 3, 4, 5], "date_ranges": high,
+                                                                          "exclude": {"calendars": [no_tax]}}])
+                    rows.append({"object": oid, "time_class": th, "amount": dec(ta["high"])})
             sched_points.append(oid)
         elif p.get("classes"):
             ids = b.class_set("pt-", [(criteria_of(c, motor), None, None) for c in p["classes"]])
             for cid, c in zip(ids, p["classes"]):
                 base = {"object": oid, "vehicle_class": cid}
                 rows.append({**base, "amount": dec(c["rate"])})
-                variants = [("etc_rate", None, True), ("high_rate", thigh, False), ("high_etc_rate", thigh, True),
-                            ("night_rate", tnight, False), ("night_etc_rate", tnight, True)]
-                for key, tc, etc in variants:
+                # The night rate replaces the day's (electronic or high-season) rate.
+                variants = [("etc_rate", None, True, None), ("high_rate", thigh, False, None),
+                            ("high_etc_rate", thigh, True, None), ("night_rate", tnight, False, 1),
+                            ("night_etc_rate", tnight, True, 1)]
+                for key, tc, etc, prio in variants:
                     if c.get(key) and (tc or key == "etc_rate"):
                         rows.append({**base, "time_class": tc, "user_class": b.electronic() if etc else None,
-                                     "amount": dec(c[key])})
+                                     "priority": prio, "amount": dec(c[key])})
         else:
             rows.append({"object": oid, "amount": dec(p["rate"])})
             if p.get("peak_rate"):
@@ -452,11 +594,11 @@ def convert_points(b, t, systems, motor):
                 peak += 1
         if p.get("free_hours"):
             tfree = b.time_class("free", times=hours(p["free_hours"]), label="No charge")
-            rows.append({"object": oid, "time_class": tfree, "priority": 1, "amount": "0"})
+            rows.append({"object": oid, "time_class": tfree, "priority": 2, "amount": "0"})
         kind = "congestion" if p.get("schedule") else "toll"
         by_window.setdefault((kind, p.get("valid_from") or "", p.get("valid_to") or ""), []).extend(rows)
         if p.get("group"):
-            groups.setdefault((p["group"], p.get("group_minutes", 0)), []).append(oid)
+            groups.setdefault((p["group"], p.get("group_minutes") or 60), []).append(oid)  # cost.go's default
 
     ids = {}
     for (kind, vf, vt), rows in sorted(by_window.items()):
@@ -480,17 +622,19 @@ def convert_points(b, t, systems, motor):
         b.partial("rush-hours", f"{peak} toll points charge more in rush hours, whose hours aren't in the source table")
     if cong:
         cids = ids.get("congestion", [])
-        if cong.get("day_cap"):
+        _, high = congestion_days(b, t)
+        if cong.get("day_cap") and cong.get("day_cap_high") and high:
+            low_tc = b.time_class("outside-high-season", days=[{"exclude": {"date_ranges": high}}], label="Outside the high season")
+            high_tc = b.time_class("congestion-high-season", days=[{"date_ranges": high}], label="High season")
+            b.rule("cap", cids, {"per": "day", "amount": dec(cong["day_cap"]), "time_class": low_tc})
+            b.rule("cap", cids, {"per": "day", "amount": dec(cong["day_cap_high"]), "time_class": high_tc})
+        elif cong.get("day_cap"):
             b.rule("cap", cids, {"per": "day", "amount": dec(cong["day_cap"])})
         if cong.get("multi_pass_minutes"):
             b.rule("passage_group", cids, {"objects": sched_points, "minutes": cong["multi_pass_minutes"], "pays": "highest"})
-        rest = {k: v for k, v in cong.items() if k not in ("schedules", "day_cap", "multi_pass_minutes")}
-        highs = {n: [{"from": ta["from"], "to": ta["to"], "high": ta["high"]} for ta in s if ta.get("high")]
-                 for n, s in cong.get("schedules", {}).items()}
-        if any(highs.values()):
-            rest["schedules_high_season"] = {n: s for n, s in highs.items() if s}
-        b.keep("congestion", rest, "the congestion tax's untaxed days (public holidays, their eves, July) and "
-               "high-season amounts are kept as an extension; its time classes cover Monday to Friday")
+        unknown = set(cong) - {"schedules", "day_cap", "day_cap_high", "multi_pass_minutes", "high_season", "july", "eve_taxed"}
+        if unknown:
+            b.keep("congestion", {k: cong[k] for k in sorted(unknown)}, f"congestion parameters {sorted(unknown)} aren't converted")
 
 
 # Slovenia's nine emission columns as carbon-cost's Section.Amount picks them, in matching order:
@@ -515,12 +659,12 @@ def convert_sections(b, secs):
     at, si, tnight = None, None, None
     rows, rows_si = [], []
     for s in secs["list"]:
-        parent = None
-        if s.get("area") or s.get("tier"):
-            area = b.obj({"id": f"area:{s.get('area') or 'none'}", "type": "network",
-                          "network": {"area": s["area"]} if s.get("area") else None})
-            parent = b.obj({"id": f"group:{s.get('area') or 'none'}:{s.get('tier') or 'none'}", "type": "network", "parent": area})
-        oid = b.obj({"id": "sec:" + s["id"], "type": "section", "parent": parent, "name": s["name"], "road": s["road"],
+        parents = []
+        if s.get("area"):
+            parents.append(b.obj({"id": f"area:{s['area']}", "type": "network", "network": {"area": s["area"]}}))
+        if s.get("tier"):
+            parents.append(b.obj({"id": f"tier:{s['tier']}", "type": "network", "name": f"Sections of surcharge tier {s['tier']}"}))
+        oid = b.obj({"id": "sec:" + s["id"], "type": "section", "parents": parents, "name": s["name"], "road": s["road"],
                      "from": place(s["from"]), "to": place(s["to"]), "length_km": s.get("km")})
         for g, cols in (s.get("tariff") or {}).items():
             at = at or b.class_set("sec-", [({"train_axles": ax, "co2_class": tariff_groups[gg]}, f"{gg} {lab}", None)
@@ -542,10 +686,6 @@ def convert_sections(b, secs):
         b.charge({"id": "sections", "type": "section", "component": "infrastructure", "unit": "use", "method": method}, rows)
     if rows_si:
         b.charge({"id": "sections-si", "type": "section", "component": "infrastructure", "unit": "use", "method": method}, rows_si)
-    tier_groups = {}
-    for o in b.objects:
-        if o["id"].startswith("group:"):
-            tier_groups.setdefault(o["id"].split(":")[2], []).append(o["id"])
     for pk in secs.get("per_km", []):
         orct_comp, label = component(pk["component"])
         prow = []
@@ -560,8 +700,8 @@ def convert_sections(b, secs):
             ids = b.class_set("si-tier-", [({"train_axles": ax}, tc, None) for tc, ax in SI_TOLL])
             for k, v in sorted(pk["rates"].items()):
                 tc, tier = k.split("/")
-                for g in tier_groups.get(tier, []):
-                    prow.append({"object": g, "vehicle_class": ids[[x for x, _ in SI_TOLL].index(tc)], "amount": dec(v)})
+                prow.append({"object": b.obj({"id": f"tier:{tier}", "type": "network", "name": f"Sections of surcharge tier {tier}"}),
+                             "vehicle_class": ids[[x for x, _ in SI_TOLL].index(tc)], "amount": dec(v)})
         else:
             b.partial("dataset", f"per-km charge {pk['component']} uses an unknown key {pk['key']}")
             continue
@@ -599,11 +739,11 @@ def convert_zone(z, path):
             b.partial("zone", "a hole of the zone lies in none of its polygons and was left out")
     b.obj({"id": "zone", "type": "area", "name": z["name"], "location": {"geometry": {"type": "MultiPolygon", "coordinates": polys}}})
     classes, amounts, top = [], [], z.get("exempt_euro") or 7
-    if z.get("exempt_euro"):
-        classes.append(({"euro_class": [str(e) for e in range(z["exempt_euro"], 7)]}, None, None))
+    if z.get("exempt_euro"):  # this standard or a later one pays nothing
+        classes.append(({"euro_class": euro_list(range(z["exempt_euro"], 7), or_later=True)}, None, None))
         amounts.append("0")
     for e in sorted(z.get("euro_charges", []), key=lambda e: -e["min_euro"]):
-        classes.append(({"euro_class": [str(n) for n in range(e["min_euro"], top)]}, None, None))
+        classes.append(({"euro_class": euro_list(range(e["min_euro"], top), or_later=top == 7)}, None, None))
         amounts.append(dec(e["charge"]))
         top = e["min_euro"]
     classes.append(({}, None, None))

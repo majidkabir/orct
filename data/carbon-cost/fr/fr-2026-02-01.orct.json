@@ -47827,6 +47827,41 @@
    "scope": "system1",
    "status": "partial",
    "reason": "7 stations in the tariff aren't placed on the map; their pairs can't be matched to a route"
+  },
+  {
+   "scope": "st1:CHALONS LA VEUVE",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:CHALONS MOURMELON",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:GIDY",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:LA FOLIE-B/PARIS",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MARTIN BELLEVUE A41 N",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MICHEL MAURIENNE BAR",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
+  },
+  {
+   "scope": "st1:ST MICHEL MAURIENNE ECH",
+   "status": "partial",
+   "reason": "the tariff prices this station but no source places it"
   }
  ]
 }

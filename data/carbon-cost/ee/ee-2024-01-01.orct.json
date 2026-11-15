@@ -80,7 +80,7 @@
       "train_axles": {
        "min": 4
       },
-      "euro_class": ["4", "5"]
+      "euro_class": ["4", "5", "EEV"]
      }
     },
     {
@@ -137,7 +137,7 @@
       "train_axles": {
        "max": 3
       },
-      "euro_class": ["4", "5"]
+      "euro_class": ["4", "5", "EEV"]
      }
     },
     {

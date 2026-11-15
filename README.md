@@ -18,7 +18,8 @@ Everyone who prices a trip rebuilds each scheme by hand.
 
 ORCT encodes the ISO 17575-3 concept model (charge objects; vehicle, time and
 user classes; tariff tables; rounding) as open JSON. It extends that model to
-every charging principle in use, and adds exact money, tax basis, provenance,
+what ISO 17575-3 leaves out (closed entry–exit systems, vignettes bought for a
+period, carbon prices on fuel), and adds exact money, tax basis, provenance,
 coverage and a calculation every implementation must agree on.
 [docs/decisions.md](docs/decisions.md) gives the reasons for each choice.
 
@@ -26,7 +27,8 @@ coverage and a calculation every implementation must agree on.
 
 A dataset holds one toll scheme for one validity period. Each charge is a rate
 table: key columns (charge object, vehicle class, time class, user class,
-product) and an amount. The most specific matching row wins.
+product) and an amount. The most specific matching row wins, unless a row's
+`priority` says otherwise.
 
 | Charge type | Prices | Example |
 | --- | --- | --- |
@@ -35,7 +37,7 @@ product) and an amount. The most specific matching row wins.
 | `od` | a trip in a closed system, by entry and exit | French autoroutes, Sicily's A18 and A20 |
 | `point` | each passage of a barrier, gantry, bridge or cordon point | Milan's ring roads, Norway's AutoPASS |
 | `area` | each day in a zone | London's Congestion Charge |
-| `period` | a vignette product (`P1D`, `P7D` ...) | Eurovignette countries |
+| `period` | a vignette product (`P1D`, `P7D` ...) | time-based user charges |
 | `quantity` | tonnes of CO2 or litres of fuel | national CO2 taxes on fuel |
 
 Rules cover exemptions, discounts, factors, passage groups, minimums and caps.
@@ -54,8 +56,11 @@ reports an incomplete total instead of a wrong one.
 | [data/carbon-cost/](data/carbon-cost/) | 208 datasets for 35 countries, converted from [carbon-cost](https://github.com/majidkabir/carbon-cost) |
 | [tools/validate.py](tools/validate.py) | Validates datasets: schema, references, row keys |
 | [tools/orct_calc.py](tools/orct_calc.py) | Reference calculator |
-| [tests/vectors/](tests/vectors/) | Conformance vectors: 24 for every feature, 12 from official tariffs |
-| [tools/convert_carbon_cost.py](tools/convert_carbon_cost.py), [tools/check_lossless.py](tools/check_lossless.py) | The conversion, and the check that it keeps every price |
+| [tests/vectors/](tests/vectors/) | Conformance vectors: 28 covering every feature, 12 from official tariffs |
+| [tools/convert_carbon_cost.py](tools/convert_carbon_cost.py) | The conversion from carbon-cost |
+| [tools/check_lossless.py](tools/check_lossless.py) | Checks the conversion kept every price |
+| [tools/oracle/](tools/oracle/), [tools/check_oracle.py](tools/check_oracle.py) | Prices about 1.1 million cases with carbon-cost's own engine and with ORCT's reference calculator, and reports any difference |
+| [tests/smoke.py](tests/smoke.py) | Prices one use of every charge in every dataset |
 
 ## Use
 
@@ -74,7 +79,8 @@ finding them from a route (map matching) is out of scope, as in ISO 17575.
 `data/carbon-cost/` is generated, not edited. The
 [data workflow](.github/workflows/data.yml) converts carbon-cost's `main`
 every day and on every change here. It validates the result, checks that no
-price was lost, runs the vectors and commits.
+price was lost, compares a sample of cases with carbon-cost's own engine, runs
+the vectors and commits.
 [data/carbon-cost/index.json](data/carbon-cost/index.json) lists every
 dataset, its validity, coverage, and the carbon-cost commit it came from.
 
@@ -86,6 +92,6 @@ would let national access points publish it under Reg. (EU) 2022/670.
 
 ## Licence
 
-Specification text CC BY 4.0, schemas and code [MIT](LICENSE). Each dataset
+Specification text CC BY 4.0 ([LICENSE-SPEC.md](LICENSE-SPEC.md)), schemas and code [MIT](LICENSE). Each dataset
 states its own licence; the carbon-cost data is MIT, from the public acts and
 tariffs each dataset cites.

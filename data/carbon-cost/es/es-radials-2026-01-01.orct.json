@@ -774,7 +774,7 @@
     ["st1:NII-Taracena > Guadalajara Norte", "st1:Meco > Alcala", "sys1-1.Pesados-2", "electronic", null, null, "6.3223"],
     ["st1:NII-Taracena > Guadalajara Norte", "st1:NII-Taracena > Guadalajara Norte", "sys1-1.Pesados-1", "electronic", null, null, "0"],
     ["st1:NII-Taracena > Guadalajara Norte", "st1:NII-Taracena > Guadalajara Norte", "sys1-1.Pesados-2", "electronic", null, null, "0"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
    "basis": "transcribed"
@@ -926,7 +926,7 @@
     ["st2:Madrid / M-40 / M-602 > M-45", "st2:M-50 > M-208 Mejorada/Velilla", "sys1-1.Pesados-2", "electronic", null, null, "1.405"],
     ["st2:Madrid / M-40 / M-602 > M-45", "st2:Madrid / M-40 / M-602 > M-45", "sys1-1.Pesados-1", "electronic", null, null, "0.5372"],
     ["st2:Madrid / M-40 / M-602 > M-45", "st2:Madrid / M-40 / M-602 > M-45", "sys1-1.Pesados-2", "electronic", null, null, "0.7438"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
    "basis": "transcribed"
@@ -1006,7 +1006,7 @@
     ["st3:Valdemoro > Seseña", "st3:Seseña > Aranjuez", "sys1-1.Pesados-2", "electronic", null, null, "3.4298"],
     ["st3:Valdemoro > Seseña", "st3:Valdemoro > Seseña", "sys1-1.Pesados-1", "electronic", null, null, "1.2397"],
     ["st3:Valdemoro > Seseña", "st3:Valdemoro > Seseña", "sys1-1.Pesados-2", "electronic", null, null, "1.7355"],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
    "basis": "transcribed"
@@ -1846,7 +1846,7 @@
      null,
      "1.5702"
     ],
-    [null, null, null, null, "sys1-free", 1, "0"]
+    [null, null, null, null, "sys1-free", 2, "0"]
    ],
    "sources": ["s1", "s2", "s3", "s4", "s5"],
    "basis": "transcribed"
