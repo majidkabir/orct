@@ -170,6 +170,9 @@ func pointCases(tb rates.Table, from time.Time) {
 				days = append(days, c)
 			}
 		}
+		if p.Rush != nil && p.PeakRate > 0 {
+			days = rushDays(tb, p, d)
+		}
 		trucks := small
 		if len(p.Classes) == 0 {
 			trucks = small[:1]
@@ -183,6 +186,9 @@ func pointCases(tb rates.Table, from time.Time) {
 		ts := []string{"12:00"}
 		if len(p.NightHours) == 2 || len(p.FreeHours) == 2 {
 			ts = times
+		}
+		if p.Rush != nil && p.PeakRate > 0 {
+			ts = rushTimes(p.Rush)
 		}
 		if p.Schedule != "" {
 			ts = []string{"05:59", "06:00", "06:29", "06:30", "07:00", "08:29", "08:30", "09:30", "15:00", "15:29", "15:30", "17:59", "18:00", "18:29", "18:30", "19:00"}
@@ -202,9 +208,13 @@ func pointCases(tb rates.Table, from time.Time) {
 
 // groupCases prices two passages of a group of toll points (the hour rule)
 // as cost.go does: a passage that costs nothing is skipped, and after a paid
-// passage the group's points are free for its minutes.
+// passage the group's points are free for its minutes, or charge what their
+// price exceeds the window's where the group pays the highest.
 func groupCases(tb rates.Table, from time.Time) {
-	type key struct{ g, mins int }
+	type key struct {
+		g, mins int
+		pays    string
+	}
 	groups := map[key][]int{}
 	var keys []key
 	for j, p := range tb.TollPoints {
@@ -215,7 +225,7 @@ func groupCases(tb rates.Table, from time.Time) {
 		if mins == 0 {
 			mins = 60
 		}
-		k := key{p.Group, mins}
+		k := key{p.Group, mins, p.GroupPays}
 		if _, ok := groups[k]; !ok {
 			keys = append(keys, k)
 		}
@@ -225,11 +235,27 @@ func groupCases(tb rates.Table, from time.Time) {
 	for _, k := range keys {
 		days := []time.Time{from}
 		seen := map[string]bool{from.Format(time.DateOnly): true}
+		var rush *rates.Rush
 		for _, j := range groups[k] {
 			if v := tb.TollPoints[j].ValidFrom; v != "" && !seen[v] && day(v).After(from) && len(days) < 3 {
 				seen[v] = true
 				days = append(days, day(v))
 			}
+			if p := tb.TollPoints[j]; p.Rush != nil && p.PeakRate > p.Rate && rush == nil {
+				rush = p.Rush
+			}
+		}
+		// Where the group has rush hours: a weekday with them, and passages
+		// from half an hour before they start.
+		starts := []int{12 * 60}
+		if rush != nil {
+			for c := from; c.Before(from.AddDate(0, 0, 30)); c = c.AddDate(0, 0, 1) {
+				if in, _, _ := rush.In(c.Add(time.Duration(rushStart(rush)) * time.Minute)); in && !seen[c.Format(time.DateOnly)] {
+					days = append(days, c)
+					break
+				}
+			}
+			starts = append(starts, rushStart(rush)-30)
 		}
 		for _, d := range days {
 			if tb.ValidTo != "" && d.After(day(tb.ValidTo)) {
@@ -261,24 +287,40 @@ func groupCases(tb rates.Table, from time.Time) {
 					if a.Name == b.Name {
 						continue // cost.go pays one station's booths once; that is map matching
 					}
-					for _, dm := range []int{k.mins - 1, k.mins, k.mins + 1} {
-						hm := []string{"12:00", time.Date(2000, 1, 1, 12, dm, 0, 0, time.UTC).Format("15:04")}
-						total, start, started := 0.0, 0, false
-						for n, j := range pr {
-							r, _ := pointAmount(tb, tb.TollPoints[j], t.rates(), false, d, hm[n]).(float64)
-							m := 12*60 + n*dm
-							if r == 0 || (started && m-start < k.mins) {
-								continue
+					for _, st := range starts {
+						for _, dm := range []int{k.mins - 1, k.mins, k.mins + 1} {
+							clock := func(m int) string { return time.Date(2000, 1, 1, 0, m, 0, 0, time.UTC).Format("15:04") }
+							hm := []string{clock(st), clock(st + dm)}
+							total, high, start, started := 0.0, 0.0, 0, false
+							for n, j := range pr {
+								r, _ := pointAmount(tb, tb.TollPoints[j], t.rates(), false, d, hm[n]).(float64)
+								m := st + n*dm
+								if r == 0 {
+									continue
+								}
+								if started && m-start < k.mins {
+									if k.pays == "highest" && r > high {
+										total, high = total+r-high, r
+									}
+									continue
+								}
+								total, high, start, started = total+r, r, m, true
 							}
-							total, start, started = total+r, m, true
+							emit(map[string]any{"kind": "group", "file": tb.File, "truck": t, "date": d.Format(time.DateOnly),
+								"passes": [][2]any{{pr[0] + 1, hm[0]}, {pr[1] + 1, hm[1]}}, "amount": total})
 						}
-						emit(map[string]any{"kind": "group", "file": tb.File, "truck": t, "date": d.Format(time.DateOnly),
-							"passes": [][2]any{{pr[0] + 1, hm[0]}, {pr[1] + 1, hm[1]}}, "amount": total})
 					}
 				}
 			}
 		}
 	}
+}
+
+// rushStart is the minute of the day the first rush window starts.
+func rushStart(r *rates.Rush) int {
+	var h, m int
+	fmt.Sscanf(r.Hours[0][0], "%d:%d", &h, &m)
+	return h*60 + m
 }
 
 // congestionCases prices one passage every day to 2035 (the tax's days and
@@ -406,7 +448,70 @@ func pointAmount(tb rates.Table, p rates.TollPoint, t rates.Truck, etc bool, d t
 			}
 		}
 	}
+	if p.PeakRate > rate && len(p.Classes) == 0 && p.Rush != nil {
+		var h, m int
+		fmt.Sscanf(at, "%d:%d", &h, &m)
+		in, _, err := p.Rush.In(time.Date(d.Year(), d.Month(), d.Day(), h, m, 0, 0, time.UTC))
+		if err != nil {
+			return fmt.Sprint(err)
+		}
+		if in {
+			rate = p.PeakRate
+		}
+	}
 	return rate
+}
+
+// rushDays are days probing a point's rush hours: the first in force on a
+// weekday with rush, a Saturday, a weekday without (a holiday or its eve)
+// and, where the point has none in July, a July weekday.
+func rushDays(tb rates.Table, p rates.TollPoint, from time.Time) []time.Time {
+	var work, sat, free, july time.Time
+	for k := 0; k < 800; k++ {
+		c := from.AddDate(0, 0, k)
+		if !p.InForce(c) || (tb.ValidTo != "" && c.After(day(tb.ValidTo))) {
+			continue
+		}
+		wd := c.Weekday()
+		switch {
+		case wd == time.Saturday:
+			if sat.IsZero() {
+				sat = c
+			}
+		case wd == time.Sunday:
+		case rates.NorwegianRushFree(c) != "":
+			if free.IsZero() {
+				free = c
+			}
+		case c.Month() == time.July:
+			if july.IsZero() {
+				july = c
+			}
+		case work.IsZero():
+			work = c
+		}
+	}
+	var out []time.Time
+	for _, c := range []time.Time{work, sat, free, july} {
+		if !c.IsZero() {
+			out = append(out, c)
+		}
+	}
+	return out
+}
+
+// rushTimes are a point's rush window edges and noon.
+func rushTimes(r *rates.Rush) []string {
+	ts := []string{"12:00"}
+	for _, h := range r.Hours {
+		for _, v := range h {
+			var hh, mm int
+			fmt.Sscanf(v, "%d:%d", &hh, &mm)
+			c := time.Date(2000, 1, 1, hh, mm, 0, 0, time.UTC)
+			ts = append(ts, c.Add(-time.Minute).Format("15:04"), v, c.Add(time.Minute).Format("15:04"))
+		}
+	}
+	return ts
 }
 
 func systemCases(tb rates.Table) {

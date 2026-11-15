@@ -538,6 +538,28 @@ def congestion_days(b, t):
     return b._congestion_days
 
 
+# Norway's weekdays without rush-hour prices (rates.NorwegianRushFree): the
+# public holidays, Christmas Eve, New Year's Eve and the Wednesday before
+# Maundy Thursday, as dates every year and days from Easter Sunday.
+NO_RUSH_FREE = {"dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
+                "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]}
+
+
+def rush_class(b, r):
+    """carbon-cost's Rush (rates/rush.go) as a time class: its hours, Monday to Friday, without its free days."""
+    free = set(r.get("free_days") or [])
+    unknown = free - {"norwegian_holidays", "july"}
+    if unknown:
+        raise SystemExit(f"rush free days {sorted(unknown)} aren't converted")
+    day = {"weekdays": [1, 2, 3, 4, 5]}
+    if "july" in free:
+        day["months"] = [m for m in range(1, 13) if m != 7]
+    if "norwegian_holidays" in free:
+        day["exclude"] = NO_RUSH_FREE
+    label = "Rush hours, Monday to Friday" + (" except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday" if "norwegian_holidays" in free else "") + (", not in July" if "july" in free else "")
+    return b.time_class("rush", days=[day], times=[hours(h)[0] for h in r["hours"]], label=label)
+
+
 def convert_points(b, t, systems, motor):
     points = t.get("toll_points", [])
     if not points:
@@ -588,7 +610,9 @@ def convert_points(b, t, systems, motor):
                                      "priority": prio, "amount": dec(c[key])})
         else:
             rows.append({"object": oid, "amount": dec(p["rate"])})
-            if p.get("peak_rate"):
+            if p.get("peak_rate") and p.get("rush"):
+                rows.append({"object": oid, "time_class": rush_class(b, p["rush"]), "amount": dec(p["peak_rate"])})
+            elif p.get("peak_rate"):
                 tpeak = b.time_class("rush-hours", defined=False, label="Rush hours",
                                      note="The station charges more in rush hours; the hours aren't in the source table.")
                 rows.append({"object": oid, "time_class": tpeak, "amount": dec(p["peak_rate"])})
@@ -599,7 +623,7 @@ def convert_points(b, t, systems, motor):
         kind = "congestion" if p.get("schedule") else "toll"
         by_window.setdefault((kind, p.get("valid_from") or "", p.get("valid_to") or ""), []).extend(rows)
         if p.get("group"):
-            groups.setdefault((p["group"], p.get("group_minutes") or 60), []).append(oid)  # cost.go's default
+            groups.setdefault((p["group"], p.get("group_minutes") or 60, p.get("group_pays") or "first"), []).append(oid)  # cost.go's defaults
 
     ids = {}
     for (kind, vf, vt), rows in sorted(by_window.items()):
@@ -611,8 +635,8 @@ def convert_points(b, t, systems, motor):
         b.charge(ch, rows)
         ids.setdefault(kind, []).append(cid)
     toll_ids = ids.get("toll", [])
-    for (g, minutes), objs in sorted(groups.items()):
-        b.rule("passage_group", toll_ids, {"objects": objs, "minutes": minutes, "pays": "first"})
+    for (g, minutes, pays), objs in sorted(groups.items()):
+        b.rule("passage_group", toll_ids, {"objects": objs, "minutes": minutes, "pays": pays})
     for oid, p in zip(oids, points):
         if p.get("within"):
             if p["within"] in systems:
