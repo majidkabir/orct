@@ -22,12 +22,12 @@ jobs:
   data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with:
           repository: majidkabir/carbon-cost
           path: _carbon-cost
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install jsonschema
@@ -41,7 +41,7 @@ jobs:
         run: python3 tools/gen_schema.py && git diff --exit-code schema
       - name: Check nothing was lost
         run: python3 tools/check_lossless.py _carbon-cost data/carbon-cost
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version-file: _carbon-cost/go.mod
           cache-dependency-path: _carbon-cost/go.sum
