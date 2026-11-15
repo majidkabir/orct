@@ -538,25 +538,32 @@ def congestion_days(b, t):
     return b._congestion_days
 
 
-# Norway's weekdays without rush-hour prices (rates.NorwegianRushFree): the
-# public holidays, Christmas Eve, New Year's Eve and the Wednesday before
-# Maundy Thursday, as dates every year and days from Easter Sunday.
-NO_RUSH_FREE = {"dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-                "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]}
+# Norway's public holidays (rates.NorwegianHoliday) and the eves some
+# projects add (rates.NorwegianEve: Christmas Eve, New Year's Eve, the
+# Wednesday before Maundy Thursday), as dates every year and days from
+# Easter Sunday.
+NO_HOLIDAYS = {"dates": ["01-01", "05-01", "05-17", "12-25", "12-26"], "easter": [[-3, -2], [1, 1], [39, 39], [50, 50]]}
+NO_EVES = {"dates": ["12-24", "12-31"], "easter": [[-4, -4]]}
 
 
 def rush_class(b, r):
     """carbon-cost's Rush (rates/rush.go) as a time class: its hours, Monday to Friday, without its free days."""
     free = set(r.get("free_days") or [])
-    unknown = free - {"norwegian_holidays", "july"}
+    unknown = free - {"norwegian_holidays", "norwegian_eves", "july"}
     if unknown:
         raise SystemExit(f"rush free days {sorted(unknown)} aren't converted")
-    day = {"weekdays": [1, 2, 3, 4, 5]}
+    day, ex, words = {"weekdays": [1, 2, 3, 4, 5]}, {"dates": [], "easter": []}, []
+    for key, sel, word in (("norwegian_holidays", NO_HOLIDAYS, "public holidays"),
+                           ("norwegian_eves", NO_EVES, "Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday")):
+        if key in free:
+            ex["dates"] += sel["dates"]
+            ex["easter"] += sel["easter"]
+            words.append(word)
+    if ex["dates"]:
+        day["exclude"] = {"dates": sorted(ex["dates"]), "easter": sorted(ex["easter"])}
     if "july" in free:
         day["months"] = [m for m in range(1, 13) if m != 7]
-    if "norwegian_holidays" in free:
-        day["exclude"] = NO_RUSH_FREE
-    label = "Rush hours, Monday to Friday" + (" except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday" if "norwegian_holidays" in free else "") + (", not in July" if "july" in free else "")
+    label = "Rush hours, Monday to Friday" + (" except " + " and ".join(words) if words else "") + ("; not in July" if "july" in free else "")
     return b.time_class("rush", days=[day], times=[hours(h)[0] for h in r["hours"]], label=label)
 
 

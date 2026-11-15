@@ -463,10 +463,11 @@ func pointAmount(tb rates.Table, p rates.TollPoint, t rates.Truck, etc bool, d t
 }
 
 // rushDays are days probing a point's rush hours: the first in force on a
-// weekday with rush, a Saturday, a weekday without (a holiday or its eve)
-// and, where the point has none in July, a July weekday.
+// weekday with rush, a Saturday, a weekday public holiday, a weekday eve
+// (Christmas Eve, New Year's Eve, the Wednesday before Maundy Thursday)
+// and a July weekday.
 func rushDays(tb rates.Table, p rates.TollPoint, from time.Time) []time.Time {
-	var work, sat, free, july time.Time
+	var work, sat, hol, eve, july time.Time
 	for k := 0; k < 800; k++ {
 		c := from.AddDate(0, 0, k)
 		if !p.InForce(c) || (tb.ValidTo != "" && c.After(day(tb.ValidTo))) {
@@ -479,9 +480,13 @@ func rushDays(tb rates.Table, p rates.TollPoint, from time.Time) []time.Time {
 				sat = c
 			}
 		case wd == time.Sunday:
-		case rates.NorwegianRushFree(c) != "":
-			if free.IsZero() {
-				free = c
+		case rates.NorwegianHoliday(c) != "":
+			if hol.IsZero() {
+				hol = c
+			}
+		case rates.NorwegianEve(c) != "":
+			if eve.IsZero() {
+				eve = c
 			}
 		case c.Month() == time.July:
 			if july.IsZero() {
@@ -492,7 +497,7 @@ func rushDays(tb rates.Table, p rates.TollPoint, from time.Time) []time.Time {
 		}
 	}
 	var out []time.Time
-	for _, c := range []time.Time{work, sat, free, july} {
+	for _, c := range []time.Time{work, sat, hol, eve, july} {
 		if !c.IsZero() {
 			out = append(out, c)
 		}
