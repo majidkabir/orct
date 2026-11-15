@@ -1,0 +1,364 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-aulesa-2026-01-01",
+  "scheme": "es-aulesa",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "AP-71 León–Astorga (Aulesa)",
+  "method": "The concessionaire's tariffs in force from 1 January 2026, as its tariff sheet gives them by entry and exit: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), the day tariff (07:00 to 23:00) and the night tariff (23:00 to 07:00, by the time the trip enters), excluding 21% IVA. Stations placed at OpenStreetMap's junctions of the exit numbers the sheet's map gives them, and León at the motorway's eastern end; Astorga is priced as San Justo de la Vega (same prices).",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-aulesa-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Abertis Autopistas: AP-71 León–Astorga tariffs 2026",
+   "url": "https://www.autopistas.com/sites/publica/files/2026-11/26_002%20Aulesa%20AP71%20Leon-Astorga%20NOV%20T26.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API), motorway junctions",
+   "url": "https://www.openstreetmap.org/copyright"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-Pesados-1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   },
+   "label": "Pesados 1"
+  },
+  {
+   "id": "c-Pesados-2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "Pesados 2"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-71 León–Astorga."
+  },
+  {
+   "id": "st:1:León",
+   "kind": "station",
+   "name": "León",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -5.639884,
+      42.57088
+     ]
+    ]
+   },
+   "point_names": [
+    "end of the AP-71"
+   ]
+  },
+  {
+   "id": "st:1:Villadangos",
+   "kind": "station",
+   "name": "Villadangos",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -5.74975,
+      42.527119
+     ],
+     [
+      -5.757384,
+      42.520977
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Hospital de Órbigo",
+   "kind": "station",
+   "name": "Hospital de Órbigo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -5.894253,
+      42.452951
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:San Justo de la Vega",
+   "kind": "station",
+   "name": "San Justo de la Vega",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -6.017108,
+      42.439394
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "AP-71",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Hospital de Órbigo",
+    "st:1:León",
+    "st:1:San Justo de la Vega",
+    "st:1:Villadangos"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Hospital de Órbigo",
+     "exit": "st:1:León",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.5041,
+       "night": 2.2727
+      },
+      "c-Pesados-2": {
+       "default": 5.4545,
+       "night": 2.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:Hospital de Órbigo",
+     "exit": "st:1:San Justo de la Vega",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.6446,
+       "night": 1.3223
+      },
+      "c-Pesados-2": {
+       "default": 3.1818,
+       "night": 1.6116
+      }
+     }
+    },
+    {
+     "entry": "st:1:Hospital de Órbigo",
+     "exit": "st:1:Villadangos",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7686,
+       "night": 1.3636
+      },
+      "c-Pesados-2": {
+       "default": 3.3471,
+       "night": 1.6942
+      }
+     }
+    },
+    {
+     "entry": "st:1:León",
+     "exit": "st:1:Hospital de Órbigo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.5041,
+       "night": 2.2727
+      },
+      "c-Pesados-2": {
+       "default": 5.4545,
+       "night": 2.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:León",
+     "exit": "st:1:San Justo de la Vega",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.9008,
+       "night": 3.4298
+      },
+      "c-Pesados-2": {
+       "default": 8.3471,
+       "night": 4.1736
+      }
+     }
+    },
+    {
+     "entry": "st:1:León",
+     "exit": "st:1:Villadangos",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.9421,
+       "night": 0.9504
+      },
+      "c-Pesados-2": {
+       "default": 2.3554,
+       "night": 1.157
+      }
+     }
+    },
+    {
+     "entry": "st:1:San Justo de la Vega",
+     "exit": "st:1:Hospital de Órbigo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.6446,
+       "night": 1.3223
+      },
+      "c-Pesados-2": {
+       "default": 3.1818,
+       "night": 1.6116
+      }
+     }
+    },
+    {
+     "entry": "st:1:San Justo de la Vega",
+     "exit": "st:1:León",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.9008,
+       "night": 3.4298
+      },
+      "c-Pesados-2": {
+       "default": 8.3471,
+       "night": 4.1736
+      }
+     }
+    },
+    {
+     "entry": "st:1:San Justo de la Vega",
+     "exit": "st:1:Villadangos",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.1653,
+       "night": 2.562
+      },
+      "c-Pesados-2": {
+       "default": 6.2397,
+       "night": 3.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Villadangos",
+     "exit": "st:1:Hospital de Órbigo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7686,
+       "night": 1.3636
+      },
+      "c-Pesados-2": {
+       "default": 3.3471,
+       "night": 1.6942
+      }
+     }
+    },
+    {
+     "entry": "st:1:Villadangos",
+     "exit": "st:1:León",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.9421,
+       "night": 0.9504
+      },
+      "c-Pesados-2": {
+       "default": 2.3554,
+       "night": 1.157
+      }
+     }
+    },
+    {
+     "entry": "st:1:Villadangos",
+     "exit": "st:1:San Justo de la Vega",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.1653,
+       "night": 2.562
+      },
+      "c-Pesados-2": {
+       "default": 6.2397,
+       "night": 3.1405
+      }
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Aulesa tariffs 2026, including 21% IVA, here excluding it; night tariff 23:00 to 07:00",
+   "directed": true
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "23:00",
+     "06:59"
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-12"
+  }
+ }
+}

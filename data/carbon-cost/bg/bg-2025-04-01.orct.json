@@ -1,0 +1,293 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "bg-2025-04-01",
+  "scheme": "bg",
+  "country": "BG",
+  "currency": "BGN",
+  "valid_from": "2025-04-01",
+  "name": "Bulgarian distance toll (BG TOLL)",
+  "method": "Тарифа за таксите, които се събират за преминаване и ползване на републиканската пътна мрежа (ПМС № 370/2019), чл. 25, ал. 1, т. 1 as amended by Постановление № 20 от 31 март 2025 г. (ДВ бр. 28 от 01.04.2025), in force 1 April to 31 August 2025 (§ 5: т. 2 from 1 September 2025): BGN/km by vehicle category, EURO class and road class. No VAT is charged.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/bg-2025-04-01.json"
+  },
+  "valid_to": "2025-08-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Държавен вестник бр. 28/2025: Постановление № 20 (toll rates of чл. 25, ал. 1, т. 1 and т. 2)",
+   "url": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=233823"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles over 3.5 t technically permissible maximum mass (buses have their own rates)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways and class I roads (about 3,115 km), and tolled class II roads. Km off motorways are priced at the class I rate; class II rates are lower."
+  }
+ ],
+ "charges": [
+  {
+   "id": "infrastructure@road:motorway",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.11,
+    "c2": 0.12,
+    "c3": 0.13,
+    "c4": 0.14,
+    "c5": 0.29,
+    "c6": 0.3,
+    "c7": 0.31,
+    "c8": 0.33,
+    "c9": 0.39,
+    "c10": 0.4,
+    "c11": 0.41,
+    "c12": 0.47
+   }
+  },
+  {
+   "id": "infrastructure@road:other",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.07,
+    "c2": 0.08,
+    "c3": 0.08,
+    "c4": 0.1,
+    "c5": 0.24,
+    "c6": 0.26,
+    "c7": 0.26,
+    "c8": 0.28,
+    "c9": 0.35,
+    "c10": 0.36,
+    "c11": 0.39,
+    "c12": 0.43
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "infrastructure@road:motorway",
+    "infrastructure@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

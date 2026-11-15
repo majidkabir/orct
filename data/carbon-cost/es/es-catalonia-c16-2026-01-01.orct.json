@@ -1,0 +1,237 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-catalonia-c16-2026-01-01",
+  "scheme": "es-catalonia-c16",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Catalonia: C-16 tolls (Túnel del Cadí, Túnels de Vallvidrera, les Fonts, Sant Vicenç de Castellet)",
+  "method": "The Generalitat de Catalunya's toll rates for 2026 (yearly revision by Resolució under Decret 465/2004), category 4 (trucks with more than four wheels, or three axles; trucks over 3.5 t are taken to be), per passage either way, excluding 21% IVA: the Túnel del Cadí; the Túnels de Vallvidrera at the off-peak price (weekdays 7:30-10:30 and 17:00-21:00 cost more, priced off-peak with a note); the C-16 barriers of les Fonts (the weekday price only with Via-T or Satelise, so `etc`; else and at weekends the full price) and Sant Vicenç de Castellet (weekday and weekend prices; public holidays aren't modelled). The C-16 Manresa barrier and the C-32 barriers have no named booths in OpenStreetMap and aren't priced.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-catalonia-c16-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Generalitat de Catalunya: Tarifes de peatges 2026",
+   "url": "https://territori.gencat.cat/ca/03_infraestructures_i_mobilitat/carreteres/peatges-tarifes-descomptes/tarifes-peatges/"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API): toll booths",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Category 4 (here trucks over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "C-16 Túnel del Cadí, Túnels de Vallvidrera, and the barriers of les Fonts (Sant Cugat-Terrassa) and Sant Vicenç de Castellet (Terrassa-Manresa)."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "C-16 Túnel del Cadí",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     1.839159,
+     42.340173
+    ]
+   },
+   "match_km": 0.2
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "C-16 Túnels de Vallvidrera",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.075248,
+     41.437192
+    ]
+   },
+   "match_km": 0.2
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "C-16 les Fonts",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     2.030133,
+     41.517896
+    ]
+   },
+   "match_km": 0.2
+  },
+  {
+   "id": "pt:4",
+   "kind": "point",
+   "name": "C-16 Sant Vicenç de Castellet",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     1.864713,
+     41.651767
+    ]
+   },
+   "match_km": 0.2
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "C-16 Túnel del Cadí",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 31.4959
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "C-16 Túnels de Vallvidrera",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 8.0992
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "C-16 les Fonts",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 5.8264,
+     "electronic": 3.2066,
+     "high_season": 5.8264,
+     "high_season_electronic": 5.8264
+    }
+   }
+  },
+  {
+   "id": "point:4",
+   "name": "C-16 Sant Vicenç de Castellet",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:4"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 4.2231,
+     "high_season": 7.0909
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "partial",
+   "reason": "1 toll points charge a peak rate whose rush hours aren't in the source table"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "name": "high_season",
+    "season": {
+     "weekdays": [
+      0,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:4"
+   ],
+   "params": {
+    "name": "high_season",
+    "season": {
+     "weekdays": [
+      0,
+      6
+     ]
+    }
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

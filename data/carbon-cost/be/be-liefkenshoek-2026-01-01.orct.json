@@ -1,0 +1,123 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "be-liefkenshoek-2026-01-01",
+  "scheme": "be-liefkenshoek",
+  "country": "BE",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Liefkenshoektunnel toll (Antwerp)",
+  "method": "NV Tunnel Liefkenshoek's tariffs 2026: category 2 (vehicles 3 m high or more; trucks over 3.5 t are taken to be) per passage either way, VAT included: EUR 25.00 cash (standaardtarief) 06:01-21:59 and 8.00 22:00-06:00; `etc` the Teletolbadge & OBU price, 17.60 and 4.40 (bank, fuel or credit card: 21.90 and 6.20, not modelled). Without a departure time, the day price.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/be-liefkenshoek-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "NV Tunnel Liefkenshoek: Tarieven & abonnement, and Veelgestelde vragen (categories) (read in Chrome: tools/tables/browser/be-liefkenshoek.txt)",
+   "url": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+  }
+ ],
+ "vehicles": {
+  "description": "Category 2: vehicles 3 m high or more (here: trucks over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Liefkenshoektunnel (R2, Antwerp), charged at its toll plaza either way."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Liefkenshoektunnel",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     4.289465,
+     51.286289
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Liefkenshoektunnel",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": {
+     "default": 25.0,
+     "electronic": 17.6,
+     "night": 8.0,
+     "night_electronic": 4.4
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "06:00"
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

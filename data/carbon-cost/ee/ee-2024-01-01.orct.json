@@ -1,0 +1,202 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "ee-2024-01-01",
+  "scheme": "ee",
+  "country": "EE",
+  "currency": "EUR",
+  "valid_from": "2024-01-01",
+  "name": "Estonian road user charge (teekasutustasu)",
+  "method": "Liiklusseadus § 190^1-190^13; rates in § 190^3 (as amended, RT I, 22.12.2023, 1): a time-based charge in euro for 24 hours, 7, 30, 90 or 365 days, by the summed maximum masses of the truck and trailer (over 3.5 to 12 t, over 12 t), their total axles and the truck's EURO class; the zero-emission rates came into force on 2026-01-01; until then zero-emission trucks paid by EURO class. The table keeps the 24-hour rate. A fee, without VAT.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/ee-2024-01-01.json"
+  },
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Liiklusseadus, version in force (Riigi Teataja)",
+   "url": "https://www.riigiteataja.ee/akt/113032019015?leiaKehtiv"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t maximum mass, with their trailers",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "All public roads (§ 190^1)."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@roads",
+   "type": "period",
+   "component": "toll",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 40,
+    "c2": 30,
+    "c3": 26,
+    "c4": 22,
+    "c5": 13,
+    "c6": 24,
+    "c7": 18,
+    "c8": 16,
+    "c9": 14
+   },
+   "period": "day",
+   "day_basis": "24h"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

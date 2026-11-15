@@ -1,0 +1,147 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "de-herrentunnel-2025-03-01",
+  "scheme": "de-herrentunnel",
+  "country": "DE",
+  "currency": "EUR",
+  "valid_from": "2025-03-01",
+  "name": "Herrentunnel toll (Lübeck)",
+  "method": "Fernstraßenbauprivatfinanzierungsgesetz: the toll of the Herrentunnel Lübeck GmbH & Co. KG, as its Gebührentabelle (valid from 1 March 2025) gives it per passage, by height over the front axle (over 130 cm) and axles: class B (2 axles), C (3), D (4 or more); the cash price, with `etc` the Quick-Box/RFID price. Trucks over 3.5 t are taken to be over 130 cm.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/de-herrentunnel-2025-03-01.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Herrentunnel: Gebührentabelle (gültig ab 01.03.2025)",
+   "url": "https://www.herrentunnel.de/index.php/maut-tarife/maut-tarife-2.html"
+  },
+  {
+   "id": "s2",
+   "title": "Herrentunnel: the toll table image, as transcribed in tools/tables/transcribed/de-herrentunnel-2025.json",
+   "url": "https://www.herrentunnel.de/public/img/content/Gebuehrentabelle_2025.png"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 130 cm high at the front axle (here: trucks over 3.5 t), by axles",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Herrentunnel (B 104/B 75 Lübeck-Travemünde), charged at its toll plaza either way."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Herrentunnel",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.759392,
+     53.898345
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Herrentunnel",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 4.3,
+     "electronic": 3.52
+    },
+    "c2": {
+     "default": 11.1,
+     "electronic": 9.15
+    },
+    "c3": {
+     "default": 17.6,
+     "electronic": 14.6
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-11"
+  }
+ }
+}

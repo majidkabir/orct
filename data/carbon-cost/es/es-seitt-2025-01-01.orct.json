@@ -1,0 +1,1178 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-seitt-2025-01-01",
+  "scheme": "es-seitt",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2025-01-01",
+  "name": "Spanish state toll motorways (SEITT)",
+  "method": "Acuerdo del Consejo de Ministros de 3 de diciembre de 2024 (BOE 18/12/2024), SEITT's tariff regime for 2025-2032: SEITT's 2025 tariffs by entry and exit, Pesados 1 (two or three axles) and Pesados 2 (four or more), cash prices, tag prices for trucks paying by Vía-T (etc), excluding 21% IVA; free from 00:00 to 06:00. Stations placed at OpenStreetMap's toll booths of their name (extract of 2026-11-08); 4 stations without one aren't priced. Only SEITT's AP-36, AP-41 and AP-7 Cartagena–Vera (not the Madrid radials or M-12); the concessions are separate tables (AP-6, AP-51 and AP-61; AP-71; AP-7 Málaga–Guadiaro; AP-66; AP-46; AP-7 Alicante–Cartagena) or not included (AP-9, AP-53, AP-68). The AP-41's 2025 tariff isn't served or archived any more, so it isn't priced here.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-seitt-2025-01-01.json"
+  },
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "SEITT: 2025 tariffs of the AP-36 Ocaña – La Roda toll motorway (PDF)",
+   "url": "https://cdn.transportes.gob.es/portal-web-seitt/media/document/tarifas_ap36_2025.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "SEITT: 2025 tariffs of the AP-7 Cartagena – Vera toll motorway (PDF)",
+   "url": "https://cdn.transportes.gob.es/portal-web-seitt/media/document/tarifas-ap7cv-seitt_2025.pdf"
+  },
+  {
+   "id": "s3",
+   "title": "OpenStreetMap (Geofabrik extracts), toll booths",
+   "url": "https://download.geofabrik.de/europe/spain.html"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-Pesados-1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   },
+   "label": "Pesados 1"
+  },
+  {
+   "id": "c-Pesados-2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "Pesados 2"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-36 Ocaña – La Roda, AP-7 Cartagena – Vera (not the AP-41, whose 2025 tariff isn't available)."
+  },
+  {
+   "id": "st:1:Troncal Corral Almaguer",
+   "kind": "station",
+   "name": "Troncal Corral Almaguer",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -3.213087,
+      39.800317
+     ],
+     [
+      -3.212803,
+      39.800503
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Quintanar Orden",
+   "kind": "station",
+   "name": "Quintanar Orden",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -3.073759,
+      39.630588
+     ],
+     [
+      -3.073665,
+      39.630626
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Mota Cuervo",
+   "kind": "station",
+   "name": "Mota Cuervo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.916739,
+      39.51967
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Pedernoso",
+   "kind": "station",
+   "name": "Pedernoso",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.718178,
+      39.474381
+     ],
+     [
+      -2.718161,
+      39.474469
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Cuevas del Almanzora",
+   "kind": "station",
+   "name": "Cuevas del Almanzora",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.799766,
+      37.305606
+     ],
+     [
+      -1.799638,
+      37.305546
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Pulpí",
+   "kind": "station",
+   "name": "Pulpí",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.727379,
+      37.390658
+     ],
+     [
+      -1.727226,
+      37.390601
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Águilas",
+   "kind": "station",
+   "name": "Águilas",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.620227,
+      37.436322
+     ],
+     [
+      -1.620125,
+      37.436241
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Cabo Cope",
+   "kind": "station",
+   "name": "Cabo Cope",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.506919,
+      37.492336
+     ],
+     [
+      -1.50684,
+      37.492434
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Ramonete",
+   "kind": "station",
+   "name": "Ramonete",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.435903,
+      37.547009
+     ],
+     [
+      -1.435878,
+      37.546862
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Mazarrón",
+   "kind": "station",
+   "name": "Mazarrón",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.336067,
+      37.599864
+     ],
+     [
+      -1.335896,
+      37.599808
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:Las Palas",
+   "kind": "station",
+   "name": "Las Palas",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.178289,
+      37.647793
+     ],
+     [
+      -1.178284,
+      37.647672
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "AP-36 Ocaña – La Roda",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Mota Cuervo",
+    "st:1:Pedernoso",
+    "st:1:Quintanar Orden",
+    "st:1:Troncal Corral Almaguer"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Mota Cuervo",
+     "exit": "st:1:Pedernoso",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.686,
+       "electronic": 2.438
+      },
+      "c-Pesados-2": {
+       "default": 3.8017,
+       "electronic": 3.4298
+      }
+     }
+    },
+    {
+     "entry": "st:1:Mota Cuervo",
+     "exit": "st:1:Quintanar Orden",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7686,
+       "electronic": 2.562
+      },
+      "c-Pesados-2": {
+       "default": 3.9669,
+       "electronic": 3.5537
+      }
+     }
+    },
+    {
+     "entry": "st:1:Mota Cuervo",
+     "exit": "st:1:Troncal Corral Almaguer",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 9.5868,
+       "electronic": 8.8017
+      },
+      "c-Pesados-2": {
+       "default": 13.6777,
+       "electronic": 12.314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Pedernoso",
+     "exit": "st:1:Mota Cuervo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.686,
+       "electronic": 2.438
+      },
+      "c-Pesados-2": {
+       "default": 3.8017,
+       "electronic": 3.4298
+      }
+     }
+    },
+    {
+     "entry": "st:1:Pedernoso",
+     "exit": "st:1:Quintanar Orden",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.4132,
+       "electronic": 4.9587
+      },
+      "c-Pesados-2": {
+       "default": 7.7273,
+       "electronic": 6.9421
+      }
+     }
+    },
+    {
+     "entry": "st:1:Pedernoso",
+     "exit": "st:1:Troncal Corral Almaguer",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 12.1901,
+       "electronic": 11.2397
+      },
+      "c-Pesados-2": {
+       "default": 17.438,
+       "electronic": 15.7025
+      }
+     }
+    },
+    {
+     "entry": "st:1:Quintanar Orden",
+     "exit": "st:1:Mota Cuervo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7686,
+       "electronic": 2.562
+      },
+      "c-Pesados-2": {
+       "default": 3.9669,
+       "electronic": 3.5537
+      }
+     }
+    },
+    {
+     "entry": "st:1:Quintanar Orden",
+     "exit": "st:1:Pedernoso",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.4132,
+       "electronic": 4.9587
+      },
+      "c-Pesados-2": {
+       "default": 7.7273,
+       "electronic": 6.9421
+      }
+     }
+    },
+    {
+     "entry": "st:1:Quintanar Orden",
+     "exit": "st:1:Troncal Corral Almaguer",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.8182,
+       "electronic": 6.281
+      },
+      "c-Pesados-2": {
+       "default": 9.7521,
+       "electronic": 8.7603
+      }
+     }
+    },
+    {
+     "entry": "st:1:Troncal Corral Almaguer",
+     "exit": "st:1:Mota Cuervo",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 9.5868,
+       "electronic": 8.8017
+      },
+      "c-Pesados-2": {
+       "default": 13.6777,
+       "electronic": 12.314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Troncal Corral Almaguer",
+     "exit": "st:1:Pedernoso",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 12.1901,
+       "electronic": 11.2397
+      },
+      "c-Pesados-2": {
+       "default": 17.438,
+       "electronic": 15.7025
+      }
+     }
+    },
+    {
+     "entry": "st:1:Troncal Corral Almaguer",
+     "exit": "st:1:Quintanar Orden",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.8182,
+       "electronic": 6.281
+      },
+      "c-Pesados-2": {
+       "default": 9.7521,
+       "electronic": 8.7603
+      }
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "SEITT tariff 2025 (ap36), cash and tag prices including 21% IVA, here excluding it; free 00:00–06:00; the PDF labels the Pesados 2 rows with other stations (M-50, Pinto-Parla, Valdemoro, Seseña, Villaseca Sagra (CM 4001), Aranjuez), read here in the order of its columns, the AP-36's",
+   "directed": true
+  },
+  {
+   "id": "system:2",
+   "name": "AP-7 Cartagena – Vera",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:2:Cabo Cope",
+    "st:2:Cuevas del Almanzora",
+    "st:2:Las Palas",
+    "st:2:Mazarrón",
+    "st:2:Pulpí",
+    "st:2:Ramonete",
+    "st:2:Águilas"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.6694,
+       "electronic": 4.2975
+      },
+      "c-Pesados-2": {
+       "default": 6.6529,
+       "electronic": 5.9917
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.7521,
+       "electronic": 4.3802
+      },
+      "c-Pesados-2": {
+       "default": 6.7769,
+       "electronic": 6.1157
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7273,
+       "electronic": 2.5207
+      },
+      "c-Pesados-2": {
+       "default": 3.8843,
+       "electronic": 3.5124
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.1405,
+       "electronic": 2.8926
+      },
+      "c-Pesados-2": {
+       "default": 4.5041,
+       "electronic": 4.0496
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.157,
+       "electronic": 1.0744
+      },
+      "c-Pesados-2": {
+       "default": 1.6529,
+       "electronic": 1.4876
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cabo Cope",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.6116,
+       "electronic": 1.4876
+      },
+      "c-Pesados-2": {
+       "default": 2.2727,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.6694,
+       "electronic": 4.2975
+      },
+      "c-Pesados-2": {
+       "default": 6.6529,
+       "electronic": 5.9917
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 9.4215,
+       "electronic": 8.6364
+      },
+      "c-Pesados-2": {
+       "default": 13.4298,
+       "electronic": 12.1074
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 7.3554,
+       "electronic": 6.7769
+      },
+      "c-Pesados-2": {
+       "default": 10.4959,
+       "electronic": 9.4628
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.5289,
+       "electronic": 1.405
+      },
+      "c-Pesados-2": {
+       "default": 2.1901,
+       "electronic": 1.9835
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.7851,
+       "electronic": 5.3306
+      },
+      "c-Pesados-2": {
+       "default": 8.2645,
+       "electronic": 7.438
+      }
+     }
+    },
+    {
+     "entry": "st:2:Cuevas del Almanzora",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.0992,
+       "electronic": 2.8512
+      },
+      "c-Pesados-2": {
+       "default": 4.3802,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.7521,
+       "electronic": 4.3802
+      },
+      "c-Pesados-2": {
+       "default": 6.7769,
+       "electronic": 6.1157
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 9.4215,
+       "electronic": 8.6364
+      },
+      "c-Pesados-2": {
+       "default": 13.4298,
+       "electronic": 12.1074
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.0661,
+       "electronic": 1.9008
+      },
+      "c-Pesados-2": {
+       "default": 2.8926,
+       "electronic": 2.6446
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 7.8926,
+       "electronic": 7.2727
+      },
+      "c-Pesados-2": {
+       "default": 11.2397,
+       "electronic": 10.1653
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.6364,
+       "electronic": 3.3471
+      },
+      "c-Pesados-2": {
+       "default": 5.1653,
+       "electronic": 4.6694
+      }
+     }
+    },
+    {
+     "entry": "st:2:Las Palas",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.3223,
+       "electronic": 5.8264
+      },
+      "c-Pesados-2": {
+       "default": 9.0496,
+       "electronic": 8.1405
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7273,
+       "electronic": 2.5207
+      },
+      "c-Pesados-2": {
+       "default": 3.8843,
+       "electronic": 3.5124
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 7.3554,
+       "electronic": 6.7769
+      },
+      "c-Pesados-2": {
+       "default": 10.4959,
+       "electronic": 9.4628
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.0661,
+       "electronic": 1.9008
+      },
+      "c-Pesados-2": {
+       "default": 2.8926,
+       "electronic": 2.6446
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.8678,
+       "electronic": 5.4132
+      },
+      "c-Pesados-2": {
+       "default": 8.3471,
+       "electronic": 7.5207
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.6116,
+       "electronic": 1.4876
+      },
+      "c-Pesados-2": {
+       "default": 2.2727,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:2:Mazarrón",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.2975,
+       "electronic": 3.9669
+      },
+      "c-Pesados-2": {
+       "default": 6.157,
+       "electronic": 5.5372
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.1405,
+       "electronic": 2.8926
+      },
+      "c-Pesados-2": {
+       "default": 4.5041,
+       "electronic": 4.0496
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.5289,
+       "electronic": 1.405
+      },
+      "c-Pesados-2": {
+       "default": 2.1901,
+       "electronic": 1.9835
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 7.8926,
+       "electronic": 7.2727
+      },
+      "c-Pesados-2": {
+       "default": 11.2397,
+       "electronic": 10.1653
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.8678,
+       "electronic": 5.4132
+      },
+      "c-Pesados-2": {
+       "default": 8.3471,
+       "electronic": 7.5207
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.2975,
+       "electronic": 3.9256
+      },
+      "c-Pesados-2": {
+       "default": 6.1157,
+       "electronic": 5.4959
+      }
+     }
+    },
+    {
+     "entry": "st:2:Pulpí",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.5702,
+       "electronic": 1.4463
+      },
+      "c-Pesados-2": {
+       "default": 2.2314,
+       "electronic": 2.0248
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.157,
+       "electronic": 1.0744
+      },
+      "c-Pesados-2": {
+       "default": 1.6529,
+       "electronic": 1.4876
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 5.7851,
+       "electronic": 5.3306
+      },
+      "c-Pesados-2": {
+       "default": 8.2645,
+       "electronic": 7.438
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.6364,
+       "electronic": 3.3471
+      },
+      "c-Pesados-2": {
+       "default": 5.1653,
+       "electronic": 4.6694
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.6116,
+       "electronic": 1.4876
+      },
+      "c-Pesados-2": {
+       "default": 2.2727,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.2975,
+       "electronic": 3.9256
+      },
+      "c-Pesados-2": {
+       "default": 6.1157,
+       "electronic": 5.4959
+      }
+     }
+    },
+    {
+     "entry": "st:2:Ramonete",
+     "exit": "st:2:Águilas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7273,
+       "electronic": 2.5207
+      },
+      "c-Pesados-2": {
+       "default": 3.8843,
+       "electronic": 3.5124
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Cabo Cope",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.6116,
+       "electronic": 1.4876
+      },
+      "c-Pesados-2": {
+       "default": 2.2727,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Cuevas del Almanzora",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 3.0992,
+       "electronic": 2.8512
+      },
+      "c-Pesados-2": {
+       "default": 4.3802,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Las Palas",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 6.3223,
+       "electronic": 5.8264
+      },
+      "c-Pesados-2": {
+       "default": 9.0496,
+       "electronic": 8.1405
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Mazarrón",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 4.2975,
+       "electronic": 3.9669
+      },
+      "c-Pesados-2": {
+       "default": 6.157,
+       "electronic": 5.5372
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Pulpí",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 1.5702,
+       "electronic": 1.4463
+      },
+      "c-Pesados-2": {
+       "default": 2.2314,
+       "electronic": 2.0248
+      }
+     }
+    },
+    {
+     "entry": "st:2:Águilas",
+     "exit": "st:2:Ramonete",
+     "rates": {
+      "c-Pesados-1": {
+       "default": 2.7273,
+       "electronic": 2.5207
+      },
+      "c-Pesados-2": {
+       "default": 3.8843,
+       "electronic": 3.5124
+      }
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "SEITT tariff 2025 (ap7cv), cash and tag prices including 21% IVA, here excluding it; free 00:00–06:00",
+   "directed": true
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "hours": [
+     "00:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "system:2"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "system:2"
+   ],
+   "params": {
+    "hours": [
+     "00:00",
+     "05:59"
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "osm_extract": "2026-11-08"
+  }
+ }
+}

@@ -1,0 +1,206 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "pl-2026-01-01",
+  "scheme": "pl",
+  "country": "PL",
+  "currency": "PLN",
+  "valid_from": "2026-01-01",
+  "name": "Polish electronic toll (e-TOLL)",
+  "method": "Ustawa o drogach publicznych, art. 13ha; the rates for 2026 announced in M.P. 2025 poz. 1244 (obwieszczenie of 3 December 2025): annex 1 (class A and S roads) and annex 2 (class GP and G roads), by permissible total mass (with trailer: over 3.5 t and under 12 t; 12 t or more) and EURO class (max. EURO 2, EURO 3, EURO 4, min. EURO 5); no CO2 component.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/pl-2026-01-01.json"
+  },
+  "valid_to": "2026-01-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Monitor Polski: M.P. 2025 poz. 1244 (obwieszczenie of 3 December 2025)",
+   "url": "https://eli.gov.pl/api/acts/MP/2025/1244/text/O/M20251244.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Motor vehicles and combinations over 3.5 t permissible total mass (with trailer), and buses",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "e-TOLL sections of national roads: motorways and expressways (class A, S) and main roads (GP, G). Not included: the concession motorway sections (A1 Rusocin-Toruń, A2 Świecko-Konin, A4 Katowice-Kraków), charged by their operators."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@road:motorway",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.6,
+    "c2": 0.52,
+    "c3": 0.43,
+    "c4": 0.31,
+    "c5": 0.8,
+    "c6": 0.69,
+    "c7": 0.56,
+    "c8": 0.42
+   }
+  },
+  {
+   "id": "toll@road:other",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.49,
+    "c2": 0.43,
+    "c3": 0.35,
+    "c4": 0.25,
+    "c5": 0.62,
+    "c6": 0.56,
+    "c7": 0.45,
+    "c8": 0.32
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "toll@road:motorway",
+    "toll@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,2984 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-basque-ap8-2026-01-01",
+  "scheme": "es-basque-ap8",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "AP-8, AP-1 and AP-636, Basque Country (Interbiak, Bidegi)",
+  "method": "Bidegi's tariff sheet in force from 1 January 2026 (Interbiak's and Bidegi's AP-8 and AP-1, Pesados 1 and 2, VAT included; Pesados 2 from Bilbao's western access to Zarautz's main plaza towards Donostia EUR 30.38): by entry and exit, either way, excluding 21% VAT. Stations: each carriageway's stretch between two consecutive entries/exits, placed at the OpenStreetMap junctions whose exits are signposted to them, Bilbao's western access and Etxabarri-Ibiña at the motorways' ends, Zarautz's main plaza and Donostia's eastern plaza at the toll booths on the carriageway; not placed (a trip from or to one priced from the next station): Luko, Oñaurre. AP-636: each section's price (either way) at the first Bidegi gantry on it going from Beasain (OpenStreetMap's gantries named Beasain, Ezkio, Deskarga); the sheet's Legazpi/Urretxu – Antzuola price by tag isn't modelled (a trip from Legazpi to Antzuola is charged Legazpi – Bergara, one from Antzuola to Bergara nothing). Not built: the sheet's prices from Zarautz E and Orio to Donostia's exits.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-basque-ap8-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Bidegi: AP-8, AP-1 and AP-636 tariffs 2026",
+   "url": "https://www.bidegi.eus/documents/42696171/0/2026__AP-8_AP-1_AP-636_tarifak.pdf/0c9dbcf3-f3e7-e6f6-709b-8cbb7d9da9d5"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API): the Basque motorways, junctions, signposted links and toll booths",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Pesados 1: trucks of two or three axles; Pesados 2: four axles or more",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-Pesados-2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "Pesados 2"
+  },
+  {
+   "id": "c-Pesados-1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   },
+   "label": "Pesados 1"
+  },
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-8 from Bilbao (western access) to Behobia, AP-1 from Eibar to Vitoria-Gasteiz, AP-636 from Beasain to Bergara."
+  },
+  {
+   "id": "st:1:Abadiño > Ermua",
+   "kind": "station",
+   "name": "Abadiño > Ermua",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.55797,
+      43.167285
+     ]
+    ]
+   },
+   "point_names": [
+    "between Abadiño and Ermua"
+   ],
+   "headings": [
+    84.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Abadiño > Iurreta",
+   "kind": "station",
+   "name": "Abadiño > Iurreta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.620637,
+      43.176921
+     ]
+    ]
+   },
+   "point_names": [
+    "between Abadiño and Iurreta"
+   ],
+   "headings": [
+    303.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+   "kind": "station",
+   "name": "Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.753926,
+      43.230732
+     ]
+    ]
+   },
+   "point_names": [
+    "between Acceso Oeste (Bilbao) and Amorebieta-Etxano"
+   ],
+   "headings": [
+    96.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+   "kind": "station",
+   "name": "Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.753156,
+      43.230777
+     ]
+    ]
+   },
+   "point_names": [
+    "between Amorebieta-Etxano and Acceso Oeste (Bilbao)"
+   ],
+   "headings": [
+    279.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Amorebieta-Etxano > Iurreta",
+   "kind": "station",
+   "name": "Amorebieta-Etxano > Iurreta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.695202,
+      43.200524
+     ]
+    ]
+   },
+   "point_names": [
+    "between Amorebieta-Etxano and Iurreta"
+   ],
+   "headings": [
+    138.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Arrasate-Mondragon > Bergara H/S",
+   "kind": "station",
+   "name": "Arrasate-Mondragon > Bergara H/S",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.44867,
+      43.078485
+     ]
+    ]
+   },
+   "point_names": [
+    "between Arrasate-Mondragon and Bergara H/S"
+   ],
+   "headings": [
+    53.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Arrasate-Mondragon > Eskoriatza",
+   "kind": "station",
+   "name": "Arrasate-Mondragon > Eskoriatza",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.496983,
+      43.04786
+     ]
+    ]
+   },
+   "point_names": [
+    "between Arrasate-Mondragon and Eskoriatza"
+   ],
+   "headings": [
+    223.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Bergara H/S > Arrasate-Mondragon",
+   "kind": "station",
+   "name": "Bergara H/S > Arrasate-Mondragon",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.44895,
+      43.078562
+     ]
+    ]
+   },
+   "point_names": [
+    "between Bergara H/S and Arrasate-Mondragon"
+   ],
+   "headings": [
+    233.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Bergara H/S > Bergara I/N",
+   "kind": "station",
+   "name": "Bergara H/S > Bergara I/N",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.432141,
+      43.110856
+     ]
+    ]
+   },
+   "point_names": [
+    "between Bergara H/S and Bergara I/N"
+   ],
+   "headings": [
+    33.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Bergara I/N > Bergara H/S",
+   "kind": "station",
+   "name": "Bergara I/N > Bergara H/S",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.432498,
+      43.110862
+     ]
+    ]
+   },
+   "point_names": [
+    "between Bergara I/N and Bergara H/S"
+   ],
+   "headings": [
+    213.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Bergara I/N > Eibar",
+   "kind": "station",
+   "name": "Bergara I/N > Eibar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.426606,
+      43.162054
+     ]
+    ]
+   },
+   "point_names": [
+    "between Bergara I/N and Eibar"
+   ],
+   "headings": [
+    6.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Eibar > Bergara I/N",
+   "kind": "station",
+   "name": "Eibar > Bergara I/N",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.426807,
+      43.162807
+     ]
+    ]
+   },
+   "point_names": [
+    "between Eibar and Bergara I/N"
+   ],
+   "headings": [
+    186.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Eibar > Elgoibar",
+   "kind": "station",
+   "name": "Eibar > Elgoibar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.416493,
+      43.208906
+     ]
+    ]
+   },
+   "point_names": [
+    "between Eibar and Elgoibar"
+   ],
+   "headings": [
+    19.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Eibar > Ermua",
+   "kind": "station",
+   "name": "Eibar > Ermua",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.479589,
+      43.181317
+     ]
+    ]
+   },
+   "point_names": [
+    "between Eibar and Ermua"
+   ],
+   "headings": [
+    265.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Elgoibar > Eibar",
+   "kind": "station",
+   "name": "Elgoibar > Eibar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.416614,
+      43.208957
+     ]
+    ]
+   },
+   "point_names": [
+    "between Elgoibar and Eibar"
+   ],
+   "headings": [
+    201.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Elgoibar > Itziar",
+   "kind": "station",
+   "name": "Elgoibar > Itziar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.371645,
+      43.265962
+     ]
+    ]
+   },
+   "point_names": [
+    "between Elgoibar and Itziar"
+   ],
+   "headings": [
+    19.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ermua > Abadiño",
+   "kind": "station",
+   "name": "Ermua > Abadiño",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.557913,
+      43.167393
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ermua and Abadiño"
+   ],
+   "headings": [
+    264.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ermua > Eibar",
+   "kind": "station",
+   "name": "Ermua > Eibar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.479566,
+      43.181242
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ermua and Eibar"
+   ],
+   "headings": [
+    85.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Eskoriatza > Arrasate-Mondragon",
+   "kind": "station",
+   "name": "Eskoriatza > Arrasate-Mondragon",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.496823,
+      43.047839
+     ]
+    ]
+   },
+   "point_names": [
+    "between Eskoriatza and Arrasate-Mondragon"
+   ],
+   "headings": [
+    43.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+   "kind": "station",
+   "name": "Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.620022,
+      42.957316
+     ]
+    ]
+   },
+   "point_names": [
+    "between Eskoriatza and Etxabarri-Ibiña (Vitoria-Gasteiz)"
+   ],
+   "headings": [
+    240.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+   "kind": "station",
+   "name": "Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.619808,
+      42.957215
+     ]
+    ]
+   },
+   "point_names": [
+    "between Etxabarri-Ibiña (Vitoria-Gasteiz) and Eskoriatza"
+   ],
+   "headings": [
+    60.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Itziar > Elgoibar",
+   "kind": "station",
+   "name": "Itziar > Elgoibar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.373815,
+      43.266973
+     ]
+    ]
+   },
+   "point_names": [
+    "between Itziar and Elgoibar"
+   ],
+   "headings": [
+    206.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Itziar > Zestoa-Zumaia",
+   "kind": "station",
+   "name": "Itziar > Zestoa-Zumaia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.302003,
+      43.267917
+     ]
+    ]
+   },
+   "point_names": [
+    "between Itziar and Zestoa-Zumaia"
+   ],
+   "headings": [
+    132.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Iurreta > Abadiño",
+   "kind": "station",
+   "name": "Iurreta > Abadiño",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.620696,
+      43.176787
+     ]
+    ]
+   },
+   "point_names": [
+    "between Iurreta and Abadiño"
+   ],
+   "headings": [
+    122.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Iurreta > Amorebieta-Etxano",
+   "kind": "station",
+   "name": "Iurreta > Amorebieta-Etxano",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.695118,
+      43.20065
+     ]
+    ]
+   },
+   "point_names": [
+    "between Iurreta and Amorebieta-Etxano"
+   ],
+   "headings": [
+    317.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+   "kind": "station",
+   "name": "Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.137112,
+      43.283114
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zarautz M/O and Zarautz nagusia (Donostia, Astigarraga, Hernani)"
+   ],
+   "headings": [
+    88.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zarautz M/O > Zestoa-Zumaia",
+   "kind": "station",
+   "name": "Zarautz M/O > Zestoa-Zumaia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.219132,
+      43.285211
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zarautz M/O and Zestoa-Zumaia"
+   ],
+   "headings": [
+    298.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+   "kind": "station",
+   "name": "Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.139335,
+      43.283398
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zarautz nagusia (Donostia, Astigarraga, Hernani) and Zarautz M/O"
+   ],
+   "headings": [
+    280.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zestoa-Zumaia > Itziar",
+   "kind": "station",
+   "name": "Zestoa-Zumaia > Itziar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.30202,
+      43.268054
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zestoa-Zumaia and Itziar"
+   ],
+   "headings": [
+    312.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zestoa-Zumaia > Zarautz M/O",
+   "kind": "station",
+   "name": "Zestoa-Zumaia > Zarautz M/O",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.218878,
+      43.28499
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zestoa-Zumaia and Zarautz M/O"
+   ],
+   "headings": [
+    122.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Behobia > Irun Ventas",
+   "kind": "station",
+   "name": "Behobia > Irun Ventas",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.766786,
+      43.336315
+     ]
+    ]
+   },
+   "point_names": [
+    "between Behobia and Irun Ventas"
+   ],
+   "headings": [
+    238.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+   "kind": "station",
+   "name": "Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.872776,
+      43.311956
+     ]
+    ]
+   },
+   "point_names": [
+    "between Donostia SS E (Hernani, Astigarraga, Lasarte) and Oiartzun"
+   ],
+   "headings": [
+    35.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Irun M/O > Irun Ventas",
+   "kind": "station",
+   "name": "Irun M/O > Irun Ventas",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.806285,
+      43.328004
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irun M/O and Irun Ventas"
+   ],
+   "headings": [
+    70.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Irun M/O > Oiartzun",
+   "kind": "station",
+   "name": "Irun M/O > Oiartzun",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.84503,
+      43.31749
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irun M/O and Oiartzun"
+   ],
+   "headings": [
+    285.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Irun Ventas > Behobia",
+   "kind": "station",
+   "name": "Irun Ventas > Behobia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.766743,
+      43.336221
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irun Ventas and Behobia"
+   ],
+   "headings": [
+    58.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Irun Ventas > Irun M/O",
+   "kind": "station",
+   "name": "Irun Ventas > Irun M/O",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.806326,
+      43.328094
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irun Ventas and Irun M/O"
+   ],
+   "headings": [
+    247.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+   "kind": "station",
+   "name": "Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.872846,
+      43.312105
+     ]
+    ]
+   },
+   "point_names": [
+    "between Oiartzun and Donostia SS E (Hernani, Astigarraga, Lasarte)"
+   ],
+   "headings": [
+    215.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:2:Oiartzun > Irun M/O",
+   "kind": "station",
+   "name": "Oiartzun > Irun M/O",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.844964,
+      43.317341
+     ]
+    ]
+   },
+   "point_names": [
+    "between Oiartzun and Irun M/O"
+   ],
+   "headings": [
+    108.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "AP-636 Beasain - Ormaiztegi (Beasain gantry)",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.233916,
+     43.047667
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "AP-636 Ormaiztegi - Zumarraga (Ezkio gantry)",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.299179,
+     43.077171
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "AP-636 Legazpi/Urretxu - Bergara (Deskarga gantry)",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.339413,
+     43.084813
+    ]
+   },
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "AP-8/AP-1 Bilbao – Zarautz – Vitoria-Gasteiz",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Abadiño > Ermua",
+    "st:1:Abadiño > Iurreta",
+    "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+    "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+    "st:1:Amorebieta-Etxano > Iurreta",
+    "st:1:Arrasate-Mondragon > Bergara H/S",
+    "st:1:Arrasate-Mondragon > Eskoriatza",
+    "st:1:Bergara H/S > Arrasate-Mondragon",
+    "st:1:Bergara H/S > Bergara I/N",
+    "st:1:Bergara I/N > Bergara H/S",
+    "st:1:Bergara I/N > Eibar",
+    "st:1:Eibar > Bergara I/N",
+    "st:1:Eibar > Elgoibar",
+    "st:1:Eibar > Ermua",
+    "st:1:Elgoibar > Eibar",
+    "st:1:Elgoibar > Itziar",
+    "st:1:Ermua > Abadiño",
+    "st:1:Ermua > Eibar",
+    "st:1:Eskoriatza > Arrasate-Mondragon",
+    "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+    "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+    "st:1:Itziar > Elgoibar",
+    "st:1:Itziar > Zestoa-Zumaia",
+    "st:1:Iurreta > Abadiño",
+    "st:1:Iurreta > Amorebieta-Etxano",
+    "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+    "st:1:Zarautz M/O > Zestoa-Zumaia",
+    "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+    "st:1:Zestoa-Zumaia > Itziar",
+    "st:1:Zestoa-Zumaia > Zarautz M/O"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Abadiño > Ermua",
+     "rates": {
+      "c-Pesados-1": 1.157,
+      "c-Pesados-2": 1.3223
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 10.2727,
+      "c-Pesados-2": 11.876
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 7.9669,
+      "c-Pesados-2": 9.1983
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 7.1322,
+      "c-Pesados-2": 8.1322
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 5.7769,
+      "c-Pesados-2": 6.7025
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 4.9587,
+      "c-Pesados-2": 5.8017
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 6.9174,
+      "c-Pesados-2": 8.0248
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Ermua > Eibar",
+     "rates": {
+      "c-Pesados-1": 3.6777,
+      "c-Pesados-2": 4.1736
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 17.4959,
+      "c-Pesados-2": 20.3884
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 8.281,
+      "c-Pesados-2": 9.5785
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 14.2231,
+      "c-Pesados-2": 16.5207
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Ermua",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 10.3058,
+      "c-Pesados-2": 12.0579
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Iurreta",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 7.1074,
+      "c-Pesados-2": 8.0992
+     }
+    },
+    {
+     "entry": "st:1:Abadiño > Iurreta",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 7.1074,
+      "c-Pesados-2": 8.0992
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Abadiño > Ermua",
+     "rates": {
+      "c-Pesados-1": 8.3058,
+      "c-Pesados-2": 9.4215
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 1.9008,
+      "c-Pesados-2": 2.1074
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Amorebieta-Etxano > Iurreta",
+     "rates": {
+      "c-Pesados-1": 5.0826,
+      "c-Pesados-2": 5.7025
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 17.9091,
+      "c-Pesados-2": 20.4628
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 15.6033,
+      "c-Pesados-2": 17.7851
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 16.719
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 13.4132,
+      "c-Pesados-2": 15.2893
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 12.595,
+      "c-Pesados-2": 14.3884
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 14.5537,
+      "c-Pesados-2": 16.6116
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Ermua > Eibar",
+     "rates": {
+      "c-Pesados-1": 11.314,
+      "c-Pesados-2": 12.7603
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 25.1322,
+      "c-Pesados-2": 28.9752
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 15.9174,
+      "c-Pesados-2": 18.1653
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Iurreta > Abadiño",
+     "rates": {
+      "c-Pesados-1": 7.1074,
+      "c-Pesados-2": 8.0992
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 21.8595,
+      "c-Pesados-2": 25.1074
+     }
+    },
+    {
+     "entry": "st:1:Acceso Oeste (Bilbao) > Amorebieta-Etxano",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 17.9421,
+      "c-Pesados-2": 20.6446
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 1.9008,
+      "c-Pesados-2": 2.1074
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Abadiño > Ermua",
+     "rates": {
+      "c-Pesados-1": 8.3058,
+      "c-Pesados-2": 9.4215
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Amorebieta-Etxano > Iurreta",
+     "rates": {
+      "c-Pesados-1": 5.0826,
+      "c-Pesados-2": 5.7025
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 17.9091,
+      "c-Pesados-2": 20.4628
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 15.6033,
+      "c-Pesados-2": 17.7851
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 16.719
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 13.4132,
+      "c-Pesados-2": 15.2893
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 12.595,
+      "c-Pesados-2": 14.3884
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 14.5537,
+      "c-Pesados-2": 16.6116
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Ermua > Eibar",
+     "rates": {
+      "c-Pesados-1": 11.314,
+      "c-Pesados-2": 12.7603
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 25.1322,
+      "c-Pesados-2": 28.9752
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 15.9174,
+      "c-Pesados-2": 18.1653
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Iurreta > Abadiño",
+     "rates": {
+      "c-Pesados-1": 7.1074,
+      "c-Pesados-2": 8.0992
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 21.8595,
+      "c-Pesados-2": 25.1074
+     }
+    },
+    {
+     "entry": "st:1:Amorebieta-Etxano > Iurreta",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 17.9421,
+      "c-Pesados-2": 20.6446
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 9.2149,
+      "c-Pesados-2": 10.5702
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 15.6033,
+      "c-Pesados-2": 17.7851
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 1.2149,
+      "c-Pesados-2": 1.4132
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Bergara I/N > Eibar",
+     "rates": {
+      "c-Pesados-1": 4.6116,
+      "c-Pesados-2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 5.6364,
+      "c-Pesados-2": 6.5702
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 5.876,
+      "c-Pesados-2": 6.843
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 7.6694,
+      "c-Pesados-2": 8.8099
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 7.9669,
+      "c-Pesados-2": 9.1983
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 8.8926,
+      "c-Pesados-2": 10.3471
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 15.6033,
+      "c-Pesados-2": 17.7851
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 17.3884
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 10.9587,
+      "c-Pesados-2": 12.8512
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 2.4298,
+      "c-Pesados-2": 2.8347
+     }
+    },
+    {
+     "entry": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 9.686,
+      "c-Pesados-2": 11.3471
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 3.4628,
+      "c-Pesados-2": 4.0579
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 1.2149,
+      "c-Pesados-2": 1.4132
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 10.719,
+      "c-Pesados-2": 12.562
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 8.3802,
+      "c-Pesados-2": 9.5041
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 16.719
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Bergara I/N > Eibar",
+     "rates": {
+      "c-Pesados-1": 3.7769,
+      "c-Pesados-2": 4.3223
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 4.8017,
+      "c-Pesados-2": 5.5041
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 5.0413,
+      "c-Pesados-2": 5.7769
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 6.8347,
+      "c-Pesados-2": 7.7438
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 7.1322,
+      "c-Pesados-2": 8.1322
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 8.0579,
+      "c-Pesados-2": 9.281
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 16.719
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 13.9339,
+      "c-Pesados-2": 16.3223
+     }
+    },
+    {
+     "entry": "st:1:Bergara H/S > Bergara I/N",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 10.124,
+      "c-Pesados-2": 11.7851
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 7.0248,
+      "c-Pesados-2": 8.0744
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 13.4132,
+      "c-Pesados-2": 15.2893
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Bergara I/N > Eibar",
+     "rates": {
+      "c-Pesados-1": 2.4215,
+      "c-Pesados-2": 2.8926
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 3.4463,
+      "c-Pesados-2": 4.0744
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 3.686,
+      "c-Pesados-2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 5.4793,
+      "c-Pesados-2": 6.314
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 5.7769,
+      "c-Pesados-2": 6.7025
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 6.7025,
+      "c-Pesados-2": 7.8512
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 13.4132,
+      "c-Pesados-2": 15.2893
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 12.5785,
+      "c-Pesados-2": 14.8926
+     }
+    },
+    {
+     "entry": "st:1:Bergara I/N > Eibar",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 8.7686,
+      "c-Pesados-2": 10.3554
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Bergara I/N",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 6.9174,
+      "c-Pesados-2": 8.0661
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Bergara I/N",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 4.6116,
+      "c-Pesados-2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Bergara I/N",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 3.7769,
+      "c-Pesados-2": 4.3223
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Bergara I/N",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 2.4215,
+      "c-Pesados-2": 2.8926
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Bergara I/N",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 14.1405,
+      "c-Pesados-2": 16.5785
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Elgoibar",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 1.5785,
+      "c-Pesados-2": 1.8678
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Elgoibar",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 3.6116,
+      "c-Pesados-2": 4.2727
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Elgoibar",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 4.8017,
+      "c-Pesados-2": 5.5785
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Elgoibar",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 10.6612,
+      "c-Pesados-2": 12.6116
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Elgoibar",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 6.9504,
+      "c-Pesados-2": 8.2231
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Ermua",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 4.9256,
+      "c-Pesados-2": 5.5455
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Ermua",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 11.314,
+      "c-Pesados-2": 12.7603
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Ermua",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 1.5868,
+      "c-Pesados-2": 1.8182
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Ermua",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 3.6777,
+      "c-Pesados-2": 4.1736
+     }
+    },
+    {
+     "entry": "st:1:Eibar > Ermua",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 11.314,
+      "c-Pesados-2": 12.7603
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 6.2066,
+      "c-Pesados-2": 7.1736
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 12.595,
+      "c-Pesados-2": 14.3884
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 7.9421,
+      "c-Pesados-2": 9.2479
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 5.6364,
+      "c-Pesados-2": 6.5702
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 4.8017,
+      "c-Pesados-2": 5.5041
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 3.4463,
+      "c-Pesados-2": 4.0744
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 2.8678,
+      "c-Pesados-2": 3.4463
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Elgoibar > Eibar",
+     "rates": {
+      "c-Pesados-1": 1.5785,
+      "c-Pesados-2": 1.8678
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 4.9587,
+      "c-Pesados-2": 5.8017
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 15.1653,
+      "c-Pesados-2": 17.7603
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Eibar",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 12.595,
+      "c-Pesados-2": 14.3884
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Itziar",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 2.2479,
+      "c-Pesados-2": 2.719
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Itziar",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 3.5372,
+      "c-Pesados-2": 4.0083
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Itziar",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 9.5372,
+      "c-Pesados-2": 11.0826
+     }
+    },
+    {
+     "entry": "st:1:Elgoibar > Itziar",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 5.7851,
+      "c-Pesados-2": 6.6612
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Abadiño",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 3.2231,
+      "c-Pesados-2": 3.719
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Abadiño",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 8.3058,
+      "c-Pesados-2": 9.4215
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Abadiño",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 1.157,
+      "c-Pesados-2": 1.3223
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Abadiño",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 8.3058,
+      "c-Pesados-2": 9.4215
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 8.1818,
+      "c-Pesados-2": 9.5207
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 5.876,
+      "c-Pesados-2": 6.843
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 5.0413,
+      "c-Pesados-2": 5.7769
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 3.686,
+      "c-Pesados-2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 2.8678,
+      "c-Pesados-2": 3.4463
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 4.8264,
+      "c-Pesados-2": 5.6694
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Ermua > Eibar",
+     "rates": {
+      "c-Pesados-1": 1.5868,
+      "c-Pesados-2": 1.8182
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 15.405,
+      "c-Pesados-2": 18.0331
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 6.1901,
+      "c-Pesados-2": 7.2231
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 12.1322,
+      "c-Pesados-2": 14.1653
+     }
+    },
+    {
+     "entry": "st:1:Ermua > Eibar",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 8.2149,
+      "c-Pesados-2": 9.7025
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 11.5207,
+      "c-Pesados-2": 13.2479
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 17.9091,
+      "c-Pesados-2": 20.4628
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 3.4628,
+      "c-Pesados-2": 4.0579
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Bergara I/N > Eibar",
+     "rates": {
+      "c-Pesados-1": 6.9174,
+      "c-Pesados-2": 8.0661
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 7.9421,
+      "c-Pesados-2": 9.2479
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 8.1818,
+      "c-Pesados-2": 9.5207
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 9.9752,
+      "c-Pesados-2": 11.4876
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 10.2727,
+      "c-Pesados-2": 11.876
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 2.4298,
+      "c-Pesados-2": 2.8347
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 11.1983,
+      "c-Pesados-2": 13.0248
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 17.9091,
+      "c-Pesados-2": 20.4628
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 17.0744,
+      "c-Pesados-2": 20.0661
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 13.2645,
+      "c-Pesados-2": 15.5289
+     }
+    },
+    {
+     "entry": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 7.3802,
+      "c-Pesados-2": 8.6281
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 18.7438,
+      "c-Pesados-2": 21.7603
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 25.1322,
+      "c-Pesados-2": 28.9752
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Arrasate-Mondragon > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 10.719,
+      "c-Pesados-2": 12.562
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Bergara I/N > Eibar",
+     "rates": {
+      "c-Pesados-1": 14.1405,
+      "c-Pesados-2": 16.5785
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 15.1653,
+      "c-Pesados-2": 17.7603
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 15.405,
+      "c-Pesados-2": 18.0331
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 17.1983,
+      "c-Pesados-2": 20.0
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 17.4959,
+      "c-Pesados-2": 20.3884
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Eskoriatza > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 9.686,
+      "c-Pesados-2": 11.3471
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 7.3802,
+      "c-Pesados-2": 8.6281
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 18.4215,
+      "c-Pesados-2": 21.5372
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 25.1322,
+      "c-Pesados-2": 28.9752
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 24.2975,
+      "c-Pesados-2": 28.5785
+     }
+    },
+    {
+     "entry": "st:1:Etxabarri-Ibiña (Vitoria-Gasteiz) > Eskoriatza",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 20.4876,
+      "c-Pesados-2": 24.0413
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 8.1653,
+      "c-Pesados-2": 9.3967
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 14.5537,
+      "c-Pesados-2": 16.6116
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 9.9752,
+      "c-Pesados-2": 11.4876
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 7.6694,
+      "c-Pesados-2": 8.8099
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 6.8347,
+      "c-Pesados-2": 7.7438
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 5.4793,
+      "c-Pesados-2": 6.314
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 4.8264,
+      "c-Pesados-2": 5.6694
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Elgoibar > Eibar",
+     "rates": {
+      "c-Pesados-1": 3.6116,
+      "c-Pesados-2": 4.2727
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 6.9174,
+      "c-Pesados-2": 8.0248
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 17.1983,
+      "c-Pesados-2": 20.0
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Itziar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 2.2479,
+      "c-Pesados-2": 2.719
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Elgoibar",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 14.5537,
+      "c-Pesados-2": 16.6116
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Zestoa-Zumaia",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 1.4876,
+      "c-Pesados-2": 1.7107
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Zestoa-Zumaia",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 7.4711,
+      "c-Pesados-2": 8.7438
+     }
+    },
+    {
+     "entry": "st:1:Itziar > Zestoa-Zumaia",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 3.686,
+      "c-Pesados-2": 4.4132
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Abadiño > Ermua",
+     "rates": {
+      "c-Pesados-1": 3.2231,
+      "c-Pesados-2": 3.719
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 11.5207,
+      "c-Pesados-2": 13.2479
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 9.2149,
+      "c-Pesados-2": 10.5702
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 8.3802,
+      "c-Pesados-2": 9.5041
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 7.0248,
+      "c-Pesados-2": 8.0744
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Eibar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 6.2066,
+      "c-Pesados-2": 7.1736
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Elgoibar > Itziar",
+     "rates": {
+      "c-Pesados-1": 8.1653,
+      "c-Pesados-2": 9.3967
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Ermua > Eibar",
+     "rates": {
+      "c-Pesados-1": 4.9256,
+      "c-Pesados-2": 5.5455
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 18.7438,
+      "c-Pesados-2": 21.7603
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Itziar > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 9.5289,
+      "c-Pesados-2": 10.9504
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 15.4711,
+      "c-Pesados-2": 17.8926
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Abadiño",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 11.5537,
+      "c-Pesados-2": 13.4298
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Amorebieta-Etxano",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 5.0826,
+      "c-Pesados-2": 5.7025
+     }
+    },
+    {
+     "entry": "st:1:Iurreta > Amorebieta-Etxano",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 5.0826,
+      "c-Pesados-2": 5.7025
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 11.5537,
+      "c-Pesados-2": 13.4298
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 17.9421,
+      "c-Pesados-2": 20.6446
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 13.2645,
+      "c-Pesados-2": 15.5289
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 10.9587,
+      "c-Pesados-2": 12.8512
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 10.124,
+      "c-Pesados-2": 11.7851
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 8.7686,
+      "c-Pesados-2": 10.3554
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 8.2149,
+      "c-Pesados-2": 9.7025
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Elgoibar > Eibar",
+     "rates": {
+      "c-Pesados-1": 6.9504,
+      "c-Pesados-2": 8.2231
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 10.3058,
+      "c-Pesados-2": 12.0579
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 20.4876,
+      "c-Pesados-2": 24.0413
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Itziar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 5.7851,
+      "c-Pesados-2": 6.6612
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 17.9421,
+      "c-Pesados-2": 20.6446
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 2.405,
+      "c-Pesados-2": 2.9504
+     }
+    },
+    {
+     "entry": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "exit": "st:1:Zestoa-Zumaia > Itziar",
+     "rates": {
+      "c-Pesados-1": 3.686,
+      "c-Pesados-2": 4.4132
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 15.4711,
+      "c-Pesados-2": 17.8926
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 21.8595,
+      "c-Pesados-2": 25.1074
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 17.0744,
+      "c-Pesados-2": 20.0661
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 14.7686,
+      "c-Pesados-2": 17.3884
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 13.9339,
+      "c-Pesados-2": 16.3223
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 12.5785,
+      "c-Pesados-2": 14.8926
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 12.1322,
+      "c-Pesados-2": 14.1653
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Elgoibar > Eibar",
+     "rates": {
+      "c-Pesados-1": 10.6612,
+      "c-Pesados-2": 12.6116
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 14.2231,
+      "c-Pesados-2": 16.5207
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 24.2975,
+      "c-Pesados-2": 28.5785
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Itziar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 9.5372,
+      "c-Pesados-2": 11.0826
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 21.8595,
+      "c-Pesados-2": 25.1074
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Zarautz M/O > Zestoa-Zumaia",
+     "rates": {
+      "c-Pesados-1": 6.3967,
+      "c-Pesados-2": 7.3388
+     }
+    },
+    {
+     "entry": "st:1:Zarautz nagusia (Donostia, Astigarraga, Hernani) > Zarautz M/O",
+     "exit": "st:1:Zestoa-Zumaia > Itziar",
+     "rates": {
+      "c-Pesados-1": 7.4711,
+      "c-Pesados-2": 8.7438
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Abadiño > Iurreta",
+     "rates": {
+      "c-Pesados-1": 9.5289,
+      "c-Pesados-2": 10.9504
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Amorebieta-Etxano > Acceso Oeste (Bilbao)",
+     "rates": {
+      "c-Pesados-1": 15.9174,
+      "c-Pesados-2": 18.1653
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Arrasate-Mondragon > Eskoriatza",
+     "rates": {
+      "c-Pesados-1": 11.1983,
+      "c-Pesados-2": 13.0248
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Bergara H/S > Arrasate-Mondragon",
+     "rates": {
+      "c-Pesados-1": 8.8926,
+      "c-Pesados-2": 10.3471
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Bergara I/N > Bergara H/S",
+     "rates": {
+      "c-Pesados-1": 8.0579,
+      "c-Pesados-2": 9.281
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Eibar > Bergara I/N",
+     "rates": {
+      "c-Pesados-1": 6.7025,
+      "c-Pesados-2": 7.8512
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Eibar > Ermua",
+     "rates": {
+      "c-Pesados-1": 6.1901,
+      "c-Pesados-2": 7.2231
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Elgoibar > Eibar",
+     "rates": {
+      "c-Pesados-1": 4.8017,
+      "c-Pesados-2": 5.5785
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Ermua > Abadiño",
+     "rates": {
+      "c-Pesados-1": 8.281,
+      "c-Pesados-2": 9.5785
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Eskoriatza > Etxabarri-Ibiña (Vitoria-Gasteiz)",
+     "rates": {
+      "c-Pesados-1": 18.4215,
+      "c-Pesados-2": 21.5372
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Itziar > Elgoibar",
+     "rates": {
+      "c-Pesados-1": 3.5372,
+      "c-Pesados-2": 4.0083
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Iurreta > Amorebieta-Etxano",
+     "rates": {
+      "c-Pesados-1": 15.9174,
+      "c-Pesados-2": 18.1653
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Itziar",
+     "exit": "st:1:Zestoa-Zumaia > Itziar",
+     "rates": {
+      "c-Pesados-1": 1.4876,
+      "c-Pesados-2": 1.7107
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "exit": "st:1:Zarautz M/O > Zarautz nagusia (Donostia, Astigarraga, Hernani)",
+     "rates": {
+      "c-Pesados-1": 6.3967,
+      "c-Pesados-2": 7.3388
+     }
+    },
+    {
+     "entry": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "exit": "st:1:Zestoa-Zumaia > Zarautz M/O",
+     "rates": {
+      "c-Pesados-1": 2.405,
+      "c-Pesados-2": 2.9504
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Bidegi's 2026 tariff sheet: by entry and exit, either way, excluding 21% VAT; stations not placed (priced from the next one): Luko",
+   "directed": true
+  },
+  {
+   "id": "system:2",
+   "name": "AP-8 Donostia – Behobia",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:2:Behobia > Irun Ventas",
+    "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+    "st:2:Irun M/O > Irun Ventas",
+    "st:2:Irun M/O > Oiartzun",
+    "st:2:Irun Ventas > Behobia",
+    "st:2:Irun Ventas > Irun M/O",
+    "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+    "st:2:Oiartzun > Irun M/O"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:2:Behobia > Irun Ventas",
+     "exit": "st:2:Behobia > Irun Ventas",
+     "rates": {
+      "c-Pesados-1": 1.6529,
+      "c-Pesados-2": 1.8678
+     }
+    },
+    {
+     "entry": "st:2:Behobia > Irun Ventas",
+     "exit": "st:2:Irun M/O > Oiartzun",
+     "rates": {
+      "c-Pesados-1": 4.5041,
+      "c-Pesados-2": 5.3967
+     }
+    },
+    {
+     "entry": "st:2:Behobia > Irun Ventas",
+     "exit": "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+     "rates": {
+      "c-Pesados-1": 4.5041,
+      "c-Pesados-2": 5.3967
+     }
+    },
+    {
+     "entry": "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+     "exit": "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+     "rates": {
+      "c-Pesados-1": 2.1901,
+      "c-Pesados-2": 2.5289
+     }
+    },
+    {
+     "entry": "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+     "exit": "st:2:Irun Ventas > Behobia",
+     "rates": {
+      "c-Pesados-1": 4.5041,
+      "c-Pesados-2": 5.3967
+     }
+    },
+    {
+     "entry": "st:2:Donostia SS E (Hernani, Astigarraga, Lasarte) > Oiartzun",
+     "exit": "st:2:Oiartzun > Irun M/O",
+     "rates": {
+      "c-Pesados-1": 3.1653,
+      "c-Pesados-2": 3.7769
+     }
+    },
+    {
+     "entry": "st:2:Irun M/O > Oiartzun",
+     "exit": "st:2:Irun M/O > Oiartzun",
+     "rates": {
+      "c-Pesados-1": 3.1653,
+      "c-Pesados-2": 3.7769
+     }
+    },
+    {
+     "entry": "st:2:Irun M/O > Oiartzun",
+     "exit": "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+     "rates": {
+      "c-Pesados-1": 3.1653,
+      "c-Pesados-2": 3.7769
+     }
+    },
+    {
+     "entry": "st:2:Irun Ventas > Behobia",
+     "exit": "st:2:Irun Ventas > Behobia",
+     "rates": {
+      "c-Pesados-1": 1.6529,
+      "c-Pesados-2": 1.8678
+     }
+    },
+    {
+     "entry": "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+     "exit": "st:2:Oiartzun > Donostia SS E (Hernani, Astigarraga, Lasarte)",
+     "rates": {
+      "c-Pesados-1": 2.1901,
+      "c-Pesados-2": 2.5289
+     }
+    },
+    {
+     "entry": "st:2:Oiartzun > Irun M/O",
+     "exit": "st:2:Irun Ventas > Behobia",
+     "rates": {
+      "c-Pesados-1": 4.5041,
+      "c-Pesados-2": 5.3967
+     }
+    },
+    {
+     "entry": "st:2:Oiartzun > Irun M/O",
+     "exit": "st:2:Oiartzun > Irun M/O",
+     "rates": {
+      "c-Pesados-1": 3.1653,
+      "c-Pesados-2": 3.7769
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Bidegi's 2026 tariff sheet: by entry and exit, either way, excluding 21% VAT; stations not placed (priced from the next one): Oñaurre",
+   "directed": true
+  },
+  {
+   "id": "point:1",
+   "name": "AP-636 Beasain - Ormaiztegi (Beasain gantry)",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.7107,
+    "c2": 0.5537
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "AP-636 Ormaiztegi - Zumarraga (Ezkio gantry)",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.3554,
+    "c2": 1.0826
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "AP-636 Legazpi/Urretxu - Bergara (Deskarga gantry)",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.6198,
+    "c2": 2.1074
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

@@ -1,0 +1,1834 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "at-2026-01-01",
+  "scheme": "at",
+  "country": "AT",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Austrian HGV toll (GO-Maut)",
+  "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, §§ 1-2, 7-9 (in force 1 January 2026)",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/at-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025 (RIS)",
+   "url": "https://ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2025_II_298/BGBLA_2025_II_298.rtf"
+  },
+  {
+   "id": "s2",
+   "title": "WKO: Lkw- und Bus-Maut in Österreich 2026 (totals per tariff group)",
+   "url": "https://www.wko.at/wien/transport-verkehr/kc-m-lkw-und-bus-maut-in-oesterreich-2026.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Motor vehicles over 3.5 t maximum permissible mass, by number of axles (vehicle and trailer)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c25",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c26",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c27",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c28",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c29",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c30",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c-E-2-axles",
+   "criteria": {
+    "axles": {
+     "max": 2
+    },
+    "co2_class": [
+     5
+    ]
+   },
+   "label": "E/2 axles"
+  },
+  {
+   "id": "c-E-3-axles",
+   "criteria": {
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   },
+   "label": "E/3 axles"
+  },
+  {
+   "id": "c-E-4-axles",
+   "criteria": {
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     5
+    ]
+   },
+   "label": "E/4+ axles"
+  },
+  {
+   "id": "c-A-2-axles",
+   "criteria": {
+    "axles": {
+     "max": 2
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "label": "A/2 axles"
+  },
+  {
+   "id": "c-A-3-axles",
+   "criteria": {
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "label": "A/3 axles"
+  },
+  {
+   "id": "c-A-4-axles",
+   "criteria": {
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "label": "A/4+ axles"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways and expressways (A and S roads). On the special toll sections (§ 4: parts of A 9, A 10, A 11, A 13 Brenner, S 16 Arlberg) the infrastructure part is a fixed amount per section, recognised on the route; § 3 adds 25% to the infrastructure tariff on the A 12 Kufstein–Innsbruck."
+  },
+  {
+   "id": "stretch:a12",
+   "kind": "stretch",
+   "name": "A 12, Staatsgrenze Kufstein – Kn Innsbruck/Amras",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      12.187,
+      47.607
+     ],
+     [
+      12.1756,
+      47.5965
+     ],
+     [
+      12.1408,
+      47.5675
+     ],
+     [
+      12.0941,
+      47.5333
+     ],
+     [
+      12.0572,
+      47.495
+     ],
+     [
+      12.0235,
+      47.4838
+     ],
+     [
+      11.8842,
+      47.4411
+     ],
+     [
+      11.8032,
+      47.4028
+     ],
+     [
+      11.7016,
+      47.3577
+     ],
+     [
+      11.6792,
+      47.3307
+     ],
+     [
+      11.5838,
+      47.2998
+     ],
+     [
+      11.5015,
+      47.2739
+     ],
+     [
+      11.4764,
+      47.271
+     ],
+     [
+      11.4385,
+      47.2606
+     ],
+     [
+      11.4202,
+      47.2547
+     ]
+    ]
+   },
+   "point_names": [
+    "Staatsgrenze Kufstein (approx.)",
+    "Kufstein-Nord",
+    "Kufstein Süd",
+    "Kirchbichl",
+    "Wörgl Ost",
+    "Wörgl West",
+    "Kramsach",
+    "Wiesing",
+    "Schwaz",
+    "Vomp",
+    "Wattens",
+    "Hall-Mitte",
+    "Hall-West",
+    "Innsbruck Ost",
+    "Kn Innsbruck/Amras"
+   ]
+  },
+  {
+   "id": "sec:a",
+   "kind": "section",
+   "name": "A 9, ASt Spital/Pyhrn – ASt Ardning/Admont",
+   "road": "A 9",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      14.3324,
+      47.6475
+     ]
+    },
+    "name": "ASt Spital/Pyhrn"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      14.3157,
+      47.5751
+     ]
+    },
+    "name": "ASt Ardning/Admont"
+   }
+  },
+  {
+   "id": "sec:b",
+   "kind": "section",
+   "name": "A 9, Kn St. Michael – ASt Übelbach",
+   "road": "A 9",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      15.01,
+      47.338
+     ]
+    },
+    "name": "Kn St. Michael"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      15.2646,
+      47.2159
+     ]
+    },
+    "name": "ASt Übelbach"
+   }
+  },
+  {
+   "id": "sec:c",
+   "kind": "section",
+   "name": "A 10, ASt Flachau – ASt Flachauwinkl",
+   "road": "A 10",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.3973,
+      47.3604
+     ]
+    },
+    "name": "ASt Flachau"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.3944,
+      47.2959
+     ]
+    },
+    "name": "ASt Flachauwinkl"
+   }
+  },
+  {
+   "id": "sec:d",
+   "kind": "section",
+   "name": "A 10, ASt Flachauwinkl – HASt Zederhaus",
+   "road": "A 10",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.3944,
+      47.2959
+     ]
+    },
+    "name": "ASt Flachauwinkl"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.4826,
+      47.1605
+     ]
+    },
+    "name": "HASt Zederhaus"
+   }
+  },
+  {
+   "id": "sec:e",
+   "kind": "section",
+   "name": "A 10, HASt Zederhaus – ASt St. Michael/Lungau",
+   "road": "A 10",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.4826,
+      47.1605
+     ]
+    },
+    "name": "HASt Zederhaus"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.6094,
+      47.0935
+     ]
+    },
+    "name": "ASt St. Michael/Lungau"
+   }
+  },
+  {
+   "id": "sec:f",
+   "kind": "section",
+   "name": "A 10, ASt St. Michael/Lungau – ASt Rennweg/Katschberg",
+   "road": "A 10",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.6094,
+      47.0935
+     ]
+    },
+    "name": "ASt St. Michael/Lungau"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      13.6103,
+      47.0224
+     ]
+    },
+    "name": "ASt Rennweg/Katschberg"
+   }
+  },
+  {
+   "id": "sec:g",
+   "kind": "section",
+   "name": "A 11, ASt St. Jakob/Rosental – Staatsgrenze Karawankentunnel (approx., mid-tunnel)",
+   "road": "A 11",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      14.0061,
+      46.5583
+     ]
+    },
+    "name": "ASt St. Jakob/Rosental"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      14.02,
+      46.5
+     ]
+    },
+    "name": "Staatsgrenze Karawankentunnel (approx., mid-tunnel)"
+   }
+  },
+  {
+   "id": "sec:h",
+   "kind": "section",
+   "name": "A 13, Kn Innsbruck/Amras – ASt Innsbruck/Süd",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.4202,
+      47.2547
+     ]
+    },
+    "name": "Kn Innsbruck/Amras"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3905,
+      47.2396
+     ]
+    },
+    "name": "ASt Innsbruck/Süd"
+   }
+  },
+  {
+   "id": "sec:i",
+   "kind": "section",
+   "name": "A 13, Kn Innsbruck/Wilten – ASt Innsbruck/Süd",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3813,
+      47.2533
+     ]
+    },
+    "name": "Kn Innsbruck/Wilten"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3905,
+      47.2396
+     ]
+    },
+    "name": "ASt Innsbruck/Süd"
+   }
+  },
+  {
+   "id": "sec:j",
+   "kind": "section",
+   "name": "A 13, ASt Innsbruck/Süd – ASt Zenzenhof",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3905,
+      47.2396
+     ]
+    },
+    "name": "ASt Innsbruck/Süd"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3934,
+      47.2276
+     ]
+    },
+    "name": "ASt Zenzenhof"
+   }
+  },
+  {
+   "id": "sec:k",
+   "kind": "section",
+   "name": "A 13, ASt Zenzenhof – ASt Patsch/Igls",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3934,
+      47.2276
+     ]
+    },
+    "name": "ASt Zenzenhof"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.403,
+      47.2082
+     ]
+    },
+    "name": "ASt Patsch/Igls"
+   }
+  },
+  {
+   "id": "sec:l",
+   "kind": "section",
+   "name": "A 13, ASt Patsch/Igls – ASt Schönberg/Stubaital",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.403,
+      47.2082
+     ]
+    },
+    "name": "ASt Patsch/Igls"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3982,
+      47.1841
+     ]
+    },
+    "name": "ASt Schönberg/Stubaital"
+   }
+  },
+  {
+   "id": "sec:m",
+   "kind": "section",
+   "name": "A 13, ASt Schönberg/Stubaital – ASt Matrei/Steinach",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.3982,
+      47.1841
+     ]
+    },
+    "name": "ASt Schönberg/Stubaital"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.4497,
+      47.1195
+     ]
+    },
+    "name": "ASt Matrei/Steinach"
+   }
+  },
+  {
+   "id": "sec:n",
+   "kind": "section",
+   "name": "A 13, ASt Matrei/Steinach – ASt Nösslach",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.4497,
+      47.1195
+     ]
+    },
+    "name": "ASt Matrei/Steinach"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.4801,
+      47.0615
+     ]
+    },
+    "name": "ASt Nösslach"
+   }
+  },
+  {
+   "id": "sec:o",
+   "kind": "section",
+   "name": "A 13, ASt Nösslach – ASt Brennersee",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.4801,
+      47.0615
+     ]
+    },
+    "name": "ASt Nösslach"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.5065,
+      47.0152
+     ]
+    },
+    "name": "ASt Brennersee"
+   }
+  },
+  {
+   "id": "sec:p",
+   "kind": "section",
+   "name": "A 13, ASt Brennersee – Staatsgrenze Brennerpass (approx.)",
+   "road": "A 13",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.5065,
+      47.0152
+     ]
+    },
+    "name": "ASt Brennersee"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      11.508,
+      47.003
+     ]
+    },
+    "name": "Staatsgrenze Brennerpass (approx.)"
+   }
+  },
+  {
+   "id": "sec:q",
+   "kind": "section",
+   "name": "S 16, ASt St. Anton/Arlberg – ASt Langen/Arlberg",
+   "road": "S 16",
+   "from": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      10.3162,
+      47.1417
+     ]
+    },
+    "name": "ASt St. Anton/Arlberg"
+   },
+   "to": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      10.114,
+      47.1301
+     ]
+    },
+    "name": "ASt Langen/Arlberg"
+   }
+  }
+ ],
+ "charges": [
+  {
+   "id": "infrastructure@roads",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.0547,
+    "c2": 0.2186,
+    "c3": 0.0766,
+    "c4": 0.306,
+    "c5": 0.1149,
+    "c6": 0.4591
+   }
+  },
+  {
+   "id": "air_noise@roads",
+   "type": "distance",
+   "component": "air_noise",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.004,
+    "c7": 0.006,
+    "c8": 0.021,
+    "c9": 0.04,
+    "c10": 0.056,
+    "c3": 0.004,
+    "c11": 0.009,
+    "c12": 0.032,
+    "c13": 0.053,
+    "c14": 0.077,
+    "c5": 0.004,
+    "c15": 0.01,
+    "c16": 0.04,
+    "c17": 0.07,
+    "c18": 0.103
+   }
+  },
+  {
+   "id": "co2@roads",
+   "type": "distance",
+   "component": "co2",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.0,
+    "c3": 0.0,
+    "c5": 0.0,
+    "c19": 0.024,
+    "c20": 0.029,
+    "c21": 0.04,
+    "c22": 0.0478,
+    "c23": 0.0638,
+    "c24": 0.0934,
+    "c25": 0.0494,
+    "c26": 0.066,
+    "c27": 0.0966,
+    "c28": 0.0528,
+    "c29": 0.0706,
+    "c30": 0.1033
+   }
+  },
+  {
+   "id": "section:a",
+   "name": "A 9, ASt Spital/Pyhrn – ASt Ardning/Admont",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:a"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.2389,
+    "c-E-3-axles": 1.7347,
+    "c-E-4-axles": 2.6015,
+    "c-A-2-axles": 4.9536,
+    "c-A-3-axles": 6.9346,
+    "c-A-4-axles": 10.4029
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:b",
+   "name": "A 9, Kn St. Michael – ASt Übelbach",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:b"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 3.0175,
+    "c-E-3-axles": 4.225,
+    "c-E-4-axles": 6.3363,
+    "c-A-2-axles": 12.0653,
+    "c-A-3-axles": 16.8904,
+    "c-A-4-axles": 25.338
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:c",
+   "name": "A 10, ASt Flachau – ASt Flachauwinkl",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:c"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.8266,
+    "c-E-3-axles": 1.1574,
+    "c-E-4-axles": 1.7361,
+    "c-A-2-axles": 3.3071,
+    "c-A-3-axles": 4.6303,
+    "c-A-4-axles": 6.945
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:d",
+   "name": "A 10, ASt Flachauwinkl – HASt Zederhaus",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:d"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 2.0831,
+    "c-E-3-axles": 2.9167,
+    "c-E-4-axles": 4.3751,
+    "c-A-2-axles": 8.3342,
+    "c-A-3-axles": 11.6686,
+    "c-A-4-axles": 17.5021
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:e",
+   "name": "A 10, HASt Zederhaus – ASt St. Michael/Lungau",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:e"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.3744,
+    "c-E-3-axles": 1.9244,
+    "c-E-4-axles": 2.8866,
+    "c-A-2-axles": 5.4988,
+    "c-A-3-axles": 7.6988,
+    "c-A-4-axles": 11.5477
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:f",
+   "name": "A 10, ASt St. Michael/Lungau – ASt Rennweg/Katschberg",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:f"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.0076,
+    "c-E-3-axles": 1.4108,
+    "c-E-4-axles": 2.1162,
+    "c-A-2-axles": 4.0313,
+    "c-A-3-axles": 5.6442,
+    "c-A-4-axles": 8.4659
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:g",
+   "name": "A 11, ASt St. Jakob/Rosental – Staatsgrenze Karawankentunnel (approx., mid-tunnel)",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:g"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 2.3588,
+    "c-E-3-axles": 3.3023,
+    "c-E-4-axles": 4.9535,
+    "c-A-2-axles": 9.4333,
+    "c-A-3-axles": 13.2064,
+    "c-A-4-axles": 19.81
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:h",
+   "name": "A 13, Kn Innsbruck/Amras – ASt Innsbruck/Süd",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:h"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.5543,
+    "c-E-3-axles": 0.7762,
+    "c-E-4-axles": {
+     "default": 1.164,
+     "night": 2.328
+    },
+    "c-A-2-axles": 2.2177,
+    "c-A-3-axles": 3.1049,
+    "c-A-4-axles": {
+     "default": 4.6574,
+     "night": 9.3148
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:i",
+   "name": "A 13, Kn Innsbruck/Wilten – ASt Innsbruck/Süd",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:i"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.3608,
+    "c-E-3-axles": 0.5052,
+    "c-E-4-axles": {
+     "default": 0.7575,
+     "night": 1.515
+    },
+    "c-A-2-axles": 1.4433,
+    "c-A-3-axles": 2.0207,
+    "c-A-4-axles": {
+     "default": 3.0311,
+     "night": 6.0622
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:j",
+   "name": "A 13, ASt Innsbruck/Süd – ASt Zenzenhof",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:j"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.2635,
+    "c-E-3-axles": 0.369,
+    "c-E-4-axles": {
+     "default": 0.5534,
+     "night": 1.1068
+    },
+    "c-A-2-axles": 1.0543,
+    "c-A-3-axles": 1.4761,
+    "c-A-4-axles": {
+     "default": 2.2142,
+     "night": 4.4284
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:k",
+   "name": "A 13, ASt Zenzenhof – ASt Patsch/Igls",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:k"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.4871,
+    "c-E-3-axles": 0.6821,
+    "c-E-4-axles": {
+     "default": 1.0228,
+     "night": 2.0456
+    },
+    "c-A-2-axles": 1.9487,
+    "c-A-3-axles": 2.7282,
+    "c-A-4-axles": {
+     "default": 4.0924,
+     "night": 8.1848
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:l",
+   "name": "A 13, ASt Patsch/Igls – ASt Schönberg/Stubaital",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:l"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.5271,
+    "c-E-3-axles": 0.7381,
+    "c-E-4-axles": {
+     "default": 1.1067,
+     "night": 2.2134
+    },
+    "c-A-2-axles": 2.1087,
+    "c-A-3-axles": 2.9522,
+    "c-A-4-axles": {
+     "default": 4.4283,
+     "night": 8.8566
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:m",
+   "name": "A 13, ASt Schönberg/Stubaital – ASt Matrei/Steinach",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:m"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.663,
+    "c-E-3-axles": 2.3287,
+    "c-E-4-axles": {
+     "default": 3.4919,
+     "night": 6.9838
+    },
+    "c-A-2-axles": 6.6532,
+    "c-A-3-axles": 9.3147,
+    "c-A-4-axles": {
+     "default": 13.9721,
+     "night": 27.9442
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:n",
+   "name": "A 13, ASt Matrei/Steinach – ASt Nösslach",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:n"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.3377,
+    "c-E-3-axles": 1.8731,
+    "c-E-4-axles": {
+     "default": 2.8088,
+     "night": 5.6176
+    },
+    "c-A-2-axles": 5.3516,
+    "c-A-3-axles": 7.4925,
+    "c-A-4-axles": {
+     "default": 11.2387,
+     "night": 22.4774
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:o",
+   "name": "A 13, ASt Nösslach – ASt Brennersee",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:o"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 1.2005,
+    "c-E-3-axles": 1.681,
+    "c-E-4-axles": {
+     "default": 2.5206,
+     "night": 5.0412
+    },
+    "c-A-2-axles": 4.8027,
+    "c-A-3-axles": 6.7239,
+    "c-A-4-axles": {
+     "default": 10.0858,
+     "night": 20.1716
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:p",
+   "name": "A 13, ASt Brennersee – Staatsgrenze Brennerpass (approx.)",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:p"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 0.2374,
+    "c-E-3-axles": 0.3324,
+    "c-E-4-axles": {
+     "default": 0.4984,
+     "night": 0.9968
+    },
+    "c-A-2-axles": 0.9496,
+    "c-A-3-axles": 1.3295,
+    "c-A-4-axles": {
+     "default": 1.9943,
+     "night": 3.9886
+    }
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  },
+  {
+   "id": "section:q",
+   "name": "S 16, ASt St. Anton/Arlberg – ASt Langen/Arlberg",
+   "type": "point",
+   "component": "infrastructure",
+   "applies_to": [
+    "sec:q"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c-E-2-axles": 2.3341,
+    "c-E-3-axles": 3.2684,
+    "c-E-4-axles": 4.901,
+    "c-A-2-axles": 9.338,
+    "c-A-3-axles": 13.0736,
+    "c-A-4-axles": 19.6103
+   },
+   "method": "Mauttarifverordnung 2025, BGBl. II Nr. 298/2025, § 4 (Mautabschnitts-Teiltarife for infrastructure, EUR per section) and § 5 (A 13, 22:00-05:00, 4+ axles); they replace the per-km infrastructure tariff on those sections (§ 9 Abs. 11 BStMG). Section ends: OpenStreetMap motorway junctions (ODbL); border points approximate. E = CO2 class 5, A = other classes; values for 2, 3 and 4+ axles"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "factor",
+   "applies_to": [
+    "infrastructure@roads"
+   ],
+   "params": {
+    "stretch": "stretch:a12",
+    "factor": 0.25,
+    "note": "Mauttarifverordnung 2025 § 3: the § 2 infrastructure tariff +25% on this stretch. Stretch: OpenStreetMap motorway junctions (ODbL); km counted between consecutive junctions the route passes."
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:h"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:i"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:j"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:k"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:l"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:m"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:n"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:o"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "section:p"
+   ],
+   "params": {
+    "name": "night",
+    "hours": [
+     "22:00",
+     "05:00"
+    ]
+   }
+  }
+ ]
+}

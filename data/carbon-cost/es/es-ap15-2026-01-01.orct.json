@@ -1,0 +1,144 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-ap15-2026-01-01",
+  "scheme": "es-ap15",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "AP-15 Navarra (Audenasa) barriers",
+  "method": "Audenasa's tariffs 2026 (the Gobierno de Navarra's concession of the AP-15): per passage of each barrier, either way, Pesados I (two or three axles) and II (four or more), excluding 21% IVA. Not placed (no named OSM booth), so not priced: Oriz-Tiebas, Marcilla Enlace.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-ap15-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Audenasa: Tarifas y Recorrido 2026",
+   "url": "https://www.audenasa.es/storage/Tarifas-2026-Recorrido.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API): toll booths",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Pesados I and II (trucks over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-15 Irurzun–Tudela (Navarra): Sarasa, Marcilla Tronco."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "AP-15 Sarasa",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -1.748438,
+     42.867689
+    ]
+   },
+   "match_km": 0.2
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "AP-15 Marcilla Tronco",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -1.726227,
+     42.331205
+    ]
+   },
+   "match_km": 0.2
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "AP-15 Sarasa",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.4876,
+    "c2": 1.7355
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "AP-15 Marcilla Tronco",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 3.9669,
+    "c2": 4.5041
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

@@ -1,0 +1,409 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "lv-2026-03-01",
+  "scheme": "lv",
+  "country": "LV",
+  "currency": "EUR",
+  "valid_from": "2026-03-01",
+  "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+  "method": "Autoceļu lietošanas nodevas likums, Annex 2 as worded by the amendments of 22 January 2026 (in force 1 March 2026): a time-based charge in euro for 1 day, 7 days, 30 days or a year, by maximum mass (3001-3500 kg, 3501-12000 kg, 12001 kg and over), axles (2 and 3, or 4 and more, over 12 t) and EURO class; zero-emission vehicles pay nothing. The table keeps the 1-day rate. A fee, without VAT.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/lv-2026-03-01.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Autoceļu lietošanas nodevas likums, consolidated (likumi.lv)",
+   "url": "https://likumi.lv/ta/id/185656-autocelu-lietosanas-nodevas-likums"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles and combinations from 3001 kg maximum mass",
+  "min_mass_kg": 3001,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 3001,
+     "max": 3500
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The state main and regional road sections listed in Annex 1 of the law. Any use of them on a day needs that day's charge."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@roads",
+   "type": "period",
+   "component": "toll",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0,
+    "c4": 0,
+    "c5": 12,
+    "c6": 11,
+    "c7": 10,
+    "c8": 9,
+    "c9": 7,
+    "c10": 17,
+    "c11": 14,
+    "c12": 13,
+    "c13": 12,
+    "c14": 10,
+    "c15": 29,
+    "c16": 24,
+    "c17": 22,
+    "c18": 19,
+    "c19": 14,
+    "c20": 46,
+    "c21": 38,
+    "c22": 34,
+    "c23": 30,
+    "c24": 22
+   },
+   "period": "day"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "toll@roads",
+   "status": "partial",
+   "reason": "what counts as a day isn't known; one day is charged per trip"
+  }
+ ]
+}

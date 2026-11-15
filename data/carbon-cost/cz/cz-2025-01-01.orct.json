@@ -1,0 +1,1726 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "cz-2025-01-01",
+  "scheme": "cz",
+  "country": "CZ",
+  "currency": "CZK",
+  "valid_from": "2025-01-01",
+  "name": "Czech electronic toll (Mýto CZ)",
+  "method": "Nařízení vlády č. 240/2014 Sb., § 3 and Annexes 1 (motorways) and 2 (class I roads), as worded by nařízení vlády č. 299/2024 Sb., in force 1 January 2025: one rate per km by road category, maximum permissible mass, axles, CO2 emission class and, in CO2 class 1, EURO class; the regulation gives no separate CO2 part.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/cz-2025-01-01.json"
+  },
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Nařízení vlády č. 299/2024 Sb. (epravo.cz)",
+   "url": "https://www.epravo.cz/top/zakony/sbirka-zakonu/sb/2024/299"
+  },
+  {
+   "id": "s2",
+   "title": "Nařízení vlády č. 240/2014 Sb., § 3 (rate structure)",
+   "url": "https://www.epravo.cz/top/zakony/sbirka-zakonu/sb/2014/240"
+  }
+ ],
+ "vehicles": {
+  "description": "Motor vehicles and combinations over 3.5 t maximum permissible mass (except buses, M2/M3, which have their own rates)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c25",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c26",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c27",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c28",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7499
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c29",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c30",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c31",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c32",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c33",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c34",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c35",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c36",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c37",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c38",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c39",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c40",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c41",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c42",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c43",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c44",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c45",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c46",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c47",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c48",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c49",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c50",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c51",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c52",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c53",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c54",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c55",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c56",
+   "criteria": {
+    "mass_kg": {
+     "min": 7500,
+     "max": 11999
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c57",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c58",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c59",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c60",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c61",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c62",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c63",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c64",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c65",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c66",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c67",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c68",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c69",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c70",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c71",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c72",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c73",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c74",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c75",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c76",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c77",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c78",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c79",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c80",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c81",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c82",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c83",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c84",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways (dálnice) and the tolled sections of class I roads (silnice I. třídy)."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@road:motorway",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.827,
+    "c2": 1.0221,
+    "c3": 1.5554,
+    "c4": 1.81,
+    "c5": 0.8184,
+    "c6": 1.0106,
+    "c7": 1.5408,
+    "c8": 1.7922,
+    "c9": 0.8152,
+    "c10": 1.0062,
+    "c11": 1.5352,
+    "c12": 1.7855,
+    "c13": 0.7983,
+    "c14": 0.985,
+    "c15": 1.4981,
+    "c16": 1.7412,
+    "c17": 0.7813,
+    "c18": 0.9638,
+    "c19": 1.4611,
+    "c20": 1.697,
+    "c21": 0.6456,
+    "c22": 0.7942,
+    "c23": 1.1643,
+    "c24": 1.3427,
+    "c25": 0.4506,
+    "c26": 0.5508,
+    "c27": 0.751,
+    "c28": 0.8512,
+    "c29": 1.5473,
+    "c30": 2.0481,
+    "c31": 2.8001,
+    "c32": 3.3875,
+    "c33": 1.3697,
+    "c34": 1.8094,
+    "c35": 2.4973,
+    "c36": 3.0197,
+    "c37": 1.3026,
+    "c38": 1.7192,
+    "c39": 2.3668,
+    "c40": 2.8589,
+    "c41": 1.2857,
+    "c42": 1.698,
+    "c43": 2.3297,
+    "c44": 2.8146,
+    "c45": 1.2687,
+    "c46": 1.6767,
+    "c47": 2.2927,
+    "c48": 2.7704,
+    "c49": 1.1331,
+    "c50": 1.5072,
+    "c51": 1.9959,
+    "c52": 2.4162,
+    "c53": 0.8601,
+    "c54": 1.1563,
+    "c55": 1.4657,
+    "c56": 1.7821,
+    "c57": 3.5013,
+    "c58": 4.5898,
+    "c59": 5.8088,
+    "c60": 6.8249,
+    "c61": 3.0364,
+    "c62": 4.0458,
+    "c63": 5.3367,
+    "c64": 6.3846,
+    "c65": 2.8007,
+    "c66": 3.6985,
+    "c67": 4.8717,
+    "c68": 5.8954,
+    "c69": 2.7838,
+    "c70": 3.6773,
+    "c71": 4.8346,
+    "c72": 5.8511,
+    "c73": 2.7668,
+    "c74": 3.6561,
+    "c75": 4.7976,
+    "c76": 5.8069,
+    "c77": 2.6311,
+    "c78": 3.4865,
+    "c79": 4.5008,
+    "c80": 5.4527,
+    "c81": 2.2538,
+    "c82": 3.0277,
+    "c83": 3.8422,
+    "c84": 4.6572
+   }
+  },
+  {
+   "id": "toll@road:other",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.4196,
+    "c2": 0.5444,
+    "c3": 0.8751,
+    "c4": 1.0582,
+    "c5": 0.411,
+    "c6": 0.5329,
+    "c7": 0.8605,
+    "c8": 1.0404,
+    "c9": 0.4078,
+    "c10": 0.5285,
+    "c11": 0.8549,
+    "c12": 1.0337,
+    "c13": 0.3987,
+    "c14": 0.517,
+    "c15": 0.8308,
+    "c16": 1.005,
+    "c17": 0.3894,
+    "c18": 0.5055,
+    "c19": 0.8068,
+    "c20": 0.9763,
+    "c21": 0.3159,
+    "c22": 0.4136,
+    "c23": 0.6143,
+    "c24": 0.7463,
+    "c25": 0.2106,
+    "c26": 0.2808,
+    "c27": 0.351,
+    "c28": 0.4312,
+    "c29": 0.9511,
+    "c30": 1.2609,
+    "c31": 1.7891,
+    "c32": 2.1627,
+    "c33": 0.7735,
+    "c34": 1.0222,
+    "c35": 1.4863,
+    "c36": 1.7949,
+    "c37": 0.7064,
+    "c38": 0.932,
+    "c39": 1.3558,
+    "c40": 1.6341,
+    "c41": 0.6973,
+    "c42": 0.9205,
+    "c43": 1.3316,
+    "c44": 1.6053,
+    "c45": 0.6881,
+    "c46": 0.909,
+    "c47": 1.3077,
+    "c48": 1.5767,
+    "c49": 0.6146,
+    "c50": 0.8171,
+    "c51": 1.1151,
+    "c52": 1.3467,
+    "c53": 0.4403,
+    "c54": 0.5916,
+    "c55": 0.7507,
+    "c56": 0.9116,
+    "c57": 2.1896,
+    "c58": 2.8425,
+    "c59": 3.5775,
+    "c60": 4.1209,
+    "c61": 1.7247,
+    "c62": 2.2985,
+    "c63": 3.1054,
+    "c64": 3.6806,
+    "c65": 1.489,
+    "c66": 1.9512,
+    "c67": 2.6404,
+    "c68": 3.1914,
+    "c69": 1.4799,
+    "c70": 1.9398,
+    "c71": 2.6163,
+    "c72": 3.1626,
+    "c73": 1.4706,
+    "c74": 1.9282,
+    "c75": 2.5923,
+    "c76": 3.1339,
+    "c77": 1.3971,
+    "c78": 1.8363,
+    "c79": 2.3998,
+    "c80": 2.904,
+    "c81": 1.1526,
+    "c82": 1.5486,
+    "c83": 1.9651,
+    "c84": 2.3779
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "toll@road:motorway",
+    "toll@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "md-2026-11-13",
+  "scheme": "md",
+  "country": "MD",
+  "currency": "EUR",
+  "valid_from": "2026-11-13",
+  "name": "Moldova vignette (vinieta), trucks not registered in Moldova",
+  "method": "Codul fiscal, Titlul IX (taxele rutiere), Anexa nr. 2, item 4: the charge for using Moldova's roads by vehicles not registered in Moldova, trucks and road tractors by total mass: over 3.5 t up to 10 t EUR 8 a day (32 for 7 days, 640 for 12 months), over 10 t up to 40 t EUR 11 a day (55 for 7 days, 1120 for 12 months). The table keeps the 1-day amount; trucks registered in Moldova pay instead a yearly road fee, not modelled. The page gives no date: valid_from is the day it was first read.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/md-2026-11-13.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "e-Vinieta (S.A. Administrația Națională a Drumurilor): Legislația",
+   "url": "https://evinieta.gov.md/Home/Legislation"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks and road tractors not registered in Moldova, over 3.5 t",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 10000
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 10001
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "All public roads of the Republic of Moldova."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@roads",
+   "type": "period",
+   "component": "toll",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 8,
+    "c2": 11
+   },
+   "period": "day"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "toll@roads",
+   "status": "partial",
+   "reason": "what counts as a day isn't known; one day is charged per trip"
+  }
+ ]
+}

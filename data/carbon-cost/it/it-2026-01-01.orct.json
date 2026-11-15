@@ -1,0 +1,1670 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "it-2026-01-01",
+  "scheme": "it",
+  "country": "IT",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Italian motorway tolls (ESTIMATE: each concession's unit rate per km)",
+  "method": "Estimate. Italian motorway tolls are each concession's unit rate per km, by vehicle class (A, B by height for two axles; 3, 4, 5 by axles) and by plain or mountain stretch, plus the ANAS surcharge (law 102/2009 art. 19 c. 9-bis), times the km between toll stations, plus 22% VAT, rounded to 10 cents (the concession agreements with the Ministry, under the State's laws and CIPE resolutions). No station-to-station table can be fetched, so the route's km on toll motorways (OpenStreetMap ways tagged toll=yes) are priced by the operator OpenStreetMap gives the ways: Autostrada del Brennero (A22), Asti-Cuneo (A33), Ivrea Torino Piacenza (A5, A55), CAV (A4, A57, Passante di Mestre), SATAP (A4 Torino-Milano), Ivrea Torino Piacenza (A21), SAV (A5 Quincinetto-Aosta) at the unit rates for users (VAT and ANAS fee included) their own pages give for 2026; the Consorzio per le Autostrade Siciliane's A18 and A20 by entry and exit in their own table (it-cas), and Milan's ring roads (A50, A51, A52) at their barriers (it-barriers), not here; the other concessions with a published sheet at their unit rate for 2025, ANAS surcharge and VAT included, as their sheets sent to the Ministry of Infrastructure and Transport (Directive (EU) 2022/362 art. 11, published March 2025) state them (the 2026 change, 1.5% on most networks, isn't applied to them: the Ministry's note couldn't be found and their pages give no rates as text), each concession's plain-stretch rate unless it has only mountain stretches; Autostrade per l'Italia's network and the concessions without rates in their sheet at Autostrade per l'Italia's plain-stretch unit rate, VAT included, in force from 2026-01-01: class B 0.08054, 3 0.10615, 4 0.16108, 5 0.19034 euro per km. Pedemontana Lombarda's classes are its own (3 trucks up to three axles, 4 articulated or with trailer). Mountain stretches cost about 18% more on ASPI's network (class 5 0.22437), SATAP's A4 east of Novara Est (its tariff B) and CAV's Passante di Mestre and A57 are priced at their own rates (placed by the motorway junctions in OpenStreetMap), SITAF's A32 at its Avigliana rate (Salbertrand's is 2% lower), Milan's ring roads and other open-system stretches charge fixed tolls, and the rounding isn't modelled, so the true toll can differ.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/it-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Autostrade per l'Italia: come si calcola il pedaggio (unit rates per km, VAT included)",
+   "url": "https://www.autostrade.it/it/servizi-al-cliente/pedaggio/come-si-calcola-il-pedaggio"
+  },
+  {
+   "id": "s2",
+   "title": "Autostrada del Brennero: A22 toll tariffs in force from 1 January (PDF)",
+   "url": "https://www.autobrennero.it/media/fzulutir/it_tariffe-a22_2026.pdf"
+  },
+  {
+   "id": "s3",
+   "title": "Asti-Cuneo: A33 toll information (unit rates for users, VAT and ANAS fee included)",
+   "url": "https://www.asticuneo.it/en/the-motorway-toll/"
+  },
+  {
+   "id": "s4",
+   "title": "Ivrea Torino Piacenza: A55/A5 toll information (unit rates, VAT and ANAS fee included)",
+   "url": "https://www.itpspa.it/en/section-a55-a5/toll-info/"
+  },
+  {
+   "id": "s5",
+   "title": "SATAP: A4 Torino-Milano toll information (unit tariffs for users, VAT and ANAS fee included)",
+   "url": "https://www.satapweb.it/en/toll-info-a4/"
+  },
+  {
+   "id": "s6",
+   "title": "Ivrea Torino Piacenza: A21 toll information (unit rates, VAT and ANAS fee included)",
+   "url": "https://www.itpspa.it/en/section-a21/toll-info/"
+  },
+  {
+   "id": "s7",
+   "title": "SAV: A5 Quincinetto-Aosta toll information (unit tariffs for users, VAT and ANAS fee included)",
+   "url": "https://www.sav-a5.it/en/toll-info/"
+  },
+  {
+   "id": "s8",
+   "title": "CAV: toll rates (unit rates per km by section, ANAS fee and VAT included, published as an image; transcribed)",
+   "url": "https://www.cavspa.it/en/general-information-on-the-use-and-management-of-infrastructure-and-services/toll-rates"
+  },
+  {
+   "id": "s9",
+   "title": "MIT: Autostrada dei Fiori (A6), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Autostrada_dei_Fiori_A6.pdf"
+  },
+  {
+   "id": "s10",
+   "title": "MIT: Autostrade Alto Adriatico, tariff sheet (Directive (EU) 2022/362 art. 11), p. 4",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Autostrade_Alto_Adriatico.pdf"
+  },
+  {
+   "id": "s11",
+   "title": "MIT: Autovia Padana (A21 Piacenza-Brescia), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Autovia_Padana.pdf"
+  },
+  {
+   "id": "s12",
+   "title": "MIT: Brebemi, tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/BRE.BE_.MI_.pdf"
+  },
+  {
+   "id": "s13",
+   "title": "MIT: Autostrada Brescia Verona Vicenza Padova, tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Brescia-Padova.pdf"
+  },
+  {
+   "id": "s14",
+   "title": "MIT: Concessioni del Tirreno, tariff sheet (Directive (EU) 2022/362 art. 11), p. 5",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/CDT_A10.pdf"
+  },
+  {
+   "id": "s15",
+   "title": "MIT: Milano Serravalle - Milano Tangenziali, tariff sheet (Directive (EU) 2022/362 art. 11), p. 4",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/MI_Serravalle_-_MI_Tangenziali.pdf"
+  },
+  {
+   "id": "s16",
+   "title": "MIT: Autostrada Pedemontana Lombarda, tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Pedemontana_Lombarda.pdf"
+  },
+  {
+   "id": "s17",
+   "title": "MIT: RAV (A5 Aosta-Courmayeur), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/RAV.pdf"
+  },
+  {
+   "id": "s18",
+   "title": "MIT: SALT (A15 Autocisa), tariff sheet (Directive (EU) 2022/362 art. 11), p. 6",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/SALT_A15.pdf"
+  },
+  {
+   "id": "s19",
+   "title": "MIT: SAT (A12 Tirrenica), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/SAT.pdf"
+  },
+  {
+   "id": "s20",
+   "title": "MIT: SITAF (A32), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/SITAF.pdf"
+  },
+  {
+   "id": "s21",
+   "title": "MIT: Strada dei Parchi (A24, A25), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Strada_dei_Parchi.pdf"
+  },
+  {
+   "id": "s22",
+   "title": "MIT: Tangenziale Esterna (A58), tariff sheet (Directive (EU) 2022/362 art. 11), p. 3",
+   "url": "https://www.mit.gov.it/nfsmitgov/files/media/documentazione/2025-03/Tangenziale_esterna.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles by class: two axles over 1.30 m at the front axle (class B), three, four, five or more axles (classes 3, 4, 5); the tool prices trucks over 3.5 t",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 5
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Consorzio per le Autostrade Siciliane",
+   "kind": "operator",
+   "operator": "Consorzio per le Autostrade Siciliane",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A50",
+   "kind": "operator",
+   "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
+   "ref": "A50",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A51",
+   "kind": "operator",
+   "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
+   "ref": "A51",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A52",
+   "kind": "operator",
+   "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
+   "ref": "A52",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada del Brennero S.p.A.",
+   "kind": "operator",
+   "operator": "Autostrada del Brennero S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada Asti-Cuneo S.p.A.",
+   "kind": "operator",
+   "operator": "Autostrada Asti-Cuneo S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Ivrea Torino Piacenza S.p.A.",
+   "kind": "operator",
+   "operator": "Ivrea Torino Piacenza S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada dei Fiori S.p.A.",
+   "kind": "operator",
+   "operator": "Autostrada dei Fiori S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Società Autostrade Alto Adriatico S.p.A.",
+   "kind": "operator",
+   "operator": "Società Autostrade Alto Adriatico S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autovia Padana S.p.A.",
+   "kind": "operator",
+   "operator": "Autovia Padana S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Società di Progetto Brebemi S.p.A",
+   "kind": "operator",
+   "operator": "Società di Progetto Brebemi S.p.A",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada Brescia Verona Vicenza Padova S.p.A.",
+   "kind": "operator",
+   "operator": "Autostrada Brescia Verona Vicenza Padova S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:CAV S.p.A.",
+   "kind": "operator",
+   "operator": "CAV S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:CAV S.p.A.|A57",
+   "kind": "operator",
+   "operator": "CAV S.p.A.",
+   "ref": "A57",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:CAV S.p.A.|A4|Passante",
+   "kind": "operator",
+   "operator": "CAV S.p.A.",
+   "ref": "A4",
+   "label": "Passante",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Concessioni del Tirreno S.p.A.|A10",
+   "kind": "operator",
+   "operator": "Concessioni del Tirreno S.p.A.",
+   "ref": "A10",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Concessioni del Tirreno S.p.A.",
+   "kind": "operator",
+   "operator": "Concessioni del Tirreno S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Milano Serravalle - Milano Tangenziali S.p.A.|A7",
+   "kind": "operator",
+   "operator": "Milano Serravalle - Milano Tangenziali S.p.A.",
+   "ref": "A7",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A36",
+   "kind": "operator",
+   "operator": "Autostrada Pedemontana Lombarda S.p.A .",
+   "ref": "A36",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A59",
+   "kind": "operator",
+   "operator": "Autostrada Pedemontana Lombarda S.p.A .",
+   "ref": "A59",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Autostrada Pedemontana Lombarda S.p.A .|A60",
+   "kind": "operator",
+   "operator": "Autostrada Pedemontana Lombarda S.p.A .",
+   "ref": "A60",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:RAV Raccordo Autostradale Valle d'Aosta S.p.A.",
+   "kind": "operator",
+   "operator": "RAV Raccordo Autostradale Valle d'Aosta S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Società Autostrada Ligure Toscana p.a.|A15",
+   "kind": "operator",
+   "operator": "Società Autostrada Ligure Toscana p.a.",
+   "ref": "A15",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:SAT p.A.",
+   "kind": "operator",
+   "operator": "SAT p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:SATAP S.p.A.|A4",
+   "kind": "operator",
+   "operator": "SATAP S.p.A.",
+   "ref": "A4",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:SATAP S.p.A.|A4|Novara Est-Milano",
+   "kind": "operator",
+   "operator": "SATAP S.p.A.",
+   "ref": "A4",
+   "label": "Novara Est-Milano",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Ivrea Torino Piacenza S.p.A.|A21",
+   "kind": "operator",
+   "operator": "Ivrea Torino Piacenza S.p.A.",
+   "ref": "A21",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Società Autostrade Valdostane S.p.A.",
+   "kind": "operator",
+   "operator": "Società Autostrade Valdostane S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:SITAF S.p.A.|A32",
+   "kind": "operator",
+   "operator": "SITAF S.p.A.",
+   "ref": "A32",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Strada dei Parchi S.p.A.",
+   "kind": "operator",
+   "operator": "Strada dei Parchi S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "op:Tangenziale Esterna S.p.A.",
+   "kind": "operator",
+   "operator": "Tangenziale Esterna S.p.A.",
+   "road_type": "motorway"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The toll motorways (autostrade a pedaggio) of all concessions, as OpenStreetMap tags them (toll=yes); not the toll-free ones (A2, A19, A29, ring roads) nor the Alpine tunnels, which have their own tables."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@road:motorway",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.08054,
+    "c2": 0.10615,
+    "c3": 0.16108,
+    "c4": 0.19034
+   }
+  },
+  {
+   "id": "toll@op:Consorzio per le Autostrade Siciliane",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Consorzio per le Autostrade Siciliane"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0,
+    "c4": 0
+   }
+  },
+  {
+   "id": "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A50",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Milano Serravalle - Milano Tangenziali S.p.A.|A50"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0,
+    "c4": 0
+   }
+  },
+  {
+   "id": "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A51",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Milano Serravalle - Milano Tangenziali S.p.A.|A51"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0,
+    "c4": 0
+   }
+  },
+  {
+   "id": "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A52",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Milano Serravalle - Milano Tangenziali S.p.A.|A52"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0,
+    "c4": 0
+   }
+  },
+  {
+   "id": "toll@op:Autostrada del Brennero S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada del Brennero S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.06564,
+    "c2": 0.08901,
+    "c3": 0.13277,
+    "c4": 0.15607
+   }
+  },
+  {
+   "id": "toll@op:Autostrada Asti-Cuneo S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada Asti-Cuneo S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.16881,
+    "c2": 0.27472,
+    "c3": 0.35895,
+    "c4": 0.41517
+   }
+  },
+  {
+   "id": "toll@op:Ivrea Torino Piacenza S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Ivrea Torino Piacenza S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.085681,
+    "c2": 0.123818,
+    "c3": 0.186538,
+    "c4": 0.213976
+   }
+  },
+  {
+   "id": "toll@op:Autostrada dei Fiori S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada dei Fiori S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.09493,
+    "c2": 0.13587,
+    "c3": 0.20594,
+    "c4": 0.23669
+   }
+  },
+  {
+   "id": "toll@op:Società Autostrade Alto Adriatico S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Società Autostrade Alto Adriatico S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.07997,
+    "c2": 0.10547,
+    "c3": 0.15991,
+    "c4": 0.18898
+   }
+  },
+  {
+   "id": "toll@op:Autovia Padana S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autovia Padana S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.08046,
+    "c2": 0.10605,
+    "c3": 0.16095,
+    "c4": 0.19015
+   }
+  },
+  {
+   "id": "toll@op:Società di Progetto Brebemi S.p.A",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Società di Progetto Brebemi S.p.A"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.27256,
+    "c2": 0.33415,
+    "c3": 0.53108,
+    "c4": 0.63647
+   }
+  },
+  {
+   "id": "toll@op:Autostrada Brescia Verona Vicenza Padova S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada Brescia Verona Vicenza Padova S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.07067,
+    "c2": 0.09482,
+    "c3": 0.14237,
+    "c4": 0.1677
+   }
+  },
+  {
+   "id": "toll@op:CAV S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:CAV S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.06723,
+    "c2": 0.0909,
+    "c3": 0.13585,
+    "c4": 0.15982
+   }
+  },
+  {
+   "id": "toll@op:CAV S.p.A.|A57",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:CAV S.p.A.|A57"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.06952,
+    "c2": 0.09349,
+    "c3": 0.14009,
+    "c4": 0.16497
+   }
+  },
+  {
+   "id": "toll@op:CAV S.p.A.|A4|Passante",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:CAV S.p.A.|A4|Passante"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.13481,
+    "c2": 0.17747,
+    "c3": 0.26941,
+    "c4": 0.31847
+   }
+  },
+  {
+   "id": "toll@op:Concessioni del Tirreno S.p.A.|A10",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Concessioni del Tirreno S.p.A.|A10"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.15049,
+    "c2": 0.24601,
+    "c3": 0.32075,
+    "c4": 0.37051
+   }
+  },
+  {
+   "id": "toll@op:Concessioni del Tirreno S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Concessioni del Tirreno S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.09948,
+    "c2": 0.14179,
+    "c3": 0.2155,
+    "c4": 0.24777
+   }
+  },
+  {
+   "id": "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A7",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Milano Serravalle - Milano Tangenziali S.p.A.|A7"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.07066,
+    "c2": 0.09481,
+    "c3": 0.14234,
+    "c4": 0.16769
+   }
+  },
+  {
+   "id": "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A36",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada Pedemontana Lombarda S.p.A .|A36"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.27983,
+    "c2": 0.27983,
+    "c3": 0.30439,
+    "c4": 0.30439
+   }
+  },
+  {
+   "id": "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A59",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada Pedemontana Lombarda S.p.A .|A59"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.26756,
+    "c2": 0.26756,
+    "c3": 0.29095,
+    "c4": 0.29095
+   }
+  },
+  {
+   "id": "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A60",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Autostrada Pedemontana Lombarda S.p.A .|A60"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.26756,
+    "c2": 0.26756,
+    "c3": 0.29095,
+    "c4": 0.29095
+   }
+  },
+  {
+   "id": "toll@op:RAV Raccordo Autostradale Valle d'Aosta S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:RAV Raccordo Autostradale Valle d'Aosta S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.46975,
+    "c2": 0.62588,
+    "c3": 0.99459,
+    "c4": 1.15589
+   }
+  },
+  {
+   "id": "toll@op:Società Autostrada Ligure Toscana p.a.|A15",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Società Autostrada Ligure Toscana p.a.|A15"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.13418,
+    "c2": 0.18682,
+    "c3": 0.28826,
+    "c4": 0.33267
+   }
+  },
+  {
+   "id": "toll@op:SAT p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:SAT p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.23645,
+    "c2": 0.32256,
+    "c3": 0.50458,
+    "c4": 0.58418
+   }
+  },
+  {
+   "id": "toll@op:SATAP S.p.A.|A4",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:SATAP S.p.A.|A4"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.1413,
+    "c2": 0.17598,
+    "c3": 0.27652,
+    "c4": 0.33006
+   }
+  },
+  {
+   "id": "toll@op:SATAP S.p.A.|A4|Novara Est-Milano",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:SATAP S.p.A.|A4|Novara Est-Milano"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.14499,
+    "c2": 0.18025,
+    "c3": 0.28355,
+    "c4": 0.33853
+   }
+  },
+  {
+   "id": "toll@op:Ivrea Torino Piacenza S.p.A.|A21",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Ivrea Torino Piacenza S.p.A.|A21"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.08912,
+    "c2": 0.116,
+    "c3": 0.17739,
+    "c4": 0.2101
+   }
+  },
+  {
+   "id": "toll@op:Società Autostrade Valdostane S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Società Autostrade Valdostane S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.221,
+    "c2": 0.3,
+    "c3": 0.471,
+    "c4": 0.546
+   }
+  },
+  {
+   "id": "toll@op:SITAF S.p.A.|A32",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:SITAF S.p.A.|A32"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.18538,
+    "c2": 0.30103,
+    "c3": 0.39324,
+    "c4": 0.45513
+   }
+  },
+  {
+   "id": "toll@op:Strada dei Parchi S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Strada dei Parchi S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.10714,
+    "c2": 0.13682,
+    "c3": 0.21166,
+    "c4": 0.25161
+   }
+  },
+  {
+   "id": "toll@op:Tangenziale Esterna S.p.A.",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "op:Tangenziale Esterna S.p.A."
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+   ],
+   "rates": {
+    "c1": 0.24678,
+    "c2": 0.30513,
+    "c3": 0.48162,
+    "c4": 0.57573
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "partial",
+   "reason": "the source table is an estimate; see dataset.method"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "toll@road:motorway",
+    "toll@op:Consorzio per le Autostrade Siciliane",
+    "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A50",
+    "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A51",
+    "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A52",
+    "toll@op:Autostrada del Brennero S.p.A.",
+    "toll@op:Autostrada Asti-Cuneo S.p.A.",
+    "toll@op:Ivrea Torino Piacenza S.p.A.",
+    "toll@op:Autostrada dei Fiori S.p.A.",
+    "toll@op:Società Autostrade Alto Adriatico S.p.A.",
+    "toll@op:Autovia Padana S.p.A.",
+    "toll@op:Società di Progetto Brebemi S.p.A",
+    "toll@op:Autostrada Brescia Verona Vicenza Padova S.p.A.",
+    "toll@op:CAV S.p.A.",
+    "toll@op:CAV S.p.A.|A57",
+    "toll@op:CAV S.p.A.|A4|Passante",
+    "toll@op:Concessioni del Tirreno S.p.A.|A10",
+    "toll@op:Concessioni del Tirreno S.p.A.",
+    "toll@op:Milano Serravalle - Milano Tangenziali S.p.A.|A7",
+    "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A36",
+    "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A59",
+    "toll@op:Autostrada Pedemontana Lombarda S.p.A .|A60",
+    "toll@op:RAV Raccordo Autostradale Valle d'Aosta S.p.A.",
+    "toll@op:Società Autostrada Ligure Toscana p.a.|A15",
+    "toll@op:SAT p.A.",
+    "toll@op:SATAP S.p.A.|A4",
+    "toll@op:SATAP S.p.A.|A4|Novara Est-Milano",
+    "toll@op:Ivrea Torino Piacenza S.p.A.|A21",
+    "toll@op:Società Autostrade Valdostane S.p.A.",
+    "toll@op:SITAF S.p.A.|A32",
+    "toll@op:Strada dei Parchi S.p.A.",
+    "toll@op:Tangenziale Esterna S.p.A."
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

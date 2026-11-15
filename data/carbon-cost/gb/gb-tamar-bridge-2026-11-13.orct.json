@@ -1,0 +1,142 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "gb-tamar-bridge-2026-11-13",
+  "scheme": "gb-tamar-bridge",
+  "country": "GB",
+  "currency": "GBP",
+  "valid_from": "2026-11-13",
+  "name": "Tamar Bridge toll",
+  "method": "Tamar Bridge and Torpoint Ferry Joint Committee's tolls (Tamar Bridge Acts), payable one way, Saltash (Cornwall) to Plymouth (Devon): vehicles over 3.5 t with 2 axles GBP 7.3, 3 axles 12.0, 4 or more 16.5 (the 'Single' price; towing a trailer costs double, not modelled); with `etc` the TamarTag price. The page gives no date: valid_from is the day it was first read.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/gb-tamar-bridge-2026-11-13.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Tamar Crossings: Tamar Bridge Tolls",
+   "url": "https://www.tamarcrossings.org.uk/prices/tamar-bridge-tolls/"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t, by axles",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Tamar Bridge (A38), eastbound only."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Tamar Bridge",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -4.203564,
+     50.408203
+    ]
+   },
+   "heading": 98.0,
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Tamar Bridge",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": {
+     "default": 7.3,
+     "electronic": 3.65
+    },
+    "c2": {
+     "default": 12.0,
+     "electronic": 6.0
+    },
+    "c3": {
+     "default": 16.5,
+     "electronic": 8.25
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

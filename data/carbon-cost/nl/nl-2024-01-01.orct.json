@@ -1,0 +1,81 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "nl-2024-01-01",
+  "scheme": "nl",
+  "country": "NL",
+  "currency": "EUR",
+  "valid_from": "2024-01-01",
+  "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
+  "method": "Wet belasting zware motorrijtuigen, art. 10 (as in force on 1 January 2024, unchanged until 25 March 2025): the tax for a day is € 12 for every vehicle. Replaced on 25 March 2025 by the amounts by CO2 class.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/nl-2024-01-01.json"
+  },
+  "valid_to": "2025-03-24"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Wet belasting zware motorrijtuigen, in force on 2024-01-01 (wetten.overheid.nl)",
+   "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0007678&g=2024-01-01&z=2024-01-01"
+  },
+  {
+   "id": "s2",
+   "title": "Eurovignetten portal, user description: validity from 0:00 on the first day to 24:00 on the last",
+   "url": "https://www.eurovignettes.eu/download/Nutzerbeschreibung_20260701_EN.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods motor vehicles whose maximum mass, alone or with the trailer, is 12,000 kg or more",
+  "min_mass_kg": 12000,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways (autosnelwegen)."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@roads",
+   "type": "period",
+   "component": "toll",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 12
+   },
+   "period": "day",
+   "day_basis": "calendar"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

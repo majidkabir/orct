@@ -1,0 +1,495 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "be-wal-2025-01-01",
+  "scheme": "be-wal",
+  "country": "BE",
+  "currency": "EUR",
+  "valid_from": "2025-01-01",
+  "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
+  "method": "SOFICO's indexed rates from 2025-01-01 as published by Viapass, Wallonia (SOFICO), excluding VAT. Zero-emission trucks pay the Euro VI rate.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/be-wal-2025-01-01.json"
+  },
+  "region": "BE-WAL",
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Viapass: indexation of the kilometer charge in Wallonia on 2025-01-01",
+   "url": "https://viapass.be/en/news/indexation-of-the-kilometer-charge-in-wallonia-on-jan-1-2025.html"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t maximum authorised mass for goods transport, by mass band (3.5-12 t, 12-32 t, over 32 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Walloon toll road network (SOFICO motorways and listed regional roads)."
+  }
+ ],
+ "charges": [
+  {
+   "id": "km_charge@roads",
+   "type": "distance",
+   "component": "x-km_charge",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.111,
+    "c2": 0.216,
+    "c3": 0.247,
+    "c4": 0.111,
+    "c5": 0.216,
+    "c6": 0.247,
+    "c7": 0.111,
+    "c8": 0.216,
+    "c9": 0.247,
+    "c10": 0.111,
+    "c11": 0.216,
+    "c12": 0.247,
+    "c13": 0.082,
+    "c14": 0.187,
+    "c15": 0.218,
+    "c16": 0.068,
+    "c17": 0.173,
+    "c18": 0.204,
+    "c19": 0.055,
+    "c20": 0.16,
+    "c21": 0.191,
+    "c22": 0.055,
+    "c23": 0.16,
+    "c24": 0.191
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

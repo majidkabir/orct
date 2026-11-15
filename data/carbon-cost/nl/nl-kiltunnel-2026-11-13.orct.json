@@ -1,0 +1,107 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "nl-kiltunnel-2026-11-13",
+  "scheme": "nl-kiltunnel",
+  "country": "NL",
+  "currency": "EUR",
+  "valid_from": "2026-11-13",
+  "name": "Kiltunnel toll",
+  "method": "The Kiltunnel's toll (Dordrecht–Hoeksche Waard) per passage, either way, for vehicles over 2.30 m high including load (trucks over 3.5 t are taken to be): EUR 5 cash, with `etc` the Telecard price, EUR 3.8. The page gives no date: valid_from is the day it was first read.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/nl-kiltunnel-2026-11-13.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Kiltunnel: Toltarieven",
+   "url": "https://kiltunnel.nl/tarieven"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 2.30 m high (here trucks over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Kiltunnel (N217), charged at its toll plaza either way."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Kiltunnel",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     4.638273,
+     51.7726
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Kiltunnel",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": {
+     "default": 5.0,
+     "electronic": 3.8
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

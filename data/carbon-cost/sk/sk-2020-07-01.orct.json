@@ -1,0 +1,370 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "sk-2020-07-01",
+  "scheme": "sk",
+  "country": "SK",
+  "currency": "EUR",
+  "valid_from": "2020-07-01",
+  "name": "Slovak electronic toll (mýto)",
+  "method": "Nariadenie vlády SR č. 497/2013 Z. z. as in force 1 July 2020 to 30 June 2025: Annex 1 (motorways and expressways; Annex 2 part 1 repeats it for class I roads parallel to them) and Annex 2 part 2 (other tolled class I roads), EUR/km excluding VAT by vehicle category (3.5-12 t any axles; 12 t or more by 2, 3, 4, 5 axles) and EURO group (0-II; III, IV; V, VI, EEV).",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/sk-2020-07-01.json"
+  },
+  "valid_to": "2025-06-30"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "NV 497/2013 Z. z., version from 1 July 2020 (Slov-Lex)",
+   "url": "https://static.slov-lex.sk/static/SK/ZZ/2013/497/20200701.html"
+  },
+  {
+   "id": "s2",
+   "title": "NV 497/2013 Z. z., version from 1 July 2020, legally binding PDF",
+   "url": "https://static.slov-lex.sk/static/pdf/SK/ZZ/2013/497/ZZ_2013_497_20200701.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles over 3.5 t (buses have their own rates)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 11999
+    },
+    "euro": [
+     5,
+     6
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 2,
+     "max": 2
+    },
+    "euro": [
+     5,
+     6
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 3,
+     "max": 3
+    },
+    "euro": [
+     5,
+     6
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 4,
+     "max": 4
+    },
+    "euro": [
+     5,
+     6
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "axles": {
+     "min": 5
+    },
+    "euro": [
+     5,
+     6
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Tolled sections of motorways and expressways, and of class I roads; class I roads parallel to motorways pay the motorway rate, other class I roads the lower Annex 2 part 2 rate. Km off motorways are priced at the Annex 2 part 2 rate."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@road:motorway",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.108,
+    "c2": 0.098,
+    "c3": 0.085,
+    "c4": 0.231,
+    "c5": 0.209,
+    "c6": 0.181,
+    "c7": 0.244,
+    "c8": 0.22,
+    "c9": 0.19,
+    "c10": 0.253,
+    "c11": 0.228,
+    "c12": 0.198,
+    "c13": 0.244,
+    "c14": 0.22,
+    "c15": 0.19
+   }
+  },
+  {
+   "id": "toll@road:other",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.085,
+    "c2": 0.076,
+    "c3": 0.066,
+    "c4": 0.181,
+    "c5": 0.164,
+    "c6": 0.14,
+    "c7": 0.19,
+    "c8": 0.172,
+    "c9": 0.147,
+    "c10": 0.195,
+    "c11": 0.176,
+    "c12": 0.15,
+    "c13": 0.19,
+    "c14": 0.172,
+    "c15": 0.147
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "toll@road:motorway",
+    "toll@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

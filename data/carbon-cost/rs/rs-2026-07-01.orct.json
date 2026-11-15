@@ -1,0 +1,2791 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "rs-2026-07-01",
+  "scheme": "rs",
+  "country": "RS",
+  "currency": "EUR",
+  "valid_from": "2026-07-01",
+  "name": "Serbian motorway toll (putarina)",
+  "method": "JP Putevi Srbije's price list in force from 1 July 2026 (EUR column, at NBS rate list 118 of 24 June 2024): toll from entry to exit station on the A1, A2, A3 and A4, by vehicle category. The list gives prices from Beograd, Dimitrovgrad, Preševo, Šid, Stara Pazova and Obrenovac to every station on their sections; other pairs aren't published there. The Belgrade bypass toll for category 4 (RSD per section, TAG only) isn't included.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/rs-2026-07-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "JP Putevi Srbije: vehicle categories and toll price list",
+   "url": "https://www.putevi-srbije.rs/index.php/sr/kategorizacija-vozila-cenovnik-putarine"
+  },
+  {
+   "id": "s2",
+   "title": "Price list (PDF)",
+   "url": "https://www.putevi-srbije.rs/images/pdf/cene_putarina_lat.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t (categories 3 and 4)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-K3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   },
+   "label": "K3"
+  },
+  {
+   "id": "c-K4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "K4"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways A1 (Subotica–Beograd–Preševo), A2 (Obrenovac–Prilipac), A3 (Šid–Beograd) and A4 (Niš–Dimitrovgrad)."
+  },
+  {
+   "id": "st:1:ALEKSINAC",
+   "kind": "station",
+   "name": "ALEKSINAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.72216,
+      43.52622
+     ],
+     [
+      21.72212,
+      43.52613
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:ALEKSINAČKI RUDNICI",
+   "kind": "station",
+   "name": "ALEKSINAČKI RUDNICI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.68873,
+      43.55152
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BATOČINA",
+   "kind": "station",
+   "name": "BATOČINA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.11445,
+      44.15163
+     ],
+     [
+      21.11244,
+      44.15027
+     ],
+     [
+      21.11234,
+      44.15031
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BELA PALANKA",
+   "kind": "station",
+   "name": "BELA PALANKA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.31653,
+      43.23369
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BEOGRAD",
+   "kind": "station",
+   "name": "BEOGRAD",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.61189,
+      44.66423
+     ],
+     [
+      20.61256,
+      44.66456
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BRESTOVAC",
+   "kind": "station",
+   "name": "BRESTOVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.89265,
+      43.14984
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BUJANOVAC jug",
+   "kind": "station",
+   "name": "BUJANOVAC jug",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.77762,
+      42.4532
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:BUJANOVAC sever",
+   "kind": "station",
+   "name": "BUJANOVAC sever",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.80868,
+      42.46689
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:DIMITROVGRAD",
+   "kind": "station",
+   "name": "DIMITROVGRAD",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.73643,
+      43.02192
+     ],
+     [
+      22.73636,
+      43.02172
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:DOLJEVAC SELO",
+   "kind": "station",
+   "name": "DOLJEVAC SELO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.85022,
+      43.19327
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:GRDELICA",
+   "kind": "station",
+   "name": "GRDELICA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.06858,
+      42.88623
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:JAGODINA",
+   "kind": "station",
+   "name": "JAGODINA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.26631,
+      43.99896
+     ],
+     [
+      21.26638,
+      43.99891
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:KOLARI",
+   "kind": "station",
+   "name": "KOLARI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.89488,
+      44.57478
+     ],
+     [
+      20.89542,
+      44.57644
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:KOŠEVI",
+   "kind": "station",
+   "name": "KOŠEVI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.23101,
+      43.58679
+     ],
+     [
+      21.23085,
+      43.5868
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:KRUŠEVAC istok",
+   "kind": "station",
+   "name": "KRUŠEVAC istok",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.33453,
+      43.60521
+     ],
+     [
+      21.33422,
+      43.6052
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:KRUŠEVAC zapad",
+   "kind": "station",
+   "name": "KRUŠEVAC zapad",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.30838,
+      43.60765
+     ],
+     [
+      21.3084,
+      43.60789
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:LAPOVO",
+   "kind": "station",
+   "name": "LAPOVO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.11019,
+      44.18464
+     ],
+     [
+      21.11011,
+      44.18465
+     ],
+     [
+      21.1119,
+      44.18448
+     ],
+     [
+      21.11183,
+      44.18448
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:LESKOVAC centar",
+   "kind": "station",
+   "name": "LESKOVAC centar",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.93833,
+      43.09009
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:LESKOVAC jug",
+   "kind": "station",
+   "name": "LESKOVAC jug",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.03386,
+      42.97057
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:MALI POŽAREVAC",
+   "kind": "station",
+   "name": "MALI POŽAREVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.66944,
+      44.56307
+     ],
+     [
+      20.66962,
+      44.56306
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:MARKOVAC",
+   "kind": "station",
+   "name": "MARKOVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.11673,
+      44.23953
+     ],
+     [
+      21.11666,
+      44.23954
+     ],
+     [
+      21.11962,
+      44.23717
+     ],
+     [
+      21.11958,
+      44.23722
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:MEROŠINA",
+   "kind": "station",
+   "name": "MEROŠINA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.79816,
+      43.27931
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:NIŠ Malča",
+   "kind": "station",
+   "name": "NIŠ Malča",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.0199,
+      43.31918
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:NIŠ istok",
+   "kind": "station",
+   "name": "NIŠ istok",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.93634,
+      43.34217
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:NIŠ jug",
+   "kind": "station",
+   "name": "NIŠ jug",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.81577,
+      43.32747
+     ],
+     [
+      21.81582,
+      43.32757
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:NIŠ sever",
+   "kind": "station",
+   "name": "NIŠ sever",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.85813,
+      43.34961
+     ],
+     [
+      21.85816,
+      43.34973
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:PARAĆIN",
+   "kind": "station",
+   "name": "PARAĆIN",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.43784,
+      43.85732
+     ],
+     [
+      21.43351,
+      43.85604
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:PIROT istok",
+   "kind": "station",
+   "name": "PIROT istok",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.61863,
+      43.12356
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:PIROT zapad",
+   "kind": "station",
+   "name": "PIROT zapad",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.56647,
+      43.18849
+     ],
+     [
+      22.56653,
+      43.1885
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:POŽAREVAC",
+   "kind": "station",
+   "name": "POŽAREVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.98246,
+      44.58001
+     ],
+     [
+      20.98255,
+      44.57991
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:PREDEJANE",
+   "kind": "station",
+   "name": "PREDEJANE",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.12371,
+      42.82038
+     ],
+     [
+      22.12382,
+      42.82034
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:PREŠEVO",
+   "kind": "station",
+   "name": "PREŠEVO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.70946,
+      42.30265
+     ],
+     [
+      21.70968,
+      42.30264
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:RAŽANJ",
+   "kind": "station",
+   "name": "RAŽANJ",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.54625,
+      43.68398
+     ],
+     [
+      21.54629,
+      43.68403
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:SMEDEREVO",
+   "kind": "station",
+   "name": "SMEDEREVO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.95732,
+      44.58997
+     ],
+     [
+      20.95723,
+      44.58996
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:TRSTENIK",
+   "kind": "station",
+   "name": "TRSTENIK",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.02218,
+      43.61934
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:UMČARI",
+   "kind": "station",
+   "name": "UMČARI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.74535,
+      44.57562
+     ],
+     [
+      20.74643,
+      44.57456
+     ],
+     [
+      20.74515,
+      44.57543
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VELIKA DRENOVA",
+   "kind": "station",
+   "name": "VELIKA DRENOVA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.17206,
+      43.61533
+     ],
+     [
+      21.17199,
+      43.61535
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VELIKA PLANA",
+   "kind": "station",
+   "name": "VELIKA PLANA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.08002,
+      44.33915
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VLADIČIN HAN",
+   "kind": "station",
+   "name": "VLADIČIN HAN",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      22.07237,
+      42.70351
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VODANJ",
+   "kind": "station",
+   "name": "VODANJ",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.81907,
+      44.58522
+     ],
+     [
+      20.81911,
+      44.58517
+     ],
+     [
+      20.82147,
+      44.58279
+     ],
+     [
+      20.82145,
+      44.58286
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VRANJE",
+   "kind": "station",
+   "name": "VRANJE",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.92814,
+      42.54404
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VRBA",
+   "kind": "station",
+   "name": "VRBA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.77868,
+      43.70161
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:VRNJAČKA BANJA",
+   "kind": "station",
+   "name": "VRNJAČKA BANJA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.91132,
+      43.6492
+     ],
+     [
+      20.91139,
+      43.64932
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:ĆIĆEVAC",
+   "kind": "station",
+   "name": "ĆIĆEVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.42099,
+      43.72267
+     ],
+     [
+      21.42076,
+      43.72274
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:ĆUPRIJA",
+   "kind": "station",
+   "name": "ĆUPRIJA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      21.3889,
+      43.93423
+     ],
+     [
+      21.39009,
+      43.93795
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:HRTKOVCI",
+   "kind": "station",
+   "name": "HRTKOVCI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.77466,
+      44.85934
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:KUZMIN",
+   "kind": "station",
+   "name": "KUZMIN",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.38634,
+      45.03562
+     ],
+     [
+      19.38617,
+      45.03564
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:MOROVIĆ / ADAŠEVCI",
+   "kind": "station",
+   "name": "MOROVIĆ / ADAŠEVCI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.20964,
+      45.05011
+     ],
+     [
+      19.21021,
+      45.04603
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:PEĆINCI",
+   "kind": "station",
+   "name": "PEĆINCI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.95309,
+      44.91878
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:RUMA",
+   "kind": "station",
+   "name": "RUMA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.80832,
+      44.96792
+     ],
+     [
+      19.80853,
+      44.96786
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:SREMSKA MITROVICA",
+   "kind": "station",
+   "name": "SREMSKA MITROVICA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.64502,
+      44.99545
+     ],
+     [
+      19.64502,
+      44.99531
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:ŠABAC",
+   "kind": "station",
+   "name": "ŠABAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.71934,
+      44.80828
+     ],
+     [
+      19.71923,
+      44.80839
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:ŠID",
+   "kind": "station",
+   "name": "ŠID",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.19242,
+      45.04848
+     ],
+     [
+      19.19241,
+      45.04832
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:2:ŠIMANOVCI",
+   "kind": "station",
+   "name": "ŠIMANOVCI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.11393,
+      44.88239
+     ],
+     [
+      20.11373,
+      44.88212
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:BAČKA TOPOLA",
+   "kind": "station",
+   "name": "BAČKA TOPOLA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.68898,
+      45.82476
+     ],
+     [
+      19.68493,
+      45.82318
+     ],
+     [
+      19.68891,
+      45.82477
+     ],
+     [
+      19.68502,
+      45.82321
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:BEŠKA",
+   "kind": "station",
+   "name": "BEŠKA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.09029,
+      45.13511
+     ],
+     [
+      20.09016,
+      45.13511
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:FEKETIĆ",
+   "kind": "station",
+   "name": "FEKETIĆ",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.71451,
+      45.64023
+     ],
+     [
+      19.71546,
+      45.64694
+     ],
+     [
+      19.71546,
+      45.64687
+     ],
+     [
+      19.71456,
+      45.64017
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:INĐIJA",
+   "kind": "station",
+   "name": "INĐIJA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.14803,
+      45.06971
+     ],
+     [
+      20.14814,
+      45.06975
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:KOVILJ",
+   "kind": "station",
+   "name": "KOVILJ",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.03462,
+      45.24055
+     ],
+     [
+      20.0347,
+      45.24063
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:MARADIK",
+   "kind": "station",
+   "name": "MARADIK",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.10304,
+      45.0994
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:NOVI SAD",
+   "kind": "station",
+   "name": "NOVI SAD",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.89088,
+      45.28826
+     ],
+     [
+      19.79895,
+      45.31299
+     ],
+     [
+      19.79968,
+      45.3134
+     ],
+     [
+      19.89044,
+      45.28786
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:STARA PAZOVA",
+   "kind": "station",
+   "name": "STARA PAZOVA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.20132,
+      45.00648
+     ],
+     [
+      20.20147,
+      45.00653
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:SUBOTICA",
+   "kind": "station",
+   "name": "SUBOTICA",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.73385,
+      46.02108
+     ],
+     [
+      19.734,
+      46.02106
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:VRBAS",
+   "kind": "station",
+   "name": "VRBAS",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.71762,
+      45.55434
+     ],
+     [
+      19.72186,
+      45.55524
+     ],
+     [
+      19.72196,
+      45.55525
+     ],
+     [
+      19.71771,
+      45.55434
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:ZMAJEVO",
+   "kind": "station",
+   "name": "ZMAJEVO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.73542,
+      45.44206
+     ],
+     [
+      19.7353,
+      45.44208
+     ],
+     [
+      19.7395,
+      45.44036
+     ],
+     [
+      19.7394,
+      45.44037
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:3:ŽEDNIK",
+   "kind": "station",
+   "name": "ŽEDNIK",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.70747,
+      45.93457
+     ],
+     [
+      19.71114,
+      45.9338
+     ],
+     [
+      19.70756,
+      45.93455
+     ],
+     [
+      19.71106,
+      45.93382
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth",
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:ADRANI",
+   "kind": "station",
+   "name": "ADRANI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.65521,
+      43.76179
+     ],
+     [
+      20.65535,
+      43.7617
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:LAJKOVAC",
+   "kind": "station",
+   "name": "LAJKOVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.13098,
+      44.35984
+     ],
+     [
+      20.13089,
+      44.35987
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:LJIG",
+   "kind": "station",
+   "name": "LJIG",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.24935,
+      44.23176
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:LUČANI",
+   "kind": "station",
+   "name": "LUČANI",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.15681,
+      43.83701
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:OBRENOVAC",
+   "kind": "station",
+   "name": "OBRENOVAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.19092,
+      44.57404
+     ],
+     [
+      20.19029,
+      44.57129
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:PRELJINA JUG",
+   "kind": "station",
+   "name": "PRELJINA JUG",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.40846,
+      43.89862
+     ],
+     [
+      20.40869,
+      43.8985
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:PRILIPAC",
+   "kind": "station",
+   "name": "PRILIPAC",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.09095,
+      43.8205
+     ],
+     [
+      20.09086,
+      43.82038
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:TAKOVO",
+   "kind": "station",
+   "name": "TAKOVO",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.38165,
+      44.04374
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:UB",
+   "kind": "station",
+   "name": "UB",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.12153,
+      44.45491
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:4:ČAČAK (Pakovraće)",
+   "kind": "station",
+   "name": "ČAČAK (Pakovraće)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      20.26156,
+      43.90299
+     ],
+     [
+      20.26158,
+      43.90313
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "A1, A4 Beograd – Niš – Preševo / Dimitrovgrad",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:ALEKSINAC",
+    "st:1:ALEKSINAČKI RUDNICI",
+    "st:1:BATOČINA",
+    "st:1:BELA PALANKA",
+    "st:1:BEOGRAD",
+    "st:1:BRESTOVAC",
+    "st:1:BUJANOVAC jug",
+    "st:1:BUJANOVAC sever",
+    "st:1:DIMITROVGRAD",
+    "st:1:DOLJEVAC SELO",
+    "st:1:GRDELICA",
+    "st:1:JAGODINA",
+    "st:1:KOLARI",
+    "st:1:KOŠEVI",
+    "st:1:KRUŠEVAC istok",
+    "st:1:KRUŠEVAC zapad",
+    "st:1:LAPOVO",
+    "st:1:LESKOVAC centar",
+    "st:1:LESKOVAC jug",
+    "st:1:MALI POŽAREVAC",
+    "st:1:MARKOVAC",
+    "st:1:MEROŠINA",
+    "st:1:NIŠ Malča",
+    "st:1:NIŠ istok",
+    "st:1:NIŠ jug",
+    "st:1:NIŠ sever",
+    "st:1:PARAĆIN",
+    "st:1:PIROT istok",
+    "st:1:PIROT zapad",
+    "st:1:POŽAREVAC",
+    "st:1:PREDEJANE",
+    "st:1:PREŠEVO",
+    "st:1:RAŽANJ",
+    "st:1:SMEDEREVO",
+    "st:1:TRSTENIK",
+    "st:1:UMČARI",
+    "st:1:VELIKA DRENOVA",
+    "st:1:VELIKA PLANA",
+    "st:1:VLADIČIN HAN",
+    "st:1:VODANJ",
+    "st:1:VRANJE",
+    "st:1:VRBA",
+    "st:1:VRNJAČKA BANJA",
+    "st:1:ĆIĆEVAC",
+    "st:1:ĆUPRIJA"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:ALEKSINAC",
+     "rates": {
+      "c-K3": 27.0,
+      "c-K4": 54.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:ALEKSINAČKI RUDNICI",
+     "rates": {
+      "c-K3": 26.5,
+      "c-K4": 52.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:BATOČINA",
+     "rates": {
+      "c-K3": 13.5,
+      "c-K4": 27.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:BRESTOVAC",
+     "rates": {
+      "c-K3": 33.5,
+      "c-K4": 67.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:BUJANOVAC jug",
+     "rates": {
+      "c-K3": 50.0,
+      "c-K4": 100.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:BUJANOVAC sever",
+     "rates": {
+      "c-K3": 49.5,
+      "c-K4": 99.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:DOLJEVAC SELO",
+     "rates": {
+      "c-K3": 33.0,
+      "c-K4": 65.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:GRDELICA",
+     "rates": {
+      "c-K3": 38.5,
+      "c-K4": 76.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:JAGODINA",
+     "rates": {
+      "c-K3": 16.5,
+      "c-K4": 33.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:KOLARI",
+     "rates": {
+      "c-K3": 5.5,
+      "c-K4": 10.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:KOŠEVI",
+     "rates": {
+      "c-K3": 26.0,
+      "c-K4": 51.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:KRUŠEVAC istok",
+     "rates": {
+      "c-K3": 25.0,
+      "c-K4": 49.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:KRUŠEVAC zapad",
+     "rates": {
+      "c-K3": 25.0,
+      "c-K4": 50.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:LAPOVO",
+     "rates": {
+      "c-K3": 13.0,
+      "c-K4": 26.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:LESKOVAC centar",
+     "rates": {
+      "c-K3": 34.5,
+      "c-K4": 69.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:LESKOVAC jug",
+     "rates": {
+      "c-K3": 37.0,
+      "c-K4": 73.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:MALI POŽAREVAC",
+     "rates": {
+      "c-K3": 3.0,
+      "c-K4": 5.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:MARKOVAC",
+     "rates": {
+      "c-K3": 12.0,
+      "c-K4": 24.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:MEROŠINA",
+     "rates": {
+      "c-K3": 31.5,
+      "c-K4": 62.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:NIŠ jug",
+     "rates": {
+      "c-K3": 30.5,
+      "c-K4": 60.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:PARAĆIN",
+     "rates": {
+      "c-K3": 20.0,
+      "c-K4": 39.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:POŽAREVAC",
+     "rates": {
+      "c-K3": 6.5,
+      "c-K4": 12.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:PREDEJANE",
+     "rates": {
+      "c-K3": 40.5,
+      "c-K4": 81.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:PREŠEVO",
+     "rates": {
+      "c-K3": 53.0,
+      "c-K4": 105.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:RAŽANJ",
+     "rates": {
+      "c-K3": 23.5,
+      "c-K4": 46.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:SMEDEREVO",
+     "rates": {
+      "c-K3": 6.0,
+      "c-K4": 12.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:TRSTENIK",
+     "rates": {
+      "c-K3": 29.0,
+      "c-K4": 58.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:UMČARI",
+     "rates": {
+      "c-K3": 4.0,
+      "c-K4": 7.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VELIKA DRENOVA",
+     "rates": {
+      "c-K3": 27.0,
+      "c-K4": 54.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VELIKA PLANA",
+     "rates": {
+      "c-K3": 10.5,
+      "c-K4": 21.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VLADIČIN HAN",
+     "rates": {
+      "c-K3": 44.5,
+      "c-K4": 88.5
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VODANJ",
+     "rates": {
+      "c-K3": 4.5,
+      "c-K4": 9.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VRANJE",
+     "rates": {
+      "c-K3": 47.5,
+      "c-K4": 95.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VRBA",
+     "rates": {
+      "c-K3": 32.5,
+      "c-K4": 65.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:VRNJAČKA BANJA",
+     "rates": {
+      "c-K3": 30.5,
+      "c-K4": 61.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:ĆIĆEVAC",
+     "rates": {
+      "c-K3": 22.0,
+      "c-K4": 44.0
+     }
+    },
+    {
+     "entry": "st:1:BEOGRAD",
+     "exit": "st:1:ĆUPRIJA",
+     "rates": {
+      "c-K3": 18.5,
+      "c-K4": 36.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:ALEKSINAC",
+     "rates": {
+      "c-K3": 19.5,
+      "c-K4": 39.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:ALEKSINAČKI RUDNICI",
+     "rates": {
+      "c-K3": 20.5,
+      "c-K4": 40.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:BATOČINA",
+     "rates": {
+      "c-K3": 33.0,
+      "c-K4": 66.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:BELA PALANKA",
+     "rates": {
+      "c-K3": 10.0,
+      "c-K4": 19.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:BEOGRAD",
+     "rates": {
+      "c-K3": 46.5,
+      "c-K4": 93.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:JAGODINA",
+     "rates": {
+      "c-K3": 30.0,
+      "c-K4": 60.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:KOLARI",
+     "rates": {
+      "c-K3": 41.5,
+      "c-K4": 82.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:KOŠEVI",
+     "rates": {
+      "c-K3": 29.5,
+      "c-K4": 59.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:KRUŠEVAC istok",
+     "rates": {
+      "c-K3": 28.5,
+      "c-K4": 56.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:KRUŠEVAC zapad",
+     "rates": {
+      "c-K3": 28.5,
+      "c-K4": 57.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:LAPOVO",
+     "rates": {
+      "c-K3": 33.5,
+      "c-K4": 67.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:MALI POŽAREVAC",
+     "rates": {
+      "c-K3": 44.0,
+      "c-K4": 87.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:MARKOVAC",
+     "rates": {
+      "c-K3": 34.5,
+      "c-K4": 69.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:NIŠ Malča",
+     "rates": {
+      "c-K3": 14.5,
+      "c-K4": 28.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:NIŠ istok",
+     "rates": {
+      "c-K3": 15.5,
+      "c-K4": 30.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:NIŠ sever",
+     "rates": {
+      "c-K3": 16.5,
+      "c-K4": 32.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:PARAĆIN",
+     "rates": {
+      "c-K3": 27.0,
+      "c-K4": 53.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:PIROT istok",
+     "rates": {
+      "c-K3": 4.5,
+      "c-K4": 8.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:PIROT zapad",
+     "rates": {
+      "c-K3": 6.0,
+      "c-K4": 12.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:POŽAREVAC",
+     "rates": {
+      "c-K3": 40.5,
+      "c-K4": 80.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:RAŽANJ",
+     "rates": {
+      "c-K3": 23.5,
+      "c-K4": 46.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:SMEDEREVO",
+     "rates": {
+      "c-K3": 40.5,
+      "c-K4": 81.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:TRSTENIK",
+     "rates": {
+      "c-K3": 32.5,
+      "c-K4": 65.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:UMČARI",
+     "rates": {
+      "c-K3": 43.0,
+      "c-K4": 86.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:VELIKA DRENOVA",
+     "rates": {
+      "c-K3": 30.5,
+      "c-K4": 61.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:VELIKA PLANA",
+     "rates": {
+      "c-K3": 36.5,
+      "c-K4": 72.5
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:VODANJ",
+     "rates": {
+      "c-K3": 42.0,
+      "c-K4": 84.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:VRBA",
+     "rates": {
+      "c-K3": 36.0,
+      "c-K4": 72.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:VRNJAČKA BANJA",
+     "rates": {
+      "c-K3": 34.0,
+      "c-K4": 68.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:ĆIĆEVAC",
+     "rates": {
+      "c-K3": 25.5,
+      "c-K4": 51.0
+     }
+    },
+    {
+     "entry": "st:1:DIMITROVGRAD",
+     "exit": "st:1:ĆUPRIJA",
+     "rates": {
+      "c-K3": 28.5,
+      "c-K4": 56.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:BELA PALANKA",
+     "rates": {
+      "c-K3": 30.0,
+      "c-K4": 60.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:BRESTOVAC",
+     "rates": {
+      "c-K3": 19.5,
+      "c-K4": 39.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:BUJANOVAC jug",
+     "rates": {
+      "c-K3": 3.0,
+      "c-K4": 6.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:BUJANOVAC sever",
+     "rates": {
+      "c-K3": 3.5,
+      "c-K4": 7.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:DIMITROVGRAD",
+     "rates": {
+      "c-K3": 39.5,
+      "c-K4": 79.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:DOLJEVAC SELO",
+     "rates": {
+      "c-K3": 20.5,
+      "c-K4": 40.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:GRDELICA",
+     "rates": {
+      "c-K3": 15.0,
+      "c-K4": 29.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:LESKOVAC centar",
+     "rates": {
+      "c-K3": 18.5,
+      "c-K4": 37.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:LESKOVAC jug",
+     "rates": {
+      "c-K3": 16.5,
+      "c-K4": 32.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:MEROŠINA",
+     "rates": {
+      "c-K3": 22.0,
+      "c-K4": 43.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:NIŠ Malča",
+     "rates": {
+      "c-K3": 25.5,
+      "c-K4": 51.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:NIŠ istok",
+     "rates": {
+      "c-K3": 24.5,
+      "c-K4": 48.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:NIŠ jug",
+     "rates": {
+      "c-K3": 22.5,
+      "c-K4": 45.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:NIŠ sever",
+     "rates": {
+      "c-K3": 23.5,
+      "c-K4": 47.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:PIROT istok",
+     "rates": {
+      "c-K3": 35.5,
+      "c-K4": 71.0
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:PIROT zapad",
+     "rates": {
+      "c-K3": 33.5,
+      "c-K4": 67.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:PREDEJANE",
+     "rates": {
+      "c-K3": 12.5,
+      "c-K4": 24.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:VLADIČIN HAN",
+     "rates": {
+      "c-K3": 9.0,
+      "c-K4": 17.5
+     }
+    },
+    {
+     "entry": "st:1:PREŠEVO",
+     "exit": "st:1:VRANJE",
+     "rates": {
+      "c-K3": 5.5,
+      "c-K4": 11.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 1 July 2026, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)"
+  },
+  {
+   "id": "system:2",
+   "name": "A3 Beograd – Šid",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:2:HRTKOVCI",
+    "st:2:KUZMIN",
+    "st:2:MOROVIĆ / ADAŠEVCI",
+    "st:2:PEĆINCI",
+    "st:2:RUMA",
+    "st:2:SREMSKA MITROVICA",
+    "st:2:ŠABAC",
+    "st:2:ŠID",
+    "st:2:ŠIMANOVCI"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:HRTKOVCI",
+     "rates": {
+      "c-K3": 10.0,
+      "c-K4": 20.0
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:KUZMIN",
+     "rates": {
+      "c-K3": 3.5,
+      "c-K4": 6.5
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:MOROVIĆ / ADAŠEVCI",
+     "rates": {
+      "c-K3": 1.5,
+      "c-K4": 2.5
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:PEĆINCI",
+     "rates": {
+      "c-K3": 10.0,
+      "c-K4": 19.5
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:RUMA",
+     "rates": {
+      "c-K3": 8.5,
+      "c-K4": 16.5
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:SREMSKA MITROVICA",
+     "rates": {
+      "c-K3": 6.5,
+      "c-K4": 12.5
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:ŠABAC",
+     "rates": {
+      "c-K3": 12.0,
+      "c-K4": 24.0
+     }
+    },
+    {
+     "entry": "st:2:ŠID",
+     "exit": "st:2:ŠIMANOVCI",
+     "rates": {
+      "c-K3": 13.5,
+      "c-K4": 27.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 1 July 2026, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)"
+  },
+  {
+   "id": "system:3",
+   "name": "A1 Beograd – Subotica",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:3:BAČKA TOPOLA",
+    "st:3:BEŠKA",
+    "st:3:FEKETIĆ",
+    "st:3:INĐIJA",
+    "st:3:KOVILJ",
+    "st:3:MARADIK",
+    "st:3:NOVI SAD",
+    "st:3:STARA PAZOVA",
+    "st:3:SUBOTICA",
+    "st:3:VRBAS",
+    "st:3:ZMAJEVO",
+    "st:3:ŽEDNIK"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:BAČKA TOPOLA",
+     "rates": {
+      "c-K3": 17.5,
+      "c-K4": 34.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:BEŠKA",
+     "rates": {
+      "c-K3": 4.0,
+      "c-K4": 8.0
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:FEKETIĆ",
+     "rates": {
+      "c-K3": 14.5,
+      "c-K4": 28.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:INĐIJA",
+     "rates": {
+      "c-K3": 2.5,
+      "c-K4": 5.0
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:KOVILJ",
+     "rates": {
+      "c-K3": 6.0,
+      "c-K4": 12.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:MARADIK",
+     "rates": {
+      "c-K3": 3.5,
+      "c-K4": 6.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:NOVI SAD",
+     "rates": {
+      "c-K3": 9.0,
+      "c-K4": 17.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:SUBOTICA",
+     "rates": {
+      "c-K3": 22.0,
+      "c-K4": 43.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:VRBAS",
+     "rates": {
+      "c-K3": 13.0,
+      "c-K4": 26.0
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:ZMAJEVO",
+     "rates": {
+      "c-K3": 11.5,
+      "c-K4": 22.5
+     }
+    },
+    {
+     "entry": "st:3:STARA PAZOVA",
+     "exit": "st:3:ŽEDNIK",
+     "rates": {
+      "c-K3": 19.0,
+      "c-K4": 38.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 1 July 2026, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)"
+  },
+  {
+   "id": "system:4",
+   "name": "A2 Beograd – Požega",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:4:ADRANI",
+    "st:4:LAJKOVAC",
+    "st:4:LJIG",
+    "st:4:LUČANI",
+    "st:4:OBRENOVAC",
+    "st:4:PRELJINA JUG",
+    "st:4:PRILIPAC",
+    "st:4:TAKOVO",
+    "st:4:UB",
+    "st:4:ČAČAK (Pakovraće)"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:ADRANI",
+     "rates": {
+      "c-K3": 21.0,
+      "c-K4": 42.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:LAJKOVAC",
+     "rates": {
+      "c-K3": 6.0,
+      "c-K4": 12.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:LJIG",
+     "rates": {
+      "c-K3": 9.5,
+      "c-K4": 18.5
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:LUČANI",
+     "rates": {
+      "c-K3": 22.5,
+      "c-K4": 44.5
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:PRELJINA JUG",
+     "rates": {
+      "c-K3": 17.0,
+      "c-K4": 34.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:PRILIPAC",
+     "rates": {
+      "c-K3": 24.5,
+      "c-K4": 49.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:TAKOVO",
+     "rates": {
+      "c-K3": 14.0,
+      "c-K4": 28.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:UB",
+     "rates": {
+      "c-K3": 4.0,
+      "c-K4": 8.0
+     }
+    },
+    {
+     "entry": "st:4:OBRENOVAC",
+     "exit": "st:4:ČAČAK (Pakovraće)",
+     "rates": {
+      "c-K3": 18.5,
+      "c-K4": 37.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 1 July 2026, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)"
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

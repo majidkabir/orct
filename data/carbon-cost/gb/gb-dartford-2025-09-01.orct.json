@@ -1,0 +1,270 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "gb-dartford-2025-09-01",
+  "scheme": "gb-dartford",
+  "country": "GB",
+  "currency": "GBP",
+  "valid_from": "2025-09-01",
+  "name": "Dartford Crossing charge (Dart Charge)",
+  "method": "The A282 Trunk Road (Dartford-Thurrock Crossing Charging Scheme) Order 2013 (S.I. 2013/2249), Schedule 2 column 4 (free-flow charging): class C (goods vehicles with two axles) and D (more than two axles), per crossing either way, from 6am to 10pm (GOV.UK), as varied from 2025-09-01 by S.I. 2025/853; with `etc` the pre-pay account price GOV.UK gives.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/gb-dartford-2025-09-01.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "S.I. 2013/2249, the A282 Trunk Road (Dartford-Thurrock Crossing Charging Scheme) Order 2013",
+   "url": "https://www.legislation.gov.uk/uksi/2013/2249/made"
+  },
+  {
+   "id": "s2",
+   "title": "S.I. 2025/853, the Variation Order 2025",
+   "url": "https://www.legislation.gov.uk/uksi/2025/853/made"
+  },
+  {
+   "id": "s3",
+   "title": "GOV.UK: Dartford Crossing charges",
+   "url": "https://www.gov.uk/pay-dartford-crossing-charge/charges"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles, by axles (here: over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Dartford-Thurrock Crossing (A282): the northbound tunnels and the southbound Queen Elizabeth II Bridge."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Dartford Crossing",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.257598,
+     51.464529
+    ]
+   },
+   "heading": 29.2,
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "Dartford Crossing",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.258914,
+     51.464813
+    ]
+   },
+   "heading": 209.1,
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "Dartford Crossing",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.257355,
+     51.464641
+    ]
+   },
+   "heading": 29.2,
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Dartford Crossing",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": {
+     "default": 4.2,
+     "electronic": 3.6
+    },
+    "c2": {
+     "default": 8.4,
+     "electronic": 7.2
+    }
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "Dartford Crossing",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": {
+     "default": 4.2,
+     "electronic": 3.6
+    },
+    "c2": {
+     "default": 8.4,
+     "electronic": 7.2
+    }
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "Dartford Crossing",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": {
+     "default": 4.2,
+     "electronic": 3.6
+    },
+    "c2": {
+     "default": 8.4,
+     "electronic": 7.2
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:2"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:2"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-11"
+  }
+ }
+}

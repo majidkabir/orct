@@ -1,0 +1,338 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "me-2022-07-21",
+  "scheme": "me",
+  "country": "ME",
+  "currency": "EUR",
+  "valid_from": "2022-07-21",
+  "name": "Montenegrin road tolls (putarina): motorway Smokovac–Mateševo and the Sozina tunnel",
+  "method": "Zakon o putevima; prices published by Monteput d.o.o.: on the motorway Bar–Boljare (Smokovac–Mateševo), from entry to exit station, category IV (over 3,500 kg, two or three axles) and V (four or more axles); in the Sozina tunnel per passage. The pages carry no date: the table runs from the start of toll collection on the motorway (21 July 2022). Stations placed with OpenStreetMap's toll booths.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/me-2022-07-21.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Monteput: Cjenovnik Autoput Bar-Boljare",
+   "url": "https://monteput.me/cjenovnik-autoput-bar-boljare/"
+  },
+  {
+   "id": "s2",
+   "title": "Monteput: Cjenovnik Tunel Sozina",
+   "url": "https://monteput.me/cjenovnik-tunel-sozina/"
+  },
+  {
+   "id": "s3",
+   "title": "OpenStreetMap (Geofabrik extract), toll booths",
+   "url": "https://download.geofabrik.de/europe/montenegro.html"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3,500 kg (categories IV and V)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-IV",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   },
+   "label": "IV"
+  },
+  {
+   "id": "c-V",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "V"
+  },
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The motorway Smokovac–Mateševo (stations Smokovac, Pelev Brijeg, Veruša, Mateševo) and the Sozina tunnel."
+  },
+  {
+   "id": "st:1:Smokovac",
+   "kind": "station",
+   "name": "Smokovac",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.298984,
+      42.472802
+     ],
+     [
+      19.299125,
+      42.472767
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Pelev Brijeg",
+   "kind": "station",
+   "name": "Pelev Brijeg",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.394746,
+      42.592399
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Veruša",
+   "kind": "station",
+   "name": "Veruša",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.461707,
+      42.644202
+     ]
+    ]
+   },
+   "point_names": [
+    "booth"
+   ]
+  },
+  {
+   "id": "st:1:Mateševo",
+   "kind": "station",
+   "name": "Mateševo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      19.544086,
+      42.752857
+     ],
+     [
+      19.544338,
+      42.752631
+     ]
+    ]
+   },
+   "point_names": [
+    "booth",
+    "booth"
+   ]
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Tunel Sozina",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     19.052024,
+     42.20058
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "Autoput Bar–Boljare (Smokovac–Mateševo)",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Mateševo",
+    "st:1:Pelev Brijeg",
+    "st:1:Smokovac",
+    "st:1:Veruša"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Mateševo",
+     "exit": "st:1:Pelev Brijeg",
+     "rates": {
+      "c-IV": 6.0,
+      "c-V": 10.0
+     }
+    },
+    {
+     "entry": "st:1:Mateševo",
+     "exit": "st:1:Smokovac",
+     "rates": {
+      "c-IV": 10.5,
+      "c-V": 17.0
+     }
+    },
+    {
+     "entry": "st:1:Mateševo",
+     "exit": "st:1:Veruša",
+     "rates": {
+      "c-IV": 4.5,
+      "c-V": 7.0
+     }
+    },
+    {
+     "entry": "st:1:Pelev Brijeg",
+     "exit": "st:1:Mateševo",
+     "rates": {
+      "c-IV": 6.0,
+      "c-V": 10.0
+     }
+    },
+    {
+     "entry": "st:1:Pelev Brijeg",
+     "exit": "st:1:Smokovac",
+     "rates": {
+      "c-IV": 4.5,
+      "c-V": 7.0
+     }
+    },
+    {
+     "entry": "st:1:Pelev Brijeg",
+     "exit": "st:1:Veruša",
+     "rates": {
+      "c-IV": 1.5,
+      "c-V": 3.0
+     }
+    },
+    {
+     "entry": "st:1:Smokovac",
+     "exit": "st:1:Mateševo",
+     "rates": {
+      "c-IV": 10.5,
+      "c-V": 17.0
+     }
+    },
+    {
+     "entry": "st:1:Smokovac",
+     "exit": "st:1:Pelev Brijeg",
+     "rates": {
+      "c-IV": 4.5,
+      "c-V": 7.0
+     }
+    },
+    {
+     "entry": "st:1:Smokovac",
+     "exit": "st:1:Veruša",
+     "rates": {
+      "c-IV": 6.0,
+      "c-V": 10.0
+     }
+    },
+    {
+     "entry": "st:1:Veruša",
+     "exit": "st:1:Mateševo",
+     "rates": {
+      "c-IV": 4.5,
+      "c-V": 7.0
+     }
+    },
+    {
+     "entry": "st:1:Veruša",
+     "exit": "st:1:Pelev Brijeg",
+     "rates": {
+      "c-IV": 1.5,
+      "c-V": 3.0
+     }
+    },
+    {
+     "entry": "st:1:Veruša",
+     "exit": "st:1:Smokovac",
+     "rates": {
+      "c-IV": 6.0,
+      "c-V": 10.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Monteput price list: from entry to exit station, categories IV and V."
+  },
+  {
+   "id": "point:1",
+   "name": "Tunel Sozina",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": 10.0,
+    "c2": 18.0
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "osm_extract": "2026-11-08"
+  }
+ }
+}

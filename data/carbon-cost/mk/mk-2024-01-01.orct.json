@@ -1,0 +1,889 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "mk-2024-01-01",
+  "scheme": "mk",
+  "country": "MK",
+  "currency": "EUR",
+  "valid_from": "2024-01-01",
+  "name": "North Macedonian road tolls (патарина)",
+  "method": "Закон за јавните патишта, член 58; Одлука за висината и начинот на наплата на надоместокот за употреба на пат (Службен весник 118/2019), art. 5 (in force from 12 June 2019 until Службен весник 88/2025 replaced it on 1 May 2025; the table here starts on 1 January 2024): a toll per toll station, by category (trucks: III with two or three axles, IV with four or more). The price in euro paid in cash; electronic payment by card or tag earns a discount on top-ups. Stations placed with OpenStreetMap's toll booths, a booth on a one-way carriageway charging that direction. Stations with no toll booth in OpenStreetMap aren't priced: Миравци (Клучка Миравци-Клучка Демир Капија); Миравци (Клучка Миравци-Клучка Гевгелија); Смоквица (Клучка Смоквица - КлучкаГевгелија); Смоквица (Клучка Смоквица -Клучка Демир Капија).",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/mk-2024-01-01.json"
+  },
+  "valid_to": "2025-04-30"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Службен весник 118/2019: Одлука за патарина (PESR)",
+   "url": "https://roads.org.mk/wp-content/uploads/2023/01/odluka-za-patarina-2019-1.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Geofabrik extract), toll booths",
+   "url": "https://download.geofabrik.de/europe/macedonia.html"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t (categories III and IV)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The motorway sections of the toll stations: Романовце (Куманово – Миладиновци и обратно); Петровец (Скопје - Петровец и обратно); Сопот (Петровец – Велес); Отовица (Велес - Петровец); Стоби (Велес - Градско и обратно); Миладиновци (Скопје - Миладиновци и обратно); Тетово (Тетово - Гостивар и обратно); Гостивар (Тетово - Гостивар и обратно); Глумово (Скопје - Тетово и обратно); Желино (Скопје - Тетово и обратно); Демир Капија (Градско – Демир Капија и обратно); Гевгелија (Демир Капија – Гевгелија и обратно); Кадрифаково (Штип – Св. Николе и обратно); Преод (Св. Николе – Миладиновци и обратно); Миравци (Клучка Миравци-Клучка Демир Капија); Миравци (Клучка Миравци-Клучка Гевгелија); Смоквица (Клучка Смоквица - КлучкаГевгелија); Смоквица (Клучка Смоквица -Клучка Демир Капија)."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Романовце",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.698788,
+     42.110037
+    ]
+   },
+   "heading": 193.2,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "Романовце",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.699077,
+     42.10998
+    ]
+   },
+   "heading": 16.2,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "Петровец",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.619752,
+     41.942102
+    ]
+   },
+   "heading": 302.4,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:4",
+   "kind": "point",
+   "name": "Петровец",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.619599,
+     41.941932
+    ]
+   },
+   "heading": 123.4,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:5",
+   "kind": "point",
+   "name": "Сопот",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.74481,
+     41.775798
+    ]
+   },
+   "heading": 166.0,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:6",
+   "kind": "point",
+   "name": "Отовица",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.767612,
+     41.778484
+    ]
+   },
+   "heading": 322.2,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:7",
+   "kind": "point",
+   "name": "Стоби",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.913272,
+     41.593432
+    ]
+   },
+   "heading": 328.1,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:8",
+   "kind": "point",
+   "name": "Стоби",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.913011,
+     41.593309
+    ]
+   },
+   "heading": 148.1,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:9",
+   "kind": "point",
+   "name": "Миладиновци",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.641493,
+     41.983275
+    ]
+   },
+   "heading": 69.9,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:10",
+   "kind": "point",
+   "name": "Миладиновци",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.641413,
+     41.983436
+    ]
+   },
+   "heading": 249.5,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:11",
+   "kind": "point",
+   "name": "Тетово",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     20.956669,
+     41.976362
+    ]
+   },
+   "heading": 187.8,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:12",
+   "kind": "point",
+   "name": "Тетово",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     20.956874,
+     41.976343
+    ]
+   },
+   "heading": 10.0,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:13",
+   "kind": "point",
+   "name": "Гостивар",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     20.917663,
+     41.819955
+    ]
+   },
+   "heading": 10.6,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:14",
+   "kind": "point",
+   "name": "Гостивар",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     20.917506,
+     41.819975
+    ]
+   },
+   "heading": 190.4,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:15",
+   "kind": "point",
+   "name": "Глумово",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.292679,
+     41.98837
+    ]
+   },
+   "heading": 97.8,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:16",
+   "kind": "point",
+   "name": "Глумово",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.292695,
+     41.988536
+    ]
+   },
+   "heading": 278.9,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:17",
+   "kind": "point",
+   "name": "Желино",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.077112,
+     41.989879
+    ]
+   },
+   "heading": 67.5,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:18",
+   "kind": "point",
+   "name": "Желино",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.077054,
+     41.989992
+    ]
+   },
+   "heading": 251.1,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:19",
+   "kind": "point",
+   "name": "Демир Капија",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.2086,
+     41.417436
+    ]
+   },
+   "heading": 250.6,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:20",
+   "kind": "point",
+   "name": "Демир Капија",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.208648,
+     41.417306
+    ]
+   },
+   "heading": 71.6,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:21",
+   "kind": "point",
+   "name": "Гевгелија",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.492367,
+     41.235537
+    ]
+   },
+   "heading": 180.4,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:22",
+   "kind": "point",
+   "name": "Гевгелија",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.492642,
+     41.235532
+    ]
+   },
+   "heading": 0.6,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:23",
+   "kind": "point",
+   "name": "Кадрифаково",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.058247,
+     41.808913
+    ]
+   },
+   "heading": 288.2,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:24",
+   "kind": "point",
+   "name": "Кадрифаково",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     22.05819,
+     41.80878
+    ]
+   },
+   "heading": 104.7,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:25",
+   "kind": "point",
+   "name": "Преод",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.866256,
+     41.920305
+    ]
+   },
+   "heading": 108.1,
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:26",
+   "kind": "point",
+   "name": "Преод",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     21.866302,
+     41.920414
+    ]
+   },
+   "heading": 288.0,
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Романовце",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.5,
+    "c2": 4.0
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "Романовце",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.5,
+    "c2": 4.0
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "Петровец",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:4",
+   "name": "Петровец",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:4"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:5",
+   "name": "Сопот",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:5"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 4.0,
+    "c2": 5.5
+   }
+  },
+  {
+   "id": "point:6",
+   "name": "Отовица",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:6"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 4.0,
+    "c2": 5.5
+   }
+  },
+  {
+   "id": "point:7",
+   "name": "Стоби",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:7"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 3.0,
+    "c2": 4.5
+   }
+  },
+  {
+   "id": "point:8",
+   "name": "Стоби",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:8"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 3.0,
+    "c2": 4.5
+   }
+  },
+  {
+   "id": "point:9",
+   "name": "Миладиновци",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:9"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 2.5
+   }
+  },
+  {
+   "id": "point:10",
+   "name": "Миладиновци",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:10"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 2.5
+   }
+  },
+  {
+   "id": "point:11",
+   "name": "Тетово",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:11"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.5,
+    "c2": 2.0
+   }
+  },
+  {
+   "id": "point:12",
+   "name": "Тетово",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:12"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.5,
+    "c2": 2.0
+   }
+  },
+  {
+   "id": "point:13",
+   "name": "Гостивар",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:13"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.5,
+    "c2": 2.0
+   }
+  },
+  {
+   "id": "point:14",
+   "name": "Гостивар",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:14"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 1.5,
+    "c2": 2.0
+   }
+  },
+  {
+   "id": "point:15",
+   "name": "Глумово",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:15"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:16",
+   "name": "Глумово",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:16"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:17",
+   "name": "Желино",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:17"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:18",
+   "name": "Желино",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:18"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.0,
+    "c2": 3.0
+   }
+  },
+  {
+   "id": "point:19",
+   "name": "Демир Капија",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:19"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 4.0,
+    "c2": 6.0
+   }
+  },
+  {
+   "id": "point:20",
+   "name": "Демир Капија",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:20"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 4.0,
+    "c2": 6.0
+   }
+  },
+  {
+   "id": "point:21",
+   "name": "Гевгелија",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:21"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 5.0,
+    "c2": 7.0
+   }
+  },
+  {
+   "id": "point:22",
+   "name": "Гевгелија",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:22"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 5.0,
+    "c2": 7.0
+   }
+  },
+  {
+   "id": "point:23",
+   "name": "Кадрифаково",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:23"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.5,
+    "c2": 4.0
+   }
+  },
+  {
+   "id": "point:24",
+   "name": "Кадрифаково",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:24"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 2.5,
+    "c2": 4.0
+   }
+  },
+  {
+   "id": "point:25",
+   "name": "Преод",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:25"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 3.0,
+    "c2": 4.5
+   }
+  },
+  {
+   "id": "point:26",
+   "name": "Преод",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:26"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 3.0,
+    "c2": 4.5
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "osm_extract": "2026-11-09"
+  }
+ }
+}

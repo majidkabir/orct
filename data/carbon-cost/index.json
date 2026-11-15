@@ -1,0 +1,1881 @@
+{
+ "orct_version": "0.1",
+ "derived_from": {
+  "repository": "https://github.com/majidkabir/carbon-cost",
+  "commit": "3b92c0633e86896dc1177e771ab5a483aaebc75d"
+ },
+ "datasets": [
+  {
+   "id": "al-2026-11-13",
+   "country": "AL",
+   "file": "al/al-2026-11-13.orct.json",
+   "name": "A1 Rruga e Kombit toll (Milot–Morinë)",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "at-2024-01-01",
+   "country": "AT",
+   "file": "at/at-2024-01-01.orct.json",
+   "name": "Austrian HGV toll (GO-Maut)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "at-2025-01-01",
+   "country": "AT",
+   "file": "at/at-2025-01-01.orct.json",
+   "name": "Austrian HGV toll (GO-Maut)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "at-2026-01-01",
+   "country": "AT",
+   "file": "at/at-2026-01-01.orct.json",
+   "name": "Austrian HGV toll (GO-Maut)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ba-2020-11-26",
+   "country": "BA",
+   "file": "ba/ba-2020-11-26.orct.json",
+   "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
+   "valid_from": "2020-11-26",
+   "valid_to": "2024-08-21",
+   "coverage": "complete"
+  },
+  {
+   "id": "ba-2024-08-22",
+   "country": "BA",
+   "file": "ba/ba-2024-08-22.orct.json",
+   "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
+   "valid_from": "2024-08-22",
+   "valid_to": "2026-10-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ba-2026-11-01",
+   "country": "BA",
+   "file": "ba/ba-2026-11-01.orct.json",
+   "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
+   "valid_from": "2026-11-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "ba-rs-2024-10-02",
+   "country": "BA",
+   "file": "ba/ba-rs-2024-10-02.orct.json",
+   "name": "Republika Srpska motorway tolls (Autoputevi Republike Srpske)",
+   "valid_from": "2024-10-02",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "be-bru-2024-01-01",
+   "country": "BE",
+   "file": "be/be-bru-2024-01-01.orct.json",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-bru-2024-07-01",
+   "country": "BE",
+   "file": "be/be-bru-2024-07-01.orct.json",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "valid_from": "2024-07-01",
+   "valid_to": "2025-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-bru-2025-07-01",
+   "country": "BE",
+   "file": "be/be-bru-2025-07-01.orct.json",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "valid_from": "2025-07-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-bru-2026-01-01",
+   "country": "BE",
+   "file": "be/be-bru-2026-01-01.orct.json",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-bru-2026-07-01",
+   "country": "BE",
+   "file": "be/be-bru-2026-07-01.orct.json",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-liefkenshoek-2026-01-01",
+   "country": "BE",
+   "file": "be/be-liefkenshoek-2026-01-01.orct.json",
+   "name": "Liefkenshoektunnel toll (Antwerp)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-liefkenshoek-2027-01-01",
+   "country": "BE",
+   "file": "be/be-liefkenshoek-2027-01-01.orct.json",
+   "name": "Liefkenshoektunnel toll (Antwerp)",
+   "valid_from": "2027-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "be-vlg-2024-01-01",
+   "country": "BE",
+   "file": "be/be-vlg-2024-01-01.orct.json",
+   "name": "Belgian kilometre charge, Flemish Region",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-vlg-2024-07-01",
+   "country": "BE",
+   "file": "be/be-vlg-2024-07-01.orct.json",
+   "name": "Belgian kilometre charge, Flemish Region",
+   "valid_from": "2024-07-01",
+   "valid_to": "2025-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-vlg-2025-07-01",
+   "country": "BE",
+   "file": "be/be-vlg-2025-07-01.orct.json",
+   "name": "Belgian kilometre charge, Flemish Region",
+   "valid_from": "2025-07-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-vlg-2026-01-01",
+   "country": "BE",
+   "file": "be/be-vlg-2026-01-01.orct.json",
+   "name": "Belgian kilometre charge, Flemish Region",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-vlg-2026-07-01",
+   "country": "BE",
+   "file": "be/be-vlg-2026-07-01.orct.json",
+   "name": "Belgian kilometre charge, Flemish Region",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-wal-2024-01-01",
+   "country": "BE",
+   "file": "be/be-wal-2024-01-01.orct.json",
+   "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-wal-2025-01-01",
+   "country": "BE",
+   "file": "be/be-wal-2025-01-01.orct.json",
+   "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-wal-2026-01-01",
+   "country": "BE",
+   "file": "be/be-wal-2026-01-01.orct.json",
+   "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "be-wal-2026-07-01",
+   "country": "BE",
+   "file": "be/be-wal-2026-07-01.orct.json",
+   "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "bg-2024-01-01",
+   "country": "BG",
+   "file": "bg/bg-2024-01-01.orct.json",
+   "name": "Bulgarian distance toll (BG TOLL)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-03-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "bg-2025-04-01",
+   "country": "BG",
+   "file": "bg/bg-2025-04-01.orct.json",
+   "name": "Bulgarian distance toll (BG TOLL)",
+   "valid_from": "2025-04-01",
+   "valid_to": "2025-08-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "bg-2025-09-01",
+   "country": "BG",
+   "file": "bg/bg-2025-09-01.orct.json",
+   "name": "Bulgarian distance toll (BG TOLL)",
+   "valid_from": "2025-09-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "bg-2026-01-01",
+   "country": "BG",
+   "file": "bg/bg-2026-01-01.orct.json",
+   "name": "Bulgarian distance toll (BG TOLL)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-05-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "bg-2026-06-01",
+   "country": "BG",
+   "file": "bg/bg-2026-06-01.orct.json",
+   "name": "Bulgarian distance toll (BG TOLL)",
+   "valid_from": "2026-06-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ch-2024-01-01",
+   "country": "CH",
+   "file": "ch/ch-2024-01-01.orct.json",
+   "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ch-2025-01-01",
+   "country": "CH",
+   "file": "ch/ch-2025-01-01.orct.json",
+   "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2030-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ch-great-st-bernard-2026-02-01",
+   "country": "CH",
+   "file": "ch/ch-great-st-bernard-2026-02-01.orct.json",
+   "name": "Great St Bernard tunnel toll, Bourg-Saint-Pierre (southbound)",
+   "valid_from": "2026-02-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "cz-2021-01-01",
+   "country": "CZ",
+   "file": "cz/cz-2021-01-01.orct.json",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "valid_from": "2021-01-01",
+   "valid_to": "2024-02-29",
+   "coverage": "complete"
+  },
+  {
+   "id": "cz-2024-03-01",
+   "country": "CZ",
+   "file": "cz/cz-2024-03-01.orct.json",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "valid_from": "2024-03-01",
+   "valid_to": "2024-03-24",
+   "coverage": "complete"
+  },
+  {
+   "id": "cz-2024-03-25",
+   "country": "CZ",
+   "file": "cz/cz-2024-03-25.orct.json",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "valid_from": "2024-03-25",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "cz-2025-01-01",
+   "country": "CZ",
+   "file": "cz/cz-2025-01-01.orct.json",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "cz-2026-01-01",
+   "country": "CZ",
+   "file": "cz/cz-2026-01-01.orct.json",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "de-2023-12-01",
+   "country": "DE",
+   "file": "de/de-2023-12-01.orct.json",
+   "name": "German HGV toll (Lkw-Maut)",
+   "valid_from": "2023-12-01",
+   "valid_to": "2024-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "de-2024-07-01",
+   "country": "DE",
+   "file": "de/de-2024-07-01.orct.json",
+   "name": "German HGV toll (Lkw-Maut)",
+   "valid_from": "2024-07-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "de-herrentunnel-2025-03-01",
+   "country": "DE",
+   "file": "de/de-herrentunnel-2025-03-01.orct.json",
+   "name": "Herrentunnel toll (Lübeck)",
+   "valid_from": "2025-03-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "de-warnowtunnel-2026-11-01",
+   "country": "DE",
+   "file": "de/de-warnowtunnel-2026-11-01.orct.json",
+   "name": "Warnowtunnel toll (Rostock)",
+   "valid_from": "2026-11-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "dk-2020-01-01",
+   "country": "DK",
+   "file": "dk/dk-2020-01-01.orct.json",
+   "name": "Danish road user charge (vejbenyttelsesafgift, Eurovignette)",
+   "valid_from": "2020-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "dk-2025-01-01",
+   "country": "DK",
+   "file": "dk/dk-2025-01-01.orct.json",
+   "name": "Danish km-based road toll (vejafgift)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "dk-2026-01-01",
+   "country": "DK",
+   "file": "dk/dk-2026-01-01.orct.json",
+   "name": "Danish km-based road toll (vejafgift)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2027-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "dk-bridges-2024-01-01",
+   "country": "DK",
+   "file": "dk/dk-bridges-2024-01-01.orct.json",
+   "name": "Storebælt and Øresund bridge tolls",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "dk-bridges-2025-01-01",
+   "country": "DK",
+   "file": "dk/dk-bridges-2025-01-01.orct.json",
+   "name": "Storebælt and Øresund bridge tolls",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "dk-bridges-2026-01-01",
+   "country": "DK",
+   "file": "dk/dk-bridges-2026-01-01.orct.json",
+   "name": "Storebælt and Øresund bridge tolls",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ee-2024-01-01",
+   "country": "EE",
+   "file": "ee/ee-2024-01-01.orct.json",
+   "name": "Estonian road user charge (teekasutustasu)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ee-2026-01-01",
+   "country": "EE",
+   "file": "ee/ee-2026-01-01.orct.json",
+   "name": "Estonian road user charge (teekasutustasu)",
+   "valid_from": "2026-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap15-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap15-2026-01-01.orct.json",
+   "name": "AP-15 Navarra (Audenasa) barriers",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap46-2025-01-01",
+   "country": "ES",
+   "file": "es/es-ap46-2025-01-01.orct.json",
+   "name": "AP-46 Alto de las Pedrizas–Málaga",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap46-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap46-2026-01-01.orct.json",
+   "name": "AP-46 Alto de las Pedrizas–Málaga",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap53-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap53-2026-01-01.orct.json",
+   "name": "AP-53 Santiago de Compostela – Alto de Santo Domingo",
+   "valid_from": "2026-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap66-2025-01-01",
+   "country": "ES",
+   "file": "es/es-ap66-2025-01-01.orct.json",
+   "name": "AP-66 Campomanes–León (Aucalsa)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap66-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap66-2026-01-01.orct.json",
+   "name": "AP-66 Campomanes–León (Aucalsa)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap68-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap68-2026-01-01.orct.json",
+   "name": "AP-68 Bilbao – Zaragoza (Avasa)",
+   "valid_from": "2026-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap7ac-2025-01-01",
+   "country": "ES",
+   "file": "es/es-ap7ac-2025-01-01.orct.json",
+   "name": "AP-7 Alicante–Cartagena",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ap7ac-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ap7ac-2026-01-01.orct.json",
+   "name": "AP-7 Alicante–Cartagena",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-aulesa-2025-01-01",
+   "country": "ES",
+   "file": "es/es-aulesa-2025-01-01.orct.json",
+   "name": "AP-71 León–Astorga (Aulesa)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-aulesa-2026-01-01",
+   "country": "ES",
+   "file": "es/es-aulesa-2026-01-01.orct.json",
+   "name": "AP-71 León–Astorga (Aulesa)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ausol-2026-01-01",
+   "country": "ES",
+   "file": "es/es-ausol-2026-01-01.orct.json",
+   "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-03-26",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ausol-2026-03-27",
+   "country": "ES",
+   "file": "es/es-ausol-2026-03-27.orct.json",
+   "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), special season",
+   "valid_from": "2026-03-27",
+   "valid_to": "2026-04-12",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ausol-2026-04-13",
+   "country": "ES",
+   "file": "es/es-ausol-2026-04-13.orct.json",
+   "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
+   "valid_from": "2026-04-13",
+   "valid_to": "2026-05-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ausol-2026-06-01",
+   "country": "ES",
+   "file": "es/es-ausol-2026-06-01.orct.json",
+   "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), special season",
+   "valid_from": "2026-06-01",
+   "valid_to": "2026-09-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-ausol-2026-10-01",
+   "country": "ES",
+   "file": "es/es-ausol-2026-10-01.orct.json",
+   "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
+   "valid_from": "2026-10-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-basque-2026-01-01",
+   "country": "ES",
+   "file": "es/es-basque-2026-01-01.orct.json",
+   "name": "N-I and A-15 heavy vehicle canon (Gipuzkoa, Bidegi)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-basque-ap8-2026-01-01",
+   "country": "ES",
+   "file": "es/es-basque-ap8-2026-01-01.orct.json",
+   "name": "AP-8, AP-1 and AP-636, Basque Country (Interbiak, Bidegi)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-castellana-2025-01-01",
+   "country": "ES",
+   "file": "es/es-castellana-2025-01-01.orct.json",
+   "name": "AP-6, AP-51 and AP-61 (Castellana de Autopistas, Iberpistas)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-castellana-2026-01-01",
+   "country": "ES",
+   "file": "es/es-castellana-2026-01-01.orct.json",
+   "name": "AP-6, AP-51 and AP-61 (Castellana de Autopistas, Iberpistas)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-catalonia-c16-2026-01-01",
+   "country": "ES",
+   "file": "es/es-catalonia-c16-2026-01-01.orct.json",
+   "name": "Catalonia: C-16 tolls (Túnel del Cadí, Túnels de Vallvidrera, les Fonts, Sant Vicenç de Castellet)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "es-radials-2026-01-01",
+   "country": "ES",
+   "file": "es/es-radials-2026-01-01.orct.json",
+   "name": "Madrid radials R-2, R-3, R-4 and R-5 (SEITT)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-seitt-2025-01-01",
+   "country": "ES",
+   "file": "es/es-seitt-2025-01-01.orct.json",
+   "name": "Spanish state toll motorways (SEITT)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "es-seitt-2026-01-01",
+   "country": "ES",
+   "file": "es/es-seitt-2026-01-01.orct.json",
+   "name": "Spanish state toll motorways (SEITT)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fr-2024-01-01",
+   "country": "FR",
+   "file": "fr/fr-2024-01-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-01-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "fr-2024-02-01",
+   "country": "FR",
+   "file": "fr/fr-2024-02-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2024-02-01",
+   "valid_to": "2025-01-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "fr-2025-02-01",
+   "country": "FR",
+   "file": "fr/fr-2025-02-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2025-02-01",
+   "valid_to": "2026-01-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "fr-2026-02-01",
+   "country": "FR",
+   "file": "fr/fr-2026-02-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2026-02-01",
+   "valid_to": "2026-05-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "fr-2026-06-01",
+   "country": "FR",
+   "file": "fr/fr-2026-06-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2026-06-01",
+   "valid_to": "2027-01-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "frejus-2024-01-01",
+   "country": "FR",
+   "file": "fr/frejus-2024-01-01.orct.json",
+   "name": "Fréjus road tunnel toll",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "frejus-2025-01-01",
+   "country": "FR",
+   "file": "fr/frejus-2025-01-01.orct.json",
+   "name": "Fréjus road tunnel toll",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "frejus-2026-01-01",
+   "country": "FR",
+   "file": "fr/frejus-2026-01-01.orct.json",
+   "name": "Fréjus road tunnel toll",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-at-2024-01-01",
+   "country": "AT",
+   "file": "at/fuelco2-at-2024-01-01.orct.json",
+   "name": "Nationaler Emissionszertifikatehandel certificate value",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-at-2025-01-01",
+   "country": "AT",
+   "file": "at/fuelco2-at-2025-01-01.orct.json",
+   "name": "Nationaler Emissionszertifikatehandel certificate value",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-at-2026-01-01",
+   "country": "AT",
+   "file": "at/fuelco2-at-2026-01-01.orct.json",
+   "name": "Nationaler Emissionszertifikatehandel certificate value",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-at-2027-01-01",
+   "country": "AT",
+   "file": "at/fuelco2-at-2027-01-01.orct.json",
+   "name": "Nationaler Emissionszertifikatehandel certificate value",
+   "valid_from": "2027-01-01",
+   "valid_to": "2027-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-de-2024-01-01",
+   "country": "DE",
+   "file": "de/fuelco2-de-2024-01-01.orct.json",
+   "name": "Brennstoffemissionshandel (nEHS) certificate price",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-de-2025-01-01",
+   "country": "DE",
+   "file": "de/fuelco2-de-2025-01-01.orct.json",
+   "name": "Brennstoffemissionshandel (nEHS) certificate price",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-de-2026-01-01",
+   "country": "DE",
+   "file": "de/fuelco2-de-2026-01-01.orct.json",
+   "name": "Brennstoffemissionshandel (nEHS) certificate price",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-ie-2024-01-01",
+   "country": "IE",
+   "file": "ie/fuelco2-ie-2024-01-01.orct.json",
+   "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-10-08",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-ie-2024-10-09",
+   "country": "IE",
+   "file": "ie/fuelco2-ie-2024-10-09.orct.json",
+   "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
+   "valid_from": "2024-10-09",
+   "valid_to": "2025-10-07",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-ie-2025-10-08",
+   "country": "IE",
+   "file": "ie/fuelco2-ie-2025-10-08.orct.json",
+   "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
+   "valid_from": "2025-10-08",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2024-01-01",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2024-01-01.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-08-25",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2024-08-26",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2024-08-26.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2024-08-26",
+   "valid_to": "2024-09-08",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2024-09-09",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2024-09-09.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2024-09-09",
+   "valid_to": "2024-09-15",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2024-09-16",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2024-09-16.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2024-09-16",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2025-01-01",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2025-01-01.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-pt-2026-01-01",
+   "country": "PT",
+   "file": "pt/fuelco2-pt-2026-01-01.orct.json",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "valid_from": "2026-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2024-01-01",
+   "country": "SI",
+   "file": "si/fuelco2-si-2024-01-01.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-09-09",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2024-09-10",
+   "country": "SI",
+   "file": "si/fuelco2-si-2024-09-10.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2024-09-10",
+   "valid_to": "2026-03-23",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2026-03-24",
+   "country": "SI",
+   "file": "si/fuelco2-si-2026-03-24.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2026-03-24",
+   "valid_to": "2026-05-11",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2026-05-12",
+   "country": "SI",
+   "file": "si/fuelco2-si-2026-05-12.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2026-05-12",
+   "valid_to": "2026-06-01",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2026-06-02",
+   "country": "SI",
+   "file": "si/fuelco2-si-2026-06-02.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2026-06-02",
+   "valid_to": "2026-07-27",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2026-07-28",
+   "country": "SI",
+   "file": "si/fuelco2-si-2026-07-28.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2026-07-28",
+   "valid_to": "2026-12-14",
+   "coverage": "complete"
+  },
+  {
+   "id": "fuelco2-si-2026-12-15",
+   "country": "SI",
+   "file": "si/fuelco2-si-2026-12-15.orct.json",
+   "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
+   "valid_from": "2026-12-15",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-2023-08-01",
+   "country": "GB",
+   "file": "gb/gb-2023-08-01.orct.json",
+   "name": "UK HGV road user levy (non-UK vehicles)",
+   "valid_from": "2023-08-01",
+   "valid_to": "2025-03-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-2025-04-01",
+   "country": "GB",
+   "file": "gb/gb-2025-04-01.orct.json",
+   "name": "UK HGV road user levy (non-UK vehicles)",
+   "valid_from": "2025-04-01",
+   "valid_to": "2026-03-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-2026-04-01",
+   "country": "GB",
+   "file": "gb/gb-2026-04-01.orct.json",
+   "name": "UK HGV road user levy (non-UK vehicles)",
+   "valid_from": "2026-04-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-dartford-2024-01-01",
+   "country": "GB",
+   "file": "gb/gb-dartford-2024-01-01.orct.json",
+   "name": "Dartford Crossing charge (Dart Charge)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-08-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-dartford-2025-09-01",
+   "country": "GB",
+   "file": "gb/gb-dartford-2025-09-01.orct.json",
+   "name": "Dartford Crossing charge (Dart Charge)",
+   "valid_from": "2025-09-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-humber-bridge-2026-11-13",
+   "country": "GB",
+   "file": "gb/gb-humber-bridge-2026-11-13.orct.json",
+   "name": "Humber Bridge toll",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-m6toll-2026-11-13",
+   "country": "GB",
+   "file": "gb/gb-m6toll-2026-11-13.orct.json",
+   "name": "M6 Toll",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-mersey-bridges-2025-04-01",
+   "country": "GB",
+   "file": "gb/gb-mersey-bridges-2025-04-01.orct.json",
+   "name": "Mersey Gateway and Silver Jubilee bridges toll",
+   "valid_from": "2025-04-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-tamar-bridge-2026-11-13",
+   "country": "GB",
+   "file": "gb/gb-tamar-bridge-2026-11-13.orct.json",
+   "name": "Tamar Bridge toll",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-thames-tunnels-2025-04-07",
+   "country": "GB",
+   "file": "gb/gb-thames-tunnels-2025-04-07.orct.json",
+   "name": "Blackwall and Silvertown tunnels charge",
+   "valid_from": "2025-04-07",
+   "valid_to": "2026-09-20",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-thames-tunnels-2026-09-21",
+   "country": "GB",
+   "file": "gb/gb-thames-tunnels-2026-09-21.orct.json",
+   "name": "Blackwall and Silvertown tunnels charge",
+   "valid_from": "2026-09-21",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-tyne-tunnels-2024-01-01",
+   "country": "GB",
+   "file": "gb/gb-tyne-tunnels-2024-01-01.orct.json",
+   "name": "Tyne Tunnels toll",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-04-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-tyne-tunnels-2024-05-01",
+   "country": "GB",
+   "file": "gb/gb-tyne-tunnels-2024-05-01.orct.json",
+   "name": "Tyne Tunnels toll",
+   "valid_from": "2024-05-01",
+   "valid_to": "2025-04-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "gb-tyne-tunnels-2025-05-01",
+   "country": "GB",
+   "file": "gb/gb-tyne-tunnels-2025-05-01.orct.json",
+   "name": "Tyne Tunnels toll",
+   "valid_from": "2025-05-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "gr-2024-01-01",
+   "country": "GR",
+   "file": "gr/gr-2024-01-01.orct.json",
+   "name": "Greek motorway tolls (open toll stations)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "gr-2025-01-01",
+   "country": "GR",
+   "file": "gr/gr-2025-01-01.orct.json",
+   "name": "Greek motorway tolls (open toll stations)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "gr-2026-01-01",
+   "country": "GR",
+   "file": "gr/gr-2026-01-01.orct.json",
+   "name": "Greek motorway tolls (open toll stations)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hr-2024-01-01",
+   "country": "HR",
+   "file": "hr/hr-2024-01-01.orct.json",
+   "name": "Croatian motorway toll (Hrvatske autoceste)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "hr-2025-07-01",
+   "country": "HR",
+   "file": "hr/hr-2025-07-01.orct.json",
+   "name": "Croatian motorway toll (Hrvatske autoceste)",
+   "valid_from": "2025-07-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hr-2026-01-01",
+   "country": "HR",
+   "file": "hr/hr-2026-01-01.orct.json",
+   "name": "Croatian motorway toll (Hrvatske autoceste)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2024-01-01",
+   "country": "HU",
+   "file": "hu/hu-2024-01-01.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-03-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2024-04-01",
+   "country": "HU",
+   "file": "hu/hu-2024-04-01.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2024-04-01",
+   "valid_to": "2024-08-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2024-09-01",
+   "country": "HU",
+   "file": "hu/hu-2024-09-01.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2024-09-01",
+   "valid_to": "2025-06-07",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2025-06-08",
+   "country": "HU",
+   "file": "hu/hu-2025-06-08.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2025-06-08",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2026-01-01",
+   "country": "HU",
+   "file": "hu/hu-2026-01-01.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "hu-2026-07-01",
+   "country": "HU",
+   "file": "hu/hu-2026-07-01.orct.json",
+   "name": "Hungarian distance-based toll (HU-GO)",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ie-2024-01-01",
+   "country": "IE",
+   "file": "ie/ie-2024-01-01.orct.json",
+   "name": "Irish national road tolls (M50 and the PPP toll roads)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ie-2025-01-01",
+   "country": "IE",
+   "file": "ie/ie-2025-01-01.orct.json",
+   "name": "Irish national road tolls (M50 and the PPP toll roads)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ie-2026-01-01",
+   "country": "IE",
+   "file": "ie/ie-2026-01-01.orct.json",
+   "name": "Irish national road tolls (M50 and the PPP toll roads)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "it-2026-01-01",
+   "country": "IT",
+   "file": "it/it-2026-01-01.orct.json",
+   "name": "Italian motorway tolls (ESTIMATE: each concession's unit rate per km)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "it-barriers-2026-01-01",
+   "country": "IT",
+   "file": "it/it-barriers-2026-01-01.orct.json",
+   "name": "Milan ring roads' barriers (Milano Serravalle - Milano Tangenziali)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "it-cas-2026-01-01",
+   "country": "IT",
+   "file": "it/it-cas-2026-01-01.orct.json",
+   "name": "Sicilian motorways A18 and A20 (Consorzio per le Autostrade Siciliane)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "it-great-st-bernard-2026-02-01",
+   "country": "IT",
+   "file": "it/it-great-st-bernard-2026-02-01.orct.json",
+   "name": "Great St Bernard tunnel toll, Saint-Rhémy (northbound)",
+   "valid_from": "2026-02-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "li-2024-01-01",
+   "country": "LI",
+   "file": "li/li-2024-01-01.orct.json",
+   "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "li-2025-01-01",
+   "country": "LI",
+   "file": "li/li-2025-01-01.orct.json",
+   "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2030-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2024-01-01",
+   "country": "LT",
+   "file": "lt/lt-2024-01-01.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-08-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2024-08-31",
+   "country": "LT",
+   "file": "lt/lt-2024-08-31.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2024-08-31",
+   "valid_to": "2025-05-15",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2025-05-16",
+   "country": "LT",
+   "file": "lt/lt-2025-05-16.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2025-05-16",
+   "valid_to": "2025-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2025-07-01",
+   "country": "LT",
+   "file": "lt/lt-2025-07-01.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2025-07-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2026-01-01",
+   "country": "LT",
+   "file": "lt/lt-2026-01-01.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-04-10",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2026-04-11",
+   "country": "LT",
+   "file": "lt/lt-2026-04-11.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2026-04-11",
+   "valid_to": "2026-08-24",
+   "coverage": "complete"
+  },
+  {
+   "id": "lt-2026-08-25",
+   "country": "LT",
+   "file": "lt/lt-2026-08-25.orct.json",
+   "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
+   "valid_from": "2026-08-25",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "lu-2019-07-01",
+   "country": "LU",
+   "file": "lu/lu-2019-07-01.orct.json",
+   "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
+   "valid_from": "2019-07-01",
+   "valid_to": "2025-03-24",
+   "coverage": "complete"
+  },
+  {
+   "id": "lu-2025-03-25",
+   "country": "LU",
+   "file": "lu/lu-2025-03-25.orct.json",
+   "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
+   "valid_from": "2025-03-25",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "lv-2017-08-22",
+   "country": "LV",
+   "file": "lv/lv-2017-08-22.orct.json",
+   "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+   "valid_from": "2017-08-22",
+   "valid_to": "2024-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "lv-2025-01-01",
+   "country": "LV",
+   "file": "lv/lv-2025-01-01.orct.json",
+   "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2026-02-28",
+   "coverage": "partial"
+  },
+  {
+   "id": "lv-2026-03-01",
+   "country": "LV",
+   "file": "lv/lv-2026-03-01.orct.json",
+   "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+   "valid_from": "2026-03-01",
+   "valid_to": null,
+   "coverage": "partial"
+  },
+  {
+   "id": "md-2026-11-13",
+   "country": "MD",
+   "file": "md/md-2026-11-13.orct.json",
+   "name": "Moldova vignette (vinieta), trucks not registered in Moldova",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "partial"
+  },
+  {
+   "id": "me-2022-07-21",
+   "country": "ME",
+   "file": "me/me-2022-07-21.orct.json",
+   "name": "Montenegrin road tolls (putarina): motorway Smokovac–Mateševo and the Sozina tunnel",
+   "valid_from": "2022-07-21",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "mk-2024-01-01",
+   "country": "MK",
+   "file": "mk/mk-2024-01-01.orct.json",
+   "name": "North Macedonian road tolls (патарина)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-04-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "mk-2025-05-01",
+   "country": "MK",
+   "file": "mk/mk-2025-05-01.orct.json",
+   "name": "North Macedonian road tolls (патарина)",
+   "valid_from": "2025-05-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "mont-blanc-2024-01-01",
+   "country": "FR",
+   "file": "fr/mont-blanc-2024-01-01.orct.json",
+   "name": "Mont Blanc tunnel toll",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "mont-blanc-2025-01-01",
+   "country": "FR",
+   "file": "fr/mont-blanc-2025-01-01.orct.json",
+   "name": "Mont Blanc tunnel toll",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "mont-blanc-2026-01-01",
+   "country": "FR",
+   "file": "fr/mont-blanc-2026-01-01.orct.json",
+   "name": "Mont Blanc tunnel toll",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-2024-01-01",
+   "country": "NL",
+   "file": "nl/nl-2024-01-01.orct.json",
+   "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-03-24",
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-2025-03-25",
+   "country": "NL",
+   "file": "nl/nl-2025-03-25.orct.json",
+   "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
+   "valid_from": "2025-03-25",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-2026-07-01",
+   "country": "NL",
+   "file": "nl/nl-2026-07-01.orct.json",
+   "name": "Dutch HGV charge (vrachtwagenheffing)",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-08-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-2026-09-01",
+   "country": "NL",
+   "file": "nl/nl-2026-09-01.orct.json",
+   "name": "Dutch HGV charge (vrachtwagenheffing)",
+   "valid_from": "2026-09-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-2027-01-01",
+   "country": "NL",
+   "file": "nl/nl-2027-01-01.orct.json",
+   "name": "Dutch HGV charge (vrachtwagenheffing)",
+   "valid_from": "2027-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-kiltunnel-2026-11-13",
+   "country": "NL",
+   "file": "nl/nl-kiltunnel-2026-11-13.orct.json",
+   "name": "Kiltunnel toll",
+   "valid_from": "2026-11-13",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "nl-westerscheldetunnel-2026-01-01",
+   "country": "NL",
+   "file": "nl/nl-westerscheldetunnel-2026-01-01.orct.json",
+   "name": "Westerscheldetunnel toll",
+   "valid_from": "2026-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "no-2024-01-01",
+   "country": "NO",
+   "file": "no/no-2024-01-01.orct.json",
+   "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2026-11-02",
+   "coverage": "partial"
+  },
+  {
+   "id": "no-2026-11-03",
+   "country": "NO",
+   "file": "no/no-2026-11-03.orct.json",
+   "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
+   "valid_from": "2026-11-03",
+   "valid_to": null,
+   "coverage": "partial"
+  },
+  {
+   "id": "pl-2024-01-01",
+   "country": "PL",
+   "file": "pl/pl-2024-01-01.orct.json",
+   "name": "Polish electronic toll (e-TOLL)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pl-2025-01-01",
+   "country": "PL",
+   "file": "pl/pl-2025-01-01.orct.json",
+   "name": "Polish electronic toll (e-TOLL)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pl-2026-01-01",
+   "country": "PL",
+   "file": "pl/pl-2026-01-01.orct.json",
+   "name": "Polish electronic toll (e-TOLL)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-01-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pl-2026-02-01",
+   "country": "PL",
+   "file": "pl/pl-2026-02-01.orct.json",
+   "name": "Polish electronic toll (e-TOLL)",
+   "valid_from": "2026-02-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pt-2024-01-01",
+   "country": "PT",
+   "file": "pt/pt-2024-01-01.orct.json",
+   "name": "Portuguese motorway tolls (portagens)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pt-2025-01-01",
+   "country": "PT",
+   "file": "pt/pt-2025-01-01.orct.json",
+   "name": "Portuguese motorway tolls (portagens)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "pt-2026-01-01",
+   "country": "PT",
+   "file": "pt/pt-2026-01-01.orct.json",
+   "name": "Portuguese motorway tolls (portagens)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-2024-01-01",
+   "country": "RO",
+   "file": "ro/ro-2024-01-01.orct.json",
+   "name": "Romanian road user charge (rovinieta)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2025-07-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-2025-08-01",
+   "country": "RO",
+   "file": "ro/ro-2025-08-01.orct.json",
+   "name": "Romanian road user charge (rovinieta)",
+   "valid_from": "2025-08-01",
+   "valid_to": "2025-09-07",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-2025-09-08",
+   "country": "RO",
+   "file": "ro/ro-2025-09-08.orct.json",
+   "name": "Romanian road user charge (rovinieta)",
+   "valid_from": "2025-09-08",
+   "valid_to": "2026-09-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-2026-10-01",
+   "country": "RO",
+   "file": "ro/ro-2026-10-01.orct.json",
+   "name": "Romanian distance toll (TollRo)",
+   "valid_from": "2026-10-01",
+   "valid_to": "2026-10-07",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-2026-10-08",
+   "country": "RO",
+   "file": "ro/ro-2026-10-08.orct.json",
+   "name": "Romanian distance toll (TollRo)",
+   "valid_from": "2026-10-08",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "ro-danube-bridges-2025-09-08",
+   "country": "RO",
+   "file": "ro/ro-danube-bridges-2025-09-08.orct.json",
+   "name": "Romania's Danube bridge tolls (tarif de trecere)",
+   "valid_from": "2025-09-08",
+   "valid_to": "2026-09-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "rs-2024-07-10",
+   "country": "RS",
+   "file": "rs/rs-2024-07-10.orct.json",
+   "name": "Serbian motorway toll (putarina)",
+   "valid_from": "2024-07-10",
+   "valid_to": "2025-01-09",
+   "coverage": "complete"
+  },
+  {
+   "id": "rs-2026-01-01",
+   "country": "RS",
+   "file": "rs/rs-2026-01-01.orct.json",
+   "name": "Serbian motorway toll (putarina)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "rs-2026-07-01",
+   "country": "RS",
+   "file": "rs/rs-2026-07-01.orct.json",
+   "name": "Serbian motorway toll (putarina)",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "se-2024-01-01",
+   "country": "SE",
+   "file": "se/se-2024-01-01.orct.json",
+   "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "se-2025-01-01",
+   "country": "SE",
+   "file": "se/se-2025-01-01.orct.json",
+   "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-03-24",
+   "coverage": "complete"
+  },
+  {
+   "id": "se-2025-03-25",
+   "country": "SE",
+   "file": "se/se-2025-03-25.orct.json",
+   "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
+   "valid_from": "2025-03-25",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "se-2026-01-01",
+   "country": "SE",
+   "file": "se/se-2026-01-01.orct.json",
+   "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "se-bridges-2024-05-01",
+   "country": "SE",
+   "file": "se/se-bridges-2024-05-01.orct.json",
+   "name": "Swedish bridge infrastructure charges (broavgift)",
+   "valid_from": "2024-05-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "se-congestion-goteborg-2020-01-01",
+   "country": "SE",
+   "file": "se/se-congestion-goteborg-2020-01-01.orct.json",
+   "name": "Göteborg congestion tax (trängselskatt)",
+   "valid_from": "2020-01-01",
+   "valid_to": null,
+   "coverage": "partial"
+  },
+  {
+   "id": "se-congestion-stockholm-2020-01-01",
+   "country": "SE",
+   "file": "se/se-congestion-stockholm-2020-01-01.orct.json",
+   "name": "Stockholm congestion tax (trängselskatt)",
+   "valid_from": "2020-01-01",
+   "valid_to": null,
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2024-01-01",
+   "country": "SI",
+   "file": "si/si-2024-01-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-07-14",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2024-07-15",
+   "country": "SI",
+   "file": "si/si-2024-07-15.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2024-07-15",
+   "valid_to": "2024-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2025-01-01",
+   "country": "SI",
+   "file": "si/si-2025-01-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2025-01-01",
+   "valid_to": "2025-06-30",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2025-07-01",
+   "country": "SI",
+   "file": "si/si-2025-07-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2025-07-01",
+   "valid_to": "2025-10-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2025-11-01",
+   "country": "SI",
+   "file": "si/si-2025-11-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2025-11-01",
+   "valid_to": "2025-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2026-01-01",
+   "country": "SI",
+   "file": "si/si-2026-01-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-03-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "si-2026-04-01",
+   "country": "SI",
+   "file": "si/si-2026-04-01.orct.json",
+   "name": "Slovenian distance toll (DarsGo)",
+   "valid_from": "2026-04-01",
+   "valid_to": "2026-12-31",
+   "coverage": "partial"
+  },
+  {
+   "id": "sk-2020-07-01",
+   "country": "SK",
+   "file": "sk/sk-2020-07-01.orct.json",
+   "name": "Slovak electronic toll (mýto)",
+   "valid_from": "2020-07-01",
+   "valid_to": "2025-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "sk-2025-07-01",
+   "country": "SK",
+   "file": "sk/sk-2025-07-01.orct.json",
+   "name": "Slovak electronic toll (mýto)",
+   "valid_from": "2025-07-01",
+   "valid_to": "2026-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2024-01-01",
+   "country": "TR",
+   "file": "tr/tr-2024-01-01.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2024-01-01",
+   "valid_to": "2024-05-14",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2024-05-15",
+   "country": "TR",
+   "file": "tr/tr-2024-05-15.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2024-05-15",
+   "valid_to": "2024-08-15",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2024-08-16",
+   "country": "TR",
+   "file": "tr/tr-2024-08-16.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2024-08-16",
+   "valid_to": "2025-01-12",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2025-01-13",
+   "country": "TR",
+   "file": "tr/tr-2025-01-13.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2025-01-13",
+   "valid_to": "2025-12-31",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2026-01-01",
+   "country": "TR",
+   "file": "tr/tr-2026-01-01.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-30",
+   "coverage": "complete"
+  },
+  {
+   "id": "tr-2026-07-01",
+   "country": "TR",
+   "file": "tr/tr-2026-07-01.orct.json",
+   "name": "Turkish motorway and bridge tolls (KGM)",
+   "valid_from": "2026-07-01",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "zone-gb-congestion-charge-2024-01-01",
+   "country": "GB",
+   "file": "gb/zone-gb-congestion-charge-2024-01-01.orct.json",
+   "name": "London Congestion Charge",
+   "valid_from": "2024-01-01",
+   "valid_to": "2026-01-01",
+   "coverage": "complete"
+  },
+  {
+   "id": "zone-gb-congestion-charge-2026-01-02",
+   "country": "GB",
+   "file": "gb/zone-gb-congestion-charge-2026-01-02.orct.json",
+   "name": "London Congestion Charge",
+   "valid_from": "2026-01-02",
+   "valid_to": null,
+   "coverage": "complete"
+  },
+  {
+   "id": "zone-gb-low-emission-zone-2024-01-01",
+   "country": "GB",
+   "file": "gb/zone-gb-low-emission-zone-2024-01-01.orct.json",
+   "name": "London Low Emission Zone",
+   "valid_from": "2024-01-01",
+   "valid_to": null,
+   "coverage": "complete"
+  }
+ ]
+}

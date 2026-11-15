@@ -1,0 +1,125 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "gb-humber-bridge-2026-11-13",
+  "scheme": "gb-humber-bridge",
+  "country": "GB",
+  "currency": "GBP",
+  "valid_from": "2026-11-13",
+  "name": "Humber Bridge toll",
+  "method": "Humber Bridge Board's tolls (Humber Bridge Acts 1959 and 2013) per crossing, either way, as published: two-axle vehicles of 3.5-7 t GBP 5.00, three axles or more over 7.5 t GBP 15.00; with `etc` the account price (4.00, 12.00). Two-axle trucks over 7 t are taken at the two-axle price. The page gives no date: valid_from is the day it was first read.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/gb-humber-bridge-2026-11-13.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Humber Bridge: Tolls and Ways to Pay (read in Chrome: tools/tables/browser/gb-humber.txt)",
+   "url": "https://www.humberbridge.co.uk/plan-your-trip/tolls-ways-to-pay/"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t, by axles",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Humber Bridge (A15), either way."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Humber Bridge",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.450058,
+     53.706846
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Humber Bridge",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": {
+     "default": 5.0,
+     "electronic": 4.0
+    },
+    "c2": {
+     "default": 15.0,
+     "electronic": 12.0
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}

@@ -1,0 +1,353 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "dk-2025-01-01",
+  "scheme": "dk",
+  "country": "DK",
+  "currency": "DKK",
+  "valid_from": "2025-01-01",
+  "name": "Danish km-based road toll (vejafgift)",
+  "method": "Lov om vejafgift (lov nr. 763 af 13/06/2023), § 5 stk. 1-3 as worded by lov nr. 1489 af 10/12/2024, in force 1 January 2025: the rate per km by CO2 emission class and permissible maximum mass, its split into infrastructure charge and external costs (CO2, air pollution and noise), and the surcharge in environmental zones",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/dk-2025-01-01.json"
+  },
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Lov nr. 1489 af 10/12/2024, § 1, nr. 4 (Retsinformation)",
+   "url": "https://www.retsinformation.dk/eli/lta/2024/1489"
+  },
+  {
+   "id": "s2",
+   "title": "Transportministeriet: Afrapportering vedr. vej- og infrastrukturafgifter i Danmark, 25 March 2025 (tables 1-3)",
+   "url": "https://www.trm.dk/media/q2wpgmh0/afrapportering-vedr-vej-og-infrastrukturafgifter-i-danmark2-a.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles and combinations with technically permissible maximum mass of 12 t or more",
+  "min_mass_kg": 12000,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000,
+     "max": 17999
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 18000,
+     "max": 32000
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     1
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000,
+     "max": 17999
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 18000,
+     "max": 32000
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000,
+     "max": 17999
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 18000,
+     "max": 32000
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000,
+     "max": 17999
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 18000,
+     "max": 32000
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000,
+     "max": 17999
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 18000,
+     "max": 32000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Road segments listed in the law's Annex 1 (about 10,900 km in 2025-2027: state roads incl. motorways, and parts of municipal roads). From 1 January 2028 the whole public road network (about 75,000 km)."
+  }
+ ],
+ "charges": [
+  {
+   "id": "infrastructure@roads",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.44,
+    "c2": 0.44,
+    "c3": 0.44,
+    "c4": 0.38,
+    "c5": 0.38,
+    "c6": 0.38,
+    "c7": 0.31,
+    "c8": 0.31,
+    "c9": 0.31,
+    "c10": 0.22,
+    "c11": 0.22,
+    "c12": 0.22,
+    "c13": 0.11,
+    "c14": 0.11,
+    "c15": 0.11
+   }
+  },
+  {
+   "id": "co2@roads",
+   "type": "distance",
+   "component": "co2",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.37,
+    "c2": 0.5,
+    "c3": 0.6,
+    "c4": 0.36,
+    "c5": 0.48,
+    "c6": 0.57,
+    "c7": 0.33,
+    "c8": 0.45,
+    "c9": 0.54,
+    "c10": 0.19,
+    "c11": 0.25,
+    "c12": 0.3,
+    "c13": 0,
+    "c14": 0,
+    "c15": 0
+   }
+  },
+  {
+   "id": "air_noise@roads",
+   "type": "distance",
+   "component": "air_noise",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.05,
+    "c2": 0.06,
+    "c3": 0.06,
+    "c4": 0.05,
+    "c5": 0.06,
+    "c6": 0.06,
+    "c7": 0.05,
+    "c8": 0.06,
+    "c9": 0.06,
+    "c10": 0.05,
+    "c11": 0.06,
+    "c12": 0.06,
+    "c13": 0.02,
+    "c14": 0.02,
+    "c15": 0.02
+   }
+  },
+  {
+   "id": "env_zone_surcharge@roads",
+   "type": "distance",
+   "component": "x-env_zone_surcharge",
+   "applies_to": [
+    "roads"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": 0.43,
+    "c2": 0.5,
+    "c3": 0.55,
+    "c4": 0.4,
+    "c5": 0.46,
+    "c6": 0.51,
+    "c7": 0.35,
+    "c8": 0.41,
+    "c9": 0.46,
+    "c10": 0.23,
+    "c11": 0.27,
+    "c12": 0.29,
+    "c13": 0.07,
+    "c14": 0.07,
+    "c15": 0.07
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "partial",
+   "reason": "env_zone_surcharge is kept as an extension (no ORCT 0.1 field yet)"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "env_zone_surcharge": "Added on Annex 1 segments in environmental zones, except segments on the TEN-T network or motorways (§ 4)."
+  }
+ }
+}

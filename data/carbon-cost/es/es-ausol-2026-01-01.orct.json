@@ -1,0 +1,166 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-ausol-2026-01-01",
+  "scheme": "es-ausol",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
+  "method": "Tariffs of Autopista del Sol, Concesionaria Española, approved by Orden Ministerial of 18 December 2025, 2026: per troncal barrier (Calahonda, San Pedro, Manilva), Pesados 1 (two or three axles) and Pesados 2 (four or more), excluding 21% IVA; the normal season. The lateral barriers on the ramps aren't priced: a trip joining or leaving at one is priced as through traffic.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-ausol-2026-01-01.json"
+  },
+  "valid_to": "2026-03-26"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Ausol: tarifas",
+   "url": "https://www.ausol.es/es/tarifas-y-descuentos/tarifas"
+  }
+ ],
+ "vehicles": {
+  "description": "Pesados 1 (two or three axles) and Pesados 2 (four or more)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-7 Málaga–Estepona (Calahonda, San Pedro) and Estepona–Guadiaro (Manilva), at the main-road barriers."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "AP-7 Calahonda",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -4.717858,
+     36.505733
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "AP-7 San Pedro",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -5.008749,
+     36.499382
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "AP-7 Manilva",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -5.265471,
+     36.38047
+    ]
+   },
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "AP-7 Calahonda",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 7.6446,
+    "c2": 9.3802
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "AP-7 San Pedro",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 5.1653,
+    "c2": 6.3636
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "AP-7 Manilva",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 3.0165,
+    "c2": 3.9669
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-12"
+  }
+ }
+}

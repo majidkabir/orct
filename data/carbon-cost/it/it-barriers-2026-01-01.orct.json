@@ -1,0 +1,215 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "it-barriers-2026-01-01",
+  "scheme": "it-barriers",
+  "country": "IT",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Milan ring roads' barriers (Milano Serravalle - Milano Tangenziali)",
+  "method": "Milano Serravalle - Milano Tangenziali's tolls from 1 January 2026 at the barriers of its semi-closed ring roads, a fixed toll to the user per passage by class (A, B by height for two axles; 3, 4, 5 by axles), VAT included: A50 Tangenziale Ovest di Milano, Terrazzano barrier class 5 EUR 8.40; A51 Tangenziale Est di Milano, Vimercate barrier class 5 EUR 4.90; A52 Tangenziale Nord di Milano, Sesto San Giovanni barrier class 5 EUR 6.30. Each barrier is placed at the centre of its toll booths in OpenStreetMap (by name; the Vimercate booths, unnamed, as those within 1 km of the Vimercate Sud junction). The ring roads' other km carry no toll; the barrier tolls include Autostrade per l'Italia's share where the table gives one.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/it-barriers-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Milano Serravalle: tariffe e pedaggi 2022-2026, barriera di Terrazzano (A50)",
+   "url": "https://www.serravalle.it/uploads/pagine/Tariffe_e_pedaggi_2022_2026_Terrazzano_Tang_OVEST_MI2.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "Milano Serravalle: tariffe e pedaggi 2022-2026, barriera di Vimercate (A51)",
+   "url": "https://www.serravalle.it/uploads/pagine/Tariffe_e_pedaggi_2022_2026_Vimercate_Tang_EST_MI6.pdf"
+  },
+  {
+   "id": "s3",
+   "title": "Milano Serravalle: tariffe e pedaggi 2022-2026, barriera di Sesto San Giovanni (A52)",
+   "url": "https://www.serravalle.it/uploads/pagine/Tariffe_e_pedaggi_2022_2026_Sesto_SG_Tang_NORD_MI1.pdf"
+  },
+  {
+   "id": "s4",
+   "title": "OpenStreetMap (Overpass API): toll booths and the Vimercate junctions around Milan",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Classes B (two axles), 3, 4 and 5 (five axles or more)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 5
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "A50, A51 and A52 (Milan ring roads): the barriers of Terrazzano, Vimercate and Sesto San Giovanni."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "A50 Tangenziale Ovest di Milano, Terrazzano barrier",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.058708,
+     45.541039
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "A51 Tangenziale Est di Milano, Vimercate barrier",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.357957,
+     45.608418
+    ]
+   },
+   "match_km": 0.1
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "A52 Tangenziale Nord di Milano, Sesto San Giovanni barrier",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.263721,
+     45.55137
+    ]
+   },
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "A50 Tangenziale Ovest di Milano, Terrazzano barrier",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "c1": 8.4,
+    "c2": 7.0,
+    "c3": 4.6,
+    "c4": 3.6
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "A51 Tangenziale Est di Milano, Vimercate barrier",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "c1": 4.9,
+    "c2": 4.1,
+    "c3": 2.6,
+    "c4": 2.1
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "A52 Tangenziale Nord di Milano, Sesto San Giovanni barrier",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "c1": 6.3,
+    "c2": 5.2,
+    "c3": 3.3,
+    "c4": 2.7
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-15"
+  }
+ }
+}

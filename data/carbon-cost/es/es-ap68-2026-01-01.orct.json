@@ -1,0 +1,7064 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-ap68-2026-01-01",
+  "scheme": "es-ap68",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "AP-68 Bilbao – Zaragoza (Avasa)",
+  "method": "The Ministry of Transport's tolls in force from 1 January 2026 on the AP-68: by entry and exit, either way, Pesados 1 (two or three axles) and Pesados 2 (four or more; Bilbao – Zaragoza EUR 84.15 with IVA), excluding 21% IVA. Heavy vehicles between Ziorraga and Altube are exempt (the Diputación Foral de Álava's convenio). Paying by tag (sistema dinámico, `etc`): the Haro–Alfaro tolls after Real Decreto 584/2014's 50% (Cenicero–Agoncillo free) and the Zambrana–Tudela Pesados 2 tolls after Real Decreto 757/2019's 75%, where lower. Stations: each carriageway's stretch between two consecutive entries/exits, at the OpenStreetMap junctions whose exits are signposted to them in the table's order, Altube, Subijana, Recajo by elimination (the only numbered junction between their neighbours), Bilbao and Zaragoza at the motorway's ends. Bilbao's service area – Arrigorriaga-Bilbao ramp isn't built.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-ap68-2026-01-01.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Ministerio de Transportes: peajes vigentes AP-68 2026",
+   "url": "https://cdn.transportes.gob.es/portal-web-transportes/carreteras/nuestrared/autopistaspeaje/peajes-actuales/autopista-ap-68,-bilbao---zaragoza-2026.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API): AP-68 carriageways, junctions and signposted links",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Pesados 1: trucks of two or three axles; Pesados 2: four axles or more",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-P2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "P2"
+  },
+  {
+   "id": "c-P1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   },
+   "label": "P1"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-68 from Bilbao to Zaragoza."
+  },
+  {
+   "id": "st:1:Agoncillo > Lodosa",
+   "kind": "station",
+   "name": "Agoncillo > Lodosa",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.193433,
+      42.389223
+     ]
+    ]
+   },
+   "point_names": [
+    "between Agoncillo and Lodosa"
+   ],
+   "headings": [
+    110.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Agoncillo > Recajo",
+   "kind": "station",
+   "name": "Agoncillo > Recajo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.314011,
+      42.446705
+     ]
+    ]
+   },
+   "point_names": [
+    "between Agoncillo and Recajo"
+   ],
+   "headings": [
+    305.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alagón (pk 272) > Alagón (pk 275)",
+   "kind": "station",
+   "name": "Alagón (pk 272) > Alagón (pk 275)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.135548,
+      41.77708
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alagón (pk 272) and Alagón (pk 275)"
+   ],
+   "headings": [
+    83.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alagón (pk 272) > Gallur",
+   "kind": "station",
+   "name": "Alagón (pk 272) > Gallur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.255844,
+      41.791171
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alagón (pk 272) and Gallur"
+   ],
+   "headings": [
+    324.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alagón (pk 275) > Alagón (pk 272)",
+   "kind": "station",
+   "name": "Alagón (pk 275) > Alagón (pk 272)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.135558,
+      41.777338
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alagón (pk 275) and Alagón (pk 272)"
+   ],
+   "headings": [
+    264.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alagón (pk 275) > Zaragoza",
+   "kind": "station",
+   "name": "Alagón (pk 275) > Zaragoza",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.01974,
+      41.725888
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alagón (pk 275) and Zaragoza"
+   ],
+   "headings": [
+    121.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alfaro > AP-15 (Navarra)",
+   "kind": "station",
+   "name": "Alfaro > AP-15 (Navarra)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.740435,
+      42.118924
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alfaro and AP-15 (Navarra)"
+   ],
+   "headings": [
+    139.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alfaro > Calahorra",
+   "kind": "station",
+   "name": "Alfaro > Calahorra",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.882206,
+      42.213014
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alfaro and Calahorra"
+   ],
+   "headings": [
+    297.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Altube > Subijana",
+   "kind": "station",
+   "name": "Altube > Subijana",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.896648,
+      42.897307
+     ]
+    ]
+   },
+   "point_names": [
+    "between Altube and Subijana"
+   ],
+   "headings": [
+    161.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Altube > Ziorraga",
+   "kind": "station",
+   "name": "Altube > Ziorraga",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.873581,
+      42.990772
+     ]
+    ]
+   },
+   "point_names": [
+    "between Altube and Ziorraga"
+   ],
+   "headings": [
+    314.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Areta > Arrigorriaga",
+   "kind": "station",
+   "name": "Areta > Arrigorriaga",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.902949,
+      43.17643
+     ]
+    ]
+   },
+   "point_names": [
+    "between Areta and Arrigorriaga"
+   ],
+   "headings": [
+    54.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Areta > Llodio",
+   "kind": "station",
+   "name": "Areta > Llodio",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.938306,
+      43.150894
+     ]
+    ]
+   },
+   "point_names": [
+    "between Areta and Llodio"
+   ],
+   "headings": [
+    190.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Arrigorriaga > Areta",
+   "kind": "station",
+   "name": "Arrigorriaga > Areta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.903125,
+      43.176536
+     ]
+    ]
+   },
+   "point_names": [
+    "between Arrigorriaga and Areta"
+   ],
+   "headings": [
+    233.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Arrigorriaga > Bilbao",
+   "kind": "station",
+   "name": "Arrigorriaga > Bilbao",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.907032,
+      43.218043
+     ]
+    ]
+   },
+   "point_names": [
+    "between Arrigorriaga and Bilbao"
+   ],
+   "headings": [
+    300.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:AP-1 (Burgos) > Subijana",
+   "kind": "station",
+   "name": "AP-1 (Burgos) > Subijana",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.901202,
+      42.762061
+     ]
+    ]
+   },
+   "point_names": [
+    "between AP-1 (Burgos) and Subijana"
+   ],
+   "headings": [
+    11.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:AP-1 (Burgos) > Zambrana",
+   "kind": "station",
+   "name": "AP-1 (Burgos) > Zambrana",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.891723,
+      42.693712
+     ]
+    ]
+   },
+   "point_names": [
+    "between AP-1 (Burgos) and Zambrana"
+   ],
+   "headings": [
+    165.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:AP-15 (Navarra) > Alfaro",
+   "kind": "station",
+   "name": "AP-15 (Navarra) > Alfaro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.740259,
+      42.119065
+     ]
+    ]
+   },
+   "point_names": [
+    "between AP-15 (Navarra) and Alfaro"
+   ],
+   "headings": [
+    319.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:AP-15 (Navarra) > Tudela",
+   "kind": "station",
+   "name": "AP-15 (Navarra) > Tudela",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.67851,
+      42.05164
+     ]
+    ]
+   },
+   "point_names": [
+    "between AP-15 (Navarra) and Tudela"
+   ],
+   "headings": [
+    107.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Bilbao > Arrigorriaga",
+   "kind": "station",
+   "name": "Bilbao > Arrigorriaga",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.90693,
+      43.217813
+     ]
+    ]
+   },
+   "point_names": [
+    "between Bilbao and Arrigorriaga"
+   ],
+   "headings": [
+    120.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Calahorra > Alfaro",
+   "kind": "station",
+   "name": "Calahorra > Alfaro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.882387,
+      42.212885
+     ]
+    ]
+   },
+   "point_names": [
+    "between Calahorra and Alfaro"
+   ],
+   "headings": [
+    117.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Calahorra > Lodosa",
+   "kind": "station",
+   "name": "Calahorra > Lodosa",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.021657,
+      42.33705
+     ]
+    ]
+   },
+   "point_names": [
+    "between Calahorra and Lodosa"
+   ],
+   "headings": [
+    299.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Cenicero > Fuenmayor",
+   "kind": "station",
+   "name": "Cenicero > Fuenmayor",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.602663,
+      42.462503
+     ]
+    ]
+   },
+   "point_names": [
+    "between Cenicero and Fuenmayor"
+   ],
+   "headings": [
+    133.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Cenicero > Haro",
+   "kind": "station",
+   "name": "Cenicero > Haro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.760549,
+      42.518266
+     ]
+    ]
+   },
+   "point_names": [
+    "between Cenicero and Haro"
+   ],
+   "headings": [
+    323.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Fuenmayor > Cenicero",
+   "kind": "station",
+   "name": "Fuenmayor > Cenicero",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.602529,
+      42.462597
+     ]
+    ]
+   },
+   "point_names": [
+    "between Fuenmayor and Cenicero"
+   ],
+   "headings": [
+    312.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Fuenmayor > Logroño",
+   "kind": "station",
+   "name": "Fuenmayor > Logroño",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.484593,
+      42.431607
+     ]
+    ]
+   },
+   "point_names": [
+    "between Fuenmayor and Logroño"
+   ],
+   "headings": [
+    91.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Gallur > Alagón (pk 272)",
+   "kind": "station",
+   "name": "Gallur > Alagón (pk 272)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.255943,
+      41.790861
+     ]
+    ]
+   },
+   "point_names": [
+    "between Gallur and Alagón (pk 272)"
+   ],
+   "headings": [
+    144.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Gallur > Tudela",
+   "kind": "station",
+   "name": "Gallur > Tudela",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.490428,
+      41.926055
+     ]
+    ]
+   },
+   "point_names": [
+    "between Gallur and Tudela"
+   ],
+   "headings": [
+    308.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Haro > Cenicero",
+   "kind": "station",
+   "name": "Haro > Cenicero",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.760692,
+      42.518174
+     ]
+    ]
+   },
+   "point_names": [
+    "between Haro and Cenicero"
+   ],
+   "headings": [
+    143.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Haro > Zambrana",
+   "kind": "station",
+   "name": "Haro > Zambrana",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.854317,
+      42.620027
+     ]
+    ]
+   },
+   "point_names": [
+    "between Haro and Zambrana"
+   ],
+   "headings": [
+    4.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Llodio > Areta",
+   "kind": "station",
+   "name": "Llodio > Areta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.938083,
+      43.150822
+     ]
+    ]
+   },
+   "point_names": [
+    "between Llodio and Areta"
+   ],
+   "headings": [
+    13.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Llodio > Ziorraga",
+   "kind": "station",
+   "name": "Llodio > Ziorraga",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.920448,
+      43.074895
+     ]
+    ]
+   },
+   "point_names": [
+    "between Llodio and Ziorraga"
+   ],
+   "headings": [
+    208.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lodosa > Agoncillo",
+   "kind": "station",
+   "name": "Lodosa > Agoncillo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.193276,
+      42.389379
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lodosa and Agoncillo"
+   ],
+   "headings": [
+    290.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lodosa > Calahorra",
+   "kind": "station",
+   "name": "Lodosa > Calahorra",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.021823,
+      42.336921
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lodosa and Calahorra"
+   ],
+   "headings": [
+    119.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Logroño > Fuenmayor",
+   "kind": "station",
+   "name": "Logroño > Fuenmayor",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.484537,
+      42.431743
+     ]
+    ]
+   },
+   "point_names": [
+    "between Logroño and Fuenmayor"
+   ],
+   "headings": [
+    271.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Logroño > Recajo",
+   "kind": "station",
+   "name": "Logroño > Recajo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.374662,
+      42.452213
+     ]
+    ]
+   },
+   "point_names": [
+    "between Logroño and Recajo"
+   ],
+   "headings": [
+    113.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Recajo > Agoncillo",
+   "kind": "station",
+   "name": "Recajo > Agoncillo",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.314114,
+      42.446533
+     ]
+    ]
+   },
+   "point_names": [
+    "between Recajo and Agoncillo"
+   ],
+   "headings": [
+    126.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Recajo > Logroño",
+   "kind": "station",
+   "name": "Recajo > Logroño",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.374666,
+      42.452408
+     ]
+    ]
+   },
+   "point_names": [
+    "between Recajo and Logroño"
+   ],
+   "headings": [
+    292.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Subijana > Altube",
+   "kind": "station",
+   "name": "Subijana > Altube",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.896372,
+      42.897307
+     ]
+    ]
+   },
+   "point_names": [
+    "between Subijana and Altube"
+   ],
+   "headings": [
+    342.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Subijana > AP-1 (Burgos)",
+   "kind": "station",
+   "name": "Subijana > AP-1 (Burgos)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.901458,
+      42.762099
+     ]
+    ]
+   },
+   "point_names": [
+    "between Subijana and AP-1 (Burgos)"
+   ],
+   "headings": [
+    191.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tudela > AP-15 (Navarra)",
+   "kind": "station",
+   "name": "Tudela > AP-15 (Navarra)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.678201,
+      42.05191
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tudela and AP-15 (Navarra)"
+   ],
+   "headings": [
+    287.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tudela > Gallur",
+   "kind": "station",
+   "name": "Tudela > Gallur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.490593,
+      41.925842
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tudela and Gallur"
+   ],
+   "headings": [
+    127.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zambrana > AP-1 (Burgos)",
+   "kind": "station",
+   "name": "Zambrana > AP-1 (Burgos)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.89149,
+      42.693742
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zambrana and AP-1 (Burgos)"
+   ],
+   "headings": [
+    345.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zambrana > Haro",
+   "kind": "station",
+   "name": "Zambrana > Haro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.854487,
+      42.619995
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zambrana and Haro"
+   ],
+   "headings": [
+    183.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zaragoza > Alagón (pk 275)",
+   "kind": "station",
+   "name": "Zaragoza > Alagón (pk 275)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.024282,
+      41.728386
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zaragoza and Alagón (pk 275)"
+   ],
+   "headings": [
+    303.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ziorraga > Altube",
+   "kind": "station",
+   "name": "Ziorraga > Altube",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.87375,
+      42.990657
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ziorraga and Altube"
+   ],
+   "headings": [
+    135.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ziorraga > Llodio",
+   "kind": "station",
+   "name": "Ziorraga > Llodio",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.920173,
+      43.074924
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ziorraga and Llodio"
+   ],
+   "headings": [
+    28.1
+   ],
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "AP-68",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:AP-1 (Burgos) > Subijana",
+    "st:1:AP-1 (Burgos) > Zambrana",
+    "st:1:AP-15 (Navarra) > Alfaro",
+    "st:1:AP-15 (Navarra) > Tudela",
+    "st:1:Agoncillo > Lodosa",
+    "st:1:Agoncillo > Recajo",
+    "st:1:Alagón (pk 272) > Alagón (pk 275)",
+    "st:1:Alagón (pk 272) > Gallur",
+    "st:1:Alagón (pk 275) > Alagón (pk 272)",
+    "st:1:Alagón (pk 275) > Zaragoza",
+    "st:1:Alfaro > AP-15 (Navarra)",
+    "st:1:Alfaro > Calahorra",
+    "st:1:Altube > Subijana",
+    "st:1:Altube > Ziorraga",
+    "st:1:Areta > Arrigorriaga",
+    "st:1:Areta > Llodio",
+    "st:1:Arrigorriaga > Areta",
+    "st:1:Arrigorriaga > Bilbao",
+    "st:1:Bilbao > Arrigorriaga",
+    "st:1:Calahorra > Alfaro",
+    "st:1:Calahorra > Lodosa",
+    "st:1:Cenicero > Fuenmayor",
+    "st:1:Cenicero > Haro",
+    "st:1:Fuenmayor > Cenicero",
+    "st:1:Fuenmayor > Logroño",
+    "st:1:Gallur > Alagón (pk 272)",
+    "st:1:Gallur > Tudela",
+    "st:1:Haro > Cenicero",
+    "st:1:Haro > Zambrana",
+    "st:1:Llodio > Areta",
+    "st:1:Llodio > Ziorraga",
+    "st:1:Lodosa > Agoncillo",
+    "st:1:Lodosa > Calahorra",
+    "st:1:Logroño > Fuenmayor",
+    "st:1:Logroño > Recajo",
+    "st:1:Recajo > Agoncillo",
+    "st:1:Recajo > Logroño",
+    "st:1:Subijana > AP-1 (Burgos)",
+    "st:1:Subijana > Altube",
+    "st:1:Tudela > AP-15 (Navarra)",
+    "st:1:Tudela > Gallur",
+    "st:1:Zambrana > AP-1 (Burgos)",
+    "st:1:Zambrana > Haro",
+    "st:1:Zaragoza > Alagón (pk 275)",
+    "st:1:Ziorraga > Altube",
+    "st:1:Ziorraga > Llodio"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": 4.0083,
+      "c-P2": 4.5455
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": 10.9091,
+      "c-P2": 12.314
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 18.8017,
+      "c-P2": 21.3223
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 18.8017,
+      "c-P2": 21.3223
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": 9.0909,
+      "c-P2": 10.2893
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Subijana",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": 15.2893,
+      "c-P2": 17.314
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 1.3636,
+      "c-P2": 1.5702
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 26.6116,
+       "electronic": 26.6116
+      },
+      "c-P2": {
+       "default": 30.8264,
+       "electronic": 9.6612
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 16.8182,
+       "electronic": 16.8182
+      },
+      "c-P2": {
+       "default": 19.3802,
+       "electronic": 6.3719
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 40.9504,
+       "electronic": 40.9504
+      },
+      "c-P2": {
+       "default": 48.0165,
+       "electronic": 27.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 24.5868,
+       "electronic": 24.5868
+      },
+      "c-P2": {
+       "default": 28.3471,
+       "electronic": 8.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 23.5124,
+       "electronic": 23.5124
+      },
+      "c-P2": {
+       "default": 27.1488,
+       "electronic": 8.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 9.0909,
+       "electronic": 9.0909
+      },
+      "c-P2": {
+       "default": 10.4545,
+       "electronic": 3.8099
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 10.8264,
+       "electronic": 10.8264
+      },
+      "c-P2": {
+       "default": 12.4793,
+       "electronic": 4.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 37.0661,
+       "electronic": 37.0661
+      },
+      "c-P2": {
+       "default": 43.3884,
+       "electronic": 22.5207
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 7.686,
+       "electronic": 7.686
+      },
+      "c-P2": {
+       "default": 8.843,
+       "electronic": 3.3388
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 18.7603,
+       "electronic": 18.7603
+      },
+      "c-P2": {
+       "default": 21.6529,
+       "electronic": 7.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 12.4793,
+       "electronic": 12.4793
+      },
+      "c-P2": {
+       "default": 14.3802,
+       "electronic": 4.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 13.2645,
+       "electronic": 13.2645
+      },
+      "c-P2": {
+       "default": 15.2893,
+       "electronic": 5.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 32.3554,
+       "electronic": 32.3554
+      },
+      "c-P2": {
+       "default": 37.686,
+       "electronic": 16.843
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-1 (Burgos) > Zambrana",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 3.719,
+       "electronic": 3.719
+      },
+      "c-P2": {
+       "default": 4.2562,
+       "electronic": 2.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 28.8017,
+       "electronic": 28.8017
+      },
+      "c-P2": {
+       "default": 33.1405,
+       "electronic": 13.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:AP-15 (Navarra) > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 1.5289,
+       "electronic": 1.5289
+      },
+      "c-P2": {
+       "default": 1.7355,
+       "electronic": 0.438
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 12.3554,
+       "electronic": 12.3554
+      },
+      "c-P2": {
+       "default": 14.2975,
+       "electronic": 3.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 6.0744,
+       "electronic": 6.0744
+      },
+      "c-P2": {
+       "default": 7.0248,
+       "electronic": 1.7521
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 35.7025,
+       "electronic": 35.7025
+      },
+      "c-P2": {
+       "default": 40.9504,
+       "electronic": 21.5207
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 43.595,
+       "electronic": 43.595
+      },
+      "c-P2": {
+       "default": 49.9174,
+       "electronic": 30.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 43.595,
+       "electronic": 43.595
+      },
+      "c-P2": {
+       "default": 49.9174,
+       "electronic": 30.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 7.8926,
+       "electronic": 7.8926
+      },
+      "c-P2": {
+       "default": 9.0909,
+       "electronic": 2.2727
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 21.157,
+       "electronic": 21.157
+      },
+      "c-P2": {
+       "default": 24.4215,
+       "electronic": 4.4876
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 17.2314,
+       "electronic": 17.2314
+      },
+      "c-P2": {
+       "default": 19.9174,
+       "electronic": 3.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 23.8017,
+       "electronic": 23.8017
+      },
+      "c-P2": {
+       "default": 27.4793,
+       "electronic": 5.2562
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 11.5702,
+       "electronic": 11.5702
+      },
+      "c-P2": {
+       "default": 13.3471,
+       "electronic": 3.3388
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 15.7851,
+       "electronic": 15.7851
+      },
+      "c-P2": {
+       "default": 18.2231,
+       "electronic": 3.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 14.4628,
+       "electronic": 14.4628
+      },
+      "c-P2": {
+       "default": 16.6942,
+       "electronic": 3.405
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 33.8843,
+       "electronic": 33.8843
+      },
+      "c-P2": {
+       "default": 38.8843,
+       "electronic": 19.4876
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 24.5868,
+       "electronic": 24.5868
+      },
+      "c-P2": {
+       "default": 28.3471,
+       "electronic": 8.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Alfaro",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 40.0826,
+       "electronic": 40.0826
+      },
+      "c-P2": {
+       "default": 45.9091,
+       "electronic": 26.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Tudela",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 2.4793,
+       "electronic": 2.4793
+      },
+      "c-P2": {
+       "default": 2.9752,
+       "electronic": 0.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Tudela",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 16.8182,
+       "electronic": 16.8182
+      },
+      "c-P2": {
+       "default": 20.1653,
+       "electronic": 18.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Tudela",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 12.9752,
+       "electronic": 12.9752
+      },
+      "c-P2": {
+       "default": 15.5372,
+       "electronic": 13.719
+      }
+     }
+    },
+    {
+     "entry": "st:1:AP-15 (Navarra) > Tudela",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 8.2231,
+       "electronic": 8.2231
+      },
+      "c-P2": {
+       "default": 9.876,
+       "electronic": 8.0413
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 13.595,
+       "electronic": 13.595
+      },
+      "c-P2": {
+       "default": 15.7851,
+       "electronic": 3.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 3.7603,
+       "electronic": 1.8926
+      },
+      "c-P2": {
+       "default": 4.3802,
+       "electronic": 1.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 27.8926,
+       "electronic": 27.8926
+      },
+      "c-P2": {
+       "default": 32.9752,
+       "electronic": 22.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 11.5702,
+       "electronic": 11.5702
+      },
+      "c-P2": {
+       "default": 13.3471,
+       "electronic": 3.3388
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 10.4959,
+       "electronic": 5.2479
+      },
+      "c-P2": {
+       "default": 12.1074,
+       "electronic": 3.0331
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 24.0496,
+       "electronic": 24.0496
+      },
+      "c-P2": {
+       "default": 28.3471,
+       "electronic": 17.3967
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 5.7438,
+       "electronic": 2.8678
+      },
+      "c-P2": {
+       "default": 6.6116,
+       "electronic": 1.6529
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Lodosa",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 19.3388,
+       "electronic": 19.3388
+      },
+      "c-P2": {
+       "default": 22.686,
+       "electronic": 11.719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 17.5207,
+       "electronic": 17.5207
+      },
+      "c-P2": {
+       "default": 20.0826,
+       "electronic": 9.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": 1.0744,
+      "c-P2": 1.2397
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 24.3802,
+       "electronic": 24.3802
+      },
+      "c-P2": {
+       "default": 27.8926,
+       "electronic": 17.7686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.8595,
+       "electronic": 26.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.8595,
+       "electronic": 26.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 9.8347,
+       "electronic": 2.124
+      },
+      "c-P2": {
+       "default": 11.3636,
+       "electronic": 1.2231
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": 5.9504,
+      "c-P2": 6.9008
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 12.4793,
+       "electronic": 12.4793
+      },
+      "c-P2": {
+       "default": 14.4215,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": 4.5041,
+      "c-P2": 5.1653
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": 3.1405,
+      "c-P2": 3.6364
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 22.562,
+       "electronic": 22.562
+      },
+      "c-P2": {
+       "default": 25.8264,
+       "electronic": 15.7355
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 13.2645,
+       "electronic": 13.2645
+      },
+      "c-P2": {
+       "default": 15.2893,
+       "electronic": 5.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Agoncillo > Recajo",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 28.7603,
+       "electronic": 28.7603
+      },
+      "c-P2": {
+       "default": 32.8512,
+       "electronic": 22.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Alagón (pk 275)",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": 4.876,
+      "c-P2": 5.8264
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 41.3223,
+       "electronic": 41.3223
+      },
+      "c-P2": {
+       "default": 48.1818,
+       "electronic": 27.3058
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:AP-15 (Navarra) > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 14.0083,
+       "electronic": 14.0083
+      },
+      "c-P2": {
+       "default": 16.7769,
+       "electronic": 14.0661
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 24.876,
+       "electronic": 24.876
+      },
+      "c-P2": {
+       "default": 29.2975,
+       "electronic": 17.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Alagón (pk 272) > Gallur",
+     "rates": {
+      "c-P1": 5.0413,
+      "c-P2": 6.0744
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 18.5537,
+       "electronic": 18.5537
+      },
+      "c-P2": {
+       "default": 22.0248,
+       "electronic": 15.5785
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 48.1818,
+       "electronic": 48.1818
+      },
+      "c-P2": {
+       "default": 55.9504,
+       "electronic": 35.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 56.1157,
+       "electronic": 56.1157
+      },
+      "c-P2": {
+       "default": 64.9174,
+       "electronic": 44.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 56.1157,
+       "electronic": 56.1157
+      },
+      "c-P2": {
+       "default": 64.9174,
+       "electronic": 44.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 20.3719,
+       "electronic": 20.3719
+      },
+      "c-P2": {
+       "default": 24.1322,
+       "electronic": 16.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 33.6364,
+       "electronic": 33.6364
+      },
+      "c-P2": {
+       "default": 39.4628,
+       "electronic": 20.5868
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 29.7521,
+       "electronic": 29.7521
+      },
+      "c-P2": {
+       "default": 34.9174,
+       "electronic": 19.281
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Gallur > Tudela",
+     "rates": {
+      "c-P1": 10.8264,
+      "c-P2": 13.0165
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 36.3223,
+       "electronic": 36.3223
+      },
+      "c-P2": {
+       "default": 42.5207,
+       "electronic": 21.4628
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 24.0496,
+       "electronic": 24.0496
+      },
+      "c-P2": {
+       "default": 28.3471,
+       "electronic": 17.3967
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 28.3058,
+       "electronic": 28.3058
+      },
+      "c-P2": {
+       "default": 33.2645,
+       "electronic": 18.8017
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 26.9421,
+       "electronic": 26.9421
+      },
+      "c-P2": {
+       "default": 31.6942,
+       "electronic": 18.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 46.3636,
+       "electronic": 46.3636
+      },
+      "c-P2": {
+       "default": 53.9256,
+       "electronic": 33.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Tudela > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 12.9752,
+       "electronic": 12.9752
+      },
+      "c-P2": {
+       "default": 15.5372,
+       "electronic": 13.719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 37.0661,
+       "electronic": 37.0661
+      },
+      "c-P2": {
+       "default": 43.3884,
+       "electronic": 22.5207
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 272) > Gallur",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 52.562,
+       "electronic": 52.562
+      },
+      "c-P2": {
+       "default": 60.9091,
+       "electronic": 40.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alagón (pk 275) > Zaragoza",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": 4.1736,
+      "c-P2": 5.0
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > AP-15 (Navarra)",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 3.5537,
+       "electronic": 3.5537
+      },
+      "c-P2": {
+       "default": 4.2149,
+       "electronic": 1.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > AP-15 (Navarra)",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 17.8926,
+       "electronic": 17.8926
+      },
+      "c-P2": {
+       "default": 21.405,
+       "electronic": 18.6942
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > AP-15 (Navarra)",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 1.5289,
+       "electronic": 1.5289
+      },
+      "c-P2": {
+       "default": 1.7355,
+       "electronic": 0.438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > AP-15 (Navarra)",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 14.0083,
+       "electronic": 14.0083
+      },
+      "c-P2": {
+       "default": 16.7769,
+       "electronic": 14.0661
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > AP-15 (Navarra)",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 9.2975,
+       "electronic": 9.2975
+      },
+      "c-P2": {
+       "default": 11.1157,
+       "electronic": 8.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 27.7686,
+       "electronic": 27.7686
+      },
+      "c-P2": {
+       "default": 31.9421,
+       "electronic": 13.3967
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 11.3223,
+       "electronic": 5.2727
+      },
+      "c-P2": {
+       "default": 13.0579,
+       "electronic": 3.0413
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 5.0,
+       "electronic": 2.5041
+      },
+      "c-P2": {
+       "default": 5.7851,
+       "electronic": 1.4463
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 34.6281,
+       "electronic": 34.6281
+      },
+      "c-P2": {
+       "default": 39.7107,
+       "electronic": 21.1736
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 42.562,
+       "electronic": 42.562
+      },
+      "c-P2": {
+       "default": 48.6777,
+       "electronic": 30.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 42.562,
+       "electronic": 42.562
+      },
+      "c-P2": {
+       "default": 48.6777,
+       "electronic": 30.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 6.8182,
+       "electronic": 3.4132
+      },
+      "c-P2": {
+       "default": 7.8926,
+       "electronic": 1.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 20.0826,
+       "electronic": 7.2479
+      },
+      "c-P2": {
+       "default": 23.2231,
+       "electronic": 4.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 16.157,
+       "electronic": 5.281
+      },
+      "c-P2": {
+       "default": 18.6777,
+       "electronic": 3.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 26.281,
+       "electronic": 4.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 10.4959,
+       "electronic": 5.2479
+      },
+      "c-P2": {
+       "default": 12.1074,
+       "electronic": 3.0331
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 14.7521,
+       "electronic": 5.2727
+      },
+      "c-P2": {
+       "default": 17.0248,
+       "electronic": 3.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 13.3884,
+       "electronic": 5.3719
+      },
+      "c-P2": {
+       "default": 15.4545,
+       "electronic": 3.0992
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 32.8099,
+       "electronic": 32.8099
+      },
+      "c-P2": {
+       "default": 37.686,
+       "electronic": 19.1322
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 23.5124,
+       "electronic": 23.5124
+      },
+      "c-P2": {
+       "default": 27.1488,
+       "electronic": 8.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Alfaro > Calahorra",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 39.0083,
+       "electronic": 39.0083
+      },
+      "c-P2": {
+       "default": 44.6694,
+       "electronic": 26.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 10.6612,
+      "c-P2": 12.1074
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 35.9091,
+       "electronic": 35.9091
+      },
+      "c-P2": {
+       "default": 41.3636,
+       "electronic": 20.1901
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 26.1157,
+       "electronic": 26.1157
+      },
+      "c-P2": {
+       "default": 29.9174,
+       "electronic": 16.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 50.2479,
+       "electronic": 50.2479
+      },
+      "c-P2": {
+       "default": 58.5537,
+       "electronic": 37.6777
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 33.8843,
+       "electronic": 33.8843
+      },
+      "c-P2": {
+       "default": 38.8843,
+       "electronic": 19.4876
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Altube > Subijana",
+     "rates": {
+      "c-P1": 5.3306,
+      "c-P2": 6.0331
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 32.8099,
+       "electronic": 32.8099
+      },
+      "c-P2": {
+       "default": 37.686,
+       "electronic": 19.1322
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 18.3884,
+       "electronic": 18.3884
+      },
+      "c-P2": {
+       "default": 20.9917,
+       "electronic": 14.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 20.124,
+       "electronic": 20.124
+      },
+      "c-P2": {
+       "default": 23.0165,
+       "electronic": 14.9256
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 46.3636,
+       "electronic": 46.3636
+      },
+      "c-P2": {
+       "default": 53.9256,
+       "electronic": 33.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 16.9835,
+       "electronic": 16.9835
+      },
+      "c-P2": {
+       "default": 19.3802,
+       "electronic": 13.876
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 28.0579,
+       "electronic": 28.0579
+      },
+      "c-P2": {
+       "default": 32.1901,
+       "electronic": 17.5537
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 21.7769,
+       "electronic": 21.7769
+      },
+      "c-P2": {
+       "default": 24.9174,
+       "electronic": 15.4628
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 22.562,
+       "electronic": 22.562
+      },
+      "c-P2": {
+       "default": 25.8264,
+       "electronic": 15.7355
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 9.0909,
+      "c-P2": 10.2893
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 41.6529,
+       "electronic": 41.6529
+      },
+      "c-P2": {
+       "default": 48.2231,
+       "electronic": 27.3719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Subijana",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 13.0165,
+       "electronic": 13.0165
+      },
+      "c-P2": {
+       "default": 14.7934,
+       "electronic": 12.562
+      }
+     }
+    },
+    {
+     "entry": "st:1:Altube > Ziorraga",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": 0.0,
+      "c-P2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Altube > Ziorraga",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 10.4132,
+      "c-P2": 11.7769
+     }
+    },
+    {
+     "entry": "st:1:Altube > Ziorraga",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 10.4132,
+      "c-P2": 11.7769
+     }
+    },
+    {
+     "entry": "st:1:Altube > Ziorraga",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": 6.8595,
+      "c-P2": 7.7686
+     }
+    },
+    {
+     "entry": "st:1:Areta > Arrigorriaga",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Areta > Arrigorriaga",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 20.4132,
+      "c-P2": 23.0992
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 45.6198,
+       "electronic": 45.6198
+      },
+      "c-P2": {
+       "default": 52.3554,
+       "electronic": 31.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 35.8264,
+       "electronic": 35.8264
+      },
+      "c-P2": {
+       "default": 40.9091,
+       "electronic": 27.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 59.9587,
+       "electronic": 59.9587
+      },
+      "c-P2": {
+       "default": 69.5455,
+       "electronic": 48.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 43.595,
+       "electronic": 43.595
+      },
+      "c-P2": {
+       "default": 49.9174,
+       "electronic": 30.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Altube > Subijana",
+     "rates": {
+      "c-P1": 15.0413,
+      "c-P2": 17.0248
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Areta > Llodio",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Arrigorriaga > Areta",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 42.562,
+       "electronic": 42.562
+      },
+      "c-P2": {
+       "default": 48.6777,
+       "electronic": 30.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 28.0992,
+       "electronic": 28.0992
+      },
+      "c-P2": {
+       "default": 32.0248,
+       "electronic": 25.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.0496,
+       "electronic": 25.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 56.1157,
+       "electronic": 56.1157
+      },
+      "c-P2": {
+       "default": 64.9174,
+       "electronic": 44.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 26.6942,
+       "electronic": 26.6942
+      },
+      "c-P2": {
+       "default": 30.3719,
+       "electronic": 24.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 37.8099,
+       "electronic": 37.8099
+      },
+      "c-P2": {
+       "default": 43.1818,
+       "electronic": 28.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 31.4876,
+       "electronic": 31.4876
+      },
+      "c-P2": {
+       "default": 35.9091,
+       "electronic": 26.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.8595,
+       "electronic": 26.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 18.8017,
+      "c-P2": 21.3223
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 51.3636,
+       "electronic": 51.3636
+      },
+      "c-P2": {
+       "default": 59.2562,
+       "electronic": 38.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 25.7851,
+       "electronic": 23.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Areta",
+     "exit": "st:1:Ziorraga > Altube",
+     "rates": {
+      "c-P1": 10.4132,
+      "c-P2": 11.7769
+     }
+    },
+    {
+     "entry": "st:1:Arrigorriaga > Bilbao",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 1.5702,
+      "c-P2": 1.7769
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 20.4132,
+      "c-P2": 23.0992
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 45.6198,
+       "electronic": 45.6198
+      },
+      "c-P2": {
+       "default": 52.3554,
+       "electronic": 31.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 35.8264,
+       "electronic": 35.8264
+      },
+      "c-P2": {
+       "default": 40.9091,
+       "electronic": 27.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 59.9587,
+       "electronic": 59.9587
+      },
+      "c-P2": {
+       "default": 69.5455,
+       "electronic": 48.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 43.595,
+       "electronic": 43.595
+      },
+      "c-P2": {
+       "default": 49.9174,
+       "electronic": 30.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Altube > Subijana",
+     "rates": {
+      "c-P1": 15.0413,
+      "c-P2": 17.0248
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Areta > Llodio",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Arrigorriaga > Areta",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Bilbao > Arrigorriaga",
+     "rates": {
+      "c-P1": 1.5702,
+      "c-P2": 1.7769
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 42.562,
+       "electronic": 42.562
+      },
+      "c-P2": {
+       "default": 48.6777,
+       "electronic": 30.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 28.0992,
+       "electronic": 28.0992
+      },
+      "c-P2": {
+       "default": 32.0248,
+       "electronic": 25.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.0496,
+       "electronic": 25.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 56.1157,
+       "electronic": 56.1157
+      },
+      "c-P2": {
+       "default": 64.9174,
+       "electronic": 44.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 26.6942,
+       "electronic": 26.6942
+      },
+      "c-P2": {
+       "default": 30.3719,
+       "electronic": 24.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 37.8099,
+       "electronic": 37.8099
+      },
+      "c-P2": {
+       "default": 43.1818,
+       "electronic": 28.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 31.4876,
+       "electronic": 31.4876
+      },
+      "c-P2": {
+       "default": 35.9091,
+       "electronic": 26.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.8595,
+       "electronic": 26.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 18.8017,
+      "c-P2": 21.3223
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 51.3636,
+       "electronic": 51.3636
+      },
+      "c-P2": {
+       "default": 59.2562,
+       "electronic": 38.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 25.7851,
+       "electronic": 23.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Bilbao > Arrigorriaga",
+     "exit": "st:1:Ziorraga > Altube",
+     "rates": {
+      "c-P1": 10.4132,
+      "c-P2": 11.7769
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 8.0992,
+       "electronic": 8.0992
+      },
+      "c-P2": {
+       "default": 9.4628,
+       "electronic": 2.3636
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 22.438,
+       "electronic": 22.438
+      },
+      "c-P2": {
+       "default": 26.6529,
+       "electronic": 20.2066
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 6.0744,
+       "electronic": 6.0744
+      },
+      "c-P2": {
+       "default": 7.0248,
+       "electronic": 1.7521
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 5.0,
+       "electronic": 2.5041
+      },
+      "c-P2": {
+       "default": 5.7851,
+       "electronic": 1.4463
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 18.5537,
+       "electronic": 18.5537
+      },
+      "c-P2": {
+       "default": 22.0248,
+       "electronic": 15.5785
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Alfaro",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 13.843,
+       "electronic": 13.843
+      },
+      "c-P2": {
+       "default": 16.3636,
+       "electronic": 9.9008
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 23.0165,
+       "electronic": 23.0165
+      },
+      "c-P2": {
+       "default": 26.4463,
+       "electronic": 11.8182
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 6.5702,
+       "electronic": 2.8926
+      },
+      "c-P2": {
+       "default": 7.562,
+       "electronic": 1.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.2149,
+       "electronic": 19.595
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 37.8099,
+       "electronic": 37.8099
+      },
+      "c-P2": {
+       "default": 43.1818,
+       "electronic": 28.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 37.8099,
+       "electronic": 37.8099
+      },
+      "c-P2": {
+       "default": 43.1818,
+       "electronic": 28.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 2.0661,
+       "electronic": 1.0331
+      },
+      "c-P2": {
+       "default": 2.3967,
+       "electronic": 0.595
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 15.3306,
+       "electronic": 4.8678
+      },
+      "c-P2": {
+       "default": 17.7273,
+       "electronic": 2.8099
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 11.405,
+       "electronic": 2.9091
+      },
+      "c-P2": {
+       "default": 13.1818,
+       "electronic": 1.6777
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 17.9752,
+       "electronic": 17.9752
+      },
+      "c-P2": {
+       "default": 20.7851,
+       "electronic": 3.5785
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 5.7438,
+       "electronic": 2.8678
+      },
+      "c-P2": {
+       "default": 6.6116,
+       "electronic": 1.6529
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 9.9587,
+       "electronic": 2.9008
+      },
+      "c-P2": {
+       "default": 11.5289,
+       "electronic": 1.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 8.6364,
+       "electronic": 2.9917
+      },
+      "c-P2": {
+       "default": 9.9587,
+       "electronic": 1.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 28.0579,
+       "electronic": 28.0579
+      },
+      "c-P2": {
+       "default": 32.1901,
+       "electronic": 17.5537
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 18.7603,
+       "electronic": 18.7603
+      },
+      "c-P2": {
+       "default": 21.6529,
+       "electronic": 7.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:Calahorra > Lodosa",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 34.2562,
+       "electronic": 34.2562
+      },
+      "c-P2": {
+       "default": 39.1736,
+       "electronic": 24.562
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 19.2562,
+       "electronic": 19.2562
+      },
+      "c-P2": {
+       "default": 22.3554,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 9.4628,
+       "electronic": 1.9256
+      },
+      "c-P2": {
+       "default": 10.9091,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 33.595,
+       "electronic": 33.595
+      },
+      "c-P2": {
+       "default": 39.5455,
+       "electronic": 23.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 17.2314,
+       "electronic": 17.2314
+      },
+      "c-P2": {
+       "default": 19.9174,
+       "electronic": 3.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 16.157,
+       "electronic": 5.281
+      },
+      "c-P2": {
+       "default": 18.6777,
+       "electronic": 3.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": 1.7355,
+      "c-P2": 2.0248
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": 3.4711,
+      "c-P2": 4.0083
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 29.7521,
+       "electronic": 29.7521
+      },
+      "c-P2": {
+       "default": 34.9174,
+       "electronic": 19.281
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 11.405,
+       "electronic": 2.9091
+      },
+      "c-P2": {
+       "default": 13.1818,
+       "electronic": 1.6777
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": 5.124,
+      "c-P2": 5.9091
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": 5.9504,
+      "c-P2": 6.9008
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Fuenmayor",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 25.0,
+       "electronic": 25.0
+      },
+      "c-P2": {
+       "default": 29.2562,
+       "electronic": 13.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 11.9008,
+       "electronic": 11.9008
+      },
+      "c-P2": {
+       "default": 13.6364,
+       "electronic": 8.1322
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 18.7603,
+       "electronic": 18.7603
+      },
+      "c-P2": {
+       "default": 21.405,
+       "electronic": 15.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 26.6942,
+       "electronic": 26.6942
+      },
+      "c-P2": {
+       "default": 30.3719,
+       "electronic": 24.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 26.6942,
+       "electronic": 26.6942
+      },
+      "c-P2": {
+       "default": 30.3719,
+       "electronic": 24.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 4.2562,
+       "electronic": 2.124
+      },
+      "c-P2": {
+       "default": 4.9174,
+       "electronic": 1.2231
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 6.9008,
+       "electronic": 6.9008
+      },
+      "c-P2": {
+       "default": 7.9752,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 16.9835,
+       "electronic": 16.9835
+      },
+      "c-P2": {
+       "default": 19.3802,
+       "electronic": 13.876
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 7.686,
+       "electronic": 7.686
+      },
+      "c-P2": {
+       "default": 8.843,
+       "electronic": 3.3388
+      }
+     }
+    },
+    {
+     "entry": "st:1:Cenicero > Haro",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 23.1818,
+       "electronic": 23.1818
+      },
+      "c-P2": {
+       "default": 26.3636,
+       "electronic": 20.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 13.3058,
+       "electronic": 13.3058
+      },
+      "c-P2": {
+       "default": 15.2479,
+       "electronic": 8.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 20.2066,
+       "electronic": 20.2066
+      },
+      "c-P2": {
+       "default": 23.0579,
+       "electronic": 16.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 28.0992,
+       "electronic": 28.0992
+      },
+      "c-P2": {
+       "default": 32.0248,
+       "electronic": 25.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 28.0992,
+       "electronic": 28.0992
+      },
+      "c-P2": {
+       "default": 32.0248,
+       "electronic": 25.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 5.6612,
+       "electronic": 2.1488
+      },
+      "c-P2": {
+       "default": 6.5289,
+       "electronic": 1.2397
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": 1.7355,
+      "c-P2": 2.0248
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 8.3058,
+       "electronic": 8.3058
+      },
+      "c-P2": {
+       "default": 9.5868,
+       "electronic": 2.0
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 18.3884,
+       "electronic": 18.3884
+      },
+      "c-P2": {
+       "default": 20.9917,
+       "electronic": 14.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 9.0909,
+       "electronic": 9.0909
+      },
+      "c-P2": {
+       "default": 10.4545,
+       "electronic": 3.8099
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Cenicero",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 24.5868,
+       "electronic": 24.5868
+      },
+      "c-P2": {
+       "default": 28.0165,
+       "electronic": 21.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 17.8099,
+       "electronic": 17.8099
+      },
+      "c-P2": {
+       "default": 20.7025,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 8.0165,
+       "electronic": 1.9174
+      },
+      "c-P2": {
+       "default": 9.2562,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 32.1488,
+       "electronic": 32.1488
+      },
+      "c-P2": {
+       "default": 37.8926,
+       "electronic": 23.4298
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 15.7851,
+       "electronic": 15.7851
+      },
+      "c-P2": {
+       "default": 18.2231,
+       "electronic": 3.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 14.7521,
+       "electronic": 5.2727
+      },
+      "c-P2": {
+       "default": 17.0248,
+       "electronic": 3.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": 2.0661,
+      "c-P2": 2.3554
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 28.3058,
+       "electronic": 28.3058
+      },
+      "c-P2": {
+       "default": 33.2645,
+       "electronic": 18.8017
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 9.9587,
+       "electronic": 2.9008
+      },
+      "c-P2": {
+       "default": 11.5289,
+       "electronic": 1.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": 3.6777,
+      "c-P2": 4.2562
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": 4.5041,
+      "c-P2": 5.1653
+     }
+    },
+    {
+     "entry": "st:1:Fuenmayor > Logroño",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 23.5537,
+       "electronic": 23.5537
+      },
+      "c-P2": {
+       "default": 27.562,
+       "electronic": 13.124
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Alagón (pk 272)",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": 8.8843,
+      "c-P2": 10.7025
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Alagón (pk 272)",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": 5.0413,
+      "c-P2": 6.0744
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 36.5702,
+       "electronic": 36.5702
+      },
+      "c-P2": {
+       "default": 42.4793,
+       "electronic": 21.6364
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:AP-15 (Navarra) > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 9.2975,
+       "electronic": 9.2975
+      },
+      "c-P2": {
+       "default": 11.1157,
+       "electronic": 8.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 20.124,
+       "electronic": 20.124
+      },
+      "c-P2": {
+       "default": 23.6364,
+       "electronic": 11.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 13.843,
+       "electronic": 13.843
+      },
+      "c-P2": {
+       "default": 16.3636,
+       "electronic": 9.9008
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 43.4711,
+       "electronic": 43.4711
+      },
+      "c-P2": {
+       "default": 50.2893,
+       "electronic": 29.4132
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 51.3636,
+       "electronic": 51.3636
+      },
+      "c-P2": {
+       "default": 59.2562,
+       "electronic": 38.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 51.3636,
+       "electronic": 51.3636
+      },
+      "c-P2": {
+       "default": 59.2562,
+       "electronic": 38.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 15.6612,
+       "electronic": 15.6612
+      },
+      "c-P2": {
+       "default": 18.4298,
+       "electronic": 10.5041
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 28.9256,
+       "electronic": 28.9256
+      },
+      "c-P2": {
+       "default": 33.7603,
+       "electronic": 14.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 25.0,
+       "electronic": 25.0
+      },
+      "c-P2": {
+       "default": 29.2562,
+       "electronic": 13.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Gallur > Tudela",
+     "rates": {
+      "c-P1": 6.1157,
+      "c-P2": 7.3554
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 31.5702,
+       "electronic": 31.5702
+      },
+      "c-P2": {
+       "default": 36.8182,
+       "electronic": 15.7851
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 19.3388,
+       "electronic": 19.3388
+      },
+      "c-P2": {
+       "default": 22.686,
+       "electronic": 11.719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 23.5537,
+       "electronic": 23.5537
+      },
+      "c-P2": {
+       "default": 27.562,
+       "electronic": 13.124
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 22.2314,
+       "electronic": 22.2314
+      },
+      "c-P2": {
+       "default": 26.0331,
+       "electronic": 12.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 41.6529,
+       "electronic": 41.6529
+      },
+      "c-P2": {
+       "default": 48.2231,
+       "electronic": 27.3719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Tudela > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 8.2231,
+       "electronic": 8.2231
+      },
+      "c-P2": {
+       "default": 9.876,
+       "electronic": 8.0413
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 32.3554,
+       "electronic": 32.3554
+      },
+      "c-P2": {
+       "default": 37.686,
+       "electronic": 16.843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Gallur > Tudela",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 47.8512,
+       "electronic": 47.8512
+      },
+      "c-P2": {
+       "default": 55.2479,
+       "electronic": 34.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 23.1818,
+       "electronic": 23.1818
+      },
+      "c-P2": {
+       "default": 26.9008,
+       "electronic": 5.0992
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 13.3884,
+       "electronic": 3.8843
+      },
+      "c-P2": {
+       "default": 15.4545,
+       "electronic": 2.2479
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 37.5207,
+       "electronic": 37.5207
+      },
+      "c-P2": {
+       "default": 44.0909,
+       "electronic": 25.2066
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 21.157,
+       "electronic": 21.157
+      },
+      "c-P2": {
+       "default": 24.4215,
+       "electronic": 4.4876
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 20.0826,
+       "electronic": 7.2479
+      },
+      "c-P2": {
+       "default": 23.2231,
+       "electronic": 4.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 5.6612,
+       "electronic": 2.1488
+      },
+      "c-P2": {
+       "default": 6.5289,
+       "electronic": 1.2397
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 7.3967,
+       "electronic": 2.2562
+      },
+      "c-P2": {
+       "default": 8.5537,
+       "electronic": 1.3058
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 33.6364,
+       "electronic": 33.6364
+      },
+      "c-P2": {
+       "default": 39.4628,
+       "electronic": 20.5868
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 4.2562,
+       "electronic": 2.124
+      },
+      "c-P2": {
+       "default": 4.9174,
+       "electronic": 1.2231
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 15.3306,
+       "electronic": 4.8678
+      },
+      "c-P2": {
+       "default": 17.7273,
+       "electronic": 2.8099
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 9.0496,
+       "electronic": 2.1322
+      },
+      "c-P2": {
+       "default": 10.4545,
+       "electronic": 1.2314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 9.8347,
+       "electronic": 2.124
+      },
+      "c-P2": {
+       "default": 11.3636,
+       "electronic": 1.2231
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Cenicero",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 28.9256,
+       "electronic": 28.9256
+      },
+      "c-P2": {
+       "default": 33.7603,
+       "electronic": 14.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 7.9339,
+       "electronic": 7.9339
+      },
+      "c-P2": {
+       "default": 9.0496,
+       "electronic": 6.8182
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 14.7934,
+       "electronic": 14.7934
+      },
+      "c-P2": {
+       "default": 16.8182,
+       "electronic": 14.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 25.7851,
+       "electronic": 23.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 25.7851,
+       "electronic": 23.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 2.9339,
+       "electronic": 2.9339
+      },
+      "c-P2": {
+       "default": 3.3884,
+       "electronic": 0.843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 13.0165,
+       "electronic": 13.0165
+      },
+      "c-P2": {
+       "default": 14.7934,
+       "electronic": 12.562
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 3.719,
+       "electronic": 3.719
+      },
+      "c-P2": {
+       "default": 4.2562,
+       "electronic": 2.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:Haro > Zambrana",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 19.2149,
+       "electronic": 19.2149
+      },
+      "c-P2": {
+       "default": 21.8182,
+       "electronic": 19.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Areta",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Areta",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.3388
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 16.8595,
+      "c-P2": 19.0909
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 42.1074,
+       "electronic": 42.1074
+      },
+      "c-P2": {
+       "default": 48.3471,
+       "electronic": 27.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.9421,
+       "electronic": 23.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 56.4463,
+       "electronic": 56.4463
+      },
+      "c-P2": {
+       "default": 65.5372,
+       "electronic": 44.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 40.0826,
+       "electronic": 40.0826
+      },
+      "c-P2": {
+       "default": 45.9091,
+       "electronic": 26.4959
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Altube > Subijana",
+     "rates": {
+      "c-P1": 11.5289,
+      "c-P2": 13.0165
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 39.0083,
+       "electronic": 39.0083
+      },
+      "c-P2": {
+       "default": 44.6694,
+       "electronic": 26.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 24.5868,
+       "electronic": 24.5868
+      },
+      "c-P2": {
+       "default": 28.0165,
+       "electronic": 21.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 26.3223,
+       "electronic": 26.3223
+      },
+      "c-P2": {
+       "default": 30.0413,
+       "electronic": 21.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 52.562,
+       "electronic": 52.562
+      },
+      "c-P2": {
+       "default": 60.9091,
+       "electronic": 40.0579
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 23.1818,
+       "electronic": 23.1818
+      },
+      "c-P2": {
+       "default": 26.3636,
+       "electronic": 20.8843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 34.2562,
+       "electronic": 34.2562
+      },
+      "c-P2": {
+       "default": 39.1736,
+       "electronic": 24.562
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 27.9339,
+       "electronic": 27.9339
+      },
+      "c-P2": {
+       "default": 31.9008,
+       "electronic": 22.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 28.7603,
+       "electronic": 28.7603
+      },
+      "c-P2": {
+       "default": 32.8512,
+       "electronic": 22.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 15.2893,
+      "c-P2": 17.314
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 47.8512,
+       "electronic": 47.8512
+      },
+      "c-P2": {
+       "default": 55.2479,
+       "electronic": 34.3802
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 19.2149,
+       "electronic": 19.2149
+      },
+      "c-P2": {
+       "default": 21.8182,
+       "electronic": 19.5702
+      }
+     }
+    },
+    {
+     "entry": "st:1:Llodio > Ziorraga",
+     "exit": "st:1:Ziorraga > Altube",
+     "rates": {
+      "c-P1": 6.8595,
+      "c-P2": 7.7686
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 21.0331,
+       "electronic": 21.0331
+      },
+      "c-P2": {
+       "default": 24.1736,
+       "electronic": 11.1653
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 4.5868,
+       "electronic": 1.9174
+      },
+      "c-P2": {
+       "default": 5.2893,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 27.8926,
+       "electronic": 27.8926
+      },
+      "c-P2": {
+       "default": 31.9421,
+       "electronic": 18.9421
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 35.8264,
+       "electronic": 35.8264
+      },
+      "c-P2": {
+       "default": 40.9091,
+       "electronic": 27.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 35.8264,
+       "electronic": 35.8264
+      },
+      "c-P2": {
+       "default": 40.9091,
+       "electronic": 27.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 13.3884,
+       "electronic": 3.8843
+      },
+      "c-P2": {
+       "default": 15.4545,
+       "electronic": 2.2479
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 9.4628,
+       "electronic": 1.9256
+      },
+      "c-P2": {
+       "default": 10.9091,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 16.0331,
+       "electronic": 16.0331
+      },
+      "c-P2": {
+       "default": 18.5124,
+       "electronic": 3.0083
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 3.7603,
+       "electronic": 1.8926
+      },
+      "c-P2": {
+       "default": 4.3802,
+       "electronic": 1.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 8.0165,
+       "electronic": 1.9174
+      },
+      "c-P2": {
+       "default": 9.2562,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 6.6942,
+       "electronic": 2.0165
+      },
+      "c-P2": {
+       "default": 7.7273,
+       "electronic": 1.1653
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 26.1157,
+       "electronic": 26.1157
+      },
+      "c-P2": {
+       "default": 29.9174,
+       "electronic": 16.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 16.8182,
+       "electronic": 16.8182
+      },
+      "c-P2": {
+       "default": 19.3802,
+       "electronic": 6.3719
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Agoncillo",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 32.314,
+       "electronic": 32.314
+      },
+      "c-P2": {
+       "default": 36.9421,
+       "electronic": 23.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 9.9174,
+       "electronic": 9.9174
+      },
+      "c-P2": {
+       "default": 11.5702,
+       "electronic": 2.8926
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 24.2562,
+       "electronic": 24.2562
+      },
+      "c-P2": {
+       "default": 28.7603,
+       "electronic": 20.8017
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 7.8926,
+       "electronic": 7.8926
+      },
+      "c-P2": {
+       "default": 9.0909,
+       "electronic": 2.2727
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 6.8182,
+       "electronic": 3.4132
+      },
+      "c-P2": {
+       "default": 7.8926,
+       "electronic": 1.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 20.3719,
+       "electronic": 20.3719
+      },
+      "c-P2": {
+       "default": 24.1322,
+       "electronic": 16.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 2.0661,
+       "electronic": 1.0331
+      },
+      "c-P2": {
+       "default": 2.3967,
+       "electronic": 0.595
+      }
+     }
+    },
+    {
+     "entry": "st:1:Lodosa > Calahorra",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 15.6612,
+       "electronic": 15.6612
+      },
+      "c-P2": {
+       "default": 18.4298,
+       "electronic": 10.5041
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 15.0826,
+       "electronic": 15.0826
+      },
+      "c-P2": {
+       "default": 17.2727,
+       "electronic": 9.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 21.9421,
+       "electronic": 21.9421
+      },
+      "c-P2": {
+       "default": 25.0413,
+       "electronic": 16.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.0496,
+       "electronic": 25.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.0496,
+       "electronic": 25.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 7.3967,
+       "electronic": 2.2562
+      },
+      "c-P2": {
+       "default": 8.5537,
+       "electronic": 1.3058
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": 3.4711,
+      "c-P2": 4.0083
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 10.0413,
+       "electronic": 10.0413
+      },
+      "c-P2": {
+       "default": 11.6116,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": 2.0661,
+      "c-P2": 2.3554
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 20.124,
+       "electronic": 20.124
+      },
+      "c-P2": {
+       "default": 23.0165,
+       "electronic": 14.9256
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 10.8264,
+       "electronic": 10.8264
+      },
+      "c-P2": {
+       "default": 12.4793,
+       "electronic": 4.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Fuenmayor",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 26.3223,
+       "electronic": 26.3223
+      },
+      "c-P2": {
+       "default": 30.0413,
+       "electronic": 21.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 16.4876,
+       "electronic": 16.4876
+      },
+      "c-P2": {
+       "default": 19.1322,
+       "electronic": 4.0165
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 6.6942,
+       "electronic": 2.0165
+      },
+      "c-P2": {
+       "default": 7.7273,
+       "electronic": 1.1653
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 30.7851,
+       "electronic": 30.7851
+      },
+      "c-P2": {
+       "default": 36.3223,
+       "electronic": 22.9835
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 14.4628,
+       "electronic": 14.4628
+      },
+      "c-P2": {
+       "default": 16.6942,
+       "electronic": 3.405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 13.3884,
+       "electronic": 5.3719
+      },
+      "c-P2": {
+       "default": 15.4545,
+       "electronic": 3.0992
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 26.9421,
+       "electronic": 26.9421
+      },
+      "c-P2": {
+       "default": 31.6942,
+       "electronic": 18.3554
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 8.6364,
+       "electronic": 2.9917
+      },
+      "c-P2": {
+       "default": 9.9587,
+       "electronic": 1.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": 2.314,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": 3.1405,
+      "c-P2": 3.6364
+     }
+    },
+    {
+     "entry": "st:1:Logroño > Recajo",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 22.2314,
+       "electronic": 22.2314
+      },
+      "c-P2": {
+       "default": 26.0331,
+       "electronic": 12.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 14.3802,
+       "electronic": 14.3802
+      },
+      "c-P2": {
+       "default": 16.7355,
+       "electronic": 3.9587
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 4.5868,
+       "electronic": 1.9174
+      },
+      "c-P2": {
+       "default": 5.2893,
+       "electronic": 1.1074
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 28.719,
+       "electronic": 28.719
+      },
+      "c-P2": {
+       "default": 33.9256,
+       "electronic": 22.2893
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 12.3554,
+       "electronic": 12.3554
+      },
+      "c-P2": {
+       "default": 14.2975,
+       "electronic": 3.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 11.3223,
+       "electronic": 5.2727
+      },
+      "c-P2": {
+       "default": 13.0579,
+       "electronic": 3.0413
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 24.876,
+       "electronic": 24.876
+      },
+      "c-P2": {
+       "default": 29.2975,
+       "electronic": 17.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 6.5702,
+       "electronic": 2.8926
+      },
+      "c-P2": {
+       "default": 7.562,
+       "electronic": 1.6694
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": 1.0744,
+      "c-P2": 1.2397
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Agoncillo",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 20.124,
+       "electronic": 20.124
+      },
+      "c-P2": {
+       "default": 23.6364,
+       "electronic": 11.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 16.6942,
+       "electronic": 16.6942
+      },
+      "c-P2": {
+       "default": 19.1736,
+       "electronic": 9.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 23.5537,
+       "electronic": 23.5537
+      },
+      "c-P2": {
+       "default": 26.9421,
+       "electronic": 17.5041
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 31.4876,
+       "electronic": 31.4876
+      },
+      "c-P2": {
+       "default": 35.9091,
+       "electronic": 26.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 31.4876,
+       "electronic": 31.4876
+      },
+      "c-P2": {
+       "default": 35.9091,
+       "electronic": 26.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 9.0496,
+       "electronic": 2.1322
+      },
+      "c-P2": {
+       "default": 10.4545,
+       "electronic": 1.2314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": 5.124,
+      "c-P2": 5.9091
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 11.6942,
+       "electronic": 11.6942
+      },
+      "c-P2": {
+       "default": 13.5124,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": 3.6777,
+      "c-P2": 4.2562
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": 2.314,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 21.7769,
+       "electronic": 21.7769
+      },
+      "c-P2": {
+       "default": 24.9174,
+       "electronic": 15.4628
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 12.4793,
+       "electronic": 12.4793
+      },
+      "c-P2": {
+       "default": 14.3802,
+       "electronic": 4.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Recajo > Logroño",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 27.9339,
+       "electronic": 27.9339
+      },
+      "c-P2": {
+       "default": 31.9008,
+       "electronic": 22.4711
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 5.6198,
+      "c-P2": 6.3636
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 30.8264,
+       "electronic": 30.8264
+      },
+      "c-P2": {
+       "default": 35.6198,
+       "electronic": 14.4463
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 21.0331,
+       "electronic": 21.0331
+      },
+      "c-P2": {
+       "default": 24.1736,
+       "electronic": 11.1653
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 45.1653,
+       "electronic": 45.1653
+      },
+      "c-P2": {
+       "default": 52.8099,
+       "electronic": 31.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 28.8017,
+       "electronic": 28.8017
+      },
+      "c-P2": {
+       "default": 33.1405,
+       "electronic": 13.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 27.7686,
+       "electronic": 27.7686
+      },
+      "c-P2": {
+       "default": 31.9421,
+       "electronic": 13.3967
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 13.3058,
+       "electronic": 13.3058
+      },
+      "c-P2": {
+       "default": 15.2479,
+       "electronic": 8.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 15.0826,
+       "electronic": 15.0826
+      },
+      "c-P2": {
+       "default": 17.2727,
+       "electronic": 9.1818
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 41.3223,
+       "electronic": 41.3223
+      },
+      "c-P2": {
+       "default": 48.1818,
+       "electronic": 27.3058
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 11.9008,
+       "electronic": 11.9008
+      },
+      "c-P2": {
+       "default": 13.6364,
+       "electronic": 8.1322
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 23.0165,
+       "electronic": 23.0165
+      },
+      "c-P2": {
+       "default": 26.4463,
+       "electronic": 11.8182
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 16.6942,
+       "electronic": 16.6942
+      },
+      "c-P2": {
+       "default": 19.1736,
+       "electronic": 9.7273
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 17.5207,
+       "electronic": 17.5207
+      },
+      "c-P2": {
+       "default": 20.0826,
+       "electronic": 9.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 4.0083,
+      "c-P2": 4.5455
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 36.5702,
+       "electronic": 36.5702
+      },
+      "c-P2": {
+       "default": 42.4793,
+       "electronic": 21.6364
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > AP-1 (Burgos)",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 7.9339,
+       "electronic": 7.9339
+      },
+      "c-P2": {
+       "default": 9.0496,
+       "electronic": 6.8182
+      }
+     }
+    },
+    {
+     "entry": "st:1:Subijana > Altube",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": 7.1074,
+      "c-P2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Subijana > Altube",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 15.0413,
+      "c-P2": 17.0248
+     }
+    },
+    {
+     "entry": "st:1:Subijana > Altube",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 15.0413,
+      "c-P2": 17.0248
+     }
+    },
+    {
+     "entry": "st:1:Subijana > Altube",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": 5.3306,
+      "c-P2": 6.0331
+     }
+    },
+    {
+     "entry": "st:1:Subijana > Altube",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": 11.5289,
+      "c-P2": 13.0165
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 30.8264,
+       "electronic": 30.8264
+      },
+      "c-P2": {
+       "default": 35.6198,
+       "electronic": 14.4463
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:AP-15 (Navarra) > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 3.5537,
+       "electronic": 3.5537
+      },
+      "c-P2": {
+       "default": 4.2149,
+       "electronic": 1.0496
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 14.3802,
+       "electronic": 14.3802
+      },
+      "c-P2": {
+       "default": 16.7355,
+       "electronic": 3.9587
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 8.0992,
+       "electronic": 8.0992
+      },
+      "c-P2": {
+       "default": 9.4628,
+       "electronic": 2.3636
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 37.7273,
+       "electronic": 37.7273
+      },
+      "c-P2": {
+       "default": 43.3884,
+       "electronic": 22.2314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 45.6198,
+       "electronic": 45.6198
+      },
+      "c-P2": {
+       "default": 52.3554,
+       "electronic": 31.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 45.6198,
+       "electronic": 45.6198
+      },
+      "c-P2": {
+       "default": 52.3554,
+       "electronic": 31.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 9.9174,
+       "electronic": 9.9174
+      },
+      "c-P2": {
+       "default": 11.5702,
+       "electronic": 2.8926
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 23.1818,
+       "electronic": 23.1818
+      },
+      "c-P2": {
+       "default": 26.9008,
+       "electronic": 5.0992
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 19.2562,
+       "electronic": 19.2562
+      },
+      "c-P2": {
+       "default": 22.3554,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 25.8264,
+       "electronic": 25.8264
+      },
+      "c-P2": {
+       "default": 29.9587,
+       "electronic": 5.8678
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 13.595,
+       "electronic": 13.595
+      },
+      "c-P2": {
+       "default": 15.7851,
+       "electronic": 3.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 17.8099,
+       "electronic": 17.8099
+      },
+      "c-P2": {
+       "default": 20.7025,
+       "electronic": 3.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 16.4876,
+       "electronic": 16.4876
+      },
+      "c-P2": {
+       "default": 19.1322,
+       "electronic": 4.0165
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 35.9091,
+       "electronic": 35.9091
+      },
+      "c-P2": {
+       "default": 41.3636,
+       "electronic": 20.1901
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Tudela > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 2.4793,
+       "electronic": 2.4793
+      },
+      "c-P2": {
+       "default": 2.9752,
+       "electronic": 0.7438
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 26.6116,
+       "electronic": 26.6116
+      },
+      "c-P2": {
+       "default": 30.8264,
+       "electronic": 9.6612
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > AP-15 (Navarra)",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 42.1074,
+       "electronic": 42.1074
+      },
+      "c-P2": {
+       "default": 48.3471,
+       "electronic": 27.1983
+      }
+     }
+    },
+    {
+     "entry": "st:1:Tudela > Gallur",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": 14.7107,
+      "c-P2": 17.6446
+     }
+    },
+    {
+     "entry": "st:1:Tudela > Gallur",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": 10.8264,
+      "c-P2": 13.0165
+     }
+    },
+    {
+     "entry": "st:1:Tudela > Gallur",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": 6.1157,
+      "c-P2": 7.3554
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": 5.6198,
+      "c-P2": 6.3636
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": 12.4793,
+      "c-P2": 14.1322
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": 20.4132,
+      "c-P2": 23.0992
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": 20.4132,
+      "c-P2": 23.0992
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": 10.6612,
+      "c-P2": 12.1074
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 1.3636,
+      "c-P2": 1.5702
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > AP-1 (Burgos)",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": 16.8595,
+      "c-P2": 19.0909
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 25.8264,
+       "electronic": 25.8264
+      },
+      "c-P2": {
+       "default": 29.9587,
+       "electronic": 5.8678
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 16.0331,
+       "electronic": 16.0331
+      },
+      "c-P2": {
+       "default": 18.5124,
+       "electronic": 3.0083
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 40.1653,
+       "electronic": 40.1653
+      },
+      "c-P2": {
+       "default": 47.1488,
+       "electronic": 26.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 23.8017,
+       "electronic": 23.8017
+      },
+      "c-P2": {
+       "default": 27.4793,
+       "electronic": 5.2562
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 22.7273,
+       "electronic": 22.7273
+      },
+      "c-P2": {
+       "default": 26.281,
+       "electronic": 4.9504
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 8.3058,
+       "electronic": 8.3058
+      },
+      "c-P2": {
+       "default": 9.5868,
+       "electronic": 2.0
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 10.0413,
+       "electronic": 10.0413
+      },
+      "c-P2": {
+       "default": 11.6116,
+       "electronic": 2.0661
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 36.3223,
+       "electronic": 36.3223
+      },
+      "c-P2": {
+       "default": 42.5207,
+       "electronic": 21.4628
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 6.9008,
+       "electronic": 6.9008
+      },
+      "c-P2": {
+       "default": 7.9752,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 17.9752,
+       "electronic": 17.9752
+      },
+      "c-P2": {
+       "default": 20.7851,
+       "electronic": 3.5785
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 11.6942,
+       "electronic": 11.6942
+      },
+      "c-P2": {
+       "default": 13.5124,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 12.4793,
+       "electronic": 12.4793
+      },
+      "c-P2": {
+       "default": 14.4215,
+       "electronic": 1.9917
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 31.5702,
+       "electronic": 31.5702
+      },
+      "c-P2": {
+       "default": 36.8182,
+       "electronic": 15.7851
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zambrana > Haro",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 2.9339,
+       "electronic": 2.9339
+      },
+      "c-P2": {
+       "default": 3.3884,
+       "electronic": 0.843
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:AP-1 (Burgos) > Subijana",
+     "rates": {
+      "c-P1": {
+       "default": 45.1653,
+       "electronic": 45.1653
+      },
+      "c-P2": {
+       "default": 52.8099,
+       "electronic": 31.9339
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:AP-15 (Navarra) > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 17.8926,
+       "electronic": 17.8926
+      },
+      "c-P2": {
+       "default": 21.405,
+       "electronic": 18.6942
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Agoncillo > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 28.719,
+       "electronic": 28.719
+      },
+      "c-P2": {
+       "default": 33.9256,
+       "electronic": 22.2893
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Alagón (pk 272) > Gallur",
+     "rates": {
+      "c-P1": 8.8843,
+      "c-P2": 10.7025
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Alagón (pk 275) > Alagón (pk 272)",
+     "rates": {
+      "c-P1": 4.876,
+      "c-P2": 5.8264
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Alfaro > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 22.438,
+       "electronic": 22.438
+      },
+      "c-P2": {
+       "default": 26.6529,
+       "electronic": 20.2066
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Altube > Ziorraga",
+     "rates": {
+      "c-P1": {
+       "default": 52.0248,
+       "electronic": 52.0248
+      },
+      "c-P2": {
+       "default": 60.5785,
+       "electronic": 39.7107
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Areta > Arrigorriaga",
+     "rates": {
+      "c-P1": {
+       "default": 59.9587,
+       "electronic": 59.9587
+      },
+      "c-P2": {
+       "default": 69.5455,
+       "electronic": 48.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Arrigorriaga > Bilbao",
+     "rates": {
+      "c-P1": {
+       "default": 59.9587,
+       "electronic": 59.9587
+      },
+      "c-P2": {
+       "default": 69.5455,
+       "electronic": 48.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Calahorra > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 24.2562,
+       "electronic": 24.2562
+      },
+      "c-P2": {
+       "default": 28.7603,
+       "electronic": 20.8017
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Cenicero > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 37.5207,
+       "electronic": 37.5207
+      },
+      "c-P2": {
+       "default": 44.0909,
+       "electronic": 25.2066
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Fuenmayor > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 33.595,
+       "electronic": 33.595
+      },
+      "c-P2": {
+       "default": 39.5455,
+       "electronic": 23.9091
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Gallur > Tudela",
+     "rates": {
+      "c-P1": 14.7107,
+      "c-P2": 17.6446
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Haro > Zambrana",
+     "rates": {
+      "c-P1": {
+       "default": 40.1653,
+       "electronic": 40.1653
+      },
+      "c-P2": {
+       "default": 47.1488,
+       "electronic": 26.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Lodosa > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 27.8926,
+       "electronic": 27.8926
+      },
+      "c-P2": {
+       "default": 32.9752,
+       "electronic": 22.0248
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Logroño > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 32.1488,
+       "electronic": 32.1488
+      },
+      "c-P2": {
+       "default": 37.8926,
+       "electronic": 23.4298
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Recajo > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 30.7851,
+       "electronic": 30.7851
+      },
+      "c-P2": {
+       "default": 36.3223,
+       "electronic": 22.9835
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Subijana > Altube",
+     "rates": {
+      "c-P1": {
+       "default": 50.2479,
+       "electronic": 50.2479
+      },
+      "c-P2": {
+       "default": 58.5537,
+       "electronic": 37.6777
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Tudela > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 16.8182,
+       "electronic": 16.8182
+      },
+      "c-P2": {
+       "default": 20.1653,
+       "electronic": 18.3471
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Zambrana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": {
+       "default": 40.9504,
+       "electronic": 40.9504
+      },
+      "c-P2": {
+       "default": 48.0165,
+       "electronic": 27.1405
+      }
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Zaragoza > Alagón (pk 275)",
+     "rates": {
+      "c-P1": 4.1736,
+      "c-P2": 5.0
+     }
+    },
+    {
+     "entry": "st:1:Zaragoza > Alagón (pk 275)",
+     "exit": "st:1:Ziorraga > Llodio",
+     "rates": {
+      "c-P1": {
+       "default": 56.4463,
+       "electronic": 56.4463
+      },
+      "c-P2": {
+       "default": 65.5372,
+       "electronic": 44.686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:AP-1 (Burgos) > Zambrana",
+     "rates": {
+      "c-P1": 12.4793,
+      "c-P2": 14.1322
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:AP-15 (Navarra) > Tudela",
+     "rates": {
+      "c-P1": {
+       "default": 37.7273,
+       "electronic": 37.7273
+      },
+      "c-P2": {
+       "default": 43.3884,
+       "electronic": 22.2314
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Agoncillo > Lodosa",
+     "rates": {
+      "c-P1": {
+       "default": 27.8926,
+       "electronic": 27.8926
+      },
+      "c-P2": {
+       "default": 31.9421,
+       "electronic": 18.9421
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Alagón (pk 275) > Zaragoza",
+     "rates": {
+      "c-P1": {
+       "default": 52.0248,
+       "electronic": 52.0248
+      },
+      "c-P2": {
+       "default": 60.5785,
+       "electronic": 39.7107
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Alfaro > AP-15 (Navarra)",
+     "rates": {
+      "c-P1": {
+       "default": 35.7025,
+       "electronic": 35.7025
+      },
+      "c-P2": {
+       "default": 40.9504,
+       "electronic": 21.5207
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Altube > Subijana",
+     "rates": {
+      "c-P1": 7.1074,
+      "c-P2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Calahorra > Alfaro",
+     "rates": {
+      "c-P1": {
+       "default": 34.6281,
+       "electronic": 34.6281
+      },
+      "c-P2": {
+       "default": 39.7107,
+       "electronic": 21.1736
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Cenicero > Fuenmayor",
+     "rates": {
+      "c-P1": {
+       "default": 20.2066,
+       "electronic": 20.2066
+      },
+      "c-P2": {
+       "default": 23.0579,
+       "electronic": 16.3884
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Fuenmayor > Logroño",
+     "rates": {
+      "c-P1": {
+       "default": 21.9421,
+       "electronic": 21.9421
+      },
+      "c-P2": {
+       "default": 25.0413,
+       "electronic": 16.9669
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Gallur > Alagón (pk 272)",
+     "rates": {
+      "c-P1": {
+       "default": 48.1818,
+       "electronic": 48.1818
+      },
+      "c-P2": {
+       "default": 55.9504,
+       "electronic": 35.0909
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Haro > Cenicero",
+     "rates": {
+      "c-P1": {
+       "default": 18.7603,
+       "electronic": 18.7603
+      },
+      "c-P2": {
+       "default": 21.405,
+       "electronic": 15.9174
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Lodosa > Calahorra",
+     "rates": {
+      "c-P1": {
+       "default": 29.876,
+       "electronic": 29.876
+      },
+      "c-P2": {
+       "default": 34.2149,
+       "electronic": 19.595
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Logroño > Recajo",
+     "rates": {
+      "c-P1": {
+       "default": 23.5537,
+       "electronic": 23.5537
+      },
+      "c-P2": {
+       "default": 26.9421,
+       "electronic": 17.5041
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Recajo > Agoncillo",
+     "rates": {
+      "c-P1": {
+       "default": 24.3802,
+       "electronic": 24.3802
+      },
+      "c-P2": {
+       "default": 27.8926,
+       "electronic": 17.7686
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Subijana > AP-1 (Burgos)",
+     "rates": {
+      "c-P1": 10.9091,
+      "c-P2": 12.314
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Tudela > Gallur",
+     "rates": {
+      "c-P1": {
+       "default": 43.4711,
+       "electronic": 43.4711
+      },
+      "c-P2": {
+       "default": 50.2893,
+       "electronic": 29.4132
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Zambrana > Haro",
+     "rates": {
+      "c-P1": {
+       "default": 14.7934,
+       "electronic": 14.7934
+      },
+      "c-P2": {
+       "default": 16.8182,
+       "electronic": 14.6033
+      }
+     }
+    },
+    {
+     "entry": "st:1:Ziorraga > Altube",
+     "exit": "st:1:Ziorraga > Altube",
+     "rates": {
+      "c-P1": 0.0,
+      "c-P2": 0.0
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "The Ministry of Transport's tolls in force: by entry and exit, either way; with a tag, the Haro–Alfaro and Zambrana–Tudela tables.",
+   "directed": true
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-14"
+  }
+ }
+}

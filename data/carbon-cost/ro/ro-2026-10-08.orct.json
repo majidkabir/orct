@@ -1,0 +1,290 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "ro-2026-10-08",
+  "scheme": "ro",
+  "country": "RO",
+  "currency": "RON",
+  "valid_from": "2026-10-08",
+  "name": "Romanian distance toll (TollRo)",
+  "method": "Legea nr. 226/2023: TollRo is the unit rate times the km driven on the SETRE România network. Unit rates in lei/km including 21% VAT from Ordinul MTI nr. 1.925/2025 (Monitorul Oficial nr. 940/2025) as replaced by Ordinul MTI nr. 959/2026 of 8 October 2026: by maximum authorised mass (I over 3.5 to 7.5 t, II over 7.5 to under 12 t, III 12 t and over), road category (motorways and expressways, or national roads) and EURO class, with electric trucks at 25% of the EURO VI rate. One rate including the infrastructure and air-pollution parts. Rates here exclude VAT (divided by 1.21). Updated each 1 January by consumer prices.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/ro-2026-10-08.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "CNAIR eToll: TollRo rates in force (OMTI 959/2026)",
+   "url": "https://portal.etoll.ro/web/guest/tollro"
+  },
+  {
+   "id": "s2",
+   "title": "Ordinul MTI nr. 1.925/2025 (Portal Legislativ)",
+   "url": "https://legislatie.just.ro/Public/DetaliiDocument/302972"
+  },
+  {
+   "id": "s3",
+   "title": "Legea nr. 226/2023 (CNAIR eToll, acte normative)",
+   "url": "https://portal.etoll.ro/web/guest/acte-normative"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles over 3.5 t maximum authorised mass",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7500
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7500
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7500
+    },
+    "euro": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 7500
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 7501,
+     "max": 11999
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 7501,
+     "max": 11999
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 7501,
+     "max": 11999
+    },
+    "euro": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 7501,
+     "max": 11999
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    },
+    "euro": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "National roads, expressways and motorways run by CNAIR, except national roads inside municipalities (between the town entry and exit signs). County and local roads aren't tolled."
+  }
+ ],
+ "charges": [
+  {
+   "id": "toll@road:motorway",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": 0.0331,
+    "c2": 0.1405,
+    "c3": 0.157,
+    "c4": 0.1818,
+    "c5": 0.0579,
+    "c6": 0.2397,
+    "c7": 0.2727,
+    "c8": 0.3058,
+    "c9": 0.0992,
+    "c10": 0.3967,
+    "c11": 0.4545,
+    "c12": 0.5124
+   }
+  },
+  {
+   "id": "toll@road:other",
+   "type": "distance",
+   "component": "toll",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": 0.0165,
+    "c2": 0.0661,
+    "c3": 0.0826,
+    "c4": 0.0909,
+    "c5": 0.0248,
+    "c6": 0.1157,
+    "c7": 0.1322,
+    "c8": 0.157,
+    "c9": 0.0496,
+    "c10": 0.1983,
+    "c11": 0.2314,
+    "c12": 0.2562
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "toll@road:motorway",
+    "toll@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

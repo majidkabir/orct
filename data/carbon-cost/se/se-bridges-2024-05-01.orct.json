@@ -1,0 +1,168 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "se-bridges-2024-05-01",
+  "scheme": "se-bridges",
+  "country": "SE",
+  "currency": "SEK",
+  "valid_from": "2024-05-01",
+  "name": "Swedish bridge infrastructure charges (broavgift)",
+  "method": "Lag (2024:172) om infrastrukturavgifter på väg; Förordning (2014:1564) 4 §: a charge per passage of the bridges over Motalaviken, Sundsvallsfjärden and Skurusundet, at the amounts Transportstyrelsen publishes (heavy trucks over 3.5 t where they differ). Charged at each bridge's charging station (OpenStreetMap toll gantries), either direction. Swedish and foreign vehicles alike.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/se-bridges-2024-05-01.json"
+  }
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Transportstyrelsen: Broavgift på Motalabron",
+   "url": "https://www.transportstyrelsen.se/sv/vagtrafik/fordon/skatter-och-avgifter/infrastrukturavgift/broavgift-motala/"
+  },
+  {
+   "id": "s2",
+   "title": "Transportstyrelsen: Broavgift på Sundsvallsbron",
+   "url": "https://www.transportstyrelsen.se/sv/vagtrafik/fordon/skatter-och-avgifter/infrastrukturavgift/broavgift-sundsvall/"
+  },
+  {
+   "id": "s3",
+   "title": "Transportstyrelsen: Broavgift på Skurubron",
+   "url": "https://www.transportstyrelsen.se/sv/vagtrafik/fordon/skatter-och-avgifter/infrastrukturavgift/broavgift-skurubron/"
+  },
+  {
+   "id": "s4",
+   "title": "Förordning (2014:1564), consolidated (Riksdagen)",
+   "url": "https://data.riksdagen.se/dokument/sfs-2014-1564.text"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "any",
+   "criteria": {}
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motalabron (road 50), Sundsvallsbron (E4) and Skurubron (road 222)."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Motalabron",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     15.017296,
+     58.539313
+    ]
+   },
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "Sundsvallsbron",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     17.352235,
+     62.381901
+    ]
+   },
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "Skurubron",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.225953,
+     59.31378
+    ]
+   },
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Motalabron",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "any": 11
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "Sundsvallsbron",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "any": 20
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "Skurubron",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {
+    "any": 4
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-08"
+  }
+ }
+}

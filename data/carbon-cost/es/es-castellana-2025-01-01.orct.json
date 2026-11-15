@@ -1,0 +1,994 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-castellana-2025-01-01",
+  "scheme": "es-castellana",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2025-01-01",
+  "name": "AP-6, AP-51 and AP-61 (Castellana de Autopistas, Iberpistas)",
+  "method": "The concessionaire's tariffs in force from 1 January 2025, as its tariff sheet gives them by entry and exit: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), the single tariff, excluding 21% IVA. Stations placed at OpenStreetMap's motorway junctions of the exit numbers the sheet's map gives them; Ávila (the AP-51's end) is priced as Vicolozano, at the same prices.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-castellana-2025-01-01.json"
+  },
+  "valid_to": "2025-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Abertis Autopistas: AP-6, AP-51, AP-61 tariffs 2025",
+   "url": "https://www.autopistas.com/sites/publica/files/documentos/tramos/25_004_Castellana_AP6_AP51_AP61_T25.pdf"
+  },
+  {
+   "id": "s2",
+   "title": "OpenStreetMap (Overpass API), motorway junctions",
+   "url": "https://www.openstreetmap.org/copyright"
+  }
+ ],
+ "vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-Pesados-1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 3
+    }
+   },
+   "label": "Pesados 1"
+  },
+  {
+   "id": "c-Pesados-2",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 4
+    }
+   },
+   "label": "Pesados 2"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "AP-6 Villalba–Adanero, AP-51 Villacastín–Ávila, AP-61 San Rafael–Segovia."
+  },
+  {
+   "id": "st:1:Villalba",
+   "kind": "station",
+   "name": "Villalba",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.029332,
+      40.642597
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:El Escorial/Guadarrama",
+   "kind": "station",
+   "name": "El Escorial/Guadarrama",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.09126,
+      40.656605
+     ],
+     [
+      -4.096346,
+      40.658661
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:N VI / Alto del León",
+   "kind": "station",
+   "name": "N VI / Alto del León",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.121643,
+      40.689172
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:San Rafael",
+   "kind": "station",
+   "name": "San Rafael",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.196199,
+      40.731067
+     ],
+     [
+      -4.192033,
+      40.725161
+     ],
+     [
+      -4.197235,
+      40.732112
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Villacastín",
+   "kind": "station",
+   "name": "Villacastín",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.413185,
+      40.772533
+     ],
+     [
+      -4.421273,
+      40.772405
+     ],
+     [
+      -4.421508,
+      40.772716
+     ],
+     [
+      -4.423199,
+      40.771742
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction",
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Sanchidrián",
+   "kind": "station",
+   "name": "Sanchidrián",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.573874,
+      40.899455
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Adanero",
+   "kind": "station",
+   "name": "Adanero",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.590128,
+      40.947293
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Otero de Herreros",
+   "kind": "station",
+   "name": "Otero de Herreros",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.216347,
+      40.787974
+     ],
+     [
+      -4.211746,
+      40.784547
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Ortigosa del Monte",
+   "kind": "station",
+   "name": "Ortigosa del Monte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.186081,
+      40.820125
+     ],
+     [
+      -4.171239,
+      40.823727
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Hontoria",
+   "kind": "station",
+   "name": "Hontoria",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.103163,
+      40.908641
+     ],
+     [
+      -4.10632,
+      40.899194
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Segovia",
+   "kind": "station",
+   "name": "Segovia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.104306,
+      40.914654
+     ]
+    ]
+   },
+   "point_names": [
+    "junction"
+   ]
+  },
+  {
+   "id": "st:1:Vicolozano",
+   "kind": "station",
+   "name": "Vicolozano",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -4.639499,
+      40.676811
+     ],
+     [
+      -4.629463,
+      40.678016
+     ]
+    ]
+   },
+   "point_names": [
+    "junction",
+    "junction"
+   ]
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "AP-6/AP-51/AP-61",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Adanero",
+    "st:1:El Escorial/Guadarrama",
+    "st:1:Hontoria",
+    "st:1:N VI / Alto del León",
+    "st:1:Ortigosa del Monte",
+    "st:1:Otero de Herreros",
+    "st:1:San Rafael",
+    "st:1:Sanchidrián",
+    "st:1:Segovia",
+    "st:1:Vicolozano",
+    "st:1:Villacastín",
+    "st:1:Villalba"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Adanero",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:Adanero",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 12.6033,
+      "c-Pesados-2": 13.9256
+     }
+    },
+    {
+     "entry": "st:1:Adanero",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 7.314,
+      "c-Pesados-2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Adanero",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Adanero",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:N VI / Alto del León",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 15.9504,
+      "c-Pesados-2": 18.2645
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 15.0826,
+      "c-Pesados-2": 17.2314
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 13.9256,
+      "c-Pesados-2": 15.8264
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Sanchidrián",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Vicolozano",
+     "rates": {
+      "c-Pesados-1": 23.1818,
+      "c-Pesados-2": 26.4876
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 20.2893,
+      "c-Pesados-2": 22.8512
+     }
+    },
+    {
+     "entry": "st:1:El Escorial/Guadarrama",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 2.2314,
+      "c-Pesados-2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 3.0579,
+      "c-Pesados-2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 4.1736,
+      "c-Pesados-2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Hontoria",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:N VI / Alto del León",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:N VI / Alto del León",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 15.9504,
+      "c-Pesados-2": 18.2645
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 2.2314,
+      "c-Pesados-2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 0.9917,
+      "c-Pesados-2": 1.1983
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 2.1488,
+      "c-Pesados-2": 2.6033
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 2.2314,
+      "c-Pesados-2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Ortigosa del Monte",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 15.9504,
+      "c-Pesados-2": 18.2645
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 15.0826,
+      "c-Pesados-2": 17.2314
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 3.0579,
+      "c-Pesados-2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 0.9917,
+      "c-Pesados-2": 1.1983
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 1.281,
+      "c-Pesados-2": 1.5702
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 3.0579,
+      "c-Pesados-2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Otero de Herreros",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 15.0826,
+      "c-Pesados-2": 17.2314
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Adanero",
+     "rates": {
+      "c-Pesados-1": 12.6033,
+      "c-Pesados-2": 13.9256
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 13.9256,
+      "c-Pesados-2": 15.8264
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 4.1736,
+      "c-Pesados-2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 2.1488,
+      "c-Pesados-2": 2.6033
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 1.281,
+      "c-Pesados-2": 1.5702
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Sanchidrián",
+     "rates": {
+      "c-Pesados-1": 12.6033,
+      "c-Pesados-2": 13.9256
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 4.1736,
+      "c-Pesados-2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Vicolozano",
+     "rates": {
+      "c-Pesados-1": 8.2645,
+      "c-Pesados-2": 9.5041
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 5.3719,
+      "c-Pesados-2": 5.8678
+     }
+    },
+    {
+     "entry": "st:1:San Rafael",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 13.9256,
+      "c-Pesados-2": 15.8264
+     }
+    },
+    {
+     "entry": "st:1:Sanchidrián",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:Sanchidrián",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 12.6033,
+      "c-Pesados-2": 13.9256
+     }
+    },
+    {
+     "entry": "st:1:Sanchidrián",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 7.314,
+      "c-Pesados-2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Sanchidrián",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 2.2314,
+      "c-Pesados-2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 3.0579,
+      "c-Pesados-2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 4.1736,
+      "c-Pesados-2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:Segovia",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:Adanero",
+     "rates": {
+      "c-Pesados-1": 10.2066,
+      "c-Pesados-2": 11.6942
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 23.1818,
+      "c-Pesados-2": 26.4876
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 8.2645,
+      "c-Pesados-2": 9.5041
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:Sanchidrián",
+     "rates": {
+      "c-Pesados-1": 10.2066,
+      "c-Pesados-2": 11.6942
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 2.9752,
+      "c-Pesados-2": 3.719
+     }
+    },
+    {
+     "entry": "st:1:Vicolozano",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 23.1818,
+      "c-Pesados-2": 26.4876
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:Adanero",
+     "rates": {
+      "c-Pesados-1": 7.314,
+      "c-Pesados-2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 20.2893,
+      "c-Pesados-2": 22.8512
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 5.3719,
+      "c-Pesados-2": 5.8678
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:Sanchidrián",
+     "rates": {
+      "c-Pesados-1": 7.314,
+      "c-Pesados-2": 8.0579
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:Vicolozano",
+     "rates": {
+      "c-Pesados-1": 2.9752,
+      "c-Pesados-2": 3.719
+     }
+    },
+    {
+     "entry": "st:1:Villacastín",
+     "exit": "st:1:Villalba",
+     "rates": {
+      "c-Pesados-1": 20.2893,
+      "c-Pesados-2": 22.8512
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Adanero",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:El Escorial/Guadarrama",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Hontoria",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:N VI / Alto del León",
+     "rates": {
+      "c-Pesados-1": 0.0,
+      "c-Pesados-2": 0.0
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Ortigosa del Monte",
+     "rates": {
+      "c-Pesados-1": 15.9504,
+      "c-Pesados-2": 18.2645
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Otero de Herreros",
+     "rates": {
+      "c-Pesados-1": 15.0826,
+      "c-Pesados-2": 17.2314
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:San Rafael",
+     "rates": {
+      "c-Pesados-1": 13.9256,
+      "c-Pesados-2": 15.8264
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Sanchidrián",
+     "rates": {
+      "c-Pesados-1": 25.1653,
+      "c-Pesados-2": 28.2231
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Segovia",
+     "rates": {
+      "c-Pesados-1": 17.9752,
+      "c-Pesados-2": 20.7438
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Vicolozano",
+     "rates": {
+      "c-Pesados-1": 23.1818,
+      "c-Pesados-2": 26.4876
+     }
+    },
+    {
+     "entry": "st:1:Villalba",
+     "exit": "st:1:Villacastín",
+     "rates": {
+      "c-Pesados-1": 20.2893,
+      "c-Pesados-2": 22.8512
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Castellana de Autopistas / Iberpistas tariffs 2025, including 21% IVA, here excluding it",
+   "directed": true
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-12"
+  }
+ }
+}

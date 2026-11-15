@@ -1,0 +1,556 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "be-bru-2026-01-01",
+  "scheme": "be-bru",
+  "country": "BE",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Belgian kilometre charge, Brussels-Capital Region",
+  "method": "Viapass rate grid Viapass ed. 01/07/2025, Brussels, highway and urban area (all local and regional roads that are not highway); zero-emission rates from 1 January 2026 (80% of the infrastructure part).",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/be-bru-2026-01-01.json"
+  },
+  "region": "BE-BRU",
+  "valid_to": "2026-06-30"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Viapass: kilometer charge rates Viapass ed. 01/07/2025 (rate grid, transcribed in tools/history/transcribed/be-grids.json)",
+   "url": "https://viapass.be/en/news/kilometer-charge-changes-planned-from-july-1-2025.html"
+  },
+  {
+   "id": "s2",
+   "title": "The rate grid image",
+   "url": "https://viapass.be/files/Image/news/2025/Tables-1-july-2025-EN.png"
+  },
+  {
+   "id": "s3",
+   "title": "Viapass: zero-emission rates from 1 January 2026",
+   "url": "https://viapass.be/en/news/rates-zero-emission-vehicles-on-january-1-2006.html"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t maximum authorised mass for goods transport, by mass band (3.5-12 t, 12-32 t, over 32 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     0
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     1
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     2
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     3
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     4
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     5
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001,
+     "max": 32000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 32001
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "All roads in the Brussels-Capital Region: highway and urban-area rates."
+  }
+ ],
+ "charges": [
+  {
+   "id": "km_charge@road:motorway",
+   "type": "distance",
+   "component": "x-km_charge",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": 0.192,
+    "c2": 0.258,
+    "c3": 0.263,
+    "c4": 0.192,
+    "c5": 0.258,
+    "c6": 0.263,
+    "c7": 0.192,
+    "c8": 0.258,
+    "c9": 0.263,
+    "c10": 0.166,
+    "c11": 0.231,
+    "c12": 0.237,
+    "c13": 0.125,
+    "c14": 0.191,
+    "c15": 0.196,
+    "c16": 0.11,
+    "c17": 0.176,
+    "c18": 0.181,
+    "c19": 0.097,
+    "c20": 0.163,
+    "c21": 0.168,
+    "c22": 0.017,
+    "c23": 0.03,
+    "c24": 0.031
+   }
+  },
+  {
+   "id": "km_charge@road:other",
+   "type": "distance",
+   "component": "x-km_charge",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "rates": {
+    "c1": 0.247,
+    "c2": 0.346,
+    "c3": 0.384,
+    "c4": 0.247,
+    "c5": 0.346,
+    "c6": 0.384,
+    "c7": 0.247,
+    "c8": 0.346,
+    "c9": 0.384,
+    "c10": 0.214,
+    "c11": 0.313,
+    "c12": 0.351,
+    "c13": 0.174,
+    "c14": 0.272,
+    "c15": 0.31,
+    "c16": 0.156,
+    "c17": 0.255,
+    "c18": 0.293,
+    "c19": 0.13,
+    "c20": 0.229,
+    "c21": 0.267,
+    "c22": 0.023,
+    "c23": 0.043,
+    "c24": 0.05
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "fuelco2-pt-2024-09-09",
+  "scheme": "fuelco2-pt",
+  "country": "PT",
+  "currency": "EUR",
+  "valid_from": "2024-09-09",
+  "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+  "method": "Código dos Impostos Especiais de Consumo art. 92.º-A: the adicionamento sobre as emissões de CO2 is 74.429 euro per tonne of CO2, from Portaria 203-A/2024/1 (published 2024-09-08, in force the next working day). It is charged with the ISP on gasóleo rodoviário, the product's CO2 factor times this rate, and passed on in the fuel price.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/fuelco2-pt-2024-09-09.json"
+  },
+  "valid_to": "2024-09-15"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Autoridade Tributária: Portaria 203 A 2024/1 (adicionamento sobre as emissões de CO2)",
+   "url": "https://info-aduaneiro.portaldasfinancas.gov.pt/pt/legislacao_aduaneira/iec_doclib/Documents/Portaria_203_A_2024_1.pdf"
+  }
+ ],
+ "vehicles": {
+  "description": "CO2 from fuel bought in the country, per tonne",
+  "min_mass_kg": 0
+ },
+ "classes": [
+  {
+   "id": "any",
+   "criteria": {}
+  }
+ ],
+ "network": [],
+ "charges": [
+  {
+   "id": "fuel-co2",
+   "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
+   "type": "quantity",
+   "component": "carbon_price",
+   "unit": "t_co2",
+   "applies_to": [],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "any": 74.429
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ]
+}

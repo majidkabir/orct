@@ -1,0 +1,122 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "frejus-2026-01-01",
+  "scheme": "frejus",
+  "country": "FR",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "Fréjus road tunnel toll",
+  "method": "Tunnel routier du Fréjus: SFTRF's prices on the French platform from 2026-01-01, one way, EUR including 20% VAT, here excluding it; class 3 (two axles) and 4 (three or more), over 3 m high. Truck prices are given for EURO 5 and 6.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/frejus-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "SFTRF: Fréjus tunnel prices from 2026-01-01 (French platform)",
+   "url": "https://www.sftrf.fr/tarifs-tunnel/"
+  }
+ ],
+ "vehicles": {
+  "description": "Vehicles over 3.5 t",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-3",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "max": 2
+    }
+   },
+   "label": "3"
+  },
+  {
+   "id": "c-4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    },
+    "axles": {
+     "min": 3
+    }
+   },
+   "label": "4"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Fréjus road tunnel (T4, Modane-Bardonecchia), priced at the French platform's one-way price whichever the direction."
+  },
+  {
+   "id": "st:1:Tunnel du Fréjus",
+   "kind": "station",
+   "name": "Tunnel du Fréjus",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      6.67415,
+      45.19439
+     ]
+    ]
+   },
+   "point_names": [
+    "toll plaza"
+   ]
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "Fréjus road tunnel",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:Tunnel du Fréjus"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:Tunnel du Fréjus",
+     "exit": "st:1:Tunnel du Fréjus",
+     "rates": {
+      "c-3": 167.92,
+      "c-4": 337.33
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "SFTRF price list for the French platform, one way (course simple), EUR including 20% VAT, here excluding it."
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true
+  }
+ }
+}

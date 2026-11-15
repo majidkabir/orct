@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/majidkabir/orct/schema/orct-0.1.schema.json",
+  "title": "Open Road Charge Tariff 0.1",
+  "type": "object",
+  "required": ["orct_version", "dataset", "sources", "vehicles", "classes", "network", "charges", "tax", "coverage"],
+  "additionalProperties": false,
+  "properties": {
+    "orct_version": {"const": "0.1"},
+    "dataset": {
+      "type": "object",
+      "required": ["id", "scheme", "country", "currency", "valid_from", "name", "method", "publisher"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "scheme": {"type": "string", "minLength": 1},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "region": {"type": "string", "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "valid_from": {"$ref": "#/$defs/date"},
+        "valid_to": {"$ref": "#/$defs/date"},
+        "name": {"type": "string"},
+        "method": {"type": "string"},
+        "publisher": {"type": "string"},
+        "derived_from": {
+          "type": "object",
+          "required": ["repository", "path"],
+          "additionalProperties": false,
+          "properties": {
+            "repository": {"type": "string"},
+            "path": {"type": "string"},
+            "commit": {"type": "string"}
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "url": {"type": "string"},
+          "legal_act": {"type": "string"},
+          "retrieved": {"$ref": "#/$defs/date"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "vehicles": {
+      "type": "object",
+      "required": ["min_mass_kg"],
+      "additionalProperties": false,
+      "properties": {
+        "description": {"type": "string"},
+        "min_mass_kg": {"type": "integer", "minimum": 0},
+        "axle_basis": {"enum": ["combination", "motor_vehicle"]}
+      }
+    },
+    "classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "criteria"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "fallback": {"type": "string"},
+          "criteria": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mass_kg": {"$ref": "#/$defs/range"},
+              "axles": {"$ref": "#/$defs/range"},
+              "length_m": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {"over": {"type": "number"}, "max": {"type": "number"}}
+              },
+              "euro": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 6}},
+              "co2_class": {"type": "array", "items": {"type": "integer", "minimum": 1, "maximum": 5}}
+            }
+          }
+        }
+      }
+    },
+    "network": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"enum": ["road_class", "operator", "station", "point", "section", "stretch", "zone"]},
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "road_type": {"enum": ["motorway", "other"]},
+          "area": {"enum": ["suburban", "interurban"]},
+          "operator": {"type": "string"},
+          "ref": {"type": "string"},
+          "label": {"type": "string"},
+          "geometry": {"$ref": "#/$defs/geometry"},
+          "heading": {"type": "number"},
+          "headings": {"type": "array", "items": {"type": ["number", "null"]}},
+          "point_names": {"type": "array", "items": {"type": "string"}},
+          "from": {"$ref": "#/$defs/place"},
+          "to": {"$ref": "#/$defs/place"},
+          "km": {"type": "number"},
+          "road": {"type": "string"},
+          "osm": {"type": "string"},
+          "match_km": {"type": "number"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "charges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "component", "applies_to", "sources", "rates"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "type": {"enum": ["distance", "od_matrix", "point", "period", "zone", "quantity"]},
+          "component": {"type": "string", "pattern": "^(infrastructure|toll|congestion|air|noise|air_noise|co2|carbon_price|access|x-[a-z0-9_-]+)$"},
+          "applies_to": {"type": "array", "items": {"type": "string"}},
+          "sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "rates": {"type": "object", "additionalProperties": {"$ref": "#/$defs/rate"}},
+          "valid_from": {"$ref": "#/$defs/date"},
+          "valid_to": {"$ref": "#/$defs/date"},
+          "method": {"type": "string"},
+          "pairs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["entry", "exit", "rates"],
+              "additionalProperties": false,
+              "properties": {
+                "entry": {"type": "string"},
+                "exit": {"type": "string"},
+                "rates": {"type": "object", "additionalProperties": {"$ref": "#/$defs/rate"}}
+              }
+            }
+          },
+          "directed": {"type": "boolean"},
+          "pairing": {"enum": ["single_ticket", "chain"]},
+          "period": {"enum": ["day"]},
+          "day_basis": {"enum": ["calendar", "24h"]},
+          "excludes": {"type": "array", "items": {"type": "string"}},
+          "unit": {"enum": ["tonne_km", "t_co2", "litre"]},
+          "max_mass_kg": {"type": "integer"}
+        },
+        "allOf": [
+          {"if": {"properties": {"type": {"const": "od_matrix"}}}, "then": {"required": ["pairs"]}},
+          {"if": {"properties": {"type": {"const": "period"}}}, "then": {"required": ["period"]}},
+          {"if": {"properties": {"type": {"const": "quantity"}}}, "then": {"required": ["unit"]}}
+        ]
+      }
+    },
+    "modifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "applies_to", "params"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {"type": "string"},
+          "applies_to": {"type": "array", "items": {"type": "string"}},
+          "params": {"type": "object"}
+        }
+      }
+    },
+    "tax": {
+      "type": "object",
+      "required": ["included"],
+      "additionalProperties": false,
+      "properties": {
+        "included": {"type": ["boolean", "null"]},
+        "rate": {"type": "number"},
+        "name": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["scope", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "scope": {"type": "string"},
+          "status": {"enum": ["complete", "partial", "unpriced"]},
+          "reason": {"type": "string"}
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {"pattern": "^x-"}
+    }
+  },
+  "$defs": {
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"min": {"type": "number"}, "max": {"type": "number"}}
+    },
+    "rate": {
+      "oneOf": [
+        {"type": "number"},
+        {
+          "type": "object",
+          "required": ["default"],
+          "additionalProperties": {"type": "number"}
+        }
+      ]
+    },
+    "place": {
+      "type": "object",
+      "required": ["geometry"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "geometry": {"$ref": "#/$defs/geometry"},
+        "heading": {"type": "number"}
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": {"enum": ["Point", "MultiPoint", "LineString", "Polygon", "MultiPolygon"]},
+        "coordinates": {"type": "array"}
+      }
+    }
+  }
+}

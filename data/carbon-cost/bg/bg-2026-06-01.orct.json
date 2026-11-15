@@ -1,0 +1,580 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "bg-2026-06-01",
+  "scheme": "bg",
+  "country": "BG",
+  "currency": "EUR",
+  "valid_from": "2026-06-01",
+  "name": "Bulgarian distance toll (BG TOLL)",
+  "method": "Тарифа за таксите, които се събират за преминаване и ползване на републиканската пътна мрежа (ПМС № 370/2019), чл. 25, ал. 1, as amended by Постановление № 64 от 26 май 2026 г. (ДВ бр. 49 от 29.05.2026), in force 1 June 2026: EUR/km by CO2 class, vehicle category, EURO class and road class (motorway, class I, class II), split into infrastructure, air, noise and CO2. No VAT is charged.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/bg-2026-06-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Държавен вестник бр. 49/2026: Постановление № 64 (toll tariff from 1 June 2026)",
+   "url": "https://dv.parliament.bg/DVWeb/showMaterialDV.jsp?idMat=243642"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles over 3.5 t technically permissible maximum mass (buses have their own rates)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "co2_class": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     4
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c8",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     3
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c11",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ],
+    "co2_class": [
+     2
+    ]
+   }
+  },
+  {
+   "id": "c13",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c16",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501,
+     "max": 12000
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c17",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c18",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c19",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c20",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "max": 3
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "id": "c21",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "c22",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     5
+    ]
+   }
+  },
+  {
+   "id": "c23",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "c24",
+   "criteria": {
+    "mass_kg": {
+     "min": 12001
+    },
+    "axles": {
+     "min": 4
+    },
+    "euro": [
+     0,
+     1,
+     2
+    ]
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "road:motorway",
+   "kind": "road_class",
+   "road_type": "motorway"
+  },
+  {
+   "id": "road:other",
+   "kind": "road_class",
+   "road_type": "other"
+  },
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "Motorways and class I roads (about 3,115 km), and tolled class II roads. Km off motorways are priced at the class I rate; class II rates are 0.01 EUR/km lower."
+  }
+ ],
+ "charges": [
+  {
+   "id": "infrastructure@road:motorway",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.04,
+    "c2": 0.09,
+    "c3": 0.14,
+    "c4": 0.04,
+    "c5": 0.09,
+    "c6": 0.14,
+    "c7": 0.04,
+    "c8": 0.09,
+    "c9": 0.14,
+    "c10": 0.04,
+    "c11": 0.09,
+    "c12": 0.14,
+    "c13": 0.04,
+    "c14": 0.06,
+    "c15": 0.07,
+    "c16": 0.08,
+    "c17": 0.09,
+    "c18": 0.13,
+    "c19": 0.17,
+    "c20": 0.18,
+    "c21": 0.14,
+    "c22": 0.19,
+    "c23": 0.22,
+    "c24": 0.27
+   }
+  },
+  {
+   "id": "co2@road:motorway",
+   "type": "distance",
+   "component": "co2",
+   "applies_to": [
+    "road:motorway"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.0,
+    "c2": 0.0,
+    "c3": 0.0,
+    "c4": 0.02,
+    "c5": 0.03,
+    "c6": 0.03,
+    "c7": 0.04,
+    "c8": 0.05,
+    "c9": 0.06,
+    "c10": 0.04,
+    "c11": 0.05,
+    "c12": 0.06,
+    "c13": 0.04,
+    "c14": 0.04,
+    "c15": 0.04,
+    "c16": 0.04,
+    "c17": 0.05,
+    "c18": 0.05,
+    "c19": 0.05,
+    "c20": 0.05,
+    "c21": 0.07,
+    "c22": 0.07,
+    "c23": 0.07,
+    "c24": 0.07
+   }
+  },
+  {
+   "id": "infrastructure@road:other",
+   "type": "distance",
+   "component": "infrastructure",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.03,
+    "c2": 0.08,
+    "c3": 0.12,
+    "c4": 0.03,
+    "c5": 0.08,
+    "c6": 0.12,
+    "c7": 0.03,
+    "c8": 0.08,
+    "c9": 0.12,
+    "c10": 0.03,
+    "c11": 0.08,
+    "c12": 0.12,
+    "c13": 0.03,
+    "c14": 0.04,
+    "c15": 0.04,
+    "c16": 0.06,
+    "c17": 0.08,
+    "c18": 0.11,
+    "c19": 0.15,
+    "c20": 0.15,
+    "c21": 0.12,
+    "c22": 0.17,
+    "c23": 0.21,
+    "c24": 0.24
+   }
+  },
+  {
+   "id": "co2@road:other",
+   "type": "distance",
+   "component": "co2",
+   "applies_to": [
+    "road:other"
+   ],
+   "sources": [
+    "s1"
+   ],
+   "rates": {
+    "c1": 0.0,
+    "c2": 0.0,
+    "c3": 0.0,
+    "c4": 0.02,
+    "c5": 0.03,
+    "c6": 0.03,
+    "c7": 0.04,
+    "c8": 0.05,
+    "c9": 0.06,
+    "c10": 0.04,
+    "c11": 0.05,
+    "c12": 0.06,
+    "c13": 0.04,
+    "c14": 0.04,
+    "c15": 0.04,
+    "c16": 0.04,
+    "c17": 0.05,
+    "c18": 0.05,
+    "c19": 0.05,
+    "c20": 0.05,
+    "c21": 0.07,
+    "c22": 0.07,
+    "c23": 0.07,
+    "c24": 0.07
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "assumed_share",
+   "applies_to": [
+    "infrastructure@road:motorway",
+    "infrastructure@road:other",
+    "co2@road:motorway",
+    "co2@road:other"
+   ],
+   "params": {
+    "of": "motorway",
+    "share": 1
+   }
+  }
+ ]
+}

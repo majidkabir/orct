@@ -1,0 +1,292 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "gb-thames-tunnels-2025-04-07",
+  "scheme": "gb-thames-tunnels",
+  "country": "GB",
+  "currency": "GBP",
+  "valid_from": "2025-04-07",
+  "name": "Blackwall and Silvertown tunnels charge",
+  "method": "The Silvertown Tunnel Order 2018 (user charges set by TfL): heavy goods vehicles (N2, N3) pay GBP 10.00 per crossing either way, 06:00-22:00 every day except Christmas Day, paid online or by phone; with `etc` the Auto Pay off-peak price, GBP 5.00 (Auto Pay's peak, weekdays 06:00-10:00 northbound and 16:00-19:00 southbound, is the full price, not modelled). From the tunnel's opening; TfL's press release of 23 July 2026 gives these as the charges before 21 September 2026.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/gb-thames-tunnels-2025-04-07.json"
+  },
+  "valid_to": "2026-09-20"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Transport for London: paying the Blackwall and Silvertown tunnels charge (read in Chrome, as TfL refuses the workflow)",
+   "url": "https://tfl.gov.uk/modes/driving/silvertown-blackwall-tunnels-charge/paying-blackwall-and-silvertown-tunnel-charges"
+  },
+  {
+   "id": "s2",
+   "title": "TfL press release PN-215 (23 July 2026): current and new user charges",
+   "url": "https://tfl-newsroom.prgloo.com/news/new-report-shows-one-year-old-silvertown-tunnel-cuts-congestion-and-boosts-bus-use-alongside-improved-air-quality"
+  }
+ ],
+ "vehicles": {
+  "description": "Heavy goods vehicles (N2, N3: over 3.5 t)",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   }
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "The Blackwall Tunnel (A102) and the Silvertown Tunnel under the Thames, each bore, either way."
+  },
+  {
+   "id": "pt:1",
+   "kind": "point",
+   "name": "Blackwall and Silvertown tunnels",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.001316,
+     51.505044
+    ]
+   },
+   "heading": 130.1,
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:2",
+   "kind": "point",
+   "name": "Blackwall and Silvertown tunnels",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.004038,
+     51.503838
+    ]
+   },
+   "heading": 306.3,
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:3",
+   "kind": "point",
+   "name": "Blackwall and Silvertown tunnels",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.011221,
+     51.501149
+    ]
+   },
+   "heading": 232.4,
+   "match_km": 0.15
+  },
+  {
+   "id": "pt:4",
+   "kind": "point",
+   "name": "Blackwall and Silvertown tunnels",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.010812,
+     51.501226
+    ]
+   },
+   "heading": 52.5,
+   "match_km": 0.15
+  }
+ ],
+ "charges": [
+  {
+   "id": "point:1",
+   "name": "Blackwall and Silvertown tunnels",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:1"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 10.0,
+     "electronic": 5.0
+    }
+   }
+  },
+  {
+   "id": "point:2",
+   "name": "Blackwall and Silvertown tunnels",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:2"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 10.0,
+     "electronic": 5.0
+    }
+   }
+  },
+  {
+   "id": "point:3",
+   "name": "Blackwall and Silvertown tunnels",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:3"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 10.0,
+     "electronic": 5.0
+    }
+   }
+  },
+  {
+   "id": "point:4",
+   "name": "Blackwall and Silvertown tunnels",
+   "type": "point",
+   "component": "toll",
+   "applies_to": [
+    "pt:4"
+   ],
+   "sources": [
+    "s1",
+    "s2"
+   ],
+   "rates": {
+    "c1": {
+     "default": 10.0,
+     "electronic": 5.0
+    }
+   }
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:1"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:2"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:2"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:3"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  },
+  {
+   "kind": "variant",
+   "applies_to": [
+    "point:4"
+   ],
+   "params": {
+    "name": "electronic",
+    "payment": "electronic"
+   }
+  },
+  {
+   "kind": "free_hours",
+   "applies_to": [
+    "point:4"
+   ],
+   "params": {
+    "hours": [
+     "22:00",
+     "05:59"
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-12"
+  }
+ }
+}

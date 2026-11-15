@@ -1,0 +1,7216 @@
+{
+ "orct_version": "0.1",
+ "dataset": {
+  "id": "es-basque-2026-01-01",
+  "scheme": "es-basque",
+  "country": "ES",
+  "currency": "EUR",
+  "valid_from": "2026-01-01",
+  "name": "N-I and A-15 heavy vehicle canon (Gipuzkoa, Bidegi)",
+  "method": "Norma Foral 5/2021, de 3 de diciembre (Gipuzkoa), as amended by Norma Foral 6/2022: a canon on the N-I and A-15 along their whole length in Gipuzkoa, charged by free-flow gantries to goods vehicles over 3.5 t, Pesados 1 under 12 t and Pesados 2 from 12 t (article 7), by entry and exit, at Bidegi's 2026 tariffs (Pesados 2 from the Navarra border at Etzegarate to Lasarte-Oria EUR 13.31 with IVA), excluding 21% IVA here; 80% for EURO 6 and 85% for EURO 5 trucks registered with Bidegi with a TAG (article 8; 75% for electric, hybrid and gas trucks and the frequency discounts of article 8 bis are not modelled). Stations: each carriageway's stretch between two of the tariff's entries and exits, at its middle and in its direction; the entries and exits placed at their PK along the OpenStreetMap carriageways, the PK fitted to the junctions' exit numbers, or at the junction itself where its exit number is the station's alone.",
+  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
+  "derived_from": {
+   "repository": "https://github.com/majidkabir/carbon-cost",
+   "path": "rates/data/es-basque-2026-01-01.json"
+  },
+  "valid_to": "2026-12-31"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "title": "Bidegi: N-I and A-15 tariffs 2026 (2026__N-I-A-15_tarifak.pdf)",
+   "url": "https://www.bidegi.eus/documents/42696171/0/2026__N-I-A-15_tarifak.pdf/f1728e98-d55a-b934-c3ff-276649650617"
+  },
+  {
+   "id": "s2",
+   "title": "Norma Foral 5/2021 de Gipuzkoa (consolidated text from 27/12/2022)",
+   "url": "https://egoitza.gipuzkoa.eus/ogasuna/normativa/docs/0001239c.pdf"
+  },
+  {
+   "id": "s3",
+   "title": "Bidegi: vehicle categories",
+   "url": "https://www.bidegi.eus/documents/42696171/0/Categoria+de+veh%C3%ADculos_CAS.pdf/07c6468b-5045-2d19-4a59-1f16a5062528"
+  },
+  {
+   "id": "s4",
+   "title": "OpenStreetMap (Overpass API): the N-I and A-15 carriageways and junctions",
+   "url": "https://www.openstreetmap.org/"
+  }
+ ],
+ "vehicles": {
+  "description": "Goods vehicles over 3.5 t: Pesados 1 under 12 t, Pesados 2 from 12 t",
+  "min_mass_kg": 3501,
+  "axle_basis": "combination"
+ },
+ "classes": [
+  {
+   "id": "c-P2",
+   "criteria": {
+    "mass_kg": {
+     "min": 12000
+    }
+   },
+   "label": "P2"
+  },
+  {
+   "id": "c-P1",
+   "criteria": {
+    "mass_kg": {
+     "min": 3501
+    }
+   },
+   "label": "P1"
+  }
+ ],
+ "network": [
+  {
+   "id": "roads",
+   "kind": "road_class",
+   "description": "N-I from the Navarra border (Etzegarate) to Lasarte-Oria; A-15 from the Navarra border to Andoain and from Andoain to Astigarraga."
+  },
+  {
+   "id": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+   "kind": "station",
+   "name": "Límite Navarra (Etzegarate) > Idiazabal sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.233752,
+      42.975276
+     ]
+    ]
+   },
+   "point_names": [
+    "between Límite Navarra (Etzegarate) and Idiazabal sur"
+   ],
+   "headings": [
+    41.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+   "kind": "station",
+   "name": "Idiazabal sur > Límite Navarra (Etzegarate)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.238156,
+      42.972238
+     ]
+    ]
+   },
+   "point_names": [
+    "between Idiazabal sur and Límite Navarra (Etzegarate)"
+   ],
+   "headings": [
+    221.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Idiazabal sur > Segura",
+   "kind": "station",
+   "name": "Idiazabal sur > Segura",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.235671,
+      43.012005
+     ]
+    ]
+   },
+   "point_names": [
+    "between Idiazabal sur and Segura"
+   ],
+   "headings": [
+    7.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Segura > Idiazabal sur",
+   "kind": "station",
+   "name": "Segura > Idiazabal sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.2358,
+      43.011995
+     ]
+    ]
+   },
+   "point_names": [
+    "between Segura and Idiazabal sur"
+   ],
+   "headings": [
+    190.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Segura > Idiazabal norte",
+   "kind": "station",
+   "name": "Segura > Idiazabal norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.229985,
+      43.025091
+     ]
+    ]
+   },
+   "point_names": [
+    "between Segura and Idiazabal norte"
+   ],
+   "headings": [
+    82.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Idiazabal norte > Segura",
+   "kind": "station",
+   "name": "Idiazabal norte > Segura",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.230111,
+      43.02517
+     ]
+    ]
+   },
+   "point_names": [
+    "between Idiazabal norte and Segura"
+   ],
+   "headings": [
+    260.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Idiazabal norte > Olaberria",
+   "kind": "station",
+   "name": "Idiazabal norte > Olaberria",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.21916,
+      43.031472
+     ]
+    ]
+   },
+   "point_names": [
+    "between Idiazabal norte and Olaberria"
+   ],
+   "headings": [
+    13.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Olaberria > Idiazabal norte",
+   "kind": "station",
+   "name": "Olaberria > Idiazabal norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.219277,
+      43.031533
+     ]
+    ]
+   },
+   "point_names": [
+    "between Olaberria and Idiazabal norte"
+   ],
+   "headings": [
+    193.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Olaberria > A-636",
+   "kind": "station",
+   "name": "Olaberria > A-636",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.216272,
+      43.039493
+     ]
+    ]
+   },
+   "point_names": [
+    "between Olaberria and A-636"
+   ],
+   "headings": [
+    20.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:A-636 > Olaberria",
+   "kind": "station",
+   "name": "A-636 > Olaberria",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.216406,
+      43.039528
+     ]
+    ]
+   },
+   "point_names": [
+    "between A-636 and Olaberria"
+   ],
+   "headings": [
+    199.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:A-636 > Lazkao y Beasain",
+   "kind": "station",
+   "name": "A-636 > Lazkao y Beasain",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.206366,
+      43.045757
+     ]
+    ]
+   },
+   "point_names": [
+    "between A-636 and Lazkao y Beasain"
+   ],
+   "headings": [
+    102.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lazkao y Beasain > A-636",
+   "kind": "station",
+   "name": "Lazkao y Beasain > A-636",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.20647,
+      43.045867
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lazkao y Beasain and A-636"
+   ],
+   "headings": [
+    282.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lazkao y Beasain > Ordizia sur",
+   "kind": "station",
+   "name": "Lazkao y Beasain > Ordizia sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.18869,
+      43.047709
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lazkao y Beasain and Ordizia sur"
+   ],
+   "headings": [
+    67.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ordizia sur > Lazkao y Beasain",
+   "kind": "station",
+   "name": "Ordizia sur > Lazkao y Beasain",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.188775,
+      43.047828
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ordizia sur and Lazkao y Beasain"
+   ],
+   "headings": [
+    244.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ordizia sur > Ordizia norte",
+   "kind": "station",
+   "name": "Ordizia sur > Ordizia norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.174213,
+      43.052941
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ordizia sur and Ordizia norte"
+   ],
+   "headings": [
+    54.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ordizia norte > Ordizia sur",
+   "kind": "station",
+   "name": "Ordizia norte > Ordizia sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.174328,
+      43.052991
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ordizia norte and Ordizia sur"
+   ],
+   "headings": [
+    234.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ordizia norte > Legorreta",
+   "kind": "station",
+   "name": "Ordizia norte > Legorreta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.15926,
+      43.074206
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ordizia norte and Legorreta"
+   ],
+   "headings": [
+    21.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Legorreta > Ordizia norte",
+   "kind": "station",
+   "name": "Legorreta > Ordizia norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.159432,
+      43.074276
+     ]
+    ]
+   },
+   "point_names": [
+    "between Legorreta and Ordizia norte"
+   ],
+   "headings": [
+    202.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Legorreta > Ikaztegieta",
+   "kind": "station",
+   "name": "Legorreta > Ikaztegieta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.12715,
+      43.089336
+     ]
+    ]
+   },
+   "point_names": [
+    "between Legorreta and Ikaztegieta"
+   ],
+   "headings": [
+    47.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ikaztegieta > Legorreta",
+   "kind": "station",
+   "name": "Ikaztegieta > Legorreta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.127228,
+      43.089478
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ikaztegieta and Legorreta"
+   ],
+   "headings": [
+    232.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Ikaztegieta > Alegia",
+   "kind": "station",
+   "name": "Ikaztegieta > Alegia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.102954,
+      43.100584
+     ]
+    ]
+   },
+   "point_names": [
+    "between Ikaztegieta and Alegia"
+   ],
+   "headings": [
+    91.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alegia > Ikaztegieta",
+   "kind": "station",
+   "name": "Alegia > Ikaztegieta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.103085,
+      43.10068
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alegia and Ikaztegieta"
+   ],
+   "headings": [
+    272.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Alegia > Tolosa sur",
+   "kind": "station",
+   "name": "Alegia > Tolosa sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.091125,
+      43.114395
+     ]
+    ]
+   },
+   "point_names": [
+    "between Alegia and Tolosa sur"
+   ],
+   "headings": [
+    342.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa sur > Alegia",
+   "kind": "station",
+   "name": "Tolosa sur > Alegia",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.0925,
+      43.115031
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa sur and Alegia"
+   ],
+   "headings": [
+    168.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa sur > Tolosa centro",
+   "kind": "station",
+   "name": "Tolosa sur > Tolosa centro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.083447,
+      43.127762
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa sur and Tolosa centro"
+   ],
+   "headings": [
+    70.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa centro > Tolosa sur",
+   "kind": "station",
+   "name": "Tolosa centro > Tolosa sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.083516,
+      43.127849
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa centro and Tolosa sur"
+   ],
+   "headings": [
+    252.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa centro > Tolosa norte",
+   "kind": "station",
+   "name": "Tolosa centro > Tolosa norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.069501,
+      43.136957
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa centro and Tolosa norte"
+   ],
+   "headings": [
+    20.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa norte > Tolosa centro",
+   "kind": "station",
+   "name": "Tolosa norte > Tolosa centro",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.069601,
+      43.137008
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa norte and Tolosa centro"
+   ],
+   "headings": [
+    200.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Tolosa norte > Irura sur",
+   "kind": "station",
+   "name": "Tolosa norte > Irura sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.068657,
+      43.153665
+     ]
+    ]
+   },
+   "point_names": [
+    "between Tolosa norte and Irura sur"
+   ],
+   "headings": [
+    26.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Irura sur > Tolosa norte",
+   "kind": "station",
+   "name": "Irura sur > Tolosa norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.068833,
+      43.153639
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irura sur and Tolosa norte"
+   ],
+   "headings": [
+    207.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Irura sur > Irura norte",
+   "kind": "station",
+   "name": "Irura sur > Irura norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.066286,
+      43.164239
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irura sur and Irura norte"
+   ],
+   "headings": [
+    29.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Irura norte > Irura sur",
+   "kind": "station",
+   "name": "Irura norte > Irura sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.066461,
+      43.164237
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irura norte and Irura sur"
+   ],
+   "headings": [
+    208.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Irura norte > Villabona sur",
+   "kind": "station",
+   "name": "Irura norte > Villabona sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.058001,
+      43.174967
+     ]
+    ]
+   },
+   "point_names": [
+    "between Irura norte and Villabona sur"
+   ],
+   "headings": [
+    43.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Villabona sur > Irura norte",
+   "kind": "station",
+   "name": "Villabona sur > Irura norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.058161,
+      43.17499
+     ]
+    ]
+   },
+   "point_names": [
+    "between Villabona sur and Irura norte"
+   ],
+   "headings": [
+    223.7
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Villabona sur > Villabona norte",
+   "kind": "station",
+   "name": "Villabona sur > Villabona norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.051309,
+      43.187986
+     ]
+    ]
+   },
+   "point_names": [
+    "between Villabona sur and Villabona norte"
+   ],
+   "headings": [
+    8.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Villabona norte > Villabona sur",
+   "kind": "station",
+   "name": "Villabona norte > Villabona sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.051435,
+      43.188
+     ]
+    ]
+   },
+   "point_names": [
+    "between Villabona norte and Villabona sur"
+   ],
+   "headings": [
+    187.5
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Villabona norte > Andoain sur",
+   "kind": "station",
+   "name": "Villabona norte > Andoain sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.040521,
+      43.198132
+     ]
+    ]
+   },
+   "point_names": [
+    "between Villabona norte and Andoain sur"
+   ],
+   "headings": [
+    31.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain sur > Villabona norte",
+   "kind": "station",
+   "name": "Andoain sur > Villabona norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.040011,
+      43.198988
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain sur and Villabona norte"
+   ],
+   "headings": [
+    208.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain sur > Andoain Cruz Roja",
+   "kind": "station",
+   "name": "Andoain sur > Andoain Cruz Roja",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.024312,
+      43.215077
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain sur and Andoain Cruz Roja"
+   ],
+   "headings": [
+    8.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain sur > Berastegi",
+   "kind": "station",
+   "name": "Andoain sur > Berastegi",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.006287,
+      43.159824
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain sur and Berastegi"
+   ],
+   "headings": [
+    170.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain Cruz Roja > Andoain sur",
+   "kind": "station",
+   "name": "Andoain Cruz Roja > Andoain sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.027362,
+      43.21353
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain Cruz Roja and Andoain sur"
+   ],
+   "headings": [
+    250.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain Cruz Roja > Andoain norte",
+   "kind": "station",
+   "name": "Andoain Cruz Roja > Andoain norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.02548,
+      43.222605
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain Cruz Roja and Andoain norte"
+   ],
+   "headings": [
+    349.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain norte > Andoain Cruz Roja",
+   "kind": "station",
+   "name": "Andoain norte > Andoain Cruz Roja",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.025647,
+      43.222582
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain norte and Andoain Cruz Roja"
+   ],
+   "headings": [
+    169.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain norte > Lasarte-Oria sur",
+   "kind": "station",
+   "name": "Andoain norte > Lasarte-Oria sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.027607,
+      43.241979
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain norte and Lasarte-Oria sur"
+   ],
+   "headings": [
+    51.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Andoain norte > Urmeneta (Andoain)",
+   "kind": "station",
+   "name": "Andoain norte > Urmeneta (Andoain)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.015596,
+      43.227869
+     ]
+    ]
+   },
+   "point_names": [
+    "between Andoain norte and Urmeneta (Andoain)"
+   ],
+   "headings": [
+    64.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lasarte-Oria sur > Andoain norte",
+   "kind": "station",
+   "name": "Lasarte-Oria sur > Andoain norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.030182,
+      43.241861
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lasarte-Oria sur and Andoain norte"
+   ],
+   "headings": [
+    206.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+   "kind": "station",
+   "name": "Lasarte-Oria sur > Lasarte-Oria centro y norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.017673,
+      43.263306
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lasarte-Oria sur and Lasarte-Oria centro y norte"
+   ],
+   "headings": [
+    359.3
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+   "kind": "station",
+   "name": "Lasarte-Oria centro y norte > Lasarte-Oria sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.017812,
+      43.26333
+     ]
+    ]
+   },
+   "point_names": [
+    "between Lasarte-Oria centro y norte and Lasarte-Oria sur"
+   ],
+   "headings": [
+    181.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Urmeneta (Andoain) > Andoain norte",
+   "kind": "station",
+   "name": "Urmeneta (Andoain) > Andoain norte",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.013927,
+      43.228359
+     ]
+    ]
+   },
+   "point_names": [
+    "between Urmeneta (Andoain) and Andoain norte"
+   ],
+   "headings": [
+    256.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Urmeneta (Andoain) > Urnieta",
+   "kind": "station",
+   "name": "Urmeneta (Andoain) > Urnieta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.002537,
+      43.235253
+     ]
+    ]
+   },
+   "point_names": [
+    "between Urmeneta (Andoain) and Urnieta"
+   ],
+   "headings": [
+    5.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Urnieta > Urmeneta (Andoain)",
+   "kind": "station",
+   "name": "Urnieta > Urmeneta (Andoain)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.002665,
+      43.235335
+     ]
+    ]
+   },
+   "point_names": [
+    "between Urnieta and Urmeneta (Andoain)"
+   ],
+   "headings": [
+    182.1
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Urnieta > Mandazubi (Hernani)",
+   "kind": "station",
+   "name": "Urnieta > Mandazubi (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.995401,
+      43.25242
+     ]
+    ]
+   },
+   "point_names": [
+    "between Urnieta and Mandazubi (Hernani)"
+   ],
+   "headings": [
+    24.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Mandazubi (Hernani) > Urnieta",
+   "kind": "station",
+   "name": "Mandazubi (Hernani) > Urnieta",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.995588,
+      43.252397
+     ]
+    ]
+   },
+   "point_names": [
+    "between Mandazubi (Hernani) and Urnieta"
+   ],
+   "headings": [
+    204.8
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+   "kind": "station",
+   "name": "Mandazubi (Hernani) > Zikuñaga (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.972676,
+      43.261736
+     ]
+    ]
+   },
+   "point_names": [
+    "between Mandazubi (Hernani) and Zikuñaga (Hernani)"
+   ],
+   "headings": [
+    49.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+   "kind": "station",
+   "name": "Zikuñaga (Hernani) > Mandazubi (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.971973,
+      43.262437
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zikuñaga (Hernani) and Mandazubi (Hernani)"
+   ],
+   "headings": [
+    217.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Zikuñaga (Hernani) > Martindegi (Hernani)",
+   "kind": "station",
+   "name": "Zikuñaga (Hernani) > Martindegi (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.957261,
+      43.268486
+     ]
+    ]
+   },
+   "point_names": [
+    "between Zikuñaga (Hernani) and Martindegi (Hernani)"
+   ],
+   "headings": [
+    15.4
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Martindegi (Hernani) > Zikuñaga (Hernani)",
+   "kind": "station",
+   "name": "Martindegi (Hernani) > Zikuñaga (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.95738,
+      43.26855
+     ]
+    ]
+   },
+   "point_names": [
+    "between Martindegi (Hernani) and Zikuñaga (Hernani)"
+   ],
+   "headings": [
+    193.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Martindegi (Hernani) > Astigarraga",
+   "kind": "station",
+   "name": "Martindegi (Hernani) > Astigarraga",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.959252,
+      43.276115
+     ]
+    ]
+   },
+   "point_names": [
+    "between Martindegi (Hernani) and Astigarraga"
+   ],
+   "headings": [
+    344.2
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Astigarraga > Martindegi (Hernani)",
+   "kind": "station",
+   "name": "Astigarraga > Martindegi (Hernani)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.959652,
+      43.278154
+     ]
+    ]
+   },
+   "point_names": [
+    "between Astigarraga and Martindegi (Hernani)"
+   ],
+   "headings": [
+    183.9
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Berastegi > Andoain sur",
+   "kind": "station",
+   "name": "Berastegi > Andoain sur",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -2.0061,
+      43.160423
+     ]
+    ]
+   },
+   "point_names": [
+    "between Berastegi and Andoain sur"
+   ],
+   "headings": [
+    350.0
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Berastegi > Límite Navarra (A-15)",
+   "kind": "station",
+   "name": "Berastegi > Límite Navarra (A-15)",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.953122,
+      43.1077
+     ]
+    ]
+   },
+   "point_names": [
+    "between Berastegi and Límite Navarra (A-15)"
+   ],
+   "headings": [
+    138.6
+   ],
+   "match_km": 0.1
+  },
+  {
+   "id": "st:1:Límite Navarra (A-15) > Berastegi",
+   "kind": "station",
+   "name": "Límite Navarra (A-15) > Berastegi",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      -1.953008,
+      43.107744
+     ]
+    ]
+   },
+   "point_names": [
+    "between Límite Navarra (A-15) and Berastegi"
+   ],
+   "headings": [
+    318.3
+   ],
+   "match_km": 0.1
+  }
+ ],
+ "charges": [
+  {
+   "id": "system:1",
+   "name": "N-I/A-15 Gipuzkoa",
+   "type": "od_matrix",
+   "component": "toll",
+   "applies_to": [
+    "st:1:A-636 > Lazkao y Beasain",
+    "st:1:A-636 > Olaberria",
+    "st:1:Alegia > Ikaztegieta",
+    "st:1:Alegia > Tolosa sur",
+    "st:1:Andoain Cruz Roja > Andoain norte",
+    "st:1:Andoain Cruz Roja > Andoain sur",
+    "st:1:Andoain norte > Andoain Cruz Roja",
+    "st:1:Andoain norte > Lasarte-Oria sur",
+    "st:1:Andoain norte > Urmeneta (Andoain)",
+    "st:1:Andoain sur > Andoain Cruz Roja",
+    "st:1:Andoain sur > Berastegi",
+    "st:1:Andoain sur > Villabona norte",
+    "st:1:Astigarraga > Martindegi (Hernani)",
+    "st:1:Berastegi > Andoain sur",
+    "st:1:Berastegi > Límite Navarra (A-15)",
+    "st:1:Idiazabal norte > Olaberria",
+    "st:1:Idiazabal norte > Segura",
+    "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+    "st:1:Idiazabal sur > Segura",
+    "st:1:Ikaztegieta > Alegia",
+    "st:1:Ikaztegieta > Legorreta",
+    "st:1:Irura norte > Irura sur",
+    "st:1:Irura norte > Villabona sur",
+    "st:1:Irura sur > Irura norte",
+    "st:1:Irura sur > Tolosa norte",
+    "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+    "st:1:Lasarte-Oria sur > Andoain norte",
+    "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+    "st:1:Lazkao y Beasain > A-636",
+    "st:1:Lazkao y Beasain > Ordizia sur",
+    "st:1:Legorreta > Ikaztegieta",
+    "st:1:Legorreta > Ordizia norte",
+    "st:1:Límite Navarra (A-15) > Berastegi",
+    "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+    "st:1:Mandazubi (Hernani) > Urnieta",
+    "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+    "st:1:Martindegi (Hernani) > Astigarraga",
+    "st:1:Martindegi (Hernani) > Zikuñaga (Hernani)",
+    "st:1:Olaberria > A-636",
+    "st:1:Olaberria > Idiazabal norte",
+    "st:1:Ordizia norte > Legorreta",
+    "st:1:Ordizia norte > Ordizia sur",
+    "st:1:Ordizia sur > Lazkao y Beasain",
+    "st:1:Ordizia sur > Ordizia norte",
+    "st:1:Segura > Idiazabal norte",
+    "st:1:Segura > Idiazabal sur",
+    "st:1:Tolosa centro > Tolosa norte",
+    "st:1:Tolosa centro > Tolosa sur",
+    "st:1:Tolosa norte > Irura sur",
+    "st:1:Tolosa norte > Tolosa centro",
+    "st:1:Tolosa sur > Alegia",
+    "st:1:Tolosa sur > Tolosa centro",
+    "st:1:Urmeneta (Andoain) > Andoain norte",
+    "st:1:Urmeneta (Andoain) > Urnieta",
+    "st:1:Urnieta > Mandazubi (Hernani)",
+    "st:1:Urnieta > Urmeneta (Andoain)",
+    "st:1:Villabona norte > Andoain sur",
+    "st:1:Villabona norte > Villabona sur",
+    "st:1:Villabona sur > Irura norte",
+    "st:1:Villabona sur > Villabona norte",
+    "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+    "st:1:Zikuñaga (Hernani) > Martindegi (Hernani)"
+   ],
+   "sources": [
+    "s1",
+    "s2",
+    "s3",
+    "s4"
+   ],
+   "rates": {},
+   "pairs": [
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:A-636 > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 0.3058,
+      "c-P2": 0.3967
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 2.8017,
+      "c-P2": 3.562
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 5.4215,
+      "c-P2": 6.8926
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 6.0909,
+      "c-P2": 7.7521
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 5.7603,
+      "c-P2": 7.3306
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 2.4215,
+      "c-P2": 3.0744
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 4.2727,
+      "c-P2": 5.438
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 3.8926,
+      "c-P2": 4.9504
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 6.3802,
+      "c-P2": 8.124
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 0.5455,
+      "c-P2": 0.6942
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.0,
+      "c-P2": 2.5455
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 6.7603,
+      "c-P2": 8.6116
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 7.3471,
+      "c-P2": 9.3471
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 0.8099,
+      "c-P2": 1.0331
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 3.438,
+      "c-P2": 4.3719
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 3.0579,
+      "c-P2": 3.8843
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 6.0331,
+      "c-P2": 7.6777
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 6.4298,
+      "c-P2": 8.1901
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 5.0165,
+      "c-P2": 6.3884
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Lazkao y Beasain",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 4.4711,
+      "c-P2": 5.6942
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Olaberria",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 0.0992,
+      "c-P2": 0.124
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Olaberria",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 2.2645,
+      "c-P2": 2.8843
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Olaberria",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 0.3471,
+      "c-P2": 0.438
+     }
+    },
+    {
+     "entry": "st:1:A-636 > Olaberria",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 2.5207,
+      "c-P2": 3.2066
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 0.4215,
+      "c-P2": 0.5289
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 4.686,
+      "c-P2": 5.9587
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 0.8926,
+      "c-P2": 1.1322
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 2.4215,
+      "c-P2": 3.0744
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 1.6116,
+      "c-P2": 2.0496
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 2.7603,
+      "c-P2": 3.5207
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 1.876,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 2.1074,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Ikaztegieta",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 3.0,
+      "c-P2": 3.8182
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 3.6694,
+      "c-P2": 4.6777
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 3.3388,
+      "c-P2": 4.2479
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.8512,
+      "c-P2": 2.3636
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 4.3471,
+      "c-P2": 5.5289
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 4.9256,
+      "c-P2": 6.2727
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2975
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 0.6364,
+      "c-P2": 0.8099
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 3.6116,
+      "c-P2": 4.595
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 4.0165,
+      "c-P2": 5.1074
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 2.6033,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Alegia > Tolosa sur",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 2.0579,
+      "c-P2": 2.6116
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 0.124,
+      "c-P2": 0.1653
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 0.8017,
+      "c-P2": 1.0165
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 0.4711,
+      "c-P2": 0.595
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.0909,
+      "c-P2": 1.3884
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 2.0496,
+      "c-P2": 2.6116
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9421
+     }
+    },
+    {
+     "entry": "st:1:Andoain Cruz Roja > Andoain norte",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.1405,
+      "c-P2": 1.4545
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 5.5207,
+      "c-P2": 7.0248
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 3.4215,
+      "c-P2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 0.3967,
+      "c-P2": 0.5124
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 0.124,
+      "c-P2": 0.1653
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 3.1074,
+      "c-P2": 3.9504
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 0.9421,
+      "c-P2": 1.2066
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 3.4711,
+      "c-P2": 4.4215
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 7.686,
+      "c-P2": 9.7769
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 3.8926,
+      "c-P2": 4.9504
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 1.9835,
+      "c-P2": 2.5207
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 5.4215,
+      "c-P2": 6.8926
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 4.6116,
+      "c-P2": 5.8678
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 5.7603,
+      "c-P2": 7.3388
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 4.876,
+      "c-P2": 6.1983
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 5.1074,
+      "c-P2": 6.5041
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 6.3306,
+      "c-P2": 8.0496
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 2.6198,
+      "c-P2": 3.3306
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 2.3636,
+      "c-P2": 3.0083
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 3.0,
+      "c-P2": 3.8182
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.1488,
+      "c-P2": 1.4545
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Andoain Cruz Roja",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 0.6694,
+      "c-P2": 0.8595
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Lasarte-Oria sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 0.9669,
+      "c-P2": 1.2231
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 0.3388,
+      "c-P2": 0.4298
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 1.3471,
+      "c-P2": 1.7107
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 1.9256,
+      "c-P2": 2.4545
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 0.6116,
+      "c-P2": 0.7769
+     }
+    },
+    {
+     "entry": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 0.3967,
+      "c-P2": 0.5124
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.0744,
+      "c-P2": 1.3636
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9421
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.3636,
+      "c-P2": 1.7355
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 1.7438,
+      "c-P2": 2.2231
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 2.3223,
+      "c-P2": 2.9587
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Andoain Cruz Roja",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.4132,
+      "c-P2": 1.8017
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Berastegi",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 2.7025,
+      "c-P2": 3.438
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Berastegi",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 5.1157,
+      "c-P2": 6.5124
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 3.0165,
+      "c-P2": 3.843
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 0.5455,
+      "c-P2": 0.6942
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 7.281,
+      "c-P2": 9.2645
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 3.4876,
+      "c-P2": 4.4463
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 1.5785,
+      "c-P2": 2.0165
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 5.0165,
+      "c-P2": 6.3884
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 4.2066,
+      "c-P2": 5.3554
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 5.3636,
+      "c-P2": 6.8264
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 4.4711,
+      "c-P2": 5.6942
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 4.7107,
+      "c-P2": 5.9917
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 5.9256,
+      "c-P2": 7.5455
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 2.2149,
+      "c-P2": 2.8264
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 1.9669,
+      "c-P2": 2.4959
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 2.6033,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9504
+     }
+    },
+    {
+     "entry": "st:1:Andoain sur > Villabona norte",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 1.124,
+      "c-P2": 1.438
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 7.4463,
+      "c-P2": 9.4711
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 5.3471,
+      "c-P2": 6.8017
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 2.3223,
+      "c-P2": 2.9587
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 2.0496,
+      "c-P2": 2.6116
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 2.595,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 5.0,
+      "c-P2": 6.3719
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 2.8678,
+      "c-P2": 3.6529
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Astigarraga > Martindegi (Hernani)",
+     "rates": {
+      "c-P1": 0.4132,
+      "c-P2": 0.5289
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 5.3719,
+      "c-P2": 6.843
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 9.6033,
+      "c-P2": 12.2314
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 5.8182,
+      "c-P2": 7.405
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 3.9091,
+      "c-P2": 4.9752
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 2.8926,
+      "c-P2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 7.3471,
+      "c-P2": 9.3471
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 6.5372,
+      "c-P2": 8.314
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Mandazubi (Hernani) > Urnieta",
+     "rates": {
+      "c-P1": 1.314,
+      "c-P2": 1.6694
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Martindegi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 0.5785,
+      "c-P2": 0.7355
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 7.686,
+      "c-P2": 9.7851
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 6.8017,
+      "c-P2": 8.6529
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 7.0331,
+      "c-P2": 8.9504
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 8.2562,
+      "c-P2": 10.5041
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 4.5455,
+      "c-P2": 5.7851
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 4.2893,
+      "c-P2": 5.4628
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 4.9256,
+      "c-P2": 6.2727
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "rates": {
+      "c-P1": 1.9256,
+      "c-P2": 2.4545
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 3.4545,
+      "c-P2": 4.3967
+     }
+    },
+    {
+     "entry": "st:1:Astigarraga > Martindegi (Hernani)",
+     "exit": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 3.1074,
+      "c-P2": 3.9504
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 3.7769,
+      "c-P2": 4.8099
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 3.4215,
+      "c-P2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Berastegi > Andoain sur",
+     "rates": {
+      "c-P1": 2.7025,
+      "c-P2": 3.438
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 4.0661,
+      "c-P2": 5.1736
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 4.4215,
+      "c-P2": 5.6281
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 5.0,
+      "c-P2": 6.3719
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 3.6942,
+      "c-P2": 4.6942
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Andoain sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 4.0909,
+      "c-P2": 5.2066
+     }
+    },
+    {
+     "entry": "st:1:Berastegi > Límite Navarra (A-15)",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 0.3719,
+      "c-P2": 0.4711
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:A-636 > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 0.6529,
+      "c-P2": 0.8347
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 3.1488,
+      "c-P2": 4.0
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 5.7603,
+      "c-P2": 7.3388
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 6.438,
+      "c-P2": 8.1901
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 6.1074,
+      "c-P2": 7.7686
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Idiazabal norte > Olaberria",
+     "rates": {
+      "c-P1": 0.2479,
+      "c-P2": 0.314
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 2.7603,
+      "c-P2": 3.5207
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 4.6198,
+      "c-P2": 5.876
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 4.2397,
+      "c-P2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 6.7273,
+      "c-P2": 8.562
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 0.8926,
+      "c-P2": 1.1322
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.3471,
+      "c-P2": 2.9835
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 7.1074,
+      "c-P2": 9.0496
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 7.686,
+      "c-P2": 9.7851
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Olaberria > A-636",
+     "rates": {
+      "c-P1": 0.3471,
+      "c-P2": 0.438
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 1.876,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 1.157,
+      "c-P2": 1.4711
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 3.7851,
+      "c-P2": 4.8099
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 3.3967,
+      "c-P2": 4.3306
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 6.3802,
+      "c-P2": 8.1157
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 6.7769,
+      "c-P2": 8.6281
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 5.3636,
+      "c-P2": 6.8264
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Olaberria",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 4.8182,
+      "c-P2": 6.1322
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Segura",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 1.9174,
+      "c-P2": 2.438
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal norte > Segura",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 0.562,
+      "c-P2": 0.719
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 1.3554,
+      "c-P2": 1.7273
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:A-636 > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 3.7107,
+      "c-P2": 4.719
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 6.3306,
+      "c-P2": 8.0496
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 7.0,
+      "c-P2": 8.9091
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 6.6694,
+      "c-P2": 8.4876
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Idiazabal norte > Olaberria",
+     "rates": {
+      "c-P1": 0.8099,
+      "c-P2": 1.0331
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 5.1818,
+      "c-P2": 6.595
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 4.8017,
+      "c-P2": 6.1074
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 7.2893,
+      "c-P2": 9.281
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 1.4545,
+      "c-P2": 1.8512
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.9091,
+      "c-P2": 3.7025
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 7.6694,
+      "c-P2": 9.7686
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 8.2562,
+      "c-P2": 10.5041
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Olaberria > A-636",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 2.438,
+      "c-P2": 3.0992
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 1.719,
+      "c-P2": 2.1901
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Segura > Idiazabal norte",
+     "rates": {
+      "c-P1": 0.562,
+      "c-P2": 0.719
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 4.3471,
+      "c-P2": 5.5289
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 6.9421,
+      "c-P2": 8.8347
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 7.3388,
+      "c-P2": 9.3471
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 5.9256,
+      "c-P2": 7.5455
+     }
+    },
+    {
+     "entry": "st:1:Idiazabal sur > Segura",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 5.3802,
+      "c-P2": 6.8512
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 0.8017,
+      "c-P2": 1.0165
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 3.4215,
+      "c-P2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 4.0909,
+      "c-P2": 5.2066
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 3.7603,
+      "c-P2": 4.7851
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 0.4215,
+      "c-P2": 0.5289
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 2.2727,
+      "c-P2": 2.8926
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 1.8926,
+      "c-P2": 2.405
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 4.3802,
+      "c-P2": 5.5785
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 4.7603,
+      "c-P2": 6.0661
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 5.3471,
+      "c-P2": 6.8017
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 1.438,
+      "c-P2": 1.8264
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 1.0579,
+      "c-P2": 1.3388
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 4.0331,
+      "c-P2": 5.1322
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 4.4298,
+      "c-P2": 5.6446
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 3.0165,
+      "c-P2": 3.843
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Alegia",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 2.4711,
+      "c-P2": 3.1488
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 2.0992,
+      "c-P2": 2.6694
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 4.2645,
+      "c-P2": 5.4298
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 0.4711,
+      "c-P2": 0.6033
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 2.0,
+      "c-P2": 2.5455
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 1.1901,
+      "c-P2": 1.5124
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 2.3471,
+      "c-P2": 2.9835
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 1.4545,
+      "c-P2": 1.8512
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 1.6942,
+      "c-P2": 2.1488
+     }
+    },
+    {
+     "entry": "st:1:Ikaztegieta > Legorreta",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 2.9091,
+      "c-P2": 3.7025
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 3.9917,
+      "c-P2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.8926,
+      "c-P2": 2.405
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 6.157,
+      "c-P2": 7.8347
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 2.3636,
+      "c-P2": 3.0083
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 0.4545,
+      "c-P2": 0.5785
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 3.8926,
+      "c-P2": 4.9504
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 3.0826,
+      "c-P2": 3.9256
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 4.2397,
+      "c-P2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 3.3471,
+      "c-P2": 4.2562
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 3.5785,
+      "c-P2": 4.562
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 4.8017,
+      "c-P2": 6.1074
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 1.0909,
+      "c-P2": 1.3884
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 0.8347,
+      "c-P2": 1.0661
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Irura sur",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 2.1983,
+      "c-P2": 2.8017
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 1.8678,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 2.876,
+      "c-P2": 3.6529
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 3.4545,
+      "c-P2": 4.3967
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 2.1405,
+      "c-P2": 2.7273
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 2.5455,
+      "c-P2": 3.2314
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 1.124,
+      "c-P2": 1.438
+     }
+    },
+    {
+     "entry": "st:1:Irura norte > Villabona sur",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 0.5785,
+      "c-P2": 0.7438
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 3.843,
+      "c-P2": 4.8926
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.7438,
+      "c-P2": 2.2231
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 6.0083,
+      "c-P2": 7.6446
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 2.2149,
+      "c-P2": 2.8264
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 0.3058,
+      "c-P2": 0.3967
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 3.7438,
+      "c-P2": 4.7686
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 2.9339,
+      "c-P2": 3.7355
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 4.0909,
+      "c-P2": 5.2066
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 3.1983,
+      "c-P2": 4.0744
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 3.438,
+      "c-P2": 4.3719
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 4.6529,
+      "c-P2": 5.9256
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 0.9421,
+      "c-P2": 1.2066
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 0.6942,
+      "c-P2": 0.876
+     }
+    },
+    {
+     "entry": "st:1:Irura sur > Tolosa norte",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 1.3306,
+      "c-P2": 1.686
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 6.4793,
+      "c-P2": 8.2479
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.3802,
+      "c-P2": 5.5785
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 1.3636,
+      "c-P2": 1.7355
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 1.0909,
+      "c-P2": 1.3884
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 1.3058,
+      "c-P2": 1.6612
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 4.0661,
+      "c-P2": 5.1736
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.9091,
+      "c-P2": 2.4298
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 4.438,
+      "c-P2": 5.6446
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 8.6446,
+      "c-P2": 11.0
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 4.8512,
+      "c-P2": 6.1818
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 2.9421,
+      "c-P2": 3.7521
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 0.2893,
+      "c-P2": 0.3719
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Lasarte-Oria sur > Andoain norte",
+     "rates": {
+      "c-P1": 0.9669,
+      "c-P2": 1.2231
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 6.3802,
+      "c-P2": 8.124
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 5.5702,
+      "c-P2": 7.0909
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 2.3058,
+      "c-P2": 2.9421
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 2.8926,
+      "c-P2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 6.7273,
+      "c-P2": 8.562
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 5.8347,
+      "c-P2": 7.4298
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 6.0744,
+      "c-P2": 7.7273
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 7.2893,
+      "c-P2": 9.281
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 3.5785,
+      "c-P2": 4.562
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 1.5785,
+      "c-P2": 2.0083
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.9752,
+      "c-P2": 2.5207
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 2.1074,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria centro y norte > Lasarte-Oria sur",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 6.1901,
+      "c-P2": 7.876
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.0909,
+      "c-P2": 5.2066
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 1.0744,
+      "c-P2": 1.3636
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 0.8017,
+      "c-P2": 1.0165
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 3.7769,
+      "c-P2": 4.8099
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.6198,
+      "c-P2": 2.0579
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 4.1488,
+      "c-P2": 5.281
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 8.3554,
+      "c-P2": 10.6364
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 4.562,
+      "c-P2": 5.8099
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 2.6529,
+      "c-P2": 3.3802
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Lasarte-Oria sur > Andoain norte",
+     "rates": {
+      "c-P1": 0.6694,
+      "c-P2": 0.8595
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 6.0909,
+      "c-P2": 7.7521
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 5.281,
+      "c-P2": 6.719
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 2.0165,
+      "c-P2": 2.5702
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 2.595,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 6.438,
+      "c-P2": 8.1901
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 5.5455,
+      "c-P2": 7.0579
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 5.7851,
+      "c-P2": 7.3554
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 7.0,
+      "c-P2": 8.9091
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 3.2893,
+      "c-P2": 4.1901
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 3.0331,
+      "c-P2": 3.8678
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 3.6694,
+      "c-P2": 4.6777
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 1.2893,
+      "c-P2": 1.6364
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.686,
+      "c-P2": 2.1488
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.8182,
+      "c-P2": 2.314
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Andoain norte",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 2.1983,
+      "c-P2": 2.8017
+     }
+    },
+    {
+     "entry": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 0.2893,
+      "c-P2": 0.3719
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > A-636",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 0.4132,
+      "c-P2": 0.5207
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > A-636",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 2.5702,
+      "c-P2": 3.2727
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > A-636",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 0.3058,
+      "c-P2": 0.3967
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > A-636",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 0.6529,
+      "c-P2": 0.8347
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > A-636",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 5.1074,
+      "c-P2": 6.5041
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 5.7851,
+      "c-P2": 7.3554
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 5.4463,
+      "c-P2": 6.9339
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 2.1074,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 3.5785,
+      "c-P2": 4.562
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 6.0744,
+      "c-P2": 7.7273
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 0.2397,
+      "c-P2": 0.2975
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.6942,
+      "c-P2": 2.1488
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 6.4545,
+      "c-P2": 8.2149
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 7.0331,
+      "c-P2": 8.9504
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 0.5041,
+      "c-P2": 0.6364
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 3.124,
+      "c-P2": 3.9835
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 2.7438,
+      "c-P2": 3.4959
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 5.719,
+      "c-P2": 7.281
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 6.124,
+      "c-P2": 7.7934
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 4.7107,
+      "c-P2": 5.9917
+     }
+    },
+    {
+     "entry": "st:1:Lazkao y Beasain > Ordizia sur",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 4.1653,
+      "c-P2": 5.2975
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 1.2727,
+      "c-P2": 1.6198
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 3.8926,
+      "c-P2": 4.9504
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 4.562,
+      "c-P2": 5.8099
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 4.2314,
+      "c-P2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 0.8926,
+      "c-P2": 1.1322
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 2.7438,
+      "c-P2": 3.4959
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 2.3636,
+      "c-P2": 3.0083
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 4.8512,
+      "c-P2": 6.1818
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 0.4711,
+      "c-P2": 0.6033
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 5.2397,
+      "c-P2": 6.6612
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 5.8182,
+      "c-P2": 7.405
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 1.9091,
+      "c-P2": 2.4298
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 4.5041,
+      "c-P2": 5.7355
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 4.9091,
+      "c-P2": 6.2397
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 3.4876,
+      "c-P2": 4.4463
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ikaztegieta",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 2.9421,
+      "c-P2": 3.7521
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 1.6281,
+      "c-P2": 2.0744
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 3.7934,
+      "c-P2": 4.8264
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 0.719,
+      "c-P2": 0.9174
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 1.876,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 0.9835,
+      "c-P2": 1.2479
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Legorreta > Ordizia norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 2.438,
+      "c-P2": 3.0992
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 3.4711,
+      "c-P2": 4.4215
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 4.1488,
+      "c-P2": 5.281
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 3.7851,
+      "c-P2": 4.8264
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Berastegi > Andoain sur",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 4.438,
+      "c-P2": 5.6446
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Límite Navarra (A-15) > Berastegi",
+     "rates": {
+      "c-P1": 0.3719,
+      "c-P2": 0.4711
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 4.7934,
+      "c-P2": 6.0992
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 5.3719,
+      "c-P2": 6.843
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 4.0579,
+      "c-P2": 5.1736
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (A-15) > Berastegi",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 4.4628,
+      "c-P2": 5.6777
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:A-636 > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 2.5702,
+      "c-P2": 3.2727
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 5.0661,
+      "c-P2": 6.4463
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 7.686,
+      "c-P2": 9.7769
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 8.3554,
+      "c-P2": 10.6364
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 8.0248,
+      "c-P2": 10.2066
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Idiazabal norte > Olaberria",
+     "rates": {
+      "c-P1": 2.1653,
+      "c-P2": 2.7521
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 4.686,
+      "c-P2": 5.9587
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 6.5372,
+      "c-P2": 8.3223
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 6.157,
+      "c-P2": 7.8347
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 8.6446,
+      "c-P2": 11.0
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 2.8099,
+      "c-P2": 3.5785
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.2645,
+      "c-P2": 5.4298
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "rates": {
+      "c-P1": 1.3554,
+      "c-P2": 1.7273
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 9.0248,
+      "c-P2": 11.4876
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 9.6033,
+      "c-P2": 12.2314
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Olaberria > A-636",
+     "rates": {
+      "c-P1": 2.2645,
+      "c-P2": 2.8843
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 3.7934,
+      "c-P2": 4.8264
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Segura > Idiazabal norte",
+     "rates": {
+      "c-P1": 1.9174,
+      "c-P2": 2.438
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 5.7025,
+      "c-P2": 7.2562
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 5.3223,
+      "c-P2": 6.7686
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 8.2975,
+      "c-P2": 10.5537
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 8.6942,
+      "c-P2": 11.0661
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 7.281,
+      "c-P2": 9.2645
+     }
+    },
+    {
+     "entry": "st:1:Límite Navarra (Etzegarate) > Idiazabal sur",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 6.7355,
+      "c-P2": 8.5702
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 6.5289,
+      "c-P2": 8.314
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.4298,
+      "c-P2": 5.6446
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 1.4132,
+      "c-P2": 1.8017
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 1.1405,
+      "c-P2": 1.4545
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.686,
+      "c-P2": 2.1488
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 4.0909,
+      "c-P2": 5.2066
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.9587,
+      "c-P2": 2.4959
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 4.4628,
+      "c-P2": 5.6777
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 8.6942,
+      "c-P2": 11.0661
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 4.9091,
+      "c-P2": 6.2397
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 3.0,
+      "c-P2": 3.8099
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.9752,
+      "c-P2": 2.5207
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 6.4298,
+      "c-P2": 8.1901
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 5.6198,
+      "c-P2": 7.157
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Mandazubi (Hernani) > Urnieta",
+     "rates": {
+      "c-P1": 0.405,
+      "c-P2": 0.5124
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 6.7769,
+      "c-P2": 8.6281
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 5.8843,
+      "c-P2": 7.4959
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 6.124,
+      "c-P2": 7.7934
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 7.3388,
+      "c-P2": 9.3471
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 3.6364,
+      "c-P2": 4.6198
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 3.3802,
+      "c-P2": 4.2975
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 4.0165,
+      "c-P2": 5.1074
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 2.157,
+      "c-P2": 2.7521
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Urnieta",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 2.5455,
+      "c-P2": 3.2314
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 0.3306,
+      "c-P2": 0.4215
+     }
+    },
+    {
+     "entry": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Martindegi (Hernani) > Astigarraga",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 0.4132,
+      "c-P2": 0.5289
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:A-636 > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 0.4132,
+      "c-P2": 0.5207
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 2.9008,
+      "c-P2": 3.6942
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 5.5207,
+      "c-P2": 7.0248
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 6.1901,
+      "c-P2": 7.876
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 5.8595,
+      "c-P2": 7.4545
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 2.5207,
+      "c-P2": 3.2066
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 4.3719,
+      "c-P2": 5.562
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 3.9917,
+      "c-P2": 5.0826
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 6.4793,
+      "c-P2": 8.2479
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Lazkao y Beasain > Ordizia sur",
+     "rates": {
+      "c-P1": 0.6446,
+      "c-P2": 0.8182
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.0992,
+      "c-P2": 2.6694
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 6.8595,
+      "c-P2": 8.7355
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 7.4463,
+      "c-P2": 9.4711
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Olaberria > A-636",
+     "rates": {
+      "c-P1": 0.0992,
+      "c-P2": 0.124
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 1.6281,
+      "c-P2": 2.0744
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 3.5372,
+      "c-P2": 4.5041
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 3.157,
+      "c-P2": 4.0165
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 6.1322,
+      "c-P2": 7.8017
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 6.5289,
+      "c-P2": 8.314
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 5.1157,
+      "c-P2": 6.5124
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > A-636",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 4.5702,
+      "c-P2": 5.8182
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > Idiazabal norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 2.1653,
+      "c-P2": 2.7521
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > Idiazabal norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 0.2479,
+      "c-P2": 0.314
+     }
+    },
+    {
+     "entry": "st:1:Olaberria > Idiazabal norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 0.8099,
+      "c-P2": 1.0331
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 1.9917,
+      "c-P2": 2.5372
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 4.6116,
+      "c-P2": 5.8678
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 5.281,
+      "c-P2": 6.719
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 4.9504,
+      "c-P2": 6.2975
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 1.6116,
+      "c-P2": 2.0496
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 3.4628,
+      "c-P2": 4.405
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 3.0826,
+      "c-P2": 3.9256
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 5.5702,
+      "c-P2": 7.0909
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.1901,
+      "c-P2": 1.5124
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 5.9504,
+      "c-P2": 7.5785
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 6.5372,
+      "c-P2": 8.314
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 0.719,
+      "c-P2": 0.9174
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 2.6281,
+      "c-P2": 3.3471
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 2.2479,
+      "c-P2": 2.8595
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 5.2231,
+      "c-P2": 6.6446
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 5.6198,
+      "c-P2": 7.157
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 4.2066,
+      "c-P2": 5.3554
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Legorreta",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 3.6612,
+      "c-P2": 4.6612
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 0.9091,
+      "c-P2": 1.157
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 0.8099,
+      "c-P2": 1.0331
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 1.157,
+      "c-P2": 1.4711
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 0.2645,
+      "c-P2": 0.3388
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 0.5041,
+      "c-P2": 0.6364
+     }
+    },
+    {
+     "entry": "st:1:Ordizia norte > Ordizia sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 1.719,
+      "c-P2": 2.1901
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 0.6446,
+      "c-P2": 0.8182
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 2.8099,
+      "c-P2": 3.5785
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 0.5455,
+      "c-P2": 0.6942
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 0.8926,
+      "c-P2": 1.1322
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 0.2397,
+      "c-P2": 0.2975
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Lazkao y Beasain",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 1.4545,
+      "c-P2": 1.8512
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Alegia > Tolosa sur",
+     "rates": {
+      "c-P1": 2.2562,
+      "c-P2": 2.8678
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 4.876,
+      "c-P2": 6.1983
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 5.5455,
+      "c-P2": 7.0579
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 5.2149,
+      "c-P2": 6.6364
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Ikaztegieta > Alegia",
+     "rates": {
+      "c-P1": 1.876,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 3.7273,
+      "c-P2": 4.7438
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 3.3471,
+      "c-P2": 4.2562
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 5.8347,
+      "c-P2": 7.4298
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Legorreta > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.4545,
+      "c-P2": 1.8512
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 6.2149,
+      "c-P2": 7.9174
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 6.8017,
+      "c-P2": 8.6529
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Ordizia norte > Legorreta",
+     "rates": {
+      "c-P1": 0.9835,
+      "c-P2": 1.2479
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Ordizia sur > Ordizia norte",
+     "rates": {
+      "c-P1": 0.2645,
+      "c-P2": 0.3388
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 2.8926,
+      "c-P2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 2.5124,
+      "c-P2": 3.1901
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 5.4876,
+      "c-P2": 6.9835
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 5.8843,
+      "c-P2": 7.4959
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 4.4711,
+      "c-P2": 5.6942
+     }
+    },
+    {
+     "entry": "st:1:Ordizia sur > Ordizia norte",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 3.9256,
+      "c-P2": 5.0
+     }
+    },
+    {
+     "entry": "st:1:Segura > Idiazabal sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 1.686,
+      "c-P2": 2.1405
+     }
+    },
+    {
+     "entry": "st:1:Segura > Idiazabal sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 0.3306,
+      "c-P2": 0.4132
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 2.3636,
+      "c-P2": 3.0083
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 3.0331,
+      "c-P2": 3.8678
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 2.7025,
+      "c-P2": 3.438
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 0.8347,
+      "c-P2": 1.0661
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 3.7107,
+      "c-P2": 4.719
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 4.2893,
+      "c-P2": 5.4628
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 2.9752,
+      "c-P2": 3.7851
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 3.3802,
+      "c-P2": 4.2975
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 1.9669,
+      "c-P2": 2.4959
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa norte",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.4215,
+      "c-P2": 1.8017
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 3.157,
+      "c-P2": 4.0165
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.0579,
+      "c-P2": 1.3388
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 5.3223,
+      "c-P2": 6.7686
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 1.5289,
+      "c-P2": 1.9421
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 3.0579,
+      "c-P2": 3.8843
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 2.2479,
+      "c-P2": 2.8595
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 3.3967,
+      "c-P2": 4.3306
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 2.5124,
+      "c-P2": 3.1901
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 2.7438,
+      "c-P2": 3.4959
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 0.2562,
+      "c-P2": 0.3223
+     }
+    },
+    {
+     "entry": "st:1:Tolosa centro > Tolosa sur",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 0.6364,
+      "c-P2": 0.8099
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 1.9835,
+      "c-P2": 2.5207
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 2.6529,
+      "c-P2": 3.3802
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 2.3223,
+      "c-P2": 2.9587
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 0.8347,
+      "c-P2": 1.0661
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 0.4545,
+      "c-P2": 0.5785
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 2.9421,
+      "c-P2": 3.7521
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 3.9091,
+      "c-P2": 4.9752
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 2.595,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 3.0,
+      "c-P2": 3.8099
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 1.5785,
+      "c-P2": 2.0165
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Irura sur",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.0331,
+      "c-P2": 1.3223
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 3.5372,
+      "c-P2": 4.5041
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 1.438,
+      "c-P2": 1.8264
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 5.7025,
+      "c-P2": 7.2562
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 1.9091,
+      "c-P2": 2.4298
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 3.438,
+      "c-P2": 4.3719
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 2.6281,
+      "c-P2": 3.3471
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 3.7851,
+      "c-P2": 4.8099
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 2.8926,
+      "c-P2": 3.6777
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 3.124,
+      "c-P2": 3.9835
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 4.3471,
+      "c-P2": 5.5289
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 0.6364,
+      "c-P2": 0.8099
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Tolosa norte > Tolosa centro",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2975
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 2.9008,
+      "c-P2": 3.6942
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 0.8017,
+      "c-P2": 1.0165
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 5.0661,
+      "c-P2": 6.4463
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 1.2727,
+      "c-P2": 1.6198
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 2.8017,
+      "c-P2": 3.562
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 1.9917,
+      "c-P2": 2.5372
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 3.1488,
+      "c-P2": 4.0
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 2.2562,
+      "c-P2": 2.8678
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 3.7107,
+      "c-P2": 4.719
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Alegia",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 2.6198,
+      "c-P2": 3.3306
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 3.2893,
+      "c-P2": 4.1901
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 2.9587,
+      "c-P2": 3.7686
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Irura norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Irura sur > Irura norte",
+     "rates": {
+      "c-P1": 1.0909,
+      "c-P2": 1.3884
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 3.5785,
+      "c-P2": 4.562
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 4.5455,
+      "c-P2": 5.7851
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Tolosa centro > Tolosa norte",
+     "rates": {
+      "c-P1": 0.6364,
+      "c-P2": 0.8099
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Tolosa sur > Tolosa centro",
+     "rates": {
+      "c-P1": 0.2562,
+      "c-P2": 0.3223
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 3.2314,
+      "c-P2": 4.1157
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 3.6364,
+      "c-P2": 4.6198
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 2.2149,
+      "c-P2": 2.8264
+     }
+    },
+    {
+     "entry": "st:1:Tolosa sur > Tolosa centro",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.6694,
+      "c-P2": 2.1322
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 5.8595,
+      "c-P2": 7.4545
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 3.7603,
+      "c-P2": 4.7851
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9421
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 0.4711,
+      "c-P2": 0.595
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 3.4215,
+      "c-P2": 4.3471
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.2893,
+      "c-P2": 1.6364
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 3.7851,
+      "c-P2": 4.8264
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 8.0248,
+      "c-P2": 10.2066
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 4.2314,
+      "c-P2": 5.3884
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 2.3223,
+      "c-P2": 2.9587
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.3058,
+      "c-P2": 1.6612
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 5.7603,
+      "c-P2": 7.3306
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 4.9504,
+      "c-P2": 6.2975
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 6.1074,
+      "c-P2": 7.7686
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 5.2149,
+      "c-P2": 6.6364
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 5.4463,
+      "c-P2": 6.9339
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 6.6694,
+      "c-P2": 8.4876
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 2.9587,
+      "c-P2": 3.7686
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 2.7025,
+      "c-P2": 3.438
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 3.3388,
+      "c-P2": 4.2479
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "rates": {
+      "c-P1": 0.3388,
+      "c-P2": 0.4298
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.4876,
+      "c-P2": 1.8926
+     }
+    },
+    {
+     "entry": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 1.8678,
+      "c-P2": 2.3802
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Mandazubi (Hernani)",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 0.7355,
+      "c-P2": 0.9339
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Mandazubi (Hernani)",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 1.314,
+      "c-P2": 1.6694
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Mandazubi (Hernani)",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 0.405,
+      "c-P2": 0.5124
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 6.1322,
+      "c-P2": 7.8017
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.0331,
+      "c-P2": 5.1322
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 1.0165,
+      "c-P2": 1.2893
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9421
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.2893,
+      "c-P2": 1.6364
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 3.6942,
+      "c-P2": 4.6942
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 1.562,
+      "c-P2": 1.9835
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 4.0579,
+      "c-P2": 5.1736
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 8.2975,
+      "c-P2": 10.5537
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 4.5041,
+      "c-P2": 5.7355
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 2.595,
+      "c-P2": 3.3058
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.5785,
+      "c-P2": 2.0083
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 6.0331,
+      "c-P2": 7.6777
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 5.2231,
+      "c-P2": 6.6446
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 6.3802,
+      "c-P2": 8.1157
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 5.4876,
+      "c-P2": 6.9835
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 5.719,
+      "c-P2": 7.281
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 6.9421,
+      "c-P2": 8.8347
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 3.2314,
+      "c-P2": 4.1157
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 2.9752,
+      "c-P2": 3.7851
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 3.6116,
+      "c-P2": 4.595
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "rates": {
+      "c-P1": 0.6116,
+      "c-P2": 0.7769
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 1.7603,
+      "c-P2": 2.2397
+     }
+    },
+    {
+     "entry": "st:1:Urnieta > Urmeneta (Andoain)",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 2.1405,
+      "c-P2": 2.7273
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 0.9421,
+      "c-P2": 1.2066
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.6198,
+      "c-P2": 2.0579
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 1.2893,
+      "c-P2": 1.6364
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 1.9091,
+      "c-P2": 2.4298
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 2.2893,
+      "c-P2": 2.9174
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 2.8678,
+      "c-P2": 3.6529
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 1.562,
+      "c-P2": 1.9835
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 1.9587,
+      "c-P2": 2.4959
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Andoain sur",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 0.5455,
+      "c-P2": 0.6942
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 4.5702,
+      "c-P2": 5.8182
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.4711,
+      "c-P2": 3.1488
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 6.7355,
+      "c-P2": 8.5702
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 2.9421,
+      "c-P2": 3.7521
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 1.0331,
+      "c-P2": 1.3223
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 4.4711,
+      "c-P2": 5.6942
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 3.6612,
+      "c-P2": 4.6612
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 4.8182,
+      "c-P2": 6.1322
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 3.9256,
+      "c-P2": 5.0
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 4.1653,
+      "c-P2": 5.2975
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 5.3802,
+      "c-P2": 6.8512
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 1.6694,
+      "c-P2": 2.1322
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 1.4215,
+      "c-P2": 1.8017
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 2.0579,
+      "c-P2": 2.6116
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 0.1983,
+      "c-P2": 0.2562
+     }
+    },
+    {
+     "entry": "st:1:Villabona norte > Villabona sur",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 0.5785,
+      "c-P2": 0.7438
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 4.3719,
+      "c-P2": 5.562
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 2.2727,
+      "c-P2": 2.8926
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 6.5372,
+      "c-P2": 8.3223
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 2.7438,
+      "c-P2": 3.4959
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 0.8347,
+      "c-P2": 1.0661
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 4.2727,
+      "c-P2": 5.438
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 3.4628,
+      "c-P2": 4.405
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 4.6198,
+      "c-P2": 5.876
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 3.7273,
+      "c-P2": 4.7438
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 5.1818,
+      "c-P2": 6.595
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 1.2149,
+      "c-P2": 1.5537
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 1.8512,
+      "c-P2": 2.3636
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Irura norte",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 0.3802,
+      "c-P2": 0.4876
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Andoain Cruz Roja > Andoain norte",
+     "rates": {
+      "c-P1": 1.1488,
+      "c-P2": 1.4545
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 1.8182,
+      "c-P2": 2.314
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Andoain norte > Urmeneta (Andoain)",
+     "rates": {
+      "c-P1": 1.4876,
+      "c-P2": 1.8926
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 2.1074,
+      "c-P2": 2.686
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Mandazubi (Hernani) > Zikuñaga (Hernani)",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 3.0744,
+      "c-P2": 3.9091
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Urmeneta (Andoain) > Urnieta",
+     "rates": {
+      "c-P1": 1.7603,
+      "c-P2": 2.2397
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Urnieta > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 2.157,
+      "c-P2": 2.7521
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Villabona norte > Andoain sur",
+     "rates": {
+      "c-P1": 0.7438,
+      "c-P2": 0.9504
+     }
+    },
+    {
+     "entry": "st:1:Villabona sur > Villabona norte",
+     "exit": "st:1:Villabona sur > Villabona norte",
+     "rates": {
+      "c-P1": 0.1983,
+      "c-P2": 0.2562
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:A-636 > Olaberria",
+     "rates": {
+      "c-P1": 6.8595,
+      "c-P2": 8.7355
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Alegia > Ikaztegieta",
+     "rates": {
+      "c-P1": 4.7603,
+      "c-P2": 6.0661
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Andoain Cruz Roja > Andoain sur",
+     "rates": {
+      "c-P1": 1.7438,
+      "c-P2": 2.2231
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Andoain norte > Andoain Cruz Roja",
+     "rates": {
+      "c-P1": 1.4711,
+      "c-P2": 1.876
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Andoain norte > Lasarte-Oria sur",
+     "rates": {
+      "c-P1": 2.0165,
+      "c-P2": 2.5702
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Andoain sur > Berastegi",
+     "rates": {
+      "c-P1": 4.4215,
+      "c-P2": 5.6281
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Andoain sur > Villabona norte",
+     "rates": {
+      "c-P1": 2.2893,
+      "c-P2": 2.9174
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Berastegi > Límite Navarra (A-15)",
+     "rates": {
+      "c-P1": 4.7934,
+      "c-P2": 6.0992
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Idiazabal sur > Límite Navarra (Etzegarate)",
+     "rates": {
+      "c-P1": 9.0248,
+      "c-P2": 11.4876
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Ikaztegieta > Legorreta",
+     "rates": {
+      "c-P1": 5.2397,
+      "c-P2": 6.6612
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Irura sur > Tolosa norte",
+     "rates": {
+      "c-P1": 3.3306,
+      "c-P2": 4.2314
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Lasarte-Oria sur > Lasarte-Oria centro y norte",
+     "rates": {
+      "c-P1": 2.3058,
+      "c-P2": 2.9421
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Lazkao y Beasain > A-636",
+     "rates": {
+      "c-P1": 6.7603,
+      "c-P2": 8.6116
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Legorreta > Ordizia norte",
+     "rates": {
+      "c-P1": 5.9504,
+      "c-P2": 7.5785
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Mandazubi (Hernani) > Urnieta",
+     "rates": {
+      "c-P1": 0.7355,
+      "c-P2": 0.9339
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Olaberria > Idiazabal norte",
+     "rates": {
+      "c-P1": 7.1074,
+      "c-P2": 9.0496
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Ordizia norte > Ordizia sur",
+     "rates": {
+      "c-P1": 6.2149,
+      "c-P2": 7.9174
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Ordizia sur > Lazkao y Beasain",
+     "rates": {
+      "c-P1": 6.4545,
+      "c-P2": 8.2149
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Segura > Idiazabal sur",
+     "rates": {
+      "c-P1": 7.6694,
+      "c-P2": 9.7686
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Tolosa centro > Tolosa sur",
+     "rates": {
+      "c-P1": 3.9669,
+      "c-P2": 5.0413
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Tolosa norte > Tolosa centro",
+     "rates": {
+      "c-P1": 3.7107,
+      "c-P2": 4.719
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Tolosa sur > Alegia",
+     "rates": {
+      "c-P1": 4.3471,
+      "c-P2": 5.5289
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Urmeneta (Andoain) > Andoain norte",
+     "rates": {
+      "c-P1": 1.3471,
+      "c-P2": 1.7107
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Villabona norte > Villabona sur",
+     "rates": {
+      "c-P1": 2.4876,
+      "c-P2": 3.1736
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Villabona sur > Irura norte",
+     "rates": {
+      "c-P1": 2.876,
+      "c-P2": 3.6529
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "exit": "st:1:Zikuñaga (Hernani) > Mandazubi (Hernani)",
+     "rates": {
+      "c-P1": 0.3306,
+      "c-P2": 0.4215
+     }
+    },
+    {
+     "entry": "st:1:Zikuñaga (Hernani) > Martindegi (Hernani)",
+     "exit": "st:1:Martindegi (Hernani) > Astigarraga",
+     "rates": {
+      "c-P1": 0.5785,
+      "c-P2": 0.7355
+     }
+    }
+   ],
+   "pairing": "single_ticket",
+   "method": "Norma Foral 5/2021 (Gipuzkoa): by entry and exit, per direction.",
+   "directed": true
+  }
+ ],
+ "tax": {
+  "included": null,
+  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
+ },
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "complete"
+  }
+ ],
+ "modifiers": [
+  {
+   "kind": "discount",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "name": "EURO 6 (80%)",
+    "percent": 20,
+    "payment": "electronic",
+    "euro": [
+     6
+    ]
+   }
+  },
+  {
+   "kind": "discount",
+   "applies_to": [
+    "system:1"
+   ],
+   "params": {
+    "name": "EURO 5 (85%)",
+    "percent": 15,
+    "payment": "electronic",
+    "euro": [
+     5
+    ]
+   }
+  }
+ ],
+ "extensions": {
+  "x-carbon-cost": {
+   "crossings": true,
+   "osm_extract": "2026-11-13"
+  }
+ }
+}
