@@ -10,7 +10,7 @@ import json
 import re
 import sys
 from datetime import date, datetime, timedelta
-from decimal import ROUND_CEILING, ROUND_DOWN, ROUND_FLOOR, ROUND_HALF_EVEN, ROUND_HALF_UP, ROUND_UP, Decimal
+from decimal import ROUND_DOWN, ROUND_HALF_EVEN, ROUND_HALF_UP, ROUND_UP, Decimal
 from zoneinfo import ZoneInfo
 
 IMPLEMENTED = {"type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
@@ -38,11 +38,11 @@ def easter(y):
 
 
 class Unknown(Exception):
-    """A value the data or the usage doesn't give (8.9); kind is "vehicle" or "time"."""
+    """Something the data or the usage does not decide (8.9). code is the issue code of 9.2."""
 
-    def __init__(self, message, kind="vehicle"):
+    def __init__(self, message, code="missing_parameter"):
         super().__init__(message)
-        self.kind = kind
+        self.code = code
 
 
 class Dataset:
@@ -83,37 +83,51 @@ class Dataset:
 
     # 6.7 time classes --------------------------------------------------------
     def day_in(self, sel, d):
+        """True, False, or None when it needs a calendar past its covers_to (6.7, three-valued)."""
         if "weekdays" in sel and d.isoweekday() not in sel["weekdays"]:
             return False
         if "months" in sel and d.month not in sel["months"]:
             return False
-        sets = [k for k in ("dates", "date_ranges", "easter", "calendars") if k in sel]
-        if sets:
+        result = True
+        if any(k in sel for k in ("dates", "date_ranges", "easter", "calendars")):
             md, iso = d.strftime("%m-%d"), d.isoformat()
             hit = any(x == md or x == iso for x in sel.get("dates", []))
             for a, b in sel.get("date_ranges", []):
                 if len(a) == 5:
-                    hit |= (a <= md <= b) if a <= b else (md >= a or md <= b)
+                    hit = hit or ((a <= md <= b) if a <= b else (md >= a or md <= b))
                 else:
-                    hit |= a <= iso <= b
+                    hit = hit or a <= iso <= b
             for a, b in sel.get("easter", []):
-                hit |= a <= (d - easter(d.year)).days <= b
+                hit = hit or a <= (d - easter(d.year)).days <= b
+            unknown = False
             for cid in sel.get("calendars", []):
                 cal = self.calendars[cid]
                 if iso > cal["covers_to"]:
-                    raise Unknown(f"calendar {cid} is complete only to {cal['covers_to']}", "time")
-                hit |= iso in cal["dates"]
-            if not hit:
-                return False
-        return not ("exclude" in sel and self.day_in(sel["exclude"], d))
+                    unknown = True
+                else:
+                    hit = hit or iso in cal["dates"]
+            result = True if hit else (None if unknown else False)
+        if result is False or "exclude" not in sel:
+            return result
+        ex = self.day_in(sel["exclude"], d)
+        if ex is True:
+            return False
+        return None if ex is None else result
 
     def day_selected(self, tc, d):
-        return not tc.get("days") or any(self.day_in(s, d) for s in tc["days"])
+        if not tc.get("days"):
+            return True
+        results = [self.day_in(s, d) for s in tc["days"]]
+        if True in results:
+            return True
+        if None in results:
+            raise Unknown(f"time class {tc['id']} needs a calendar past its covers_to for {d}", "unknown_time_class")
+        return False
 
     def in_time_class(self, tid, t):
         tc = self.times[tid]
         if tc.get("defined") is False:
-            raise Unknown(f"time class {tid} is not defined", "time")
+            raise Unknown(f"time class {tid} is not defined", "unknown_time_class")
         hm = t.strftime("%H:%M")
         if not tc.get("times"):
             return self.day_selected(tc, t.date())
@@ -134,7 +148,7 @@ def meets(criteria, vehicle):
     """True or False; raises Unknown when no condition fails but a tested parameter is missing (6.6.2)."""
     result, missing = _meets(criteria, vehicle)
     if result is None:
-        raise Unknown(f"vehicle parameter {missing} is missing", "vehicle")
+        raise Unknown(f"vehicle parameter {missing} is missing", "missing_parameter")
     return result
 
 
@@ -198,11 +212,11 @@ class Calc:
 
     # 6.10.3 row selection --------------------------------------------------------
     def select(self, ds, ch, use, vclass, held):
-        """use: {object|entry|exit, time, product}. Returns (row index, row) or None.
+        """use: {object|entry|exit, time, product}. Returns (row index, row), or None when no row matches.
 
-        A row with an unknown key (missing vehicle parameter, undefined time class) is only
-        a problem if it would have been selected (8.9): then a missing vehicle parameter
-        makes the use unpriced, and an unknown time class makes the result incomplete."""
+        Raises Unknown when a row whose key can't be decided (a missing vehicle parameter, an undefined
+        time class, a calendar past its covers_to) would rank at or above the best decided row, or when
+        the best rows tie (6.10.3): the use is then unpriced, never guessed."""
         cols = ch["columns"]
         cands = []
         for n, r in enumerate(ch["rows"]):
@@ -245,20 +259,18 @@ class Calc:
             if ok:
                 cands.append(((-(row.get("priority") or 0), ranks), n, row, unknown))
         known = sorted((c for c in cands if c[3] is None), key=lambda c: c[0])
-        best = None
-        if known:
-            top = [c for c in known if c[0] == known[0][0]]
-            if len(top) > 1 and not all(c[2].get("user_class") for c in top):
-                self.issue("ambiguous_rows", f"rows {[c[1] for c in top]} tie", ds.id, ch["id"])
-            pick = min(top, key=lambda c: Decimal(c[2]["amount"]))
-            best = (pick[1], pick[2])
         for key, n, row, unk in cands:
             if unk is not None and (not known or key <= known[0][0]):
-                if unk.kind == "vehicle":
-                    raise unk
-                self.issue("unknown_time_class", str(unk), ds.id, ch["id"])
-                break
-        return best
+                raise unk
+        if not known:
+            return None
+        top = [c for c in known if c[0] == known[0][0]]
+        if len(top) > 1:
+            others = {tuple((k, v) for k, v in c[2].items() if k not in ("user_class", "amount")) for c in top}
+            if len(others) > 1:
+                raise Unknown(f"rows {[c[1] for c in top]} tie", "ambiguous_rows")
+        pick = min(top, key=lambda c: (Decimal(c[2]["amount"]), c[1]))
+        return pick[1], pick[2]
 
     # 8.4 uses per charge type ------------------------------------------------------
     def charge_objects(self, ds, ch):
@@ -269,6 +281,7 @@ class Calc:
         return objs
 
     def uses(self, ds, ch, events):
+        """The uses of a charge (8.4): (use, quantity, objects, event), or ("day"/"period", ...) groups."""
         objs = self.charge_objects(ds, ch)
         mine = [e for e in events if set(ds.ancestors(e["object"])) & objs]
         t = ch["type"]
@@ -277,17 +290,21 @@ class Calc:
             for e in mine:
                 q = Decimal(1)
                 if t == "distance":
-                    q = Decimal(str(e.get("km", 0)))
+                    if e.get("km") is None:
+                        out.append(Unknown(f"event on {e['object']} at {e['time']} has no km", "missing_km"))
+                        continue
+                    q = Decimal(str(e["km"]))
                     if ch["unit"] == "tkm":
-                        mass = self.vehicle.get(ch.get("mass_basis", "train_mass_kg"))
+                        basis = ch.get("mass_basis", "train_mass_kg")
+                        mass = self.vehicle.get(basis)
                         if mass is None:
-                            raise Unknown(f"vehicle parameter {ch.get('mass_basis', 'train_mass_kg')} is missing")
+                            raise Unknown(f"vehicle parameter {basis} is missing", "missing_parameter")
                         cap = ch.get("mass_cap_kg") or mass
                         q = q * Decimal(min(mass, cap)) / 1000
                 elif t == "section" and ch["unit"] == "km":
                     km = ds.objects[e["object"]].get("length_km")
                     if km is None:
-                        raise Unknown(f"section {e['object']} has no official length")
+                        raise Unknown(f"section {e['object']} has no official length", "unpriced")
                     q = Decimal(str(km))
                 out.append(({"object": e["object"], "time": ds.local(e["time"])}, q, [e["object"]], e))
             return out
@@ -307,12 +324,12 @@ class Calc:
             return [("period", sorted({ds.local(e["time"]).date() for e in mine}), mine)]
         if t == "quantity":
             return [({"object": q["object"], "time": ds.local(q["time"])}, Decimal(q["value"]), [q["object"]], q)
-                    for q in self.usage.get("quantities", []) if q["dataset"] == ds.id and q["object"] in objs
-                    and q["unit"] == ch["unit"]
+                    for q in self._quantities if q["object"] in objs and q["unit"] == ch["unit"]
                     and ch.get("valid_from", "0000") <= ds.local(q["time"]).date().isoformat() <= ch.get("valid_to", "9999-12-31")]
         return []
 
     def od_uses(self, ds, ch, events):
+        """8.4 od: trips from entry to exit; single_ticket prices first to last, chain splits into tickets."""
         events = sorted(events, key=lambda e: e["time"])
         trips, cur = [], []
         for e in events:
@@ -328,17 +345,22 @@ class Calc:
         out = []
         for trip in trips:
             pairs = [(trip[0], trip[-1])]
-            if ch.get("pairing") == "chain":
+            if ch.get("pairing") == "chain" and len(trip) > 1:
                 pairs, i = [], 0
-                while i < len(trip):
-                    j = next((j for j in range(len(trip) - 1, i - 1, -1) if self.priced(ds, ch, trip[i], trip[j])), None)
-                    if j is None:
-                        pairs.append((trip[i], trip[-1]))
-                        break
-                    pairs.append((trip[i], trip[j]))
-                    if j == len(trip) - 1:
-                        break
-                    i = j
+                try:
+                    while i < len(trip) - 1:
+                        j = next((j for j in range(len(trip) - 1, i, -1) if self.priced(ds, ch, trip[i], trip[j])), None)
+                        if j is not None:
+                            pairs.append((trip[i], trip[j]))
+                            i = j
+                        elif self.priced(ds, ch, trip[i], trip[i]):  # a barrier, priced on its own
+                            pairs.append((trip[i], trip[i]))
+                            i += 1
+                        else:
+                            pairs.append((trip[i], trip[-1]))  # no ticket: unpriced
+                            break
+                except Unknown as e:
+                    out.append(e)
             for a, b in pairs:
                 basis = ch.get("time_basis", "entry")
                 when = b["time"] if basis == "exit" else a["time"]
@@ -348,10 +370,7 @@ class Calc:
 
     def priced(self, ds, ch, a, b):
         use = {"entry": a["object"], "exit": b["object"], "time": ds.local(a["time"])}
-        try:
-            return self.lookup(ds, ch, use, self._vclass, self._held) is not None
-        except Unknown:
-            return False
+        return self.lookup(ds, ch, use, self._vclass, self._held) is not None
 
     def lookup(self, ds, ch, use, vclass, held):
         sel = self.select(ds, ch, use, vclass, held)
@@ -379,32 +398,46 @@ class Calc:
         missing = set(doc["dataset"].get("required_features", [])) - IMPLEMENTED
         if missing:
             self.issue("unsupported_feature", f"{sorted(missing)}", ds.id)
-        valid = [e for e in events if doc["dataset"]["valid_from"] <= ds.local(e["time"]).date().isoformat()
-                 <= doc["dataset"].get("valid_to", "9999-12-31")]
-        if len(valid) < len(events):
-            self.issue("outside_validity", f"{len(events) - len(valid)} events outside the dataset's validity", ds.id)
+        known = [e for e in events if e["object"] in ds.objects]
+        quantities = [q for q in self.usage.get("quantities", []) if q["dataset"] == ds.id and q["object"] in ds.objects]
+        for x in [e for e in events if e["object"] not in ds.objects] + \
+                 [q for q in self.usage.get("quantities", []) if q["dataset"] == ds.id and q["object"] not in ds.objects]:
+            self.issue("unknown_object", f"object {x['object']} is not in the dataset", ds.id)
+
+        def in_validity(x):
+            return doc["dataset"]["valid_from"] <= ds.local(x["time"]).date().isoformat() <= doc["dataset"].get("valid_to", "9999-12-31")
+        valid, self._quantities = [e for e in known if in_validity(e)], [q for q in quantities if in_validity(q)]
+        outside = len(known) - len(valid) + len(quantities) - len(self._quantities)
+        if outside:
+            self.issue("outside_validity", f"{outside} events or quantities outside the dataset's validity", ds.id)
         try:
             if not meets(doc["liable_vehicles"]["criteria"], self.vehicle):
                 return
         except Unknown as e:
-            self.issue("missing_parameter", str(e), ds.id)
+            self.issue(e.code, str(e), ds.id)
             return
         self._vclass, self._held = classify(ds, self.vehicle), self.held(ds)
-        touched = {a for e in valid for a in ds.ancestors(e["object"])}
         rules = doc.get("rules", [])
-        lines = []
+        lines, used = [], set()
         for ch in doc["charges"]:
             in_force = [e for e in valid if ch.get("valid_from", "0000") <= ds.local(e["time"]).date().isoformat()
                         <= ch.get("valid_to", "9999-12-31")]
             try:
-                mine = self.price_charge(ds, ch, in_force)
+                mine = self.price_charge(ds, ch, in_force, used)
             except Unknown as e:
-                self.issue("unpriced", str(e), ds.id, ch["id"])
+                self.issue(e.code, str(e), ds.id, ch["id"])
+                used.add(ch["id"])
                 continue
             lines += self.exempt(ds, ch, rules, mine)
-        priced = {l["charge"] for l in lines}
-        for scope in sorted(ds.partial & (touched | {"dataset"} | priced)):
-            self.issue("partial_coverage", f"coverage of {scope} is partial", ds.id)
+        # 8.9: the coverage scopes the usage touches
+        touched = {"dataset"} | {a for e in valid + self._quantities for a in ds.ancestors(e["object"])} | used
+        touched |= {c for c in self._vclass.values() if isinstance(c, str)} | self._held
+        for l in lines:
+            row = dict(zip(ds.charges[l["charge"]]["columns"], ds.charges[l["charge"]]["rows"][l["row"]])) if "row" in l else {}
+            touched |= {row[k] for k in ("vehicle_class", "time_class", "user_class") if row.get(k)}
+        touched |= {r["id"] for r in rules if set(r["applies_to"]) & used}
+        for scope in sorted(ds.partial & touched):
+            self.issue("partial_coverage", f"coverage of {scope} is not complete", ds.id)
         lines = self.apply_rules(ds, rules, lines)
         self.round_lines(ds, lines)
         self.lines += lines
@@ -432,36 +465,56 @@ class Calc:
         tax = ch.get("tax") or ds.doc["tax"]
         rate = Decimal(row["amount"])
         out = {"dataset": ds.id, "charge": ch["id"], "component": ch["component"], "objects": objs, "row": row_n,
-               "quantity": q, "unit": ch["unit"], "rate": rate, "amount": rate * q, "currency": ds.currency,
+               "quantity": q, "unit": ch["unit"], "rate": row["amount"], "amount": rate * q, "currency": ds.currency,
                "tax_basis": tax["basis"], "sources": ch["sources"], "_event": event}
         if tax.get("rate"):
             out["tax_rate"] = tax["rate"]
         return out
 
-    def price_charge(self, ds, ch, events):
+    def price_charge(self, ds, ch, events, used):
+        """8.5: one line per priced use; an undecided or unmatched use is reported and left out."""
         vclass, held, out = self._vclass, self._held, []
+
+        def unpriced(code, message):
+            if code != "unmatched" or ch.get("unmatched", "unpriced") == "unpriced":
+                self.issue("unpriced" if code == "unmatched" else code, message, ds.id, ch["id"])
+
         for u in self.uses(ds, ch, events):
+            used.add(ch["id"])
+            if isinstance(u, Unknown):
+                unpriced(u.code, str(u))
+                continue
             if u[0] == "day":
                 _, d, es = u
-                found = None
-                for e in es:
-                    sel = self.lookup(ds, ch, {"object": e["object"], "time": ds.local(e["time"])}, vclass, held)
-                    if sel and (found is None or Decimal(sel[1]["amount"]) > Decimal(found[0][1]["amount"])):
-                        found = (sel, e)
+                try:
+                    found = None
+                    for e in es:
+                        sel = self.lookup(ds, ch, {"object": e["object"], "time": ds.local(e["time"])}, vclass, held)
+                        if sel and (found is None or Decimal(sel[1]["amount"]) > Decimal(found[0][1]["amount"])):
+                            found = (sel, e)
+                except Unknown as e:
+                    unpriced(e.code, f"{d}: {e}")
+                    continue
                 if found:
                     (n, row), e = found
                     out.append(self.line(ds, ch, [e["object"]], n, row, Decimal(1), e))
-                elif ch.get("unmatched", "unpriced") == "unpriced":
-                    self.issue("unpriced", f"no row for {d}", ds.id, ch["id"])
+                else:
+                    unpriced("unmatched", f"no row for {d}")
                 continue
             if u[0] == "period":
-                out += self.period(ds, ch, u[1], u[2], vclass, held)
+                try:
+                    out += self.period(ds, ch, u[1], u[2], vclass, held)
+                except Unknown as e:
+                    unpriced(e.code, str(e))
                 continue
             use, q, objs, event = u
-            sel = self.lookup(ds, ch, use, vclass, held)
+            try:
+                sel = self.lookup(ds, ch, use, vclass, held)
+            except Unknown as e:
+                unpriced(e.code, f"{objs}: {e}")
+                continue
             if sel is None:
-                if ch.get("unmatched", "unpriced") == "unpriced":
-                    self.issue("unpriced", f"no row for {objs}", ds.id, ch["id"])
+                unpriced("unmatched", f"no row for {objs}")
                 continue
             line = self.line(ds, ch, objs, sel[0], sel[1], q, event)
             line["_use"] = use
@@ -469,34 +522,44 @@ class Calc:
         return out
 
     def period(self, ds, ch, days, events, vclass, held):
-        """8.4 period: the cheapest set of products covering every day of use."""
+        """8.4 period: the set of products with the lowest total covering every day (or instant) of use;
+        among equal totals the fewest products, then the earliest rows. A product's price is the row
+        selected for it at its start."""
         if not days:
             return []
-        products = {}
-        for n, r in enumerate(ch["rows"]):
+        products = []
+        for r in ch["rows"]:
             p = dict(zip(ch["columns"], r)).get("product")
             if p and p not in products:
-                length = duration_days(p)
-                if length is None:
+                if duration_days(p) is None:
                     self.issue("unsupported_product", f"product {p}", ds.id, ch["id"])
                     continue
-                sel = self.lookup(ds, ch, {"object": events[0]["object"], "time": ds.local(events[0]["time"]), "product": p}, vclass, held)
-                if sel:
-                    products[p] = (length, sel)
-        if not products:
-            self.issue("unpriced", "no product priced", ds.id, ch["id"])
-            return []
-        best = {len(days): (Decimal(0), [])}
+                products.append(p)
+        obj = events[0]["object"]
+        objs = sorted({e["object"] for e in events})
+
+        def at(start):
+            return start if isinstance(start, datetime) else datetime.combine(start, datetime.min.time(), ds.tz)
+        best = {len(days): (Decimal(0), 0, [], [])}
         for i in range(len(days) - 1, -1, -1):
             cands = []
-            for p, (length, (n, row)) in products.items():
+            for p in products:
+                sel = self.lookup(ds, ch, {"object": obj, "time": at(days[i]), "product": p}, vclass, held)
+                if sel is None:
+                    continue
+                n, row = sel
                 end = product_end(days[i], p)
                 j = next((k for k in range(i, len(days)) if days[k] >= end), len(days))
-                cost, buys = best[j]
-                cands.append((cost + Decimal(row["amount"]), [(p, n, row, days[i])] + buys))
-            best[i] = min(cands, key=lambda x: x[0])
-        return [self.line(ds, ch, sorted({e["object"] for e in events}), n, row, Decimal(1), {"time": start.isoformat(), "product": p})
-                for p, n, row, start in best[0][1]]
+                if j not in best:
+                    continue
+                cost, count, order, buys = best[j]
+                cands.append((cost + Decimal(row["amount"]), count + 1, [n] + order, [(p, n, row, days[i])] + buys))
+            if cands:
+                best[i] = min(cands, key=lambda x: x[:3])
+        if 0 not in best:
+            raise Unknown(f"no product priced for {days[0]}", "unpriced")
+        return [self.line(ds, ch, objs, n, row, Decimal(1), {"time": at(start).isoformat(), "product": p})
+                for p, n, row, start in best[0][3]]
 
     # 8.6 rules ---------------------------------------------------------------------------
     def apply_rules(self, ds, rules, lines):
@@ -508,7 +571,7 @@ class Calc:
                 for l in lines:
                     pct = l.pop("_discount", None)
                     if pct:
-                        l["amount"] -= l["amount"] * pct / 100
+                        l["amount"] -= l["amount"] * min(pct, Decimal(100)) / 100
         for r in rules:
             if r["kind"] not in order + ["exemption"]:
                 self.issue("unsupported_rule", r["kind"], ds.id)
@@ -586,7 +649,7 @@ class Calc:
             if l["charge"] not in r["applies_to"]:
                 continue
             t = ds.local(l["_event"]["time"]) if "T" in l["_event"]["time"] else datetime.fromisoformat(l["_event"]["time"])
-            key = t.date() if per == "day" else (t.year, t.month) if per == "month" else "trip"
+            key = t.date() if per == "day" else (t.year, t.month) if per == "month" else "usage"
             groups.setdefault(key, []).append(l)
         return groups
 
@@ -636,23 +699,20 @@ class Calc:
                 diff = quantize(total, rd) - total
                 if diff:
                     lines.append(self.adjustment(ds, {"applies_to": [ch["id"]]}, diff, mine, "rounding"))
-            elif rd["stage"] == "statement":
-                self._statement_rounding = rd
 
     def statement(self):
         totals = {}
         for l in self.lines:
             totals[l["currency"]] = totals.get(l["currency"], Decimal(0)) + l["amount"]
-        rd = getattr(self, "_statement_rounding", None)
         out_totals = []
         for cur, amt in sorted(totals.items()):
-            r = rd or {"increment": "1" if MINOR_UNITS.get(cur, 2) == 0 else "0." + "0" * (MINOR_UNITS.get(cur, 2) - 1) + "1",
-                       "mode": "half_up"}
+            r = {"increment": "1" if MINOR_UNITS.get(cur, 2) == 0 else "0." + "0" * (MINOR_UNITS.get(cur, 2) - 1) + "1",
+                 "mode": "half_up"}
             out_totals.append({"currency": cur, "amount": format(quantize(amt, r), "f")})
         lines = []
         for l in self.lines:
             x = {k: v for k, v in l.items() if not k.startswith("_")}
-            for k in ("quantity", "rate", "amount"):
+            for k in ("quantity", "amount"):
                 if k in x:
                     x[k] = fmt(x[k])
             lines.append(x)
@@ -682,8 +742,7 @@ def product_end(start, p):
     return start.replace(year=year, month=month, day=min(start.day, last)) + timedelta(days=d)
 
 
-MODES = {"half_up": ROUND_HALF_UP, "half_even": ROUND_HALF_EVEN, "up": ROUND_UP, "down": ROUND_DOWN,
-         "ceiling": ROUND_CEILING, "floor": ROUND_FLOOR}
+MODES = {"half_up": ROUND_HALF_UP, "half_even": ROUND_HALF_EVEN, "up": ROUND_UP, "down": ROUND_DOWN}
 
 
 def quantize(amount, rd):

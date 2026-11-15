@@ -51,10 +51,34 @@ def at(ds, date, hm="12:00", plus=0):
     return d.isoformat()
 
 
+_decided = {}
+
+
+def decided(ds):
+    """The dataset without the rows that need an undefined time class (rush hours carbon-cost lacks)."""
+    if ds.id not in _decided:
+        doc = json.loads(json.dumps(ds.doc))
+        undefined = {t["id"] for t in doc.get("time_classes", []) if t.get("defined") is False}
+        for ch in doc["charges"]:
+            if "time_class" in ch["columns"]:
+                i = ch["columns"].index("time_class")
+                ch["rows"] = [r for r in ch["rows"] if r[i] not in undefined]
+        _decided[ds.id] = Dataset(doc)
+    return _decided[ds.id]
+
+
 def price(ds, veh, events, payment=()):
+    """The statement; where a row needs an undefined time class, ORCT leaves the use unpriced (spec 6.10.3)
+    while carbon-cost prices the time the source gives. The incomplete statement is checked, then the
+    amounts are compared without those rows."""
     usage = {"orct_usage": "0.2", "vehicle": veh, "payment": list(payment),
              "events": [{"dataset": ds.id, **e} for e in events]}
-    return Calc([ds], usage).run()
+    st = Calc([ds], usage).run()
+    if any(i["code"] == "unknown_time_class" for i in st["issues"]) and \
+            any(t.get("defined") is False for t in ds.doc.get("time_classes", [])):
+        assert not st["complete"]
+        st = Calc([decided(ds)], usage).run()
+    return st
 
 
 def total(st, pred):

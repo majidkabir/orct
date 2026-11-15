@@ -36,7 +36,7 @@ product) and an amount. The most specific matching row wins, unless a row's
 | `section` | each use of a road section | Austria's special toll sections, Slovenia |
 | `od` | a trip in a closed system, by entry and exit | French autoroutes, Sicily's A18 and A20 |
 | `point` | each passage of a barrier, gantry, bridge or cordon point | Milan's ring roads, Norway's AutoPASS |
-| `area` | each day in a zone | London's Congestion Charge |
+| `area` | each day in a zone, or each entry | London's Congestion Charge |
 | `period` | a vignette product (`P1D`, `P7D` ...) | time-based user charges |
 | `quantity` | tonnes of CO2 or litres of fuel | national CO2 taxes on fuel |
 
@@ -56,11 +56,13 @@ reports an incomplete total instead of a wrong one.
 | [data/carbon-cost/](data/carbon-cost/) | 208 datasets for 35 countries, converted from [carbon-cost](https://github.com/majidkabir/carbon-cost) |
 | [tools/validate.py](tools/validate.py) | Validates datasets: schema, references, row keys |
 | [tools/orct_calc.py](tools/orct_calc.py) | Reference calculator |
-| [tests/vectors/](tests/vectors/) | Conformance vectors: 28 covering every feature, 12 from official tariffs |
+| [tests/vectors/](tests/vectors/) | Conformance vectors: 33 covering every feature, 12 from official tariffs |
 | [tools/convert_carbon_cost.py](tools/convert_carbon_cost.py) | The conversion from carbon-cost |
 | [tools/check_lossless.py](tools/check_lossless.py) | Checks the conversion kept every price |
 | [tools/oracle/](tools/oracle/), [tools/check_oracle.py](tools/check_oracle.py) | Prices about 1.1 million cases with carbon-cost's own engine and with ORCT's reference calculator, and reports any difference |
 | [tests/smoke.py](tests/smoke.py) | Prices one use of every charge in every dataset |
+| [tests/check_spec_examples.py](tests/check_spec_examples.py) | Checks the specification's Annex D examples against the schemas and the calculator |
+| [tools/gen_schema.py](tools/gen_schema.py) | Generates the schemas |
 
 ## Use
 

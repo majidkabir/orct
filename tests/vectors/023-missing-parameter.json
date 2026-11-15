@@ -22,6 +22,9 @@
  },
  "expected": {
   "complete": false,
-  "totals": []
+  "totals": [],
+  "issues": [
+   "missing_parameter"
+  ]
  }
 }

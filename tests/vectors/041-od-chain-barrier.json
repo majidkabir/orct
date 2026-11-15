@@ -1,0 +1,67 @@
+{
+ "description": "Chain pairing with a barrier first: no later station is priced from C5, so C5 is priced on its own (2), then C1 to C3 (20) and C3 to C4 (6).",
+ "clauses": [
+  "8.4"
+ ],
+ "datasets": [
+  "tests/fixtures/synthetic.orct.json"
+ ],
+ "usage": {
+  "orct_usage": "0.2",
+  "vehicle": {
+   "train_mass_kg": 40000,
+   "train_axles": 5,
+   "euro_class": "6",
+   "co2_class": 1
+  },
+  "events": [
+   {
+    "dataset": "orct-tests/synthetic/2026-01-01",
+    "object": "c5",
+    "time": "2026-11-16T09:40:00+01:00",
+    "role": "entry"
+   },
+   {
+    "dataset": "orct-tests/synthetic/2026-01-01",
+    "object": "c1",
+    "time": "2026-11-16T10:00:00+01:00",
+    "role": "pass"
+   },
+   {
+    "dataset": "orct-tests/synthetic/2026-01-01",
+    "object": "c3",
+    "time": "2026-11-16T10:40:00+01:00",
+    "role": "pass"
+   },
+   {
+    "dataset": "orct-tests/synthetic/2026-01-01",
+    "object": "c4",
+    "time": "2026-11-16T11:00:00+01:00",
+    "role": "exit"
+   }
+  ]
+ },
+ "expected": {
+  "complete": true,
+  "totals": [
+   {
+    "currency": "EUR",
+    "amount": "28.00"
+   }
+  ],
+  "lines": [
+   {
+    "charge": "odc",
+    "amount": "2.00"
+   },
+   {
+    "charge": "odc",
+    "amount": "20.00"
+   },
+   {
+    "charge": "odc",
+    "amount": "6.00"
+   }
+  ]
+ }
+}

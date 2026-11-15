@@ -1,4 +1,4 @@
-import json, os
+import json
 SYN = "tests/fixtures/synthetic.orct.json"
 SID = "orct-tests/synthetic/2026-01-01"
 V40 = {"train_mass_kg": 40000, "train_axles": 5, "euro_class": "6", "co2_class": 1}
@@ -7,9 +7,10 @@ def ev(obj, time, **kw): return {"dataset": SID, "object": obj, "time": time, **
 def usage(vehicle, events=(), **kw): return {"orct_usage": "0.2", "vehicle": vehicle, "events": list(events), **kw}
 def tot(x): return [{"currency": "EUR", "amount": x}] if x is not None else []
 V = []
-def add(name, desc, clauses, ds, u, total, complete=True, lines=None):
+def add(name, desc, clauses, ds, u, total, complete=True, lines=None, issues=None):
     exp = {"complete": complete, "totals": tot(total)}
     if lines is not None: exp["lines"] = [{"charge": c, "amount": a} for c, a in lines]
+    if issues is not None: exp["issues"] = issues
     V.append((name, {"description": desc, "clauses": clauses, "datasets": ds, "usage": u, "expected": exp}))
 M = "2026-11-16T10:00:00+01:00"  # a Monday
 add("distance-classes", "Per-km rate by mass class; an operator's own row beats the network row (object column, ancestor rank).",
@@ -44,8 +45,8 @@ add("point-catch-all", "A class without its own row uses the row with any class.
     usage({"train_mass_kg": 15000, "train_axles": 3, "euro_class": "6", "co2_class": 1}, [ev("gate", M)]), "6.00")
 add("point-season-cap", "Two passages in July at the high-season rate (25 each) are capped at 30 a day.", ["6.7", "6.11"], [SYN],
     usage(V40, [ev("bridge", "2026-07-15T10:00:00+02:00"), ev("bridge", "2026-07-15T14:00:00+02:00")]), "30.00")
-add("point-undefined-time-class", "A row needs a time class the source doesn't define: priced at the default row, but incomplete.",
-    ["6.7", "8.9"], [SYN], usage(V40, [ev("toll3", M)]), "5.00", complete=False)
+add("point-undefined-time-class", "A row that would outrank the default row needs a time class the source does not define: the use is unpriced, never guessed.",
+    ["6.7", "6.10.3", "8.9"], [SYN], usage(V40, [ev("toll3", M)]), None, complete=False, issues=["unknown_time_class"])
 add("section-minimum", "Section fee 12.00, per-km 0.10 x 12.5 km = 1.25 raised to the 2.00 minimum.", ["6.10.2", "6.11"], [SYN],
     usage(V40, [ev("sec1", M)]), "14.00")
 add("area-day", "Zone charged once per weekday in charging hours; not on a public holiday or a Saturday.", ["6.7", "8.4"], [SYN],
@@ -60,9 +61,9 @@ add("quantity", "2.5 t CO2 at 55.50 a tonne.", ["8.4"], [SYN],
 add("included-in", "A bridge passage during a closed-system trip is included in the trip's ticket.", ["6.11"], [SYN],
     usage(V40, OD("st-a", "st-b") + [ev("bridge", "2026-11-16T10:30:00+01:00")]), "10.00")
 add("missing-parameter", "The vehicle has no axle count, which the classes test: unpriced, never guessed.", ["6.6.2", "8.9"], [SYN],
-    usage({"train_mass_kg": 40000}, [ev("gate", M)]), None, complete=False)
+    usage({"train_mass_kg": 40000}, [ev("gate", M)]), None, complete=False, issues=["missing_parameter"])
 add("outside-validity", "An event after the dataset's validity is not priced.", ["8.2"], [SYN],
-    usage(V40, [ev("gate", "2028-01-05T10:00:00+01:00")]), None, complete=False)
+    usage(V40, [ev("gate", "2028-01-05T10:00:00+01:00")]), None, complete=False, issues=["outside_validity"])
 
 CAS = "data/carbon-cost/it/it-cas-2026-01-01.orct.json"; CASID = "carbon-cost/it-cas/2026-01-01"
 def cas(a, b, vehicle, pair=True):
@@ -94,13 +95,25 @@ for name, veh, want in (("40t-euro6-co2-1", V40, "34.80"), ("40t-euro5", {**V40,
 add("od-discount-any-of", "The 10% discount names alternatives (CO2 class 4, or Euro 7): a Euro 7 vehicle of CO2 class 1 gets it. 10.00 less 10%: 9.00.",
     ["6.6.2", "6.11"], [SYN], usage({**V40, "euro_class": "7"}, OD("st-a", "st-b")), "9.00")
 add("od-discount-any-of-unknown", "Euro VI without a CO2 class: one alternative fails and the other can't be decided, so the discount is unknown and the statement incomplete.",
-    ["6.6.2", "8.9"], [SYN], usage({k: v for k, v in V40.items() if k != "co2_class"}, OD("st-a", "st-b")), "10.00", complete=False)
+    ["6.6.2", "8.9"], [SYN], usage({k: v for k, v in V40.items() if k != "co2_class"}, OD("st-a", "st-b")), "10.00", complete=False, issues=["missing_parameter"])
 add("point-passage-group-free-first", "A free passage (Sunday) starts no run: the paid passage 40 minutes later, on Monday, pays 8.40.",
     ["6.11"], [SYN], usage(V40, [ev("gate", "2026-11-15T23:30:00+01:00"), ev("gate", "2026-11-16T00:10:00+01:00")]), "8.40")
 add("section-cap-time-class", "A day cap of 20 for night uses only: the two night uses (24) are capped at 20, the day use (12) is not. Section uses 32, plus 3 x 1.25 per km: 35.75.",
     ["6.11"], [SYN], usage(V40, [ev("sec1", "2026-11-17T10:00:00+01:00"), ev("sec1", "2026-11-17T22:30:00+01:00"),
                                 ev("sec1", "2026-11-17T23:30:00+01:00")]), "35.75",
     lines=[("sec", "12"), ("sec", "12"), ("sec", "12"), ("seckm", "1.25"), ("seckm", "1.25"), ("seckm", "1.25"), ("sec", "-4")])
+add("od-chain-barrier", "Chain pairing with a barrier first: no later station is priced from C5, so C5 is priced on its own (2), then C1 to C3 (20) and C3 to C4 (6).",
+    ["8.4"], [SYN], usage(V40, [ev("c5", "2026-11-16T09:40:00+01:00", role="entry"), ev("c1", "2026-11-16T10:00:00+01:00", role="pass"),
+                                ev("c3", "2026-11-16T10:40:00+01:00", role="pass"), ev("c4", "2026-11-16T11:00:00+01:00", role="exit")]),
+    "28.00", lines=[("odc", "2.00"), ("odc", "20.00"), ("odc", "6.00")])
+add("period-tie", "Two consecutive days: one 2-day product and two day products both cost 24; the fewest products win.", ["8.4"], [SYN],
+    usage(V40, [ev("vnet", f"2026-11-{d}T10:00:00+01:00") for d in (16, 17)]), "24.00", lines=[("vig", "24")])
+add("distance-missing-km", "A network event without km: unpriced, never taken as zero.", ["8.4", "8.9"], [SYN],
+    usage(V40, [ev("mw", M)]), None, complete=False, issues=["missing_km"])
+add("unknown-object", "An event on an object the dataset does not have makes the statement incomplete.", ["8.9"], [SYN],
+    usage(V40, [ev("nowhere", M), ev("gate", M)]), "8.40", complete=False, issues=["unknown_object"])
+add("calendar-past-covers-to", "On a weekday after the holiday calendar's covers_to, whether the zone charges can't be decided: unpriced.",
+    ["6.7", "8.9"], [SYN], usage(V40, [ev("city", "2027-09-15T10:00:00+02:00")]), None, complete=False, issues=["unknown_time_class"])
 for i, (name, v) in enumerate(V, 1):
     with open(f"tests/vectors/{i:03d}-{name}.json", "w") as fh:
         json.dump(v, fh, indent=1, ensure_ascii=False); fh.write("\n")

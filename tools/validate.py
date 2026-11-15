@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sys
+from collections import Counter
 
 import jsonschema
 
@@ -39,10 +40,20 @@ def check(d):
                 errs.append(f"duplicate vehicle class id {c['id']}")
             class_set[c["id"]] = s["id"]
     for s in sets:
-        ids = {c["id"] for c in s["classes"]}
+        by_id = {c["id"]: c for c in s["classes"]}
         for c in s["classes"]:
-            if c.get("fallback") and c["fallback"] not in ids:
+            if c.get("fallback") and c["fallback"] not in by_id:
                 errs.append(f"class {c['id']}: fallback {c['fallback']} is not in its set")
+            seen, cur = {c["id"]}, by_id.get(c.get("fallback"))
+            while cur:  # 6.6.3: fallbacks shall not form a cycle
+                if cur["id"] in seen:
+                    errs.append(f"class {c['id']}: fallbacks form a cycle")
+                    break
+                seen.add(cur["id"])
+                cur = by_id.get(cur.get("fallback"))
+    every = [x["id"] for k in ("sources", "time_classes", "calendars", "user_classes", "charge_objects", "charges", "rules")
+             for x in d.get(k, [])] + [c["id"] for s in sets for c in s["classes"]] + [s["id"] for s in sets]
+    errs += [f"id {i} is used more than once in the dataset" for i, n in sorted(Counter(every).items()) if n > 1]
     calendars = unique(d.get("calendars", []), "calendar")
     times = unique(d.get("time_classes", []), "time class")
     for t in d.get("time_classes", []):
@@ -118,6 +129,12 @@ def check(d):
             errs.append(f"{where}: needs an object column or objects")
         elif "entry" in cols or "exit" in cols:
             errs.append(f"{where}: entry and exit are only for od charges")
+        hdr = d["dataset"]
+        if c.get("valid_from", hdr["valid_from"]) < hdr["valid_from"] or \
+                (hdr.get("valid_to") and c.get("valid_to", hdr["valid_to"]) > hdr["valid_to"]):
+            errs.append(f"{where}: validity outside the dataset's")
+        if "product" in cols and c["type"] != "period":
+            errs.append(f"{where}: product is only for period charges")
         errs += [f"{where}: object {o} unknown" for o in c.get("objects", []) if o not in objects]
         if c.get("rounding"):
             used.add("rounding")
@@ -155,10 +172,15 @@ def check(d):
             seen.add(key)
             if len(errs) > 50:
                 return errs
-    if d.get("calendars"):
+    if any(sel.get("calendars") or sel.get("exclude", {}).get("calendars")
+           for t in d.get("time_classes", []) for sel in t.get("days", [])):
         used.add("calendars")
     for r in d.get("rules", []):
         used.add("rule." + r["kind"])
+        if r["params"].get("time_class"):
+            used.add("time_classes")
+        if r["params"].get("user_class"):
+            used.add("user_classes")
         errs += [f"rule {r['id']}: charge {c} unknown" for c in r["applies_to"] if c not in charges]
         p = r["params"]
         if r["kind"] == "included_in" and charges.get(p.get("charge"), {}).get("type") != "od":

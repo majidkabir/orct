@@ -1,7 +1,8 @@
 {
- "description": "A row needs a time class the source doesn't define: priced at the default row, but incomplete.",
+ "description": "A row that would outrank the default row needs a time class the source does not define: the use is unpriced, never guessed.",
  "clauses": [
   "6.7",
+  "6.10.3",
   "8.9"
  ],
  "datasets": [
@@ -25,11 +26,9 @@
  },
  "expected": {
   "complete": false,
-  "totals": [
-   {
-    "currency": "EUR",
-    "amount": "5.00"
-   }
+  "totals": [],
+  "issues": [
+   "unknown_time_class"
   ]
  }
 }

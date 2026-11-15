@@ -9,7 +9,7 @@ for 1.0.
 
 **Decision.** ORCT encodes the ISO 17575-3 concept model (toll context, charge
 objects, vehicle/time/user classes, tariff tables, rounding) as open JSON and
-adds four things the EFC standards don't provide for published tariffs: the
+adds four things the EFC standards do not provide for published tariffs: the
 charging principles ISO 17575-3 leaves out (closed entry–exit systems,
 vignettes bought for a period, carbon prices on fuel), a normative
 calculation, exact money and tax basis, and provenance with coverage.
@@ -45,7 +45,9 @@ reached from it (an object's `parents`, a vehicle class's `fallback`), or is
 empty (any). Among matching rows: highest `priority` first; then compare column by
 column in the table's column order, where exact beats ancestor, a near
 ancestor beats a far one, and any value beats empty. Two rows with the same
-keys are invalid.
+keys are invalid. Rows that still tie, and rows a missing vehicle parameter or
+an undefined time class leaves undecided but that could outrank the best
+decided row, leave the use unpriced rather than guessed.
 
 **Alternatives.** Count of non-empty keys (ties between dimensions are
 common and arbitrary); first row in file order (fragile under re-sorting);
@@ -72,7 +74,7 @@ hydrogen ones). A missing parameter makes a condition unknown, not false.
 **Alternatives.** Each scheme's class labels only (not computable); free-form
 parameters (not interoperable). For alternatives, two rules (a vehicle that
 meets both would get the discount twice) or a class reference (a vehicle has
-one class per set, so alternatives in different sets can't be combined).
+one class per set, so alternatives in different sets cannot be combined).
 
 **Why.** Delegated Reg. (EU) 2020/203 Annex I lets toll chargers classify by
 parameters their roadside equipment can measure or that registration documents
@@ -95,14 +97,17 @@ Invoices are reconciled to the cent.
 
 ## D6. Rounding and tax are explicit
 
-**Decision.** Each charge may state `rounding` (increment, mode, stage). Each
+**Decision.** Each charge may state `rounding` (increment, mode, and stage:
+each line or the charge's total). The statement total is rounded to the
+currency's minor unit. A rounding of the whole statement is not offered:
+a statement can span datasets of several toll chargers. Each
 dataset states `tax.basis`: `included`, `excluded`, `not_applicable` (a
 public-law charge outside VAT) or `unknown`, with rate and name where known.
 Statements carry the basis on every line.
 
 **Why.** ISO 17575-3's tariff table has a rounding rule; OCPI's tariffs
 module sets none. HERE returns only gross tolls; sources often
-don't state the basis. A standard must make the unknown visible.
+do not state the basis. A standard must make the unknown visible.
 
 ## D7. Time: the dataset's time zone, structured time classes and explicit calendars
 
@@ -147,14 +152,14 @@ charge statement output. Map matching stays out of scope, as in ISO 17575
 where the front end detects charge objects.
 
 **Why.** Two tools reading the same tariff must produce the same amount, or
-the data isn't interoperable. Test vectors make that checkable.
+the data is not interoperable. Test vectors make that checkable.
 
 ## D10. Unknowns are data: coverage, `unmatched` and must-understand features
 
-**Decision.** `coverage` lists what a dataset doesn't price. A charge says
+**Decision.** `coverage` lists what a dataset does not price. A charge says
 what a usage with no matching row means (`unmatched`: `unpriced` by default,
 or `free`). `required_features` lists the features a calculator must
-implement; one that doesn't must mark its result incomplete, the way JOSE's
+implement; one that does not must mark its result incomplete, the way JOSE's
 `crit` header works.
 
 **Why.** A silent wrong total is worse than an incomplete one. This also lets
@@ -169,7 +174,7 @@ references (informative only) and the operator's own code. An object a source
 prices but nobody can place has no geometry and is listed in coverage.
 
 **Why.** Coordinates work everywhere. OpenLR survives map differences. OSM ids
-change, so they can't be normative.
+change, so they cannot be normative.
 
 ## D12. Provenance per charge
 

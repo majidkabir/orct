@@ -36,6 +36,9 @@
     "currency": "EUR",
     "amount": "10.00"
    }
+  ],
+  "issues": [
+   "missing_parameter"
   ]
  }
 }

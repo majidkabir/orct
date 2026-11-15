@@ -52,6 +52,8 @@ jobs:
           python3 tools/check_oracle.py /tmp/oracle.jsonl data/carbon-cost --every 10
       - name: Conformance vectors
         run: python3 tests/run_vectors.py
+      - name: Specification examples
+        run: python3 tests/check_spec_examples.py
       - name: Price every charge once
         run: python3 tests/smoke.py data/carbon-cost
       - name: Commit

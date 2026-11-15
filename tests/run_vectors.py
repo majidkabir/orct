@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Run the conformance vectors against a calculator (spec clause 4.3).
+"""Run the conformance vectors against a calculator (spec 4.4).
 
 Usage: run_vectors.py [vector files...]   default: tests/vectors/*.json, with tools/orct_calc.py
 
-A vector passes when the calculator's statement has the expected `complete`
-flag, the expected totals, and (when the vector lists them) the expected
-lines, compared by charge and amount as decimals.
+A vector passes when the calculator's statement is valid against the statement
+schema and has the expected `complete` flag, the expected totals, and, when the
+vector lists them, the expected lines (charge and amount, compared as decimals)
+and issue codes.
 """
 import glob
 import json
@@ -37,6 +38,9 @@ def run(path):
     want = {t["currency"]: Decimal(t["amount"]) for t in exp["totals"]}
     if got != want:
         errs.append(f"totals {got}, want {want}")
+    missing = set(exp.get("issues", [])) - {i["code"] for i in st["issues"]}
+    if missing:
+        errs.append(f"issue codes {sorted(missing)} missing (issues {st['issues']})")
     if "lines" in exp:
         g = sorted((l["charge"], Decimal(l["amount"])) for l in st["lines"])
         w = sorted((l["charge"], Decimal(l["amount"])) for l in exp["lines"])

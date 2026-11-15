@@ -24,6 +24,9 @@
  },
  "expected": {
   "complete": false,
-  "totals": []
+  "totals": [],
+  "issues": [
+   "outside_validity"
+  ]
  }
 }

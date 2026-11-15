@@ -39,7 +39,7 @@
   {"id": "rush", "defined": false, "note": "The source names rush hours without giving them."},
   {"id": "charging", "days": [{"weekdays": [1, 2, 3, 4, 5], "exclude": {"calendars": ["holidays"]}}], "times": [["07:00", "18:00"]]}
  ],
- "calendars": [{"id": "holidays", "name": "Public holidays", "dates": ["2026-12-25", "2027-01-01"], "covers_to": "2027-12-31"}],
+ "calendars": [{"id": "holidays", "name": "Public holidays", "dates": ["2026-12-25", "2027-01-01"], "covers_to": "2027-06-30"}],
  "user_classes": [{"id": "electronic", "label": "On-board unit", "payment": ["electronic"]}],
  "charge_objects": [
   {"id": "net", "type": "network", "network": {"description": "All toll roads"}},
@@ -55,6 +55,7 @@
   {"id": "c2", "type": "station", "name": "C2", "location": {"geometry": {"type": "Point", "coordinates": [3.1, 48.1]}}},
   {"id": "c3", "type": "station", "name": "C3", "location": {"geometry": {"type": "Point", "coordinates": [3.2, 48.2]}}},
   {"id": "c4", "type": "station", "name": "C4", "location": {"geometry": {"type": "Point", "coordinates": [3.3, 48.3]}}},
+  {"id": "c5", "type": "station", "name": "C5 (a barrier)", "location": {"geometry": {"type": "Point", "coordinates": [2.9, 47.9]}}},
   {"id": "gate", "type": "point", "name": "Barrier", "location": {"geometry": {"type": "Point", "coordinates": [2.35, 48.85]}}},
   {"id": "bridge", "type": "point", "name": "Bridge", "location": {"geometry": {"type": "Point", "coordinates": [2.6, 48.7]}}},
   {"id": "toll3", "type": "point", "name": "Station with rush hours", "location": {"geometry": {"type": "Point", "coordinates": [2.7, 48.6]}}},
@@ -81,7 +82,8 @@
    ]},
   {"id": "odc", "type": "od", "component": "unspecified", "unit": "trip", "pairing": "chain", "basis": "official", "sources": ["s1"],
    "columns": ["entry", "exit", "vehicle_class", "amount"],
-   "rows": [["c1", "c2", null, "9.00"], ["c1", "c3", null, "20.00"], ["c2", "c4", null, "15.00"], ["c3", "c4", null, "6.00"]]},
+   "rows": [["c1", "c2", null, "9.00"], ["c1", "c3", null, "20.00"], ["c2", "c4", null, "15.00"], ["c3", "c4", null, "6.00"],
+            ["c5", "c5", null, "2.00"]]},
   {"id": "pts", "type": "point", "component": "unspecified", "unit": "passage", "basis": "official", "sources": ["s1"],
    "columns": ["object", "vehicle_class", "time_class", "priority", "amount"],
    "rows": [
@@ -98,10 +100,10 @@
    "columns": ["object", "amount"], "rows": [["sec1", "12.00"]]},
   {"id": "seckm", "type": "section", "component": "air_pollution", "unit": "km", "basis": "official", "sources": ["s1"],
    "columns": ["object", "amount"], "rows": [["sec1", "0.10"]]},
-  {"id": "city", "type": "area", "component": "access", "unit": "day", "unmatched": "free", "basis": "official", "sources": ["s1"],
+  {"id": "zone-day", "type": "area", "component": "access", "unit": "day", "unmatched": "free", "basis": "official", "sources": ["s1"],
    "objects": ["city"], "columns": ["time_class", "amount"], "rows": [["charging", "15"]]},
   {"id": "vig", "type": "period", "component": "infrastructure", "unit": "product", "day_basis": "calendar", "basis": "official",
-   "sources": ["s1"], "objects": ["vnet"], "columns": ["product", "amount"], "rows": [["P1D", "12"], ["P7D", "40"]]},
+   "sources": ["s1"], "objects": ["vnet"], "columns": ["product", "amount"], "rows": [["P1D", "12"], ["P2D", "24"], ["P7D", "40"]]},
   {"id": "fuel", "type": "quantity", "component": "carbon_price", "unit": "t_co2", "basis": "official", "sources": ["s1"],
    "objects": ["country"], "columns": ["amount"], "rows": [["55.50"]]}
  ],
@@ -112,7 +114,7 @@
   {"id": "r-factor", "kind": "factor", "applies_to": ["dist"], "params": {"object": "stretch", "factor": "1.5"}},
   {"id": "r-discount", "kind": "discount", "applies_to": ["od"], "params": {"name": "CO2 class 4 or Euro 7", "percent": "10", "criteria": {"any_of": [{"co2_class": [4]}, {"euro_class": ["7"]}]}}},
   {"id": "r-discount-etc", "kind": "discount", "applies_to": ["od"], "params": {"name": "Electronic payment", "percent": "20", "payment": ["electronic"]}},
-  {"id": "r-minimum", "kind": "minimum", "applies_to": ["seckm"], "params": {"per": "trip", "amount": "2.00"}},
+  {"id": "r-minimum", "kind": "minimum", "applies_to": ["seckm"], "params": {"per": "usage", "amount": "2.00"}},
   {"id": "r-cap", "kind": "cap", "applies_to": ["pts"], "params": {"per": "day", "amount": "30"}},
   {"id": "r-cap-night", "kind": "cap", "applies_to": ["sec"], "params": {"per": "day", "amount": "20", "time_class": "night"}}
  ],
