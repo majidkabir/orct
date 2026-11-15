@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "li-2025-01-01",
-  "scheme": "li",
-  "country": "LI",
-  "currency": "CHF",
+  "id": "carbon-cost/li/2025-01-01",
+  "scheme": {
+   "id": "li",
+   "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
+   "country": "LI"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2025-01-01",
-  "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
+  "valid_to": "2030-12-31",
+  "currency": "CHF",
+  "timezone": "Europe/Vaduz",
+  "license": "MIT",
   "method": "Schwerverkehrsabgabeverordnung (SVAV) of 3 December 2024, LGBl. 2024 Nr. 452, Art. 7 para. 1: 3.26 / 2.82 / 2.39 Rappen per tonne-km for fee categories 1 / 2 / 3; Annex: EURO VI in category 3; Art. 5 para. 3: chargeable weight at most 40 t.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/li-2025-01-01.json"
   },
-  "valid_to": "2030-12-31"
+  "required_features": ["rule.exemption", "type.distance"]
  },
  "sources": [
   {
@@ -22,74 +31,77 @@
    "url": "https://www.gesetze.li/konso/pdf/2024452000"
   }
  ],
- "vehicles": {
-  "description": "Motor vehicles and trailers over 3.5 t total weight used for goods transport, Swiss or foreign",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "euro": [
-     6
-    ]
+ "liable_vehicles": {
+  "description": "Motor vehicles and trailers over 3.5 t total weight used for goods transport, Swiss or foreign",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
-  },
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "distance_fee-1",
+   "classes": [
+    {
+     "id": "distance_fee-1.1",
+     "criteria": {
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "distance_fee-1.2",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "All public roads: the fee is per km driven anywhere in Switzerland and Liechtenstein."
+   "type": "network",
+   "network": {
+    "description": "All public roads: the fee is per km driven anywhere in Switzerland and Liechtenstein."
+   }
   }
  ],
  "charges": [
   {
-   "id": "distance_fee@roads",
-   "type": "quantity",
-   "component": "x-distance_fee",
-   "applies_to": [
-    "roads"
-   ],
-   "sources": [
-    "s1"
-   ],
-   "rates": {
-    "c1": 0.0239,
-    "any": 0.0326
-   },
-   "unit": "tonne_km",
-   "max_mass_kg": 40000
+   "id": "distance_fee",
+   "type": "distance",
+   "component": "unspecified",
+   "unit": "tkm",
+   "component_label": "distance_fee",
+   "mass_basis": "train_mass_kg",
+   "mass_cap_kg": 40000,
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [["roads", "distance_fee-1.1", "0.0239"], ["roads", "distance_fee-1.2", "0.0326"]],
+   "sources": ["s1"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
+ "rules": [
+  {
+   "id": "r1",
+   "kind": "exemption",
+   "applies_to": ["distance_fee"],
+   "params": {
+    "criteria": {
+     "co2_class": [5]
+    },
+    "until": "2030-12-31",
+    "note": "Motor vehicles with electric drive are exempt, as in Switzerland (SVAG Art. 5 para. 1 let. i)."
+   }
+  }
+ ],
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
-  }
- ],
- "modifiers": [
-  {
-   "kind": "exemption",
-   "applies_to": [
-    "distance_fee@roads"
-   ],
-   "params": {
-    "co2_class": [
-     5
-    ],
-    "until": "2030-12-31",
-    "note": "Motor vehicles with electric drive are exempt, as in Switzerland (SVAG Art. 5 para. 1 let. i)."
-   }
   }
  ]
 }

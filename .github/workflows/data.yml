@@ -35,9 +35,13 @@ jobs:
           rm -rf data/carbon-cost
           python3 tools/convert_carbon_cost.py _carbon-cost data/carbon-cost --commit "$(git -C _carbon-cost rev-parse HEAD)"
       - name: Validate
-        run: python3 tools/validate.py data/carbon-cost
+        run: python3 tools/validate.py data/carbon-cost tests/fixtures
       - name: Check nothing was lost
         run: python3 tools/check_lossless.py _carbon-cost data/carbon-cost
+      - name: Conformance vectors
+        run: python3 tests/run_vectors.py
+      - name: Price every charge once
+        run: python3 tests/smoke.py data/carbon-cost
       - name: Commit
         if: github.event_name != 'pull_request'
         run: |

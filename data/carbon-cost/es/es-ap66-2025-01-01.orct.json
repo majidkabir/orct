@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "es-ap66-2025-01-01",
-  "scheme": "es-ap66",
-  "country": "ES",
-  "currency": "EUR",
+  "id": "carbon-cost/es-ap66/2025-01-01",
+  "scheme": {
+   "id": "es-ap66",
+   "name": "AP-66 Campomanes–León (Aucalsa)",
+   "country": "ES"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2025-01-01",
-  "name": "AP-66 Campomanes–León (Aucalsa)",
+  "valid_to": "2025-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Madrid",
+  "license": "MIT",
   "method": "The Ministry of Transport's tolls in force from 2025-01-01 on the AP-66 Campomanes–León (Aucalsa), by pair of stations either way: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), excluding 21% IVA. Stations placed at the concessionaire's own map of its toll plazas and accesses.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/es-ap66-2025-01-01.json"
   },
-  "valid_to": "2025-12-31"
+  "required_features": ["type.od"]
  },
  "sources": [
   {
@@ -27,192 +36,127 @@
    "url": "https://www.aucalsa.com/la-autopista/mapa-interactivo/"
   }
  ],
- "vehicles": {
-  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
+   }
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "c-Pesados-1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
+   "id": "sys1-1",
+   "classes": [
+    {
+     "id": "sys1-1.Pesados-1",
+     "label": "Pesados 1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 3
+      }
+     }
     },
-    "axles": {
-     "max": 3
+    {
+     "id": "sys1-1.Pesados-2",
+     "label": "Pesados 2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 4
+      }
+     }
     }
-   },
-   "label": "Pesados 1"
-  },
-  {
-   "id": "c-Pesados-2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 4
-    }
-   },
-   "label": "Pesados 2"
+   ]
   }
  ],
- "network": [
+ "charge_objects": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "AP-66 Campomanes–León."
-  },
-  {
-   "id": "st:1:CAMPOMANES",
-   "kind": "station",
+   "id": "st1:CAMPOMANES",
+   "type": "station",
    "name": "CAMPOMANES",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      -5.818985,
-      43.113572
-     ]
-    ]
-   },
-   "point_names": [
-    "ACCESO CAMPOMANES"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[-5.818985, 43.113572]]
+    },
+    "point_names": ["ACCESO CAMPOMANES"]
+   }
   },
   {
-   "id": "st:1:OBLANCA",
-   "kind": "station",
+   "id": "st1:OBLANCA",
+   "type": "station",
    "name": "OBLANCA",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      -5.889635,
-      42.907362
-     ]
-    ]
-   },
-   "point_names": [
-    "PEAJE VILLABLINO - BARRIOS DE LUNA"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[-5.889635, 42.907362]]
+    },
+    "point_names": ["PEAJE VILLABLINO - BARRIOS DE LUNA"]
+   }
   },
   {
-   "id": "st:1:LA MAGDALENA",
-   "kind": "station",
+   "id": "st1:LA MAGDALENA",
+   "type": "station",
    "name": "LA MAGDALENA",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      -5.786743,
-      42.783047
-     ],
-     [
-      -5.784028,
-      42.782791
-     ]
-    ]
-   },
-   "point_names": [
-    "PEAJE TRONCAL DE LA MAGDALENA",
-    "PEAJE RAMAL DE LA MAGDALENA"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[-5.786743, 42.783047], [-5.784028, 42.782791]]
+    },
+    "point_names": ["PEAJE TRONCAL DE LA MAGDALENA", "PEAJE RAMAL DE LA MAGDALENA"]
+   }
   },
   {
-   "id": "st:1:LEON",
-   "kind": "station",
+   "id": "st1:LEON",
+   "type": "station",
    "name": "LEON",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      -5.668162,
-      42.578911
-     ]
-    ]
-   },
-   "point_names": [
-    "ACCESO LEÓN - ASTORGA"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[-5.668162, 42.578911]]
+    },
+    "point_names": ["ACCESO LEÓN - ASTORGA"]
+   }
   }
  ],
  "charges": [
   {
-   "id": "system:1",
+   "id": "system1",
    "name": "AP-66 Campomanes–León (Aucalsa)",
-   "type": "od_matrix",
-   "component": "toll",
-   "applies_to": [
-    "st:1:CAMPOMANES",
-    "st:1:LA MAGDALENA",
-    "st:1:LEON",
-    "st:1:OBLANCA"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {},
-   "pairs": [
-    {
-     "entry": "st:1:CAMPOMANES",
-     "exit": "st:1:LA MAGDALENA",
-     "rates": {
-      "c-Pesados-1": 5.8678,
-      "c-Pesados-2": 7.4793
-     }
-    },
-    {
-     "entry": "st:1:CAMPOMANES",
-     "exit": "st:1:LEON",
-     "rates": {
-      "c-Pesados-1": 9.3388,
-      "c-Pesados-2": 11.9835
-     }
-    },
-    {
-     "entry": "st:1:CAMPOMANES",
-     "exit": "st:1:OBLANCA",
-     "rates": {
-      "c-Pesados-1": 3.3884,
-      "c-Pesados-2": 4.3388
-     }
-    },
-    {
-     "entry": "st:1:LA MAGDALENA",
-     "exit": "st:1:LEON",
-     "rates": {
-      "c-Pesados-1": 3.6364,
-      "c-Pesados-2": 4.6281
-     }
-    },
-    {
-     "entry": "st:1:OBLANCA",
-     "exit": "st:1:LA MAGDALENA",
-     "rates": {
-      "c-Pesados-1": 2.4793,
-      "c-Pesados-2": 3.1405
-     }
-    },
-    {
-     "entry": "st:1:OBLANCA",
-     "exit": "st:1:LEON",
-     "rates": {
-      "c-Pesados-1": 5.9504,
-      "c-Pesados-2": 7.6446
-     }
-    }
-   ],
+   "type": "od",
+   "component": "unspecified",
+   "unit": "trip",
    "pairing": "single_ticket",
-   "method": "The Ministry of Transport's tolls in force from 2025-01-01 on the AP-66 Campomanes–León (Aucalsa), by pair of stations either way: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), excluding 21% IVA. Stations placed at the concessionaire's own map of its toll plazas and accesses."
+   "method": "The Ministry of Transport's tolls in force from 2025-01-01 on the AP-66 Campomanes–León (Aucalsa), by pair of stations either way: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), excluding 21% IVA. Stations placed at the concessionaire's own map of its toll plazas and accesses.",
+   "columns": ["entry", "exit", "vehicle_class", "amount"],
+   "rows": [
+    ["st1:CAMPOMANES", "st1:LA MAGDALENA", "sys1-1.Pesados-1", "5.8678"],
+    ["st1:CAMPOMANES", "st1:LA MAGDALENA", "sys1-1.Pesados-2", "7.4793"],
+    ["st1:CAMPOMANES", "st1:LEON", "sys1-1.Pesados-1", "9.3388"],
+    ["st1:CAMPOMANES", "st1:LEON", "sys1-1.Pesados-2", "11.9835"],
+    ["st1:CAMPOMANES", "st1:OBLANCA", "sys1-1.Pesados-1", "3.3884"],
+    ["st1:CAMPOMANES", "st1:OBLANCA", "sys1-1.Pesados-2", "4.3388"],
+    ["st1:LA MAGDALENA", "st1:LEON", "sys1-1.Pesados-1", "3.6364"],
+    ["st1:LA MAGDALENA", "st1:LEON", "sys1-1.Pesados-2", "4.6281"],
+    ["st1:OBLANCA", "st1:LA MAGDALENA", "sys1-1.Pesados-1", "2.4793"],
+    ["st1:OBLANCA", "st1:LA MAGDALENA", "sys1-1.Pesados-2", "3.1405"],
+    ["st1:OBLANCA", "st1:LEON", "sys1-1.Pesados-1", "5.9504"],
+    ["st1:OBLANCA", "st1:LEON", "sys1-1.Pesados-2", "7.6446"]
+   ],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
@@ -220,7 +164,7 @@
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true
   }
  }

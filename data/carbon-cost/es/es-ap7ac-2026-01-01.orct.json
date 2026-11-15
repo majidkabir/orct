@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "es-ap7ac-2026-01-01",
-  "scheme": "es-ap7ac",
-  "country": "ES",
-  "currency": "EUR",
+  "id": "carbon-cost/es-ap7ac/2026-01-01",
+  "scheme": {
+   "id": "es-ap7ac",
+   "name": "AP-7 Alicante–Cartagena",
+   "country": "ES"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-01-01",
-  "name": "AP-7 Alicante–Cartagena",
+  "valid_to": "2026-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Madrid",
+  "license": "MIT",
   "method": "The Ministry of Transport's tolls in force from 2026-01-01 on the AP-7 Alicante–Cartagena, per barrier (Troncal de Los Montesinos, Acceso de La Zenia, Troncal de La Zenia): Pesados 1 (two or three axles) EUR 4.2149 and Pesados 2 (four axles or more) 5.3719 in the low season, 4.9174 and 5.9504 in the high season, excluding 21% IVA. High season: June to September and the 17 days of Semana Santa (from the Friday before it to the Sunday after it); regular users pay the low season's tolls all year (not modelled). Barriers placed at OpenStreetMap's toll plazas on the motorway, in the table's order from north to south.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/es-ap7ac-2026-01-01.json"
   },
-  "valid_to": "2026-12-31"
+  "required_features": ["time_classes", "type.point"]
  },
  "sources": [
   {
@@ -27,223 +36,132 @@
    "url": "https://www.openstreetmap.org/copyright"
   }
  ],
- "vehicles": {
-  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "max": 3
-    }
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 4
-    }
+ "liable_vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "pt-1",
+   "classes": [
+    {
+     "id": "pt-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 3
+      }
+     }
+    },
+    {
+     "id": "pt-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 4
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "time_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "AP-7 Alicante–Cartagena (toll barriers at Los Montesinos and La Zenia)."
-  },
+   "id": "high-season",
+   "label": "High season",
+   "days": [
+    {
+     "months": [6, 7, 8, 9]
+    },
+    {
+     "easter": [[-9, 7]]
+    }
+   ]
+  }
+ ],
+ "charge_objects": [
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "pt1",
+   "type": "point",
    "name": "Troncal de Los Montesinos",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -0.782622,
-     38.008606
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-0.782622, 38.008606]
+    },
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Acceso de La Zenia",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -0.737382,
-     37.925935
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-0.737382, 37.925935]
+    },
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:3",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Troncal de La Zenia",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -0.741711,
-     37.920565
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-0.741711, 37.920565]
+    },
+    "match_m": 150
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Troncal de Los Montesinos",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "vehicle_class", "time_class", "amount"],
+   "rows": [
+    ["pt1", "pt-1.1", null, "4.2149"],
+    ["pt1", "pt-1.1", "high-season", "4.9174"],
+    ["pt1", "pt-1.2", null, "5.3719"],
+    ["pt1", "pt-1.2", "high-season", "5.9504"],
+    ["pt2", "pt-1.1", null, "4.2149"],
+    ["pt2", "pt-1.1", "high-season", "4.9174"],
+    ["pt2", "pt-1.2", null, "5.3719"],
+    ["pt2", "pt-1.2", "high-season", "5.9504"],
+    ["pt3", "pt-1.1", null, "4.2149"],
+    ["pt3", "pt-1.1", "high-season", "4.9174"],
+    ["pt3", "pt-1.2", null, "5.3719"],
+    ["pt3", "pt-1.2", "high-season", "5.9504"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 4.2149,
-     "high_season": 4.9174
-    },
-    "c2": {
-     "default": 5.3719,
-     "high_season": 5.9504
-    }
-   }
-  },
-  {
-   "id": "point:2",
-   "name": "Acceso de La Zenia",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 4.2149,
-     "high_season": 4.9174
-    },
-    "c2": {
-     "default": 5.3719,
-     "high_season": 5.9504
-    }
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Troncal de La Zenia",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 4.2149,
-     "high_season": 4.9174
-    },
-    "c2": {
-     "default": 5.3719,
-     "high_season": 5.9504
-    }
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "name": "high_season",
-    "season": {
-     "months": [
-      6,
-      7,
-      8,
-      9
-     ],
-     "easter_from": -9,
-     "easter_to": 7
-    }
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "name": "high_season",
-    "season": {
-     "months": [
-      6,
-      7,
-      8,
-      9
-     ],
-     "easter_from": -9,
-     "easter_to": 7
-    }
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "name": "high_season",
-    "season": {
-     "months": [
-      6,
-      7,
-      8,
-      9
-     ],
-     "easter_from": -9,
-     "easter_to": 7
-    }
-   }
-  }
- ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-13"
   }

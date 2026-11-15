@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "fuelco2-at-2027-01-01",
-  "scheme": "fuelco2-at",
-  "country": "AT",
-  "currency": "EUR",
+  "id": "carbon-cost/fuelco2-at/2027-01-01",
+  "scheme": {
+   "id": "fuelco2-at",
+   "name": "Nationaler Emissionszertifikatehandel certificate value",
+   "country": "AT"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2027-01-01",
-  "name": "Nationaler Emissionszertifikatehandel certificate value",
+  "valid_to": "2027-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Vienna",
+  "license": "MIT",
   "method": "NEHG 2022 § 10: certificate value of 55 euro per tonne of CO2 in 2027, as the Federal Ministry of Finance gives it for the fixed-price phase (the law's table ends at 2025). Fuel suppliers pay it for the CO2 their fuel emits and pass it on in the fuel price.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/fuelco2-at-2027-01-01.json"
   },
-  "valid_to": "2027-12-31"
+  "required_features": ["type.quantity"]
  },
  "sources": [
   {
@@ -22,17 +31,34 @@
    "url": "https://www.bmf.gv.at/en/topics/climate-policy/initial_nehg_2022_en.html"
   }
  ],
- "vehicles": {
-  "description": "CO2 from fuel bought in the country, per tonne",
-  "min_mass_kg": 0
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "CO2 from fuel bought in the country",
+  "criteria": {}
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "all",
+   "classes": [
+    {
+     "id": "any",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [],
+ "charge_objects": [
+  {
+   "id": "country",
+   "type": "jurisdiction",
+   "jurisdiction": {
+    "country": "AT"
+   }
+  }
+ ],
  "charges": [
   {
    "id": "fuel-co2",
@@ -40,19 +66,13 @@
    "type": "quantity",
    "component": "carbon_price",
    "unit": "t_co2",
-   "applies_to": [],
-   "sources": [
-    "s1"
-   ],
-   "rates": {
-    "any": 55.0
-   }
+   "objects": ["country"],
+   "columns": ["amount"],
+   "rows": [["55"]],
+   "sources": ["s1"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",

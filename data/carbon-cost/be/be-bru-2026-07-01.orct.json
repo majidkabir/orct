@@ -1,20 +1,29 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "be-bru-2026-07-01",
-  "scheme": "be-bru",
-  "country": "BE",
-  "currency": "EUR",
+  "id": "carbon-cost/be-bru/2026-07-01",
+  "scheme": {
+   "id": "be-bru",
+   "name": "Belgian kilometre charge, Brussels-Capital Region",
+   "country": "BE",
+   "region": "BE-BRU"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-07-01",
-  "name": "Belgian kilometre charge, Brussels-Capital Region",
+  "valid_to": "2026-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Brussels",
+  "license": "MIT",
   "method": "Viapass rate grid ed. 01/07/2026, Brussels, highway and urban area (all local and regional roads that are not highway). No CO2 element.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/be-bru-2026-07-01.json"
   },
-  "region": "BE-BRU",
-  "valid_to": "2026-12-31"
+  "required_features": ["type.distance"]
  },
  "sources": [
   {
@@ -28,406 +37,289 @@
    "url": "https://www.viapass.be/en/news/surcharge-co2-emissions-flanders.html"
   }
  ],
- "vehicles": {
-  "description": "Vehicles over 3.5 t maximum authorised mass for goods transport, by mass band (3.5-12 t, 12-32 t, over 32 t)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c3",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c4",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     3
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c5",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "euro": [
-     3
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c6",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "euro": [
-     3
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c7",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     4
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c8",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "euro": [
-     4
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c9",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "euro": [
-     4
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c10",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     5
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c11",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "euro": [
-     5
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c12",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "euro": [
-     5
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c13",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     6
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c14",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "euro": [
-     6
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c15",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "euro": [
-     6
-    ],
-    "co2_class": [
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c16",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c17",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001,
-     "max": 32000
-    },
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c18",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     5
-    ]
+ "liable_vehicles": {
+  "description": "Vehicles over 3.5 t maximum authorised mass for goods transport, by mass band (3.5-12 t, 12-32 t, over 32 t)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "km_charge-1",
+   "classes": [
+    {
+     "id": "km_charge-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["0", "1", "2"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "euro_class": ["0", "1", "2"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.3",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "euro_class": ["0", "1", "2"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.4",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["3"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.5",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "euro_class": ["3"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.6",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "euro_class": ["3"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.7",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["4"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.8",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "euro_class": ["4"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.9",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "euro_class": ["4"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.10",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["5"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.11",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "euro_class": ["5"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.12",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "euro_class": ["5"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.13",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["6"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.14",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "euro_class": ["6"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.15",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "euro_class": ["6"],
+      "co2_class": [1, 2, 3, 4]
+     }
+    },
+    {
+     "id": "km_charge-1.16",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "co2_class": [5]
+     }
+    },
+    {
+     "id": "km_charge-1.17",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001,
+       "max": 32000
+      },
+      "co2_class": [5]
+     }
+    },
+    {
+     "id": "km_charge-1.18",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [5]
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
+  {
+   "id": "roads",
+   "type": "network",
+   "network": {
+    "description": "All roads in the Brussels-Capital Region: highway and urban-area rates."
+   }
+  },
   {
    "id": "road:motorway",
-   "kind": "road_class",
-   "road_type": "motorway"
+   "type": "network",
+   "parent": "roads",
+   "network": {
+    "road_types": ["motorway"]
+   }
   },
   {
    "id": "road:other",
-   "kind": "road_class",
-   "road_type": "other"
-  },
-  {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "All roads in the Brussels-Capital Region: highway and urban-area rates."
+   "type": "network",
+   "parent": "roads",
+   "network": {
+    "road_types": ["other"]
+   }
   }
  ],
  "charges": [
   {
-   "id": "km_charge@road:motorway",
+   "id": "km_charge",
    "type": "distance",
-   "component": "x-km_charge",
-   "applies_to": [
-    "road:motorway"
+   "component": "unspecified",
+   "unit": "km",
+   "component_label": "km_charge",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["road:motorway", "km_charge-1.1", "0.195"],
+    ["road:motorway", "km_charge-1.2", "0.262"],
+    ["road:motorway", "km_charge-1.3", "0.267"],
+    ["road:motorway", "km_charge-1.4", "0.168"],
+    ["road:motorway", "km_charge-1.5", "0.235"],
+    ["road:motorway", "km_charge-1.6", "0.241"],
+    ["road:motorway", "km_charge-1.7", "0.127"],
+    ["road:motorway", "km_charge-1.8", "0.194"],
+    ["road:motorway", "km_charge-1.9", "0.199"],
+    ["road:motorway", "km_charge-1.10", "0.112"],
+    ["road:motorway", "km_charge-1.11", "0.179"],
+    ["road:motorway", "km_charge-1.12", "0.184"],
+    ["road:motorway", "km_charge-1.13", "0.099"],
+    ["road:motorway", "km_charge-1.14", "0.166"],
+    ["road:motorway", "km_charge-1.15", "0.171"],
+    ["road:motorway", "km_charge-1.16", "0.017"],
+    ["road:motorway", "km_charge-1.17", "0.03"],
+    ["road:motorway", "km_charge-1.18", "0.031"],
+    ["road:other", "km_charge-1.1", "0.251"],
+    ["road:other", "km_charge-1.2", "0.352"],
+    ["road:other", "km_charge-1.3", "0.39"],
+    ["road:other", "km_charge-1.4", "0.218"],
+    ["road:other", "km_charge-1.5", "0.318"],
+    ["road:other", "km_charge-1.6", "0.357"],
+    ["road:other", "km_charge-1.7", "0.176"],
+    ["road:other", "km_charge-1.8", "0.277"],
+    ["road:other", "km_charge-1.9", "0.315"],
+    ["road:other", "km_charge-1.10", "0.159"],
+    ["road:other", "km_charge-1.11", "0.259"],
+    ["road:other", "km_charge-1.12", "0.298"],
+    ["road:other", "km_charge-1.13", "0.132"],
+    ["road:other", "km_charge-1.14", "0.233"],
+    ["road:other", "km_charge-1.15", "0.271"],
+    ["road:other", "km_charge-1.16", "0.024"],
+    ["road:other", "km_charge-1.17", "0.044"],
+    ["road:other", "km_charge-1.18", "0.051"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.195,
-    "c2": 0.262,
-    "c3": 0.267,
-    "c4": 0.168,
-    "c5": 0.235,
-    "c6": 0.241,
-    "c7": 0.127,
-    "c8": 0.194,
-    "c9": 0.199,
-    "c10": 0.112,
-    "c11": 0.179,
-    "c12": 0.184,
-    "c13": 0.099,
-    "c14": 0.166,
-    "c15": 0.171,
-    "c16": 0.017,
-    "c17": 0.03,
-    "c18": 0.031
-   }
-  },
-  {
-   "id": "km_charge@road:other",
-   "type": "distance",
-   "component": "x-km_charge",
-   "applies_to": [
-    "road:other"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.251,
-    "c2": 0.352,
-    "c3": 0.39,
-    "c4": 0.218,
-    "c5": 0.318,
-    "c6": 0.357,
-    "c7": 0.176,
-    "c8": 0.277,
-    "c9": 0.315,
-    "c10": 0.159,
-    "c11": 0.259,
-    "c12": 0.298,
-    "c13": 0.132,
-    "c14": 0.233,
-    "c15": 0.271,
-    "c16": 0.024,
-    "c17": 0.044,
-    "c18": 0.051
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",

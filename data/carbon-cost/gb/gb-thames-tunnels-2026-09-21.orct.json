@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "gb-thames-tunnels-2026-09-21",
-  "scheme": "gb-thames-tunnels",
-  "country": "GB",
-  "currency": "GBP",
+  "id": "carbon-cost/gb-thames-tunnels/2026-09-21",
+  "scheme": {
+   "id": "gb-thames-tunnels",
+   "name": "Blackwall and Silvertown tunnels charge",
+   "country": "GB"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-09-21",
-  "name": "Blackwall and Silvertown tunnels charge",
+  "currency": "GBP",
+  "timezone": "Europe/London",
+  "license": "MIT",
   "method": "The Silvertown Tunnel Order 2018 (user charges set by TfL): heavy goods vehicles (N2, N3) pay GBP 10.50 per crossing either way, 06:00-22:00 every day except Christmas Day, paid online or by phone; with `etc` the Auto Pay off-peak price, GBP 5.25 (Auto Pay's peak, weekdays 06:00-10:00 northbound and 16:00-19:00 southbound, is the full price, not modelled). From 2026-09-21 (TfL).",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/gb-thames-tunnels-2026-09-21.json"
-  }
+  },
+  "required_features": ["time_classes", "type.point", "user_classes"]
  },
  "sources": [
   {
@@ -26,264 +35,134 @@
    "url": "https://tfl-newsroom.prgloo.com/news/new-report-shows-one-year-old-silvertown-tunnel-cuts-congestion-and-boosts-bus-use-alongside-improved-air-quality"
   }
  ],
- "vehicles": {
-  "description": "Heavy goods vehicles (N2, N3: over 3.5 t)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    }
+ "liable_vehicles": {
+  "description": "Heavy goods vehicles (N2, N3: over 3.5 t)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "pt-1",
+   "classes": [
+    {
+     "id": "pt-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "time_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "The Blackwall Tunnel (A102) and the Silvertown Tunnel under the Thames, each bore, either way."
+   "id": "free",
+   "label": "No charge",
+   "times": [["22:00", "06:00"]]
+  }
+ ],
+ "user_classes": [
+  {
+   "id": "electronic",
+   "label": "Electronic toll device or contract",
+   "payment": ["electronic"]
+  }
+ ],
+ "charge_objects": [
+  {
+   "id": "pt1",
+   "type": "point",
+   "name": "Blackwall and Silvertown tunnels",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-0.001316, 51.505044]
+    },
+    "heading": 130.1,
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Blackwall and Silvertown tunnels",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -0.001316,
-     51.505044
-    ]
-   },
-   "heading": 130.1,
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-0.004038, 51.503838]
+    },
+    "heading": 306.3,
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Blackwall and Silvertown tunnels",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -0.004038,
-     51.503838
-    ]
-   },
-   "heading": 306.3,
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [0.011221, 51.501149]
+    },
+    "heading": 232.4,
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:3",
-   "kind": "point",
+   "id": "pt4",
+   "type": "point",
    "name": "Blackwall and Silvertown tunnels",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     0.011221,
-     51.501149
-    ]
-   },
-   "heading": 232.4,
-   "match_km": 0.15
-  },
-  {
-   "id": "pt:4",
-   "kind": "point",
-   "name": "Blackwall and Silvertown tunnels",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     0.010812,
-     51.501226
-    ]
-   },
-   "heading": 52.5,
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [0.010812, 51.501226]
+    },
+    "heading": 52.5,
+    "match_m": 150
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Blackwall and Silvertown tunnels",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "vehicle_class", "user_class", "time_class", "priority", "amount"],
+   "rows": [
+    ["pt1", "pt-1.1", null, null, null, "10.5"],
+    ["pt1", "pt-1.1", "electronic", null, null, "5.25"],
+    ["pt1", null, null, "free", 1, "0"],
+    ["pt2", "pt-1.1", null, null, null, "10.5"],
+    ["pt2", "pt-1.1", "electronic", null, null, "5.25"],
+    ["pt2", null, null, "free", 1, "0"],
+    ["pt3", "pt-1.1", null, null, null, "10.5"],
+    ["pt3", "pt-1.1", "electronic", null, null, "5.25"],
+    ["pt3", null, null, "free", 1, "0"],
+    ["pt4", "pt-1.1", null, null, null, "10.5"],
+    ["pt4", "pt-1.1", "electronic", null, null, "5.25"],
+    ["pt4", null, null, "free", 1, "0"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 10.5,
-     "electronic": 5.25
-    }
-   }
-  },
-  {
-   "id": "point:2",
-   "name": "Blackwall and Silvertown tunnels",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 10.5,
-     "electronic": 5.25
-    }
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Blackwall and Silvertown tunnels",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 10.5,
-     "electronic": 5.25
-    }
-   }
-  },
-  {
-   "id": "point:4",
-   "name": "Blackwall and Silvertown tunnels",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:4"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 10.5,
-     "electronic": 5.25
-    }
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "name": "electronic",
-    "payment": "electronic"
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "name": "electronic",
-    "payment": "electronic"
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "name": "electronic",
-    "payment": "electronic"
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:4"
-   ],
-   "params": {
-    "name": "electronic",
-    "payment": "electronic"
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:4"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  }
- ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-12"
   }

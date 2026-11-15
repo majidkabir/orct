@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "gb-dartford-2024-01-01",
-  "scheme": "gb-dartford",
-  "country": "GB",
-  "currency": "GBP",
+  "id": "carbon-cost/gb-dartford/2024-01-01",
+  "scheme": {
+   "id": "gb-dartford",
+   "name": "Dartford Crossing charge (Dart Charge)",
+   "country": "GB"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2024-01-01",
-  "name": "Dartford Crossing charge (Dart Charge)",
+  "valid_to": "2025-08-31",
+  "currency": "GBP",
+  "timezone": "Europe/London",
+  "license": "MIT",
   "method": "The A282 Trunk Road (Dartford-Thurrock Crossing Charging Scheme) Order 2013 (S.I. 2013/2249), Schedule 2 column 4 (free-flow charging): class C (goods vehicles with two axles) and D (more than two axles), per crossing either way, from 6am to 10pm (GOV.UK).",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/gb-dartford-2024-01-01.json"
   },
-  "valid_to": "2025-08-31"
+  "required_features": ["time_classes", "type.point"]
  },
  "sources": [
   {
@@ -27,187 +36,125 @@
    "url": "https://www.gov.uk/pay-dartford-crossing-charge/charges"
   }
  ],
- "vehicles": {
-  "description": "Goods vehicles, by axles (here: over 3.5 t)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "max": 2
-    }
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 3
-    }
+ "liable_vehicles": {
+  "description": "Goods vehicles, by axles (here: over 3.5 t)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "pt-1",
+   "classes": [
+    {
+     "id": "pt-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 2
+      }
+     }
+    },
+    {
+     "id": "pt-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 3
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "time_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "The Dartford-Thurrock Crossing (A282): the northbound tunnels and the southbound Queen Elizabeth II Bridge."
+   "id": "free",
+   "label": "No charge",
+   "times": [["22:00", "06:00"]]
+  }
+ ],
+ "charge_objects": [
+  {
+   "id": "pt1",
+   "type": "point",
+   "name": "Dartford Crossing",
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [0.257598, 51.464529]
+    },
+    "heading": 29.2,
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Dartford Crossing",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     0.257598,
-     51.464529
-    ]
-   },
-   "heading": 29.2,
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [0.258914, 51.464813]
+    },
+    "heading": 209.1,
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Dartford Crossing",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     0.258914,
-     51.464813
-    ]
-   },
-   "heading": 209.1,
-   "match_km": 0.15
-  },
-  {
-   "id": "pt:3",
-   "kind": "point",
-   "name": "Dartford Crossing",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     0.257355,
-     51.464641
-    ]
-   },
-   "heading": 29.2,
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [0.257355, 51.464641]
+    },
+    "heading": 29.2,
+    "match_m": 150
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Dartford Crossing",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "vehicle_class", "time_class", "priority", "amount"],
+   "rows": [
+    ["pt1", "pt-1.1", null, null, "3"],
+    ["pt1", "pt-1.2", null, null, "6"],
+    ["pt1", null, "free", 1, "0"],
+    ["pt2", "pt-1.1", null, null, "3"],
+    ["pt2", "pt-1.2", null, null, "6"],
+    ["pt2", null, "free", 1, "0"],
+    ["pt3", "pt-1.1", null, null, "3"],
+    ["pt3", "pt-1.2", null, null, "6"],
+    ["pt3", null, "free", 1, "0"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 3.0,
-    "c2": 6.0
-   }
-  },
-  {
-   "id": "point:2",
-   "name": "Dartford Crossing",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 3.0,
-    "c2": 6.0
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Dartford Crossing",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 3.0,
-    "c2": 6.0
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "05:59"
-    ]
-   }
-  }
- ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-11"
   }

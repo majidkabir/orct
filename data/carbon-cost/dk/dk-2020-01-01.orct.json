@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "dk-2020-01-01",
-  "scheme": "dk",
-  "country": "DK",
-  "currency": "DKK",
+  "id": "carbon-cost/dk/2020-01-01",
+  "scheme": {
+   "id": "dk",
+   "name": "Danish road user charge (vejbenyttelsesafgift, Eurovignette)",
+   "country": "DK"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2020-01-01",
-  "name": "Danish road user charge (vejbenyttelsesafgift, Eurovignette)",
+  "valid_to": "2024-12-31",
+  "currency": "DKK",
+  "timezone": "Europe/Copenhagen",
+  "license": "MIT",
   "method": "Lov om afgift af vejbenyttelse, LBK nr. 174 af 24/02/2020, § 3, stk. 4, nr. 5: 89 kroner a day for trucks registered abroad of 12 t or more, whatever their emission norm and axles; § 4 adjusts the amounts each 1 January only if the euro's value in kroner has changed by 5% or more. The period starts at the start of a day (§ 2, stk. 5). The law ended on 1 January 2025 (lov nr. 763 af 13/06/2023), replaced by the km-based vejafgift.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/dk-2020-01-01.json"
   },
-  "valid_to": "2024-12-31"
+  "required_features": ["type.period"]
  },
  "sources": [
   {
@@ -22,50 +31,56 @@
    "url": "https://www.retsinformation.dk/eli/lta/2020/174"
   }
  ],
- "vehicles": {
-  "description": "Trucks and combinations registered abroad of 12 t or more total weight",
-  "min_mass_kg": 12000,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    }
+ "liable_vehicles": {
+  "description": "Trucks and combinations registered abroad of 12 t or more total weight",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 12000
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "toll-1",
+   "classes": [
+    {
+     "id": "toll-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "Motorways (motorvejsstrækningerne)."
+   "type": "network",
+   "network": {
+    "description": "Motorways (motorvejsstrækningerne)."
+   }
   }
  ],
  "charges": [
   {
-   "id": "toll@roads",
+   "id": "toll",
    "type": "period",
-   "component": "toll",
-   "applies_to": [
-    "roads"
-   ],
-   "sources": [
-    "s1"
-   ],
-   "rates": {
-    "c1": 89
-   },
-   "period": "day",
-   "day_basis": "calendar"
+   "component": "unspecified",
+   "unit": "product",
+   "component_label": "toll",
+   "day_basis": "calendar",
+   "columns": ["object", "vehicle_class", "product", "amount"],
+   "rows": [["roads", "toll-1.1", "P1D", "89"]],
+   "sources": ["s1"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",

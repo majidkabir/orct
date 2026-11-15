@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "lv-2017-08-22",
-  "scheme": "lv",
-  "country": "LV",
-  "currency": "EUR",
+  "id": "carbon-cost/lv/2017-08-22",
+  "scheme": {
+   "id": "lv",
+   "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+   "country": "LV"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2017-08-22",
-  "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
+  "valid_to": "2024-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Riga",
+  "license": "MIT",
   "method": "Autoceļu lietošanas nodevas likums, Annex 2 as worded by the amendments of 28 July 2017 (in force 22 August 2017): a time-based charge in euro for 1 day, 7 days, 30 days or a year, by maximum mass (3001-3500 kg, 3501-12000 kg, 12001 kg and over), axles (up to 3, or 4 and more, over 12 t) and EURO class (0-II, III, IV and better). The table keeps the 1-day rate. A fee, without VAT. Rebuilt from the Internet Archive's copies of these pages (2024). Annex 2 was replaced from 1 January 2025 by the law of 4 December 2024 (Grozījumi Autoceļu lietošanas nodevas likumā).",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/lv-2017-08-22.json"
   },
-  "valid_to": "2024-12-31"
+  "required_features": ["type.period"]
  },
  "sources": [
   {
@@ -27,197 +36,174 @@
    "url": "https://likumi.lv/ta/id/357477"
   }
  ],
- "vehicles": {
-  "description": "Goods vehicles and combinations from 3001 kg maximum mass",
-  "min_mass_kg": 3001,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3001,
-     "max": 3500
-    }
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ]
-   }
-  },
-  {
-   "id": "c3",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c4",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 12000
-    },
-    "euro": [
-     4,
-     5,
-     6
-    ]
-   }
-  },
-  {
-   "id": "c5",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "max": 3
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ]
-   }
-  },
-  {
-   "id": "c6",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "min": 4
-    },
-    "euro": [
-     0,
-     1,
-     2
-    ]
-   }
-  },
-  {
-   "id": "c7",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "max": 3
-    },
-    "euro": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c8",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "min": 4
-    },
-    "euro": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c9",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "max": 3
-    },
-    "euro": [
-     4,
-     5,
-     6
-    ]
-   }
-  },
-  {
-   "id": "c10",
-   "criteria": {
-    "mass_kg": {
-     "min": 12001
-    },
-    "axles": {
-     "min": 4
-    },
-    "euro": [
-     4,
-     5,
-     6
-    ]
+ "liable_vehicles": {
+  "description": "Goods vehicles and combinations from 3001 kg maximum mass",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3001
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "toll-1",
+   "classes": [
+    {
+     "id": "toll-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3001,
+       "max": 3500
+      }
+     }
+    },
+    {
+     "id": "toll-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["0", "1", "2"]
+     }
+    },
+    {
+     "id": "toll-1.3",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["3"]
+     }
+    },
+    {
+     "id": "toll-1.4",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 12000
+      },
+      "euro_class": ["4", "5", "6"]
+     }
+    },
+    {
+     "id": "toll-1.5",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "max": 3
+      },
+      "euro_class": ["0", "1", "2"]
+     }
+    },
+    {
+     "id": "toll-1.6",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "min": 4
+      },
+      "euro_class": ["0", "1", "2"]
+     }
+    },
+    {
+     "id": "toll-1.7",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "max": 3
+      },
+      "euro_class": ["3"]
+     }
+    },
+    {
+     "id": "toll-1.8",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "min": 4
+      },
+      "euro_class": ["3"]
+     }
+    },
+    {
+     "id": "toll-1.9",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "max": 3
+      },
+      "euro_class": ["4", "5", "6"]
+     }
+    },
+    {
+     "id": "toll-1.10",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12001
+      },
+      "train_axles": {
+       "min": 4
+      },
+      "euro_class": ["4", "5", "6"]
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "The state main and regional road sections listed in Annex 1 of the law. Any use of them on a day needs that day's charge."
+   "type": "network",
+   "network": {
+    "description": "The state main and regional road sections listed in Annex 1 of the law. Any use of them on a day needs that day's charge."
+   }
   }
  ],
  "charges": [
   {
-   "id": "toll@roads",
+   "id": "toll",
    "type": "period",
-   "component": "toll",
-   "applies_to": [
-    "roads"
+   "component": "unspecified",
+   "unit": "product",
+   "component_label": "toll",
+   "columns": ["object", "vehicle_class", "product", "amount"],
+   "rows": [
+    ["roads", "toll-1.1", "P1D", "6"],
+    ["roads", "toll-1.2", "P1D", "9"],
+    ["roads", "toll-1.3", "P1D", "8"],
+    ["roads", "toll-1.4", "P1D", "8"],
+    ["roads", "toll-1.5", "P1D", "12"],
+    ["roads", "toll-1.6", "P1D", "12"],
+    ["roads", "toll-1.7", "P1D", "9"],
+    ["roads", "toll-1.8", "P1D", "11"],
+    ["roads", "toll-1.9", "P1D", "8"],
+    ["roads", "toll-1.10", "P1D", "11"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 6,
-    "c2": 9,
-    "c3": 8,
-    "c4": 8,
-    "c5": 12,
-    "c6": 12,
-    "c7": 9,
-    "c8": 11,
-    "c9": 8,
-    "c10": 11
-   },
-   "period": "day"
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
-   "scope": "toll@roads",
+   "scope": "toll",
    "status": "partial",
-   "reason": "what counts as a day isn't known; one day is charged per trip"
+   "reason": "the sources don't say whether a day is a calendar day or 24 hours"
   }
  ]
 }

@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "cz-2021-01-01",
-  "scheme": "cz",
-  "country": "CZ",
-  "currency": "CZK",
+  "id": "carbon-cost/cz/2021-01-01",
+  "scheme": {
+   "id": "cz",
+   "name": "Czech electronic toll (Mýto CZ)",
+   "country": "CZ"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2021-01-01",
-  "name": "Czech electronic toll (Mýto CZ)",
+  "valid_to": "2024-02-29",
+  "currency": "CZK",
+  "timezone": "Europe/Prague",
+  "license": "MIT",
   "method": "Nařízení vlády č. 240/2014 Sb., § 3 and Annexes 1 (motorways) and 2 (class I roads), as worded by nařízení vlády č. 479/2020 Sb., in force 1 January 2021 to 29 February 2024: one rate per km by road category, maximum permissible mass, axles and EURO class (0-IV; V and EEV; VI). The table keeps the rates for 5:00-22:00; from 22:00 to 5:00 they are about 0.5% higher. Euro VI vehicles on natural gas or biomethane had lower rates, not in the table.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/cz-2021-01-01.json"
   },
-  "valid_to": "2024-02-29"
+  "required_features": ["type.distance"]
  },
  "sources": [
   {
@@ -27,756 +36,628 @@
    "url": "https://www.epravo.cz/top/zakony/sbirka-zakonu/sb/2014/240"
   }
  ],
- "vehicles": {
-  "description": "Motor vehicles and combinations over 3.5 t maximum permissible mass (except buses, M2/M3, which have their own rates)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c3",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c4",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c5",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c6",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c7",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c8",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c9",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c10",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c11",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c12",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501,
-     "max": 7499
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c13",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c14",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c15",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c16",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c17",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c18",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c19",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c20",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c21",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c22",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c23",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c24",
-   "criteria": {
-    "mass_kg": {
-     "min": 7500,
-     "max": 11999
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c25",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c26",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c27",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c28",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ]
-   }
-  },
-  {
-   "id": "c29",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c30",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c31",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c32",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c33",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 2,
-     "max": 2
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c34",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 3,
-     "max": 3
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c35",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 4,
-     "max": 4
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c36",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "axles": {
-     "min": 5
-    },
-    "euro": [
-     6
-    ]
+ "liable_vehicles": {
+  "description": "Motor vehicles and combinations over 3.5 t maximum permissible mass (except buses, M2/M3, which have their own rates)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "toll-1",
+   "classes": [
+    {
+     "id": "toll-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.3",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.4",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.5",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.6",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.7",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.8",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.9",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.10",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.11",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.12",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501,
+       "max": 7499
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.13",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.14",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.15",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.16",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.17",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.18",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.19",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.20",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.21",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.22",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.23",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.24",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 7500,
+       "max": 11999
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.25",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.26",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.27",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.28",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["0", "1", "2", "3", "4"]
+     }
+    },
+    {
+     "id": "toll-1.29",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.30",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.31",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.32",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["5"]
+     }
+    },
+    {
+     "id": "toll-1.33",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 2,
+       "max": 2
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.34",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 3,
+       "max": 3
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.35",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 4,
+       "max": 4
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.36",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "train_axles": {
+       "min": 5
+      },
+      "euro_class": ["6"]
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
+  {
+   "id": "roads",
+   "type": "network",
+   "network": {
+    "description": "Motorways (dálnice) and the tolled sections of class I roads (silnice I. třídy)."
+   }
+  },
   {
    "id": "road:motorway",
-   "kind": "road_class",
-   "road_type": "motorway"
+   "type": "network",
+   "parent": "roads",
+   "network": {
+    "road_types": ["motorway"]
+   }
   },
   {
    "id": "road:other",
-   "kind": "road_class",
-   "road_type": "other"
-  },
-  {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "Motorways (dálnice) and the tolled sections of class I roads (silnice I. třídy)."
+   "type": "network",
+   "parent": "roads",
+   "network": {
+    "road_types": ["other"]
+   }
   }
  ],
  "charges": [
   {
-   "id": "toll@road:motorway",
+   "id": "toll",
    "type": "distance",
-   "component": "toll",
-   "applies_to": [
-    "road:motorway"
+   "component": "unspecified",
+   "unit": "km",
+   "component_label": "toll",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["road:motorway", "toll-1.1", "0.056"],
+    ["road:motorway", "toll-1.2", "0.076"],
+    ["road:motorway", "toll-1.3", "0.096"],
+    ["road:motorway", "toll-1.4", "0.116"],
+    ["road:motorway", "toll-1.5", "0.048"],
+    ["road:motorway", "toll-1.6", "0.064"],
+    ["road:motorway", "toll-1.7", "0.081"],
+    ["road:motorway", "toll-1.8", "0.099"],
+    ["road:motorway", "toll-1.9", "0.044"],
+    ["road:motorway", "toll-1.10", "0.06"],
+    ["road:motorway", "toll-1.11", "0.076"],
+    ["road:motorway", "toll-1.12", "0.092"],
+    ["road:motorway", "toll-1.13", "1.163"],
+    ["road:motorway", "toll-1.14", "1.563"],
+    ["road:motorway", "toll-1.15", "1.983"],
+    ["road:motorway", "toll-1.16", "2.408"],
+    ["road:motorway", "toll-1.17", "0.985"],
+    ["road:motorway", "toll-1.18", "1.324"],
+    ["road:motorway", "toll-1.19", "1.68"],
+    ["road:motorway", "toll-1.20", "2.04"],
+    ["road:motorway", "toll-1.21", "0.918"],
+    ["road:motorway", "toll-1.22", "1.234"],
+    ["road:motorway", "toll-1.23", "1.566"],
+    ["road:motorway", "toll-1.24", "1.901"],
+    ["road:motorway", "toll-1.25", "3.045"],
+    ["road:motorway", "toll-1.26", "4.091"],
+    ["road:motorway", "toll-1.27", "5.191"],
+    ["road:motorway", "toll-1.28", "6.295"],
+    ["road:motorway", "toll-1.29", "2.58"],
+    ["road:motorway", "toll-1.30", "3.466"],
+    ["road:motorway", "toll-1.31", "4.398"],
+    ["road:motorway", "toll-1.32", "5.333"],
+    ["road:motorway", "toll-1.33", "2.404"],
+    ["road:motorway", "toll-1.34", "3.23"],
+    ["road:motorway", "toll-1.35", "4.099"],
+    ["road:motorway", "toll-1.36", "4.969"],
+    ["road:other", "toll-1.1", "0.036"],
+    ["road:other", "toll-1.2", "0.048"],
+    ["road:other", "toll-1.3", "0.061"],
+    ["road:other", "toll-1.4", "0.074"],
+    ["road:other", "toll-1.5", "0.027"],
+    ["road:other", "toll-1.6", "0.037"],
+    ["road:other", "toll-1.7", "0.047"],
+    ["road:other", "toll-1.8", "0.057"],
+    ["road:other", "toll-1.9", "0.024"],
+    ["road:other", "toll-1.10", "0.032"],
+    ["road:other", "toll-1.11", "0.041"],
+    ["road:other", "toll-1.12", "0.05"],
+    ["road:other", "toll-1.13", "0.743"],
+    ["road:other", "toll-1.14", "0.998"],
+    ["road:other", "toll-1.15", "1.266"],
+    ["road:other", "toll-1.16", "1.537"],
+    ["road:other", "toll-1.17", "0.565"],
+    ["road:other", "toll-1.18", "0.759"],
+    ["road:other", "toll-1.19", "0.963"],
+    ["road:other", "toll-1.20", "1.17"],
+    ["road:other", "toll-1.21", "0.498"],
+    ["road:other", "toll-1.22", "0.669"],
+    ["road:other", "toll-1.23", "0.849"],
+    ["road:other", "toll-1.24", "1.031"],
+    ["road:other", "toll-1.25", "1.944"],
+    ["road:other", "toll-1.26", "2.611"],
+    ["road:other", "toll-1.27", "3.314"],
+    ["road:other", "toll-1.28", "4.016"],
+    ["road:other", "toll-1.29", "1.479"],
+    ["road:other", "toll-1.30", "1.987"],
+    ["road:other", "toll-1.31", "2.521"],
+    ["road:other", "toll-1.32", "3.053"],
+    ["road:other", "toll-1.33", "1.303"],
+    ["road:other", "toll-1.34", "1.751"],
+    ["road:other", "toll-1.35", "2.222"],
+    ["road:other", "toll-1.36", "2.689"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.056,
-    "c2": 0.076,
-    "c3": 0.096,
-    "c4": 0.116,
-    "c5": 0.048,
-    "c6": 0.064,
-    "c7": 0.081,
-    "c8": 0.099,
-    "c9": 0.044,
-    "c10": 0.06,
-    "c11": 0.076,
-    "c12": 0.092,
-    "c13": 1.163,
-    "c14": 1.563,
-    "c15": 1.983,
-    "c16": 2.408,
-    "c17": 0.985,
-    "c18": 1.324,
-    "c19": 1.68,
-    "c20": 2.04,
-    "c21": 0.918,
-    "c22": 1.234,
-    "c23": 1.566,
-    "c24": 1.901,
-    "c25": 3.045,
-    "c26": 4.091,
-    "c27": 5.191,
-    "c28": 6.295,
-    "c29": 2.58,
-    "c30": 3.466,
-    "c31": 4.398,
-    "c32": 5.333,
-    "c33": 2.404,
-    "c34": 3.23,
-    "c35": 4.099,
-    "c36": 4.969
-   }
-  },
-  {
-   "id": "toll@road:other",
-   "type": "distance",
-   "component": "toll",
-   "applies_to": [
-    "road:other"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.036,
-    "c2": 0.048,
-    "c3": 0.061,
-    "c4": 0.074,
-    "c5": 0.027,
-    "c6": 0.037,
-    "c7": 0.047,
-    "c8": 0.057,
-    "c9": 0.024,
-    "c10": 0.032,
-    "c11": 0.041,
-    "c12": 0.05,
-    "c13": 0.743,
-    "c14": 0.998,
-    "c15": 1.266,
-    "c16": 1.537,
-    "c17": 0.565,
-    "c18": 0.759,
-    "c19": 0.963,
-    "c20": 1.17,
-    "c21": 0.498,
-    "c22": 0.669,
-    "c23": 0.849,
-    "c24": 1.031,
-    "c25": 1.944,
-    "c26": 2.611,
-    "c27": 3.314,
-    "c28": 4.016,
-    "c29": 1.479,
-    "c30": 1.987,
-    "c31": 2.521,
-    "c32": 3.053,
-    "c33": 1.303,
-    "c34": 1.751,
-    "c35": 2.222,
-    "c36": 2.689
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "assumed_share",
-   "applies_to": [
-    "toll@road:motorway",
-    "toll@road:other"
-   ],
-   "params": {
-    "of": "motorway",
-    "share": 1
-   }
+ "extensions": {
+  "io.github.majidkabir.carboncost": {
+   "motorway_share": 1
   }
- ]
+ }
 }

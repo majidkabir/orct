@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "ba-rs-2024-10-02",
-  "scheme": "ba-rs",
-  "country": "BA",
-  "currency": "EUR",
+  "id": "carbon-cost/ba-rs/2024-10-02",
+  "scheme": {
+   "id": "ba-rs",
+   "name": "Republika Srpska motorway tolls (Autoputevi Republike Srpske)",
+   "country": "BA"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2024-10-02",
-  "name": "Republika Srpska motorway tolls (Autoputevi Republike Srpske)",
+  "currency": "EUR",
+  "timezone": "Europe/Sarajevo",
+  "license": "MIT",
   "method": "Uredba o visini putarine (Službeni glasnik Republike Srpske 89/19), article 4(1), as JP Autoputevi Republike Srpske's price list at each toll station gives it (published as images, uploaded 2 October 2024, transcribed by hand): by entry and exit station either way, class III (two or three axles) and IV (four or more), excluding 17% VAT, converted at the convertible mark's fixed 1.95583 KM per euro. valid_from is the price lists' upload date.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/ba-rs-2024-10-02.json"
-  }
+  },
+  "required_features": ["type.od"]
  },
  "sources": [
   {
@@ -36,544 +45,247 @@
    "url": "https://www.openstreetmap.org/"
   }
  ],
- "vehicles": {
-  "description": "Classes III and IV (here trucks over 3.5 t)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "Classes III and IV (here trucks over 3.5 t)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
+   }
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "c-III",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
+   "id": "sys1-1",
+   "classes": [
+    {
+     "id": "sys1-1.III",
+     "label": "III",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 3
+      }
+     }
     },
-    "axles": {
-     "max": 3
+    {
+     "id": "sys1-1.IV",
+     "label": "IV",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 4
+      }
+     }
     }
-   },
-   "label": "III"
-  },
-  {
-   "id": "c-IV",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 4
-    }
-   },
-   "label": "IV"
+   ]
   }
  ],
- "network": [
+ "charge_objects": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "Motorways 9. januar (Kostajnica–Kladari–Prnjavor–Laktaši) and Gradiška–Banja Luka (Čatrnja–Nova Topola–Aleksandrovac–Jakupovci)."
-  },
-  {
-   "id": "st:1:Aleksandrovac",
-   "kind": "station",
+   "id": "st1:Aleksandrovac",
+   "type": "station",
    "name": "Aleksandrovac",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.276936,
-      44.958706
-     ],
-     [
-      17.279649,
-      44.960097
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.276936, 44.958706], [17.279649, 44.960097]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   },
   {
-   "id": "st:1:Drugovići",
-   "kind": "station",
+   "id": "st1:Drugovići",
+   "type": "station",
    "name": "Drugovići",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.404083,
-      44.870197
-     ]
-    ]
-   },
-   "point_names": [
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.404083, 44.870197]]
+    },
+    "point_names": ["booth"]
+   }
   },
   {
-   "id": "st:1:Jakupovci",
-   "kind": "station",
+   "id": "st1:Jakupovci",
+   "type": "station",
    "name": "Jakupovci",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.285689,
-      44.891804
-     ],
-     [
-      17.285463,
-      44.891875
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.285689, 44.891804], [17.285463, 44.891875]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   },
   {
-   "id": "st:1:Kladari",
-   "kind": "station",
+   "id": "st1:Kladari",
+   "type": "station",
    "name": "Kladari",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      18.047285,
-      44.809635
-     ],
-     [
-      18.047211,
-      44.809537
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[18.047285, 44.809635], [18.047211, 44.809537]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   },
   {
-   "id": "st:1:Kostajnica",
-   "kind": "station",
+   "id": "st1:Kostajnica",
+   "type": "station",
    "name": "Kostajnica",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      18.066396,
-      44.760805
-     ]
-    ]
-   },
-   "point_names": [
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[18.066396, 44.760805]]
+    },
+    "point_names": ["booth"]
+   }
   },
   {
-   "id": "st:1:Laktaši",
-   "kind": "station",
+   "id": "st1:Laktaši",
+   "type": "station",
    "name": "Laktaši",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.325387,
-      44.9155
-     ]
-    ]
-   },
-   "point_names": [
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.325387, 44.9155]]
+    },
+    "point_names": ["booth"]
+   }
   },
   {
-   "id": "st:1:Nova Topola",
-   "kind": "station",
+   "id": "st1:Nova Topola",
+   "type": "station",
    "name": "Nova Topola",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.223614,
-      45.045062
-     ]
-    ]
-   },
-   "point_names": [
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.223614, 45.045062]]
+    },
+    "point_names": ["booth"]
+   }
   },
   {
-   "id": "st:1:Prnjavor",
-   "kind": "station",
+   "id": "st1:Prnjavor",
+   "type": "station",
    "name": "Prnjavor",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.684223,
-      44.852395
-     ],
-     [
-      17.684264,
-      44.852312
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.684223, 44.852395], [17.684264, 44.852312]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   },
   {
-   "id": "st:1:Čatrnja",
-   "kind": "station",
+   "id": "st1:Čatrnja",
+   "type": "station",
    "name": "Čatrnja",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      17.193283,
-      45.100624
-     ],
-     [
-      17.193124,
-      45.100609
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[17.193283, 45.100624], [17.193124, 45.100609]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   }
  ],
  "charges": [
   {
-   "id": "system:1",
+   "id": "system1",
    "name": "Autoputevi Republike Srpske",
-   "type": "od_matrix",
-   "component": "toll",
-   "applies_to": [
-    "st:1:Aleksandrovac",
-    "st:1:Drugovići",
-    "st:1:Jakupovci",
-    "st:1:Kladari",
-    "st:1:Kostajnica",
-    "st:1:Laktaši",
-    "st:1:Nova Topola",
-    "st:1:Prnjavor",
-    "st:1:Čatrnja"
-   ],
-   "sources": [
-    "s1",
-    "s2",
-    "s3",
-    "s4"
-   ],
-   "rates": {},
-   "pairs": [
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Drugovići",
-     "rates": {
-      "c-III": 3.933,
-      "c-IV": 6.555
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Jakupovci",
-     "rates": {
-      "c-III": 1.9665,
-      "c-IV": 3.2775
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Kladari",
-     "rates": {
-      "c-III": 10.488,
-      "c-IV": 17.4801
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Kostajnica",
-     "rates": {
-      "c-III": 11.799,
-      "c-IV": 19.6651
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Laktaši",
-     "rates": {
-      "c-III": 2.622,
-      "c-IV": 4.37
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 1.311,
-      "c-IV": 2.185
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 6.555,
-      "c-IV": 10.925
-     }
-    },
-    {
-     "entry": "st:1:Aleksandrovac",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 2.622,
-      "c-IV": 4.37
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Jakupovci",
-     "rates": {
-      "c-III": 2.622,
-      "c-IV": 4.37
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Kladari",
-     "rates": {
-      "c-III": 6.555,
-      "c-IV": 10.925
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Kostajnica",
-     "rates": {
-      "c-III": 7.866,
-      "c-IV": 13.11
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Laktaši",
-     "rates": {
-      "c-III": 1.311,
-      "c-IV": 2.185
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 5.244,
-      "c-IV": 8.74
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 2.622,
-      "c-IV": 4.37
-     }
-    },
-    {
-     "entry": "st:1:Drugovići",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 6.555,
-      "c-IV": 10.925
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Kladari",
-     "rates": {
-      "c-III": 9.177,
-      "c-IV": 15.2951
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Kostajnica",
-     "rates": {
-      "c-III": 10.488,
-      "c-IV": 17.4801
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Laktaši",
-     "rates": {
-      "c-III": 1.311,
-      "c-IV": 2.185
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 3.2775,
-      "c-IV": 5.4625
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 5.244,
-      "c-IV": 8.74
-     }
-    },
-    {
-     "entry": "st:1:Jakupovci",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 4.5885,
-      "c-IV": 7.6475
-     }
-    },
-    {
-     "entry": "st:1:Kladari",
-     "exit": "st:1:Kostajnica",
-     "rates": {
-      "c-III": 1.311,
-      "c-IV": 2.185
-     }
-    },
-    {
-     "entry": "st:1:Kladari",
-     "exit": "st:1:Laktaši",
-     "rates": {
-      "c-III": 7.866,
-      "c-IV": 13.11
-     }
-    },
-    {
-     "entry": "st:1:Kladari",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 11.799,
-      "c-IV": 19.6651
-     }
-    },
-    {
-     "entry": "st:1:Kladari",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 3.933,
-      "c-IV": 6.555
-     }
-    },
-    {
-     "entry": "st:1:Kladari",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 13.11,
-      "c-IV": 21.8501
-     }
-    },
-    {
-     "entry": "st:1:Kostajnica",
-     "exit": "st:1:Laktaši",
-     "rates": {
-      "c-III": 9.177,
-      "c-IV": 15.2951
-     }
-    },
-    {
-     "entry": "st:1:Kostajnica",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 13.11,
-      "c-IV": 21.8501
-     }
-    },
-    {
-     "entry": "st:1:Kostajnica",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 5.244,
-      "c-IV": 8.74
-     }
-    },
-    {
-     "entry": "st:1:Kostajnica",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 14.4211,
-      "c-IV": 24.0351
-     }
-    },
-    {
-     "entry": "st:1:Laktaši",
-     "exit": "st:1:Nova Topola",
-     "rates": {
-      "c-III": 3.933,
-      "c-IV": 6.555
-     }
-    },
-    {
-     "entry": "st:1:Laktaši",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 3.933,
-      "c-IV": 6.555
-     }
-    },
-    {
-     "entry": "st:1:Laktaši",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 5.244,
-      "c-IV": 8.74
-     }
-    },
-    {
-     "entry": "st:1:Nova Topola",
-     "exit": "st:1:Prnjavor",
-     "rates": {
-      "c-III": 7.866,
-      "c-IV": 13.11
-     }
-    },
-    {
-     "entry": "st:1:Nova Topola",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 1.311,
-      "c-IV": 2.185
-     }
-    },
-    {
-     "entry": "st:1:Prnjavor",
-     "exit": "st:1:Čatrnja",
-     "rates": {
-      "c-III": 9.177,
-      "c-IV": 15.2951
-     }
-    }
-   ],
+   "type": "od",
+   "component": "unspecified",
+   "unit": "trip",
    "pairing": "single_ticket",
-   "method": "Uredba o visini putarine (SG RS 89/19): by entry and exit station."
+   "method": "Uredba o visini putarine (SG RS 89/19): by entry and exit station.",
+   "columns": ["entry", "exit", "vehicle_class", "amount"],
+   "rows": [
+    ["st1:Aleksandrovac", "st1:Drugovići", "sys1-1.III", "3.933"],
+    ["st1:Aleksandrovac", "st1:Drugovići", "sys1-1.IV", "6.555"],
+    ["st1:Aleksandrovac", "st1:Jakupovci", "sys1-1.III", "1.9665"],
+    ["st1:Aleksandrovac", "st1:Jakupovci", "sys1-1.IV", "3.2775"],
+    ["st1:Aleksandrovac", "st1:Kladari", "sys1-1.III", "10.488"],
+    ["st1:Aleksandrovac", "st1:Kladari", "sys1-1.IV", "17.4801"],
+    ["st1:Aleksandrovac", "st1:Kostajnica", "sys1-1.III", "11.799"],
+    ["st1:Aleksandrovac", "st1:Kostajnica", "sys1-1.IV", "19.6651"],
+    ["st1:Aleksandrovac", "st1:Laktaši", "sys1-1.III", "2.622"],
+    ["st1:Aleksandrovac", "st1:Laktaši", "sys1-1.IV", "4.37"],
+    ["st1:Aleksandrovac", "st1:Nova Topola", "sys1-1.III", "1.311"],
+    ["st1:Aleksandrovac", "st1:Nova Topola", "sys1-1.IV", "2.185"],
+    ["st1:Aleksandrovac", "st1:Prnjavor", "sys1-1.III", "6.555"],
+    ["st1:Aleksandrovac", "st1:Prnjavor", "sys1-1.IV", "10.925"],
+    ["st1:Aleksandrovac", "st1:Čatrnja", "sys1-1.III", "2.622"],
+    ["st1:Aleksandrovac", "st1:Čatrnja", "sys1-1.IV", "4.37"],
+    ["st1:Drugovići", "st1:Jakupovci", "sys1-1.III", "2.622"],
+    ["st1:Drugovići", "st1:Jakupovci", "sys1-1.IV", "4.37"],
+    ["st1:Drugovići", "st1:Kladari", "sys1-1.III", "6.555"],
+    ["st1:Drugovići", "st1:Kladari", "sys1-1.IV", "10.925"],
+    ["st1:Drugovići", "st1:Kostajnica", "sys1-1.III", "7.866"],
+    ["st1:Drugovići", "st1:Kostajnica", "sys1-1.IV", "13.11"],
+    ["st1:Drugovići", "st1:Laktaši", "sys1-1.III", "1.311"],
+    ["st1:Drugovići", "st1:Laktaši", "sys1-1.IV", "2.185"],
+    ["st1:Drugovići", "st1:Nova Topola", "sys1-1.III", "5.244"],
+    ["st1:Drugovići", "st1:Nova Topola", "sys1-1.IV", "8.74"],
+    ["st1:Drugovići", "st1:Prnjavor", "sys1-1.III", "2.622"],
+    ["st1:Drugovići", "st1:Prnjavor", "sys1-1.IV", "4.37"],
+    ["st1:Drugovići", "st1:Čatrnja", "sys1-1.III", "6.555"],
+    ["st1:Drugovići", "st1:Čatrnja", "sys1-1.IV", "10.925"],
+    ["st1:Jakupovci", "st1:Kladari", "sys1-1.III", "9.177"],
+    ["st1:Jakupovci", "st1:Kladari", "sys1-1.IV", "15.2951"],
+    ["st1:Jakupovci", "st1:Kostajnica", "sys1-1.III", "10.488"],
+    ["st1:Jakupovci", "st1:Kostajnica", "sys1-1.IV", "17.4801"],
+    ["st1:Jakupovci", "st1:Laktaši", "sys1-1.III", "1.311"],
+    ["st1:Jakupovci", "st1:Laktaši", "sys1-1.IV", "2.185"],
+    ["st1:Jakupovci", "st1:Nova Topola", "sys1-1.III", "3.2775"],
+    ["st1:Jakupovci", "st1:Nova Topola", "sys1-1.IV", "5.4625"],
+    ["st1:Jakupovci", "st1:Prnjavor", "sys1-1.III", "5.244"],
+    ["st1:Jakupovci", "st1:Prnjavor", "sys1-1.IV", "8.74"],
+    ["st1:Jakupovci", "st1:Čatrnja", "sys1-1.III", "4.5885"],
+    ["st1:Jakupovci", "st1:Čatrnja", "sys1-1.IV", "7.6475"],
+    ["st1:Kladari", "st1:Kostajnica", "sys1-1.III", "1.311"],
+    ["st1:Kladari", "st1:Kostajnica", "sys1-1.IV", "2.185"],
+    ["st1:Kladari", "st1:Laktaši", "sys1-1.III", "7.866"],
+    ["st1:Kladari", "st1:Laktaši", "sys1-1.IV", "13.11"],
+    ["st1:Kladari", "st1:Nova Topola", "sys1-1.III", "11.799"],
+    ["st1:Kladari", "st1:Nova Topola", "sys1-1.IV", "19.6651"],
+    ["st1:Kladari", "st1:Prnjavor", "sys1-1.III", "3.933"],
+    ["st1:Kladari", "st1:Prnjavor", "sys1-1.IV", "6.555"],
+    ["st1:Kladari", "st1:Čatrnja", "sys1-1.III", "13.11"],
+    ["st1:Kladari", "st1:Čatrnja", "sys1-1.IV", "21.8501"],
+    ["st1:Kostajnica", "st1:Laktaši", "sys1-1.III", "9.177"],
+    ["st1:Kostajnica", "st1:Laktaši", "sys1-1.IV", "15.2951"],
+    ["st1:Kostajnica", "st1:Nova Topola", "sys1-1.III", "13.11"],
+    ["st1:Kostajnica", "st1:Nova Topola", "sys1-1.IV", "21.8501"],
+    ["st1:Kostajnica", "st1:Prnjavor", "sys1-1.III", "5.244"],
+    ["st1:Kostajnica", "st1:Prnjavor", "sys1-1.IV", "8.74"],
+    ["st1:Kostajnica", "st1:Čatrnja", "sys1-1.III", "14.4211"],
+    ["st1:Kostajnica", "st1:Čatrnja", "sys1-1.IV", "24.0351"],
+    ["st1:Laktaši", "st1:Nova Topola", "sys1-1.III", "3.933"],
+    ["st1:Laktaši", "st1:Nova Topola", "sys1-1.IV", "6.555"],
+    ["st1:Laktaši", "st1:Prnjavor", "sys1-1.III", "3.933"],
+    ["st1:Laktaši", "st1:Prnjavor", "sys1-1.IV", "6.555"],
+    ["st1:Laktaši", "st1:Čatrnja", "sys1-1.III", "5.244"],
+    ["st1:Laktaši", "st1:Čatrnja", "sys1-1.IV", "8.74"],
+    ["st1:Nova Topola", "st1:Prnjavor", "sys1-1.III", "7.866"],
+    ["st1:Nova Topola", "st1:Prnjavor", "sys1-1.IV", "13.11"],
+    ["st1:Nova Topola", "st1:Čatrnja", "sys1-1.III", "1.311"],
+    ["st1:Nova Topola", "st1:Čatrnja", "sys1-1.IV", "2.185"],
+    ["st1:Prnjavor", "st1:Čatrnja", "sys1-1.III", "9.177"],
+    ["st1:Prnjavor", "st1:Čatrnja", "sys1-1.IV", "15.2951"]
+   ],
+   "sources": ["s1", "s2", "s3", "s4"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
@@ -581,7 +293,7 @@
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-13"
   }

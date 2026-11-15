@@ -1,38 +1,71 @@
 #!/usr/bin/env python3
-"""Convert carbon-cost's rate tables (rates/data/*.json) to ORCT 0.1.
+"""Convert carbon-cost's rate tables (rates/data/*.json) to ORCT 0.2.
 
 Usage: convert_carbon_cost.py <carbon-cost checkout> <out dir> [--commit SHA]
 
-Writes <out dir>/<country>/<file stem>.orct.json and <out dir>/index.json.
-Every table is converted; what ORCT 0.1 can't express yet is kept under
-extensions["x-carbon-cost"] and listed in coverage as partial, so nothing
-is lost and a calculator knows what it would miss.
+Writes <out dir>/<country>/<table>.orct.json and <out dir>/index.json. What
+ORCT can't express yet is kept under the carbon-cost extension and listed in
+coverage as partial, so nothing is lost and a calculator knows what it would
+miss. The meaning of each source field is the one documented in carbon-cost's
+rates/rates.go, rates/zones.go, rates/fuelco2.go and rates/congestion.go.
 """
 import json
 import os
 import re
 import sys
+from decimal import Decimal
 
 REPO = "https://github.com/majidkabir/carbon-cost"
-PUBLISHER = "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed"
-# Table keys that carry no pricing rule: kept as extensions without
-# making the dataset partial.
-INFO_KEYS = {"osm_extract", "crossings"}
-
-COMPONENTS = {
-    "toll": "toll", "infrastructure": "infrastructure", "congestion": "congestion",
-    "air": "air", "noise": "noise", "air_noise": "air_noise", "co2": "co2",
+EXT = "io.github.majidkabir.carboncost"
+TZ = {
+    "AL": "Europe/Tirane", "AT": "Europe/Vienna", "BA": "Europe/Sarajevo", "BE": "Europe/Brussels",
+    "BG": "Europe/Sofia", "CH": "Europe/Zurich", "CZ": "Europe/Prague", "DE": "Europe/Berlin",
+    "DK": "Europe/Copenhagen", "EE": "Europe/Tallinn", "ES": "Europe/Madrid", "FR": "Europe/Paris",
+    "GB": "Europe/London", "GR": "Europe/Athens", "HR": "Europe/Zagreb", "HU": "Europe/Budapest",
+    "IE": "Europe/Dublin", "IT": "Europe/Rome", "LI": "Europe/Vaduz", "LT": "Europe/Vilnius",
+    "LU": "Europe/Luxembourg", "LV": "Europe/Riga", "MD": "Europe/Chisinau", "ME": "Europe/Podgorica",
+    "MK": "Europe/Skopje", "NL": "Europe/Amsterdam", "NO": "Europe/Oslo", "PL": "Europe/Warsaw",
+    "PT": "Europe/Lisbon", "RO": "Europe/Bucharest", "RS": "Europe/Belgrade", "SE": "Europe/Stockholm",
+    "SI": "Europe/Ljubljana", "SK": "Europe/Bratislava", "TR": "Europe/Istanbul",
 }
+COMPONENT = {
+    "infrastructure": "infrastructure", "air": "air_pollution", "noise": "noise",
+    "air_noise": "air_pollution_noise", "co2": "co2", "congestion": "congestion",
+}
+ROW_KEYS = ["object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product", "priority", "amount"]
+
+
+def dec(x):
+    """A number from carbon-cost as an ORCT decimal string."""
+    d = Decimal(repr(x)) if isinstance(x, float) else Decimal(x)
+    s = format(d, "f")
+    if "." in s:
+        s = s.rstrip("0").rstrip(".")
+    return "0" if s in ("-0", "") else s
 
 
 def component(c):
-    return COMPONENTS.get(c, "x-" + re.sub(r"[^a-z0-9_-]", "_", c.lower()))
+    """carbon-cost component -> (ORCT component, label kept when not a direct match)."""
+    if c in COMPONENT:
+        return COMPONENT[c], None
+    if c in ("toll", "km_charge", "distance_fee"):
+        return "unspecified", c
+    return "other", c
 
 
-def rng(lo, hi):
+def plus_minute(hhmm):
+    """carbon-cost's inclusive end minute as ORCT's exclusive end."""
+    h, m = map(int, hhmm.split(":"))
+    h, m = h + (m + 1) // 60, (m + 1) % 60
+    return "24:00" if (h, m) >= (24, 0) else f"{h:02d}:{m:02d}"
+
+
+def rng(lo=None, hi=None, gt=None):
     r = {}
     if lo:
         r["min"] = lo
+    if gt:
+        r["gt"] = gt
     if hi:
         r["max"] = hi
     return r or None
@@ -51,433 +84,577 @@ def place(p):
     return out
 
 
-class Classes:
-    """The dataset's vehicle classes, one per distinct criteria and label."""
-
-    def __init__(self):
-        self.items, self.by_key = [], {}
-
-    def get(self, criteria, label=None, fallback=None):
-        criteria = {k: v for k, v in criteria.items() if v not in (None, [], {})}
-        key = json.dumps([criteria, label], sort_keys=True)
-        if key in self.by_key:
-            return self.by_key[key]
-        if not criteria and label is None:
-            cid = "any"
-        else:
-            ids = {c["id"] for c in self.items}
-            if label is None:
-                n = 1
-                while f"c{n}" in ids:
-                    n += 1
-                cid = f"c{n}"
-            else:
-                base = "c-" + re.sub(r"[^A-Za-z0-9]+", "-", label).strip("-")
-                cid, n = base, 1
-                while cid in ids:
-                    n += 1
-                    cid = f"{base}-{n}"
-        c = {"id": cid, "criteria": criteria}
-        if label is not None:
-            c["label"] = label
-        if fallback:
-            c["fallback"] = fallback
-        self.items.append(c)
-        self.by_key[key] = cid
-        return cid
-
-    def ordered(self):
-        # "any" last: the first class a vehicle meets wins.
-        return [c for c in self.items if c["id"] != "any"] + [c for c in self.items if c["id"] == "any"]
+def clean(d):
+    return {k: v for k, v in d.items() if v not in (None, [], {})}
 
 
-def variants(default, **named):
-    v = {k: x for k, x in named.items() if x}
-    if not v:
-        return default
-    return {"default": default, **v}
+def hours(h):
+    return [[h[0], plus_minute(h[1])]]
+
+
+def criteria_of(r, motor_axles=False):
+    """carbon-cost row, group or point-class bounds as ORCT criteria.
+
+    carbon-cost classifies by one mass, the technically permissible maximum
+    mass of the truck with its trailer, and by the combination's axles unless
+    the table counts the motor vehicle's (motor_axles)."""
+    c = {"train_mass_kg": rng(r.get("min_kg"), r.get("max_kg")),
+         ("axles" if motor_axles else "train_axles"): rng(r.get("min_axles"), r.get("max_axles"))}
+    if r.get("min_length_m") or r.get("max_length_m"):
+        c["train_length_m"] = rng(hi=r.get("max_length_m"), gt=r.get("min_length_m"))
+    if r.get("euro"):
+        c["euro_class"] = [str(e) for e in r["euro"]]
+    if r.get("co2_class"):
+        c["co2_class"] = r["co2_class"]
+    return clean(c)
+
+
+def season_days(s):
+    """carbon-cost's Season is the union of its months, its weekdays (0 = Sunday) and its Easter window."""
+    out = []
+    if s.get("months"):
+        out.append({"months": s["months"]})
+    if s.get("weekdays"):
+        out.append({"weekdays": sorted(7 if w == 0 else w for w in s["weekdays"])})
+    if s.get("easter_from") or s.get("easter_to"):
+        out.append({"easter": [[s.get("easter_from", 0), s.get("easter_to", 0)]]})
+    return out
 
 
 class Builder:
-    def __init__(self, table, path, commit):
-        self.t = table
-        self.classes = Classes()
-        self.network, self.charges, self.modifiers = [], [], []
-        self.ext, self.partial = {}, []
-        self.net_ids = set()
+    def __init__(self, t, path):
+        self.t = t
         stem = os.path.basename(path)[:-5]
-        self.dataset = {
-            "id": stem,
-            "scheme": re.sub(r"-\d{4}-\d{2}-\d{2}$", "", stem),
-            "country": table["country"],
-            "currency": table["currency"],
-            "valid_from": table["valid_from"],
-            "name": table["name"],
-            "method": table.get("law", ""),
-            "publisher": PUBLISHER,
-            "derived_from": {"repository": REPO, "path": "rates/data/" + os.path.basename(path)},
+        scheme = re.sub(r"-\d{4}-\d{2}-\d{2}$", "", stem)
+        self.header = {
+            "id": f"carbon-cost/{scheme}/{t['valid_from']}",
+            "scheme": clean({"id": scheme, "name": t["name"], "country": t["country"], "region": t.get("region")}),
+            "publisher": {"name": "carbon-cost", "role": "third_party", "url": REPO},
+            "valid_from": t["valid_from"],
+            "valid_to": t.get("valid_to") or None,
+            "currency": t["currency"],
+            "timezone": TZ[t["country"]],
+            "license": "MIT",
+            "method": t.get("law", ""),
+            "derived_from": {"url": REPO, "path": "rates/data/" + os.path.basename(path)},
         }
-        # The carbon-cost commit is in index.json only, so a new commit there
-        # doesn't rewrite every file.
-        if table.get("region"):
-            self.dataset["region"] = table["region"]
-        if table.get("valid_to"):
-            self.dataset["valid_to"] = table["valid_to"]
-        self.sources = [{"id": f"s{i + 1}", "title": s["title"], "url": s["url"]} for i, s in enumerate(table.get("sources", []))]
-        self.src = [s["id"] for s in self.sources]
+        self.sources = [{"id": f"s{i + 1}", "title": s["title"], "url": s["url"]} for i, s in enumerate(t.get("sources", []))]
         if not self.sources:
-            self.partial.append(("dataset", "the table lists no source"))
+            self.sources = [{"id": "s0", "title": "carbon-cost rate table",
+                             "url": REPO + "/blob/main/rates/data/" + os.path.basename(path)}]
+        self.src = [s["id"] for s in self.sources]
+        self.basis = "estimated" if ("ESTIMATE" in t.get("name", "") or t.get("law", "").startswith("Estimate")) else "transcribed"
+        self.sets, self.set_keys, self.class_ids = [], {}, set()
+        self.times, self.time_keys = [], {}
+        self.users = {}
+        self.objects, self.object_ids = [], set()
+        self.charges, self.rules, self.coverage, self.ext = [], [], [], {}
+        self.features = set()
 
-    def net(self, el):
-        if el["id"] not in self.net_ids:
-            self.net_ids.add(el["id"])
-            self.network.append(el)
-        return el["id"]
+    def class_set(self, prefix, classes):
+        """classes: [(criteria, label, fallback label)] -> class ids, reusing an identical set."""
+        key = json.dumps([[c, l, f] for c, l, f in classes], sort_keys=True)
+        if key in self.set_keys:
+            return self.set_keys[key]
+        n = 1
+        while f"{prefix}{n}" in {s["id"] for s in self.sets}:
+            n += 1
+        sid = f"{prefix}{n}"
+        ids, by_label = [], {}
+        for i, (_, label, _) in enumerate(classes):
+            cid = f"{sid}.{re.sub(r'[^A-Za-z0-9+]+', '-', label).strip('-') if label else i + 1}"
+            while cid in self.class_ids:
+                cid += "_"
+            self.class_ids.add(cid)
+            ids.append(cid)
+            by_label[label] = cid
+        out = []
+        for (crit, label, fb), cid in zip(classes, ids):
+            c = {"id": cid, **({"label": label} if label else {}), "criteria": crit}
+            if fb and fb in by_label:
+                c["fallback"] = by_label[fb]
+            out.append(c)
+        self.sets.append({"id": sid, "classes": out})
+        self.set_keys[key] = ids
+        return ids
+
+    def time_class(self, hint, days=None, times=None, defined=True, label=None, note=None):
+        body = clean({"days": [clean(d) for d in days or []], "times": times, "defined": None if defined else False, "note": note})
+        key = json.dumps(body, sort_keys=True)
+        if key in self.time_keys:
+            return self.time_keys[key]
+        tid, n = hint, 1
+        while tid in {x["id"] for x in self.times}:
+            n += 1
+            tid = f"{hint}-{n}"
+        self.times.append({"id": tid, **({"label": label} if label else {}), **body})
+        self.time_keys[key] = tid
+        self.features.add("time_classes")
+        return tid
+
+    def electronic(self):
+        self.users["electronic"] = {"id": "electronic", "label": "Electronic toll device or contract", "payment": ["electronic"]}
+        self.features.add("user_classes")
+        return "electronic"
+
+    def obj(self, o):
+        if o["id"] not in self.object_ids:
+            self.object_ids.add(o["id"])
+            self.objects.append(clean(o))
+        return o["id"]
+
+    def charge(self, ch, rows):
+        keys = [k for k in ROW_KEYS if k == "amount" or any(r.get(k) is not None for r in rows)]
+        ch["columns"] = keys
+        ch["rows"] = [[r.get(k) for k in keys] for r in rows]
+        ch.setdefault("sources", self.src)
+        ch.setdefault("basis", self.basis)
+        self.charges.append(ch)
+        self.features.add("type." + ch["type"])
+        return ch["id"]
+
+    def rule(self, kind, applies_to, params):
+        self.rules.append({"id": f"r{len(self.rules) + 1}", "kind": kind, "applies_to": applies_to, "params": params})
+        self.features.add("rule." + kind)
+
+    def partial(self, scope, reason):
+        self.coverage.append({"scope": scope, "status": "partial", "reason": reason})
 
     def keep(self, key, value, reason=None):
         self.ext[key] = value
         if reason:
-            self.partial.append(("dataset", reason))
+            self.partial("dataset", reason)
 
-    def doc(self, vehicles):
-        coverage = [{"scope": s, "status": "partial", "reason": r} for s, r in self.partial]
-        if "ESTIMATE" in self.t.get("name", "") or self.t.get("law", "").startswith("Estimate"):
-            coverage.append({"scope": "dataset", "status": "partial", "reason": "the source table is an estimate; see dataset.method"})
-        if not coverage:
-            coverage = [{"scope": "dataset", "status": "complete"}]
+    def doc(self, liable):
+        if self.basis == "estimated":
+            self.partial("dataset", "the source table is an estimate; see dataset.method")
+        header = clean(self.header)
+        header["required_features"] = sorted(self.features)
         out = {
-            "orct_version": "0.1",
-            "dataset": self.dataset,
-            "sources": self.sources or [{"id": "s0", "title": "carbon-cost table", "url": REPO}],
-            "vehicles": vehicles,
-            "classes": self.classes.ordered() or [{"id": "any", "criteria": {}}],
-            "network": self.network,
+            "orct": "0.2",
+            "dataset": header,
+            "sources": self.sources,
+            "tax": {"basis": "unknown", "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."},
+            "liable_vehicles": liable,
+            "vehicle_class_sets": self.sets or [{"id": "all", "classes": [{"id": "any", "criteria": {}}]}],
+            "time_classes": self.times,
+            "user_classes": list(self.users.values()),
+            "charge_objects": self.objects,
             "charges": self.charges,
-            "tax": {"included": None, "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."},
-            "coverage": coverage,
+            "rules": self.rules,
+            "coverage": self.coverage or [{"scope": "dataset", "status": "complete"}],
         }
-        if not self.sources:
-            for c in out["charges"]:
-                c["sources"] = ["s0"]
-        if self.modifiers:
-            out["modifiers"] = self.modifiers
         if self.ext:
-            out["extensions"] = {"x-carbon-cost": self.ext}
-        return out
+            out["extensions"] = {EXT: self.ext}
+        return {k: v for k, v in out.items() if v != [] or k in ("charges", "charge_objects")}
 
 
-def convert_table(t, path, commit):
-    b = Builder(t, path, commit)
-    used = {"country", "region", "currency", "valid_from", "valid_to", "name", "law", "sources",
-            "vehicles", "min_kg", "tolled_roads", "motor_axles", "rows", "per_tonne_km",
-            "max_chargeable_kg", "per_day", "day", "exemptions", "motorway_share", "suburban_share",
-            "surcharges", "closed_systems", "toll_points", "point_match_km", "sections", "congestion"}
-    vehicles = {"description": t.get("vehicles", ""), "min_mass_kg": t.get("min_kg", 0),
-                "axle_basis": "motor_vehicle" if t.get("motor_axles") else "combination"}
-    roads = {"id": "roads", "kind": "road_class", "description": t.get("tolled_roads", "")}
+# --- toll tables ---------------------------------------------------------------
 
-    # Rows: per km, per tonne-km or per day.
-    groups = {}
-    for r in t.get("rows", []):
-        groups.setdefault((r["component"], r.get("road", ""), r.get("area", ""), r.get("operator", "")), []).append(r)
-    row_charges = {}
-    for (comp, road, area, op), rows in groups.items():
-        if op:
-            parts = op.split("|")
-            el = {"id": "op:" + op, "kind": "operator", "operator": parts[0]}
-            if len(parts) > 1:
-                el["ref"] = parts[1]
-            if len(parts) > 2:
-                el["label"] = parts[2]
-            if road:
-                el["road_type"] = road
-        elif road or area:
-            el = {"id": "road:" + ":".join(x for x in (road, area) if x), "kind": "road_class"}
-            if road:
-                el["road_type"] = road
-            if area:
-                el["area"] = area
-        else:
-            el = roads
-        nid = b.net(el)
-        rates = {}
-        for r in rows:
-            cid = b.classes.get({"mass_kg": rng(r.get("min_kg"), r.get("max_kg")),
-                                 "axles": rng(r.get("min_axles"), r.get("max_axles")),
-                                 "euro": r.get("euro"), "co2_class": r.get("co2_class")})
-            if cid in rates and rates[cid] != r["rate"]:
-                b.partial.append((nid, f"two rates for one class in {comp}; the first is kept"))
-                continue
-            rates[cid] = r["rate"]
-        ch = {"id": f"{comp}@{nid}", "type": "distance", "component": component(comp),
-              "applies_to": [nid], "sources": b.src, "rates": rates}
-        if t.get("per_tonne_km"):
-            ch["type"], ch["unit"] = "quantity", "tonne_km"
-            if t.get("max_chargeable_kg"):
-                ch["max_mass_kg"] = t["max_chargeable_kg"]
-        elif t.get("per_day"):
-            ch["type"], ch["period"] = "period", "day"
-            if t.get("day") in ("calendar", "24h"):
-                ch["day_basis"] = t["day"]
-            else:
-                b.partial.append((ch["id"], "what counts as a day isn't known; one day is charged per trip"))
-        b.charges.append(ch)
-        row_charges.setdefault(comp, []).append(ch["id"])
-    all_rows = [c for ids in row_charges.values() for c in ids]
-    if roads["id"] not in b.net_ids:
-        b.net(roads)
+def convert_table(t, path):
+    b = Builder(t, path)
+    used = {"country", "region", "currency", "valid_from", "valid_to", "name", "law", "sources", "vehicles",
+            "min_kg", "tolled_roads", "motor_axles", "rows", "per_tonne_km", "max_chargeable_kg", "per_day", "day",
+            "exemptions", "surcharges", "closed_systems", "toll_points", "point_match_km", "sections", "congestion",
+            "motorway_share", "suburban_share", "crossings", "osm_extract"}
+    motor = bool(t.get("motor_axles"))
+    liable = {"description": t.get("vehicles", ""), "criteria": clean({"train_mass_kg": rng(t.get("min_kg"))})}
 
+    row_charges = convert_rows(b, t, motor)
+    all_rows = sorted({c for ids in row_charges.values() for c in ids})
     for e in t.get("exemptions", []):
-        b.modifiers.append({"kind": "exemption", "applies_to": all_rows, "params": e})
-    if t.get("motorway_share"):
-        b.modifiers.append({"kind": "assumed_share", "applies_to": all_rows,
-                            "params": {"of": "motorway", "share": t["motorway_share"]}})
-    for rt, share in (t.get("suburban_share") or {}).items():
-        p = {"of": "suburban", "share": share}
-        if rt:
-            p["road_type"] = rt
-        b.modifiers.append({"kind": "assumed_share", "applies_to": all_rows, "params": p})
-
+        b.rule("exemption", all_rows, {"criteria": {"co2_class": e["co2_class"]}, "until": e["until"], "note": e.get("note", "")})
     for s in t.get("surcharges", []):
-        sid = b.net({"id": "stretch:" + s["id"], "kind": "stretch", "name": s["name"],
-                     "geometry": {"type": "LineString", "coordinates": [lonlat(p) for p in s["points"]]},
-                     "point_names": [p["name"] for p in s["points"]]})
-        b.modifiers.append({"kind": "factor", "applies_to": row_charges.get(s["component"], []),
-                            "params": {"stretch": sid, "factor": s["factor"], "note": s.get("law", "")}})
+        oid = b.obj({"id": "stretch:" + s["id"], "type": "network", "name": s["name"],
+                     "location": {"geometry": {"type": "LineString", "coordinates": [lonlat(p) for p in s["points"]]},
+                                  "point_names": [p["name"] for p in s["points"]]}})
+        b.rule("factor", row_charges.get(s["component"], []), {"object": oid, "factor": dec(s["factor"]), "note": s.get("law", "")})
 
-    system_charge = {}
-    for i, s in enumerate(t.get("closed_systems", [])):
-        convert_system(b, i, s, system_charge)
-    convert_points(b, t, system_charge)
+    systems = {s["name"]: convert_system(b, i, s) for i, s in enumerate(t.get("closed_systems", []), 1)}
+    convert_points(b, t, systems, motor)
     if t.get("sections"):
         convert_sections(b, t["sections"])
 
-    for k in sorted(INFO_KEYS & t.keys()):
-        b.keep(k, t[k])
-    for k in sorted(set(t) - used - INFO_KEYS):
-        b.keep(k, t[k], f"{k} is kept as an extension (no ORCT 0.1 field yet)")
-    return b.doc(vehicles)
+    # How carbon-cost estimates road types a request doesn't give, and source facts: not tariff rules.
+    for k in ("motorway_share", "suburban_share", "crossings", "osm_extract"):
+        if k in t:
+            b.keep(k, t[k])
+    for k in sorted(set(t) - used):
+        b.keep(k, t[k], f"{k} is kept as an extension (no ORCT field yet)")
+    return b.doc(liable)
 
 
-def convert_system(b, i, s, system_charge):
-    cid = f"system:{i + 1}"
-    system_charge[s["name"]] = cid
+def convert_rows(b, t, motor):
+    """Rate rows: one charge per component, keyed by network object and vehicle class."""
+    if not t.get("rows"):
+        return {}
+    roads = b.obj({"id": "roads", "type": "network", "network": {"description": t.get("tolled_roads", "")}})
+    groups = {}
+    for r in t["rows"]:
+        road, area, op = r.get("road", ""), r.get("area", ""), r.get("operator", "")
+        oid = roads
+        if road:
+            oid = b.obj({"id": "road:" + road, "type": "network", "parent": oid,
+                         "network": {"road_types": ["motorway" if road == "motorway" else "other"]}})
+        if area:
+            oid = b.obj({"id": f"{oid}:{area}" if oid != roads else f"road:{area}", "type": "network", "parent": oid,
+                         "network": {"area": area}})
+        if op:
+            parts = op.split("|")
+            for n in range(1, len(parts) + 1):
+                o = {"id": "op:" + "|".join(parts[:n]), "type": "network", "parent": oid, "operator": parts[0]}
+                if n >= 2:
+                    o["road"] = parts[1]
+                if n == 3:
+                    o["name"] = parts[2]
+                oid = b.obj(o)
+        groups.setdefault(r["component"], {}).setdefault(oid, []).append(r)
+
+    out = {}
+    for comp, by_obj in groups.items():
+        orct_comp, label = component(comp)
+        rows = []
+        for oid, rs in by_obj.items():
+            seen, uniq = {}, []
+            for r in rs:
+                k = json.dumps(criteria_of(r, motor), sort_keys=True)
+                if k in seen:
+                    if seen[k] != r["rate"]:
+                        b.partial(oid, f"two {comp} rates for one class; the first is kept")
+                    continue
+                seen[k] = r["rate"]
+                uniq.append(r)
+            ids = b.class_set(comp + "-", [(criteria_of(r, motor), None, None) for r in uniq])
+            rows += [{"object": oid, "vehicle_class": cid, "amount": dec(r["rate"])} for cid, r in zip(ids, uniq)]
+        ch = {"id": comp, "type": "distance", "component": orct_comp, "unit": "km"}
+        if label:
+            ch["component_label"] = label
+        if t.get("per_tonne_km"):
+            ch["unit"], ch["mass_basis"] = "tkm", "train_mass_kg"
+            if t.get("max_chargeable_kg"):
+                ch["mass_cap_kg"] = t["max_chargeable_kg"]
+        elif t.get("per_day"):
+            ch.update(type="period", unit="product")
+            for r in rows:
+                r["product"] = "P1D"
+            if t.get("day") in ("calendar", "24h"):
+                ch["day_basis"] = "calendar" if t["day"] == "calendar" else "rolling"
+            else:
+                b.partial(comp, "the sources don't say whether a day is a calendar day or 24 hours")
+        out.setdefault(comp, []).append(b.charge(ch, rows))
+    return out
+
+
+def convert_system(b, i, s):
+    cid = f"system{i}"
     stations = {}
     for st in s["stations"]:
-        el = {"id": f"st:{i + 1}:{st['name']}", "kind": "station", "name": st["name"],
-              "geometry": {"type": "MultiPoint", "coordinates": [lonlat(p) for p in st["points"]]},
-              "point_names": [p.get("name", "") for p in st["points"]]}
+        loc = {"geometry": {"type": "MultiPoint", "coordinates": [lonlat(p) for p in st["points"]]},
+               "point_names": [p.get("name", "") for p in st["points"]]}
         if any(p.get("heading") is not None for p in st["points"]):
-            el["headings"] = [p.get("heading") for p in st["points"]]
+            loc["headings"] = [p.get("heading") for p in st["points"]]
         if s.get("station_match_km"):
-            el["match_km"] = s["station_match_km"]
-        stations[st["name"]] = b.net(el)
-    gid = {}
-    for g in s["groups"]:
-        crit = {"mass_kg": rng(g.get("min_kg"), None), "axles": rng(g.get("min_axles"), g.get("max_axles")),
-                "euro": g.get("euro")}
-        if g.get("min_length_m") or g.get("max_length_m"):
-            crit["length_m"] = {k: v for k, v in (("over", g.get("min_length_m")), ("max", g.get("max_length_m"))) if v}
-        gid[g["name"]] = b.classes.get(crit, label=g["name"])
-    for g in s["groups"]:
-        if g.get("base"):
-            for c in b.classes.items:
-                if c["id"] == gid[g["name"]]:
-                    c["fallback"] = gid[g["base"]]
-    pairs, odd, unplaced = [], {}, set()
+            loc["match_m"] = round(s["station_match_km"] * 1000)
+        stations[st["name"]] = b.obj({"id": f"st{i}:{st['name']}", "type": "station", "name": st["name"], "location": loc})
+    names = [g["name"] for g in s["groups"]]
+    gid = dict(zip(names, b.class_set(f"sys{i}-", [(criteria_of(g), g["name"], g.get("base")) for g in s["groups"]])))
     etc, night = s.get("etc_prices") or {}, s.get("night_prices") or {}
-    for key in sorted(set(s["prices"]) | set(etc) | set(night)):
-        entry, exit_ = key.split("|")
-        for name in (entry, exit_):
-            if name not in stations:
-                # Priced in the tariff but not placed on the map: listed
-                # without geometry, so the pair is kept but can't match a route.
-                stations[name] = b.net({"id": f"st:{i + 1}:{name}", "kind": "station", "name": name})
-                unplaced.add(name)
-        rates = {}
-        for g in sorted(set(s["prices"].get(key, {})) | set(etc.get(key, {})) | set(night.get(key, {}))):
-            d = s["prices"].get(key, {}).get(g)
-            e, n = etc.get(key, {}).get(g), night.get(key, {}).get(g)
-            if g not in gid or d is None:
-                odd.setdefault(key, {})[g] = {"default": d, "electronic": e, "night": n}
-                continue
-            rates[gid[g]] = variants(d, electronic=e, night=n)
-        if rates:
-            pairs.append({"entry": stations[entry], "exit": stations[exit_], "rates": rates})
-    ch = {"id": cid, "name": s["name"], "type": "od_matrix", "component": "toll",
-          "applies_to": sorted(set(stations.values())), "sources": b.src, "rates": {}, "pairs": pairs,
+    tnight = b.time_class(f"sys{i}-night", times=hours(s["night_hours"]), label="Night tariff") if s.get("night_hours") else None
+    rows, odd, unplaced = [], {}, set()
+    for table, extra in ((s["prices"], {}), (etc, {"user_class": "electronic"}), (night, {"time_class": tnight})):
+        if table is etc and etc:
+            b.electronic()
+        for key in sorted(table):
+            entry, exit_ = key.split("|")
+            for name in (entry, exit_):
+                if name not in stations:
+                    stations[name] = b.obj({"id": f"st{i}:{name}", "type": "station", "name": name})
+                    unplaced.add(name)
+            for g, price in sorted(table[key].items()):
+                if g not in gid:
+                    odd.setdefault(key, {})[g] = price
+                    continue
+                rows.append({"entry": stations[entry], "exit": stations[exit_], "vehicle_class": gid[g], **extra,
+                             "amount": dec(price)})
+    if s.get("free_hours"):
+        tfree = b.time_class(f"sys{i}-free", times=hours(s["free_hours"]), label="No charge")
+        rows.append({"time_class": tfree, "priority": 1, "amount": "0"})
+    ch = {"id": cid, "name": s["name"], "type": "od", "component": "unspecified", "unit": "trip",
           "pairing": "chain" if s.get("chain") else "single_ticket"}
     if s.get("law"):
         ch["method"] = s["law"]
     if s.get("directed"):
         ch["directed"] = True
-    b.charges.append(ch)
-    if etc:
-        b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "electronic", "payment": "electronic"}})
-    if s.get("night_hours"):
-        b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "night", "hours": s["night_hours"]}})
-    if s.get("free_hours"):
-        b.modifiers.append({"kind": "free_hours", "applies_to": [cid], "params": {"hours": s["free_hours"]}})
+    if s.get("chain"):
+        b.features.add("type.od.chain")
+    b.charge(ch, rows)
     for d in s.get("discounts", []):
-        p = {"name": d["name"], "percent": d["percent"]}
+        p = {"name": d["name"], "percent": dec(d["percent"])}
         if d.get("etc"):
-            p["payment"] = "electronic"
-        for k in ("euro", "co2_class"):
-            if d.get(k):
-                p[k] = d[k]
-        b.modifiers.append({"kind": "discount", "applies_to": [cid], "params": p})
+            p["payment"] = ["electronic"]
+        crit = clean({"euro_class": [str(e) for e in d.get("euro", [])], "co2_class": d.get("co2_class")})
+        if crit:
+            p["criteria"] = crit
+        b.rule("discount", [cid], p)
     if unplaced:
-        b.partial.append((cid, f"{len(unplaced)} stations in the tariff aren't placed on the map; their pairs can't be matched to a route"))
+        b.partial(cid, f"{len(unplaced)} stations in the tariff aren't placed on the map; their pairs can't be matched to a route")
     if odd:
         b.ext.setdefault("closed_system_prices_not_mapped", {})[s["name"]] = odd
-        b.partial.append((cid, "some prices name a vehicle group the system doesn't list, or have only an electronic or night price; kept as an extension"))
+        b.partial(cid, "some prices name a vehicle group the system doesn't list; kept as an extension")
+    return cid
 
 
-def convert_points(b, t, system_charge):
-    cong = t.get("congestion")
-    groups, peak = {}, 0
-    for j, p in enumerate(t.get("toll_points", [])):
-        el = {"id": f"pt:{j + 1}", "kind": "point", "name": p["name"],
-              "geometry": {"type": "Point", "coordinates": lonlat(p)}}
+def convert_points(b, t, systems, motor):
+    points = t.get("toll_points", [])
+    if not points:
+        return
+    cong = t.get("congestion") or {}
+    match_m = round(t["point_match_km"] * 1000) if t.get("point_match_km") else None
+    by_window, groups, peak, sched_points, oids = {}, {}, 0, [], []
+    for j, p in enumerate(points, 1):
+        loc = {"geometry": {"type": "Point", "coordinates": lonlat(p)}}
         if p.get("heading") is not None:
-            el["heading"] = p["heading"]
-        if t.get("point_match_km"):
-            el["match_km"] = t["point_match_km"]
-        nid = b.net(el)
-        cid = f"point:{j + 1}"
-        rates = {}
-        if p.get("classes"):
-            for c in p["classes"]:
-                crit = {"mass_kg": rng(c.get("min_kg"), c.get("max_kg")), "axles": rng(c.get("min_axles"), c.get("max_axles"))}
-                if c.get("min_length_m") or c.get("max_length_m"):
-                    crit["length_m"] = {k: v for k, v in (("over", c.get("min_length_m")), ("max", c.get("max_length_m"))) if v}
-                rates[b.classes.get(crit)] = variants(c["rate"], electronic=c.get("etc_rate"), high_season=c.get("high_rate"),
-                                                     high_season_electronic=c.get("high_etc_rate"), night=c.get("night_rate"),
-                                                     night_electronic=c.get("night_etc_rate"))
-        else:
-            rates[b.classes.get({})] = variants(p["rate"], peak=p.get("peak_rate"))
-        ch = {"id": cid, "name": p["name"], "type": "point",
-              "component": "congestion" if p.get("schedule") else "toll",
-              "applies_to": [nid], "sources": b.src, "rates": rates}
-        if p.get("project"):
-            ch["method"] = "Toll project: " + p["project"]
-        for k in ("valid_from", "valid_to"):
-            if p.get(k):
-                ch[k] = p[k]
-        b.charges.append(ch)
-        if p.get("peak_rate"):
-            peak += 1
-        if any(c.get("etc_rate") or c.get("high_etc_rate") or c.get("night_etc_rate") for c in p.get("classes", [])):
-            b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "electronic", "payment": "electronic"}})
-        if p.get("high_season"):
-            b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "high_season", "season": p["high_season"]}})
-        if p.get("night_hours"):
-            b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "night", "hours": p["night_hours"]}})
-        if p.get("free_hours"):
-            b.modifiers.append({"kind": "free_hours", "applies_to": [cid], "params": {"hours": p["free_hours"]}})
-        if p.get("group"):
-            groups.setdefault((p["group"], p.get("group_minutes", 0)), []).append(cid)
-        if p.get("within"):
-            if p["within"] in system_charge:
-                b.modifiers.append({"kind": "included_in", "applies_to": [cid], "params": {"charge": system_charge[p["within"]]}})
-            else:
-                b.partial.append((cid, f"included in a system ({p['within']}) the table doesn't list"))
+            loc["heading"] = p["heading"]
+        if match_m:
+            loc["match_m"] = match_m
+        oid = b.obj({"id": f"pt{j}", "type": "point", "name": p["name"], "location": loc,
+                     "note": ("Toll project: " + p["project"]) if p.get("project") else None})
+        oids.append(oid)
+        rows = []
+        thigh = b.time_class("high-season", days=season_days(p["high_season"]), label="High season") if p.get("high_season") else None
+        tnight = b.time_class("night", times=hours(p["night_hours"]), label="Night") if p.get("night_hours") else None
         if p.get("schedule"):
-            if cong and p["schedule"] in cong.get("schedules", {}):
-                b.modifiers.append({"kind": "time_schedule", "applies_to": [cid],
-                                    "params": {"schedule": cong["schedules"][p["schedule"]], "name": p["schedule"]}})
+            sched = cong.get("schedules", {}).get(p["schedule"])
+            if sched is None:
+                b.partial(oid, f"schedule {p['schedule']} isn't in the table")
+            for ta in sched or []:
+                tc = b.time_class(f"{p['schedule']}-{ta['from'].replace(':', '')}", days=[{"weekdays": [1, 2, 3, 4, 5]}],
+                                  times=[[ta["from"], plus_minute(ta["to"])]])
+                rows.append({"object": oid, "time_class": tc, "amount": dec(ta["amount"])})
+            sched_points.append(oid)
+        elif p.get("classes"):
+            ids = b.class_set("pt-", [(criteria_of(c, motor), None, None) for c in p["classes"]])
+            for cid, c in zip(ids, p["classes"]):
+                base = {"object": oid, "vehicle_class": cid}
+                rows.append({**base, "amount": dec(c["rate"])})
+                variants = [("etc_rate", None, True), ("high_rate", thigh, False), ("high_etc_rate", thigh, True),
+                            ("night_rate", tnight, False), ("night_etc_rate", tnight, True)]
+                for key, tc, etc in variants:
+                    if c.get(key) and (tc or key == "etc_rate"):
+                        rows.append({**base, "time_class": tc, "user_class": b.electronic() if etc else None,
+                                     "amount": dec(c[key])})
+        else:
+            rows.append({"object": oid, "amount": dec(p["rate"])})
+            if p.get("peak_rate"):
+                tpeak = b.time_class("rush-hours", defined=False, label="Rush hours",
+                                     note="The station charges more in rush hours; the hours aren't in the source table.")
+                rows.append({"object": oid, "time_class": tpeak, "amount": dec(p["peak_rate"])})
+                peak += 1
+        if p.get("free_hours"):
+            tfree = b.time_class("free", times=hours(p["free_hours"]), label="No charge")
+            rows.append({"object": oid, "time_class": tfree, "priority": 1, "amount": "0"})
+        kind = "congestion" if p.get("schedule") else "toll"
+        by_window.setdefault((kind, p.get("valid_from") or "", p.get("valid_to") or ""), []).extend(rows)
+        if p.get("group"):
+            groups.setdefault((p["group"], p.get("group_minutes", 0)), []).append(oid)
+
+    ids = {}
+    for (kind, vf, vt), rows in sorted(by_window.items()):
+        cid = ("congestion" if kind == "congestion" else "points") + (f"@{vf}..{vt}" if (vf or vt) else "")
+        ch = {"id": cid, "type": "point", "component": "congestion" if kind == "congestion" else "unspecified",
+              "unit": "passage", **clean({"valid_from": vf or None, "valid_to": vt or None})}
+        if kind == "congestion":
+            ch["unmatched"] = "free"
+        b.charge(ch, rows)
+        ids.setdefault(kind, []).append(cid)
+    toll_ids = ids.get("toll", [])
+    for (g, minutes), objs in sorted(groups.items()):
+        b.rule("passage_group", toll_ids, {"objects": objs, "minutes": minutes, "pays": "first"})
+    for oid, p in zip(oids, points):
+        if p.get("within"):
+            if p["within"] in systems:
+                b.rule("included_in", toll_ids, {"charge": systems[p["within"]], "objects": [oid]})
             else:
-                b.partial.append((cid, f"schedule {p['schedule']} isn't in the table"))
+                b.partial(oid, f"included in a system ({p['within']}) the table doesn't list")
     if peak:
-        b.partial.append(("dataset", f"{peak} toll points charge a peak rate whose rush hours aren't in the source table"))
-    for (g, minutes), ids in sorted(groups.items()):
-        b.modifiers.append({"kind": "passage_group", "applies_to": ids, "params": {"group": g, "minutes": minutes}})
+        b.partial("rush-hours", f"{peak} toll points charge more in rush hours, whose hours aren't in the source table")
     if cong:
-        cids = [c["id"] for c in b.charges if c["type"] == "point" and c["component"] == "congestion"]
+        cids = ids.get("congestion", [])
         if cong.get("day_cap"):
-            b.modifiers.append({"kind": "cap", "applies_to": cids, "params": {"per": "day", "amount": cong["day_cap"],
-                                                                             **({"high_season": cong["day_cap_high"]} if cong.get("day_cap_high") else {})}})
+            b.rule("cap", cids, {"per": "day", "amount": dec(cong["day_cap"])})
         if cong.get("multi_pass_minutes"):
-            b.modifiers.append({"kind": "multi_pass", "applies_to": cids, "params": {"minutes": cong["multi_pass_minutes"], "pays": "highest"}})
-        rest = {k: v for k, v in cong.items() if k not in ("schedules", "day_cap", "day_cap_high", "multi_pass_minutes")}
-        if rest:
-            b.keep("congestion", rest, "the congestion tax's taxed days (high season, July, holiday eves) are kept as an extension")
+            b.rule("passage_group", cids, {"objects": sched_points, "minutes": cong["multi_pass_minutes"], "pays": "highest"})
+        rest = {k: v for k, v in cong.items() if k not in ("schedules", "day_cap", "multi_pass_minutes")}
+        highs = {n: [{"from": ta["from"], "to": ta["to"], "high": ta["high"]} for ta in s if ta.get("high")]
+                 for n, s in cong.get("schedules", {}).items()}
+        if any(highs.values()):
+            rest["schedules_high_season"] = {n: s for n, s in highs.items() if s}
+        b.keep("congestion", rest, "the congestion tax's untaxed days (public holidays, their eves, July) and "
+               "high-season amounts are kept as an extension; its time classes cover Monday to Friday")
+
+
+# Slovenia's nine emission columns as carbon-cost's Section.Amount picks them, in matching order:
+# zero-emission first, then Euro VI by CO2 class, then older standards.
+SI_COLUMNS = [({"co2_class": [5]}, "CO2 5", 8),
+              ({"euro_class": ["6"], "co2_class": [2]}, "EURO VI CO2 2", 5),
+              ({"euro_class": ["6"], "co2_class": [3]}, "EURO VI CO2 3", 6),
+              ({"euro_class": ["6"], "co2_class": [4]}, "EURO VI CO2 4", 7),
+              ({"euro_class": ["6"], "co2_class": [1]}, "EURO VI CO2 1", 4),
+              ({"euro_class": ["EEV"]}, "EEV", 3),
+              ({"euro_class": ["5"]}, "EURO V", 2),
+              ({"euro_class": ["4"]}, "EURO IV", 1),
+              ({"euro_class": ["0", "1", "2", "3"]}, "EURO 0-III", 0)]
+SI_TOLL = [("R2", {"max": 2}), ("R3", {"min": 3, "max": 3}), ("R4", {"min": 4})]
+SI_EMISSION = [("zev", {"co2_class": [5]})] + [(f"euro{n}", {"euro_class": [str(n)]}) for n in range(7)]
 
 
 def convert_sections(b, secs):
-    axle_cols = [{"max": 2}, {"min": 3, "max": 3}, {"min": 4}]
-    groups = {"E": [5], "A": [1, 2, 3, 4]}
-    rest = {k: v for k, v in secs.items() if k not in ("list", "law", "tariff_groups")}
-    slovenia = []
+    method = secs.get("law", "") + (" " + secs["tariff_groups"] if secs.get("tariff_groups") else "")
+    axle_cols = [("2 axles", {"max": 2}), ("3 axles", {"min": 3, "max": 3}), ("4+ axles", {"min": 4})]
+    tariff_groups = {"E": [5], "A": [1, 2, 3, 4]}  # E for CO2 class 5, A for the rest
+    at, si, tnight = None, None, None
+    rows, rows_si = [], []
     for s in secs["list"]:
-        el = {"id": "sec:" + s["id"], "kind": "section", "name": s["name"], "road": s["road"],
-              "from": place(s["from"]), "to": place(s["to"])}
-        if s.get("km"):
-            el["km"] = s["km"]
-        if s.get("area"):
-            el["area"] = s["area"]
-        nid = b.net(el)
-        if s.get("classes") or s.get("tier"):
-            slovenia.append({k: s[k] for k in ("id", "classes", "tier", "area") if k in s})
-        if not s.get("tariff"):
-            continue
-        rates = {}
-        for g, cols in s["tariff"].items():
+        parent = None
+        if s.get("area") or s.get("tier"):
+            area = b.obj({"id": f"area:{s.get('area') or 'none'}", "type": "network",
+                          "network": {"area": s["area"]} if s.get("area") else None})
+            parent = b.obj({"id": f"group:{s.get('area') or 'none'}:{s.get('tier') or 'none'}", "type": "network", "parent": area})
+        oid = b.obj({"id": "sec:" + s["id"], "type": "section", "parent": parent, "name": s["name"], "road": s["road"],
+                     "from": place(s["from"]), "to": place(s["to"]), "length_km": s.get("km")})
+        for g, cols in (s.get("tariff") or {}).items():
+            at = at or b.class_set("sec-", [({"train_axles": ax, "co2_class": tariff_groups[gg]}, f"{gg} {lab}", None)
+                                            for gg in ("E", "A") for lab, ax in axle_cols])
             for k, v in enumerate(cols):
-                cid = b.classes.get({"axles": axle_cols[k], "co2_class": groups.get(g)}, label=f"{g}/{['2', '3', '4+'][k]} axles")
-                night = s.get("night_kat4", {}).get(g) if k == 2 else None
-                rates[cid] = variants(v, night=night)
-        cid = "section:" + s["id"]
-        ch = {"id": cid, "name": s["name"], "type": "point", "component": "infrastructure",
-              "applies_to": [nid], "sources": b.src, "rates": rates}
-        if secs.get("law"):
-            ch["method"] = secs["law"] + (" " + secs["tariff_groups"] if secs.get("tariff_groups") else "")
-        b.charges.append(ch)
-        if s.get("night_kat4"):
-            b.modifiers.append({"kind": "variant", "applies_to": [cid], "params": {"name": "night", "hours": ["22:00", "05:00"]}})
-    if slovenia:
-        b.keep("section_classes", slovenia, "per-section charges by toll class and emission column are kept as an extension")
-    if rest:
-        b.keep("sections", rest, "per-km charges on sections are kept as an extension")
+                cid = at[(0 if g == "E" else 3) + k]
+                rows.append({"object": oid, "vehicle_class": cid, "amount": dec(v)})
+                if k == 2 and g in (s.get("night_kat4") or {}):
+                    # carbon-cost: night-tariff sections between 22:00 and 05:00 (A 13 Brenner)
+                    tnight = tnight or b.time_class("night-22-05", times=[["22:00", "05:00"]], label="Night")
+                    rows.append({"object": oid, "vehicle_class": cid, "time_class": tnight, "amount": dec(s["night_kat4"][g])})
+        if s.get("classes"):
+            si = si or b.class_set("si-", [({"train_axles": ax, **crit}, f"{tc} {lab}", None)
+                                           for tc, ax in SI_TOLL for crit, lab, _ in SI_COLUMNS])
+            for ti, (tc, _) in enumerate(SI_TOLL):
+                for ci, (_, _, col) in enumerate(SI_COLUMNS):
+                    rows_si.append({"object": oid, "vehicle_class": si[ti * len(SI_COLUMNS) + ci], "amount": dec(s["classes"][tc][col])})
+    if rows:
+        b.charge({"id": "sections", "type": "section", "component": "infrastructure", "unit": "use", "method": method}, rows)
+    if rows_si:
+        b.charge({"id": "sections-si", "type": "section", "component": "infrastructure", "unit": "use", "method": method}, rows_si)
+    tier_groups = {}
+    for o in b.objects:
+        if o["id"].startswith("group:"):
+            tier_groups.setdefault(o["id"].split(":")[2], []).append(o["id"])
+    for pk in secs.get("per_km", []):
+        orct_comp, label = component(pk["component"])
+        prow = []
+        if pk["key"] == "class/emission/area":
+            ids = b.class_set("si-km-", [({"train_axles": ax, **crit}, f"{tc} {e}", None) for tc, ax in SI_TOLL for e, crit in SI_EMISSION])
+            lookup = {f"{tc}/{e}": ids[ti * len(SI_EMISSION) + ei] for ti, (tc, _) in enumerate(SI_TOLL) for ei, (e, _) in enumerate(SI_EMISSION)}
+            for k, v in sorted(pk["rates"].items()):
+                tc, e, area = k.split("/")
+                prow.append({"object": b.obj({"id": f"area:{area}", "type": "network", "network": {"area": area}}),
+                             "vehicle_class": lookup[f"{tc}/{e}"], "amount": dec(v)})
+        elif pk["key"] == "class/tier":
+            ids = b.class_set("si-tier-", [({"train_axles": ax}, tc, None) for tc, ax in SI_TOLL])
+            for k, v in sorted(pk["rates"].items()):
+                tc, tier = k.split("/")
+                for g in tier_groups.get(tier, []):
+                    prow.append({"object": g, "vehicle_class": ids[[x for x, _ in SI_TOLL].index(tc)], "amount": dec(v)})
+        else:
+            b.partial("dataset", f"per-km charge {pk['component']} uses an unknown key {pk['key']}")
+            continue
+        ch = {"id": "km-" + pk["component"], "name": pk.get("name", ""), "type": "section", "component": orct_comp,
+              "unit": "km", "unmatched": "free", "method": pk.get("law", "")}
+        if label:
+            ch["component_label"] = label
+        b.charge(ch, prow)
+        missing = sum(1 for s in secs["list"] if not s.get("km"))
+        if missing:
+            b.partial(ch["id"], f"{missing} sections have no official length, so their per-km charge can't be priced")
 
 
-def convert_zone(z, path, commit):
-    b = Builder(z, path, commit)
+# --- zones and fuel ----------------------------------------------------------------
+
+def point_in_ring(pt, ring):
+    x, y, inside = pt[0], pt[1], False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            inside = not inside
+    return inside
+
+
+def convert_zone(z, path):
+    b = Builder(z, path)
     used = {"country", "currency", "valid_from", "valid_to", "name", "law", "sources", "min_kg", "charge",
             "exempt_euro", "euro_charges", "weekdays", "weekends", "no_charge", "polygons", "holes", "osm_extract"}
-    nid = b.net({"id": "zone", "kind": "zone", "name": z["name"],
-                 "geometry": {"type": "MultiPolygon", "coordinates": [[ring] for ring in z["polygons"]]}})
-    ch = {"id": "zone-charge", "name": z["name"], "type": "zone", "component": "access",
-          "applies_to": [nid], "sources": b.src, "rates": {}}
-    if z.get("holes"):
-        ch["excludes"] = [b.net({"id": "zone-holes", "kind": "zone", "name": "areas cut out of the zone",
-                                 "geometry": {"type": "MultiPolygon", "coordinates": [[ring] for ring in z["holes"]]}})]
-    top = z.get("exempt_euro") or 7
+    polys = [[ring] for ring in z["polygons"]]
+    for h in z.get("holes", []):
+        for p in polys:
+            if point_in_ring(h[0], p[0]):
+                p.append(h)
+                break
+        else:
+            b.partial("zone", "a hole of the zone lies in none of its polygons and was left out")
+    b.obj({"id": "zone", "type": "area", "name": z["name"], "location": {"geometry": {"type": "MultiPolygon", "coordinates": polys}}})
+    classes, amounts, top = [], [], z.get("exempt_euro") or 7
     if z.get("exempt_euro"):
-        ch["rates"][b.classes.get({"euro": list(range(z["exempt_euro"], 7))})] = 0
+        classes.append(({"euro_class": [str(e) for e in range(z["exempt_euro"], 7)]}, None, None))
+        amounts.append("0")
     for e in sorted(z.get("euro_charges", []), key=lambda e: -e["min_euro"]):
-        ch["rates"][b.classes.get({"euro": list(range(e["min_euro"], top))})] = e["charge"]
+        classes.append(({"euro_class": [str(n) for n in range(e["min_euro"], top)]}, None, None))
+        amounts.append(dec(e["charge"]))
         top = e["min_euro"]
-    ch["rates"][b.classes.get({})] = z["charge"]
-    b.charges.append(ch)
-    hours = {k: z[k] for k in ("weekdays", "weekends", "no_charge") if z.get(k)}
-    if hours:
-        b.modifiers.append({"kind": "charging_hours", "applies_to": ["zone-charge"], "params": hours})
+    classes.append(({}, None, None))
+    amounts.append(dec(z["charge"]))
+    ids = b.class_set("zone-", classes)
+    excl = {"date_ranges": [z["no_charge"]]} if z.get("no_charge") else None
+    tcs = []
+    if z.get("weekdays"):
+        tcs.append(b.time_class("charging-weekdays", days=[clean({"weekdays": [1, 2, 3, 4, 5], "exclude": excl})], times=hours(z["weekdays"])))
+    if z.get("weekends"):
+        tcs.append(b.time_class("charging-weekends", days=[clean({"weekdays": [6, 7], "exclude": excl})], times=hours(z["weekends"])))
+    if not tcs and excl:
+        tcs.append(b.time_class("charging", days=[{"exclude": excl}]))
+    rows = [{"vehicle_class": cid, "time_class": tc, "amount": a} for tc in (tcs or [None]) for cid, a in zip(ids, amounts)]
+    ch = {"id": "zone-charge", "name": z["name"], "type": "area", "component": "access", "unit": "day", "objects": ["zone"]}
+    if tcs:
+        ch["unmatched"] = "free"
+    b.charge(ch, rows)
     if z.get("osm_extract"):
         b.keep("osm_extract", z["osm_extract"])
     for k in sorted(set(z) - used):
-        b.keep(k, z[k], f"{k} is kept as an extension (no ORCT 0.1 field yet)")
-    return b.doc({"description": "vehicles of at least min_mass_kg", "min_mass_kg": z.get("min_kg", 0)})
+        b.keep(k, z[k], f"{k} is kept as an extension (no ORCT field yet)")
+    return b.doc({"description": "vehicles of at least the minimum mass", "criteria": clean({"train_mass_kg": rng(z.get("min_kg"))})})
 
 
-def convert_fuel(f, path, commit):
-    b = Builder(f, path, commit)
+def convert_fuel(f, path):
+    b = Builder(f, path)
     used = {"country", "currency", "valid_from", "valid_to", "name", "law", "sources", "rate_per_t"}
-    b.charges.append({"id": "fuel-co2", "name": f["name"], "type": "quantity", "component": "carbon_price",
-                      "unit": "t_co2", "applies_to": [], "sources": b.src, "rates": {b.classes.get({}): f["rate_per_t"]}})
+    oid = b.obj({"id": "country", "type": "jurisdiction", "jurisdiction": {"country": f["country"]}})
+    b.charge({"id": "fuel-co2", "name": f["name"], "type": "quantity", "component": "carbon_price", "unit": "t_co2",
+              "objects": [oid]}, [{"amount": dec(f["rate_per_t"])}])
     for k in sorted(set(f) - used):
-        b.keep(k, f[k], f"{k} is kept as an extension (no ORCT 0.1 field yet)")
-    return b.doc({"description": "CO2 from fuel bought in the country, per tonne", "min_mass_kg": 0})
+        b.keep(k, f[k], f"{k} is kept as an extension (no ORCT field yet)")
+    return b.doc({"description": "CO2 from fuel bought in the country", "criteria": {}})
+
+
+def dumps(x, ind=0):
+    """JSON with one object member per line, but short arrays of scalars (rows, coordinates)
+    on one line, so tables stay readable and diffs small."""
+    pad, inner = " " * ind, " " * (ind + 1)
+    if isinstance(x, dict):
+        if not x:
+            return "{}"
+        items = [f"{inner}{json.dumps(k, ensure_ascii=False)}: {dumps(v, ind + 1)}" for k, v in x.items()]
+        return "{\n" + ",\n".join(items) + "\n" + pad + "}"
+    if isinstance(x, list):
+        flat = json.dumps(x, ensure_ascii=False)
+        if not any(isinstance(e, dict) for e in x) and len(flat) <= 160:
+            return flat
+        return "[\n" + ",\n".join(inner + dumps(e, ind + 1) for e in x) + "\n" + pad + "]"
+    return json.dumps(x, ensure_ascii=False)
 
 
 def main():
@@ -489,7 +666,7 @@ def main():
         del args[i:i + 2]
     src, out = args
     data = os.path.join(src, "rates", "data")
-    index = []
+    index, ids = [], set()
     for name in sorted(os.listdir(data)):
         if not name.endswith(".json"):
             continue
@@ -497,23 +674,25 @@ def main():
         with open(path) as fh:
             t = json.load(fh)
         if name.startswith("zone-"):
-            doc = convert_zone(t, path, commit)
+            doc = convert_zone(t, path)
         elif name.startswith("fuelco2-"):
-            doc = convert_fuel(t, path, commit)
+            doc = convert_fuel(t, path)
         else:
-            doc = convert_table(t, path, commit)
-        cc = doc["dataset"]["country"].lower()
+            doc = convert_table(t, path)
+        ds = doc["dataset"]
+        if ds["id"] in ids:
+            raise SystemExit(f"duplicate dataset id {ds['id']}")
+        ids.add(ds["id"])
+        cc = ds["scheme"]["country"].lower()
         rel = f"{cc}/{name[:-5]}.orct.json"
         os.makedirs(os.path.join(out, cc), exist_ok=True)
         with open(os.path.join(out, rel), "w") as fh:
-            json.dump(doc, fh, ensure_ascii=False, indent=1)
-            fh.write("\n")
-        ds = doc["dataset"]
-        index.append({"id": ds["id"], "country": ds["country"], "file": rel, "name": ds["name"],
-                      "valid_from": ds["valid_from"], "valid_to": ds.get("valid_to"),
+            fh.write(dumps(doc) + "\n")
+        index.append({"id": ds["id"], "scheme": ds["scheme"]["id"], "country": ds["scheme"]["country"], "file": rel,
+                      "name": ds["scheme"]["name"], "valid_from": ds["valid_from"], "valid_to": ds.get("valid_to"),
                       "coverage": "complete" if doc["coverage"][0]["status"] == "complete" else "partial"})
     with open(os.path.join(out, "index.json"), "w") as fh:
-        json.dump({"orct_version": "0.1", "derived_from": {"repository": REPO, "commit": commit}, "datasets": index},
+        json.dump({"orct": "0.2", "derived_from": {"url": REPO, "commit": commit}, "datasets": index},
                   fh, ensure_ascii=False, indent=1)
         fh.write("\n")
     print(f"{len(index)} datasets")

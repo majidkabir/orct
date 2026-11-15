@@ -1,0 +1,204 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/majidkabir/orct/schema/orct-usage-0.2.schema.json",
+ "title": "ORCT 0.2 usage",
+ "type": "object",
+ "properties": {
+  "orct_usage": {
+   "const": "0.2"
+  },
+  "vehicle": {
+   "type": "object",
+   "properties": {
+    "mass_kg": {
+     "type": "integer"
+    },
+    "train_mass_kg": {
+     "type": "integer"
+    },
+    "axles": {
+     "type": "integer"
+    },
+    "train_axles": {
+     "type": "integer"
+    },
+    "length_m": {
+     "type": "number"
+    },
+    "train_length_m": {
+     "type": "number"
+    },
+    "height_m": {
+     "type": "number"
+    },
+    "first_axle_height_m": {
+     "type": "number"
+    },
+    "width_m": {
+     "type": "number"
+    },
+    "euro_class": {
+     "enum": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "EEV",
+      "6",
+      "7"
+     ]
+    },
+    "co2_class": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 5
+    },
+    "energy": {
+     "enum": [
+      "diesel",
+      "petrol",
+      "lpg",
+      "cng",
+      "lng",
+      "electric",
+      "hydrogen",
+      "hybrid",
+      "other"
+     ]
+    },
+    "category": {
+     "enum": [
+      "M1",
+      "M2",
+      "M3",
+      "N1",
+      "N2",
+      "N3",
+      "L"
+     ]
+    },
+    "trailer": {
+     "type": "boolean"
+    }
+   },
+   "additionalProperties": false
+  },
+  "payment": {
+   "type": "array",
+   "items": {
+    "enum": [
+     "electronic",
+     "account",
+     "card",
+     "cash"
+    ]
+   }
+  },
+  "user_classes": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "minLength": 1,
+     "pattern": "^\\S(.*\\S)?$"
+    }
+   }
+  },
+  "events": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "dataset": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "object": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "time": {
+      "type": "string",
+      "format": "date-time"
+     },
+     "role": {
+      "enum": [
+       "entry",
+       "exit",
+       "pass"
+      ]
+     },
+     "km": {
+      "type": "number",
+      "minimum": 0
+     },
+     "overlays": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "number",
+       "minimum": 0
+      }
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "dataset",
+     "object",
+     "time"
+    ]
+   }
+  },
+  "quantities": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "dataset": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "object": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "unit": {
+      "enum": [
+       "t_co2",
+       "litre",
+       "kg",
+       "kwh"
+      ]
+     },
+     "value": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+     },
+     "time": {
+      "type": "string",
+      "format": "date-time"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "dataset",
+     "object",
+     "unit",
+     "value",
+     "time"
+    ]
+   }
+  }
+ },
+ "additionalProperties": false,
+ "required": [
+  "orct_usage",
+  "vehicle"
+ ]
+}

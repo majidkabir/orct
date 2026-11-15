@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "ch-2025-01-01",
-  "scheme": "ch",
-  "country": "CH",
-  "currency": "CHF",
+  "id": "carbon-cost/ch/2025-01-01",
+  "scheme": {
+   "id": "ch",
+   "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
+   "country": "CH"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2025-01-01",
-  "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
+  "valid_to": "2030-12-31",
+  "currency": "CHF",
+  "timezone": "Europe/Zurich",
+  "license": "MIT",
   "method": "Schwerverkehrsabgabeverordnung (SVAV, SR 641.811) of 27 March 2024, Art. 8 para. 1 as amended 20 September 2024 (AS 2024 522), in force 1 January 2025: 3.26 / 2.82 / 2.39 Rappen per tonne-km for fee categories 1 / 2 / 3; Annex 1: EURO VI in category 3, EURO 0-V in category 1; Art. 6 para. 3: chargeable weight at most 40 t.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/ch-2025-01-01.json"
   },
-  "valid_to": "2030-12-31"
+  "required_features": ["rule.exemption", "type.distance"]
  },
  "sources": [
   {
@@ -27,75 +36,77 @@
    "url": "https://www.bazg.admin.ch/bazg/en/home/informationen-firmen/verkehrsabgaben-und-strassenverkehrsrecht/schwerverkehrsabgaben-lsva-und-psva/lsva_allgemeines_tarife.html"
   }
  ],
- "vehicles": {
-  "description": "Motor vehicles and trailers over 3.5 t total weight used for goods transport, Swiss or foreign",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "euro": [
-     6
-    ]
+ "liable_vehicles": {
+  "description": "Motor vehicles and trailers over 3.5 t total weight used for goods transport, Swiss or foreign",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
-  },
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "distance_fee-1",
+   "classes": [
+    {
+     "id": "distance_fee-1.1",
+     "criteria": {
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "distance_fee-1.2",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "All public roads: the fee is per km driven anywhere in Switzerland and Liechtenstein."
+   "type": "network",
+   "network": {
+    "description": "All public roads: the fee is per km driven anywhere in Switzerland and Liechtenstein."
+   }
   }
  ],
  "charges": [
   {
-   "id": "distance_fee@roads",
-   "type": "quantity",
-   "component": "x-distance_fee",
-   "applies_to": [
-    "roads"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.0239,
-    "any": 0.0326
-   },
-   "unit": "tonne_km",
-   "max_mass_kg": 40000
+   "id": "distance_fee",
+   "type": "distance",
+   "component": "unspecified",
+   "unit": "tkm",
+   "component_label": "distance_fee",
+   "mass_basis": "train_mass_kg",
+   "mass_cap_kg": 40000,
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [["roads", "distance_fee-1.1", "0.0239"], ["roads", "distance_fee-1.2", "0.0326"]],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
+ "rules": [
+  {
+   "id": "r1",
+   "kind": "exemption",
+   "applies_to": ["distance_fee"],
+   "params": {
+    "criteria": {
+     "co2_class": [5]
+    },
+    "until": "2030-12-31",
+    "note": "Motor vehicles with electric drive are exempt (SVAV Art. 2 para. 1 let. k); the revised Heavy Vehicle Fee Act adopted on 2 October 2026 keeps them exempt until the end of 2030."
+   }
+  }
+ ],
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
-  }
- ],
- "modifiers": [
-  {
-   "kind": "exemption",
-   "applies_to": [
-    "distance_fee@roads"
-   ],
-   "params": {
-    "co2_class": [
-     5
-    ],
-    "until": "2030-12-31",
-    "note": "Motor vehicles with electric drive are exempt (SVAV Art. 2 para. 1 let. k); the revised Heavy Vehicle Fee Act adopted on 2 October 2026 keeps them exempt until the end of 2030."
-   }
   }
  ]
 }

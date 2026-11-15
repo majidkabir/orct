@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "al-2026-11-13",
-  "scheme": "al",
-  "country": "AL",
-  "currency": "EUR",
+  "id": "carbon-cost/al/2026-11-13",
+  "scheme": {
+   "id": "al",
+   "name": "A1 Rruga e Kombit toll (Milot–Morinë)",
+   "country": "AL"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-11-13",
-  "name": "A1 Rruga e Kombit toll (Milot–Morinë)",
+  "currency": "EUR",
+  "timezone": "Europe/Tirane",
+  "license": "MIT",
   "method": "The Milot–Morinë motorway concession contract (clauses 11.4.3 and 11.4.4), as ATRAKO, the state concessions agency, publishes it: EUR 5 with VAT per passage times the class's coefficient, class 4 (G: three axles, or commercial vehicles over 2.70 m) EUR 16.25, class 5 (H: four axles or more) EUR 22.5; trucks over 3.5 t with two or three axles are taken to be over 2.70 m. Excluding 20% VAT. Charged at the toll plaza by the Thirrë tunnel, either way. The page gives no date: valid_from is the day it was first read.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/al-2026-11-13.json"
-  }
+  },
+  "required_features": ["type.point"]
  },
  "sources": [
   {
@@ -26,78 +35,73 @@
    "url": "https://www.openstreetmap.org/"
   }
  ],
- "vehicles": {
-  "description": "Classes 4 and 5 (here trucks over 3.5 t)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "max": 3
-    }
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 4
-    }
+ "liable_vehicles": {
+  "description": "Classes 4 and 5 (here trucks over 3.5 t)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "pt-1",
+   "classes": [
+    {
+     "id": "pt-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 3
+      }
+     }
+    },
+    {
+     "id": "pt-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 4
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "A1 Rruga e Kombit, Milot–Morinë (one plaza, by the Thirrë/Kalimash tunnel)."
-  },
-  {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "pt1",
+   "type": "point",
    "name": "Rruga e Kombit: Kalimash toll plaza",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     20.31435,
-     42.048682
-    ]
-   },
-   "match_km": 0.2
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [20.31435, 42.048682]
+    },
+    "match_m": 200
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Rruga e Kombit: Kalimash toll plaza",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 13.5417,
-    "c2": 18.75
-   }
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [["pt1", "pt-1.1", "13.5417"], ["pt1", "pt-1.2", "18.75"]],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
@@ -105,7 +109,7 @@
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-13"
   }

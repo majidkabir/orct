@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "lu-2019-07-01",
-  "scheme": "lu",
-  "country": "LU",
-  "currency": "EUR",
+  "id": "carbon-cost/lu/2019-07-01",
+  "scheme": {
+   "id": "lu",
+   "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
+   "country": "LU"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2019-07-01",
-  "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
+  "valid_to": "2025-03-24",
+  "currency": "EUR",
+  "timezone": "Europe/Luxembourg",
+  "license": "MIT",
   "method": "Loi modifiée du 24 février 1995 (Eurovignette Agreement of 9 February 1994); Règlement grand-ducal du 21 mai 2019, art. 1er, 4° as published: the daily charge, administrative costs included, is 12 euros for every category of vehicle from 1 July 2019, for goods vehicles of 12 t or more. Replaced on 25 March 2025 by the amounts by CO2 class (RGD of 18 December 2024).",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/lu-2019-07-01.json"
   },
-  "valid_to": "2025-03-24"
+  "required_features": ["type.period"]
  },
  "sources": [
   {
@@ -27,51 +36,56 @@
    "url": "https://guichet.public.lu/fr/entreprises/import-export/transit/transit-ue/e-vignette-poids-lourds.html"
   }
  ],
- "vehicles": {
-  "description": "Goods vehicles of 12 t or more maximum mass",
-  "min_mass_kg": 12000,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    }
+ "liable_vehicles": {
+  "description": "Goods vehicles of 12 t or more maximum mass",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 12000
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "toll-1",
+   "classes": [
+    {
+     "id": "toll-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      }
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "The motorways and similar roads in the RGD's annex."
+   "type": "network",
+   "network": {
+    "description": "The motorways and similar roads in the RGD's annex."
+   }
   }
  ],
  "charges": [
   {
-   "id": "toll@roads",
+   "id": "toll",
    "type": "period",
-   "component": "toll",
-   "applies_to": [
-    "roads"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 12
-   },
-   "period": "day",
-   "day_basis": "calendar"
+   "component": "unspecified",
+   "unit": "product",
+   "component_label": "toll",
+   "day_basis": "calendar",
+   "columns": ["object", "vehicle_class", "product", "amount"],
+   "rows": [["roads", "toll-1.1", "P1D", "12"]],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",

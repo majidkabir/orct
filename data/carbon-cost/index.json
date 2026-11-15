@@ -1,12 +1,13 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "derived_from": {
-  "repository": "https://github.com/majidkabir/carbon-cost",
-  "commit": "3b92c0633e86896dc1177e771ab5a483aaebc75d"
+  "url": "https://github.com/majidkabir/carbon-cost",
+  "commit": "4ae60d9f4c80daebcaaf54ded72efdf024600786"
  },
  "datasets": [
   {
-   "id": "al-2026-11-13",
+   "id": "carbon-cost/al/2026-11-13",
+   "scheme": "al",
    "country": "AL",
    "file": "al/al-2026-11-13.orct.json",
    "name": "A1 Rruga e Kombit toll (Milot–Morinë)",
@@ -15,7 +16,8 @@
    "coverage": "complete"
   },
   {
-   "id": "at-2024-01-01",
+   "id": "carbon-cost/at/2024-01-01",
+   "scheme": "at",
    "country": "AT",
    "file": "at/at-2024-01-01.orct.json",
    "name": "Austrian HGV toll (GO-Maut)",
@@ -24,7 +26,8 @@
    "coverage": "complete"
   },
   {
-   "id": "at-2025-01-01",
+   "id": "carbon-cost/at/2025-01-01",
+   "scheme": "at",
    "country": "AT",
    "file": "at/at-2025-01-01.orct.json",
    "name": "Austrian HGV toll (GO-Maut)",
@@ -33,7 +36,8 @@
    "coverage": "complete"
   },
   {
-   "id": "at-2026-01-01",
+   "id": "carbon-cost/at/2026-01-01",
+   "scheme": "at",
    "country": "AT",
    "file": "at/at-2026-01-01.orct.json",
    "name": "Austrian HGV toll (GO-Maut)",
@@ -42,7 +46,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ba-2020-11-26",
+   "id": "carbon-cost/ba/2020-11-26",
+   "scheme": "ba",
    "country": "BA",
    "file": "ba/ba-2020-11-26.orct.json",
    "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
@@ -51,7 +56,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ba-2024-08-22",
+   "id": "carbon-cost/ba/2024-08-22",
+   "scheme": "ba",
    "country": "BA",
    "file": "ba/ba-2024-08-22.orct.json",
    "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
@@ -60,7 +66,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ba-2026-11-01",
+   "id": "carbon-cost/ba/2026-11-01",
+   "scheme": "ba",
    "country": "BA",
    "file": "ba/ba-2026-11-01.orct.json",
    "name": "A1 motorway tolls (Federation of Bosnia and Herzegovina)",
@@ -69,7 +76,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ba-rs-2024-10-02",
+   "id": "carbon-cost/ba-rs/2024-10-02",
+   "scheme": "ba-rs",
    "country": "BA",
    "file": "ba/ba-rs-2024-10-02.orct.json",
    "name": "Republika Srpska motorway tolls (Autoputevi Republike Srpske)",
@@ -78,7 +86,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-bru-2024-01-01",
+   "id": "carbon-cost/be-bru/2024-01-01",
+   "scheme": "be-bru",
    "country": "BE",
    "file": "be/be-bru-2024-01-01.orct.json",
    "name": "Belgian kilometre charge, Brussels-Capital Region",
@@ -87,7 +96,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-bru-2024-07-01",
+   "id": "carbon-cost/be-bru/2024-07-01",
+   "scheme": "be-bru",
    "country": "BE",
    "file": "be/be-bru-2024-07-01.orct.json",
    "name": "Belgian kilometre charge, Brussels-Capital Region",
@@ -96,7 +106,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-bru-2025-07-01",
+   "id": "carbon-cost/be-bru/2025-07-01",
+   "scheme": "be-bru",
    "country": "BE",
    "file": "be/be-bru-2025-07-01.orct.json",
    "name": "Belgian kilometre charge, Brussels-Capital Region",
@@ -105,7 +116,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-bru-2026-01-01",
+   "id": "carbon-cost/be-bru/2026-01-01",
+   "scheme": "be-bru",
    "country": "BE",
    "file": "be/be-bru-2026-01-01.orct.json",
    "name": "Belgian kilometre charge, Brussels-Capital Region",
@@ -114,7 +126,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-bru-2026-07-01",
+   "id": "carbon-cost/be-bru/2026-07-01",
+   "scheme": "be-bru",
    "country": "BE",
    "file": "be/be-bru-2026-07-01.orct.json",
    "name": "Belgian kilometre charge, Brussels-Capital Region",
@@ -123,7 +136,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-liefkenshoek-2026-01-01",
+   "id": "carbon-cost/be-liefkenshoek/2026-01-01",
+   "scheme": "be-liefkenshoek",
    "country": "BE",
    "file": "be/be-liefkenshoek-2026-01-01.orct.json",
    "name": "Liefkenshoektunnel toll (Antwerp)",
@@ -132,7 +146,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-liefkenshoek-2027-01-01",
+   "id": "carbon-cost/be-liefkenshoek/2027-01-01",
+   "scheme": "be-liefkenshoek",
    "country": "BE",
    "file": "be/be-liefkenshoek-2027-01-01.orct.json",
    "name": "Liefkenshoektunnel toll (Antwerp)",
@@ -141,7 +156,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-vlg-2024-01-01",
+   "id": "carbon-cost/be-vlg/2024-01-01",
+   "scheme": "be-vlg",
    "country": "BE",
    "file": "be/be-vlg-2024-01-01.orct.json",
    "name": "Belgian kilometre charge, Flemish Region",
@@ -150,7 +166,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-vlg-2024-07-01",
+   "id": "carbon-cost/be-vlg/2024-07-01",
+   "scheme": "be-vlg",
    "country": "BE",
    "file": "be/be-vlg-2024-07-01.orct.json",
    "name": "Belgian kilometre charge, Flemish Region",
@@ -159,7 +176,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-vlg-2025-07-01",
+   "id": "carbon-cost/be-vlg/2025-07-01",
+   "scheme": "be-vlg",
    "country": "BE",
    "file": "be/be-vlg-2025-07-01.orct.json",
    "name": "Belgian kilometre charge, Flemish Region",
@@ -168,7 +186,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-vlg-2026-01-01",
+   "id": "carbon-cost/be-vlg/2026-01-01",
+   "scheme": "be-vlg",
    "country": "BE",
    "file": "be/be-vlg-2026-01-01.orct.json",
    "name": "Belgian kilometre charge, Flemish Region",
@@ -177,7 +196,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-vlg-2026-07-01",
+   "id": "carbon-cost/be-vlg/2026-07-01",
+   "scheme": "be-vlg",
    "country": "BE",
    "file": "be/be-vlg-2026-07-01.orct.json",
    "name": "Belgian kilometre charge, Flemish Region",
@@ -186,7 +206,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-wal-2024-01-01",
+   "id": "carbon-cost/be-wal/2024-01-01",
+   "scheme": "be-wal",
    "country": "BE",
    "file": "be/be-wal-2024-01-01.orct.json",
    "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
@@ -195,7 +216,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-wal-2025-01-01",
+   "id": "carbon-cost/be-wal/2025-01-01",
+   "scheme": "be-wal",
    "country": "BE",
    "file": "be/be-wal-2025-01-01.orct.json",
    "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
@@ -204,7 +226,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-wal-2026-01-01",
+   "id": "carbon-cost/be-wal/2026-01-01",
+   "scheme": "be-wal",
    "country": "BE",
    "file": "be/be-wal-2026-01-01.orct.json",
    "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
@@ -213,7 +236,8 @@
    "coverage": "complete"
   },
   {
-   "id": "be-wal-2026-07-01",
+   "id": "carbon-cost/be-wal/2026-07-01",
+   "scheme": "be-wal",
    "country": "BE",
    "file": "be/be-wal-2026-07-01.orct.json",
    "name": "Belgian kilometre charge, Walloon Region (SOFICO)",
@@ -222,7 +246,8 @@
    "coverage": "complete"
   },
   {
-   "id": "bg-2024-01-01",
+   "id": "carbon-cost/bg/2024-01-01",
+   "scheme": "bg",
    "country": "BG",
    "file": "bg/bg-2024-01-01.orct.json",
    "name": "Bulgarian distance toll (BG TOLL)",
@@ -231,7 +256,8 @@
    "coverage": "complete"
   },
   {
-   "id": "bg-2025-04-01",
+   "id": "carbon-cost/bg/2025-04-01",
+   "scheme": "bg",
    "country": "BG",
    "file": "bg/bg-2025-04-01.orct.json",
    "name": "Bulgarian distance toll (BG TOLL)",
@@ -240,7 +266,8 @@
    "coverage": "complete"
   },
   {
-   "id": "bg-2025-09-01",
+   "id": "carbon-cost/bg/2025-09-01",
+   "scheme": "bg",
    "country": "BG",
    "file": "bg/bg-2025-09-01.orct.json",
    "name": "Bulgarian distance toll (BG TOLL)",
@@ -249,7 +276,8 @@
    "coverage": "complete"
   },
   {
-   "id": "bg-2026-01-01",
+   "id": "carbon-cost/bg/2026-01-01",
+   "scheme": "bg",
    "country": "BG",
    "file": "bg/bg-2026-01-01.orct.json",
    "name": "Bulgarian distance toll (BG TOLL)",
@@ -258,7 +286,8 @@
    "coverage": "complete"
   },
   {
-   "id": "bg-2026-06-01",
+   "id": "carbon-cost/bg/2026-06-01",
+   "scheme": "bg",
    "country": "BG",
    "file": "bg/bg-2026-06-01.orct.json",
    "name": "Bulgarian distance toll (BG TOLL)",
@@ -267,7 +296,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ch-2024-01-01",
+   "id": "carbon-cost/ch/2024-01-01",
+   "scheme": "ch",
    "country": "CH",
    "file": "ch/ch-2024-01-01.orct.json",
    "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
@@ -276,7 +306,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ch-2025-01-01",
+   "id": "carbon-cost/ch/2025-01-01",
+   "scheme": "ch",
    "country": "CH",
    "file": "ch/ch-2025-01-01.orct.json",
    "name": "Swiss performance-related heavy vehicle fee (LSVA / RPLP)",
@@ -285,7 +316,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ch-great-st-bernard-2026-02-01",
+   "id": "carbon-cost/ch-great-st-bernard/2026-02-01",
+   "scheme": "ch-great-st-bernard",
    "country": "CH",
    "file": "ch/ch-great-st-bernard-2026-02-01.orct.json",
    "name": "Great St Bernard tunnel toll, Bourg-Saint-Pierre (southbound)",
@@ -294,7 +326,8 @@
    "coverage": "complete"
   },
   {
-   "id": "cz-2021-01-01",
+   "id": "carbon-cost/cz/2021-01-01",
+   "scheme": "cz",
    "country": "CZ",
    "file": "cz/cz-2021-01-01.orct.json",
    "name": "Czech electronic toll (Mýto CZ)",
@@ -303,7 +336,8 @@
    "coverage": "complete"
   },
   {
-   "id": "cz-2024-03-01",
+   "id": "carbon-cost/cz/2024-03-01",
+   "scheme": "cz",
    "country": "CZ",
    "file": "cz/cz-2024-03-01.orct.json",
    "name": "Czech electronic toll (Mýto CZ)",
@@ -312,7 +346,8 @@
    "coverage": "complete"
   },
   {
-   "id": "cz-2024-03-25",
+   "id": "carbon-cost/cz/2024-03-25",
+   "scheme": "cz",
    "country": "CZ",
    "file": "cz/cz-2024-03-25.orct.json",
    "name": "Czech electronic toll (Mýto CZ)",
@@ -321,7 +356,8 @@
    "coverage": "complete"
   },
   {
-   "id": "cz-2025-01-01",
+   "id": "carbon-cost/cz/2025-01-01",
+   "scheme": "cz",
    "country": "CZ",
    "file": "cz/cz-2025-01-01.orct.json",
    "name": "Czech electronic toll (Mýto CZ)",
@@ -330,7 +366,8 @@
    "coverage": "complete"
   },
   {
-   "id": "cz-2026-01-01",
+   "id": "carbon-cost/cz/2026-01-01",
+   "scheme": "cz",
    "country": "CZ",
    "file": "cz/cz-2026-01-01.orct.json",
    "name": "Czech electronic toll (Mýto CZ)",
@@ -339,7 +376,8 @@
    "coverage": "complete"
   },
   {
-   "id": "de-2023-12-01",
+   "id": "carbon-cost/de/2023-12-01",
+   "scheme": "de",
    "country": "DE",
    "file": "de/de-2023-12-01.orct.json",
    "name": "German HGV toll (Lkw-Maut)",
@@ -348,7 +386,8 @@
    "coverage": "complete"
   },
   {
-   "id": "de-2024-07-01",
+   "id": "carbon-cost/de/2024-07-01",
+   "scheme": "de",
    "country": "DE",
    "file": "de/de-2024-07-01.orct.json",
    "name": "German HGV toll (Lkw-Maut)",
@@ -357,7 +396,8 @@
    "coverage": "complete"
   },
   {
-   "id": "de-herrentunnel-2025-03-01",
+   "id": "carbon-cost/de-herrentunnel/2025-03-01",
+   "scheme": "de-herrentunnel",
    "country": "DE",
    "file": "de/de-herrentunnel-2025-03-01.orct.json",
    "name": "Herrentunnel toll (Lübeck)",
@@ -366,7 +406,8 @@
    "coverage": "complete"
   },
   {
-   "id": "de-warnowtunnel-2026-11-01",
+   "id": "carbon-cost/de-warnowtunnel/2026-11-01",
+   "scheme": "de-warnowtunnel",
    "country": "DE",
    "file": "de/de-warnowtunnel-2026-11-01.orct.json",
    "name": "Warnowtunnel toll (Rostock)",
@@ -375,7 +416,8 @@
    "coverage": "complete"
   },
   {
-   "id": "dk-2020-01-01",
+   "id": "carbon-cost/dk/2020-01-01",
+   "scheme": "dk",
    "country": "DK",
    "file": "dk/dk-2020-01-01.orct.json",
    "name": "Danish road user charge (vejbenyttelsesafgift, Eurovignette)",
@@ -384,7 +426,8 @@
    "coverage": "complete"
   },
   {
-   "id": "dk-2025-01-01",
+   "id": "carbon-cost/dk/2025-01-01",
+   "scheme": "dk",
    "country": "DK",
    "file": "dk/dk-2025-01-01.orct.json",
    "name": "Danish km-based road toll (vejafgift)",
@@ -393,7 +436,8 @@
    "coverage": "partial"
   },
   {
-   "id": "dk-2026-01-01",
+   "id": "carbon-cost/dk/2026-01-01",
+   "scheme": "dk",
    "country": "DK",
    "file": "dk/dk-2026-01-01.orct.json",
    "name": "Danish km-based road toll (vejafgift)",
@@ -402,7 +446,8 @@
    "coverage": "partial"
   },
   {
-   "id": "dk-bridges-2024-01-01",
+   "id": "carbon-cost/dk-bridges/2024-01-01",
+   "scheme": "dk-bridges",
    "country": "DK",
    "file": "dk/dk-bridges-2024-01-01.orct.json",
    "name": "Storebælt and Øresund bridge tolls",
@@ -411,7 +456,8 @@
    "coverage": "complete"
   },
   {
-   "id": "dk-bridges-2025-01-01",
+   "id": "carbon-cost/dk-bridges/2025-01-01",
+   "scheme": "dk-bridges",
    "country": "DK",
    "file": "dk/dk-bridges-2025-01-01.orct.json",
    "name": "Storebælt and Øresund bridge tolls",
@@ -420,7 +466,8 @@
    "coverage": "complete"
   },
   {
-   "id": "dk-bridges-2026-01-01",
+   "id": "carbon-cost/dk-bridges/2026-01-01",
+   "scheme": "dk-bridges",
    "country": "DK",
    "file": "dk/dk-bridges-2026-01-01.orct.json",
    "name": "Storebælt and Øresund bridge tolls",
@@ -429,7 +476,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ee-2024-01-01",
+   "id": "carbon-cost/ee/2024-01-01",
+   "scheme": "ee",
    "country": "EE",
    "file": "ee/ee-2024-01-01.orct.json",
    "name": "Estonian road user charge (teekasutustasu)",
@@ -438,7 +486,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ee-2026-01-01",
+   "id": "carbon-cost/ee/2026-01-01",
+   "scheme": "ee",
    "country": "EE",
    "file": "ee/ee-2026-01-01.orct.json",
    "name": "Estonian road user charge (teekasutustasu)",
@@ -447,7 +496,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap15-2026-01-01",
+   "id": "carbon-cost/es-ap15/2026-01-01",
+   "scheme": "es-ap15",
    "country": "ES",
    "file": "es/es-ap15-2026-01-01.orct.json",
    "name": "AP-15 Navarra (Audenasa) barriers",
@@ -456,7 +506,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap46-2025-01-01",
+   "id": "carbon-cost/es-ap46/2025-01-01",
+   "scheme": "es-ap46",
    "country": "ES",
    "file": "es/es-ap46-2025-01-01.orct.json",
    "name": "AP-46 Alto de las Pedrizas–Málaga",
@@ -465,7 +516,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap46-2026-01-01",
+   "id": "carbon-cost/es-ap46/2026-01-01",
+   "scheme": "es-ap46",
    "country": "ES",
    "file": "es/es-ap46-2026-01-01.orct.json",
    "name": "AP-46 Alto de las Pedrizas–Málaga",
@@ -474,7 +526,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap53-2026-01-01",
+   "id": "carbon-cost/es-ap53/2026-01-01",
+   "scheme": "es-ap53",
    "country": "ES",
    "file": "es/es-ap53-2026-01-01.orct.json",
    "name": "AP-53 Santiago de Compostela – Alto de Santo Domingo",
@@ -483,7 +536,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap66-2025-01-01",
+   "id": "carbon-cost/es-ap66/2025-01-01",
+   "scheme": "es-ap66",
    "country": "ES",
    "file": "es/es-ap66-2025-01-01.orct.json",
    "name": "AP-66 Campomanes–León (Aucalsa)",
@@ -492,7 +546,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap66-2026-01-01",
+   "id": "carbon-cost/es-ap66/2026-01-01",
+   "scheme": "es-ap66",
    "country": "ES",
    "file": "es/es-ap66-2026-01-01.orct.json",
    "name": "AP-66 Campomanes–León (Aucalsa)",
@@ -501,7 +556,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap68-2026-01-01",
+   "id": "carbon-cost/es-ap68/2026-01-01",
+   "scheme": "es-ap68",
    "country": "ES",
    "file": "es/es-ap68-2026-01-01.orct.json",
    "name": "AP-68 Bilbao – Zaragoza (Avasa)",
@@ -510,7 +566,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap7ac-2025-01-01",
+   "id": "carbon-cost/es-ap7ac/2025-01-01",
+   "scheme": "es-ap7ac",
    "country": "ES",
    "file": "es/es-ap7ac-2025-01-01.orct.json",
    "name": "AP-7 Alicante–Cartagena",
@@ -519,7 +576,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ap7ac-2026-01-01",
+   "id": "carbon-cost/es-ap7ac/2026-01-01",
+   "scheme": "es-ap7ac",
    "country": "ES",
    "file": "es/es-ap7ac-2026-01-01.orct.json",
    "name": "AP-7 Alicante–Cartagena",
@@ -528,7 +586,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-aulesa-2025-01-01",
+   "id": "carbon-cost/es-aulesa/2025-01-01",
+   "scheme": "es-aulesa",
    "country": "ES",
    "file": "es/es-aulesa-2025-01-01.orct.json",
    "name": "AP-71 León–Astorga (Aulesa)",
@@ -537,7 +596,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-aulesa-2026-01-01",
+   "id": "carbon-cost/es-aulesa/2026-01-01",
+   "scheme": "es-aulesa",
    "country": "ES",
    "file": "es/es-aulesa-2026-01-01.orct.json",
    "name": "AP-71 León–Astorga (Aulesa)",
@@ -546,7 +606,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ausol-2026-01-01",
+   "id": "carbon-cost/es-ausol/2026-01-01",
+   "scheme": "es-ausol",
    "country": "ES",
    "file": "es/es-ausol-2026-01-01.orct.json",
    "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
@@ -555,7 +616,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ausol-2026-03-27",
+   "id": "carbon-cost/es-ausol/2026-03-27",
+   "scheme": "es-ausol",
    "country": "ES",
    "file": "es/es-ausol-2026-03-27.orct.json",
    "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), special season",
@@ -564,7 +626,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ausol-2026-04-13",
+   "id": "carbon-cost/es-ausol/2026-04-13",
+   "scheme": "es-ausol",
    "country": "ES",
    "file": "es/es-ausol-2026-04-13.orct.json",
    "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
@@ -573,7 +636,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ausol-2026-06-01",
+   "id": "carbon-cost/es-ausol/2026-06-01",
+   "scheme": "es-ausol",
    "country": "ES",
    "file": "es/es-ausol-2026-06-01.orct.json",
    "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), special season",
@@ -582,7 +646,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-ausol-2026-10-01",
+   "id": "carbon-cost/es-ausol/2026-10-01",
+   "scheme": "es-ausol",
    "country": "ES",
    "file": "es/es-ausol-2026-10-01.orct.json",
    "name": "AP-7 Málaga–Estepona–Guadiaro toll (Ausol), normal season",
@@ -591,7 +656,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-basque-2026-01-01",
+   "id": "carbon-cost/es-basque/2026-01-01",
+   "scheme": "es-basque",
    "country": "ES",
    "file": "es/es-basque-2026-01-01.orct.json",
    "name": "N-I and A-15 heavy vehicle canon (Gipuzkoa, Bidegi)",
@@ -600,7 +666,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-basque-ap8-2026-01-01",
+   "id": "carbon-cost/es-basque-ap8/2026-01-01",
+   "scheme": "es-basque-ap8",
    "country": "ES",
    "file": "es/es-basque-ap8-2026-01-01.orct.json",
    "name": "AP-8, AP-1 and AP-636, Basque Country (Interbiak, Bidegi)",
@@ -609,7 +676,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-castellana-2025-01-01",
+   "id": "carbon-cost/es-castellana/2025-01-01",
+   "scheme": "es-castellana",
    "country": "ES",
    "file": "es/es-castellana-2025-01-01.orct.json",
    "name": "AP-6, AP-51 and AP-61 (Castellana de Autopistas, Iberpistas)",
@@ -618,7 +686,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-castellana-2026-01-01",
+   "id": "carbon-cost/es-castellana/2026-01-01",
+   "scheme": "es-castellana",
    "country": "ES",
    "file": "es/es-castellana-2026-01-01.orct.json",
    "name": "AP-6, AP-51 and AP-61 (Castellana de Autopistas, Iberpistas)",
@@ -627,16 +696,18 @@
    "coverage": "complete"
   },
   {
-   "id": "es-catalonia-c16-2026-01-01",
+   "id": "carbon-cost/es-catalonia-c16/2026-01-01",
+   "scheme": "es-catalonia-c16",
    "country": "ES",
    "file": "es/es-catalonia-c16-2026-01-01.orct.json",
    "name": "Catalonia: C-16 tolls (Túnel del Cadí, Túnels de Vallvidrera, les Fonts, Sant Vicenç de Castellet)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "coverage": "partial"
+   "coverage": "complete"
   },
   {
-   "id": "es-radials-2026-01-01",
+   "id": "carbon-cost/es-radials/2026-01-01",
+   "scheme": "es-radials",
    "country": "ES",
    "file": "es/es-radials-2026-01-01.orct.json",
    "name": "Madrid radials R-2, R-3, R-4 and R-5 (SEITT)",
@@ -645,7 +716,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-seitt-2025-01-01",
+   "id": "carbon-cost/es-seitt/2025-01-01",
+   "scheme": "es-seitt",
    "country": "ES",
    "file": "es/es-seitt-2025-01-01.orct.json",
    "name": "Spanish state toll motorways (SEITT)",
@@ -654,7 +726,8 @@
    "coverage": "complete"
   },
   {
-   "id": "es-seitt-2026-01-01",
+   "id": "carbon-cost/es-seitt/2026-01-01",
+   "scheme": "es-seitt",
    "country": "ES",
    "file": "es/es-seitt-2026-01-01.orct.json",
    "name": "Spanish state toll motorways (SEITT)",
@@ -663,7 +736,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fr-2024-01-01",
+   "id": "carbon-cost/fr/2024-01-01",
+   "scheme": "fr",
    "country": "FR",
    "file": "fr/fr-2024-01-01.orct.json",
    "name": "French motorway tolls",
@@ -672,7 +746,8 @@
    "coverage": "partial"
   },
   {
-   "id": "fr-2024-02-01",
+   "id": "carbon-cost/fr/2024-02-01",
+   "scheme": "fr",
    "country": "FR",
    "file": "fr/fr-2024-02-01.orct.json",
    "name": "French motorway tolls",
@@ -681,7 +756,8 @@
    "coverage": "partial"
   },
   {
-   "id": "fr-2025-02-01",
+   "id": "carbon-cost/fr/2025-02-01",
+   "scheme": "fr",
    "country": "FR",
    "file": "fr/fr-2025-02-01.orct.json",
    "name": "French motorway tolls",
@@ -690,7 +766,8 @@
    "coverage": "partial"
   },
   {
-   "id": "fr-2026-02-01",
+   "id": "carbon-cost/fr/2026-02-01",
+   "scheme": "fr",
    "country": "FR",
    "file": "fr/fr-2026-02-01.orct.json",
    "name": "French motorway tolls",
@@ -699,7 +776,8 @@
    "coverage": "partial"
   },
   {
-   "id": "fr-2026-06-01",
+   "id": "carbon-cost/fr/2026-06-01",
+   "scheme": "fr",
    "country": "FR",
    "file": "fr/fr-2026-06-01.orct.json",
    "name": "French motorway tolls",
@@ -708,7 +786,8 @@
    "coverage": "partial"
   },
   {
-   "id": "frejus-2024-01-01",
+   "id": "carbon-cost/frejus/2024-01-01",
+   "scheme": "frejus",
    "country": "FR",
    "file": "fr/frejus-2024-01-01.orct.json",
    "name": "Fréjus road tunnel toll",
@@ -717,7 +796,8 @@
    "coverage": "complete"
   },
   {
-   "id": "frejus-2025-01-01",
+   "id": "carbon-cost/frejus/2025-01-01",
+   "scheme": "frejus",
    "country": "FR",
    "file": "fr/frejus-2025-01-01.orct.json",
    "name": "Fréjus road tunnel toll",
@@ -726,7 +806,8 @@
    "coverage": "complete"
   },
   {
-   "id": "frejus-2026-01-01",
+   "id": "carbon-cost/frejus/2026-01-01",
+   "scheme": "frejus",
    "country": "FR",
    "file": "fr/frejus-2026-01-01.orct.json",
    "name": "Fréjus road tunnel toll",
@@ -735,7 +816,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-at-2024-01-01",
+   "id": "carbon-cost/fuelco2-at/2024-01-01",
+   "scheme": "fuelco2-at",
    "country": "AT",
    "file": "at/fuelco2-at-2024-01-01.orct.json",
    "name": "Nationaler Emissionszertifikatehandel certificate value",
@@ -744,7 +826,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-at-2025-01-01",
+   "id": "carbon-cost/fuelco2-at/2025-01-01",
+   "scheme": "fuelco2-at",
    "country": "AT",
    "file": "at/fuelco2-at-2025-01-01.orct.json",
    "name": "Nationaler Emissionszertifikatehandel certificate value",
@@ -753,7 +836,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-at-2026-01-01",
+   "id": "carbon-cost/fuelco2-at/2026-01-01",
+   "scheme": "fuelco2-at",
    "country": "AT",
    "file": "at/fuelco2-at-2026-01-01.orct.json",
    "name": "Nationaler Emissionszertifikatehandel certificate value",
@@ -762,7 +846,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-at-2027-01-01",
+   "id": "carbon-cost/fuelco2-at/2027-01-01",
+   "scheme": "fuelco2-at",
    "country": "AT",
    "file": "at/fuelco2-at-2027-01-01.orct.json",
    "name": "Nationaler Emissionszertifikatehandel certificate value",
@@ -771,7 +856,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-de-2024-01-01",
+   "id": "carbon-cost/fuelco2-de/2024-01-01",
+   "scheme": "fuelco2-de",
    "country": "DE",
    "file": "de/fuelco2-de-2024-01-01.orct.json",
    "name": "Brennstoffemissionshandel (nEHS) certificate price",
@@ -780,7 +866,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-de-2025-01-01",
+   "id": "carbon-cost/fuelco2-de/2025-01-01",
+   "scheme": "fuelco2-de",
    "country": "DE",
    "file": "de/fuelco2-de-2025-01-01.orct.json",
    "name": "Brennstoffemissionshandel (nEHS) certificate price",
@@ -789,7 +876,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-de-2026-01-01",
+   "id": "carbon-cost/fuelco2-de/2026-01-01",
+   "scheme": "fuelco2-de",
    "country": "DE",
    "file": "de/fuelco2-de-2026-01-01.orct.json",
    "name": "Brennstoffemissionshandel (nEHS) certificate price",
@@ -798,7 +886,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-ie-2024-01-01",
+   "id": "carbon-cost/fuelco2-ie/2024-01-01",
+   "scheme": "fuelco2-ie",
    "country": "IE",
    "file": "ie/fuelco2-ie-2024-01-01.orct.json",
    "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
@@ -807,7 +896,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-ie-2024-10-09",
+   "id": "carbon-cost/fuelco2-ie/2024-10-09",
+   "scheme": "fuelco2-ie",
    "country": "IE",
    "file": "ie/fuelco2-ie-2024-10-09.orct.json",
    "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
@@ -816,7 +906,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-ie-2025-10-08",
+   "id": "carbon-cost/fuelco2-ie/2025-10-08",
+   "scheme": "fuelco2-ie",
    "country": "IE",
    "file": "ie/fuelco2-ie-2025-10-08.orct.json",
    "name": "Carbon tax (carbon component of Mineral Oil Tax) on auto-diesel",
@@ -825,7 +916,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2024-01-01",
+   "id": "carbon-cost/fuelco2-pt/2024-01-01",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2024-01-01.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -834,7 +926,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2024-08-26",
+   "id": "carbon-cost/fuelco2-pt/2024-08-26",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2024-08-26.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -843,7 +936,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2024-09-09",
+   "id": "carbon-cost/fuelco2-pt/2024-09-09",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2024-09-09.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -852,7 +946,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2024-09-16",
+   "id": "carbon-cost/fuelco2-pt/2024-09-16",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2024-09-16.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -861,7 +956,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2025-01-01",
+   "id": "carbon-cost/fuelco2-pt/2025-01-01",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2025-01-01.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -870,7 +966,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-pt-2026-01-01",
+   "id": "carbon-cost/fuelco2-pt/2026-01-01",
+   "scheme": "fuelco2-pt",
    "country": "PT",
    "file": "pt/fuelco2-pt-2026-01-01.orct.json",
    "name": "Adicionamento sobre as emissões de CO2 (carbon tax on road diesel)",
@@ -879,7 +976,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2024-01-01",
+   "id": "carbon-cost/fuelco2-si/2024-01-01",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2024-01-01.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -888,7 +986,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2024-09-10",
+   "id": "carbon-cost/fuelco2-si/2024-09-10",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2024-09-10.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -897,7 +996,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2026-03-24",
+   "id": "carbon-cost/fuelco2-si/2026-03-24",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2026-03-24.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -906,7 +1006,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2026-05-12",
+   "id": "carbon-cost/fuelco2-si/2026-05-12",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2026-05-12.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -915,7 +1016,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2026-06-02",
+   "id": "carbon-cost/fuelco2-si/2026-06-02",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2026-06-02.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -924,7 +1026,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2026-07-28",
+   "id": "carbon-cost/fuelco2-si/2026-07-28",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2026-07-28.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -933,7 +1036,8 @@
    "coverage": "complete"
   },
   {
-   "id": "fuelco2-si-2026-12-15",
+   "id": "carbon-cost/fuelco2-si/2026-12-15",
+   "scheme": "fuelco2-si",
    "country": "SI",
    "file": "si/fuelco2-si-2026-12-15.orct.json",
    "name": "Okoljska dajatev za onesnaževanje zraka z emisijo CO2 on diesel",
@@ -942,7 +1046,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-2023-08-01",
+   "id": "carbon-cost/gb/2023-08-01",
+   "scheme": "gb",
    "country": "GB",
    "file": "gb/gb-2023-08-01.orct.json",
    "name": "UK HGV road user levy (non-UK vehicles)",
@@ -951,7 +1056,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-2025-04-01",
+   "id": "carbon-cost/gb/2025-04-01",
+   "scheme": "gb",
    "country": "GB",
    "file": "gb/gb-2025-04-01.orct.json",
    "name": "UK HGV road user levy (non-UK vehicles)",
@@ -960,7 +1066,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-2026-04-01",
+   "id": "carbon-cost/gb/2026-04-01",
+   "scheme": "gb",
    "country": "GB",
    "file": "gb/gb-2026-04-01.orct.json",
    "name": "UK HGV road user levy (non-UK vehicles)",
@@ -969,7 +1076,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-dartford-2024-01-01",
+   "id": "carbon-cost/gb-dartford/2024-01-01",
+   "scheme": "gb-dartford",
    "country": "GB",
    "file": "gb/gb-dartford-2024-01-01.orct.json",
    "name": "Dartford Crossing charge (Dart Charge)",
@@ -978,7 +1086,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-dartford-2025-09-01",
+   "id": "carbon-cost/gb-dartford/2025-09-01",
+   "scheme": "gb-dartford",
    "country": "GB",
    "file": "gb/gb-dartford-2025-09-01.orct.json",
    "name": "Dartford Crossing charge (Dart Charge)",
@@ -987,7 +1096,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-humber-bridge-2026-11-13",
+   "id": "carbon-cost/gb-humber-bridge/2026-11-13",
+   "scheme": "gb-humber-bridge",
    "country": "GB",
    "file": "gb/gb-humber-bridge-2026-11-13.orct.json",
    "name": "Humber Bridge toll",
@@ -996,7 +1106,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-m6toll-2026-11-13",
+   "id": "carbon-cost/gb-m6toll/2026-11-13",
+   "scheme": "gb-m6toll",
    "country": "GB",
    "file": "gb/gb-m6toll-2026-11-13.orct.json",
    "name": "M6 Toll",
@@ -1005,7 +1116,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-mersey-bridges-2025-04-01",
+   "id": "carbon-cost/gb-mersey-bridges/2025-04-01",
+   "scheme": "gb-mersey-bridges",
    "country": "GB",
    "file": "gb/gb-mersey-bridges-2025-04-01.orct.json",
    "name": "Mersey Gateway and Silver Jubilee bridges toll",
@@ -1014,7 +1126,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-tamar-bridge-2026-11-13",
+   "id": "carbon-cost/gb-tamar-bridge/2026-11-13",
+   "scheme": "gb-tamar-bridge",
    "country": "GB",
    "file": "gb/gb-tamar-bridge-2026-11-13.orct.json",
    "name": "Tamar Bridge toll",
@@ -1023,7 +1136,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-thames-tunnels-2025-04-07",
+   "id": "carbon-cost/gb-thames-tunnels/2025-04-07",
+   "scheme": "gb-thames-tunnels",
    "country": "GB",
    "file": "gb/gb-thames-tunnels-2025-04-07.orct.json",
    "name": "Blackwall and Silvertown tunnels charge",
@@ -1032,7 +1146,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-thames-tunnels-2026-09-21",
+   "id": "carbon-cost/gb-thames-tunnels/2026-09-21",
+   "scheme": "gb-thames-tunnels",
    "country": "GB",
    "file": "gb/gb-thames-tunnels-2026-09-21.orct.json",
    "name": "Blackwall and Silvertown tunnels charge",
@@ -1041,7 +1156,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-tyne-tunnels-2024-01-01",
+   "id": "carbon-cost/gb-tyne-tunnels/2024-01-01",
+   "scheme": "gb-tyne-tunnels",
    "country": "GB",
    "file": "gb/gb-tyne-tunnels-2024-01-01.orct.json",
    "name": "Tyne Tunnels toll",
@@ -1050,7 +1166,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-tyne-tunnels-2024-05-01",
+   "id": "carbon-cost/gb-tyne-tunnels/2024-05-01",
+   "scheme": "gb-tyne-tunnels",
    "country": "GB",
    "file": "gb/gb-tyne-tunnels-2024-05-01.orct.json",
    "name": "Tyne Tunnels toll",
@@ -1059,7 +1176,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gb-tyne-tunnels-2025-05-01",
+   "id": "carbon-cost/gb-tyne-tunnels/2025-05-01",
+   "scheme": "gb-tyne-tunnels",
    "country": "GB",
    "file": "gb/gb-tyne-tunnels-2025-05-01.orct.json",
    "name": "Tyne Tunnels toll",
@@ -1068,7 +1186,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gr-2024-01-01",
+   "id": "carbon-cost/gr/2024-01-01",
+   "scheme": "gr",
    "country": "GR",
    "file": "gr/gr-2024-01-01.orct.json",
    "name": "Greek motorway tolls (open toll stations)",
@@ -1077,7 +1196,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gr-2025-01-01",
+   "id": "carbon-cost/gr/2025-01-01",
+   "scheme": "gr",
    "country": "GR",
    "file": "gr/gr-2025-01-01.orct.json",
    "name": "Greek motorway tolls (open toll stations)",
@@ -1086,7 +1206,8 @@
    "coverage": "complete"
   },
   {
-   "id": "gr-2026-01-01",
+   "id": "carbon-cost/gr/2026-01-01",
+   "scheme": "gr",
    "country": "GR",
    "file": "gr/gr-2026-01-01.orct.json",
    "name": "Greek motorway tolls (open toll stations)",
@@ -1095,7 +1216,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hr-2024-01-01",
+   "id": "carbon-cost/hr/2024-01-01",
+   "scheme": "hr",
    "country": "HR",
    "file": "hr/hr-2024-01-01.orct.json",
    "name": "Croatian motorway toll (Hrvatske autoceste)",
@@ -1104,7 +1226,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hr-2025-07-01",
+   "id": "carbon-cost/hr/2025-07-01",
+   "scheme": "hr",
    "country": "HR",
    "file": "hr/hr-2025-07-01.orct.json",
    "name": "Croatian motorway toll (Hrvatske autoceste)",
@@ -1113,7 +1236,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hr-2026-01-01",
+   "id": "carbon-cost/hr/2026-01-01",
+   "scheme": "hr",
    "country": "HR",
    "file": "hr/hr-2026-01-01.orct.json",
    "name": "Croatian motorway toll (Hrvatske autoceste)",
@@ -1122,7 +1246,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2024-01-01",
+   "id": "carbon-cost/hu/2024-01-01",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2024-01-01.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1131,7 +1256,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2024-04-01",
+   "id": "carbon-cost/hu/2024-04-01",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2024-04-01.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1140,7 +1266,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2024-09-01",
+   "id": "carbon-cost/hu/2024-09-01",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2024-09-01.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1149,7 +1276,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2025-06-08",
+   "id": "carbon-cost/hu/2025-06-08",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2025-06-08.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1158,7 +1286,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2026-01-01",
+   "id": "carbon-cost/hu/2026-01-01",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2026-01-01.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1167,7 +1296,8 @@
    "coverage": "complete"
   },
   {
-   "id": "hu-2026-07-01",
+   "id": "carbon-cost/hu/2026-07-01",
+   "scheme": "hu",
    "country": "HU",
    "file": "hu/hu-2026-07-01.orct.json",
    "name": "Hungarian distance-based toll (HU-GO)",
@@ -1176,7 +1306,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ie-2024-01-01",
+   "id": "carbon-cost/ie/2024-01-01",
+   "scheme": "ie",
    "country": "IE",
    "file": "ie/ie-2024-01-01.orct.json",
    "name": "Irish national road tolls (M50 and the PPP toll roads)",
@@ -1185,7 +1316,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ie-2025-01-01",
+   "id": "carbon-cost/ie/2025-01-01",
+   "scheme": "ie",
    "country": "IE",
    "file": "ie/ie-2025-01-01.orct.json",
    "name": "Irish national road tolls (M50 and the PPP toll roads)",
@@ -1194,7 +1326,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ie-2026-01-01",
+   "id": "carbon-cost/ie/2026-01-01",
+   "scheme": "ie",
    "country": "IE",
    "file": "ie/ie-2026-01-01.orct.json",
    "name": "Irish national road tolls (M50 and the PPP toll roads)",
@@ -1203,7 +1336,8 @@
    "coverage": "complete"
   },
   {
-   "id": "it-2026-01-01",
+   "id": "carbon-cost/it/2026-01-01",
+   "scheme": "it",
    "country": "IT",
    "file": "it/it-2026-01-01.orct.json",
    "name": "Italian motorway tolls (ESTIMATE: each concession's unit rate per km)",
@@ -1212,7 +1346,8 @@
    "coverage": "partial"
   },
   {
-   "id": "it-barriers-2026-01-01",
+   "id": "carbon-cost/it-barriers/2026-01-01",
+   "scheme": "it-barriers",
    "country": "IT",
    "file": "it/it-barriers-2026-01-01.orct.json",
    "name": "Milan ring roads' barriers (Milano Serravalle - Milano Tangenziali)",
@@ -1221,7 +1356,8 @@
    "coverage": "complete"
   },
   {
-   "id": "it-cas-2026-01-01",
+   "id": "carbon-cost/it-cas/2026-01-01",
+   "scheme": "it-cas",
    "country": "IT",
    "file": "it/it-cas-2026-01-01.orct.json",
    "name": "Sicilian motorways A18 and A20 (Consorzio per le Autostrade Siciliane)",
@@ -1230,7 +1366,8 @@
    "coverage": "complete"
   },
   {
-   "id": "it-great-st-bernard-2026-02-01",
+   "id": "carbon-cost/it-great-st-bernard/2026-02-01",
+   "scheme": "it-great-st-bernard",
    "country": "IT",
    "file": "it/it-great-st-bernard-2026-02-01.orct.json",
    "name": "Great St Bernard tunnel toll, Saint-Rhémy (northbound)",
@@ -1239,7 +1376,8 @@
    "coverage": "complete"
   },
   {
-   "id": "li-2024-01-01",
+   "id": "carbon-cost/li/2024-01-01",
+   "scheme": "li",
    "country": "LI",
    "file": "li/li-2024-01-01.orct.json",
    "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
@@ -1248,7 +1386,8 @@
    "coverage": "complete"
   },
   {
-   "id": "li-2025-01-01",
+   "id": "carbon-cost/li/2025-01-01",
+   "scheme": "li",
    "country": "LI",
    "file": "li/li-2025-01-01.orct.json",
    "name": "Liechtenstein performance-related heavy vehicle fee (LSVA, as in Switzerland)",
@@ -1257,7 +1396,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2024-01-01",
+   "id": "carbon-cost/lt/2024-01-01",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2024-01-01.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1266,7 +1406,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2024-08-31",
+   "id": "carbon-cost/lt/2024-08-31",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2024-08-31.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1275,7 +1416,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2025-05-16",
+   "id": "carbon-cost/lt/2025-05-16",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2025-05-16.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1284,7 +1426,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2025-07-01",
+   "id": "carbon-cost/lt/2025-07-01",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2025-07-01.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1293,7 +1436,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2026-01-01",
+   "id": "carbon-cost/lt/2026-01-01",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2026-01-01.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1302,7 +1446,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2026-04-11",
+   "id": "carbon-cost/lt/2026-04-11",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2026-04-11.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1311,7 +1456,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lt-2026-08-25",
+   "id": "carbon-cost/lt/2026-08-25",
+   "scheme": "lt",
    "country": "LT",
    "file": "lt/lt-2026-08-25.orct.json",
    "name": "Lithuanian road user charge (kelių naudotojo mokestis)",
@@ -1320,7 +1466,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lu-2019-07-01",
+   "id": "carbon-cost/lu/2019-07-01",
+   "scheme": "lu",
    "country": "LU",
    "file": "lu/lu-2019-07-01.orct.json",
    "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
@@ -1329,7 +1476,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lu-2025-03-25",
+   "id": "carbon-cost/lu/2025-03-25",
+   "scheme": "lu",
    "country": "LU",
    "file": "lu/lu-2025-03-25.orct.json",
    "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
@@ -1338,7 +1486,8 @@
    "coverage": "complete"
   },
   {
-   "id": "lv-2017-08-22",
+   "id": "carbon-cost/lv/2017-08-22",
+   "scheme": "lv",
    "country": "LV",
    "file": "lv/lv-2017-08-22.orct.json",
    "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
@@ -1347,7 +1496,8 @@
    "coverage": "partial"
   },
   {
-   "id": "lv-2025-01-01",
+   "id": "carbon-cost/lv/2025-01-01",
+   "scheme": "lv",
    "country": "LV",
    "file": "lv/lv-2025-01-01.orct.json",
    "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
@@ -1356,7 +1506,8 @@
    "coverage": "partial"
   },
   {
-   "id": "lv-2026-03-01",
+   "id": "carbon-cost/lv/2026-03-01",
+   "scheme": "lv",
    "country": "LV",
    "file": "lv/lv-2026-03-01.orct.json",
    "name": "Latvian road user charge (autoceļu lietošanas nodeva)",
@@ -1365,7 +1516,8 @@
    "coverage": "partial"
   },
   {
-   "id": "md-2026-11-13",
+   "id": "carbon-cost/md/2026-11-13",
+   "scheme": "md",
    "country": "MD",
    "file": "md/md-2026-11-13.orct.json",
    "name": "Moldova vignette (vinieta), trucks not registered in Moldova",
@@ -1374,7 +1526,8 @@
    "coverage": "partial"
   },
   {
-   "id": "me-2022-07-21",
+   "id": "carbon-cost/me/2022-07-21",
+   "scheme": "me",
    "country": "ME",
    "file": "me/me-2022-07-21.orct.json",
    "name": "Montenegrin road tolls (putarina): motorway Smokovac–Mateševo and the Sozina tunnel",
@@ -1383,7 +1536,8 @@
    "coverage": "complete"
   },
   {
-   "id": "mk-2024-01-01",
+   "id": "carbon-cost/mk/2024-01-01",
+   "scheme": "mk",
    "country": "MK",
    "file": "mk/mk-2024-01-01.orct.json",
    "name": "North Macedonian road tolls (патарина)",
@@ -1392,7 +1546,8 @@
    "coverage": "complete"
   },
   {
-   "id": "mk-2025-05-01",
+   "id": "carbon-cost/mk/2025-05-01",
+   "scheme": "mk",
    "country": "MK",
    "file": "mk/mk-2025-05-01.orct.json",
    "name": "North Macedonian road tolls (патарина)",
@@ -1401,7 +1556,8 @@
    "coverage": "complete"
   },
   {
-   "id": "mont-blanc-2024-01-01",
+   "id": "carbon-cost/mont-blanc/2024-01-01",
+   "scheme": "mont-blanc",
    "country": "FR",
    "file": "fr/mont-blanc-2024-01-01.orct.json",
    "name": "Mont Blanc tunnel toll",
@@ -1410,7 +1566,8 @@
    "coverage": "complete"
   },
   {
-   "id": "mont-blanc-2025-01-01",
+   "id": "carbon-cost/mont-blanc/2025-01-01",
+   "scheme": "mont-blanc",
    "country": "FR",
    "file": "fr/mont-blanc-2025-01-01.orct.json",
    "name": "Mont Blanc tunnel toll",
@@ -1419,7 +1576,8 @@
    "coverage": "complete"
   },
   {
-   "id": "mont-blanc-2026-01-01",
+   "id": "carbon-cost/mont-blanc/2026-01-01",
+   "scheme": "mont-blanc",
    "country": "FR",
    "file": "fr/mont-blanc-2026-01-01.orct.json",
    "name": "Mont Blanc tunnel toll",
@@ -1428,7 +1586,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-2024-01-01",
+   "id": "carbon-cost/nl/2024-01-01",
+   "scheme": "nl",
    "country": "NL",
    "file": "nl/nl-2024-01-01.orct.json",
    "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
@@ -1437,7 +1596,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-2025-03-25",
+   "id": "carbon-cost/nl/2025-03-25",
+   "scheme": "nl",
    "country": "NL",
    "file": "nl/nl-2025-03-25.orct.json",
    "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
@@ -1446,7 +1606,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-2026-07-01",
+   "id": "carbon-cost/nl/2026-07-01",
+   "scheme": "nl",
    "country": "NL",
    "file": "nl/nl-2026-07-01.orct.json",
    "name": "Dutch HGV charge (vrachtwagenheffing)",
@@ -1455,7 +1616,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-2026-09-01",
+   "id": "carbon-cost/nl/2026-09-01",
+   "scheme": "nl",
    "country": "NL",
    "file": "nl/nl-2026-09-01.orct.json",
    "name": "Dutch HGV charge (vrachtwagenheffing)",
@@ -1464,7 +1626,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-2027-01-01",
+   "id": "carbon-cost/nl/2027-01-01",
+   "scheme": "nl",
    "country": "NL",
    "file": "nl/nl-2027-01-01.orct.json",
    "name": "Dutch HGV charge (vrachtwagenheffing)",
@@ -1473,7 +1636,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-kiltunnel-2026-11-13",
+   "id": "carbon-cost/nl-kiltunnel/2026-11-13",
+   "scheme": "nl-kiltunnel",
    "country": "NL",
    "file": "nl/nl-kiltunnel-2026-11-13.orct.json",
    "name": "Kiltunnel toll",
@@ -1482,7 +1646,8 @@
    "coverage": "complete"
   },
   {
-   "id": "nl-westerscheldetunnel-2026-01-01",
+   "id": "carbon-cost/nl-westerscheldetunnel/2026-01-01",
+   "scheme": "nl-westerscheldetunnel",
    "country": "NL",
    "file": "nl/nl-westerscheldetunnel-2026-01-01.orct.json",
    "name": "Westerscheldetunnel toll",
@@ -1491,7 +1656,8 @@
    "coverage": "complete"
   },
   {
-   "id": "no-2024-01-01",
+   "id": "carbon-cost/no/2024-01-01",
+   "scheme": "no",
    "country": "NO",
    "file": "no/no-2024-01-01.orct.json",
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
@@ -1500,7 +1666,8 @@
    "coverage": "partial"
   },
   {
-   "id": "no-2026-11-03",
+   "id": "carbon-cost/no/2026-11-03",
+   "scheme": "no",
    "country": "NO",
    "file": "no/no-2026-11-03.orct.json",
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
@@ -1509,7 +1676,8 @@
    "coverage": "partial"
   },
   {
-   "id": "pl-2024-01-01",
+   "id": "carbon-cost/pl/2024-01-01",
+   "scheme": "pl",
    "country": "PL",
    "file": "pl/pl-2024-01-01.orct.json",
    "name": "Polish electronic toll (e-TOLL)",
@@ -1518,7 +1686,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pl-2025-01-01",
+   "id": "carbon-cost/pl/2025-01-01",
+   "scheme": "pl",
    "country": "PL",
    "file": "pl/pl-2025-01-01.orct.json",
    "name": "Polish electronic toll (e-TOLL)",
@@ -1527,7 +1696,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pl-2026-01-01",
+   "id": "carbon-cost/pl/2026-01-01",
+   "scheme": "pl",
    "country": "PL",
    "file": "pl/pl-2026-01-01.orct.json",
    "name": "Polish electronic toll (e-TOLL)",
@@ -1536,7 +1706,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pl-2026-02-01",
+   "id": "carbon-cost/pl/2026-02-01",
+   "scheme": "pl",
    "country": "PL",
    "file": "pl/pl-2026-02-01.orct.json",
    "name": "Polish electronic toll (e-TOLL)",
@@ -1545,7 +1716,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pt-2024-01-01",
+   "id": "carbon-cost/pt/2024-01-01",
+   "scheme": "pt",
    "country": "PT",
    "file": "pt/pt-2024-01-01.orct.json",
    "name": "Portuguese motorway tolls (portagens)",
@@ -1554,7 +1726,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pt-2025-01-01",
+   "id": "carbon-cost/pt/2025-01-01",
+   "scheme": "pt",
    "country": "PT",
    "file": "pt/pt-2025-01-01.orct.json",
    "name": "Portuguese motorway tolls (portagens)",
@@ -1563,7 +1736,8 @@
    "coverage": "complete"
   },
   {
-   "id": "pt-2026-01-01",
+   "id": "carbon-cost/pt/2026-01-01",
+   "scheme": "pt",
    "country": "PT",
    "file": "pt/pt-2026-01-01.orct.json",
    "name": "Portuguese motorway tolls (portagens)",
@@ -1572,7 +1746,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-2024-01-01",
+   "id": "carbon-cost/ro/2024-01-01",
+   "scheme": "ro",
    "country": "RO",
    "file": "ro/ro-2024-01-01.orct.json",
    "name": "Romanian road user charge (rovinieta)",
@@ -1581,7 +1756,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-2025-08-01",
+   "id": "carbon-cost/ro/2025-08-01",
+   "scheme": "ro",
    "country": "RO",
    "file": "ro/ro-2025-08-01.orct.json",
    "name": "Romanian road user charge (rovinieta)",
@@ -1590,7 +1766,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-2025-09-08",
+   "id": "carbon-cost/ro/2025-09-08",
+   "scheme": "ro",
    "country": "RO",
    "file": "ro/ro-2025-09-08.orct.json",
    "name": "Romanian road user charge (rovinieta)",
@@ -1599,7 +1776,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-2026-10-01",
+   "id": "carbon-cost/ro/2026-10-01",
+   "scheme": "ro",
    "country": "RO",
    "file": "ro/ro-2026-10-01.orct.json",
    "name": "Romanian distance toll (TollRo)",
@@ -1608,7 +1786,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-2026-10-08",
+   "id": "carbon-cost/ro/2026-10-08",
+   "scheme": "ro",
    "country": "RO",
    "file": "ro/ro-2026-10-08.orct.json",
    "name": "Romanian distance toll (TollRo)",
@@ -1617,7 +1796,8 @@
    "coverage": "complete"
   },
   {
-   "id": "ro-danube-bridges-2025-09-08",
+   "id": "carbon-cost/ro-danube-bridges/2025-09-08",
+   "scheme": "ro-danube-bridges",
    "country": "RO",
    "file": "ro/ro-danube-bridges-2025-09-08.orct.json",
    "name": "Romania's Danube bridge tolls (tarif de trecere)",
@@ -1626,7 +1806,8 @@
    "coverage": "complete"
   },
   {
-   "id": "rs-2024-07-10",
+   "id": "carbon-cost/rs/2024-07-10",
+   "scheme": "rs",
    "country": "RS",
    "file": "rs/rs-2024-07-10.orct.json",
    "name": "Serbian motorway toll (putarina)",
@@ -1635,7 +1816,8 @@
    "coverage": "complete"
   },
   {
-   "id": "rs-2026-01-01",
+   "id": "carbon-cost/rs/2026-01-01",
+   "scheme": "rs",
    "country": "RS",
    "file": "rs/rs-2026-01-01.orct.json",
    "name": "Serbian motorway toll (putarina)",
@@ -1644,7 +1826,8 @@
    "coverage": "complete"
   },
   {
-   "id": "rs-2026-07-01",
+   "id": "carbon-cost/rs/2026-07-01",
+   "scheme": "rs",
    "country": "RS",
    "file": "rs/rs-2026-07-01.orct.json",
    "name": "Serbian motorway toll (putarina)",
@@ -1653,7 +1836,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-2024-01-01",
+   "id": "carbon-cost/se/2024-01-01",
+   "scheme": "se",
    "country": "SE",
    "file": "se/se-2024-01-01.orct.json",
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
@@ -1662,7 +1846,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-2025-01-01",
+   "id": "carbon-cost/se/2025-01-01",
+   "scheme": "se",
    "country": "SE",
    "file": "se/se-2025-01-01.orct.json",
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
@@ -1671,7 +1856,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-2025-03-25",
+   "id": "carbon-cost/se/2025-03-25",
+   "scheme": "se",
    "country": "SE",
    "file": "se/se-2025-03-25.orct.json",
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
@@ -1680,7 +1866,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-2026-01-01",
+   "id": "carbon-cost/se/2026-01-01",
+   "scheme": "se",
    "country": "SE",
    "file": "se/se-2026-01-01.orct.json",
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
@@ -1689,7 +1876,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-bridges-2024-05-01",
+   "id": "carbon-cost/se-bridges/2024-05-01",
+   "scheme": "se-bridges",
    "country": "SE",
    "file": "se/se-bridges-2024-05-01.orct.json",
    "name": "Swedish bridge infrastructure charges (broavgift)",
@@ -1698,7 +1886,8 @@
    "coverage": "complete"
   },
   {
-   "id": "se-congestion-goteborg-2020-01-01",
+   "id": "carbon-cost/se-congestion-goteborg/2020-01-01",
+   "scheme": "se-congestion-goteborg",
    "country": "SE",
    "file": "se/se-congestion-goteborg-2020-01-01.orct.json",
    "name": "Göteborg congestion tax (trängselskatt)",
@@ -1707,7 +1896,8 @@
    "coverage": "partial"
   },
   {
-   "id": "se-congestion-stockholm-2020-01-01",
+   "id": "carbon-cost/se-congestion-stockholm/2020-01-01",
+   "scheme": "se-congestion-stockholm",
    "country": "SE",
    "file": "se/se-congestion-stockholm-2020-01-01.orct.json",
    "name": "Stockholm congestion tax (trängselskatt)",
@@ -1716,7 +1906,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2024-01-01",
+   "id": "carbon-cost/si/2024-01-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2024-01-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1725,7 +1916,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2024-07-15",
+   "id": "carbon-cost/si/2024-07-15",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2024-07-15.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1734,7 +1926,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2025-01-01",
+   "id": "carbon-cost/si/2025-01-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2025-01-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1743,7 +1936,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2025-07-01",
+   "id": "carbon-cost/si/2025-07-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2025-07-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1752,7 +1946,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2025-11-01",
+   "id": "carbon-cost/si/2025-11-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2025-11-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1761,7 +1956,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2026-01-01",
+   "id": "carbon-cost/si/2026-01-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2026-01-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1770,7 +1966,8 @@
    "coverage": "partial"
   },
   {
-   "id": "si-2026-04-01",
+   "id": "carbon-cost/si/2026-04-01",
+   "scheme": "si",
    "country": "SI",
    "file": "si/si-2026-04-01.orct.json",
    "name": "Slovenian distance toll (DarsGo)",
@@ -1779,7 +1976,8 @@
    "coverage": "partial"
   },
   {
-   "id": "sk-2020-07-01",
+   "id": "carbon-cost/sk/2020-07-01",
+   "scheme": "sk",
    "country": "SK",
    "file": "sk/sk-2020-07-01.orct.json",
    "name": "Slovak electronic toll (mýto)",
@@ -1788,7 +1986,8 @@
    "coverage": "complete"
   },
   {
-   "id": "sk-2025-07-01",
+   "id": "carbon-cost/sk/2025-07-01",
+   "scheme": "sk",
    "country": "SK",
    "file": "sk/sk-2025-07-01.orct.json",
    "name": "Slovak electronic toll (mýto)",
@@ -1797,7 +1996,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2024-01-01",
+   "id": "carbon-cost/tr/2024-01-01",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2024-01-01.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1806,7 +2006,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2024-05-15",
+   "id": "carbon-cost/tr/2024-05-15",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2024-05-15.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1815,7 +2016,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2024-08-16",
+   "id": "carbon-cost/tr/2024-08-16",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2024-08-16.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1824,7 +2026,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2025-01-13",
+   "id": "carbon-cost/tr/2025-01-13",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2025-01-13.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1833,7 +2036,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2026-01-01",
+   "id": "carbon-cost/tr/2026-01-01",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2026-01-01.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1842,7 +2046,8 @@
    "coverage": "complete"
   },
   {
-   "id": "tr-2026-07-01",
+   "id": "carbon-cost/tr/2026-07-01",
+   "scheme": "tr",
    "country": "TR",
    "file": "tr/tr-2026-07-01.orct.json",
    "name": "Turkish motorway and bridge tolls (KGM)",
@@ -1851,7 +2056,8 @@
    "coverage": "complete"
   },
   {
-   "id": "zone-gb-congestion-charge-2024-01-01",
+   "id": "carbon-cost/zone-gb-congestion-charge/2024-01-01",
+   "scheme": "zone-gb-congestion-charge",
    "country": "GB",
    "file": "gb/zone-gb-congestion-charge-2024-01-01.orct.json",
    "name": "London Congestion Charge",
@@ -1860,7 +2066,8 @@
    "coverage": "complete"
   },
   {
-   "id": "zone-gb-congestion-charge-2026-01-02",
+   "id": "carbon-cost/zone-gb-congestion-charge/2026-01-02",
+   "scheme": "zone-gb-congestion-charge",
    "country": "GB",
    "file": "gb/zone-gb-congestion-charge-2026-01-02.orct.json",
    "name": "London Congestion Charge",
@@ -1869,7 +2076,8 @@
    "coverage": "complete"
   },
   {
-   "id": "zone-gb-low-emission-zone-2024-01-01",
+   "id": "carbon-cost/zone-gb-low-emission-zone/2024-01-01",
+   "scheme": "zone-gb-low-emission-zone",
    "country": "GB",
    "file": "gb/zone-gb-low-emission-zone-2024-01-01.orct.json",
    "name": "London Low Emission Zone",

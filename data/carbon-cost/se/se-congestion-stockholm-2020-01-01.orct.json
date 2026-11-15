@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "se-congestion-stockholm-2020-01-01",
-  "scheme": "se-congestion-stockholm",
-  "country": "SE",
-  "currency": "SEK",
+  "id": "carbon-cost/se-congestion-stockholm/2020-01-01",
+  "scheme": {
+   "id": "se-congestion-stockholm",
+   "name": "Stockholm congestion tax (trängselskatt)",
+   "country": "SE"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2020-01-01",
-  "name": "Stockholm congestion tax (trängselskatt)",
+  "currency": "SEK",
+  "timezone": "Europe/Stockholm",
+  "license": "MIT",
   "method": "Lag (2004:629) om trängselskatt, bilaga 1: per passage of a charging station, by time of day, inner city or Essingeleden, low or high season; at most 105 SEK a day (135 in high season); weekdays, not the day before a public holiday (except before Good Friday, Ascension, All Saints, and 1 May and National Day on weekdays), in July only its first five weekdays. Foreign-registered vehicles pay too (4 §). Stations: Transportstyrelsen's gantries in OpenStreetMap.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/se-congestion-stockholm-2020-01-01.json"
-  }
+  },
+  "required_features": ["rule.cap", "time_classes", "type.point"]
  },
  "sources": [
   {
@@ -26,6276 +35,1617 @@
    "url": "https://www.transportstyrelsen.se/sv/vagtrafik/fordon/skatter-och-avgifter/trangselskatt/trangselskatt-i-stockholm/"
   }
  ],
- "vehicles": {
-  "description": "All vehicles, Swedish and foreign",
-  "min_mass_kg": 0,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "All vehicles, Swedish and foreign",
+  "criteria": {}
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "all",
+   "classes": [
+    {
+     "id": "any",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [
+ "time_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "The charging stations of Stockholm."
+   "id": "inner-0600",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["06:00", "06:30"]]
   },
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "inner-0630",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["06:30", "07:00"]]
+  },
+  {
+   "id": "inner-0700",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["07:00", "08:30"]]
+  },
+  {
+   "id": "inner-0830",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["08:30", "09:00"]]
+  },
+  {
+   "id": "inner-0900",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["09:00", "09:30"]]
+  },
+  {
+   "id": "inner-0930",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["09:30", "15:00"]]
+  },
+  {
+   "id": "inner-1500",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["15:00", "15:30"]]
+  },
+  {
+   "id": "inner-1530",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["15:30", "16:00"]]
+  },
+  {
+   "id": "inner-1600",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["16:00", "17:30"]]
+  },
+  {
+   "id": "inner-1730",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["17:30", "18:00"]]
+  },
+  {
+   "id": "inner-1800",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["18:00", "18:30"]]
+  }
+ ],
+ "charge_objects": [
+  {
+   "id": "pt1",
+   "type": "point",
    "name": "Danvikstull",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.103382,
-     59.313919
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.103382, 59.313919]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Danvikstull",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.103403,
-     59.314013
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.103403, 59.314013]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:3",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Drottningholmsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010624,
-     59.330697
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010624, 59.330697]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:4",
-   "kind": "point",
+   "id": "pt4",
+   "type": "point",
    "name": "Drottningholmsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010996,
-     59.331233
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010996, 59.331233]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:5",
-   "kind": "point",
+   "id": "pt5",
+   "type": "point",
    "name": "Drottningholmsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010654,
-     59.33137
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010654, 59.33137]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:6",
-   "kind": "point",
+   "id": "pt6",
+   "type": "point",
    "name": "Drottningholmsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.0108,
-     59.331525
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.0108, 59.331525]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:7",
-   "kind": "point",
+   "id": "pt7",
+   "type": "point",
    "name": "Ekelundsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.012963,
-     59.340727
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.012963, 59.340727]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:8",
-   "kind": "point",
+   "id": "pt8",
+   "type": "point",
    "name": "Ekhagen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.051576,
-     59.369332
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.051576, 59.369332]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:9",
-   "kind": "point",
+   "id": "pt9",
+   "type": "point",
    "name": "Ekhagen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.050647,
-     59.369574
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.050647, 59.369574]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:10",
-   "kind": "point",
+   "id": "pt10",
+   "type": "point",
    "name": "Ekhagen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.050259,
-     59.371218
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.050259, 59.371218]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:11",
-   "kind": "point",
+   "id": "pt11",
+   "type": "point",
    "name": "Ekhagen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.050824,
-     59.371468
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.050824, 59.371468]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:12",
-   "kind": "point",
+   "id": "pt12",
+   "type": "point",
    "name": "Essingeleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010724,
-     59.331728
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010724, 59.331728]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:13",
-   "kind": "point",
+   "id": "pt13",
+   "type": "point",
    "name": "Essingeleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.009873,
-     59.333795
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.009873, 59.333795]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:14",
-   "kind": "point",
+   "id": "pt14",
+   "type": "point",
    "name": "Essingeleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.009686,
-     59.3338
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.009686, 59.3338]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:15",
-   "kind": "point",
+   "id": "pt15",
+   "type": "point",
    "name": "Frescati",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.052466,
-     59.36562
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.052466, 59.36562]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:16",
-   "kind": "point",
+   "id": "pt16",
+   "type": "point",
    "name": "Gävlegatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.03317,
-     59.347578
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.03317, 59.347578]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:17",
-   "kind": "point",
+   "id": "pt17",
+   "type": "point",
    "name": "Hälsingegatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.036167,
-     59.349164
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.036167, 59.349164]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:18",
-   "kind": "point",
+   "id": "pt18",
+   "type": "point",
    "name": "Johanneshovsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.077129,
-     59.303706
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.077129, 59.303706]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:19",
-   "kind": "point",
+   "id": "pt19",
+   "type": "point",
    "name": "Johanneshovsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.077251,
-     59.303748
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.077251, 59.303748]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:20",
-   "kind": "point",
+   "id": "pt20",
+   "type": "point",
    "name": "Klarastrandsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.029948,
-     59.338726
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.029948, 59.338726]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:21",
-   "kind": "point",
+   "id": "pt21",
+   "type": "point",
    "name": "Klarastrandsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.029984,
-     59.338765
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.029984, 59.338765]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:22",
-   "kind": "point",
+   "id": "pt22",
+   "type": "point",
    "name": "Kristineberg",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.009492,
-     59.333705
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.009492, 59.333705]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:23",
-   "kind": "point",
+   "id": "pt23",
+   "type": "point",
    "name": "Kristineberg",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010088,
-     59.333705
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010088, 59.333705]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:24",
-   "kind": "point",
+   "id": "pt24",
+   "type": "point",
    "name": "Kristineberg",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010819,
-     59.336182
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010819, 59.336182]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:25",
-   "kind": "point",
+   "id": "pt25",
+   "type": "point",
    "name": "Kristineberg",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.010277,
-     59.336445
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.010277, 59.336445]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:26",
-   "kind": "point",
+   "id": "pt26",
+   "type": "point",
    "name": "Liljeholmsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.028835,
-     59.311451
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.028835, 59.311451]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:27",
-   "kind": "point",
+   "id": "pt27",
+   "type": "point",
    "name": "Liljeholmsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.029213,
-     59.311921
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.029213, 59.311921]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:28",
-   "kind": "point",
+   "id": "pt28",
+   "type": "point",
    "name": "Liljeholmsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.029121,
-     59.311971
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.029121, 59.311971]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:29",
-   "kind": "point",
+   "id": "pt29",
+   "type": "point",
    "name": "Lilla Essingen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.003971,
-     59.32512
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.003971, 59.32512]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:30",
-   "kind": "point",
+   "id": "pt30",
+   "type": "point",
    "name": "Norrtull",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.043667,
-     59.35049
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.043667, 59.35049]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:31",
-   "kind": "point",
+   "id": "pt31",
+   "type": "point",
    "name": "Ropsten",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.105072,
-     59.356577
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.105072, 59.356577]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:32",
-   "kind": "point",
+   "id": "pt32",
+   "type": "point",
    "name": "Ropsten",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.105014,
-     59.356631
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.105014, 59.356631]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:33",
-   "kind": "point",
+   "id": "pt33",
+   "type": "point",
    "name": "Ropsten",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.102292,
-     59.356941
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.102292, 59.356941]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:34",
-   "kind": "point",
+   "id": "pt34",
+   "type": "point",
    "name": "Ropsten",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.102347,
-     59.356988
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.102347, 59.356988]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:35",
-   "kind": "point",
+   "id": "pt35",
+   "type": "point",
    "name": "Ropsten",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.102471,
-     59.357062
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.102471, 59.357062]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:36",
-   "kind": "point",
+   "id": "pt36",
+   "type": "point",
    "name": "Roslagstull",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.058825,
-     59.352512
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.058825, 59.352512]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:37",
-   "kind": "point",
+   "id": "pt37",
+   "type": "point",
    "name": "Roslagstull",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.058004,
-     59.352767
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.058004, 59.352767]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:38",
-   "kind": "point",
+   "id": "pt38",
+   "type": "point",
    "name": "Skansbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.079454,
-     59.304022
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.079454, 59.304022]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:39",
-   "kind": "point",
+   "id": "pt39",
+   "type": "point",
    "name": "Skanstullsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.077292,
-     59.306279
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.077292, 59.306279]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:40",
-   "kind": "point",
+   "id": "pt40",
+   "type": "point",
    "name": "Skanstullsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.077461,
-     59.3063
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.077461, 59.3063]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:41",
-   "kind": "point",
+   "id": "pt41",
+   "type": "point",
    "name": "Skurubron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.224895,
-     59.31376
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.224895, 59.31376]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:42",
-   "kind": "point",
+   "id": "pt42",
+   "type": "point",
    "name": "Skurubron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.22489,
-     59.313821
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.22489, 59.313821]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:43",
-   "kind": "point",
+   "id": "pt43",
+   "type": "point",
    "name": "Skurubron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.22488,
-     59.313922
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.22488, 59.313922]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:44",
-   "kind": "point",
+   "id": "pt44",
+   "type": "point",
    "name": "Solnabron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.03183,
-     59.34683
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.03183, 59.34683]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:45",
-   "kind": "point",
+   "id": "pt45",
+   "type": "point",
    "name": "Solnabron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.031995,
-     59.346893
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.031995, 59.346893]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:46",
-   "kind": "point",
+   "id": "pt46",
+   "type": "point",
    "name": "Stora Essingen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     17.996574,
-     59.322072
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [17.996574, 59.322072]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:47",
-   "kind": "point",
+   "id": "pt47",
+   "type": "point",
    "name": "Stora Essingen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     17.996583,
-     59.322885
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [17.996583, 59.322885]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:48",
-   "kind": "point",
+   "id": "pt48",
+   "type": "point",
    "name": "Stora Essingen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     17.996703,
-     59.322915
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [17.996703, 59.322915]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:49",
-   "kind": "point",
+   "id": "pt49",
+   "type": "point",
    "name": "Tomtebodavägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.025898,
-     59.343748
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.025898, 59.343748]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:50",
-   "kind": "point",
+   "id": "pt50",
+   "type": "point",
    "name": "Tomtebodavägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.026004,
-     59.343808
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.026004, 59.343808]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:51",
-   "kind": "point",
+   "id": "pt51",
+   "type": "point",
    "name": "Universitetet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.054637,
-     59.362974
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.054637, 59.362974]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:52",
-   "kind": "point",
+   "id": "pt52",
+   "type": "point",
    "name": "Universitetet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.055216,
-     59.363103
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.055216, 59.363103]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:53",
-   "kind": "point",
+   "id": "pt53",
+   "type": "point",
    "name": "Värtan Västra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.099241,
-     59.35081
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.099241, 59.35081]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:54",
-   "kind": "point",
+   "id": "pt54",
+   "type": "point",
    "name": "Värtan Västra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.095228,
-     59.351202
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.095228, 59.351202]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:55",
-   "kind": "point",
+   "id": "pt55",
+   "type": "point",
    "name": "Värtan Västra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.095664,
-     59.35141
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.095664, 59.35141]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:56",
-   "kind": "point",
+   "id": "pt56",
+   "type": "point",
    "name": "Värtan Östra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.106553,
-     59.351779
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.106553, 59.351779]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:57",
-   "kind": "point",
+   "id": "pt57",
+   "type": "point",
    "name": "Värtan Östra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.106442,
-     59.352441
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.106442, 59.352441]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:58",
-   "kind": "point",
+   "id": "pt58",
+   "type": "point",
    "name": "Värtan Östra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.106447,
-     59.352445
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.106447, 59.352445]
+    },
+    "match_m": 30
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Danvikstull",
+   "id": "congestion",
    "type": "point",
    "component": "congestion",
-   "applies_to": [
-    "pt:1"
+   "unit": "passage",
+   "unmatched": "free",
+   "columns": ["object", "time_class", "amount"],
+   "rows": [
+    ["pt1", "inner-0600", "15"],
+    ["pt1", "inner-0630", "25"],
+    ["pt1", "inner-0700", "35"],
+    ["pt1", "inner-0830", "25"],
+    ["pt1", "inner-0900", "15"],
+    ["pt1", "inner-0930", "11"],
+    ["pt1", "inner-1500", "15"],
+    ["pt1", "inner-1530", "25"],
+    ["pt1", "inner-1600", "35"],
+    ["pt1", "inner-1730", "25"],
+    ["pt1", "inner-1800", "15"],
+    ["pt2", "inner-0600", "15"],
+    ["pt2", "inner-0630", "25"],
+    ["pt2", "inner-0700", "35"],
+    ["pt2", "inner-0830", "25"],
+    ["pt2", "inner-0900", "15"],
+    ["pt2", "inner-0930", "11"],
+    ["pt2", "inner-1500", "15"],
+    ["pt2", "inner-1530", "25"],
+    ["pt2", "inner-1600", "35"],
+    ["pt2", "inner-1730", "25"],
+    ["pt2", "inner-1800", "15"],
+    ["pt3", "inner-0600", "15"],
+    ["pt3", "inner-0630", "25"],
+    ["pt3", "inner-0700", "35"],
+    ["pt3", "inner-0830", "25"],
+    ["pt3", "inner-0900", "15"],
+    ["pt3", "inner-0930", "11"],
+    ["pt3", "inner-1500", "15"],
+    ["pt3", "inner-1530", "25"],
+    ["pt3", "inner-1600", "35"],
+    ["pt3", "inner-1730", "25"],
+    ["pt3", "inner-1800", "15"],
+    ["pt4", "inner-0600", "15"],
+    ["pt4", "inner-0630", "25"],
+    ["pt4", "inner-0700", "35"],
+    ["pt4", "inner-0830", "25"],
+    ["pt4", "inner-0900", "15"],
+    ["pt4", "inner-0930", "11"],
+    ["pt4", "inner-1500", "15"],
+    ["pt4", "inner-1530", "25"],
+    ["pt4", "inner-1600", "35"],
+    ["pt4", "inner-1730", "25"],
+    ["pt4", "inner-1800", "15"],
+    ["pt5", "inner-0600", "15"],
+    ["pt5", "inner-0630", "25"],
+    ["pt5", "inner-0700", "35"],
+    ["pt5", "inner-0830", "25"],
+    ["pt5", "inner-0900", "15"],
+    ["pt5", "inner-0930", "11"],
+    ["pt5", "inner-1500", "15"],
+    ["pt5", "inner-1530", "25"],
+    ["pt5", "inner-1600", "35"],
+    ["pt5", "inner-1730", "25"],
+    ["pt5", "inner-1800", "15"],
+    ["pt6", "inner-0600", "15"],
+    ["pt6", "inner-0630", "25"],
+    ["pt6", "inner-0700", "35"],
+    ["pt6", "inner-0830", "25"],
+    ["pt6", "inner-0900", "15"],
+    ["pt6", "inner-0930", "11"],
+    ["pt6", "inner-1500", "15"],
+    ["pt6", "inner-1530", "25"],
+    ["pt6", "inner-1600", "35"],
+    ["pt6", "inner-1730", "25"],
+    ["pt6", "inner-1800", "15"],
+    ["pt7", "inner-0600", "15"],
+    ["pt7", "inner-0630", "25"],
+    ["pt7", "inner-0700", "35"],
+    ["pt7", "inner-0830", "25"],
+    ["pt7", "inner-0900", "15"],
+    ["pt7", "inner-0930", "11"],
+    ["pt7", "inner-1500", "15"],
+    ["pt7", "inner-1530", "25"],
+    ["pt7", "inner-1600", "35"],
+    ["pt7", "inner-1730", "25"],
+    ["pt7", "inner-1800", "15"],
+    ["pt8", "inner-0600", "15"],
+    ["pt8", "inner-0630", "25"],
+    ["pt8", "inner-0700", "35"],
+    ["pt8", "inner-0830", "25"],
+    ["pt8", "inner-0900", "15"],
+    ["pt8", "inner-0930", "11"],
+    ["pt8", "inner-1500", "15"],
+    ["pt8", "inner-1530", "25"],
+    ["pt8", "inner-1600", "35"],
+    ["pt8", "inner-1730", "25"],
+    ["pt8", "inner-1800", "15"],
+    ["pt9", "inner-0600", "15"],
+    ["pt9", "inner-0630", "25"],
+    ["pt9", "inner-0700", "35"],
+    ["pt9", "inner-0830", "25"],
+    ["pt9", "inner-0900", "15"],
+    ["pt9", "inner-0930", "11"],
+    ["pt9", "inner-1500", "15"],
+    ["pt9", "inner-1530", "25"],
+    ["pt9", "inner-1600", "35"],
+    ["pt9", "inner-1730", "25"],
+    ["pt9", "inner-1800", "15"],
+    ["pt10", "inner-0600", "15"],
+    ["pt10", "inner-0630", "25"],
+    ["pt10", "inner-0700", "35"],
+    ["pt10", "inner-0830", "25"],
+    ["pt10", "inner-0900", "15"],
+    ["pt10", "inner-0930", "11"],
+    ["pt10", "inner-1500", "15"],
+    ["pt10", "inner-1530", "25"],
+    ["pt10", "inner-1600", "35"],
+    ["pt10", "inner-1730", "25"],
+    ["pt10", "inner-1800", "15"],
+    ["pt11", "inner-0600", "15"],
+    ["pt11", "inner-0630", "25"],
+    ["pt11", "inner-0700", "35"],
+    ["pt11", "inner-0830", "25"],
+    ["pt11", "inner-0900", "15"],
+    ["pt11", "inner-0930", "11"],
+    ["pt11", "inner-1500", "15"],
+    ["pt11", "inner-1530", "25"],
+    ["pt11", "inner-1600", "35"],
+    ["pt11", "inner-1730", "25"],
+    ["pt11", "inner-1800", "15"],
+    ["pt12", "inner-0600", "15"],
+    ["pt12", "inner-0630", "22"],
+    ["pt12", "inner-0700", "30"],
+    ["pt12", "inner-0830", "22"],
+    ["pt12", "inner-0900", "15"],
+    ["pt12", "inner-0930", "11"],
+    ["pt12", "inner-1500", "15"],
+    ["pt12", "inner-1530", "22"],
+    ["pt12", "inner-1600", "30"],
+    ["pt12", "inner-1730", "22"],
+    ["pt12", "inner-1800", "15"],
+    ["pt13", "inner-0600", "15"],
+    ["pt13", "inner-0630", "22"],
+    ["pt13", "inner-0700", "30"],
+    ["pt13", "inner-0830", "22"],
+    ["pt13", "inner-0900", "15"],
+    ["pt13", "inner-0930", "11"],
+    ["pt13", "inner-1500", "15"],
+    ["pt13", "inner-1530", "22"],
+    ["pt13", "inner-1600", "30"],
+    ["pt13", "inner-1730", "22"],
+    ["pt13", "inner-1800", "15"],
+    ["pt14", "inner-0600", "15"],
+    ["pt14", "inner-0630", "22"],
+    ["pt14", "inner-0700", "30"],
+    ["pt14", "inner-0830", "22"],
+    ["pt14", "inner-0900", "15"],
+    ["pt14", "inner-0930", "11"],
+    ["pt14", "inner-1500", "15"],
+    ["pt14", "inner-1530", "22"],
+    ["pt14", "inner-1600", "30"],
+    ["pt14", "inner-1730", "22"],
+    ["pt14", "inner-1800", "15"],
+    ["pt15", "inner-0600", "15"],
+    ["pt15", "inner-0630", "25"],
+    ["pt15", "inner-0700", "35"],
+    ["pt15", "inner-0830", "25"],
+    ["pt15", "inner-0900", "15"],
+    ["pt15", "inner-0930", "11"],
+    ["pt15", "inner-1500", "15"],
+    ["pt15", "inner-1530", "25"],
+    ["pt15", "inner-1600", "35"],
+    ["pt15", "inner-1730", "25"],
+    ["pt15", "inner-1800", "15"],
+    ["pt16", "inner-0600", "15"],
+    ["pt16", "inner-0630", "25"],
+    ["pt16", "inner-0700", "35"],
+    ["pt16", "inner-0830", "25"],
+    ["pt16", "inner-0900", "15"],
+    ["pt16", "inner-0930", "11"],
+    ["pt16", "inner-1500", "15"],
+    ["pt16", "inner-1530", "25"],
+    ["pt16", "inner-1600", "35"],
+    ["pt16", "inner-1730", "25"],
+    ["pt16", "inner-1800", "15"],
+    ["pt17", "inner-0600", "15"],
+    ["pt17", "inner-0630", "25"],
+    ["pt17", "inner-0700", "35"],
+    ["pt17", "inner-0830", "25"],
+    ["pt17", "inner-0900", "15"],
+    ["pt17", "inner-0930", "11"],
+    ["pt17", "inner-1500", "15"],
+    ["pt17", "inner-1530", "25"],
+    ["pt17", "inner-1600", "35"],
+    ["pt17", "inner-1730", "25"],
+    ["pt17", "inner-1800", "15"],
+    ["pt18", "inner-0600", "15"],
+    ["pt18", "inner-0630", "25"],
+    ["pt18", "inner-0700", "35"],
+    ["pt18", "inner-0830", "25"],
+    ["pt18", "inner-0900", "15"],
+    ["pt18", "inner-0930", "11"],
+    ["pt18", "inner-1500", "15"],
+    ["pt18", "inner-1530", "25"],
+    ["pt18", "inner-1600", "35"],
+    ["pt18", "inner-1730", "25"],
+    ["pt18", "inner-1800", "15"],
+    ["pt19", "inner-0600", "15"],
+    ["pt19", "inner-0630", "25"],
+    ["pt19", "inner-0700", "35"],
+    ["pt19", "inner-0830", "25"],
+    ["pt19", "inner-0900", "15"],
+    ["pt19", "inner-0930", "11"],
+    ["pt19", "inner-1500", "15"],
+    ["pt19", "inner-1530", "25"],
+    ["pt19", "inner-1600", "35"],
+    ["pt19", "inner-1730", "25"],
+    ["pt19", "inner-1800", "15"],
+    ["pt20", "inner-0600", "15"],
+    ["pt20", "inner-0630", "25"],
+    ["pt20", "inner-0700", "35"],
+    ["pt20", "inner-0830", "25"],
+    ["pt20", "inner-0900", "15"],
+    ["pt20", "inner-0930", "11"],
+    ["pt20", "inner-1500", "15"],
+    ["pt20", "inner-1530", "25"],
+    ["pt20", "inner-1600", "35"],
+    ["pt20", "inner-1730", "25"],
+    ["pt20", "inner-1800", "15"],
+    ["pt21", "inner-0600", "15"],
+    ["pt21", "inner-0630", "25"],
+    ["pt21", "inner-0700", "35"],
+    ["pt21", "inner-0830", "25"],
+    ["pt21", "inner-0900", "15"],
+    ["pt21", "inner-0930", "11"],
+    ["pt21", "inner-1500", "15"],
+    ["pt21", "inner-1530", "25"],
+    ["pt21", "inner-1600", "35"],
+    ["pt21", "inner-1730", "25"],
+    ["pt21", "inner-1800", "15"],
+    ["pt22", "inner-0600", "15"],
+    ["pt22", "inner-0630", "25"],
+    ["pt22", "inner-0700", "35"],
+    ["pt22", "inner-0830", "25"],
+    ["pt22", "inner-0900", "15"],
+    ["pt22", "inner-0930", "11"],
+    ["pt22", "inner-1500", "15"],
+    ["pt22", "inner-1530", "25"],
+    ["pt22", "inner-1600", "35"],
+    ["pt22", "inner-1730", "25"],
+    ["pt22", "inner-1800", "15"],
+    ["pt23", "inner-0600", "15"],
+    ["pt23", "inner-0630", "25"],
+    ["pt23", "inner-0700", "35"],
+    ["pt23", "inner-0830", "25"],
+    ["pt23", "inner-0900", "15"],
+    ["pt23", "inner-0930", "11"],
+    ["pt23", "inner-1500", "15"],
+    ["pt23", "inner-1530", "25"],
+    ["pt23", "inner-1600", "35"],
+    ["pt23", "inner-1730", "25"],
+    ["pt23", "inner-1800", "15"],
+    ["pt24", "inner-0600", "15"],
+    ["pt24", "inner-0630", "25"],
+    ["pt24", "inner-0700", "35"],
+    ["pt24", "inner-0830", "25"],
+    ["pt24", "inner-0900", "15"],
+    ["pt24", "inner-0930", "11"],
+    ["pt24", "inner-1500", "15"],
+    ["pt24", "inner-1530", "25"],
+    ["pt24", "inner-1600", "35"],
+    ["pt24", "inner-1730", "25"],
+    ["pt24", "inner-1800", "15"],
+    ["pt25", "inner-0600", "15"],
+    ["pt25", "inner-0630", "25"],
+    ["pt25", "inner-0700", "35"],
+    ["pt25", "inner-0830", "25"],
+    ["pt25", "inner-0900", "15"],
+    ["pt25", "inner-0930", "11"],
+    ["pt25", "inner-1500", "15"],
+    ["pt25", "inner-1530", "25"],
+    ["pt25", "inner-1600", "35"],
+    ["pt25", "inner-1730", "25"],
+    ["pt25", "inner-1800", "15"],
+    ["pt26", "inner-0600", "15"],
+    ["pt26", "inner-0630", "25"],
+    ["pt26", "inner-0700", "35"],
+    ["pt26", "inner-0830", "25"],
+    ["pt26", "inner-0900", "15"],
+    ["pt26", "inner-0930", "11"],
+    ["pt26", "inner-1500", "15"],
+    ["pt26", "inner-1530", "25"],
+    ["pt26", "inner-1600", "35"],
+    ["pt26", "inner-1730", "25"],
+    ["pt26", "inner-1800", "15"],
+    ["pt27", "inner-0600", "15"],
+    ["pt27", "inner-0630", "25"],
+    ["pt27", "inner-0700", "35"],
+    ["pt27", "inner-0830", "25"],
+    ["pt27", "inner-0900", "15"],
+    ["pt27", "inner-0930", "11"],
+    ["pt27", "inner-1500", "15"],
+    ["pt27", "inner-1530", "25"],
+    ["pt27", "inner-1600", "35"],
+    ["pt27", "inner-1730", "25"],
+    ["pt27", "inner-1800", "15"],
+    ["pt28", "inner-0600", "15"],
+    ["pt28", "inner-0630", "25"],
+    ["pt28", "inner-0700", "35"],
+    ["pt28", "inner-0830", "25"],
+    ["pt28", "inner-0900", "15"],
+    ["pt28", "inner-0930", "11"],
+    ["pt28", "inner-1500", "15"],
+    ["pt28", "inner-1530", "25"],
+    ["pt28", "inner-1600", "35"],
+    ["pt28", "inner-1730", "25"],
+    ["pt28", "inner-1800", "15"],
+    ["pt29", "inner-0600", "15"],
+    ["pt29", "inner-0630", "25"],
+    ["pt29", "inner-0700", "35"],
+    ["pt29", "inner-0830", "25"],
+    ["pt29", "inner-0900", "15"],
+    ["pt29", "inner-0930", "11"],
+    ["pt29", "inner-1500", "15"],
+    ["pt29", "inner-1530", "25"],
+    ["pt29", "inner-1600", "35"],
+    ["pt29", "inner-1730", "25"],
+    ["pt29", "inner-1800", "15"],
+    ["pt30", "inner-0600", "15"],
+    ["pt30", "inner-0630", "25"],
+    ["pt30", "inner-0700", "35"],
+    ["pt30", "inner-0830", "25"],
+    ["pt30", "inner-0900", "15"],
+    ["pt30", "inner-0930", "11"],
+    ["pt30", "inner-1500", "15"],
+    ["pt30", "inner-1530", "25"],
+    ["pt30", "inner-1600", "35"],
+    ["pt30", "inner-1730", "25"],
+    ["pt30", "inner-1800", "15"],
+    ["pt31", "inner-0600", "15"],
+    ["pt31", "inner-0630", "25"],
+    ["pt31", "inner-0700", "35"],
+    ["pt31", "inner-0830", "25"],
+    ["pt31", "inner-0900", "15"],
+    ["pt31", "inner-0930", "11"],
+    ["pt31", "inner-1500", "15"],
+    ["pt31", "inner-1530", "25"],
+    ["pt31", "inner-1600", "35"],
+    ["pt31", "inner-1730", "25"],
+    ["pt31", "inner-1800", "15"],
+    ["pt32", "inner-0600", "15"],
+    ["pt32", "inner-0630", "25"],
+    ["pt32", "inner-0700", "35"],
+    ["pt32", "inner-0830", "25"],
+    ["pt32", "inner-0900", "15"],
+    ["pt32", "inner-0930", "11"],
+    ["pt32", "inner-1500", "15"],
+    ["pt32", "inner-1530", "25"],
+    ["pt32", "inner-1600", "35"],
+    ["pt32", "inner-1730", "25"],
+    ["pt32", "inner-1800", "15"],
+    ["pt33", "inner-0600", "15"],
+    ["pt33", "inner-0630", "25"],
+    ["pt33", "inner-0700", "35"],
+    ["pt33", "inner-0830", "25"],
+    ["pt33", "inner-0900", "15"],
+    ["pt33", "inner-0930", "11"],
+    ["pt33", "inner-1500", "15"],
+    ["pt33", "inner-1530", "25"],
+    ["pt33", "inner-1600", "35"],
+    ["pt33", "inner-1730", "25"],
+    ["pt33", "inner-1800", "15"],
+    ["pt34", "inner-0600", "15"],
+    ["pt34", "inner-0630", "25"],
+    ["pt34", "inner-0700", "35"],
+    ["pt34", "inner-0830", "25"],
+    ["pt34", "inner-0900", "15"],
+    ["pt34", "inner-0930", "11"],
+    ["pt34", "inner-1500", "15"],
+    ["pt34", "inner-1530", "25"],
+    ["pt34", "inner-1600", "35"],
+    ["pt34", "inner-1730", "25"],
+    ["pt34", "inner-1800", "15"],
+    ["pt35", "inner-0600", "15"],
+    ["pt35", "inner-0630", "25"],
+    ["pt35", "inner-0700", "35"],
+    ["pt35", "inner-0830", "25"],
+    ["pt35", "inner-0900", "15"],
+    ["pt35", "inner-0930", "11"],
+    ["pt35", "inner-1500", "15"],
+    ["pt35", "inner-1530", "25"],
+    ["pt35", "inner-1600", "35"],
+    ["pt35", "inner-1730", "25"],
+    ["pt35", "inner-1800", "15"],
+    ["pt36", "inner-0600", "15"],
+    ["pt36", "inner-0630", "25"],
+    ["pt36", "inner-0700", "35"],
+    ["pt36", "inner-0830", "25"],
+    ["pt36", "inner-0900", "15"],
+    ["pt36", "inner-0930", "11"],
+    ["pt36", "inner-1500", "15"],
+    ["pt36", "inner-1530", "25"],
+    ["pt36", "inner-1600", "35"],
+    ["pt36", "inner-1730", "25"],
+    ["pt36", "inner-1800", "15"],
+    ["pt37", "inner-0600", "15"],
+    ["pt37", "inner-0630", "25"],
+    ["pt37", "inner-0700", "35"],
+    ["pt37", "inner-0830", "25"],
+    ["pt37", "inner-0900", "15"],
+    ["pt37", "inner-0930", "11"],
+    ["pt37", "inner-1500", "15"],
+    ["pt37", "inner-1530", "25"],
+    ["pt37", "inner-1600", "35"],
+    ["pt37", "inner-1730", "25"],
+    ["pt37", "inner-1800", "15"],
+    ["pt38", "inner-0600", "15"],
+    ["pt38", "inner-0630", "25"],
+    ["pt38", "inner-0700", "35"],
+    ["pt38", "inner-0830", "25"],
+    ["pt38", "inner-0900", "15"],
+    ["pt38", "inner-0930", "11"],
+    ["pt38", "inner-1500", "15"],
+    ["pt38", "inner-1530", "25"],
+    ["pt38", "inner-1600", "35"],
+    ["pt38", "inner-1730", "25"],
+    ["pt38", "inner-1800", "15"],
+    ["pt39", "inner-0600", "15"],
+    ["pt39", "inner-0630", "25"],
+    ["pt39", "inner-0700", "35"],
+    ["pt39", "inner-0830", "25"],
+    ["pt39", "inner-0900", "15"],
+    ["pt39", "inner-0930", "11"],
+    ["pt39", "inner-1500", "15"],
+    ["pt39", "inner-1530", "25"],
+    ["pt39", "inner-1600", "35"],
+    ["pt39", "inner-1730", "25"],
+    ["pt39", "inner-1800", "15"],
+    ["pt40", "inner-0600", "15"],
+    ["pt40", "inner-0630", "25"],
+    ["pt40", "inner-0700", "35"],
+    ["pt40", "inner-0830", "25"],
+    ["pt40", "inner-0900", "15"],
+    ["pt40", "inner-0930", "11"],
+    ["pt40", "inner-1500", "15"],
+    ["pt40", "inner-1530", "25"],
+    ["pt40", "inner-1600", "35"],
+    ["pt40", "inner-1730", "25"],
+    ["pt40", "inner-1800", "15"],
+    ["pt41", "inner-0600", "15"],
+    ["pt41", "inner-0630", "25"],
+    ["pt41", "inner-0700", "35"],
+    ["pt41", "inner-0830", "25"],
+    ["pt41", "inner-0900", "15"],
+    ["pt41", "inner-0930", "11"],
+    ["pt41", "inner-1500", "15"],
+    ["pt41", "inner-1530", "25"],
+    ["pt41", "inner-1600", "35"],
+    ["pt41", "inner-1730", "25"],
+    ["pt41", "inner-1800", "15"],
+    ["pt42", "inner-0600", "15"],
+    ["pt42", "inner-0630", "25"],
+    ["pt42", "inner-0700", "35"],
+    ["pt42", "inner-0830", "25"],
+    ["pt42", "inner-0900", "15"],
+    ["pt42", "inner-0930", "11"],
+    ["pt42", "inner-1500", "15"],
+    ["pt42", "inner-1530", "25"],
+    ["pt42", "inner-1600", "35"],
+    ["pt42", "inner-1730", "25"],
+    ["pt42", "inner-1800", "15"],
+    ["pt43", "inner-0600", "15"],
+    ["pt43", "inner-0630", "25"],
+    ["pt43", "inner-0700", "35"],
+    ["pt43", "inner-0830", "25"],
+    ["pt43", "inner-0900", "15"],
+    ["pt43", "inner-0930", "11"],
+    ["pt43", "inner-1500", "15"],
+    ["pt43", "inner-1530", "25"],
+    ["pt43", "inner-1600", "35"],
+    ["pt43", "inner-1730", "25"],
+    ["pt43", "inner-1800", "15"],
+    ["pt44", "inner-0600", "15"],
+    ["pt44", "inner-0630", "25"],
+    ["pt44", "inner-0700", "35"],
+    ["pt44", "inner-0830", "25"],
+    ["pt44", "inner-0900", "15"],
+    ["pt44", "inner-0930", "11"],
+    ["pt44", "inner-1500", "15"],
+    ["pt44", "inner-1530", "25"],
+    ["pt44", "inner-1600", "35"],
+    ["pt44", "inner-1730", "25"],
+    ["pt44", "inner-1800", "15"],
+    ["pt45", "inner-0600", "15"],
+    ["pt45", "inner-0630", "25"],
+    ["pt45", "inner-0700", "35"],
+    ["pt45", "inner-0830", "25"],
+    ["pt45", "inner-0900", "15"],
+    ["pt45", "inner-0930", "11"],
+    ["pt45", "inner-1500", "15"],
+    ["pt45", "inner-1530", "25"],
+    ["pt45", "inner-1600", "35"],
+    ["pt45", "inner-1730", "25"],
+    ["pt45", "inner-1800", "15"],
+    ["pt46", "inner-0600", "15"],
+    ["pt46", "inner-0630", "25"],
+    ["pt46", "inner-0700", "35"],
+    ["pt46", "inner-0830", "25"],
+    ["pt46", "inner-0900", "15"],
+    ["pt46", "inner-0930", "11"],
+    ["pt46", "inner-1500", "15"],
+    ["pt46", "inner-1530", "25"],
+    ["pt46", "inner-1600", "35"],
+    ["pt46", "inner-1730", "25"],
+    ["pt46", "inner-1800", "15"],
+    ["pt47", "inner-0600", "15"],
+    ["pt47", "inner-0630", "25"],
+    ["pt47", "inner-0700", "35"],
+    ["pt47", "inner-0830", "25"],
+    ["pt47", "inner-0900", "15"],
+    ["pt47", "inner-0930", "11"],
+    ["pt47", "inner-1500", "15"],
+    ["pt47", "inner-1530", "25"],
+    ["pt47", "inner-1600", "35"],
+    ["pt47", "inner-1730", "25"],
+    ["pt47", "inner-1800", "15"],
+    ["pt48", "inner-0600", "15"],
+    ["pt48", "inner-0630", "25"],
+    ["pt48", "inner-0700", "35"],
+    ["pt48", "inner-0830", "25"],
+    ["pt48", "inner-0900", "15"],
+    ["pt48", "inner-0930", "11"],
+    ["pt48", "inner-1500", "15"],
+    ["pt48", "inner-1530", "25"],
+    ["pt48", "inner-1600", "35"],
+    ["pt48", "inner-1730", "25"],
+    ["pt48", "inner-1800", "15"],
+    ["pt49", "inner-0600", "15"],
+    ["pt49", "inner-0630", "25"],
+    ["pt49", "inner-0700", "35"],
+    ["pt49", "inner-0830", "25"],
+    ["pt49", "inner-0900", "15"],
+    ["pt49", "inner-0930", "11"],
+    ["pt49", "inner-1500", "15"],
+    ["pt49", "inner-1530", "25"],
+    ["pt49", "inner-1600", "35"],
+    ["pt49", "inner-1730", "25"],
+    ["pt49", "inner-1800", "15"],
+    ["pt50", "inner-0600", "15"],
+    ["pt50", "inner-0630", "25"],
+    ["pt50", "inner-0700", "35"],
+    ["pt50", "inner-0830", "25"],
+    ["pt50", "inner-0900", "15"],
+    ["pt50", "inner-0930", "11"],
+    ["pt50", "inner-1500", "15"],
+    ["pt50", "inner-1530", "25"],
+    ["pt50", "inner-1600", "35"],
+    ["pt50", "inner-1730", "25"],
+    ["pt50", "inner-1800", "15"],
+    ["pt51", "inner-0600", "15"],
+    ["pt51", "inner-0630", "25"],
+    ["pt51", "inner-0700", "35"],
+    ["pt51", "inner-0830", "25"],
+    ["pt51", "inner-0900", "15"],
+    ["pt51", "inner-0930", "11"],
+    ["pt51", "inner-1500", "15"],
+    ["pt51", "inner-1530", "25"],
+    ["pt51", "inner-1600", "35"],
+    ["pt51", "inner-1730", "25"],
+    ["pt51", "inner-1800", "15"],
+    ["pt52", "inner-0600", "15"],
+    ["pt52", "inner-0630", "25"],
+    ["pt52", "inner-0700", "35"],
+    ["pt52", "inner-0830", "25"],
+    ["pt52", "inner-0900", "15"],
+    ["pt52", "inner-0930", "11"],
+    ["pt52", "inner-1500", "15"],
+    ["pt52", "inner-1530", "25"],
+    ["pt52", "inner-1600", "35"],
+    ["pt52", "inner-1730", "25"],
+    ["pt52", "inner-1800", "15"],
+    ["pt53", "inner-0600", "15"],
+    ["pt53", "inner-0630", "25"],
+    ["pt53", "inner-0700", "35"],
+    ["pt53", "inner-0830", "25"],
+    ["pt53", "inner-0900", "15"],
+    ["pt53", "inner-0930", "11"],
+    ["pt53", "inner-1500", "15"],
+    ["pt53", "inner-1530", "25"],
+    ["pt53", "inner-1600", "35"],
+    ["pt53", "inner-1730", "25"],
+    ["pt53", "inner-1800", "15"],
+    ["pt54", "inner-0600", "15"],
+    ["pt54", "inner-0630", "25"],
+    ["pt54", "inner-0700", "35"],
+    ["pt54", "inner-0830", "25"],
+    ["pt54", "inner-0900", "15"],
+    ["pt54", "inner-0930", "11"],
+    ["pt54", "inner-1500", "15"],
+    ["pt54", "inner-1530", "25"],
+    ["pt54", "inner-1600", "35"],
+    ["pt54", "inner-1730", "25"],
+    ["pt54", "inner-1800", "15"],
+    ["pt55", "inner-0600", "15"],
+    ["pt55", "inner-0630", "25"],
+    ["pt55", "inner-0700", "35"],
+    ["pt55", "inner-0830", "25"],
+    ["pt55", "inner-0900", "15"],
+    ["pt55", "inner-0930", "11"],
+    ["pt55", "inner-1500", "15"],
+    ["pt55", "inner-1530", "25"],
+    ["pt55", "inner-1600", "35"],
+    ["pt55", "inner-1730", "25"],
+    ["pt55", "inner-1800", "15"],
+    ["pt56", "inner-0600", "15"],
+    ["pt56", "inner-0630", "25"],
+    ["pt56", "inner-0700", "35"],
+    ["pt56", "inner-0830", "25"],
+    ["pt56", "inner-0900", "15"],
+    ["pt56", "inner-0930", "11"],
+    ["pt56", "inner-1500", "15"],
+    ["pt56", "inner-1530", "25"],
+    ["pt56", "inner-1600", "35"],
+    ["pt56", "inner-1730", "25"],
+    ["pt56", "inner-1800", "15"],
+    ["pt57", "inner-0600", "15"],
+    ["pt57", "inner-0630", "25"],
+    ["pt57", "inner-0700", "35"],
+    ["pt57", "inner-0830", "25"],
+    ["pt57", "inner-0900", "15"],
+    ["pt57", "inner-0930", "11"],
+    ["pt57", "inner-1500", "15"],
+    ["pt57", "inner-1530", "25"],
+    ["pt57", "inner-1600", "35"],
+    ["pt57", "inner-1730", "25"],
+    ["pt57", "inner-1800", "15"],
+    ["pt58", "inner-0600", "15"],
+    ["pt58", "inner-0630", "25"],
+    ["pt58", "inner-0700", "35"],
+    ["pt58", "inner-0830", "25"],
+    ["pt58", "inner-0900", "15"],
+    ["pt58", "inner-0930", "11"],
+    ["pt58", "inner-1500", "15"],
+    ["pt58", "inner-1530", "25"],
+    ["pt58", "inner-1600", "35"],
+    ["pt58", "inner-1730", "25"],
+    ["pt58", "inner-1800", "15"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
+  }
+ ],
+ "rules": [
   {
-   "id": "point:2",
-   "name": "Danvikstull",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Drottningholmsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:4",
-   "name": "Drottningholmsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:4"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:5",
-   "name": "Drottningholmsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:5"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:6",
-   "name": "Drottningholmsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:6"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:7",
-   "name": "Ekelundsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:7"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:8",
-   "name": "Ekhagen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:8"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:9",
-   "name": "Ekhagen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:9"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:10",
-   "name": "Ekhagen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:10"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:11",
-   "name": "Ekhagen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:11"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:12",
-   "name": "Essingeleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:12"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:13",
-   "name": "Essingeleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:13"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:14",
-   "name": "Essingeleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:14"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:15",
-   "name": "Frescati",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:15"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:16",
-   "name": "Gävlegatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:16"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:17",
-   "name": "Hälsingegatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:17"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:18",
-   "name": "Johanneshovsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:18"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:19",
-   "name": "Johanneshovsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:19"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:20",
-   "name": "Klarastrandsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:20"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:21",
-   "name": "Klarastrandsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:21"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:22",
-   "name": "Kristineberg",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:22"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:23",
-   "name": "Kristineberg",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:23"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:24",
-   "name": "Kristineberg",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:24"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:25",
-   "name": "Kristineberg",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:25"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:26",
-   "name": "Liljeholmsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:26"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:27",
-   "name": "Liljeholmsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:27"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:28",
-   "name": "Liljeholmsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:28"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:29",
-   "name": "Lilla Essingen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:29"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:30",
-   "name": "Norrtull",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:30"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:31",
-   "name": "Ropsten",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:31"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:32",
-   "name": "Ropsten",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:32"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:33",
-   "name": "Ropsten",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:33"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:34",
-   "name": "Ropsten",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:34"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:35",
-   "name": "Ropsten",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:35"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:36",
-   "name": "Roslagstull",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:36"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:37",
-   "name": "Roslagstull",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:37"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:38",
-   "name": "Skansbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:38"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:39",
-   "name": "Skanstullsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:39"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:40",
-   "name": "Skanstullsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:40"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:41",
-   "name": "Skurubron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:41"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:42",
-   "name": "Skurubron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:42"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:43",
-   "name": "Skurubron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:43"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:44",
-   "name": "Solnabron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:44"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:45",
-   "name": "Solnabron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:45"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:46",
-   "name": "Stora Essingen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:46"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:47",
-   "name": "Stora Essingen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:47"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:48",
-   "name": "Stora Essingen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:48"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:49",
-   "name": "Tomtebodavägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:49"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:50",
-   "name": "Tomtebodavägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:50"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:51",
-   "name": "Universitetet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:51"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:52",
-   "name": "Universitetet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:52"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:53",
-   "name": "Värtan Västra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:53"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:54",
-   "name": "Värtan Västra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:54"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:55",
-   "name": "Värtan Västra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:55"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:56",
-   "name": "Värtan Östra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:56"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:57",
-   "name": "Värtan Östra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:57"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:58",
-   "name": "Värtan Östra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:58"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
+   "id": "r1",
+   "kind": "cap",
+   "applies_to": ["congestion"],
+   "params": {
+    "per": "day",
+    "amount": "105"
    }
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "partial",
-   "reason": "the congestion tax's taxed days (high season, July, holiday eves) are kept as an extension"
-  }
- ],
- "modifiers": [
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:4"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:5"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:6"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:7"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:8"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:9"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:10"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:11"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:12"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "essingeleden"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:13"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "essingeleden"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:14"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 30,
-      "high": 40
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 22,
-      "high": 27
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "essingeleden"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:15"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:16"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:17"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:18"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:19"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:20"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:21"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:22"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:23"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:24"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:25"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:26"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:27"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:28"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:29"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:30"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:31"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:32"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:33"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:34"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:35"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:36"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:37"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:38"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:39"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:40"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:41"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:42"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:43"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:44"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:45"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:46"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:47"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:48"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:49"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:50"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:51"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:52"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:53"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:54"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:55"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:56"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:57"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:58"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 15,
-      "high": 15
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "07:00",
-      "to": "08:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "08:30",
-      "to": "08:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "09:00",
-      "to": "09:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "09:30",
-      "to": "14:59",
-      "amount": 11,
-      "high": 11
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 15,
-      "high": 20
-     },
-     {
-      "from": "15:30",
-      "to": "15:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "16:00",
-      "to": "17:29",
-      "amount": 35,
-      "high": 45
-     },
-     {
-      "from": "17:30",
-      "to": "17:59",
-      "amount": 25,
-      "high": 30
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 15,
-      "high": 20
-     }
-    ],
-    "name": "inner"
-   }
-  },
-  {
-   "kind": "cap",
-   "applies_to": [
-    "point:1",
-    "point:2",
-    "point:3",
-    "point:4",
-    "point:5",
-    "point:6",
-    "point:7",
-    "point:8",
-    "point:9",
-    "point:10",
-    "point:11",
-    "point:12",
-    "point:13",
-    "point:14",
-    "point:15",
-    "point:16",
-    "point:17",
-    "point:18",
-    "point:19",
-    "point:20",
-    "point:21",
-    "point:22",
-    "point:23",
-    "point:24",
-    "point:25",
-    "point:26",
-    "point:27",
-    "point:28",
-    "point:29",
-    "point:30",
-    "point:31",
-    "point:32",
-    "point:33",
-    "point:34",
-    "point:35",
-    "point:36",
-    "point:37",
-    "point:38",
-    "point:39",
-    "point:40",
-    "point:41",
-    "point:42",
-    "point:43",
-    "point:44",
-    "point:45",
-    "point:46",
-    "point:47",
-    "point:48",
-    "point:49",
-    "point:50",
-    "point:51",
-    "point:52",
-    "point:53",
-    "point:54",
-    "point:55",
-    "point:56",
-    "point:57",
-    "point:58"
-   ],
-   "params": {
-    "per": "day",
-    "amount": 105,
-    "high_season": 135
-   }
+   "reason": "the congestion tax's untaxed days (public holidays, their eves, July) and high-season amounts are kept as an extension; its time classes cover Monday to Friday"
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "congestion": {
-    "high_season": [
-     [
-      "03-01",
-      "midsummer_eve-1"
-     ],
-     [
-      "08-15",
-      "11-30"
-     ]
-    ],
+    "high_season": [["03-01", "midsummer_eve-1"], ["08-15", "11-30"]],
+    "day_cap_high": 135,
     "july": "first5",
-    "eve_taxed": [
-     "good_friday",
-     "ascension",
-     "all_saints",
-     "may_1",
-     "june_6"
-    ]
+    "eve_taxed": ["good_friday", "ascension", "all_saints", "may_1", "june_6"],
+    "schedules_high_season": {
+     "inner": [
+      {
+       "from": "06:00",
+       "to": "06:29",
+       "high": 15
+      },
+      {
+       "from": "06:30",
+       "to": "06:59",
+       "high": 30
+      },
+      {
+       "from": "07:00",
+       "to": "08:29",
+       "high": 45
+      },
+      {
+       "from": "08:30",
+       "to": "08:59",
+       "high": 30
+      },
+      {
+       "from": "09:00",
+       "to": "09:29",
+       "high": 20
+      },
+      {
+       "from": "09:30",
+       "to": "14:59",
+       "high": 11
+      },
+      {
+       "from": "15:00",
+       "to": "15:29",
+       "high": 20
+      },
+      {
+       "from": "15:30",
+       "to": "15:59",
+       "high": 30
+      },
+      {
+       "from": "16:00",
+       "to": "17:29",
+       "high": 45
+      },
+      {
+       "from": "17:30",
+       "to": "17:59",
+       "high": 30
+      },
+      {
+       "from": "18:00",
+       "to": "18:29",
+       "high": 20
+      }
+     ],
+     "essingeleden": [
+      {
+       "from": "06:00",
+       "to": "06:29",
+       "high": 15
+      },
+      {
+       "from": "06:30",
+       "to": "06:59",
+       "high": 27
+      },
+      {
+       "from": "07:00",
+       "to": "08:29",
+       "high": 40
+      },
+      {
+       "from": "08:30",
+       "to": "08:59",
+       "high": 27
+      },
+      {
+       "from": "09:00",
+       "to": "09:29",
+       "high": 20
+      },
+      {
+       "from": "09:30",
+       "to": "14:59",
+       "high": 11
+      },
+      {
+       "from": "15:00",
+       "to": "15:29",
+       "high": 20
+      },
+      {
+       "from": "15:30",
+       "to": "15:59",
+       "high": 27
+      },
+      {
+       "from": "16:00",
+       "to": "17:29",
+       "high": 40
+      },
+      {
+       "from": "17:30",
+       "to": "17:59",
+       "high": 27
+      },
+      {
+       "from": "18:00",
+       "to": "18:29",
+       "high": 20
+      }
+     ]
+    }
    },
    "crossings": true,
    "osm_extract": "2026-11-08"

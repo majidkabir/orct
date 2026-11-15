@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "gb-2026-04-01",
-  "scheme": "gb",
-  "country": "GB",
-  "currency": "GBP",
+  "id": "carbon-cost/gb/2026-04-01",
+  "scheme": {
+   "id": "gb",
+   "name": "UK HGV road user levy (non-UK vehicles)",
+   "country": "GB"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-04-01",
-  "name": "UK HGV road user levy (non-UK vehicles)",
+  "currency": "GBP",
+  "timezone": "Europe/London",
+  "license": "MIT",
   "method": "HGV Road User Levy Act 2013, section 6 and Schedule 1 (Tables 1, 1A and 1B) as amended: a non-UK HGV of 12,000 kg or more pays the daily rate for each day it uses a main road, by band of maximum permitted (revenue) weight of the combination and by whether it meets Euro 6. Rates as tabulated by the Department for Transport's guidance. Zero-emission HGVs are exempt. The table keeps the daily rate.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/gb-2026-04-01.json"
-  }
+  },
+  "required_features": ["type.period"]
  },
  "sources": [
   {
@@ -26,145 +35,123 @@
    "url": "https://www.legislation.gov.uk/ukpga/2013/7"
   }
  ],
- "vehicles": {
-  "description": "Non-UK heavy goods vehicles of 12,000 kg or more (UK vehicles pay yearly or half-yearly with vehicle excise duty)",
-  "min_mass_kg": 12000,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000
-    },
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 31000
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c3",
-   "criteria": {
-    "mass_kg": {
-     "min": 31001,
-     "max": 38000
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c4",
-   "criteria": {
-    "mass_kg": {
-     "min": 38001
-    },
-    "euro": [
-     6
-    ]
-   }
-  },
-  {
-   "id": "c5",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 31000
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4,
-     5
-    ]
-   }
-  },
-  {
-   "id": "c6",
-   "criteria": {
-    "mass_kg": {
-     "min": 31001,
-     "max": 38000
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4,
-     5
-    ]
-   }
-  },
-  {
-   "id": "c7",
-   "criteria": {
-    "mass_kg": {
-     "min": 38001
-    },
-    "euro": [
-     0,
-     1,
-     2,
-     3,
-     4,
-     5
-    ]
+ "liable_vehicles": {
+  "description": "Non-UK heavy goods vehicles of 12,000 kg or more (UK vehicles pay yearly or half-yearly with vehicle excise duty)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 12000
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "toll-1",
+   "classes": [
+    {
+     "id": "toll-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000
+      },
+      "co2_class": [5]
+     }
+    },
+    {
+     "id": "toll-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 31000
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.3",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 31001,
+       "max": 38000
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.4",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 38001
+      },
+      "euro_class": ["6"]
+     }
+    },
+    {
+     "id": "toll-1.5",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 31000
+      },
+      "euro_class": ["0", "1", "2", "3", "4", "5"]
+     }
+    },
+    {
+     "id": "toll-1.6",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 31001,
+       "max": 38000
+      },
+      "euro_class": ["0", "1", "2", "3", "4", "5"]
+     }
+    },
+    {
+     "id": "toll-1.7",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 38001
+      },
+      "euro_class": ["0", "1", "2", "3", "4", "5"]
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "Main roads: roads numbered with A or M, in England, Scotland, Wales and Northern Ireland."
+   "type": "network",
+   "network": {
+    "description": "Main roads: roads numbered with A or M, in England, Scotland, Wales and Northern Ireland."
+   }
   }
  ],
  "charges": [
   {
-   "id": "toll@roads",
+   "id": "toll",
    "type": "period",
-   "component": "toll",
-   "applies_to": [
-    "roads"
+   "component": "unspecified",
+   "unit": "product",
+   "component_label": "toll",
+   "day_basis": "calendar",
+   "columns": ["object", "vehicle_class", "product", "amount"],
+   "rows": [
+    ["roads", "toll-1.1", "P1D", "0"],
+    ["roads", "toll-1.2", "P1D", "3.22"],
+    ["roads", "toll-1.3", "P1D", "7.74"],
+    ["roads", "toll-1.4", "P1D", "9.67"],
+    ["roads", "toll-1.5", "P1D", "4.18"],
+    ["roads", "toll-1.6", "P1D", "10.06"],
+    ["roads", "toll-1.7", "P1D", "10.74"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0,
-    "c2": 3.22,
-    "c3": 7.74,
-    "c4": 9.67,
-    "c5": 4.18,
-    "c6": 10.06,
-    "c7": 10.74
-   },
-   "period": "day",
-   "day_basis": "calendar"
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",

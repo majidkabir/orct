@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "dk-bridges-2026-01-01",
-  "scheme": "dk-bridges",
-  "country": "DK",
-  "currency": "DKK",
+  "id": "carbon-cost/dk-bridges/2026-01-01",
+  "scheme": {
+   "id": "dk-bridges",
+   "name": "Storebælt and Øresund bridge tolls",
+   "country": "DK"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2026-01-01",
-  "name": "Storebælt and Øresund bridge tolls",
+  "valid_to": "2026-12-31",
+  "currency": "DKK",
+  "timezone": "Europe/Copenhagen",
+  "license": "MIT",
   "method": "Fixed price per crossing by vehicle length, on top of the km-based vejafgift: Storebælt (A/S Storebælt) and Øresund (Øresundsbro Konsortiet) price lists for 2026.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/dk-bridges-2026-01-01.json"
   },
-  "valid_to": "2026-12-31"
+  "required_features": ["rule.discount", "type.od", "user_classes"]
  },
  "sources": [
   {
@@ -27,227 +36,185 @@
    "url": "https://www.oresundsbron.com/da/erhverv/lastbil"
   }
  ],
- "vehicles": {
-  "description": "Vehicles over 3.5 t, by length",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "Vehicles over 3.5 t, by length",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
+   }
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "c-up-to-10-m",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
+   "id": "sys1-1",
+   "classes": [
+    {
+     "id": "sys1-1.up-to-10-m",
+     "label": "up to 10 m",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_length_m": {
+       "max": 10
+      }
+     }
     },
-    "length_m": {
-     "max": 10
+    {
+     "id": "sys1-1.10-20-m",
+     "label": "10-20 m",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_length_m": {
+       "gt": 10,
+       "max": 20
+      }
+     }
+    },
+    {
+     "id": "sys1-1.over-20-m",
+     "label": "over 20 m",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_length_m": {
+       "gt": 20
+      }
+     }
     }
-   },
-   "label": "up to 10 m"
+   ]
   },
   {
-   "id": "c-10-20-m",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
+   "id": "sys2-1",
+   "classes": [
+    {
+     "id": "sys2-1.up-to-9-m",
+     "label": "up to 9 m",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_length_m": {
+       "max": 9
+      }
+     }
     },
-    "length_m": {
-     "over": 10,
-     "max": 20
+    {
+     "id": "sys2-1.over-9-m",
+     "label": "over 9 m",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_length_m": {
+       "gt": 9
+      }
+     }
     }
-   },
-   "label": "10-20 m"
-  },
-  {
-   "id": "c-over-20-m",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "length_m": {
-     "over": 20
-    }
-   },
-   "label": "over 20 m"
-  },
-  {
-   "id": "c-up-to-9-m",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "length_m": {
-     "max": 9
-    }
-   },
-   "label": "up to 9 m"
-  },
-  {
-   "id": "c-over-9-m",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "length_m": {
-     "over": 9
-    }
-   },
-   "label": "over 9 m"
+   ]
   }
  ],
- "network": [
+ "user_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "The Storebælt bridge (E20 Funen-Zealand) and the Øresund bridge (E20 Copenhagen-Malmö)."
-  },
+   "id": "electronic",
+   "label": "Electronic toll device or contract",
+   "payment": ["electronic"]
+  }
+ ],
+ "charge_objects": [
   {
-   "id": "st:1:Storebælt",
-   "kind": "station",
+   "id": "st1:Storebælt",
+   "type": "station",
    "name": "Storebælt",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      11.10876,
-      55.34993
-     ],
-     [
-      11.10882,
-      55.34967
-     ]
-    ]
-   },
-   "point_names": [
-    "booth",
-    "booth"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[11.10876, 55.34993], [11.10882, 55.34967]]
+    },
+    "point_names": ["booth", "booth"]
+   }
   },
   {
-   "id": "st:2:Øresundsbron",
-   "kind": "station",
+   "id": "st2:Øresundsbron",
+   "type": "station",
    "name": "Øresundsbron",
-   "geometry": {
-    "type": "MultiPoint",
-    "coordinates": [
-     [
-      12.84879,
-      55.57047
-     ],
-     [
-      12.84989,
-      55.57027
-     ]
-    ]
-   },
-   "point_names": [
-    "bridge",
-    "bridge"
-   ]
+   "location": {
+    "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[12.84879, 55.57047], [12.84989, 55.57027]]
+    },
+    "point_names": ["bridge", "bridge"]
+   }
   }
  ],
  "charges": [
   {
-   "id": "system:1",
+   "id": "system1",
    "name": "Storebælt bridge",
-   "type": "od_matrix",
-   "component": "toll",
-   "applies_to": [
-    "st:1:Storebælt"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {},
-   "pairs": [
-    {
-     "entry": "st:1:Storebælt",
-     "exit": "st:1:Storebælt",
-     "rates": {
-      "c-10-20-m": 816.0,
-      "c-over-20-m": 1224.0,
-      "c-up-to-10-m": 516.0
-     }
-    }
-   ],
+   "type": "od",
+   "component": "unspecified",
+   "unit": "trip",
    "pairing": "single_ticket",
-   "method": "Storebæltsforbindelsen: prices set by the transport minister (lov om Sund & Bælt Holding A/S); A/S Storebælt's business price list 2026, DKK including 25% VAT, here excluding it. Green discount (Grøn rabat) 13% for EURO VI and electric or hydrogen trucks on a Storebælt Erhverv agreement paying automatically."
+   "method": "Storebæltsforbindelsen: prices set by the transport minister (lov om Sund & Bælt Holding A/S); A/S Storebælt's business price list 2026, DKK including 25% VAT, here excluding it. Green discount (Grøn rabat) 13% for EURO VI and electric or hydrogen trucks on a Storebælt Erhverv agreement paying automatically.",
+   "columns": ["entry", "exit", "vehicle_class", "amount"],
+   "rows": [
+    ["st1:Storebælt", "st1:Storebælt", "sys1-1.10-20-m", "816"],
+    ["st1:Storebælt", "st1:Storebælt", "sys1-1.over-20-m", "1224"],
+    ["st1:Storebælt", "st1:Storebælt", "sys1-1.up-to-10-m", "516"]
+   ],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   },
   {
-   "id": "system:2",
+   "id": "system2",
    "name": "Øresund bridge",
-   "type": "od_matrix",
-   "component": "toll",
-   "applies_to": [
-    "st:2:Øresundsbron"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {},
-   "pairs": [
-    {
-     "entry": "st:2:Øresundsbron",
-     "exit": "st:2:Øresundsbron",
-     "rates": {
-      "c-over-9-m": {
-       "default": 1324,
-       "electronic": 580
-      },
-      "c-up-to-9-m": {
-       "default": 832,
-       "electronic": 292
-      }
-     }
-    }
-   ],
+   "type": "od",
+   "component": "unspecified",
+   "unit": "trip",
    "pairing": "single_ticket",
-   "method": "Øresundsbron: Øresundsbro Konsortiet's business prices per crossing, DKK excluding 25% VAT; with ØresundBUSINESS (etc) the price for the first 500 crossings a year by a truck over 9 m (580 DKK) or the first 1,000 by a van of 6-9 m (292 DKK)."
+   "method": "Øresundsbron: Øresundsbro Konsortiet's business prices per crossing, DKK excluding 25% VAT; with ØresundBUSINESS (etc) the price for the first 500 crossings a year by a truck over 9 m (580 DKK) or the first 1,000 by a van of 6-9 m (292 DKK).",
+   "columns": ["entry", "exit", "vehicle_class", "user_class", "amount"],
+   "rows": [
+    ["st2:Øresundsbron", "st2:Øresundsbron", "sys2-1.over-9-m", null, "1324"],
+    ["st2:Øresundsbron", "st2:Øresundsbron", "sys2-1.up-to-9-m", null, "832"],
+    ["st2:Øresundsbron", "st2:Øresundsbron", "sys2-1.over-9-m", "electronic", "580"],
+    ["st2:Øresundsbron", "st2:Øresundsbron", "sys2-1.up-to-9-m", "electronic", "292"]
+   ],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
+ "rules": [
+  {
+   "id": "r1",
+   "kind": "discount",
+   "applies_to": ["system1"],
+   "params": {
+    "name": "Grøn rabat",
+    "percent": "13",
+    "payment": ["electronic"],
+    "criteria": {
+     "euro_class": ["6"],
+     "co2_class": [5]
+    }
+   }
+  }
+ ],
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "discount",
-   "applies_to": [
-    "system:1"
-   ],
-   "params": {
-    "name": "Grøn rabat",
-    "percent": 13,
-    "payment": "electronic",
-    "euro": [
-     6
-    ],
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "kind": "variant",
-   "applies_to": [
-    "system:2"
-   ],
-   "params": {
-    "name": "electronic",
-    "payment": "electronic"
-   }
-  }
- ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true
   }
  }

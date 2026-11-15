@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
-"""Validate ORCT datasets: the JSON Schema, then every id they refer to.
+"""Validate ORCT 0.2 datasets: the JSON Schema, then the rules of clauses 6 and 7
+the schema can't express (references, parents, row keys, required features).
 
 Usage: validate.py <file or dir> ...   (exit 1 on any error)
 """
 import json
 import os
+import re
 import sys
 
 import jsonschema
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(HERE, "..", "schema", "orct-0.1.schema.json")) as fh:
+with open(os.path.join(HERE, "..", "schema", "orct-0.2.schema.json")) as fh:
     VALIDATOR = jsonschema.Draft202012Validator(json.load(fh))
+DECIMAL = re.compile(r"^-?[0-9]+(\.[0-9]+)?$")
+DURATION = re.compile(r"^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?$")
+KEYS = ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product", "priority")
 
 
-def refs(d):
+def check(d):
     errs = []
 
-    def ids(items, what):
+    def unique(items, what):
         seen = set()
         for x in items:
             if x["id"] in seen:
@@ -25,29 +30,116 @@ def refs(d):
             seen.add(x["id"])
         return seen
 
-    src, cls = ids(d["sources"], "source"), ids(d["classes"], "class")
-    net, chg = ids(d["network"], "network"), ids(d["charges"], "charge")
-    for c in d["classes"]:
-        if c.get("fallback") and c["fallback"] not in cls:
-            errs.append(f"class {c['id']}: fallback {c['fallback']} unknown")
+    sources = unique(d["sources"], "source")
+    sets = d["vehicle_class_sets"]
+    class_set = {}
+    for s in sets:
+        for c in s["classes"]:
+            if c["id"] in class_set:
+                errs.append(f"duplicate vehicle class id {c['id']}")
+            class_set[c["id"]] = s["id"]
+    for s in sets:
+        ids = {c["id"] for c in s["classes"]}
+        for c in s["classes"]:
+            if c.get("fallback") and c["fallback"] not in ids:
+                errs.append(f"class {c['id']}: fallback {c['fallback']} is not in its set")
+    calendars = unique(d.get("calendars", []), "calendar")
+    times = unique(d.get("time_classes", []), "time class")
+    for t in d.get("time_classes", []):
+        for cal in [c for sel in t.get("days", []) for c in sel.get("calendars", []) + sel.get("exclude", {}).get("calendars", [])]:
+            if cal not in calendars:
+                errs.append(f"time class {t['id']}: calendar {cal} unknown")
+    users = unique(d.get("user_classes", []), "user class")
+    objects = {o["id"]: o for o in d["charge_objects"]}
+    unique(d["charge_objects"], "charge object")
+    for oid, o in objects.items():
+        seen, p = {oid}, o.get("parent")
+        while p:
+            if p not in objects:
+                errs.append(f"object {oid}: parent {p} unknown")
+                break
+            if p in seen:
+                errs.append(f"object {oid}: parents form a cycle")
+                break
+            seen.add(p)
+            p = objects[p].get("parent")
+    charges = {c["id"]: c for c in d["charges"]}
+    unique(d["charges"], "charge")
+    rules = unique(d.get("rules", []), "rule")
+
+    used = set()
     for c in d["charges"]:
         where = f"charge {c['id']}"
-        errs += [f"{where}: source {s} unknown" for s in c["sources"] if s not in src]
-        errs += [f"{where}: network {n} unknown" for n in c["applies_to"] + c.get("excludes", []) if n not in net]
-        errs += [f"{where}: class {k} unknown" for k in c["rates"] if k not in cls]
-        for p in c.get("pairs", []):
-            errs += [f"{where}: station {s} unknown" for s in (p["entry"], p["exit"]) if s not in net]
-            errs += [f"{where}: class {k} unknown" for k in p["rates"] if k not in cls]
-    for m in d.get("modifiers", []):
-        errs += [f"modifier {m['kind']}: charge {c} unknown" for c in m["applies_to"] if c not in chg]
-        p = m["params"]
-        if m["kind"] == "included_in" and p.get("charge") not in chg:
-            errs.append(f"modifier included_in: charge {p.get('charge')} unknown")
-        if m["kind"] == "factor" and p.get("stretch") not in net:
-            errs.append(f"modifier factor: stretch {p.get('stretch')} unknown")
-    for c in d["coverage"]:
-        if c["scope"] != "dataset" and c["scope"] not in net | chg:
-            errs.append(f"coverage: scope {c['scope']} unknown")
+        used.add("type." + c["type"])
+        cols = c["columns"]
+        errs += [f"{where}: source {s} unknown" for s in c["sources"] if s not in sources]
+        if c["type"] == "od":
+            if "object" in cols:
+                errs.append(f"{where}: an od charge is keyed by entry and exit, not object")
+            if c.get("pairing") == "chain":
+                used.add("type.od.chain")
+        elif "object" not in cols and not c.get("objects"):
+            errs.append(f"{where}: needs an object column or objects")
+        elif "entry" in cols or "exit" in cols:
+            errs.append(f"{where}: entry and exit are only for od charges")
+        errs += [f"{where}: object {o} unknown" for o in c.get("objects", []) if o not in objects]
+        if c.get("rounding"):
+            used.add("rounding")
+        seen = set()
+        for n, r in enumerate(c["rows"]):
+            if len(r) != len(cols):
+                errs.append(f"{where} row {n}: {len(r)} values for {len(cols)} columns")
+                continue
+            row = dict(zip(cols, r))
+            if not isinstance(row["amount"], str) or not DECIMAL.match(row["amount"]):
+                errs.append(f"{where} row {n}: amount {row['amount']!r} is not a decimal string")
+            for k in ("object", "entry", "exit"):
+                if row.get(k) is not None and row[k] not in objects:
+                    errs.append(f"{where} row {n}: {k} {row[k]} unknown")
+            if row.get("vehicle_class") is not None and row["vehicle_class"] not in class_set:
+                errs.append(f"{where} row {n}: vehicle class {row['vehicle_class']} unknown")
+            if row.get("time_class") is not None:
+                used.add("time_classes")
+                if row["time_class"] not in times:
+                    errs.append(f"{where} row {n}: time class {row['time_class']} unknown")
+            if row.get("user_class") is not None:
+                used.add("user_classes")
+                if row["user_class"] not in users:
+                    errs.append(f"{where} row {n}: user class {row['user_class']} unknown")
+            if row.get("product") is not None and not DURATION.match(str(row["product"])):
+                errs.append(f"{where} row {n}: product {row['product']!r} is not an ISO 8601 duration")
+            if row.get("priority") is not None and not isinstance(row["priority"], int):
+                errs.append(f"{where} row {n}: priority must be an integer")
+            for k in ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product"):
+                if row.get(k) is not None and not isinstance(row[k], str):
+                    errs.append(f"{where} row {n}: {k} must be a string or null")
+            key = tuple(row.get(k) for k in KEYS)
+            if key in seen:
+                errs.append(f"{where} row {n}: repeats the keys of an earlier row")
+            seen.add(key)
+            if len(errs) > 50:
+                return errs
+    if d.get("calendars"):
+        used.add("calendars")
+    for r in d.get("rules", []):
+        used.add("rule." + r["kind"])
+        errs += [f"rule {r['id']}: charge {c} unknown" for c in r["applies_to"] if c not in charges]
+        p = r["params"]
+        if r["kind"] == "included_in" and charges.get(p.get("charge"), {}).get("type") != "od":
+            errs.append(f"rule {r['id']}: included_in needs an od charge")
+        for o in ([p["object"]] if "object" in p else []) + p.get("objects", []):
+            if o not in objects:
+                errs.append(f"rule {r['id']}: object {o} unknown")
+        for k in ("percent", "factor", "amount"):
+            if k in p and not (isinstance(p[k], str) and DECIMAL.match(p[k])):
+                errs.append(f"rule {r['id']}: {k} must be a decimal string")
+    ids = {"dataset"} | set(objects) | set(charges) | rules | times | users | set(class_set) | calendars
+    errs += [f"coverage: scope {c['scope']} unknown" for c in d["coverage"] if c["scope"] not in ids]
+    missing = used - set(d["dataset"].get("required_features", []))
+    if missing:
+        errs.append(f"required_features misses {sorted(missing)}")
+    if d.get("extensions") and not any(c["status"] != "complete" for c in d["coverage"]):
+        pass  # extensions may hold information only; coverage is the producer's statement
     return errs
 
 
@@ -66,9 +158,9 @@ def main():
         n += 1
         with open(f) as fh:
             d = json.load(fh)
-        errs = [f"{'/'.join(map(str, e.path)) or '(root)'}: {e.message}" for e in VALIDATOR.iter_errors(d)]
+        errs = [f"{'/'.join(map(str, e.path)) or '(root)'}: {e.message[:200]}" for e in VALIDATOR.iter_errors(d)]
         if not errs:
-            errs = refs(d)
+            errs = check(d)
         if errs:
             bad += 1
             print(f, *errs[:10], sep="\n  ")

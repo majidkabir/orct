@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "se-congestion-goteborg-2020-01-01",
-  "scheme": "se-congestion-goteborg",
-  "country": "SE",
-  "currency": "SEK",
+  "id": "carbon-cost/se-congestion-goteborg/2020-01-01",
+  "scheme": {
+   "id": "se-congestion-goteborg",
+   "name": "Göteborg congestion tax (trängselskatt)",
+   "country": "SE"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2020-01-01",
-  "name": "Göteborg congestion tax (trängselskatt)",
+  "currency": "SEK",
+  "timezone": "Europe/Stockholm",
+  "license": "MIT",
   "method": "Lag (2004:629) om trängselskatt, bilaga 2: per passage of a charging station, by time of day; passages within 60 minutes pay once; at most 60 SEK a day; weekdays, not the day before a public holiday nor in July. Foreign-registered vehicles pay too (4 §). Stations: Transportstyrelsen's gantries in OpenStreetMap; the Backa stations (taxed only with a control point within 30 minutes) are left out.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/se-congestion-goteborg-2020-01-01.json"
-  }
+  },
+  "required_features": ["rule.cap", "rule.passage_group", "time_classes", "type.point"]
  },
  "sources": [
   {
@@ -26,5540 +35,1541 @@
    "url": "https://www.transportstyrelsen.se/sv/vagtrafik/fordon/skatter-och-avgifter/trangselskatt/trangselskatt-i-goteborg/"
   }
  ],
- "vehicles": {
-  "description": "All vehicles, Swedish and foreign",
-  "min_mass_kg": 0,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "All vehicles, Swedish and foreign",
+  "criteria": {}
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "all",
+   "classes": [
+    {
+     "id": "any",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [
+ "time_classes": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "The charging stations of Göteborg."
+   "id": "goteborg-0600",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["06:00", "06:30"]]
   },
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "goteborg-0630",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["06:30", "07:00"]]
+  },
+  {
+   "id": "goteborg-0700",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["07:00", "08:00"]]
+  },
+  {
+   "id": "goteborg-0800",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["08:00", "08:30"]]
+  },
+  {
+   "id": "goteborg-0830",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["08:30", "15:00"]]
+  },
+  {
+   "id": "goteborg-1500",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["15:00", "15:30"]]
+  },
+  {
+   "id": "goteborg-1530",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["15:30", "17:00"]]
+  },
+  {
+   "id": "goteborg-1700",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["17:00", "18:00"]]
+  },
+  {
+   "id": "goteborg-1800",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5]
+    }
+   ],
+   "times": [["18:00", "18:30"]]
+  }
+ ],
+ "charge_objects": [
+  {
+   "id": "pt1",
+   "type": "point",
    "name": "Backavägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.960293,
-     57.726695
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.960293, 57.726695]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Backavägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.960411,
-     57.726708
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.960411, 57.726708]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:3",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Bäcktuvevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.941023,
-     57.738877
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.941023, 57.738877]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:4",
-   "kind": "point",
+   "id": "pt4",
+   "type": "point",
    "name": "Dag Hammarskjöldsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.942343,
-     57.677979
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.942343, 57.677979]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:5",
-   "kind": "point",
+   "id": "pt5",
+   "type": "point",
    "name": "Dag Hammarskjöldsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.942191,
-     57.678052
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.942191, 57.678052]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:6",
-   "kind": "point",
+   "id": "pt6",
+   "type": "point",
    "name": "Deltavägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.954217,
-     57.728491
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.954217, 57.728491]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:7",
-   "kind": "point",
+   "id": "pt7",
+   "type": "point",
    "name": "Doktor Allards gata",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.97867,
-     57.681557
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.97867, 57.681557]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:8",
-   "kind": "point",
+   "id": "pt8",
+   "type": "point",
    "name": "E20 Alingsåsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.99703,
-     57.716739
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.99703, 57.716739]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:9",
-   "kind": "point",
+   "id": "pt9",
+   "type": "point",
    "name": "E20 Alingsåsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.996879,
-     57.716809
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.996879, 57.716809]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:10",
-   "kind": "point",
+   "id": "pt10",
+   "type": "point",
    "name": "E20 Alingsåsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.996828,
-     57.716836
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.996828, 57.716836]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:11",
-   "kind": "point",
+   "id": "pt11",
+   "type": "point",
    "name": "E45 Marieholmsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.994042,
-     57.719893
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.994042, 57.719893]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:12",
-   "kind": "point",
+   "id": "pt12",
+   "type": "point",
    "name": "E45 Marieholmsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.993814,
-     57.719971
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.993814, 57.719971]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:13",
-   "kind": "point",
+   "id": "pt13",
+   "type": "point",
    "name": "E45 Marieholmsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.993656,
-     57.720041
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.993656, 57.720041]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:14",
-   "kind": "point",
+   "id": "pt14",
+   "type": "point",
    "name": "E45 Oscarsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935866,
-     57.699972
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935866, 57.699972]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:15",
-   "kind": "point",
+   "id": "pt15",
+   "type": "point",
    "name": "E45 Oscarsleden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935856,
-     57.700056
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935856, 57.700056]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:16",
-   "kind": "point",
+   "id": "pt16",
+   "type": "point",
    "name": "E6/E20 Kungsbackadalen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.001024,
-     57.688468
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.001024, 57.688468]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:17",
-   "kind": "point",
+   "id": "pt17",
+   "type": "point",
    "name": "E6/E20 Kungsbackadalen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.001208,
-     57.688511
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.001208, 57.688511]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:18",
-   "kind": "point",
+   "id": "pt18",
+   "type": "point",
    "name": "E6/E20 Kungsbackadalen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.001224,
-     57.688946
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.001224, 57.688946]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:19",
-   "kind": "point",
+   "id": "pt19",
+   "type": "point",
    "name": "E6/E20 Kungsbackadalen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.00126,
-     57.68898
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.00126, 57.68898]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:20",
-   "kind": "point",
+   "id": "pt20",
+   "type": "point",
    "name": "E6/E20 Kungsbackadalen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.000639,
-     57.689876
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.000639, 57.689876]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:21",
-   "kind": "point",
+   "id": "pt21",
+   "type": "point",
    "name": "Ehrenströmsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.968675,
-     57.679181
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.968675, 57.679181]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:22",
-   "kind": "point",
+   "id": "pt22",
+   "type": "point",
    "name": "Emigrantvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.93583,
-     57.700142
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.93583, 57.700142]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:23",
-   "kind": "point",
+   "id": "pt23",
+   "type": "point",
    "name": "Fjällgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.945614,
-     57.696135
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.945614, 57.696135]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:24",
-   "kind": "point",
+   "id": "pt24",
+   "type": "point",
    "name": "Fridkullagatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.987621,
-     57.682431
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.987621, 57.682431]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:25",
-   "kind": "point",
+   "id": "pt25",
+   "type": "point",
    "name": "Gibraltargatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.984495,
-     57.68298
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.984495, 57.68298]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:26",
-   "kind": "point",
+   "id": "pt26",
+   "type": "point",
    "name": "Hjalmar Brantingsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.958062,
-     57.720233
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.958062, 57.720233]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:27",
-   "kind": "point",
+   "id": "pt27",
+   "type": "point",
    "name": "Hjalmar Brantingsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.959389,
-     57.720491
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.959389, 57.720491]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:28",
-   "kind": "point",
+   "id": "pt28",
+   "type": "point",
    "name": "Karlavagnsgatan västra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935306,
-     57.708223
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935306, 57.708223]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:29",
-   "kind": "point",
+   "id": "pt29",
+   "type": "point",
    "name": "Karlavagnsgatan västra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935219,
-     57.708262
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935219, 57.708262]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:30",
-   "kind": "point",
+   "id": "pt30",
+   "type": "point",
    "name": "Karlavagnsgatan östra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.943,
-     57.711843
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.943, 57.711843]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:31",
-   "kind": "point",
+   "id": "pt31",
+   "type": "point",
    "name": "Karlavagnsgatan östra",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.942917,
-     57.711887
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.942917, 57.711887]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:32",
-   "kind": "point",
+   "id": "pt32",
+   "type": "point",
    "name": "Lindholmsallén",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935834,
-     57.707609
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935834, 57.707609]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:33",
-   "kind": "point",
+   "id": "pt33",
+   "type": "point",
    "name": "Lindholmsallén",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.935578,
-     57.707799
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.935578, 57.707799]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:34",
-   "kind": "point",
+   "id": "pt34",
+   "type": "point",
    "name": "Margretebergsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.943236,
-     57.680836
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.943236, 57.680836]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:35",
-   "kind": "point",
+   "id": "pt35",
+   "type": "point",
    "name": "Marieholmsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.990771,
-     57.720737
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.990771, 57.720737]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:36",
-   "kind": "point",
+   "id": "pt36",
+   "type": "point",
    "name": "Minelundsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.952982,
-     57.729709
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.952982, 57.729709]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:37",
-   "kind": "point",
+   "id": "pt37",
+   "type": "point",
    "name": "Mölndalsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.999292,
-     57.685017
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.999292, 57.685017]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:38",
-   "kind": "point",
+   "id": "pt38",
+   "type": "point",
    "name": "Mölndalsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.999522,
-     57.685066
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.999522, 57.685066]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:39",
-   "kind": "point",
+   "id": "pt39",
+   "type": "point",
    "name": "Olskroksmotet avfart E20",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.995101,
-     57.71523
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.995101, 57.71523]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:40",
-   "kind": "point",
+   "id": "pt40",
+   "type": "point",
    "name": "Olskroksmotet avfart E6",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.994939,
-     57.714804
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.994939, 57.714804]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:41",
-   "kind": "point",
+   "id": "pt41",
+   "type": "point",
    "name": "Partihandelsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.994543,
-     57.718604
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.994543, 57.718604]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:42",
-   "kind": "point",
+   "id": "pt42",
+   "type": "point",
    "name": "Polstjärnegatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.936477,
-     57.710569
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.936477, 57.710569]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:43",
-   "kind": "point",
+   "id": "pt43",
+   "type": "point",
    "name": "Redbergsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.995002,
-     57.71365
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.995002, 57.71365]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:44",
-   "kind": "point",
+   "id": "pt44",
+   "type": "point",
    "name": "Redbergsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.994831,
-     57.713984
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.994831, 57.713984]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:45",
-   "kind": "point",
+   "id": "pt45",
+   "type": "point",
    "name": "Redbergsvägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.994845,
-     57.714093
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.994845, 57.714093]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:46",
-   "kind": "point",
+   "id": "pt46",
+   "type": "point",
    "name": "Ringömotet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.983841,
-     57.723791
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.983841, 57.723791]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:47",
-   "kind": "point",
+   "id": "pt47",
+   "type": "point",
    "name": "Ringömotet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.984041,
-     57.723888
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.984041, 57.723888]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:48",
-   "kind": "point",
+   "id": "pt48",
+   "type": "point",
    "name": "Ringömotet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.975423,
-     57.725797
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.975423, 57.725797]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:49",
-   "kind": "point",
+   "id": "pt49",
+   "type": "point",
    "name": "Ringömotet",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.976992,
-     57.726217
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.976992, 57.726217]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:50",
-   "kind": "point",
+   "id": "pt50",
+   "type": "point",
    "name": "Salsmästaregatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.984639,
-     57.724022
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.984639, 57.724022]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:51",
-   "kind": "point",
+   "id": "pt51",
+   "type": "point",
    "name": "Sankt Sigfridsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.00497,
-     57.689181
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.00497, 57.689181]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:52",
-   "kind": "point",
+   "id": "pt52",
+   "type": "point",
    "name": "Sankt Sigfridsgatan",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.004934,
-     57.689507
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [12.004934, 57.689507]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:53",
-   "kind": "point",
+   "id": "pt53",
+   "type": "point",
    "name": "Stigbergsliden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.93684,
-     57.699445
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.93684, 57.699445]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:54",
-   "kind": "point",
+   "id": "pt54",
+   "type": "point",
    "name": "Stigbergsliden",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.936291,
-     57.699516
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.936291, 57.699516]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:55",
-   "kind": "point",
+   "id": "pt55",
+   "type": "point",
    "name": "Tuvevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.941296,
-     57.738903
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.941296, 57.738903]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:56",
-   "kind": "point",
+   "id": "pt56",
+   "type": "point",
    "name": "Tuvevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.941515,
-     57.738921
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.941515, 57.738921]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:57",
-   "kind": "point",
+   "id": "pt57",
+   "type": "point",
    "name": "Willinsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.997049,
-     57.709221
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.997049, 57.709221]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:58",
-   "kind": "point",
+   "id": "pt58",
+   "type": "point",
    "name": "Willinsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.997029,
-     57.709296
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.997029, 57.709296]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:59",
-   "kind": "point",
+   "id": "pt59",
+   "type": "point",
    "name": "Älvsborgsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.899047,
-     57.694811
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.899047, 57.694811]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:60",
-   "kind": "point",
+   "id": "pt60",
+   "type": "point",
    "name": "Älvsborgsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.899224,
-     57.694844
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.899224, 57.694844]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:61",
-   "kind": "point",
+   "id": "pt61",
+   "type": "point",
    "name": "Örgrytevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.997301,
-     57.697713
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.997301, 57.697713]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:62",
-   "kind": "point",
+   "id": "pt62",
+   "type": "point",
    "name": "Örgrytevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.997246,
-     57.697882
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.997246, 57.697882]
+    },
+    "match_m": 30
+   }
   },
   {
-   "id": "pt:63",
-   "kind": "point",
+   "id": "pt63",
+   "type": "point",
    "name": "Örgrytevägen",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     11.997234,
-     57.697915
-    ]
-   },
-   "match_km": 0.03
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [11.997234, 57.697915]
+    },
+    "match_m": 30
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Backavägen",
+   "id": "congestion",
    "type": "point",
    "component": "congestion",
-   "applies_to": [
-    "pt:1"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:2",
-   "name": "Backavägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Bäcktuvevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:4",
-   "name": "Dag Hammarskjöldsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:4"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:5",
-   "name": "Dag Hammarskjöldsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:5"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:6",
-   "name": "Deltavägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:6"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:7",
-   "name": "Doktor Allards gata",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:7"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:8",
-   "name": "E20 Alingsåsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:8"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:9",
-   "name": "E20 Alingsåsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:9"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:10",
-   "name": "E20 Alingsåsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:10"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:11",
-   "name": "E45 Marieholmsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:11"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:12",
-   "name": "E45 Marieholmsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:12"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:13",
-   "name": "E45 Marieholmsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:13"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:14",
-   "name": "E45 Oscarsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:14"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:15",
-   "name": "E45 Oscarsleden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:15"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:16",
-   "name": "E6/E20 Kungsbackadalen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:16"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:17",
-   "name": "E6/E20 Kungsbackadalen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:17"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:18",
-   "name": "E6/E20 Kungsbackadalen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:18"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:19",
-   "name": "E6/E20 Kungsbackadalen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:19"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:20",
-   "name": "E6/E20 Kungsbackadalen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:20"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:21",
-   "name": "Ehrenströmsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:21"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:22",
-   "name": "Emigrantvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:22"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:23",
-   "name": "Fjällgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:23"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:24",
-   "name": "Fridkullagatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:24"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:25",
-   "name": "Gibraltargatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:25"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:26",
-   "name": "Hjalmar Brantingsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:26"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:27",
-   "name": "Hjalmar Brantingsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:27"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:28",
-   "name": "Karlavagnsgatan västra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:28"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:29",
-   "name": "Karlavagnsgatan västra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:29"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:30",
-   "name": "Karlavagnsgatan östra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:30"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:31",
-   "name": "Karlavagnsgatan östra",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:31"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:32",
-   "name": "Lindholmsallén",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:32"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:33",
-   "name": "Lindholmsallén",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:33"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:34",
-   "name": "Margretebergsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:34"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:35",
-   "name": "Marieholmsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:35"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:36",
-   "name": "Minelundsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:36"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:37",
-   "name": "Mölndalsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:37"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:38",
-   "name": "Mölndalsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:38"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:39",
-   "name": "Olskroksmotet avfart E20",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:39"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:40",
-   "name": "Olskroksmotet avfart E6",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:40"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:41",
-   "name": "Partihandelsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:41"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:42",
-   "name": "Polstjärnegatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:42"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:43",
-   "name": "Redbergsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:43"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:44",
-   "name": "Redbergsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:44"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:45",
-   "name": "Redbergsvägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:45"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:46",
-   "name": "Ringömotet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:46"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:47",
-   "name": "Ringömotet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:47"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:48",
-   "name": "Ringömotet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:48"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:49",
-   "name": "Ringömotet",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:49"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:50",
-   "name": "Salsmästaregatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:50"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:51",
-   "name": "Sankt Sigfridsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:51"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:52",
-   "name": "Sankt Sigfridsgatan",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:52"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:53",
-   "name": "Stigbergsliden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:53"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:54",
-   "name": "Stigbergsliden",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:54"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:55",
-   "name": "Tuvevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:55"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:56",
-   "name": "Tuvevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:56"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:57",
-   "name": "Willinsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:57"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:58",
-   "name": "Willinsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:58"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:59",
-   "name": "Älvsborgsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:59"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:60",
-   "name": "Älvsborgsbron",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:60"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:61",
-   "name": "Örgrytevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:61"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:62",
-   "name": "Örgrytevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:62"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
-  },
-  {
-   "id": "point:63",
-   "name": "Örgrytevägen",
-   "type": "point",
-   "component": "congestion",
-   "applies_to": [
-    "pt:63"
-   ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "any": 0
-   }
+   "unit": "passage",
+   "unmatched": "free",
+   "columns": ["object", "time_class", "amount"],
+   "rows": [
+    ["pt1", "goteborg-0600", "9"],
+    ["pt1", "goteborg-0630", "16"],
+    ["pt1", "goteborg-0700", "22"],
+    ["pt1", "goteborg-0800", "16"],
+    ["pt1", "goteborg-0830", "9"],
+    ["pt1", "goteborg-1500", "16"],
+    ["pt1", "goteborg-1530", "22"],
+    ["pt1", "goteborg-1700", "16"],
+    ["pt1", "goteborg-1800", "9"],
+    ["pt2", "goteborg-0600", "9"],
+    ["pt2", "goteborg-0630", "16"],
+    ["pt2", "goteborg-0700", "22"],
+    ["pt2", "goteborg-0800", "16"],
+    ["pt2", "goteborg-0830", "9"],
+    ["pt2", "goteborg-1500", "16"],
+    ["pt2", "goteborg-1530", "22"],
+    ["pt2", "goteborg-1700", "16"],
+    ["pt2", "goteborg-1800", "9"],
+    ["pt3", "goteborg-0600", "9"],
+    ["pt3", "goteborg-0630", "16"],
+    ["pt3", "goteborg-0700", "22"],
+    ["pt3", "goteborg-0800", "16"],
+    ["pt3", "goteborg-0830", "9"],
+    ["pt3", "goteborg-1500", "16"],
+    ["pt3", "goteborg-1530", "22"],
+    ["pt3", "goteborg-1700", "16"],
+    ["pt3", "goteborg-1800", "9"],
+    ["pt4", "goteborg-0600", "9"],
+    ["pt4", "goteborg-0630", "16"],
+    ["pt4", "goteborg-0700", "22"],
+    ["pt4", "goteborg-0800", "16"],
+    ["pt4", "goteborg-0830", "9"],
+    ["pt4", "goteborg-1500", "16"],
+    ["pt4", "goteborg-1530", "22"],
+    ["pt4", "goteborg-1700", "16"],
+    ["pt4", "goteborg-1800", "9"],
+    ["pt5", "goteborg-0600", "9"],
+    ["pt5", "goteborg-0630", "16"],
+    ["pt5", "goteborg-0700", "22"],
+    ["pt5", "goteborg-0800", "16"],
+    ["pt5", "goteborg-0830", "9"],
+    ["pt5", "goteborg-1500", "16"],
+    ["pt5", "goteborg-1530", "22"],
+    ["pt5", "goteborg-1700", "16"],
+    ["pt5", "goteborg-1800", "9"],
+    ["pt6", "goteborg-0600", "9"],
+    ["pt6", "goteborg-0630", "16"],
+    ["pt6", "goteborg-0700", "22"],
+    ["pt6", "goteborg-0800", "16"],
+    ["pt6", "goteborg-0830", "9"],
+    ["pt6", "goteborg-1500", "16"],
+    ["pt6", "goteborg-1530", "22"],
+    ["pt6", "goteborg-1700", "16"],
+    ["pt6", "goteborg-1800", "9"],
+    ["pt7", "goteborg-0600", "9"],
+    ["pt7", "goteborg-0630", "16"],
+    ["pt7", "goteborg-0700", "22"],
+    ["pt7", "goteborg-0800", "16"],
+    ["pt7", "goteborg-0830", "9"],
+    ["pt7", "goteborg-1500", "16"],
+    ["pt7", "goteborg-1530", "22"],
+    ["pt7", "goteborg-1700", "16"],
+    ["pt7", "goteborg-1800", "9"],
+    ["pt8", "goteborg-0600", "9"],
+    ["pt8", "goteborg-0630", "16"],
+    ["pt8", "goteborg-0700", "22"],
+    ["pt8", "goteborg-0800", "16"],
+    ["pt8", "goteborg-0830", "9"],
+    ["pt8", "goteborg-1500", "16"],
+    ["pt8", "goteborg-1530", "22"],
+    ["pt8", "goteborg-1700", "16"],
+    ["pt8", "goteborg-1800", "9"],
+    ["pt9", "goteborg-0600", "9"],
+    ["pt9", "goteborg-0630", "16"],
+    ["pt9", "goteborg-0700", "22"],
+    ["pt9", "goteborg-0800", "16"],
+    ["pt9", "goteborg-0830", "9"],
+    ["pt9", "goteborg-1500", "16"],
+    ["pt9", "goteborg-1530", "22"],
+    ["pt9", "goteborg-1700", "16"],
+    ["pt9", "goteborg-1800", "9"],
+    ["pt10", "goteborg-0600", "9"],
+    ["pt10", "goteborg-0630", "16"],
+    ["pt10", "goteborg-0700", "22"],
+    ["pt10", "goteborg-0800", "16"],
+    ["pt10", "goteborg-0830", "9"],
+    ["pt10", "goteborg-1500", "16"],
+    ["pt10", "goteborg-1530", "22"],
+    ["pt10", "goteborg-1700", "16"],
+    ["pt10", "goteborg-1800", "9"],
+    ["pt11", "goteborg-0600", "9"],
+    ["pt11", "goteborg-0630", "16"],
+    ["pt11", "goteborg-0700", "22"],
+    ["pt11", "goteborg-0800", "16"],
+    ["pt11", "goteborg-0830", "9"],
+    ["pt11", "goteborg-1500", "16"],
+    ["pt11", "goteborg-1530", "22"],
+    ["pt11", "goteborg-1700", "16"],
+    ["pt11", "goteborg-1800", "9"],
+    ["pt12", "goteborg-0600", "9"],
+    ["pt12", "goteborg-0630", "16"],
+    ["pt12", "goteborg-0700", "22"],
+    ["pt12", "goteborg-0800", "16"],
+    ["pt12", "goteborg-0830", "9"],
+    ["pt12", "goteborg-1500", "16"],
+    ["pt12", "goteborg-1530", "22"],
+    ["pt12", "goteborg-1700", "16"],
+    ["pt12", "goteborg-1800", "9"],
+    ["pt13", "goteborg-0600", "9"],
+    ["pt13", "goteborg-0630", "16"],
+    ["pt13", "goteborg-0700", "22"],
+    ["pt13", "goteborg-0800", "16"],
+    ["pt13", "goteborg-0830", "9"],
+    ["pt13", "goteborg-1500", "16"],
+    ["pt13", "goteborg-1530", "22"],
+    ["pt13", "goteborg-1700", "16"],
+    ["pt13", "goteborg-1800", "9"],
+    ["pt14", "goteborg-0600", "9"],
+    ["pt14", "goteborg-0630", "16"],
+    ["pt14", "goteborg-0700", "22"],
+    ["pt14", "goteborg-0800", "16"],
+    ["pt14", "goteborg-0830", "9"],
+    ["pt14", "goteborg-1500", "16"],
+    ["pt14", "goteborg-1530", "22"],
+    ["pt14", "goteborg-1700", "16"],
+    ["pt14", "goteborg-1800", "9"],
+    ["pt15", "goteborg-0600", "9"],
+    ["pt15", "goteborg-0630", "16"],
+    ["pt15", "goteborg-0700", "22"],
+    ["pt15", "goteborg-0800", "16"],
+    ["pt15", "goteborg-0830", "9"],
+    ["pt15", "goteborg-1500", "16"],
+    ["pt15", "goteborg-1530", "22"],
+    ["pt15", "goteborg-1700", "16"],
+    ["pt15", "goteborg-1800", "9"],
+    ["pt16", "goteborg-0600", "9"],
+    ["pt16", "goteborg-0630", "16"],
+    ["pt16", "goteborg-0700", "22"],
+    ["pt16", "goteborg-0800", "16"],
+    ["pt16", "goteborg-0830", "9"],
+    ["pt16", "goteborg-1500", "16"],
+    ["pt16", "goteborg-1530", "22"],
+    ["pt16", "goteborg-1700", "16"],
+    ["pt16", "goteborg-1800", "9"],
+    ["pt17", "goteborg-0600", "9"],
+    ["pt17", "goteborg-0630", "16"],
+    ["pt17", "goteborg-0700", "22"],
+    ["pt17", "goteborg-0800", "16"],
+    ["pt17", "goteborg-0830", "9"],
+    ["pt17", "goteborg-1500", "16"],
+    ["pt17", "goteborg-1530", "22"],
+    ["pt17", "goteborg-1700", "16"],
+    ["pt17", "goteborg-1800", "9"],
+    ["pt18", "goteborg-0600", "9"],
+    ["pt18", "goteborg-0630", "16"],
+    ["pt18", "goteborg-0700", "22"],
+    ["pt18", "goteborg-0800", "16"],
+    ["pt18", "goteborg-0830", "9"],
+    ["pt18", "goteborg-1500", "16"],
+    ["pt18", "goteborg-1530", "22"],
+    ["pt18", "goteborg-1700", "16"],
+    ["pt18", "goteborg-1800", "9"],
+    ["pt19", "goteborg-0600", "9"],
+    ["pt19", "goteborg-0630", "16"],
+    ["pt19", "goteborg-0700", "22"],
+    ["pt19", "goteborg-0800", "16"],
+    ["pt19", "goteborg-0830", "9"],
+    ["pt19", "goteborg-1500", "16"],
+    ["pt19", "goteborg-1530", "22"],
+    ["pt19", "goteborg-1700", "16"],
+    ["pt19", "goteborg-1800", "9"],
+    ["pt20", "goteborg-0600", "9"],
+    ["pt20", "goteborg-0630", "16"],
+    ["pt20", "goteborg-0700", "22"],
+    ["pt20", "goteborg-0800", "16"],
+    ["pt20", "goteborg-0830", "9"],
+    ["pt20", "goteborg-1500", "16"],
+    ["pt20", "goteborg-1530", "22"],
+    ["pt20", "goteborg-1700", "16"],
+    ["pt20", "goteborg-1800", "9"],
+    ["pt21", "goteborg-0600", "9"],
+    ["pt21", "goteborg-0630", "16"],
+    ["pt21", "goteborg-0700", "22"],
+    ["pt21", "goteborg-0800", "16"],
+    ["pt21", "goteborg-0830", "9"],
+    ["pt21", "goteborg-1500", "16"],
+    ["pt21", "goteborg-1530", "22"],
+    ["pt21", "goteborg-1700", "16"],
+    ["pt21", "goteborg-1800", "9"],
+    ["pt22", "goteborg-0600", "9"],
+    ["pt22", "goteborg-0630", "16"],
+    ["pt22", "goteborg-0700", "22"],
+    ["pt22", "goteborg-0800", "16"],
+    ["pt22", "goteborg-0830", "9"],
+    ["pt22", "goteborg-1500", "16"],
+    ["pt22", "goteborg-1530", "22"],
+    ["pt22", "goteborg-1700", "16"],
+    ["pt22", "goteborg-1800", "9"],
+    ["pt23", "goteborg-0600", "9"],
+    ["pt23", "goteborg-0630", "16"],
+    ["pt23", "goteborg-0700", "22"],
+    ["pt23", "goteborg-0800", "16"],
+    ["pt23", "goteborg-0830", "9"],
+    ["pt23", "goteborg-1500", "16"],
+    ["pt23", "goteborg-1530", "22"],
+    ["pt23", "goteborg-1700", "16"],
+    ["pt23", "goteborg-1800", "9"],
+    ["pt24", "goteborg-0600", "9"],
+    ["pt24", "goteborg-0630", "16"],
+    ["pt24", "goteborg-0700", "22"],
+    ["pt24", "goteborg-0800", "16"],
+    ["pt24", "goteborg-0830", "9"],
+    ["pt24", "goteborg-1500", "16"],
+    ["pt24", "goteborg-1530", "22"],
+    ["pt24", "goteborg-1700", "16"],
+    ["pt24", "goteborg-1800", "9"],
+    ["pt25", "goteborg-0600", "9"],
+    ["pt25", "goteborg-0630", "16"],
+    ["pt25", "goteborg-0700", "22"],
+    ["pt25", "goteborg-0800", "16"],
+    ["pt25", "goteborg-0830", "9"],
+    ["pt25", "goteborg-1500", "16"],
+    ["pt25", "goteborg-1530", "22"],
+    ["pt25", "goteborg-1700", "16"],
+    ["pt25", "goteborg-1800", "9"],
+    ["pt26", "goteborg-0600", "9"],
+    ["pt26", "goteborg-0630", "16"],
+    ["pt26", "goteborg-0700", "22"],
+    ["pt26", "goteborg-0800", "16"],
+    ["pt26", "goteborg-0830", "9"],
+    ["pt26", "goteborg-1500", "16"],
+    ["pt26", "goteborg-1530", "22"],
+    ["pt26", "goteborg-1700", "16"],
+    ["pt26", "goteborg-1800", "9"],
+    ["pt27", "goteborg-0600", "9"],
+    ["pt27", "goteborg-0630", "16"],
+    ["pt27", "goteborg-0700", "22"],
+    ["pt27", "goteborg-0800", "16"],
+    ["pt27", "goteborg-0830", "9"],
+    ["pt27", "goteborg-1500", "16"],
+    ["pt27", "goteborg-1530", "22"],
+    ["pt27", "goteborg-1700", "16"],
+    ["pt27", "goteborg-1800", "9"],
+    ["pt28", "goteborg-0600", "9"],
+    ["pt28", "goteborg-0630", "16"],
+    ["pt28", "goteborg-0700", "22"],
+    ["pt28", "goteborg-0800", "16"],
+    ["pt28", "goteborg-0830", "9"],
+    ["pt28", "goteborg-1500", "16"],
+    ["pt28", "goteborg-1530", "22"],
+    ["pt28", "goteborg-1700", "16"],
+    ["pt28", "goteborg-1800", "9"],
+    ["pt29", "goteborg-0600", "9"],
+    ["pt29", "goteborg-0630", "16"],
+    ["pt29", "goteborg-0700", "22"],
+    ["pt29", "goteborg-0800", "16"],
+    ["pt29", "goteborg-0830", "9"],
+    ["pt29", "goteborg-1500", "16"],
+    ["pt29", "goteborg-1530", "22"],
+    ["pt29", "goteborg-1700", "16"],
+    ["pt29", "goteborg-1800", "9"],
+    ["pt30", "goteborg-0600", "9"],
+    ["pt30", "goteborg-0630", "16"],
+    ["pt30", "goteborg-0700", "22"],
+    ["pt30", "goteborg-0800", "16"],
+    ["pt30", "goteborg-0830", "9"],
+    ["pt30", "goteborg-1500", "16"],
+    ["pt30", "goteborg-1530", "22"],
+    ["pt30", "goteborg-1700", "16"],
+    ["pt30", "goteborg-1800", "9"],
+    ["pt31", "goteborg-0600", "9"],
+    ["pt31", "goteborg-0630", "16"],
+    ["pt31", "goteborg-0700", "22"],
+    ["pt31", "goteborg-0800", "16"],
+    ["pt31", "goteborg-0830", "9"],
+    ["pt31", "goteborg-1500", "16"],
+    ["pt31", "goteborg-1530", "22"],
+    ["pt31", "goteborg-1700", "16"],
+    ["pt31", "goteborg-1800", "9"],
+    ["pt32", "goteborg-0600", "9"],
+    ["pt32", "goteborg-0630", "16"],
+    ["pt32", "goteborg-0700", "22"],
+    ["pt32", "goteborg-0800", "16"],
+    ["pt32", "goteborg-0830", "9"],
+    ["pt32", "goteborg-1500", "16"],
+    ["pt32", "goteborg-1530", "22"],
+    ["pt32", "goteborg-1700", "16"],
+    ["pt32", "goteborg-1800", "9"],
+    ["pt33", "goteborg-0600", "9"],
+    ["pt33", "goteborg-0630", "16"],
+    ["pt33", "goteborg-0700", "22"],
+    ["pt33", "goteborg-0800", "16"],
+    ["pt33", "goteborg-0830", "9"],
+    ["pt33", "goteborg-1500", "16"],
+    ["pt33", "goteborg-1530", "22"],
+    ["pt33", "goteborg-1700", "16"],
+    ["pt33", "goteborg-1800", "9"],
+    ["pt34", "goteborg-0600", "9"],
+    ["pt34", "goteborg-0630", "16"],
+    ["pt34", "goteborg-0700", "22"],
+    ["pt34", "goteborg-0800", "16"],
+    ["pt34", "goteborg-0830", "9"],
+    ["pt34", "goteborg-1500", "16"],
+    ["pt34", "goteborg-1530", "22"],
+    ["pt34", "goteborg-1700", "16"],
+    ["pt34", "goteborg-1800", "9"],
+    ["pt35", "goteborg-0600", "9"],
+    ["pt35", "goteborg-0630", "16"],
+    ["pt35", "goteborg-0700", "22"],
+    ["pt35", "goteborg-0800", "16"],
+    ["pt35", "goteborg-0830", "9"],
+    ["pt35", "goteborg-1500", "16"],
+    ["pt35", "goteborg-1530", "22"],
+    ["pt35", "goteborg-1700", "16"],
+    ["pt35", "goteborg-1800", "9"],
+    ["pt36", "goteborg-0600", "9"],
+    ["pt36", "goteborg-0630", "16"],
+    ["pt36", "goteborg-0700", "22"],
+    ["pt36", "goteborg-0800", "16"],
+    ["pt36", "goteborg-0830", "9"],
+    ["pt36", "goteborg-1500", "16"],
+    ["pt36", "goteborg-1530", "22"],
+    ["pt36", "goteborg-1700", "16"],
+    ["pt36", "goteborg-1800", "9"],
+    ["pt37", "goteborg-0600", "9"],
+    ["pt37", "goteborg-0630", "16"],
+    ["pt37", "goteborg-0700", "22"],
+    ["pt37", "goteborg-0800", "16"],
+    ["pt37", "goteborg-0830", "9"],
+    ["pt37", "goteborg-1500", "16"],
+    ["pt37", "goteborg-1530", "22"],
+    ["pt37", "goteborg-1700", "16"],
+    ["pt37", "goteborg-1800", "9"],
+    ["pt38", "goteborg-0600", "9"],
+    ["pt38", "goteborg-0630", "16"],
+    ["pt38", "goteborg-0700", "22"],
+    ["pt38", "goteborg-0800", "16"],
+    ["pt38", "goteborg-0830", "9"],
+    ["pt38", "goteborg-1500", "16"],
+    ["pt38", "goteborg-1530", "22"],
+    ["pt38", "goteborg-1700", "16"],
+    ["pt38", "goteborg-1800", "9"],
+    ["pt39", "goteborg-0600", "9"],
+    ["pt39", "goteborg-0630", "16"],
+    ["pt39", "goteborg-0700", "22"],
+    ["pt39", "goteborg-0800", "16"],
+    ["pt39", "goteborg-0830", "9"],
+    ["pt39", "goteborg-1500", "16"],
+    ["pt39", "goteborg-1530", "22"],
+    ["pt39", "goteborg-1700", "16"],
+    ["pt39", "goteborg-1800", "9"],
+    ["pt40", "goteborg-0600", "9"],
+    ["pt40", "goteborg-0630", "16"],
+    ["pt40", "goteborg-0700", "22"],
+    ["pt40", "goteborg-0800", "16"],
+    ["pt40", "goteborg-0830", "9"],
+    ["pt40", "goteborg-1500", "16"],
+    ["pt40", "goteborg-1530", "22"],
+    ["pt40", "goteborg-1700", "16"],
+    ["pt40", "goteborg-1800", "9"],
+    ["pt41", "goteborg-0600", "9"],
+    ["pt41", "goteborg-0630", "16"],
+    ["pt41", "goteborg-0700", "22"],
+    ["pt41", "goteborg-0800", "16"],
+    ["pt41", "goteborg-0830", "9"],
+    ["pt41", "goteborg-1500", "16"],
+    ["pt41", "goteborg-1530", "22"],
+    ["pt41", "goteborg-1700", "16"],
+    ["pt41", "goteborg-1800", "9"],
+    ["pt42", "goteborg-0600", "9"],
+    ["pt42", "goteborg-0630", "16"],
+    ["pt42", "goteborg-0700", "22"],
+    ["pt42", "goteborg-0800", "16"],
+    ["pt42", "goteborg-0830", "9"],
+    ["pt42", "goteborg-1500", "16"],
+    ["pt42", "goteborg-1530", "22"],
+    ["pt42", "goteborg-1700", "16"],
+    ["pt42", "goteborg-1800", "9"],
+    ["pt43", "goteborg-0600", "9"],
+    ["pt43", "goteborg-0630", "16"],
+    ["pt43", "goteborg-0700", "22"],
+    ["pt43", "goteborg-0800", "16"],
+    ["pt43", "goteborg-0830", "9"],
+    ["pt43", "goteborg-1500", "16"],
+    ["pt43", "goteborg-1530", "22"],
+    ["pt43", "goteborg-1700", "16"],
+    ["pt43", "goteborg-1800", "9"],
+    ["pt44", "goteborg-0600", "9"],
+    ["pt44", "goteborg-0630", "16"],
+    ["pt44", "goteborg-0700", "22"],
+    ["pt44", "goteborg-0800", "16"],
+    ["pt44", "goteborg-0830", "9"],
+    ["pt44", "goteborg-1500", "16"],
+    ["pt44", "goteborg-1530", "22"],
+    ["pt44", "goteborg-1700", "16"],
+    ["pt44", "goteborg-1800", "9"],
+    ["pt45", "goteborg-0600", "9"],
+    ["pt45", "goteborg-0630", "16"],
+    ["pt45", "goteborg-0700", "22"],
+    ["pt45", "goteborg-0800", "16"],
+    ["pt45", "goteborg-0830", "9"],
+    ["pt45", "goteborg-1500", "16"],
+    ["pt45", "goteborg-1530", "22"],
+    ["pt45", "goteborg-1700", "16"],
+    ["pt45", "goteborg-1800", "9"],
+    ["pt46", "goteborg-0600", "9"],
+    ["pt46", "goteborg-0630", "16"],
+    ["pt46", "goteborg-0700", "22"],
+    ["pt46", "goteborg-0800", "16"],
+    ["pt46", "goteborg-0830", "9"],
+    ["pt46", "goteborg-1500", "16"],
+    ["pt46", "goteborg-1530", "22"],
+    ["pt46", "goteborg-1700", "16"],
+    ["pt46", "goteborg-1800", "9"],
+    ["pt47", "goteborg-0600", "9"],
+    ["pt47", "goteborg-0630", "16"],
+    ["pt47", "goteborg-0700", "22"],
+    ["pt47", "goteborg-0800", "16"],
+    ["pt47", "goteborg-0830", "9"],
+    ["pt47", "goteborg-1500", "16"],
+    ["pt47", "goteborg-1530", "22"],
+    ["pt47", "goteborg-1700", "16"],
+    ["pt47", "goteborg-1800", "9"],
+    ["pt48", "goteborg-0600", "9"],
+    ["pt48", "goteborg-0630", "16"],
+    ["pt48", "goteborg-0700", "22"],
+    ["pt48", "goteborg-0800", "16"],
+    ["pt48", "goteborg-0830", "9"],
+    ["pt48", "goteborg-1500", "16"],
+    ["pt48", "goteborg-1530", "22"],
+    ["pt48", "goteborg-1700", "16"],
+    ["pt48", "goteborg-1800", "9"],
+    ["pt49", "goteborg-0600", "9"],
+    ["pt49", "goteborg-0630", "16"],
+    ["pt49", "goteborg-0700", "22"],
+    ["pt49", "goteborg-0800", "16"],
+    ["pt49", "goteborg-0830", "9"],
+    ["pt49", "goteborg-1500", "16"],
+    ["pt49", "goteborg-1530", "22"],
+    ["pt49", "goteborg-1700", "16"],
+    ["pt49", "goteborg-1800", "9"],
+    ["pt50", "goteborg-0600", "9"],
+    ["pt50", "goteborg-0630", "16"],
+    ["pt50", "goteborg-0700", "22"],
+    ["pt50", "goteborg-0800", "16"],
+    ["pt50", "goteborg-0830", "9"],
+    ["pt50", "goteborg-1500", "16"],
+    ["pt50", "goteborg-1530", "22"],
+    ["pt50", "goteborg-1700", "16"],
+    ["pt50", "goteborg-1800", "9"],
+    ["pt51", "goteborg-0600", "9"],
+    ["pt51", "goteborg-0630", "16"],
+    ["pt51", "goteborg-0700", "22"],
+    ["pt51", "goteborg-0800", "16"],
+    ["pt51", "goteborg-0830", "9"],
+    ["pt51", "goteborg-1500", "16"],
+    ["pt51", "goteborg-1530", "22"],
+    ["pt51", "goteborg-1700", "16"],
+    ["pt51", "goteborg-1800", "9"],
+    ["pt52", "goteborg-0600", "9"],
+    ["pt52", "goteborg-0630", "16"],
+    ["pt52", "goteborg-0700", "22"],
+    ["pt52", "goteborg-0800", "16"],
+    ["pt52", "goteborg-0830", "9"],
+    ["pt52", "goteborg-1500", "16"],
+    ["pt52", "goteborg-1530", "22"],
+    ["pt52", "goteborg-1700", "16"],
+    ["pt52", "goteborg-1800", "9"],
+    ["pt53", "goteborg-0600", "9"],
+    ["pt53", "goteborg-0630", "16"],
+    ["pt53", "goteborg-0700", "22"],
+    ["pt53", "goteborg-0800", "16"],
+    ["pt53", "goteborg-0830", "9"],
+    ["pt53", "goteborg-1500", "16"],
+    ["pt53", "goteborg-1530", "22"],
+    ["pt53", "goteborg-1700", "16"],
+    ["pt53", "goteborg-1800", "9"],
+    ["pt54", "goteborg-0600", "9"],
+    ["pt54", "goteborg-0630", "16"],
+    ["pt54", "goteborg-0700", "22"],
+    ["pt54", "goteborg-0800", "16"],
+    ["pt54", "goteborg-0830", "9"],
+    ["pt54", "goteborg-1500", "16"],
+    ["pt54", "goteborg-1530", "22"],
+    ["pt54", "goteborg-1700", "16"],
+    ["pt54", "goteborg-1800", "9"],
+    ["pt55", "goteborg-0600", "9"],
+    ["pt55", "goteborg-0630", "16"],
+    ["pt55", "goteborg-0700", "22"],
+    ["pt55", "goteborg-0800", "16"],
+    ["pt55", "goteborg-0830", "9"],
+    ["pt55", "goteborg-1500", "16"],
+    ["pt55", "goteborg-1530", "22"],
+    ["pt55", "goteborg-1700", "16"],
+    ["pt55", "goteborg-1800", "9"],
+    ["pt56", "goteborg-0600", "9"],
+    ["pt56", "goteborg-0630", "16"],
+    ["pt56", "goteborg-0700", "22"],
+    ["pt56", "goteborg-0800", "16"],
+    ["pt56", "goteborg-0830", "9"],
+    ["pt56", "goteborg-1500", "16"],
+    ["pt56", "goteborg-1530", "22"],
+    ["pt56", "goteborg-1700", "16"],
+    ["pt56", "goteborg-1800", "9"],
+    ["pt57", "goteborg-0600", "9"],
+    ["pt57", "goteborg-0630", "16"],
+    ["pt57", "goteborg-0700", "22"],
+    ["pt57", "goteborg-0800", "16"],
+    ["pt57", "goteborg-0830", "9"],
+    ["pt57", "goteborg-1500", "16"],
+    ["pt57", "goteborg-1530", "22"],
+    ["pt57", "goteborg-1700", "16"],
+    ["pt57", "goteborg-1800", "9"],
+    ["pt58", "goteborg-0600", "9"],
+    ["pt58", "goteborg-0630", "16"],
+    ["pt58", "goteborg-0700", "22"],
+    ["pt58", "goteborg-0800", "16"],
+    ["pt58", "goteborg-0830", "9"],
+    ["pt58", "goteborg-1500", "16"],
+    ["pt58", "goteborg-1530", "22"],
+    ["pt58", "goteborg-1700", "16"],
+    ["pt58", "goteborg-1800", "9"],
+    ["pt59", "goteborg-0600", "9"],
+    ["pt59", "goteborg-0630", "16"],
+    ["pt59", "goteborg-0700", "22"],
+    ["pt59", "goteborg-0800", "16"],
+    ["pt59", "goteborg-0830", "9"],
+    ["pt59", "goteborg-1500", "16"],
+    ["pt59", "goteborg-1530", "22"],
+    ["pt59", "goteborg-1700", "16"],
+    ["pt59", "goteborg-1800", "9"],
+    ["pt60", "goteborg-0600", "9"],
+    ["pt60", "goteborg-0630", "16"],
+    ["pt60", "goteborg-0700", "22"],
+    ["pt60", "goteborg-0800", "16"],
+    ["pt60", "goteborg-0830", "9"],
+    ["pt60", "goteborg-1500", "16"],
+    ["pt60", "goteborg-1530", "22"],
+    ["pt60", "goteborg-1700", "16"],
+    ["pt60", "goteborg-1800", "9"],
+    ["pt61", "goteborg-0600", "9"],
+    ["pt61", "goteborg-0630", "16"],
+    ["pt61", "goteborg-0700", "22"],
+    ["pt61", "goteborg-0800", "16"],
+    ["pt61", "goteborg-0830", "9"],
+    ["pt61", "goteborg-1500", "16"],
+    ["pt61", "goteborg-1530", "22"],
+    ["pt61", "goteborg-1700", "16"],
+    ["pt61", "goteborg-1800", "9"],
+    ["pt62", "goteborg-0600", "9"],
+    ["pt62", "goteborg-0630", "16"],
+    ["pt62", "goteborg-0700", "22"],
+    ["pt62", "goteborg-0800", "16"],
+    ["pt62", "goteborg-0830", "9"],
+    ["pt62", "goteborg-1500", "16"],
+    ["pt62", "goteborg-1530", "22"],
+    ["pt62", "goteborg-1700", "16"],
+    ["pt62", "goteborg-1800", "9"],
+    ["pt63", "goteborg-0600", "9"],
+    ["pt63", "goteborg-0630", "16"],
+    ["pt63", "goteborg-0700", "22"],
+    ["pt63", "goteborg-0800", "16"],
+    ["pt63", "goteborg-0830", "9"],
+    ["pt63", "goteborg-1500", "16"],
+    ["pt63", "goteborg-1530", "22"],
+    ["pt63", "goteborg-1700", "16"],
+    ["pt63", "goteborg-1800", "9"]
+   ],
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
- "coverage": [
+ "rules": [
   {
-   "scope": "dataset",
-   "status": "partial",
-   "reason": "the congestion tax's taxed days (high season, July, holiday eves) are kept as an extension"
-  }
- ],
- "modifiers": [
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:2"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:3"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:4"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:5"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:6"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:7"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:8"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:9"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:10"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:11"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:12"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:13"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:14"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:15"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:16"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:17"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:18"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:19"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:20"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:21"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:22"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:23"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:24"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:25"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:26"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:27"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:28"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:29"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:30"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:31"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:32"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:33"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:34"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:35"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:36"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:37"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:38"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:39"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:40"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:41"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:42"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:43"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:44"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:45"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:46"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:47"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:48"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:49"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:50"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:51"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:52"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:53"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:54"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:55"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:56"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:57"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:58"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:59"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:60"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:61"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:62"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
-   "kind": "time_schedule",
-   "applies_to": [
-    "point:63"
-   ],
-   "params": {
-    "schedule": [
-     {
-      "from": "06:00",
-      "to": "06:29",
-      "amount": 9
-     },
-     {
-      "from": "06:30",
-      "to": "06:59",
-      "amount": 16
-     },
-     {
-      "from": "07:00",
-      "to": "07:59",
-      "amount": 22
-     },
-     {
-      "from": "08:00",
-      "to": "08:29",
-      "amount": 16
-     },
-     {
-      "from": "08:30",
-      "to": "14:59",
-      "amount": 9
-     },
-     {
-      "from": "15:00",
-      "to": "15:29",
-      "amount": 16
-     },
-     {
-      "from": "15:30",
-      "to": "16:59",
-      "amount": 22
-     },
-     {
-      "from": "17:00",
-      "to": "17:59",
-      "amount": 16
-     },
-     {
-      "from": "18:00",
-      "to": "18:29",
-      "amount": 9
-     }
-    ],
-    "name": "goteborg"
-   }
-  },
-  {
+   "id": "r1",
    "kind": "cap",
-   "applies_to": [
-    "point:1",
-    "point:2",
-    "point:3",
-    "point:4",
-    "point:5",
-    "point:6",
-    "point:7",
-    "point:8",
-    "point:9",
-    "point:10",
-    "point:11",
-    "point:12",
-    "point:13",
-    "point:14",
-    "point:15",
-    "point:16",
-    "point:17",
-    "point:18",
-    "point:19",
-    "point:20",
-    "point:21",
-    "point:22",
-    "point:23",
-    "point:24",
-    "point:25",
-    "point:26",
-    "point:27",
-    "point:28",
-    "point:29",
-    "point:30",
-    "point:31",
-    "point:32",
-    "point:33",
-    "point:34",
-    "point:35",
-    "point:36",
-    "point:37",
-    "point:38",
-    "point:39",
-    "point:40",
-    "point:41",
-    "point:42",
-    "point:43",
-    "point:44",
-    "point:45",
-    "point:46",
-    "point:47",
-    "point:48",
-    "point:49",
-    "point:50",
-    "point:51",
-    "point:52",
-    "point:53",
-    "point:54",
-    "point:55",
-    "point:56",
-    "point:57",
-    "point:58",
-    "point:59",
-    "point:60",
-    "point:61",
-    "point:62",
-    "point:63"
-   ],
+   "applies_to": ["congestion"],
    "params": {
     "per": "day",
-    "amount": 60
+    "amount": "60"
    }
   },
   {
-   "kind": "multi_pass",
-   "applies_to": [
-    "point:1",
-    "point:2",
-    "point:3",
-    "point:4",
-    "point:5",
-    "point:6",
-    "point:7",
-    "point:8",
-    "point:9",
-    "point:10",
-    "point:11",
-    "point:12",
-    "point:13",
-    "point:14",
-    "point:15",
-    "point:16",
-    "point:17",
-    "point:18",
-    "point:19",
-    "point:20",
-    "point:21",
-    "point:22",
-    "point:23",
-    "point:24",
-    "point:25",
-    "point:26",
-    "point:27",
-    "point:28",
-    "point:29",
-    "point:30",
-    "point:31",
-    "point:32",
-    "point:33",
-    "point:34",
-    "point:35",
-    "point:36",
-    "point:37",
-    "point:38",
-    "point:39",
-    "point:40",
-    "point:41",
-    "point:42",
-    "point:43",
-    "point:44",
-    "point:45",
-    "point:46",
-    "point:47",
-    "point:48",
-    "point:49",
-    "point:50",
-    "point:51",
-    "point:52",
-    "point:53",
-    "point:54",
-    "point:55",
-    "point:56",
-    "point:57",
-    "point:58",
-    "point:59",
-    "point:60",
-    "point:61",
-    "point:62",
-    "point:63"
-   ],
+   "id": "r2",
+   "kind": "passage_group",
+   "applies_to": ["congestion"],
    "params": {
+    "objects": [
+     "pt1",
+     "pt2",
+     "pt3",
+     "pt4",
+     "pt5",
+     "pt6",
+     "pt7",
+     "pt8",
+     "pt9",
+     "pt10",
+     "pt11",
+     "pt12",
+     "pt13",
+     "pt14",
+     "pt15",
+     "pt16",
+     "pt17",
+     "pt18",
+     "pt19",
+     "pt20",
+     "pt21",
+     "pt22",
+     "pt23",
+     "pt24",
+     "pt25",
+     "pt26",
+     "pt27",
+     "pt28",
+     "pt29",
+     "pt30",
+     "pt31",
+     "pt32",
+     "pt33",
+     "pt34",
+     "pt35",
+     "pt36",
+     "pt37",
+     "pt38",
+     "pt39",
+     "pt40",
+     "pt41",
+     "pt42",
+     "pt43",
+     "pt44",
+     "pt45",
+     "pt46",
+     "pt47",
+     "pt48",
+     "pt49",
+     "pt50",
+     "pt51",
+     "pt52",
+     "pt53",
+     "pt54",
+     "pt55",
+     "pt56",
+     "pt57",
+     "pt58",
+     "pt59",
+     "pt60",
+     "pt61",
+     "pt62",
+     "pt63"
+    ],
     "minutes": 60,
     "pays": "highest"
    }
   }
  ],
+ "coverage": [
+  {
+   "scope": "dataset",
+   "status": "partial",
+   "reason": "the congestion tax's untaxed days (public holidays, their eves, July) and high-season amounts are kept as an extension; its time classes cover Monday to Friday"
+  }
+ ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "congestion": {
     "july": "free"
    },

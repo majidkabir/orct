@@ -1,18 +1,27 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "se-bridges-2024-05-01",
-  "scheme": "se-bridges",
-  "country": "SE",
-  "currency": "SEK",
+  "id": "carbon-cost/se-bridges/2024-05-01",
+  "scheme": {
+   "id": "se-bridges",
+   "name": "Swedish bridge infrastructure charges (broavgift)",
+   "country": "SE"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2024-05-01",
-  "name": "Swedish bridge infrastructure charges (broavgift)",
+  "currency": "SEK",
+  "timezone": "Europe/Stockholm",
+  "license": "MIT",
   "method": "Lag (2024:172) om infrastrukturavgifter på väg; Förordning (2014:1564) 4 §: a charge per passage of the bridges over Motalaviken, Sundsvallsfjärden and Skurusundet, at the amounts Transportstyrelsen publishes (heavy trucks over 3.5 t where they differ). Charged at each bridge's charging station (OpenStreetMap toll gantries), either direction. Swedish and foreign vehicles alike.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/se-bridges-2024-05-01.json"
-  }
+  },
+  "required_features": ["type.point"]
  },
  "sources": [
   {
@@ -36,123 +45,79 @@
    "url": "https://data.riksdagen.se/dokument/sfs-2014-1564.text"
   }
  ],
- "vehicles": {
-  "description": "Trucks over 3.5 t",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
+ "liable_vehicles": {
+  "description": "Trucks over 3.5 t",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
+   }
+  }
+ },
+ "vehicle_class_sets": [
   {
-   "id": "any",
-   "criteria": {}
+   "id": "all",
+   "classes": [
+    {
+     "id": "any",
+     "criteria": {}
+    }
+   ]
   }
  ],
- "network": [
+ "charge_objects": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "Motalabron (road 50), Sundsvallsbron (E4) and Skurubron (road 222)."
-  },
-  {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "pt1",
+   "type": "point",
    "name": "Motalabron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     15.017296,
-     58.539313
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [15.017296, 58.539313]
+    },
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:2",
-   "kind": "point",
+   "id": "pt2",
+   "type": "point",
    "name": "Sundsvallsbron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     17.352235,
-     62.381901
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [17.352235, 62.381901]
+    },
+    "match_m": 150
+   }
   },
   {
-   "id": "pt:3",
-   "kind": "point",
+   "id": "pt3",
+   "type": "point",
    "name": "Skurubron",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.225953,
-     59.31378
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [18.225953, 59.31378]
+    },
+    "match_m": 150
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Motalabron",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
-   ],
-   "sources": [
-    "s1",
-    "s2",
-    "s3",
-    "s4"
-   ],
-   "rates": {
-    "any": 11
-   }
-  },
-  {
-   "id": "point:2",
-   "name": "Sundsvallsbron",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:2"
-   ],
-   "sources": [
-    "s1",
-    "s2",
-    "s3",
-    "s4"
-   ],
-   "rates": {
-    "any": 20
-   }
-  },
-  {
-   "id": "point:3",
-   "name": "Skurubron",
-   "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:3"
-   ],
-   "sources": [
-    "s1",
-    "s2",
-    "s3",
-    "s4"
-   ],
-   "rates": {
-    "any": 4
-   }
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "amount"],
+   "rows": [["pt1", "11"], ["pt2", "20"], ["pt3", "4"]],
+   "sources": ["s1", "s2", "s3", "s4"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
@@ -160,7 +125,7 @@
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-08"
   }

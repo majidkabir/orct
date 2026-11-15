@@ -1,0 +1,1445 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/majidkabir/orct/schema/orct-0.2.schema.json",
+ "title": "ORCT 0.2 dataset",
+ "type": "object",
+ "properties": {
+  "orct": {
+   "const": "0.2"
+  },
+  "dataset": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "minLength": 1,
+     "pattern": "^\\S(.*\\S)?$"
+    },
+    "version": {
+     "type": "string"
+    },
+    "scheme": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string",
+       "minLength": 1,
+       "pattern": "^\\S(.*\\S)?$"
+      },
+      "name": {
+       "type": "string"
+      },
+      "country": {
+       "type": "string",
+       "pattern": "^[A-Z]{2}$"
+      },
+      "region": {
+       "type": "string",
+       "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "name",
+      "country"
+     ]
+    },
+    "toll_charger": {
+     "type": "object",
+     "properties": {
+      "name": {
+       "type": "string"
+      },
+      "country": {
+       "type": "string"
+      },
+      "url": {
+       "type": "string"
+      },
+      "efc_provider": {
+       "type": "object",
+       "properties": {
+        "country_code": {
+         "type": "string"
+        },
+        "issuer_id": {
+         "type": "integer"
+        }
+       },
+       "additionalProperties": false,
+       "required": [
+        "country_code",
+        "issuer_id"
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "name"
+     ]
+    },
+    "publisher": {
+     "type": "object",
+     "properties": {
+      "name": {
+       "type": "string"
+      },
+      "role": {
+       "enum": [
+        "toll_charger",
+        "authority",
+        "third_party"
+       ]
+      },
+      "url": {
+       "type": "string"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "name",
+      "role"
+     ]
+    },
+    "valid_from": {
+     "type": "string",
+     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "valid_to": {
+     "type": "string",
+     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "currency": {
+     "type": "string",
+     "pattern": "^[A-Z]{3}$"
+    },
+    "timezone": {
+     "type": "string",
+     "pattern": "^[A-Za-z_]+(/[A-Za-z_+-]+)+$"
+    },
+    "license": {
+     "type": "string"
+    },
+    "method": {
+     "type": "string"
+    },
+    "names": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string"
+     }
+    },
+    "derived_from": {
+     "type": "object",
+     "properties": {
+      "url": {
+       "type": "string"
+      },
+      "path": {
+       "type": "string"
+      },
+      "commit": {
+       "type": "string"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "url"
+     ]
+    },
+    "required_features": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "enum": [
+       "type.distance",
+       "type.section",
+       "type.od",
+       "type.od.chain",
+       "type.point",
+       "type.area",
+       "type.period",
+       "type.quantity",
+       "time_classes",
+       "calendars",
+       "user_classes",
+       "rounding",
+       "rule.exemption",
+       "rule.included_in",
+       "rule.passage_group",
+       "rule.factor",
+       "rule.discount",
+       "rule.minimum",
+       "rule.cap"
+      ]
+     }
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "scheme",
+    "publisher",
+    "valid_from",
+    "currency",
+    "timezone",
+    "license",
+    "method"
+   ]
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "title": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "legal_act": {
+      "type": "string"
+     },
+     "retrieved": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+     },
+     "locator": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "title",
+     "url"
+    ]
+   }
+  },
+  "tax": {
+   "type": "object",
+   "properties": {
+    "basis": {
+     "enum": [
+      "included",
+      "excluded",
+      "not_applicable",
+      "unknown"
+     ]
+    },
+    "rate": {
+     "type": "string",
+     "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "basis"
+   ]
+  },
+  "liable_vehicles": {
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "criteria": {
+     "$ref": "#/$defs/criteria"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "criteria"
+   ]
+  },
+  "vehicle_class_sets": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "name": {
+      "type": "string"
+     },
+     "classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "object",
+       "properties": {
+        "id": {
+         "type": "string",
+         "minLength": 1,
+         "pattern": "^\\S(.*\\S)?$"
+        },
+        "label": {
+         "type": "string"
+        },
+        "criteria": {
+         "$ref": "#/$defs/criteria"
+        },
+        "fallback": {
+         "type": "string",
+         "minLength": 1,
+         "pattern": "^\\S(.*\\S)?$"
+        }
+       },
+       "additionalProperties": false,
+       "required": [
+        "id",
+        "criteria"
+       ]
+      }
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "classes"
+    ]
+   }
+  },
+  "time_classes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "label": {
+      "type": "string"
+     },
+     "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "object",
+       "properties": {
+        "weekdays": {
+         "type": "array",
+         "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+         }
+        },
+        "months": {
+         "type": "array",
+         "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+         }
+        },
+        "dates": {
+         "type": "array",
+         "items": {
+          "type": "string",
+          "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+         }
+        },
+        "date_ranges": {
+         "type": "array",
+         "items": {
+          "type": "array",
+          "items": {
+           "type": "string",
+           "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+          },
+          "minItems": 2,
+          "maxItems": 2
+         }
+        },
+        "easter": {
+         "type": "array",
+         "items": {
+          "type": "array",
+          "items": {
+           "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+         }
+        },
+        "calendars": {
+         "type": "array",
+         "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\S(.*\\S)?$"
+         }
+        },
+        "exclude": {
+         "type": "object",
+         "properties": {
+          "weekdays": {
+           "type": "array",
+           "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 7
+           }
+          },
+          "months": {
+           "type": "array",
+           "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+           }
+          },
+          "dates": {
+           "type": "array",
+           "items": {
+            "type": "string",
+            "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+           }
+          },
+          "date_ranges": {
+           "type": "array",
+           "items": {
+            "type": "array",
+            "items": {
+             "type": "string",
+             "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+            },
+            "minItems": 2,
+            "maxItems": 2
+           }
+          },
+          "easter": {
+           "type": "array",
+           "items": {
+            "type": "array",
+            "items": {
+             "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+           }
+          },
+          "calendars": {
+           "type": "array",
+           "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S(.*\\S)?$"
+           }
+          }
+         },
+         "additionalProperties": false
+        }
+       },
+       "additionalProperties": false
+      }
+     },
+     "times": {
+      "type": "array",
+      "items": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$|^24:00$"
+       },
+       "minItems": 2,
+       "maxItems": 2
+      }
+     },
+     "defined": {
+      "type": "boolean"
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id"
+    ]
+   }
+  },
+  "calendars": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "name": {
+      "type": "string"
+     },
+     "dates": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      }
+     },
+     "covers_to": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "dates",
+     "covers_to"
+    ]
+   }
+  },
+  "user_classes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "label": {
+      "type": "string"
+     },
+     "payment": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "electronic",
+        "account",
+        "card",
+        "cash"
+       ]
+      }
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id"
+    ]
+   }
+  },
+  "charge_objects": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "type": {
+      "enum": [
+       "network",
+       "section",
+       "station",
+       "point",
+       "area",
+       "jurisdiction"
+      ]
+     },
+     "parent": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "name": {
+      "type": "string"
+     },
+     "names": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "code": {
+      "type": "string"
+     },
+     "operator": {
+      "type": "string"
+     },
+     "road": {
+      "type": "string"
+     },
+     "network": {
+      "type": "object",
+      "properties": {
+       "road_types": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "motorway",
+          "trunk",
+          "other"
+         ]
+        }
+       },
+       "area": {
+        "enum": [
+         "suburban",
+         "interurban"
+        ]
+       },
+       "description": {
+        "type": "string"
+       }
+      },
+      "additionalProperties": false
+     },
+     "from": {
+      "$ref": "#/$defs/place"
+     },
+     "to": {
+      "$ref": "#/$defs/place"
+     },
+     "length_km": {
+      "type": "number"
+     },
+     "location": {
+      "type": "object",
+      "properties": {
+       "geometry": {
+        "$ref": "#/$defs/geometry"
+       },
+       "openlr": {
+        "type": "string"
+       },
+       "osm": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "heading": {
+        "type": "number"
+       },
+       "match_m": {
+        "type": "number"
+       },
+       "headings": {
+        "type": "array",
+        "items": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       },
+       "point_names": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      },
+      "additionalProperties": false
+     },
+     "jurisdiction": {
+      "type": "object",
+      "properties": {
+       "country": {
+        "type": "string"
+       },
+       "region": {
+        "type": "string"
+       }
+      },
+      "additionalProperties": false,
+      "required": [
+       "country"
+      ]
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "type"
+    ]
+   }
+  },
+  "charges": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/charge"
+   }
+  },
+  "rules": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "kind": {
+      "enum": [
+       "exemption",
+       "included_in",
+       "passage_group",
+       "factor",
+       "discount",
+       "minimum",
+       "cap"
+      ]
+     },
+     "applies_to": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 1,
+       "pattern": "^\\S(.*\\S)?$"
+      }
+     },
+     "params": {
+      "type": "object"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "kind",
+     "applies_to",
+     "params"
+    ]
+   }
+  },
+  "coverage": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "properties": {
+     "scope": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     },
+     "status": {
+      "enum": [
+       "complete",
+       "partial",
+       "unpriced"
+      ]
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": false,
+    "required": [
+     "scope",
+     "status"
+    ]
+   }
+  },
+  "extensions": {
+   "type": "object",
+   "propertyNames": {
+    "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)+$"
+   }
+  }
+ },
+ "additionalProperties": false,
+ "required": [
+  "orct",
+  "dataset",
+  "sources",
+  "tax",
+  "liable_vehicles",
+  "vehicle_class_sets",
+  "charge_objects",
+  "charges",
+  "coverage"
+ ],
+ "$defs": {
+  "criteria": {
+   "type": "object",
+   "properties": {
+    "mass_kg": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "train_mass_kg": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "axles": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "train_axles": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "length_m": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "train_length_m": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "height_m": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "first_axle_height_m": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "width_m": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "euro_class": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "enum": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "EEV",
+       "6",
+       "7"
+      ]
+     }
+    },
+    "co2_class": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+     }
+    },
+    "energy": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "enum": [
+       "diesel",
+       "petrol",
+       "lpg",
+       "cng",
+       "lng",
+       "electric",
+       "hydrogen",
+       "hybrid",
+       "other"
+      ]
+     }
+    },
+    "category": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "enum": [
+       "M1",
+       "M2",
+       "M3",
+       "N1",
+       "N2",
+       "N3",
+       "L"
+      ]
+     }
+    },
+    "trailer": {
+     "type": "boolean"
+    }
+   },
+   "additionalProperties": false
+  },
+  "geometry": {
+   "type": "object",
+   "properties": {
+    "type": {
+     "enum": [
+      "Point",
+      "MultiPoint",
+      "LineString",
+      "MultiLineString",
+      "Polygon",
+      "MultiPolygon"
+     ]
+    },
+    "coordinates": {
+     "type": "array"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "type",
+    "coordinates"
+   ]
+  },
+  "place": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "geometry": {
+     "$ref": "#/$defs/geometry"
+    },
+    "heading": {
+     "type": "number"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "geometry"
+   ]
+  },
+  "charge": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "minLength": 1,
+     "pattern": "^\\S(.*\\S)?$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "type": {
+     "enum": [
+      "distance",
+      "section",
+      "od",
+      "point",
+      "area",
+      "period",
+      "quantity"
+     ]
+    },
+    "component": {
+     "enum": [
+      "infrastructure",
+      "air_pollution",
+      "noise",
+      "air_pollution_noise",
+      "co2",
+      "congestion",
+      "markup",
+      "access",
+      "carbon_price",
+      "unspecified",
+      "other"
+     ]
+    },
+    "component_label": {
+     "type": "string"
+    },
+    "unit": {
+     "enum": [
+      "km",
+      "tkm",
+      "use",
+      "trip",
+      "passage",
+      "day",
+      "entry",
+      "product",
+      "t_co2",
+      "litre",
+      "kg",
+      "kwh"
+     ]
+    },
+    "columns": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "object",
+       "entry",
+       "exit",
+       "vehicle_class",
+       "time_class",
+       "user_class",
+       "product",
+       "priority",
+       "amount"
+      ]
+     },
+     "uniqueItems": true,
+     "contains": {
+      "const": "amount"
+     }
+    },
+    "rows": {
+     "type": "array",
+     "items": {
+      "type": "array",
+      "items": {
+       "type": [
+        "string",
+        "integer",
+        "null"
+       ]
+      }
+     }
+    },
+    "objects": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     }
+    },
+    "sources": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     }
+    },
+    "basis": {
+     "enum": [
+      "official",
+      "transcribed",
+      "derived",
+      "estimated"
+     ]
+    },
+    "unmatched": {
+     "enum": [
+      "unpriced",
+      "free"
+     ]
+    },
+    "time_basis": {
+     "enum": [
+      "entry",
+      "exit",
+      "event"
+     ]
+    },
+    "rounding": {
+     "type": "object",
+     "properties": {
+      "increment": {
+       "type": "string",
+       "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+      },
+      "mode": {
+       "enum": [
+        "half_up",
+        "half_even",
+        "up",
+        "down"
+       ]
+      },
+      "stage": {
+       "enum": [
+        "line",
+        "charge",
+        "statement"
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "increment",
+      "mode",
+      "stage"
+     ]
+    },
+    "tax": {
+     "type": "object",
+     "properties": {
+      "basis": {
+       "enum": [
+        "included",
+        "excluded",
+        "not_applicable",
+        "unknown"
+       ]
+      },
+      "rate": {
+       "type": "string",
+       "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+      },
+      "name": {
+       "type": "string"
+      },
+      "note": {
+       "type": "string"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "basis"
+     ]
+    },
+    "valid_from": {
+     "type": "string",
+     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "valid_to": {
+     "type": "string",
+     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "method": {
+     "type": "string"
+    },
+    "mass_basis": {
+     "enum": [
+      "mass_kg",
+      "train_mass_kg"
+     ]
+    },
+    "mass_cap_kg": {
+     "type": "integer"
+    },
+    "directed": {
+     "type": "boolean"
+    },
+    "pairing": {
+     "enum": [
+      "single_ticket",
+      "chain"
+     ]
+    },
+    "day_basis": {
+     "enum": [
+      "calendar",
+      "rolling"
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "type",
+    "component",
+    "unit",
+    "columns",
+    "rows",
+    "sources",
+    "basis"
+   ],
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "distance"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "enum": [
+         "km",
+         "tkm"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "section"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "enum": [
+         "use",
+         "km"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "od"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "const": "trip"
+       },
+       "columns": {
+        "allOf": [
+         {
+          "contains": {
+           "const": "entry"
+          }
+         },
+         {
+          "contains": {
+           "const": "exit"
+          }
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "point"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "const": "passage"
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "area"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "enum": [
+         "day",
+         "entry"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "period"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "const": "product"
+       },
+       "columns": {
+        "contains": {
+         "const": "product"
+        }
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "quantity"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "unit": {
+        "enum": [
+         "t_co2",
+         "litre",
+         "kg",
+         "kwh"
+        ]
+       }
+      }
+     }
+    }
+   ]
+  }
+ }
+}

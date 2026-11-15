@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "dk-2025-01-01",
-  "scheme": "dk",
-  "country": "DK",
-  "currency": "DKK",
+  "id": "carbon-cost/dk/2025-01-01",
+  "scheme": {
+   "id": "dk",
+   "name": "Danish km-based road toll (vejafgift)",
+   "country": "DK"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2025-01-01",
-  "name": "Danish km-based road toll (vejafgift)",
+  "valid_to": "2025-12-31",
+  "currency": "DKK",
+  "timezone": "Europe/Copenhagen",
+  "license": "MIT",
   "method": "Lov om vejafgift (lov nr. 763 af 13/06/2023), § 5 stk. 1-3 as worded by lov nr. 1489 af 10/12/2024, in force 1 January 2025: the rate per km by CO2 emission class and permissible maximum mass, its split into infrastructure charge and external costs (CO2, air pollution and noise), and the surcharge in environmental zones",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/dk-2025-01-01.json"
   },
-  "valid_to": "2025-12-31"
+  "required_features": ["type.distance"]
  },
  "sources": [
   {
@@ -27,326 +36,295 @@
    "url": "https://www.trm.dk/media/q2wpgmh0/afrapportering-vedr-vej-og-infrastrukturafgifter-i-danmark2-a.pdf"
   }
  ],
- "vehicles": {
-  "description": "Goods vehicles and combinations with technically permissible maximum mass of 12 t or more",
-  "min_mass_kg": 12000,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 17999
-    },
-    "co2_class": [
-     1
-    ]
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 18000,
-     "max": 32000
-    },
-    "co2_class": [
-     1
-    ]
-   }
-  },
-  {
-   "id": "c3",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     1
-    ]
-   }
-  },
-  {
-   "id": "c4",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 17999
-    },
-    "co2_class": [
-     2
-    ]
-   }
-  },
-  {
-   "id": "c5",
-   "criteria": {
-    "mass_kg": {
-     "min": 18000,
-     "max": 32000
-    },
-    "co2_class": [
-     2
-    ]
-   }
-  },
-  {
-   "id": "c6",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     2
-    ]
-   }
-  },
-  {
-   "id": "c7",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 17999
-    },
-    "co2_class": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c8",
-   "criteria": {
-    "mass_kg": {
-     "min": 18000,
-     "max": 32000
-    },
-    "co2_class": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c9",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     3
-    ]
-   }
-  },
-  {
-   "id": "c10",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 17999
-    },
-    "co2_class": [
-     4
-    ]
-   }
-  },
-  {
-   "id": "c11",
-   "criteria": {
-    "mass_kg": {
-     "min": 18000,
-     "max": 32000
-    },
-    "co2_class": [
-     4
-    ]
-   }
-  },
-  {
-   "id": "c12",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     4
-    ]
-   }
-  },
-  {
-   "id": "c13",
-   "criteria": {
-    "mass_kg": {
-     "min": 12000,
-     "max": 17999
-    },
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c14",
-   "criteria": {
-    "mass_kg": {
-     "min": 18000,
-     "max": 32000
-    },
-    "co2_class": [
-     5
-    ]
-   }
-  },
-  {
-   "id": "c15",
-   "criteria": {
-    "mass_kg": {
-     "min": 32001
-    },
-    "co2_class": [
-     5
-    ]
+ "liable_vehicles": {
+  "description": "Goods vehicles and combinations with technically permissible maximum mass of 12 t or more",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 12000
    }
   }
+ },
+ "vehicle_class_sets": [
+  {
+   "id": "infrastructure-1",
+   "classes": [
+    {
+     "id": "infrastructure-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 17999
+      },
+      "co2_class": [1]
+     }
+    },
+    {
+     "id": "infrastructure-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 18000,
+       "max": 32000
+      },
+      "co2_class": [1]
+     }
+    },
+    {
+     "id": "infrastructure-1.3",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [1]
+     }
+    },
+    {
+     "id": "infrastructure-1.4",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 17999
+      },
+      "co2_class": [2]
+     }
+    },
+    {
+     "id": "infrastructure-1.5",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 18000,
+       "max": 32000
+      },
+      "co2_class": [2]
+     }
+    },
+    {
+     "id": "infrastructure-1.6",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [2]
+     }
+    },
+    {
+     "id": "infrastructure-1.7",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 17999
+      },
+      "co2_class": [3]
+     }
+    },
+    {
+     "id": "infrastructure-1.8",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 18000,
+       "max": 32000
+      },
+      "co2_class": [3]
+     }
+    },
+    {
+     "id": "infrastructure-1.9",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [3]
+     }
+    },
+    {
+     "id": "infrastructure-1.10",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 17999
+      },
+      "co2_class": [4]
+     }
+    },
+    {
+     "id": "infrastructure-1.11",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 18000,
+       "max": 32000
+      },
+      "co2_class": [4]
+     }
+    },
+    {
+     "id": "infrastructure-1.12",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [4]
+     }
+    },
+    {
+     "id": "infrastructure-1.13",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 12000,
+       "max": 17999
+      },
+      "co2_class": [5]
+     }
+    },
+    {
+     "id": "infrastructure-1.14",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 18000,
+       "max": 32000
+      },
+      "co2_class": [5]
+     }
+    },
+    {
+     "id": "infrastructure-1.15",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 32001
+      },
+      "co2_class": [5]
+     }
+    }
+   ]
+  }
  ],
- "network": [
+ "charge_objects": [
   {
    "id": "roads",
-   "kind": "road_class",
-   "description": "Road segments listed in the law's Annex 1 (about 10,900 km in 2025-2027: state roads incl. motorways, and parts of municipal roads). From 1 January 2028 the whole public road network (about 75,000 km)."
+   "type": "network",
+   "network": {
+    "description": "Road segments listed in the law's Annex 1 (about 10,900 km in 2025-2027: state roads incl. motorways, and parts of municipal roads). From 1 January 2028 the whole public road network (about 75,000 km)."
+   }
   }
  ],
  "charges": [
   {
-   "id": "infrastructure@roads",
+   "id": "infrastructure",
    "type": "distance",
    "component": "infrastructure",
-   "applies_to": [
-    "roads"
+   "unit": "km",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["roads", "infrastructure-1.1", "0.44"],
+    ["roads", "infrastructure-1.2", "0.44"],
+    ["roads", "infrastructure-1.3", "0.44"],
+    ["roads", "infrastructure-1.4", "0.38"],
+    ["roads", "infrastructure-1.5", "0.38"],
+    ["roads", "infrastructure-1.6", "0.38"],
+    ["roads", "infrastructure-1.7", "0.31"],
+    ["roads", "infrastructure-1.8", "0.31"],
+    ["roads", "infrastructure-1.9", "0.31"],
+    ["roads", "infrastructure-1.10", "0.22"],
+    ["roads", "infrastructure-1.11", "0.22"],
+    ["roads", "infrastructure-1.12", "0.22"],
+    ["roads", "infrastructure-1.13", "0.11"],
+    ["roads", "infrastructure-1.14", "0.11"],
+    ["roads", "infrastructure-1.15", "0.11"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.44,
-    "c2": 0.44,
-    "c3": 0.44,
-    "c4": 0.38,
-    "c5": 0.38,
-    "c6": 0.38,
-    "c7": 0.31,
-    "c8": 0.31,
-    "c9": 0.31,
-    "c10": 0.22,
-    "c11": 0.22,
-    "c12": 0.22,
-    "c13": 0.11,
-    "c14": 0.11,
-    "c15": 0.11
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   },
   {
-   "id": "co2@roads",
+   "id": "co2",
    "type": "distance",
    "component": "co2",
-   "applies_to": [
-    "roads"
+   "unit": "km",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["roads", "infrastructure-1.1", "0.37"],
+    ["roads", "infrastructure-1.2", "0.5"],
+    ["roads", "infrastructure-1.3", "0.6"],
+    ["roads", "infrastructure-1.4", "0.36"],
+    ["roads", "infrastructure-1.5", "0.48"],
+    ["roads", "infrastructure-1.6", "0.57"],
+    ["roads", "infrastructure-1.7", "0.33"],
+    ["roads", "infrastructure-1.8", "0.45"],
+    ["roads", "infrastructure-1.9", "0.54"],
+    ["roads", "infrastructure-1.10", "0.19"],
+    ["roads", "infrastructure-1.11", "0.25"],
+    ["roads", "infrastructure-1.12", "0.3"],
+    ["roads", "infrastructure-1.13", "0"],
+    ["roads", "infrastructure-1.14", "0"],
+    ["roads", "infrastructure-1.15", "0"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.37,
-    "c2": 0.5,
-    "c3": 0.6,
-    "c4": 0.36,
-    "c5": 0.48,
-    "c6": 0.57,
-    "c7": 0.33,
-    "c8": 0.45,
-    "c9": 0.54,
-    "c10": 0.19,
-    "c11": 0.25,
-    "c12": 0.3,
-    "c13": 0,
-    "c14": 0,
-    "c15": 0
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   },
   {
-   "id": "air_noise@roads",
+   "id": "air_noise",
    "type": "distance",
-   "component": "air_noise",
-   "applies_to": [
-    "roads"
+   "component": "air_pollution_noise",
+   "unit": "km",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["roads", "infrastructure-1.1", "0.05"],
+    ["roads", "infrastructure-1.2", "0.06"],
+    ["roads", "infrastructure-1.3", "0.06"],
+    ["roads", "infrastructure-1.4", "0.05"],
+    ["roads", "infrastructure-1.5", "0.06"],
+    ["roads", "infrastructure-1.6", "0.06"],
+    ["roads", "infrastructure-1.7", "0.05"],
+    ["roads", "infrastructure-1.8", "0.06"],
+    ["roads", "infrastructure-1.9", "0.06"],
+    ["roads", "infrastructure-1.10", "0.05"],
+    ["roads", "infrastructure-1.11", "0.06"],
+    ["roads", "infrastructure-1.12", "0.06"],
+    ["roads", "infrastructure-1.13", "0.02"],
+    ["roads", "infrastructure-1.14", "0.02"],
+    ["roads", "infrastructure-1.15", "0.02"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.05,
-    "c2": 0.06,
-    "c3": 0.06,
-    "c4": 0.05,
-    "c5": 0.06,
-    "c6": 0.06,
-    "c7": 0.05,
-    "c8": 0.06,
-    "c9": 0.06,
-    "c10": 0.05,
-    "c11": 0.06,
-    "c12": 0.06,
-    "c13": 0.02,
-    "c14": 0.02,
-    "c15": 0.02
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   },
   {
-   "id": "env_zone_surcharge@roads",
+   "id": "env_zone_surcharge",
    "type": "distance",
-   "component": "x-env_zone_surcharge",
-   "applies_to": [
-    "roads"
+   "component": "other",
+   "unit": "km",
+   "component_label": "env_zone_surcharge",
+   "columns": ["object", "vehicle_class", "amount"],
+   "rows": [
+    ["roads", "infrastructure-1.1", "0.43"],
+    ["roads", "infrastructure-1.2", "0.5"],
+    ["roads", "infrastructure-1.3", "0.55"],
+    ["roads", "infrastructure-1.4", "0.4"],
+    ["roads", "infrastructure-1.5", "0.46"],
+    ["roads", "infrastructure-1.6", "0.51"],
+    ["roads", "infrastructure-1.7", "0.35"],
+    ["roads", "infrastructure-1.8", "0.41"],
+    ["roads", "infrastructure-1.9", "0.46"],
+    ["roads", "infrastructure-1.10", "0.23"],
+    ["roads", "infrastructure-1.11", "0.27"],
+    ["roads", "infrastructure-1.12", "0.29"],
+    ["roads", "infrastructure-1.13", "0.07"],
+    ["roads", "infrastructure-1.14", "0.07"],
+    ["roads", "infrastructure-1.15", "0.07"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": 0.43,
-    "c2": 0.5,
-    "c3": 0.55,
-    "c4": 0.4,
-    "c5": 0.46,
-    "c6": 0.51,
-    "c7": 0.35,
-    "c8": 0.41,
-    "c9": 0.46,
-    "c10": 0.23,
-    "c11": 0.27,
-    "c12": 0.29,
-    "c13": 0.07,
-    "c14": 0.07,
-    "c15": 0.07
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "partial",
-   "reason": "env_zone_surcharge is kept as an extension (no ORCT 0.1 field yet)"
+   "reason": "env_zone_surcharge is kept as an extension (no ORCT field yet)"
   }
  ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "env_zone_surcharge": "Added on Annex 1 segments in environmental zones, except segments on the TEN-T network or motorways (§ 4)."
   }
  }

@@ -1,19 +1,28 @@
 {
- "orct_version": "0.1",
+ "orct": "0.2",
  "dataset": {
-  "id": "es-ap46-2025-01-01",
-  "scheme": "es-ap46",
-  "country": "ES",
-  "currency": "EUR",
+  "id": "carbon-cost/es-ap46/2025-01-01",
+  "scheme": {
+   "id": "es-ap46",
+   "name": "AP-46 Alto de las Pedrizas–Málaga",
+   "country": "ES"
+  },
+  "publisher": {
+   "name": "carbon-cost",
+   "role": "third_party",
+   "url": "https://github.com/majidkabir/carbon-cost"
+  },
   "valid_from": "2025-01-01",
-  "name": "AP-46 Alto de las Pedrizas–Málaga",
+  "valid_to": "2025-12-31",
+  "currency": "EUR",
+  "timezone": "Europe/Madrid",
+  "license": "MIT",
   "method": "The Ministry of Transport's tolls in force from 2025-01-01 on the AP-46 Alto de las Pedrizas–Málaga, per barrier (Troncal de Casabermeja): Pesados 1 (two or three axles) EUR 4.7521 and Pesados 2 (four axles or more) 6.8595 in the low season, 6.0331 and 8.9669 in the high season, excluding 21% IVA; free for trucks from 22:00 to 08:00. High season: May to October, every Saturday and Sunday, and the 17 days from Viernes de Dolores to the Sunday after Easter. Barriers placed at OpenStreetMap's toll plazas on the motorway, its only plaza.",
-  "publisher": "carbon-cost (majidkabir/carbon-cost), compiled from the sources listed",
   "derived_from": {
-   "repository": "https://github.com/majidkabir/carbon-cost",
+   "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/es-ap46-2025-01-01.json"
   },
-  "valid_to": "2025-12-31"
+  "required_features": ["time_classes", "type.point"]
  },
  "sources": [
   {
@@ -27,131 +36,109 @@
    "url": "https://www.openstreetmap.org/copyright"
   }
  ],
- "vehicles": {
-  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
-  "min_mass_kg": 3501,
-  "axle_basis": "combination"
+ "tax": {
+  "basis": "unknown",
+  "note": "carbon-cost states the tax basis in each table's text (dataset.method), not as a field."
  },
- "classes": [
-  {
-   "id": "c1",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "max": 3
-    }
-   }
-  },
-  {
-   "id": "c2",
-   "criteria": {
-    "mass_kg": {
-     "min": 3501
-    },
-    "axles": {
-     "min": 4
-    }
+ "liable_vehicles": {
+  "description": "Trucks over 3.5 t (Pesados 1 and 2)",
+  "criteria": {
+   "train_mass_kg": {
+    "min": 3501
    }
   }
- ],
- "network": [
+ },
+ "vehicle_class_sets": [
   {
-   "id": "roads",
-   "kind": "road_class",
-   "description": "AP-46 Alto de las Pedrizas–Málaga (one toll barrier, Casabermeja)."
+   "id": "pt-1",
+   "classes": [
+    {
+     "id": "pt-1.1",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "max": 3
+      }
+     }
+    },
+    {
+     "id": "pt-1.2",
+     "criteria": {
+      "train_mass_kg": {
+       "min": 3501
+      },
+      "train_axles": {
+       "min": 4
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "time_classes": [
+  {
+   "id": "high-season",
+   "label": "High season",
+   "days": [
+    {
+     "months": [5, 6, 7, 8, 9, 10]
+    },
+    {
+     "weekdays": [6, 7]
+    },
+    {
+     "easter": [[-9, 7]]
+    }
+   ]
   },
   {
-   "id": "pt:1",
-   "kind": "point",
+   "id": "free",
+   "label": "No charge",
+   "times": [["22:00", "08:00"]]
+  }
+ ],
+ "charge_objects": [
+  {
+   "id": "pt1",
+   "type": "point",
    "name": "Troncal de Casabermeja",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -4.457906,
-     36.90258
-    ]
-   },
-   "match_km": 0.15
+   "location": {
+    "geometry": {
+     "type": "Point",
+     "coordinates": [-4.457906, 36.90258]
+    },
+    "match_m": 150
+   }
   }
  ],
  "charges": [
   {
-   "id": "point:1",
-   "name": "Troncal de Casabermeja",
+   "id": "points",
    "type": "point",
-   "component": "toll",
-   "applies_to": [
-    "pt:1"
+   "component": "unspecified",
+   "unit": "passage",
+   "columns": ["object", "vehicle_class", "time_class", "priority", "amount"],
+   "rows": [
+    ["pt1", "pt-1.1", null, null, "4.7521"],
+    ["pt1", "pt-1.1", "high-season", null, "6.0331"],
+    ["pt1", "pt-1.2", null, null, "6.8595"],
+    ["pt1", "pt-1.2", "high-season", null, "8.9669"],
+    ["pt1", null, "free", 1, "0"]
    ],
-   "sources": [
-    "s1",
-    "s2"
-   ],
-   "rates": {
-    "c1": {
-     "default": 4.7521,
-     "high_season": 6.0331
-    },
-    "c2": {
-     "default": 6.8595,
-     "high_season": 8.9669
-    }
-   }
+   "sources": ["s1", "s2"],
+   "basis": "transcribed"
   }
  ],
- "tax": {
-  "included": null,
-  "note": "Not recorded as a field in the source table; dataset.method says where the sources state it."
- },
  "coverage": [
   {
    "scope": "dataset",
    "status": "complete"
   }
  ],
- "modifiers": [
-  {
-   "kind": "variant",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "name": "high_season",
-    "season": {
-     "months": [
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-     ],
-     "weekdays": [
-      0,
-      6
-     ],
-     "easter_from": -9,
-     "easter_to": 7
-    }
-   }
-  },
-  {
-   "kind": "free_hours",
-   "applies_to": [
-    "point:1"
-   ],
-   "params": {
-    "hours": [
-     "22:00",
-     "07:59"
-    ]
-   }
-  }
- ],
  "extensions": {
-  "x-carbon-cost": {
+  "io.github.majidkabir.carboncost": {
    "crossings": true,
    "osm_extract": "2026-11-13"
   }
