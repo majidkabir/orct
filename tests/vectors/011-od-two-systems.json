@@ -1,5 +1,5 @@
 {
- "description": "Chain pairing with a barrier first: no later station is priced from C5, so C5 is priced on its own (2), then C1 to C3 (20) and C3 to C4 (6).",
+ "description": "Two closed systems meet at C3: the trip pays C1 to C3 in the first (20) and C3 to C4 in the second (6).",
  "clauses": [
   "8.4"
  ],
@@ -17,14 +17,14 @@
   "events": [
    {
     "dataset": "orct-tests/synthetic/2026-01-01",
-    "object": "c5",
-    "time": "2026-11-16T09:40:00+01:00",
+    "object": "c1",
+    "time": "2026-11-16T10:00:00+01:00",
     "role": "entry"
    },
    {
     "dataset": "orct-tests/synthetic/2026-01-01",
-    "object": "c1",
-    "time": "2026-11-16T10:00:00+01:00",
+    "object": "c2",
+    "time": "2026-11-16T10:20:00+01:00",
     "role": "pass"
    },
    {
@@ -46,20 +46,16 @@
   "totals": [
    {
     "currency": "EUR",
-    "amount": "28.00"
+    "amount": "26.00"
    }
   ],
   "lines": [
    {
     "charge": "odc",
-    "amount": "2.00"
-   },
-   {
-    "charge": "odc",
     "amount": "20.00"
    },
    {
-    "charge": "odc",
+    "charge": "odc2",
     "amount": "6.00"
    }
   ]

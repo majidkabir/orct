@@ -22,7 +22,7 @@
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/fr-2026-06-01.json"
   },
-  "required_features": ["type.od", "type.od.chain"]
+  "required_features": ["type.od"]
  },
  "sources": [
   {
@@ -13381,7 +13381,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "chain",
    "method": "Operators' published tariffs (TTC, here excluding 20% VAT) under their concession contracts and the arrêtés of 28 January 2026; vehicle classes 3 (two axles) and 4 (three or more axles), over 3.5 t",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
@@ -101024,6 +101023,11 @@
   }
  ],
  "coverage": [
+  {
+   "scope": "system1",
+   "status": "partial",
+   "reason": "carbon-cost splits a trip through several concessions into tickets by a rule of its own that no source states; here a trip is priced from its first station to its last, which only pairs the tariff prices"
+  },
   {
    "scope": "system1",
    "status": "partial",

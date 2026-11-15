@@ -29,7 +29,8 @@ This document is a working draft, maintained in the open at
 [github.com/majidkabir/orct](https://github.com/majidkabir/orct), where
 comments and proposals are made as issues. Until version 1.0, the first
 version offered for adoption, any part of it may change without backward
-compatibility (10.1).
+compatibility (10.1). The questions raised in review, and what is still
+open, are in [docs/review.md](../docs/review.md).
 
 The text is licensed under CC BY 4.0; the schemas (Annex A), the reference
 calculator and the conformance suite under the MIT licence.
@@ -105,11 +106,16 @@ latest edition of the referenced document (including any amendments) applies.
 - SPDX, *SPDX License List*
 - TomTom, *OpenLR White Paper*, version 1.5
 - NIST FIPS 180-4, *Secure Hash Standard* (SHA-256)
+- IETF RFC 7515, *JSON Web Signature (JWS)*
+- IETF RFC 7517, *JSON Web Key (JWK)*
 
 ## 3 Terms and definitions
 
 For the purposes of this document, the following terms and definitions
 apply. Terms marked † are those of ISO 17575-3:2016 [2], clause 3.
+ISO 17573-2 [19] is the vocabulary of electronic fee collection; the
+definitions below are to be aligned with it before version 1.0, and where
+one differs from it, ISO 17573-2 prevails for the terms it defines.
 
 **3.1 toll** †
 charge, tax or duty levied in connection with using a vehicle in a toll domain
@@ -128,7 +134,7 @@ Note: After Directive (EU) 2019/520 [7], Art. 2.
 tolls that one toll charger levies in one toll domain under one set of rules
 
 **3.5 charge object** †
-geographic or road-related object for whose use a charge is applied
+geographic or road-related object for the use of which a charge is applied
 
 Note: The types of charge object are listed in 6.9.
 
@@ -138,7 +144,7 @@ specified amount conferring the right to use infrastructure for a given period
 Note: After Directive 1999/62/EC, Art. 2.
 
 **3.7 tariff determinant**
-property that decides the amount of a charge: the charge object, the vehicle class, the time class, the user class or the product
+property that decides the amount of a charge: the charge object, the vehicle class, the time class, the user class, the product or the use's place in a volume period
 
 **3.8 vehicle class**
 set of vehicles, defined by vehicle parameters, that a toll scheme charges alike
@@ -283,6 +289,7 @@ within the dataset.
 | `method` | yes | The legal basis and the charging rule in words, as the sources state them. |
 | `names` | no | Name of the toll scheme by BCP 47 language tag. |
 | `derived_from` | no | `{url, path, commit}` of the data the dataset was converted from; `url` is required. |
+| `efc_context` | no | `{standard, version, valid_from}`: the EFC context data the toll charger gives its toll service providers, from which this dataset was generated; `standard` is `ISO 17575-3`, `EN 16986` or `ISO 12855`, and `version` the context data's version (both required). Where amounts differ, the context data prevails for billing. |
 | `required_features` | yes | Every feature (10.3) the dataset uses. |
 
 ### 6.3 Sources (`sources`)
@@ -414,7 +421,10 @@ inclusive and `end` exclusive; `start` shall not be `24:00`, and `end` may be.
 An interval whose `end` is not after its `start` crosses midnight and belongs
 to the day on which it starts. Without `times` the class covers whole days.
 An instant is in the class if, read in the dataset's `timezone`, it falls in
-an interval of a selected day.
+an interval of a selected day. Instants carry their UTC offset (7.3), so an
+instant is never ambiguous: in the hour that a change to daylight saving time
+skips, no instant falls, and in the hour that a change back repeats, both
+instants with that local time fall in an interval that contains it.
 
 `defined: false` marks a time class the sources name but do not define, such
 as a rush hour whose hours are not published. Whether an instant is in it is
@@ -440,13 +450,18 @@ equipment, or a contract with the toll charger or a toll service provider),
 | `network` | no | For a `network`: `{road_types, area, description}`; `road_types` from `motorway`, `trunk`, `other`; `area` is `suburban` or `interurban`. |
 | `from`, `to` | no | For a `section`: its end places, each `{name, geometry, heading}` with `geometry` required. |
 | `length_km` | no | For a `section`: its official length, in km. |
-| `location` | no | `{geometry, openlr, osm, heading, match_m, headings, point_names}`: RFC 7946 geometry (7.4); an OpenLR reference, base64-encoded; OpenStreetMap element references; the paying direction in degrees clockwise from north (without it, both directions pay); how near a route passes the object, in metres, to use it; for a `MultiPoint`, the paying direction and name of each point, in the order of the coordinates. |
+| `location` | no | `{geometry, openlr, osm, heading, match_m, headings, point_names}`: RFC 7946 geometry (7.4); an OpenLR reference, base64-encoded; OpenStreetMap element references; the paying direction in degrees clockwise from north (without it, both directions pay); the distance from the geometry, in metres, within which a passage is detected; for a `MultiPoint`, the paying direction and name of each point, in the order of the coordinates. |
 | `jurisdiction` | no | For a `jurisdiction`: `{country, region}`, ISO 3166-1 alpha-2 country (required) and ISO 3166-2 subdivision. |
 | `note` | no | Remarks. |
 
-`network`, `location` (other than `geometry`) and the end places' `heading`
-serve map matching, which is outside this document's scope (clause 1); they
-are informative.
+`location` and the end places state where and in which direction the toll
+charger detects the use of the object: `geometry` is the detection place (a
+gantry, barrier or cordon point as `Point` or `MultiPoint`, an area as
+`Polygon` or `MultiPolygon`), `heading` the paying direction and `match_m`
+the distance from the geometry within which a passage is detected. These
+members are normative data; how a tool derives a usage's events from them is
+map matching, which this document does not specify (clause 1). `osm` and
+`network` are informative.
 
 A station, point or area shall have a `location.geometry`, and a section a
 `geometry` in both `from` and `to` or a `location.geometry`, unless no source
@@ -474,6 +489,8 @@ attributes and need no geometry.
 | `unmatched` | no | `unpriced` (the default): a use no row matches is unpriced; `free`: it costs nothing. |
 | `time_basis` | no | Which instant selects the time class: `entry`, `exit` or `event`; the default is `entry` for `od` and `event` otherwise. |
 | `rounding` | no | `{increment, mode, stage}`, all required (8.7). |
+| `volume` | see content | `{per, counts}`, both required when `columns` contains `volume` (6.10.3): the period the toll charger counts uses in, `day`, `month` or `year` (calendar periods, local time), and whose uses it counts, `vehicle` or `contract`. |
+| `dynamic` | no | `{url, note}`: the charge's amounts are set in real time (ISO/TS 21192 [6]) and published at `url` (required); any rows are indicative. `coverage` shall list the charge as `unpriced`. |
 | `tax` | no | Replaces the dataset's `tax` for this charge (6.4). |
 | `valid_from`, `valid_to` | no | Local dates that narrow the dataset's validity for this charge; they shall lie within it. |
 | `method` | no | The charging rule in words, where it differs from the dataset's. |
@@ -497,7 +514,7 @@ The components are:
 | --- | --- | --- | --- |
 | `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter, default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
 | `section` | each use of a section | `use`, or `km` (per km of the section's `length_km`) | — |
-| `od` | each trip in a closed system, by entry and exit station | `trip` | `directed` (default `false`: a row prices both directions of its pair); `pairing` (`single_ticket`, the default, or `chain`) |
+| `od` | each trip in a closed system, by entry and exit station | `trip` | `directed` (default `false`: a row prices both directions of its pair) |
 | `point` | each passage of a point | `passage` | — |
 | `area` | each day in a zone, or each entry into it | `day`, `entry` | — |
 | `period` | each product bought | `product` | `day_basis` (`calendar`, the default, or `rolling`) |
@@ -515,6 +532,7 @@ The components are:
 | `time_class` | Time class identifier. |
 | `user_class` | User class identifier. |
 | `product` | ISO 8601 duration of the form `PnYnMnWnD` (`P1D`, `P10D`, `P1M`, `P1Y`); for `period` only, and required there. |
+| `volume` | Integer from 1: the row applies from this use on in the period of the charge's `volume` (the first use is 1); for `section`, `od`, `point` and `area` only. |
 | `priority` | Integer; `null` counts as 0. |
 | `amount` | Decimal string (7.2), never `null`. |
 
@@ -532,15 +550,17 @@ of `null` means "any". Two rows of a charge shall not have the same key and
   (6.7);
 - `user_class`: a user class the user holds (6.8);
 - `product`: the product being priced;
+- `volume`: a value no greater than the use's place in its period (8.4);
 - `null`: anything.
 
 **Ranking.** Each key value of a matching row has a rank: 0 for the use's
 own value; *n* for an object *n* `parents` steps above the use's object (by
 the shortest path) or a class *n* `fallback` steps from the vehicle's class;
-and last for `null`. A row ranks above another if its `priority` is higher
-or, with equal `priority`, if in the first key column, in the order of
-`columns`, where their ranks differ, its rank is lower. The selected row is
-the matching row that ranks above all others.
+for `volume`, the use's place minus the row's value; and last for `null`.
+A row ranks above another if its `priority` is higher or, with equal
+`priority`, if in the first key column, in the order of `columns`, where
+their ranks differ, its rank is lower. The selected row is the matching row
+that ranks above all others.
 
 **Ties.** Rows that rank equally tie. If tied rows differ only in
 `user_class`, the one with the lowest amount is selected (a user may hold
@@ -549,8 +569,8 @@ producer shall not publish rows that can tie for any use, such as two rows
 keyed by two parents of the same object at the same distance that differ in
 nothing else.
 
-**Undecided rows.** A row whose `vehicle_class` or `time_class` value is
-undecided for the use (6.6, 6.7) can be counted neither as matching nor as
+**Undecided rows.** A row whose `vehicle_class`, `time_class` or `volume`
+value is undecided for the use (6.6, 6.7, 8.4) can be counted neither as matching nor as
 not matching. If such a row exists and no matching row ranks above it, the
 use is unpriced: a calculator shall not select a row that an undecided row
 might outrank.
@@ -565,7 +585,7 @@ its event (8.4).
 
 | `kind` | `params` | Effect |
 | --- | --- | --- |
-| `exemption` | `criteria`, *`from`*, *`until`* | For a vehicle that meets `criteria`, the lines dated from `from` to `until` (inclusive, when given) are removed. |
+| `exemption` | `criteria` or `user_class` or both, *`from`*, *`until`* | When every condition given holds (the vehicle meets `criteria`; the user holds `user_class`, such as emergency services by contract), the lines dated from `from` to `until` (inclusive, when given) are removed. |
 | `included_in` | `charge` (an `od` charge of the dataset), *`objects`* | A line on one of `objects` (any object, when not given) whose time lies between the entry and exit times, inclusive, of a trip priced by `charge` is removed. |
 | `passage_group` | `objects`, `minutes`, `pays` (`first` or `highest`) | Only lines on the group's objects with an amount above zero count, in time order. A run starts at such a line; those less than `minutes` after its start belong to the run, and the run pays once: the first line's amount, or the highest. The other lines of the run become zero. The next line after the run starts a new run. |
 | `factor` | `object`, `factor` | For a `km` or `tkm` line whose event attributes km to `object` (9.1, `overlays`), the amount of that share of the km is multiplied by `factor`. |
@@ -638,16 +658,14 @@ through `parents`, is in the charge's `objects` or in its rows' `object`,
 - `point`: each event on the charge is one use.
 - `od`: the events on the charge, in time order, form trips: an event with
   role `entry` starts a trip, an event with role `exit` ends the trip, and
-  other events continue the current trip or start one. With `single_ticket`
-  a trip is one use, from its first station to its last. With `chain` a trip
-  is split into tickets: from the current station, the ticket goes to the
-  latest later station of the trip for which a row matches, and the next
-  ticket starts there; where no later station has a matching row, a station
-  whose pair with itself has a matching row (a barrier) is priced on its own
-  and the next station becomes the current one; otherwise the rest of the
-  trip is one unpriced use. A trip with one station is one use from that
-  station to itself. Without `directed: true`, a row for the pair (B, A)
-  matches the pair (A, B) when no row for (A, B) does.
+  other events continue the current trip or start one. Each trip is one use,
+  from its first station to its last; a trip with one station (a barrier) is
+  one use from that station to itself. Without `directed: true`, a row for
+  the pair (B, A) matches the pair (A, B) when no row for (A, B) does. Where
+  a toll charger ends one ticket and starts another (between concessions,
+  for example), each closed system is its own charge, and a station where
+  the systems meet is a station of both; a journey through several systems
+  is then one trip in each.
 - `area`: for unit `day`, each local date with at least one event on the
   charge is one use, priced at the highest amount that any of that date's
   events selects; the date is unpriced if any of these selections is
@@ -670,6 +688,12 @@ The time of a use, and of its line, is that of its event: for a trip, the
 event `time_basis` names; for an `area` date, the event whose selection set
 the amount; for a product, its start.
 
+For a charge with a `volume` column, a use's place in its period is 1 plus
+the number of the user's earlier uses of the charge in the same period: the
+usage's uses before it, in time order, and, for the period of the usage's
+first use, the uses the usage gives in `prior_uses` (9.1). If the usage gives
+none for the charge, the place is undecided in that period.
+
 **8.5 Amount of a use.** The row is selected as 6.10.3 specifies. A use that
 no row matches is unpriced, or free if the charge's `unmatched` is `free`.
 Otherwise the use's line has the row's amount as `rate`, and `rate` ×
@@ -689,7 +713,8 @@ order of kinds: `exemption`, `included_in`, `passage_group`, `factor`,
 - `up`: away from zero;
 - `down`: toward zero.
 
-With `stage: line`, each line of the charge is rounded after the rules;
+With `stage: use`, each use's amount is rounded before the rules (8.5);
+with `stage: line`, each line of the charge is rounded after the rules;
 with `stage: charge`, the total of the charge's lines is rounded, and the
 difference is an adjustment line. A charge without `rounding` keeps exact
 amounts. The statement's total per currency is the sum of its lines, rounded
@@ -710,6 +735,8 @@ records no issue. Each of these is an issue, with the code given (9.2):
 - a vehicle parameter needed to decide `liable_vehicles`, a class or a
   rule's criteria is missing (`missing_parameter`);
 - a distance event has no `km` (`missing_km`);
+- a use's place in a volume period is undecided (`missing_count`);
+- a use is of a charge with `dynamic` amounts (`dynamic_tariff`);
 - a row that would be selected needs a time class that is not defined or a
   calendar past its `covers_to` (`unknown_time_class`);
 - rows tie (`ambiguous_rows`);
@@ -731,6 +758,7 @@ The totals of an incomplete statement sum the lines that could be priced.
 | `vehicle` | yes | The vehicle's parameters (6.6.1); parameters not known are left out. |
 | `payment` | no | Payment means used (6.8). |
 | `user_classes` | no | `{dataset id: [user class ids]}`: user classes the user holds by contract. |
+| `prior_uses` | no | `{dataset id: {charge id: count}}`: for a charge priced by volume, the uses the toll charger has counted for this vehicle or contract earlier in the period of the usage's first use of the charge (8.4). |
 | `events` | no | `[{dataset, object, time, role, km, overlays}]`, in any order; `dataset`, `object` and `time` are required. `role` is `entry`, `exit` or `pass`; `km` is the distance driven on a network; `overlays` is `{object id: km}`, the part of `km` driven on stretches inside the network that a `factor` rule names. |
 | `quantities` | no | `[{dataset, object, unit, value, time}]`, all required: quantities used in a jurisdiction, such as tonnes of CO2 from fuel bought there. |
 
@@ -740,7 +768,7 @@ The totals of an incomplete statement sum the lines that could be priced.
 | --- | --- | --- |
 | `orct_statement` | yes | Specification version, `"0.2"`. |
 | `complete` | yes | Boolean (8.9). |
-| `lines` | yes | `[{dataset, charge, component, objects, row, quantity, unit, rate, amount, currency, tax_basis, tax_rate, sources, notes}]`. `row` is the 0-based index of the selected row; `rate` its amount as written. An adjustment made by `minimum`, `cap` or rounding at `stage: charge` is a line of its own, with unit `rule`, no `row` or `rate`, and as `charge` the charge 6.11 names. `dataset`, `charge`, `component`, `objects`, `quantity`, `unit`, `amount`, `currency` and `tax_basis` are required. |
+| `lines` | yes | `[{dataset, dataset_version, charge, component, objects, row, quantity, unit, rate, amount, currency, tax_basis, tax_rate, basis, sources, notes}]`. `dataset_version` is the dataset's `version`, when it has one; `row` is the 0-based index of the selected row; `rate` its amount as written; `basis` the charge's `basis` (6.10.1), so that an estimated amount stays visible. An adjustment made by `minimum`, `cap` or rounding at `stage: charge` is a line of its own, with unit `rule`, no `row` or `rate`, and as `charge` the charge 6.11 names. `dataset`, `charge`, `component`, `objects`, `quantity`, `unit`, `amount`, `currency`, `tax_basis` and `basis` are required. |
 | `totals` | yes | `[{currency, amount}]` (8.7). |
 | `issues` | yes | `[{code, message, dataset, charge}]`; `code` and `message` are required. |
 
@@ -756,6 +784,8 @@ The issue codes are:
 | `unsupported_product` | A product's duration is one the calculator does not implement. |
 | `missing_parameter` | A vehicle parameter needed by criteria or by a `tkm` charge is missing. |
 | `missing_km` | A distance event has no `km`. |
+| `missing_count` | A charge is priced by volume and the usage does not give its `prior_uses`. |
+| `dynamic_tariff` | A use is of a charge whose amounts are set in real time. |
 | `unknown_time_class` | A row that would be selected, or a cap, needs a time class that is not defined or a calendar past its `covers_to`. |
 | `ambiguous_rows` | Rows tie (6.10.3). |
 | `unpriced` | No row matches a use and `unmatched` is `unpriced`, or a use cannot be priced for another reason the message gives. |
@@ -777,12 +807,13 @@ with `x-` [18], are reserved. A dataset that keeps any part of its charging rule
 extension shall list that part in `coverage` as `partial`.
 
 **10.3 Features.** The feature identifiers are `type.distance`,
-`type.section`, `type.od`, `type.od.chain`, `type.point`, `type.area`,
-`type.period`, `type.quantity`, `time_classes`, `calendars`, `user_classes`,
-`rounding`, `rule.exemption`, `rule.included_in`, `rule.passage_group`,
-`rule.factor`, `rule.discount`, `rule.minimum` and `rule.cap`. A dataset
-shall list in `required_features` every feature it uses: each charge type;
-`type.od.chain` for an `od` charge with `pairing: chain`; `time_classes` and
+`type.section`, `type.od`, `type.point`, `type.area`, `type.period`,
+`type.quantity`, `time_classes`, `calendars`, `user_classes`, `rounding`,
+`volume`, `dynamic`, `rule.exemption`, `rule.included_in`,
+`rule.passage_group`, `rule.factor`, `rule.discount`, `rule.minimum` and
+`rule.cap`. A dataset shall list in `required_features` every feature it
+uses: each charge type; `volume` when a charge has a `volume` column;
+`dynamic` when a charge has `dynamic`; `time_classes` and
 `user_classes` when a row or rule refers to one; `calendars` when a time
 class refers to one; `rounding` when a charge has `rounding`; and each rule
 kind.
@@ -795,8 +826,16 @@ them with these members.
 | Member | Req. | Content |
 | --- | --- | --- |
 | `orct` | yes | Specification version. |
-| `datasets` | yes | `[{id, scheme, country, name, file, valid_from, valid_to, coverage}]`: each dataset's identifier, scheme identifier, country, scheme name, path relative to the feed, validity (`valid_to` `null` when open), and `complete` or `partial` as its `coverage` states. |
+| `datasets` | yes | `[{id, scheme, country, name, file, sha256, valid_from, valid_to, coverage}]`: each dataset's identifier, scheme identifier, country, scheme name, path relative to the feed, SHA-256 of the file in hexadecimal, validity (`valid_to` `null` when open), and `complete` if every entry of its `coverage` is `complete`, otherwise `partial`. |
 | `derived_from` | no | As in 6.2, for a feed converted from other data. |
+| `jwks_uri` | no | URL of the producer's public keys, a JWK Set (RFC 7517). |
+
+A producer should sign the feed: `index.jws` beside `index.json` holds a JWS
+(RFC 7515) in compact serialization with a detached payload, the bytes of
+`index.json`, signed with a key of the producer's `jwks_uri`. Since the index
+lists each dataset's SHA-256, the signature covers every dataset. A
+consumer can thus check that a dataset comes from the producer and has not
+changed.
 
 On EU national access points, feeds should be described with
 mobilityDCAT-AP [16]. Sources should cite legal acts by ELI [17].
@@ -915,11 +954,11 @@ night crossing row 3 (47.20), because `time_class` "night" ranks above
   "lines": [
     {"dataset": "example.org/bridge/2026-01-01", "charge": "crossing", "component": "infrastructure",
      "objects": ["bridge"], "row": 2, "quantity": "1", "unit": "passage", "rate": "65.50", "amount": "58.95",
-     "currency": "EUR", "tax_basis": "excluded", "tax_rate": "0.25", "sources": ["s1"],
+     "currency": "EUR", "tax_basis": "excluded", "tax_rate": "0.25", "basis": "transcribed", "sources": ["s1"],
      "notes": ["discount On-board unit 10%"]},
     {"dataset": "example.org/bridge/2026-01-01", "charge": "crossing", "component": "infrastructure",
      "objects": ["bridge"], "row": 3, "quantity": "1", "unit": "passage", "rate": "47.20", "amount": "42.48",
-     "currency": "EUR", "tax_basis": "excluded", "tax_rate": "0.25", "sources": ["s1"],
+     "currency": "EUR", "tax_basis": "excluded", "tax_rate": "0.25", "basis": "transcribed", "sources": ["s1"],
      "notes": ["discount On-board unit 10%"]}
   ],
   "totals": [{"currency": "EUR", "amount": "101.43"}],
@@ -983,5 +1022,6 @@ its sources.
 16. NAPCORE, mobilityDCAT-AP 1.1.0
 17. Council conclusions inviting the introduction of the European Legislation Identifier (ELI), 2012/C 325/02
 18. IETF RFC 6648, *Deprecating the "X-" Prefix and Similar Constructs in Application Protocols*
+19. ISO 17573-2:2025, *Electronic fee collection — System architecture for vehicle related tolling — Part 2: Vocabulary*
 
 The survey of these sources, with links, is in [docs/research.md](../docs/research.md).

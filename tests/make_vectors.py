@@ -1,14 +1,16 @@
+import glob
 import json
+import os
 SYN = "tests/fixtures/synthetic.orct.json"
 SID = "orct-tests/synthetic/2026-01-01"
 V40 = {"train_mass_kg": 40000, "train_axles": 5, "euro_class": "6", "co2_class": 1}
 V7 = {"train_mass_kg": 7500, "train_axles": 2, "euro_class": "6", "co2_class": 1}
 def ev(obj, time, **kw): return {"dataset": SID, "object": obj, "time": time, **kw}
 def usage(vehicle, events=(), **kw): return {"orct_usage": "0.2", "vehicle": vehicle, "events": list(events), **kw}
-def tot(x): return [{"currency": "EUR", "amount": x}] if x is not None else []
+def tot(x, cur="EUR"): return [{"currency": cur, "amount": x}] if x is not None else []
 V = []
-def add(name, desc, clauses, ds, u, total, complete=True, lines=None, issues=None):
-    exp = {"complete": complete, "totals": tot(total)}
+def add(name, desc, clauses, ds, u, total, complete=True, lines=None, issues=None, currency="EUR"):
+    exp = {"complete": complete, "totals": tot(total, currency)}
     if lines is not None: exp["lines"] = [{"charge": c, "amount": a} for c, a in lines]
     if issues is not None: exp["issues"] = issues
     V.append((name, {"description": desc, "clauses": clauses, "datasets": ds, "usage": u, "expected": exp}))
@@ -33,10 +35,10 @@ add("od-night", "Entry at night without electronic payment: the night row; the t
 add("od-light", "A light vehicle falls to the catch-all group B.", ["6.6.3"], [SYN], usage(V7, OD("st-a", "st-b")), "4.00")
 add("od-discount-rounding", "Discounts of 10% (CO2 class 4) and 20% (electronic) add up to 30%: 9.50 less 30% is 6.65, rounded per line to 0.10 half up: 6.70. (Applied one after the other they would give 6.84, rounded 6.80.)",
     ["6.11", "8.6", "8.7"], [SYN], usage({**V40, "co2_class": 4}, OD("st-a", "st-b"), payment=["electronic"]), "6.70")
-add("od-chain", "Chain pairing: from C1 the farthest priced station is C3 (20), then C3 to C4 (6).", ["8.4"], [SYN],
+add("od-two-systems", "Two closed systems meet at C3: the trip pays C1 to C3 in the first (20) and C3 to C4 in the second (6).", ["8.4"], [SYN],
     usage(V40, [ev("c1", "2026-11-16T10:00:00+01:00", role="entry"), ev("c2", "2026-11-16T10:20:00+01:00", role="pass"),
                 ev("c3", "2026-11-16T10:40:00+01:00", role="pass"), ev("c4", "2026-11-16T11:00:00+01:00", role="exit")]),
-    "26.00", lines=[("odc", "20"), ("odc", "6")])
+    "26.00", lines=[("odc", "20.00"), ("odc2", "6.00")])
 add("point-priority", "On Sunday the priority row (free) beats the class row.", ["6.10.3"], [SYN],
     usage(V40, [ev("gate", "2026-11-15T10:00:00+01:00")]), "0.00")
 add("point-passage-group", "Two passages within 60 minutes pay once (pays: first).", ["6.11", "8.6"], [SYN],
@@ -102,10 +104,8 @@ add("section-cap-time-class", "A day cap of 20 for night uses only: the two nigh
     ["6.11"], [SYN], usage(V40, [ev("sec1", "2026-11-17T10:00:00+01:00"), ev("sec1", "2026-11-17T22:30:00+01:00"),
                                 ev("sec1", "2026-11-17T23:30:00+01:00")]), "35.75",
     lines=[("sec", "12"), ("sec", "12"), ("sec", "12"), ("seckm", "1.25"), ("seckm", "1.25"), ("seckm", "1.25"), ("sec", "-4")])
-add("od-chain-barrier", "Chain pairing with a barrier first: no later station is priced from C5, so C5 is priced on its own (2), then C1 to C3 (20) and C3 to C4 (6).",
-    ["8.4"], [SYN], usage(V40, [ev("c5", "2026-11-16T09:40:00+01:00", role="entry"), ev("c1", "2026-11-16T10:00:00+01:00", role="pass"),
-                                ev("c3", "2026-11-16T10:40:00+01:00", role="pass"), ev("c4", "2026-11-16T11:00:00+01:00", role="exit")]),
-    "28.00", lines=[("odc", "2.00"), ("odc", "20.00"), ("odc", "6.00")])
+add("od-barrier", "A barrier priced from itself to itself: one passage is a trip of one station (2).", ["8.4"], [SYN],
+    usage(V40, [ev("c5", "2026-11-16T09:40:00+01:00")]), "2.00", lines=[("odc2", "2.00")])
 add("period-tie", "Two consecutive days: one 2-day product and two day products both cost 24; the fewest products win.", ["8.4"], [SYN],
     usage(V40, [ev("vnet", f"2026-11-{d}T10:00:00+01:00") for d in (16, 17)]), "24.00", lines=[("vig", "24")])
 add("distance-missing-km", "A network event without km: unpriced, never taken as zero.", ["8.4", "8.9"], [SYN],
@@ -114,6 +114,33 @@ add("unknown-object", "An event on an object the dataset does not have makes the
     usage(V40, [ev("nowhere", M), ev("gate", M)]), "8.40", complete=False, issues=["unknown_object"])
 add("calendar-past-covers-to", "On a weekday after the holiday calendar's covers_to, whether the zone charges can't be decided: unpriced.",
     ["6.7", "8.9"], [SYN], usage(V40, [ev("city", "2027-09-15T10:00:00+02:00")]), None, complete=False, issues=["unknown_time_class"])
+add("exemption-user-class", "A user class held by contract (emergency services) exempts the distance charge.", ["6.8", "6.11"], [SYN],
+    usage(V40, [ev("mw", M, km=100)], user_classes={SID: ["emergency"]}), None)
+add("point-volume", "Price by volume: with 2 crossings earlier this year, the next two are the 3rd (10.00) and the 4th (5.00 from the 4th on).",
+    ["6.10.3", "9.1"], [SYN], usage(V40, [ev("tunnel", M), ev("tunnel", "2026-11-16T12:00:00+01:00")], prior_uses={SID: {"tunnel-fee": 2}}),
+    "15.00", lines=[("tunnel-fee", "10.00"), ("tunnel-fee", "5.00")])
+add("point-volume-unknown", "Price by volume without the earlier crossings: unpriced, never guessed.", ["6.10.3", "8.9"], [SYN],
+    usage(V40, [ev("tunnel", M)]), None, complete=False, issues=["missing_count"])
+add("rounding-per-use", "Rounded per use before the rules: 2.345 is 2.35, less 10 % is 2.115, total 2.12 (rounded after the rules it would be 2.11).",
+    ["8.7"], [SYN], usage(V40, [ev("pier", M)]), "2.12", lines=[("pier-fee", "2.115")])
+add("dynamic-tariff", "A charge whose amounts are set in real time is not priced from its indicative rows.", ["6.10.1", "8.9"], [SYN],
+    usage(V40, [ev("express", M)]), None, complete=False, issues=["dynamic_tariff"])
+AT = "data/carbon-cost/at/at-2026-01-01.orct.json"; ATID = "carbon-cost/at/2026-01-01"
+src = "Sum of the 2026 parts of BGBl. II Nr. 298/2025 §§ 2, 8, 9, equal to the per-km totals the WKO publishes, as carbon-cost's TestAustriaTotals asserts them; 100 km."
+for name, ta, ax, euro, cls, want in (("e-2-axles", 2, 2, "6", 5, "5.87"), ("a-co2-1-3-axles", 3, 3, "6", 1, "38.56"),
+                                      ("a-co2-1-4-axles", 5, 2, "6", 1, "57.24"), ("b-4-axles", 5, 2, "5", 1, "60.24")):
+    add(f"at-{name}", f"Austrian HGV toll 2026, {name}: {want}. " + src, ["8.4"], [AT],
+        usage({"train_mass_kg": 40000, "train_axles": ta, "axles": ax, "euro_class": euro, "co2_class": cls},
+              [{"dataset": ATID, "object": "roads", "time": "2026-06-01T10:00:00+02:00", "km": 100}]), want)
+DK = "data/carbon-cost/dk/dk-2026-01-01.orct.json"; DKID = "carbon-cost/dk/2026-01-01"
+src = "Vejafgiftsloven rates for 2026 (Skatteministeriet's rate table), as carbon-cost's TestDenmarkTotals asserts them; 100 km."
+for name, kg, cls, want in (("15t-co2-1", 15000, 1, "86.00"), ("26t-co2-1", 26000, 1, "100.00"), ("40t-co2-1", 40000, 1, "110.00"),
+                            ("40t-co2-5", 40000, 5, "13.00")):
+    add(f"dk-{name}", f"Danish HGV toll 2026, {name}: {want} DKK. " + src, ["8.4"], [DK],
+        usage({"train_mass_kg": kg, "mass_kg": kg, "train_axles": 5, "axles": 2, "euro_class": "6", "co2_class": cls},
+              [{"dataset": DKID, "object": "roads", "time": "2026-06-01T10:00:00+02:00", "km": 100}]), want, currency="DKK")
+for old in glob.glob("tests/vectors/*.json"):
+    os.remove(old)
 for i, (name, v) in enumerate(V, 1):
     with open(f"tests/vectors/{i:03d}-{name}.json", "w") as fh:
         json.dump(v, fh, indent=1, ensure_ascii=False); fh.write("\n")

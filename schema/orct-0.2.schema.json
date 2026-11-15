@@ -149,6 +149,30 @@
       "url"
      ]
     },
+    "efc_context": {
+     "type": "object",
+     "properties": {
+      "standard": {
+       "enum": [
+        "ISO 17575-3",
+        "EN 16986",
+        "ISO 12855"
+       ]
+      },
+      "version": {
+       "type": "string"
+      },
+      "valid_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "standard",
+      "version"
+     ]
+    },
     "required_features": {
      "type": "array",
      "uniqueItems": true,
@@ -157,7 +181,6 @@
        "type.distance",
        "type.section",
        "type.od",
-       "type.od.chain",
        "type.point",
        "type.area",
        "type.period",
@@ -166,6 +189,8 @@
        "calendars",
        "user_classes",
        "rounding",
+       "volume",
+       "dynamic",
        "rule.exemption",
        "rule.included_in",
        "rule.passage_group",
@@ -767,6 +792,11 @@
           "criteria": {
            "$ref": "#/$defs/criteria"
           },
+          "user_class": {
+           "type": "string",
+           "minLength": 1,
+           "pattern": "^\\S(.*\\S)?$"
+          },
           "from": {
            "type": "string",
            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
@@ -780,8 +810,17 @@
           }
          },
          "additionalProperties": false,
-         "required": [
-          "criteria"
+         "anyOf": [
+          {
+           "required": [
+            "criteria"
+           ]
+          },
+          {
+           "required": [
+            "user_class"
+           ]
+          }
          ]
         }
        }
@@ -1433,6 +1472,7 @@
        "time_class",
        "user_class",
        "product",
+       "volume",
        "priority",
        "amount"
       ]
@@ -1510,6 +1550,7 @@
       },
       "stage": {
        "enum": [
+        "use",
         "line",
         "charge"
        ]
@@ -1572,10 +1613,42 @@
     "directed": {
      "type": "boolean"
     },
-    "pairing": {
-     "enum": [
-      "single_ticket",
-      "chain"
+    "volume": {
+     "type": "object",
+     "properties": {
+      "per": {
+       "enum": [
+        "day",
+        "month",
+        "year"
+       ]
+      },
+      "counts": {
+       "enum": [
+        "vehicle",
+        "contract"
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "per",
+      "counts"
+     ]
+    },
+    "dynamic": {
+     "type": "object",
+     "properties": {
+      "url": {
+       "type": "string"
+      },
+      "note": {
+       "type": "string"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "url"
      ]
     },
     "day_basis": {
@@ -1597,6 +1670,25 @@
     "basis"
    ],
    "allOf": [
+    {
+     "if": {
+      "properties": {
+       "columns": {
+        "contains": {
+         "const": "volume"
+        }
+       }
+      },
+      "required": [
+       "columns"
+      ]
+     },
+     "then": {
+      "required": [
+       "volume"
+      ]
+     }
+    },
     {
      "if": {
       "properties": {

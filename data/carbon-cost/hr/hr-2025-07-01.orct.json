@@ -1099,7 +1099,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a1), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -4398,7 +4397,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a2), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -4477,7 +4475,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a3), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -5420,7 +5417,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a4), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -5583,7 +5579,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates a11), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -5614,7 +5609,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates bregana), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",
@@ -5632,7 +5626,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Hrvatske autoceste price list (hac.hr, toll rates rupa), EUR including 25% VAT, here excluding it; vehicle groups by Pravilnik o cestarini (NN 130/2013) art. 2",
    "rounding": {
     "increment": "0.01",

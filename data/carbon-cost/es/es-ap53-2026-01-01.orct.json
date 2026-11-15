@@ -280,7 +280,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Ministry of Transport's tolls in force: by entry and exit, either way.",
    "directed": true,
    "columns": ["entry", "exit", "vehicle_class", "amount"],

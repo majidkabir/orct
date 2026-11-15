@@ -205,7 +205,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Uredba o visini putarine (SG RS 89/19): by entry and exit station.",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [

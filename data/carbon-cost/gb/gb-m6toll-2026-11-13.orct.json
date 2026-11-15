@@ -356,7 +356,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Priced by the zones between where a trip joins and leaves the M6 Toll (see the table's law).",
    "columns": ["entry", "exit", "vehicle_class", "user_class", "amount"],
    "rows": [

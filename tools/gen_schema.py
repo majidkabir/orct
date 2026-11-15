@@ -35,11 +35,11 @@ hhmm = {"type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$|^24:00$"}
 tax = obj({"basis": {"enum": ["included", "excluded", "not_applicable", "unknown"]}, "rate": DEC,
            "name": {"type": "string"}, "note": {"type": "string"}}, ["basis"])
 names = {"type": "object", "additionalProperties": {"type": "string"}}
-COLUMNS = ["object", "entry", "exit", "vehicle_class", "time_class", "user_class", "product", "priority", "amount"]
+COLUMNS = ["object", "entry", "exit", "vehicle_class", "time_class", "user_class", "product", "volume", "priority", "amount"]
 COMPONENTS = ["infrastructure", "air_pollution", "noise", "air_pollution_noise", "co2", "congestion", "markup",
               "access", "carbon_price", "unspecified", "other"]
-FEATURES = ["type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
-            "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "rule.exemption",
+FEATURES = ["type.distance", "type.section", "type.od", "type.point", "type.area", "type.period", "type.quantity",
+            "time_classes", "calendars", "user_classes", "rounding", "volume", "dynamic", "rule.exemption",
             "rule.included_in", "rule.passage_group", "rule.factor", "rule.discount", "rule.minimum", "rule.cap"]
 charge = obj({
     "id": ID, "name": {"type": "string"},
@@ -54,13 +54,16 @@ charge = obj({
     "unmatched": {"enum": ["unpriced", "free"]},
     "time_basis": {"enum": ["entry", "exit", "event"]},
     "rounding": obj({"increment": DEC, "mode": {"enum": ["half_up", "half_even", "up", "down"]},
-                     "stage": {"enum": ["line", "charge"]}}, ["increment", "mode", "stage"]),
+                     "stage": {"enum": ["use", "line", "charge"]}}, ["increment", "mode", "stage"]),
     "tax": tax, "valid_from": DATE, "valid_to": DATE, "method": {"type": "string"},
     "mass_basis": {"enum": ["mass_kg", "train_mass_kg"]}, "mass_cap_kg": {"type": "integer"},
-    "directed": {"type": "boolean"}, "pairing": {"enum": ["single_ticket", "chain"]},
+    "directed": {"type": "boolean"},
+    "volume": obj({"per": {"enum": ["day", "month", "year"]}, "counts": {"enum": ["vehicle", "contract"]}}, ["per", "counts"]),
+    "dynamic": obj({"url": {"type": "string"}, "note": {"type": "string"}}, ["url"]),
     "day_basis": {"enum": ["calendar", "rolling"]}},
     ["id", "type", "component", "unit", "columns", "rows", "sources", "basis"])
 charge["allOf"] = [
+    {"if": {"properties": {"columns": {"contains": {"const": "volume"}}}, "required": ["columns"]}, "then": {"required": ["volume"]}},
     {"if": {"properties": {"type": {"const": "distance"}}}, "then": {"properties": {"unit": {"enum": ["km", "tkm"]}}}},
     {"if": {"properties": {"type": {"const": "section"}}}, "then": {"properties": {"unit": {"enum": ["use", "km"]}}}},
     {"if": {"properties": {"type": {"const": "od"}}}, "then": {"properties": {"unit": {"const": "trip"},
@@ -75,7 +78,8 @@ NOTE = {"type": "string"}
 CRIT = {"$ref": "#/$defs/criteria"}
 IDS = {"type": "array", "minItems": 1, "items": ID}
 PARAMS = {
-    "exemption": obj({"criteria": CRIT, "from": DATE, "until": DATE, "note": NOTE}, ["criteria"]),
+    "exemption": {**obj({"criteria": CRIT, "user_class": ID, "from": DATE, "until": DATE, "note": NOTE}),
+                  "anyOf": [{"required": ["criteria"]}, {"required": ["user_class"]}]},
     "included_in": obj({"charge": ID, "objects": IDS, "note": NOTE}, ["charge"]),
     "passage_group": obj({"objects": IDS, "minutes": {"type": "integer", "minimum": 1}, "pays": {"enum": ["first", "highest"]},
                           "note": NOTE}, ["objects", "minutes", "pays"]),
@@ -109,6 +113,8 @@ dataset = {
             "timezone": {"type": "string", "pattern": "^[A-Za-z_]+(/[A-Za-z0-9_+-]+)*$"},
             "license": {"type": "string"}, "method": {"type": "string"}, "names": names,
             "derived_from": obj({"url": {"type": "string"}, "path": {"type": "string"}, "commit": {"type": "string"}}, ["url"]),
+            "efc_context": obj({"standard": {"enum": ["ISO 17575-3", "EN 16986", "ISO 12855"]}, "version": {"type": "string"},
+                                "valid_from": DATE}, ["standard", "version"]),
             "required_features": {"type": "array", "uniqueItems": True, "items": {"enum": FEATURES}}},
             ["id", "scheme", "publisher", "valid_from", "currency", "timezone", "license", "method", "required_features"]),
         "sources": {"type": "array", "minItems": 1, "items": obj({
@@ -170,6 +176,7 @@ usage = {
                         "energy": {"enum": ENERGY}, "category": {"enum": CATEGORY}, "trailer": {"type": "boolean"}}),
         "payment": {"type": "array", "items": {"enum": ["electronic", "account", "card", "cash"]}},
         "user_classes": {"type": "object", "additionalProperties": {"type": "array", "items": ID}},
+        "prior_uses": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}},
         "events": {"type": "array", "items": obj({
             "dataset": ID, "object": ID, "time": {"type": "string", "format": "date-time"},
             "role": {"enum": ["entry", "exit", "pass"]}, "km": {"type": "number", "minimum": 0},
@@ -192,8 +199,9 @@ statement = {
             "objects": {"type": "array", "items": ID}, "row": {"type": "integer", "minimum": 0},
             "quantity": DEC, "unit": {"type": "string"}, "rate": DEC, "amount": DEC,
             "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}, "tax_basis": {"enum": ["included", "excluded", "not_applicable", "unknown"]},
-            "tax_rate": DEC, "sources": {"type": "array", "items": ID}, "notes": {"type": "array", "items": {"type": "string"}}},
-            ["dataset", "charge", "component", "objects", "quantity", "unit", "amount", "currency", "tax_basis"])},
+            "tax_rate": DEC, "basis": {"enum": ["official", "transcribed", "derived", "estimated"]}, "dataset_version": {"type": "string"},
+            "sources": {"type": "array", "items": ID}, "notes": {"type": "array", "items": {"type": "string"}}},
+            ["dataset", "charge", "component", "objects", "quantity", "unit", "amount", "currency", "tax_basis", "basis"])},
         "totals": {"type": "array", "items": obj({"currency": {"type": "string", "pattern": "^[A-Z]{3}$"}, "amount": DEC}, ["currency", "amount"])},
         "issues": {"type": "array", "items": obj({"code": {"type": "string"}, "message": {"type": "string"},
                                                   "dataset": {"type": "string"}, "charge": {"type": "string"}}, ["code", "message"])}},

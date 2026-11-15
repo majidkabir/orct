@@ -83,6 +83,17 @@
       "type": "string",
       "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
      },
+     "basis": {
+      "enum": [
+       "official",
+       "transcribed",
+       "derived",
+       "estimated"
+      ]
+     },
+     "dataset_version": {
+      "type": "string"
+     },
      "sources": {
       "type": "array",
       "items": {
@@ -108,7 +119,8 @@
      "unit",
      "amount",
      "currency",
-     "tax_basis"
+     "tax_basis",
+     "basis"
     ]
    }
   },

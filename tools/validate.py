@@ -17,7 +17,7 @@ with open(os.path.join(HERE, "..", "schema", "orct-0.2.schema.json")) as fh:
     VALIDATOR = jsonschema.Draft202012Validator(json.load(fh))
 DECIMAL = re.compile(r"^-?[0-9]+(\.[0-9]+)?$")
 DURATION = re.compile(r"^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?$")
-KEYS = ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product", "priority")
+KEYS = ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product", "volume", "priority")
 
 
 def check(d):
@@ -123,8 +123,6 @@ def check(d):
         if c["type"] == "od":
             if "object" in cols:
                 errs.append(f"{where}: an od charge is keyed by entry and exit, not object")
-            if c.get("pairing") == "chain":
-                used.add("type.od.chain")
         elif "object" not in cols and not c.get("objects"):
             errs.append(f"{where}: needs an object column or objects")
         elif "entry" in cols or "exit" in cols:
@@ -133,6 +131,14 @@ def check(d):
         if c.get("valid_from", hdr["valid_from"]) < hdr["valid_from"] or \
                 (hdr.get("valid_to") and c.get("valid_to", hdr["valid_to"]) > hdr["valid_to"]):
             errs.append(f"{where}: validity outside the dataset's")
+        if "volume" in cols:
+            used.add("volume")
+            if c["type"] not in ("section", "od", "point", "area"):
+                errs.append(f"{where}: volume is only for section, od, point and area charges")
+        if c.get("dynamic"):
+            used.add("dynamic")
+            if not any(x["scope"] == c["id"] and x["status"] == "unpriced" for x in d["coverage"]):
+                errs.append(f"{where}: a dynamic charge shall be listed in coverage as unpriced")
         if "product" in cols and c["type"] != "period":
             errs.append(f"{where}: product is only for period charges")
         errs += [f"{where}: object {o} unknown" for o in c.get("objects", []) if o not in objects]
@@ -163,7 +169,9 @@ def check(d):
                 errs.append(f"{where} row {n}: product {row['product']!r} is not an ISO 8601 duration")
             if row.get("priority") is not None and not isinstance(row["priority"], int):
                 errs.append(f"{where} row {n}: priority must be an integer")
-            for k in ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product"):
+            if row.get("volume") is not None and not (isinstance(row["volume"], int) and row["volume"] >= 1):
+                errs.append(f"{where} row {n}: volume must be an integer from 1")
+            for k in ("object", "entry", "exit", "vehicle_class", "user_class", "time_class", "product"):  # string keys
                 if row.get(k) is not None and not isinstance(row[k], str):
                     errs.append(f"{where} row {n}: {k} must be a string or null")
             key = tuple(row.get(k) for k in KEYS)

@@ -143,7 +143,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Aulesa tariffs 2025, including 21% IVA, here excluding it; night tariff 23:00 to 07:00",
    "directed": true,
    "columns": ["entry", "exit", "vehicle_class", "time_class", "priority", "amount"],

@@ -136,7 +136,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "The Ministry of Transport's tolls in force from 2025-01-01 on the AP-66 Campomanes–León (Aucalsa), by pair of stations either way: Pesados 1 (two or three axles) and Pesados 2 (four axles or more), excluding 21% IVA. Stations placed at the concessionaire's own map of its toll plazas and accesses.",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [

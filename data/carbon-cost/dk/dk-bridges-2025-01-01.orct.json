@@ -161,7 +161,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Storebæltsforbindelsen: prices set by the transport minister (lov om Sund & Bælt Holding A/S); A/S Storebælt's business price list 2025, DKK including 25% VAT, here excluding it. Green discount (Grøn rabat) 13% for EURO VI and electric or hydrogen trucks on a Storebælt Erhverv agreement paying automatically.",
    "rounding": {
     "increment": "0.01",
@@ -183,7 +182,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Øresundsbron: Øresundsbro Konsortiet's business prices per crossing, DKK excluding 25% VAT; with ØresundBUSINESS (etc) the price for the first 500 crossings a year by a truck over 9 m (569 DKK) or the first 1,000 by a van of 6-9 m (284 DKK).",
    "columns": ["entry", "exit", "vehicle_class", "user_class", "amount"],
    "rows": [

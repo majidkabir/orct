@@ -179,7 +179,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Monteput price list: from entry to exit station, categories IV and V.",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [

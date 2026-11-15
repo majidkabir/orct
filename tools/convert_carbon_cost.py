@@ -9,6 +9,7 @@ coverage as partial, so nothing is lost and a calculator knows what it would
 miss. The meaning of each source field is the one documented in carbon-cost's
 rates/rates.go, rates/zones.go, rates/fuelco2.go and rates/congestion.go.
 """
+import hashlib
 import json
 import os
 import re
@@ -424,14 +425,15 @@ def convert_system(b, i, s):
     if s.get("free_hours"):
         tfree = b.time_class(f"sys{i}-free", times=hours(s["free_hours"]), label="No charge")
         rows.append({"time_class": tfree, "priority": 2, "amount": "0"})
-    ch = {"id": cid, "name": s["name"], "type": "od", "component": "unspecified", "unit": "trip",
-          "pairing": "chain" if s.get("chain") else "single_ticket"}
+    ch = {"id": cid, "name": s["name"], "type": "od", "component": "unspecified", "unit": "trip"}
     if s.get("law"):
         ch["method"] = s["law"]
     if s.get("directed"):
         ch["directed"] = True
     if s.get("chain"):
-        b.features.add("type.od.chain")
+        b.partial(cid, "carbon-cost splits a trip through several concessions into tickets by a rule of its own that no "
+                       "source states; here a trip is priced from its first station to its last, which only pairs the "
+                       "tariff prices")
     if s.get("discounts") and all(Decimal(r["amount"]).as_tuple().exponent >= -2 for r in rows):
         # carbon-cost rounds a discounted price to the cent; with whole-cent prices that is the same as
         # rounding every line.
@@ -825,11 +827,13 @@ def main():
         cc = ds["scheme"]["country"].lower()
         rel = f"{cc}/{name[:-5]}.orct.json"
         os.makedirs(os.path.join(out, cc), exist_ok=True)
-        with open(os.path.join(out, rel), "w") as fh:
-            fh.write(dumps(doc) + "\n")
+        text = dumps(doc) + "\n"
+        with open(os.path.join(out, rel), "w", encoding="utf-8") as fh:
+            fh.write(text)
         index.append({"id": ds["id"], "scheme": ds["scheme"]["id"], "country": ds["scheme"]["country"], "file": rel,
                       "name": ds["scheme"]["name"], "valid_from": ds["valid_from"], "valid_to": ds.get("valid_to"),
-                      "coverage": "complete" if doc["coverage"][0]["status"] == "complete" else "partial"})
+                      "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                      "coverage": "complete" if all(c["status"] == "complete" for c in doc["coverage"]) else "partial"})
     with open(os.path.join(out, "index.json"), "w") as fh:
         json.dump({"orct": "0.2", "derived_from": {"url": REPO, "commit": commit}, "datasets": index},
                   fh, ensure_ascii=False, indent=1)

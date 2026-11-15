@@ -13,8 +13,8 @@ from datetime import date, datetime, timedelta
 from decimal import ROUND_DOWN, ROUND_HALF_EVEN, ROUND_HALF_UP, ROUND_UP, Decimal
 from zoneinfo import ZoneInfo
 
-IMPLEMENTED = {"type.distance", "type.section", "type.od", "type.od.chain", "type.point", "type.area", "type.period",
-               "type.quantity", "time_classes", "calendars", "user_classes", "rounding", "rule.exemption",
+IMPLEMENTED = {"type.distance", "type.section", "type.od", "type.point", "type.area", "type.period", "type.quantity",
+               "time_classes", "calendars", "user_classes", "rounding", "volume", "dynamic", "rule.exemption",
                "rule.included_in", "rule.passage_group", "rule.factor", "rule.discount", "rule.minimum", "rule.cap"}
 NULL_RANK = 10 ** 6
 MINOR_UNITS = {"JPY": 0, "KRW": 0, "ISK": 0, "CLP": 0, "BHD": 3, "KWD": 3, "OMR": 3, "TND": 3, "JOD": 3}
@@ -252,6 +252,14 @@ class Calc:
                     rank = 0 if v in held else None
                 elif c == "product":
                     rank = 0 if v == use.get("product") else None
+                elif c == "volume":
+                    nth = use.get("ordinal")
+                    if isinstance(nth, Unknown):
+                        unknown, rank = unknown or nth, 0
+                    elif nth is None or not isinstance(v, int) or v > nth:
+                        rank = None
+                    else:
+                        rank = nth - v
                 if rank is None:
                     ok = False
                     break
@@ -329,7 +337,7 @@ class Calc:
         return []
 
     def od_uses(self, ds, ch, events):
-        """8.4 od: trips from entry to exit; single_ticket prices first to last, chain splits into tickets."""
+        """8.4 od: the events form trips from entry to exit; a trip is priced from its first station to its last."""
         events = sorted(events, key=lambda e: e["time"])
         trips, cur = [], []
         for e in events:
@@ -344,33 +352,12 @@ class Calc:
             trips.append(cur)
         out = []
         for trip in trips:
-            pairs = [(trip[0], trip[-1])]
-            if ch.get("pairing") == "chain" and len(trip) > 1:
-                pairs, i = [], 0
-                try:
-                    while i < len(trip) - 1:
-                        j = next((j for j in range(len(trip) - 1, i, -1) if self.priced(ds, ch, trip[i], trip[j])), None)
-                        if j is not None:
-                            pairs.append((trip[i], trip[j]))
-                            i = j
-                        elif self.priced(ds, ch, trip[i], trip[i]):  # a barrier, priced on its own
-                            pairs.append((trip[i], trip[i]))
-                            i += 1
-                        else:
-                            pairs.append((trip[i], trip[-1]))  # no ticket: unpriced
-                            break
-                except Unknown as e:
-                    out.append(e)
-            for a, b in pairs:
-                basis = ch.get("time_basis", "entry")
-                when = b["time"] if basis == "exit" else a["time"]
-                out.append(({"entry": a["object"], "exit": b["object"], "time": ds.local(when),
-                             "trip": (a["time"], b["time"])}, Decimal(1), [a["object"], b["object"]], a))
+            a, b = trip[0], trip[-1]
+            when = b["time"] if ch.get("time_basis", "entry") == "exit" else a["time"]
+            out.append(({"entry": a["object"], "exit": b["object"], "time": ds.local(when),
+                         "trip": (a["time"], b["time"])}, Decimal(1), [a["object"], b["object"]],
+                        b if ch.get("time_basis") == "exit" else a))
         return out
-
-    def priced(self, ds, ch, a, b):
-        use = {"entry": a["object"], "exit": b["object"], "time": ds.local(a["time"])}
-        return self.lookup(ds, ch, use, self._vclass, self._held) is not None
 
     def lookup(self, ds, ch, use, vclass, held):
         sel = self.select(ds, ch, use, vclass, held)
@@ -452,6 +439,8 @@ class Calc:
             if r["kind"] != "exemption" or ch["id"] not in r["applies_to"] or not lines:
                 continue
             p = r["params"]
+            if p.get("user_class") and p["user_class"] not in self._held:
+                continue
             try:
                 if not meets(p.get("criteria", {}), self.vehicle):
                     continue
@@ -466,7 +455,12 @@ class Calc:
         rate = Decimal(row["amount"])
         out = {"dataset": ds.id, "charge": ch["id"], "component": ch["component"], "objects": objs, "row": row_n,
                "quantity": q, "unit": ch["unit"], "rate": row["amount"], "amount": rate * q, "currency": ds.currency,
-               "tax_basis": tax["basis"], "sources": ch["sources"], "_event": event}
+               "tax_basis": tax["basis"], "basis": ch["basis"], "sources": ch["sources"], "_event": event}
+        if ds.doc["dataset"].get("version"):
+            out["dataset_version"] = ds.doc["dataset"]["version"]
+        rd = ch.get("rounding")
+        if rd and rd["stage"] == "use":
+            out["amount"] = quantize(out["amount"], rd)
         if tax.get("rate"):
             out["tax_rate"] = tax["rate"]
         return out
@@ -474,12 +468,20 @@ class Calc:
     def price_charge(self, ds, ch, events, used):
         """8.5: one line per priced use; an undecided or unmatched use is reported and left out."""
         vclass, held, out = self._vclass, self._held, []
+        uses = self.uses(ds, ch, events)
+        if ch.get("dynamic"):
+            if uses:
+                used.add(ch["id"])
+                self.issue("dynamic_tariff", f"amounts are set in real time: {ch['dynamic'].get('url', '')}", ds.id, ch["id"])
+            return []
+        if "volume" in ch["columns"]:
+            self.ordinals(ds, ch, uses)
 
         def unpriced(code, message):
             if code != "unmatched" or ch.get("unmatched", "unpriced") == "unpriced":
                 self.issue("unpriced" if code == "unmatched" else code, message, ds.id, ch["id"])
 
-        for u in self.uses(ds, ch, events):
+        for u in uses:
             used.add(ch["id"])
             if isinstance(u, Unknown):
                 unpriced(u.code, str(u))
@@ -520,6 +522,26 @@ class Calc:
             line["_use"] = use
             out.append(line)
         return out
+
+    def ordinals(self, ds, ch, uses):
+        """6.10.3 volume: each use's place among the user's uses of the charge in its period, counting the
+        prior uses the usage gives for the period of its first use."""
+        simple = sorted((u for u in uses if isinstance(u, tuple) and isinstance(u[0], dict)), key=lambda u: u[0]["time"])
+        if not simple:
+            return
+        per = ch["volume"]["per"]
+
+        def period(t):
+            return t.year if per == "year" else (t.year, t.month) if per == "month" else t.date()
+        prior = self.usage.get("prior_uses", {}).get(ds.id, {}).get(ch["id"])
+        first, counts = period(simple[0][0]["time"]), {}
+        for u in simple:
+            p = period(u[0]["time"])
+            counts[p] = counts.get(p, 0) + 1
+            if p == first and prior is None:
+                u[0]["ordinal"] = Unknown(f"the usage does not give the prior uses of {ch['id']}", "missing_count")
+            else:
+                u[0]["ordinal"] = (prior if p == first else 0) + counts[p]
 
     def period(self, ds, ch, days, events, vclass, held):
         """8.4 period: the set of products with the lowest total covering every day (or instant) of use;
@@ -657,7 +679,8 @@ class Calc:
         """A line of its own (9.2), on the first charge of the rule's applies_to among the lines it adjusts."""
         charge = next(c for c in r["applies_to"] if any(l["charge"] == c for l in group))
         sample = next(l for l in group if l["charge"] == charge)
-        return {**{k: sample[k] for k in ("dataset", "currency", "tax_basis", "sources")}, "charge": charge,
+        return {**{k: sample[k] for k in ("dataset", "dataset_version", "currency", "tax_basis", "basis", "sources") if k in sample},
+                "charge": charge,
                 "component": sample["component"], "objects": [], "quantity": Decimal(1), "unit": "rule",
                 "amount": amount, "notes": [note], "_event": sample["_event"]}
 
@@ -691,6 +714,8 @@ class Calc:
             if not rd:
                 continue
             mine = [l for l in lines if l["charge"] == ch["id"]]
+            if rd["stage"] == "use":
+                continue
             if rd["stage"] == "line":
                 for l in mine:
                     l["amount"] = quantize(l["amount"], rd)

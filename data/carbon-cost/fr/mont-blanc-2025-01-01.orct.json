@@ -95,7 +95,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "ATMB/TMB-GEIE price for heavy vehicles, one way, EUR including 20% VAT, here excluding it.",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [["st1:Tunnel du Mont Blanc", "st1:Tunnel du Mont Blanc", "sys1-1.3", "165.92"], ["st1:Tunnel du Mont Blanc", "st1:Tunnel du Mont Blanc", "sys1-1.4", "333.42"]],

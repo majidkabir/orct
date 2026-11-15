@@ -232,7 +232,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Castellana de Autopistas / Iberpistas tariffs 2025, including 21% IVA, here excluding it",
    "directed": true,
    "columns": ["entry", "exit", "vehicle_class", "amount"],

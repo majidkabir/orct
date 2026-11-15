@@ -735,7 +735,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "The Ministry of Transport's tolls in force: by entry and exit, either way; with a tag, the Haro–Alfaro and Zambrana–Tudela tables.",
    "directed": true,
    "columns": ["entry", "exit", "vehicle_class", "user_class", "amount"],

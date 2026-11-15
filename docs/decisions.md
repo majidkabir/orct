@@ -212,3 +212,47 @@ proposals with at least one producer and one consumer, then a vote. Path to
 formal standardisation: CEN Workshop Agreement, then CEN/TC 278 WG1 (where
 ISO 17575-3 is under review in 2026), and a DATEX II mapping for national
 access points, listed with mobilityDCAT-AP metadata.
+
+## D16. One charge per closed system; no ticket-splitting rule
+
+**Decision.** A trip in a closed system is priced from its first station to
+its last. Where a toll charger ends one ticket and starts another, each
+system is its own `od` charge and the station where they meet belongs to
+both.
+
+**Alternatives.** A "chain" rule that splits a long trip into the longest
+priced pairs (0.2 drafts, taken from carbon-cost): no law or tariff states
+it, so a standard cannot make it normative.
+
+**Why.** The split comes from the systems themselves, which the dataset
+already describes.
+
+## D17. Prices by volume use counts the usage supplies
+
+**Decision.** A charge may key rows on `volume`, the use's place in a day,
+month or year (Øresund's price after 500 crossings a year, monthly volume
+rebates). The usage gives the uses counted earlier in the period
+(`prior_uses`); without them the use is unpriced.
+
+**Why.** Only the toll charger or the toll service provider knows the count;
+the calculation stays a function of its inputs.
+
+## D18. Dynamic tariffs are declared, not priced
+
+**Decision.** A charge set in real time (ISO/TS 21192) has `dynamic` with the
+URL of its live tariff; its uses are reported, never priced from indicative
+rows.
+
+## D19. Integrity: hashes in the feed, a detached JWS over it
+
+**Decision.** The feed lists each dataset's SHA-256, and the producer signs
+the feed with a detached JWS (RFC 7515) using keys published as a JWK Set.
+
+**Why.** One signature covers every dataset, and the datasets stay plain
+JSON.
+
+## D20. Statement lines carry the dataset version and the basis
+
+**Decision.** Each line names the dataset version it was priced from and the
+charge's `basis`, so an invoice can be reconciled after a correction and an
+estimated amount is never presented as official.

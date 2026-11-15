@@ -107,6 +107,16 @@
     }
    }
   },
+  "prior_uses": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "additionalProperties": {
+     "type": "integer",
+     "minimum": 0
+    }
+   }
+  },
   "events": {
    "type": "array",
    "items": {

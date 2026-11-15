@@ -10,10 +10,10 @@
   "timezone": "Europe/Paris",
   "license": "CC0-1.0",
   "method": "Invented values for testing calculators against clause 8 of the specification.",
-  "required_features": ["calendars", "rounding", "rule.cap", "rule.discount", "rule.exemption", "rule.factor",
+  "required_features": ["calendars", "dynamic", "rounding", "rule.cap", "rule.discount", "rule.exemption", "rule.factor",
                         "rule.included_in", "rule.minimum", "rule.passage_group", "time_classes", "type.area",
-                        "type.distance", "type.od", "type.od.chain", "type.period", "type.point", "type.quantity",
-                        "type.section", "user_classes"]
+                        "type.distance", "type.od", "type.period", "type.point", "type.quantity",
+                        "type.section", "user_classes", "volume"]
  },
  "sources": [{"id": "s1", "title": "ORCT specification 0.2, clause 8", "url": "https://github.com/majidkabir/orct/blob/main/spec/orct-0.2.md"}],
  "tax": {"basis": "included", "rate": "0.20", "name": "TVA"},
@@ -40,7 +40,8 @@
   {"id": "charging", "days": [{"weekdays": [1, 2, 3, 4, 5], "exclude": {"calendars": ["holidays"]}}], "times": [["07:00", "18:00"]]}
  ],
  "calendars": [{"id": "holidays", "name": "Public holidays", "dates": ["2026-12-25", "2027-01-01"], "covers_to": "2027-06-30"}],
- "user_classes": [{"id": "electronic", "label": "On-board unit", "payment": ["electronic"]}],
+ "user_classes": [{"id": "electronic", "label": "On-board unit", "payment": ["electronic"]},
+                  {"id": "emergency", "label": "Emergency services, exempt by contract"}],
  "charge_objects": [
   {"id": "net", "type": "network", "network": {"description": "All toll roads"}},
   {"id": "mw", "type": "network", "parents": ["net"], "network": {"road_types": ["motorway"]}},
@@ -59,6 +60,9 @@
   {"id": "gate", "type": "point", "name": "Barrier", "location": {"geometry": {"type": "Point", "coordinates": [2.35, 48.85]}}},
   {"id": "bridge", "type": "point", "name": "Bridge", "location": {"geometry": {"type": "Point", "coordinates": [2.6, 48.7]}}},
   {"id": "toll3", "type": "point", "name": "Station with rush hours", "location": {"geometry": {"type": "Point", "coordinates": [2.7, 48.6]}}},
+  {"id": "tunnel", "type": "point", "name": "Tunnel with a volume price", "location": {"geometry": {"type": "Point", "coordinates": [2.8, 48.5]}}},
+  {"id": "pier", "type": "point", "name": "Pier rounded per use", "location": {"geometry": {"type": "Point", "coordinates": [2.9, 48.4]}}},
+  {"id": "express", "type": "point", "name": "Express lane priced in real time", "location": {"geometry": {"type": "Point", "coordinates": [3.4, 48.4]}}},
   {"id": "sec1", "type": "section", "name": "Section 1", "length_km": 12.5, "from": {"geometry": {"type": "Point", "coordinates": [2.0, 47.0]}}, "to": {"geometry": {"type": "Point", "coordinates": [2.1, 47.1]}}},
   {"id": "city", "type": "area", "name": "City zone", "location": {"geometry": {"type": "Polygon", "coordinates": [[[2.3, 48.8], [2.4, 48.8], [2.4, 48.9], [2.3, 48.9], [2.3, 48.8]]]}}},
   {"id": "country", "type": "jurisdiction", "jurisdiction": {"country": "FR"}}
@@ -80,10 +84,21 @@
     ["st-a", "st-b", "gB", null, null, "4.00"],
     ["st-b", "st-d", "g5", null, null, "7.00"]
    ]},
-  {"id": "odc", "type": "od", "component": "unspecified", "unit": "trip", "pairing": "chain", "basis": "official", "sources": ["s1"],
+  {"id": "odc", "type": "od", "component": "unspecified", "unit": "trip", "basis": "official", "sources": ["s1"],
    "columns": ["entry", "exit", "vehicle_class", "amount"],
-   "rows": [["c1", "c2", null, "9.00"], ["c1", "c3", null, "20.00"], ["c2", "c4", null, "15.00"], ["c3", "c4", null, "6.00"],
-            ["c5", "c5", null, "2.00"]]},
+   "rows": [["c1", "c2", null, "9.00"], ["c1", "c3", null, "20.00"]]},
+  {"id": "odc2", "type": "od", "component": "unspecified", "unit": "trip", "basis": "official", "sources": ["s1"],
+   "columns": ["entry", "exit", "amount"],
+   "rows": [["c3", "c4", "6.00"], ["c5", "c5", "2.00"]]},
+  {"id": "tunnel-fee", "type": "point", "component": "infrastructure", "unit": "passage", "basis": "official", "sources": ["s1"],
+   "objects": ["tunnel"], "volume": {"per": "year", "counts": "vehicle"},
+   "columns": ["volume", "amount"], "rows": [[1, "10.00"], [4, "5.00"]]},
+  {"id": "pier-fee", "type": "point", "component": "infrastructure", "unit": "passage", "basis": "official", "sources": ["s1"],
+   "objects": ["pier"], "rounding": {"increment": "0.01", "mode": "half_up", "stage": "use"},
+   "columns": ["amount"], "rows": [["2.345"]]},
+  {"id": "express-lane", "type": "point", "component": "congestion", "unit": "passage", "basis": "official", "sources": ["s1"],
+   "objects": ["express"], "dynamic": {"url": "https://example.org/express-lane/live"},
+   "columns": ["amount"], "rows": [["3.00"]]},
   {"id": "pts", "type": "point", "component": "unspecified", "unit": "passage", "basis": "official", "sources": ["s1"],
    "columns": ["object", "vehicle_class", "time_class", "priority", "amount"],
    "rows": [
@@ -116,7 +131,10 @@
   {"id": "r-discount-etc", "kind": "discount", "applies_to": ["od"], "params": {"name": "Electronic payment", "percent": "20", "payment": ["electronic"]}},
   {"id": "r-minimum", "kind": "minimum", "applies_to": ["seckm"], "params": {"per": "usage", "amount": "2.00"}},
   {"id": "r-cap", "kind": "cap", "applies_to": ["pts"], "params": {"per": "day", "amount": "30"}},
-  {"id": "r-cap-night", "kind": "cap", "applies_to": ["sec"], "params": {"per": "day", "amount": "20", "time_class": "night"}}
+  {"id": "r-cap-night", "kind": "cap", "applies_to": ["sec"], "params": {"per": "day", "amount": "20", "time_class": "night"}},
+  {"id": "r-exempt-emergency", "kind": "exemption", "applies_to": ["dist"], "params": {"user_class": "emergency"}},
+  {"id": "r-discount-pier", "kind": "discount", "applies_to": ["pier-fee"], "params": {"name": "Everyone", "percent": "10"}}
  ],
- "coverage": [{"scope": "rush", "status": "partial", "reason": "Rush hours are named but not published."}]
+ "coverage": [{"scope": "rush", "status": "partial", "reason": "Rush hours are named but not published."},
+              {"scope": "express-lane", "status": "unpriced", "reason": "Amounts are set in real time."}]
 }

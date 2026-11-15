@@ -960,7 +960,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "Norma Foral 5/2021 (Gipuzkoa): by entry and exit, per direction.",
    "directed": true,
    "columns": ["entry", "exit", "vehicle_class", "amount"],

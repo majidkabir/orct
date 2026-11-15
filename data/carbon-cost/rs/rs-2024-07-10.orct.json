@@ -916,7 +916,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 2024-07-10, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
@@ -1048,7 +1047,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 2024-07-10, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
@@ -1078,7 +1076,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 2024-07-10, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
@@ -1114,7 +1111,6 @@
    "type": "od",
    "component": "unspecified",
    "unit": "trip",
-   "pairing": "single_ticket",
    "method": "JP Putevi Srbije price list (posebna naknada za upotrebu autoputa, from 2024-07-10, with the Government's consent; Zakon o naknadama za korišćenje javnih dobara): EUR from the listed entry station; vehicle categories 3 (2-3 axles over 3.5 t) and 4 (4 or more axles)",
    "columns": ["entry", "exit", "vehicle_class", "amount"],
    "rows": [
