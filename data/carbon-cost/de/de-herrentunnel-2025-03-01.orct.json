@@ -140,8 +140,8 @@
  ],
  "extensions": {
   "x-carbon-cost": {
-   "osm_extract": "2026-11-11",
-   "crossings": true
+   "crossings": true,
+   "osm_extract": "2026-11-11"
   }
  }
 }

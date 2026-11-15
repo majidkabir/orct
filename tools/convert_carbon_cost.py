@@ -252,7 +252,7 @@ def convert_table(t, path, commit):
     if t.get("sections"):
         convert_sections(b, t["sections"])
 
-    for k in INFO_KEYS & t.keys():
+    for k in sorted(INFO_KEYS & t.keys()):
         b.keep(k, t[k])
     for k in sorted(set(t) - used - INFO_KEYS):
         b.keep(k, t[k], f"{k} is kept as an extension (no ORCT 0.1 field yet)")
