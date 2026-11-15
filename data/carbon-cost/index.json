@@ -2,7 +2,7 @@
  "orct": "0.2",
  "derived_from": {
   "url": "https://github.com/majidkabir/carbon-cost",
-  "commit": "3deadd1093a170f7d08bd40278c841af8aa75185"
+  "commit": "0a38529a688347ead1dc79f5aa05efdbde93a4c1"
  },
  "datasets": [
   {
@@ -1828,7 +1828,7 @@
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
    "valid_from": "2024-01-01",
    "valid_to": "2026-11-11",
-   "sha256": "6b19e83dc9d7fb6c515ab5ed227a6974f3799284db9c5da3ac2c7cba13edda0b",
+   "sha256": "d2035ff7c20bb08e855d3f8fc4a435843ffc020329fc9f3ae047328e39404a2d",
    "coverage": "complete"
   },
   {
@@ -1839,7 +1839,7 @@
    "name": "Norwegian road tolls (bompenger, AutoPASS toll stations)",
    "valid_from": "2026-11-12",
    "valid_to": null,
-   "sha256": "cc24c89d82932734c1287fc69e7af35d5939929c32853cd01b168075de98872c",
+   "sha256": "23977d9b180960aaba49721f2b219b0add7b9cbbdc327359dcde4c8c2a358835",
    "coverage": "complete"
   },
   {

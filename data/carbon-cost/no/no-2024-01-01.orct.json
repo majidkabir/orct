@@ -17,7 +17,7 @@
   "currency": "NOK",
   "timezone": "Europe/Oslo",
   "license": "MIT",
-  "method": "Veglova § 27 and the toll projects' Storting decisions; prices per passage for large vehicles (takstgruppe 2, over 3,500 kg) as registered for each AutoPASS toll station in NVDB, Statens vegvesen's national road database (object type 45 Bomstasjon), every version of each station with the dates it was registered for, with the charged direction and the hour rule (timesregel: after a paid passage the project's other stations are free for the time given; where the tariff decision says so, at Fjellinjen and in Bypakke Bergen, the hour's highest price is charged). A station's version is the one in force on the trip's date. Rush-hour prices (Rushtidstakst stor bil) apply in the rush hours of each project's tariff decision, Monday to Friday except public holidays (offentlige fridager), Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday (Takstretningslinjer for bompengeprosjekt på offentlig veg, Vegdirektoratet, July 2025, § 3.3), at Fjellinjen not in July. Tolls carry no VAT.",
+  "method": "Veglova § 27 and the toll projects' Storting decisions; prices per passage for large vehicles (takstgruppe 2, over 3,500 kg) as registered for each AutoPASS toll station in NVDB, Statens vegvesen's national road database (object type 45 Bomstasjon), every version of each station with the dates it was registered for, with the charged direction and the hour rule (timesregel: after a paid passage the project's other stations are free for the time given; where the tariff decision says so, at Fjellinjen and in Bypakke Bergen, the hour's highest price is charged). A station's version is the one in force on the trip's date. Rush-hour prices (Rushtidstakst stor bil) apply in the rush hours of each project's tariff decision, Monday to Friday except public holidays (the helligdager of helligdagsfredloven § 2, and 1 and 17 May, which lov 26. april 1947 nr. 1 equates with Sundays); in Miljøpakke Trondheim (Vegamot) and Bypakke Tenk Tromsø also not on Christmas Eve, New Year's Eve and the Wednesday before Easter, at Fjellinjen not in July, as each project's rules say. Tolls carry no VAT.",
   "derived_from": {
    "url": "https://github.com/majidkabir/carbon-cost",
    "path": "rates/data/no-2024-01-01.json"
@@ -32,38 +32,38 @@
   },
   {
    "id": "s2",
-   "title": "Norway: Takstretningslinjer for bompengeprosjekt på offentlig veg (Vegdirektoratet, July 2025), § 3.3 the days without rush-hour prices",
-   "url": "https://www.autopass.no/siteassets/filer-og-vedlegg/04.-takstretningslinjene/takstretninglinjer-juli-2025.pdf"
-  },
-  {
-   "id": "s3",
    "title": "Norway: Fjellinjen, Tariffs and toll stations (rush hours; not on Saturdays, Sundays, public holidays or in July)",
    "url": "https://www.fjellinjen.no/en/tariffs-and-toll-stations"
   },
   {
-   "id": "s4",
+   "id": "s3",
    "title": "Norway: Fjellinjen, takstkunngjøring from 1 January 2025 (the hour rule charges the highest tariff)",
    "url": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2024/11/21/632799_B%C3%B8rsmelding%20Takstkunngj%C3%B8ring%2001.01.25.pdf"
   },
   {
+   "id": "s4",
+   "title": "Norway: Ferde, Bypakke Bergen prices (rush hours Monday to Friday, not on Saturdays, Sundays and holidays)",
+   "url": "https://ferde.no/bomanlegg-og-priser/bypakke-bergen"
+  },
+  {
    "id": "s5",
-   "title": "Norway: Ferde, Bergen toll stations and prices (rush hours)",
-   "url": "https://ferde.no/en/toll-stations-and-prices/bergen"
+   "title": "Norway: Vegdirektoratet, takstvedtak Bypakke Bergen 24.11.2025, 22/33576-18 (the hour rule charges the highest tariff)",
+   "url": "https://cdn.sanity.io/files/0cmsx83u/production/c9b5b450af19c7153cf03a8ee79376d2f66f7d04.pdf"
   },
   {
    "id": "s6",
-   "title": "Norway: Vegdirektoratet, takstvedtak Bypakke Bergen 24.11.2025, 22/33576-18 (the hour rule charges the highest tariff)",
-   "url": "https://cdn.sanity.io/files/6d3nulko/production/c9b5b450af19c7153cf03a8ee79376d2f66f7d04.pdf"
+   "title": "Norway: Vegdirektoratet, takstvedtak Samferdselspakke for Kristiansandsregionen fase 2, 29.06.2021, 20/5876-21 (rush hours)",
+   "url": "https://cdn.sanity.io/files/0cmsx83u/production/92146f48ce9d1aae9556bb25fead7ed480e18126.pdf"
   },
   {
    "id": "s7",
-   "title": "Norway: Vegdirektoratet, takstvedtak Samferdselspakke for Kristiansandsregionen fase 2, 29.06.2021, 20/5876-21 (rush hours)",
-   "url": "https://cdn.sanity.io/files/6d3nulko/production/92146f48ce9d1aae9556bb25fead7ed480e18126.pdf"
+   "title": "Norway: Prop. 88 S (2022–2023), Kristiansand bystyre 1 December 2021: rush hours Monday to Friday except public holidays",
+   "url": "https://cms12.regjeringen.no/contentassets/e8c4b61337d648259fd23e835a6da0a1/no/pdfs/prp202220230088000dddpdfs.pdf"
   },
   {
    "id": "s8",
    "title": "Norway: Vegdirektoratet, takstvedtak Miljøpakke Trondheim (Vegamot), rush hours and rush-free days",
-   "url": "https://www.vegamot.no/wp-content/uploads/2025/09/TakstvedtakMiljopakkeTrondheimfortungenullutslippskjoretoy.pdf"
+   "url": "https://www.vegamot.no/getfile.php/133105-1793699450/6.%20Takstvedtak%20og%20Kunngj%C3%B8ringer/11.%20Milj%C3%B8pakken%20Trondheim/Takstvedtak%20Milj%C3%B8pakke%20Trondheim%20for%20tunge%20nullutslippskj%C3%B8ret%C3%B8y%20.PDF"
   },
   {
    "id": "s9",
@@ -72,8 +72,13 @@
   },
   {
    "id": "s10",
-   "title": "Norway: Bypakke Grenland (Vegfinans), AutoPASS household brochure (rush hours Monday to Friday except public holidays)",
-   "url": "https://www.bamble.kommune.no/contentassets/a909827d89de4a2da2ef3f09732d2ec1/tefy_autopass-a4_hustandsbrosjyre_ma_webny.pdf"
+   "title": "Norway: Bypakke Tenk Tromsø, FAQ (no rush-hour price on weekends and official holidays, including Christmas Eve, New Year's Eve and the Wednesday before Easter)",
+   "url": "https://www.tenktromso.no/faq"
+  },
+  {
+   "id": "s11",
+   "title": "Norway: Vegfinans, Bypakke Grenland (rush hours Monday to Friday except public holidays)",
+   "url": "https://www.vegfinans.no/bompengeprosjekter/vegfinans-bypakke-grenland-as"
   }
  ],
  "tax": {
@@ -102,13 +107,13 @@
  "time_classes": [
   {
    "id": "rush",
-   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "label": "Rush hours, Monday to Friday except public holidays",
    "days": [
     {
      "weekdays": [1, 2, 3, 4, 5],
      "exclude": {
-      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+      "dates": ["01-01", "05-01", "05-17", "12-25", "12-26"],
+      "easter": [[-3, -2], [1, 1], [39, 39], [50, 50]]
      }
     }
    ],
@@ -116,28 +121,28 @@
   },
   {
    "id": "rush-2",
-   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday, not in July",
+   "label": "Rush hours, Monday to Friday except public holidays; not in July",
    "days": [
     {
      "weekdays": [1, 2, 3, 4, 5],
-     "months": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12],
      "exclude": {
-      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
-     }
+      "dates": ["01-01", "05-01", "05-17", "12-25", "12-26"],
+      "easter": [[-3, -2], [1, 1], [39, 39], [50, 50]]
+     },
+     "months": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
     }
    ],
    "times": [["06:30", "09:00"], ["15:00", "17:00"]]
   },
   {
    "id": "rush-3",
-   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "label": "Rush hours, Monday to Friday except public holidays and Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
    "days": [
     {
      "weekdays": [1, 2, 3, 4, 5],
      "exclude": {
       "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+      "easter": [[-4, -4], [-3, -2], [1, 1], [39, 39], [50, 50]]
      }
     }
    ],
@@ -145,27 +150,41 @@
   },
   {
    "id": "rush-4",
-   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "label": "Rush hours, Monday to Friday except public holidays",
    "days": [
     {
      "weekdays": [1, 2, 3, 4, 5],
      "exclude": {
-      "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+      "dates": ["01-01", "05-01", "05-17", "12-25", "12-26"],
+      "easter": [[-3, -2], [1, 1], [39, 39], [50, 50]]
+     }
+    }
+   ],
+   "times": [["07:00", "09:00"], ["15:00", "17:00"]]
+  },
+  {
+   "id": "rush-5",
+   "label": "Rush hours, Monday to Friday except public holidays",
+   "days": [
+    {
+     "weekdays": [1, 2, 3, 4, 5],
+     "exclude": {
+      "dates": ["01-01", "05-01", "05-17", "12-25", "12-26"],
+      "easter": [[-3, -2], [1, 1], [39, 39], [50, 50]]
      }
     }
    ],
    "times": [["06:30", "09:00"], ["14:30", "17:00"]]
   },
   {
-   "id": "rush-5",
-   "label": "Rush hours, Monday to Friday except public holidays, Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
+   "id": "rush-6",
+   "label": "Rush hours, Monday to Friday except public holidays and Christmas Eve, New Year's Eve and the Wednesday before Maundy Thursday",
    "days": [
     {
      "weekdays": [1, 2, 3, 4, 5],
      "exclude": {
       "dates": ["01-01", "05-01", "05-17", "12-24", "12-25", "12-26", "12-31"],
-      "easter": [[-4, -2], [1, 1], [39, 39], [50, 50]]
+      "easter": [[-4, -4], [-3, -2], [1, 1], [39, 39], [50, 50]]
      }
     }
    ],
@@ -14111,7 +14130,7 @@
     ["pt741", null, "63"],
     ["pt771", null, "76"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14122,7 +14141,7 @@
    "valid_to": "2024-01-23",
    "columns": ["object", "amount"],
    "rows": [["pt100", "60"], ["pt102", "60"], ["pt679", "0"], ["pt682", "0"], ["pt685", "0"], ["pt688", "0"], ["pt691", "0"], ["pt700", "0"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14193,7 +14212,7 @@
     ["pt989", null, "34"],
     ["pt989", "rush-3", "61"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14216,7 +14235,7 @@
     ["pt855", "62"],
     ["pt859", "57"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14227,7 +14246,7 @@
    "valid_to": "2024-02-14",
    "columns": ["object", "amount"],
    "rows": [["pt1", "84"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14239,17 +14258,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt825", null, "33"],
-    ["pt825", "rush-4", "50"],
+    ["pt825", "rush-5", "50"],
     ["pt829", null, "33"],
-    ["pt829", "rush-4", "50"],
+    ["pt829", "rush-5", "50"],
     ["pt833", null, "33"],
-    ["pt833", "rush-4", "50"],
+    ["pt833", "rush-5", "50"],
     ["pt837", null, "33"],
-    ["pt837", "rush-4", "50"],
+    ["pt837", "rush-5", "50"],
     ["pt841", null, "33"],
-    ["pt841", "rush-4", "50"]
+    ["pt841", "rush-5", "50"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14260,7 +14279,7 @@
    "valid_to": "2024-05-12",
    "columns": ["object", "amount"],
    "rows": [["pt117", "45"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14325,7 +14344,7 @@
     ["pt744", "38"],
     ["pt767", "66"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14346,39 +14365,39 @@
     ["pt940", null, "110"],
     ["pt944", null, "110"],
     ["pt948", null, "24"],
-    ["pt948", "rush-5", "72"],
+    ["pt948", "rush-6", "72"],
     ["pt950", null, "24"],
-    ["pt950", "rush-5", "72"],
+    ["pt950", "rush-6", "72"],
     ["pt952", null, "24"],
-    ["pt952", "rush-5", "72"],
+    ["pt952", "rush-6", "72"],
     ["pt954", null, "24"],
-    ["pt954", "rush-5", "72"],
+    ["pt954", "rush-6", "72"],
     ["pt956", null, "24"],
-    ["pt956", "rush-5", "72"],
+    ["pt956", "rush-6", "72"],
     ["pt958", null, "24"],
-    ["pt958", "rush-5", "72"],
+    ["pt958", "rush-6", "72"],
     ["pt960", null, "24"],
-    ["pt960", "rush-5", "72"],
+    ["pt960", "rush-6", "72"],
     ["pt962", null, "24"],
-    ["pt962", "rush-5", "72"],
+    ["pt962", "rush-6", "72"],
     ["pt964", null, "24"],
-    ["pt964", "rush-5", "72"],
+    ["pt964", "rush-6", "72"],
     ["pt966", null, "24"],
-    ["pt966", "rush-5", "72"],
+    ["pt966", "rush-6", "72"],
     ["pt968", null, "24"],
-    ["pt968", "rush-5", "72"],
+    ["pt968", "rush-6", "72"],
     ["pt970", null, "24"],
-    ["pt970", "rush-5", "72"],
+    ["pt970", "rush-6", "72"],
     ["pt972", null, "24"],
-    ["pt972", "rush-5", "72"],
+    ["pt972", "rush-6", "72"],
     ["pt974", null, "24"],
-    ["pt974", "rush-5", "72"],
+    ["pt974", "rush-6", "72"],
     ["pt976", null, "24"],
-    ["pt976", "rush-5", "72"],
+    ["pt976", "rush-6", "72"],
     ["pt978", null, "24"],
-    ["pt978", "rush-5", "72"]
+    ["pt978", "rush-6", "72"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14389,7 +14408,7 @@
    "valid_to": "2024-06-20",
    "columns": ["object", "amount"],
    "rows": [["pt92", "34"], ["pt96", "34"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14400,7 +14419,7 @@
    "valid_to": "2024-06-30",
    "columns": ["object", "amount"],
    "rows": [["pt125", "385"], ["pt259", "70"], ["pt263", "70"], ["pt267", "70"], ["pt271", "70"], ["pt275", "70"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14431,7 +14450,7 @@
     ["pt731", "44"],
     ["pt814", "48"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14454,7 +14473,7 @@
     ["pt876", "53"],
     ["pt879", "53"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14518,7 +14537,7 @@
     ["pt983", null, "82"],
     ["pt983", "rush", "145"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14529,7 +14548,7 @@
    "valid_to": "2025-02-27",
    "columns": ["object", "amount"],
    "rows": [["pt171", "175"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14549,7 +14568,7 @@
     ["pt917", null, "52"],
     ["pt923", null, "52"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14560,7 +14579,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt179", "82"], ["pt182", "82"], ["pt185", "82"], ["pt188", "82"], ["pt992", "82"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14571,7 +14590,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt55", "22"], ["pt57", "22"], ["pt59", "22"], ["pt61", "22"], ["pt63", "22"], ["pt65", "22"], ["pt67", "22"], ["pt69", "22"], ["pt71", "22"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14582,7 +14601,7 @@
    "valid_to": "2025-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt90", "20"], ["pt114", "26"], ["pt175", "13"], ["pt177", "14"], ["pt196", "11"], ["pt198", "24"], ["pt327", "15"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14593,7 +14612,7 @@
    "valid_to": "2026-02-25",
    "columns": ["object", "amount"],
    "rows": [["pt107", "75"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14615,7 +14634,7 @@
     ["pt651", null, "113"],
     ["pt651", "rush-2", "150"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14785,7 +14804,7 @@
     ["pt845", null, "113"],
     ["pt845", "rush-2", "150"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14797,33 +14816,33 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt233", null, "27"],
-    ["pt233", "rush-3", "38"],
+    ["pt233", "rush-4", "38"],
     ["pt235", null, "27"],
-    ["pt235", "rush-3", "38"],
+    ["pt235", "rush-4", "38"],
     ["pt237", null, "27"],
-    ["pt237", "rush-3", "38"],
+    ["pt237", "rush-4", "38"],
     ["pt239", null, "27"],
-    ["pt239", "rush-3", "38"],
+    ["pt239", "rush-4", "38"],
     ["pt241", null, "27"],
-    ["pt241", "rush-3", "38"],
+    ["pt241", "rush-4", "38"],
     ["pt243", null, "27"],
-    ["pt243", "rush-3", "38"],
+    ["pt243", "rush-4", "38"],
     ["pt245", null, "27"],
-    ["pt245", "rush-3", "38"],
+    ["pt245", "rush-4", "38"],
     ["pt247", null, "27"],
-    ["pt247", "rush-3", "38"],
+    ["pt247", "rush-4", "38"],
     ["pt249", null, "27"],
-    ["pt249", "rush-3", "38"],
+    ["pt249", "rush-4", "38"],
     ["pt251", null, "27"],
-    ["pt251", "rush-3", "38"],
+    ["pt251", "rush-4", "38"],
     ["pt253", null, "27"],
-    ["pt253", "rush-3", "38"],
+    ["pt253", "rush-4", "38"],
     ["pt255", null, "27"],
-    ["pt255", "rush-3", "38"],
+    ["pt255", "rush-4", "38"],
     ["pt257", null, "27"],
-    ["pt257", "rush-3", "38"]
+    ["pt257", "rush-4", "38"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14834,7 +14853,7 @@
    "valid_to": "2026-10-26",
    "columns": ["object", "amount"],
    "rows": [["pt734", "109"], ["pt736", "109"], ["pt820", "109"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14846,7 +14865,7 @@
    "valid_to": "2025-11-06",
    "columns": ["object", "amount"],
    "rows": [["pt995", "64"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14858,7 +14877,7 @@
    "valid_to": "2025-02-06",
    "columns": ["object", "amount"],
    "rows": [["pt101", "64"], ["pt103", "64"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14894,7 +14913,7 @@
     ["pt1026", "64"],
     ["pt1028", "64"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14941,7 +14960,7 @@
     ["pt990", null, "35"],
     ["pt990", "rush-3", "64"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14953,7 +14972,7 @@
    "valid_to": "2024-12-04",
    "columns": ["object", "amount"],
    "rows": [["pt717", "118"], ["pt721", "62"], ["pt724", "101"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14965,7 +14984,7 @@
    "valid_to": "2025-02-12",
    "columns": ["object", "time_class", "amount"],
    "rows": [["pt76", null, "54"], ["pt76", "rush-3", "73"], ["pt79", null, "54"], ["pt79", "rush-3", "73"], ["pt85", null, "48"], ["pt85", "rush-3", "95"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -14994,7 +15013,7 @@
     ["pt670", null, "48"],
     ["pt670", "rush-3", "95"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15006,7 +15025,7 @@
    "valid_to": "2024-06-30",
    "columns": ["object", "amount"],
    "rows": [["pt773", "491"], ["pt779", "491"], ["pt785", "89"], ["pt791", "89"], ["pt797", "89"], ["pt803", "89"], ["pt809", "89"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15018,7 +15037,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt848", "93"], ["pt852", "129"], ["pt856", "75"], ["pt860", "84"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15031,17 +15050,17 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt826", null, "36"],
-    ["pt826", "rush-4", "55"],
+    ["pt826", "rush-5", "55"],
     ["pt830", null, "36"],
-    ["pt830", "rush-4", "55"],
+    ["pt830", "rush-5", "55"],
     ["pt834", null, "36"],
-    ["pt834", "rush-4", "55"],
+    ["pt834", "rush-5", "55"],
     ["pt838", null, "36"],
-    ["pt838", "rush-4", "55"],
+    ["pt838", "rush-5", "55"],
     ["pt842", null, "36"],
-    ["pt842", "rush-4", "55"]
+    ["pt842", "rush-5", "55"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15053,7 +15072,7 @@
    "valid_to": "2024-06-14",
    "columns": ["object", "amount"],
    "rows": [["pt1030", "33"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15064,7 +15083,7 @@
    "valid_from": "2024-05-31",
    "columns": ["object", "amount"],
    "rows": [["pt714", "86"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15076,7 +15095,7 @@
    "valid_to": "2024-08-14",
    "columns": ["object", "amount"],
    "rows": [["pt412", "69"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15088,7 +15107,7 @@
    "valid_to": "2024-08-31",
    "columns": ["object", "amount"],
    "rows": [["pt406", "71"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15100,7 +15119,7 @@
    "valid_to": "2024-11-11",
    "columns": ["object", "amount"],
    "rows": [["pt223", "27"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15151,7 +15170,7 @@
     ["pt676", "33"],
     ["pt768", "69"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15175,7 +15194,7 @@
     ["pt739", "44"],
     ["pt745", "44"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15187,39 +15206,39 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt949", null, "28"],
-    ["pt949", "rush-5", "84"],
+    ["pt949", "rush-6", "84"],
     ["pt951", null, "28"],
-    ["pt951", "rush-5", "84"],
+    ["pt951", "rush-6", "84"],
     ["pt953", null, "28"],
-    ["pt953", "rush-5", "84"],
+    ["pt953", "rush-6", "84"],
     ["pt955", null, "28"],
-    ["pt955", "rush-5", "84"],
+    ["pt955", "rush-6", "84"],
     ["pt957", null, "28"],
-    ["pt957", "rush-5", "84"],
+    ["pt957", "rush-6", "84"],
     ["pt959", null, "28"],
-    ["pt959", "rush-5", "84"],
+    ["pt959", "rush-6", "84"],
     ["pt961", null, "28"],
-    ["pt961", "rush-5", "84"],
+    ["pt961", "rush-6", "84"],
     ["pt963", null, "28"],
-    ["pt963", "rush-5", "84"],
+    ["pt963", "rush-6", "84"],
     ["pt965", null, "28"],
-    ["pt965", "rush-5", "84"],
+    ["pt965", "rush-6", "84"],
     ["pt967", null, "28"],
-    ["pt967", "rush-5", "84"],
+    ["pt967", "rush-6", "84"],
     ["pt969", null, "28"],
-    ["pt969", "rush-5", "84"],
+    ["pt969", "rush-6", "84"],
     ["pt971", null, "28"],
-    ["pt971", "rush-5", "84"],
+    ["pt971", "rush-6", "84"],
     ["pt973", null, "28"],
-    ["pt973", "rush-5", "84"],
+    ["pt973", "rush-6", "84"],
     ["pt975", null, "28"],
-    ["pt975", "rush-5", "84"],
+    ["pt975", "rush-6", "84"],
     ["pt977", null, "28"],
-    ["pt977", "rush-5", "84"],
+    ["pt977", "rush-6", "84"],
     ["pt979", null, "28"],
-    ["pt979", "rush-5", "84"]
+    ["pt979", "rush-6", "84"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15231,7 +15250,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt933", "121"], ["pt937", "121"], ["pt941", "121"], ["pt945", "121"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15243,7 +15262,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt748", "38"], ["pt752", "38"], ["pt756", "38"], ["pt760", "38"], ["pt764", "38"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15255,7 +15274,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt1031", "38"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15267,7 +15286,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt93", "38"], ["pt97", "38"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15279,7 +15298,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt827", "49"], ["pt831", "49"], ["pt835", "49"], ["pt839", "49"], ["pt843", "49"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15291,7 +15310,7 @@
    "valid_to": "2025-05-24",
    "columns": ["object", "amount"],
    "rows": [["pt126", "402"], ["pt260", "75"], ["pt264", "75"], ["pt268", "75"], ["pt272", "75"], ["pt276", "75"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15303,7 +15322,7 @@
    "valid_to": "2025-06-08",
    "columns": ["object", "amount"],
    "rows": [["pt774", "501"], ["pt780", "501"], ["pt786", "91"], ["pt792", "91"], ["pt798", "91"], ["pt804", "91"], ["pt810", "91"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15315,7 +15334,7 @@
    "valid_to": "2024-12-04",
    "columns": ["object", "amount"],
    "rows": [["pt1034", "79"], ["pt1035", "79"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15326,7 +15345,7 @@
    "valid_from": "2024-07-15",
    "columns": ["object", "amount"],
    "rows": [["pt1036", "52"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15338,7 +15357,7 @@
    "valid_to": "2025-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt413", "69"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15350,7 +15369,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt1037", "69"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15361,7 +15380,7 @@
    "valid_from": "2024-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt295", "28"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15373,7 +15392,7 @@
    "valid_to": "2025-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt316", "91"], ["pt319", "91"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15385,7 +15404,7 @@
    "valid_to": "2025-10-23",
    "columns": ["object", "amount"],
    "rows": [["pt109", "33"], ["pt112", "42"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15412,7 +15431,7 @@
     ["pt732", "52"],
     ["pt815", "52"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15461,7 +15480,7 @@
     ["pt991", null, "39"],
     ["pt991", "rush-3", "70"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15473,7 +15492,7 @@
    "valid_to": "2025-08-24",
    "columns": ["object", "amount"],
    "rows": [["pt74", "118"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15485,7 +15504,7 @@
    "valid_to": "2026-05-05",
    "columns": ["object", "amount"],
    "rows": [["pt931", "91"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15497,7 +15516,7 @@
    "valid_to": "2026-10-04",
    "columns": ["object", "amount"],
    "rows": [["pt866", "58"], ["pt869", "58"], ["pt874", "160"], ["pt877", "58"], ["pt880", "58"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15509,7 +15528,7 @@
    "valid_to": "2026-10-14",
    "columns": ["object", "amount"],
    "rows": [["pt818", "78"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15520,7 +15539,7 @@
    "valid_from": "2024-12-05",
    "columns": ["object", "amount"],
    "rows": [["pt722", "68"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15532,7 +15551,7 @@
    "valid_to": "2026-01-31",
    "columns": ["object", "amount"],
    "rows": [["pt718", "130"], ["pt725", "111"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15544,7 +15563,7 @@
    "valid_to": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt1040", "79"], ["pt1042", "79"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15556,7 +15575,7 @@
    "valid_to": "2025-08-26",
    "columns": ["object", "amount"],
    "rows": [["pt904", "60"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15610,7 +15629,7 @@
     ["pt984", null, "85"],
     ["pt984", "rush", "149"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15622,7 +15641,7 @@
    "valid_to": "2026-01-01",
    "columns": ["object", "amount"],
    "rows": [["pt889", "60"], ["pt895", "60"], ["pt898", "60"], ["pt901", "60"], ["pt906", "60"], ["pt912", "60"], ["pt915", "60"], ["pt921", "60"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15634,7 +15653,7 @@
    "valid_to": "2026-01-31",
    "columns": ["object", "amount"],
    "rows": [["pt883", "531"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15646,7 +15665,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt892", "60"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15657,7 +15676,7 @@
    "valid_from": "2025-02-13",
    "columns": ["object", "time_class", "amount"],
    "rows": [["pt77", null, "60"], ["pt77", "rush-3", "81"], ["pt80", null, "60"], ["pt80", "rush-3", "81"], ["pt86", null, "53"], ["pt86", "rush-3", "106"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15669,7 +15688,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1054", "49"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15681,7 +15700,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1044", "49"], ["pt1046", "49"], ["pt1048", "49"], ["pt1050", "49"], ["pt1056", "49"], ["pt1058", "49"], ["pt1060", "49"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15709,7 +15728,7 @@
     ["pt671", null, "53"],
     ["pt671", "rush-3", "106"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15721,7 +15740,7 @@
    "valid_to": "2025-12-31",
    "columns": ["object", "time_class", "amount"],
    "rows": [["pt105", null, "85"], ["pt105", "rush", "149"], ["pt823", null, "85"], ["pt823", "rush", "149"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15733,7 +15752,7 @@
    "valid_to": "2026-01-01",
    "columns": ["object", "amount"],
    "rows": [["pt886", "60"], ["pt924", "60"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15745,7 +15764,7 @@
    "valid_to": "2026-03-04",
    "columns": ["object", "amount"],
    "rows": [["pt909", "60"], ["pt918", "60"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15757,7 +15776,7 @@
    "valid_to": "2026-06-02",
    "columns": ["object", "amount"],
    "rows": [["pt1052", "49"], ["pt1062", "49"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15768,7 +15787,7 @@
    "valid_from": "2025-05-23",
    "columns": ["object", "amount"],
    "rows": [["pt674", "74"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15780,7 +15799,7 @@
    "valid_to": "2026-05-19",
    "columns": ["object", "amount"],
    "rows": [["pt180", "86"], ["pt183", "86"], ["pt186", "86"], ["pt189", "86"], ["pt993", "86"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15792,7 +15811,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt123", "186"], ["pt849", "98"], ["pt853", "136"], ["pt857", "79"], ["pt861", "89"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15804,7 +15823,7 @@
    "valid_to": "2026-05-21",
    "columns": ["object", "amount"],
    "rows": [["pt677", "34"], ["pt934", "126"], ["pt938", "126"], ["pt942", "126"], ["pt946", "126"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15816,7 +15835,7 @@
    "valid_to": "2026-05-28",
    "columns": ["object", "amount"],
    "rows": [["pt380", "71"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15864,7 +15883,7 @@
     ["pt470", "71"],
     ["pt769", "71"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15876,7 +15895,7 @@
    "valid_to": "2026-03-29",
    "columns": ["object", "amount"],
    "rows": [["pt56", "23"], ["pt58", "23"], ["pt60", "23"], ["pt62", "23"], ["pt64", "23"], ["pt66", "23"], ["pt68", "23"], ["pt70", "23"], ["pt72", "23"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15902,7 +15921,7 @@
     ["pt765", "39"],
     ["pt1032", "39"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15914,7 +15933,7 @@
    "valid_to": "2026-05-21",
    "columns": ["object", "amount"],
    "rows": [["pt127", "417"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15926,7 +15945,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt1064", "106"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15938,7 +15957,7 @@
    "valid_to": "2025-07-02",
    "columns": ["object", "amount"],
    "rows": [["pt775", "519"], ["pt781", "519"], ["pt787", "94"], ["pt793", "94"], ["pt799", "94"], ["pt805", "94"], ["pt811", "94"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15950,7 +15969,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt776", "348"], ["pt782", "348"], ["pt788", "63"], ["pt794", "63"], ["pt800", "63"], ["pt806", "63"], ["pt812", "63"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15962,7 +15981,7 @@
    "valid_to": "2026-05-31",
    "columns": ["object", "amount"],
    "rows": [["pt1066", "27"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -15997,7 +16016,7 @@
     ["pt1027", "68"],
     ["pt1029", "68"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16009,7 +16028,7 @@
    "valid_to": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt1068", "118"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16032,7 +16051,7 @@
     ["pt1070", "65"],
     ["pt1071", "91"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16043,7 +16062,7 @@
    "valid_from": "2025-10-24",
    "columns": ["object", "amount"],
    "rows": [["pt110", "0"], ["pt113", "0"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16055,7 +16074,7 @@
    "valid_to": "2026-10-26",
    "columns": ["object", "amount"],
    "rows": [["pt1072", "179"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16067,7 +16086,7 @@
    "valid_to": "2026-01-15",
    "columns": ["object", "amount"],
    "rows": [["pt1074", "110"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16078,7 +16097,7 @@
    "valid_from": "2025-12-03",
    "columns": ["object", "amount"],
    "rows": [["pt1076", "90"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16089,7 +16108,7 @@
    "valid_from": "2025-12-18",
    "columns": ["object", "amount"],
    "rows": [["pt1081", "70"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16100,7 +16119,7 @@
    "valid_from": "2025-12-19",
    "columns": ["object", "amount"],
    "rows": [["pt1080", "102"], ["pt1082", "102"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16112,7 +16131,7 @@
    "valid_to": "2026-11-02",
    "columns": ["object", "amount"],
    "rows": [["pt1077", "102"], ["pt1079", "102"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16169,7 +16188,7 @@
     ["pt985", null, "88"],
     ["pt985", "rush", "154"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16191,7 +16210,7 @@
     ["pt922", "61"],
     ["pt925", "61"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16202,7 +16221,7 @@
    "valid_from": "2026-01-16",
    "columns": ["object", "amount"],
    "rows": [["pt1075", "110"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16213,7 +16232,7 @@
    "valid_from": "2026-02-01",
    "columns": ["object", "amount"],
    "rows": [["pt719", "133"], ["pt884", "557"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16225,7 +16244,7 @@
    "valid_to": "2026-03-09",
    "columns": ["object", "amount"],
    "rows": [["pt726", "66"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16236,7 +16255,7 @@
    "valid_from": "2026-02-02",
    "columns": ["object", "amount"],
    "rows": [["pt1041", "87"], ["pt1043", "87"], ["pt1069", "121"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16248,7 +16267,7 @@
    "valid_to": "2026-08-03",
    "columns": ["object", "amount"],
    "rows": [["pt1083", "71"], ["pt1085", "71"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16259,7 +16278,7 @@
    "valid_from": "2026-02-26",
    "columns": ["object", "amount"],
    "rows": [["pt1087", "110"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16270,7 +16289,7 @@
    "valid_from": "2026-03-05",
    "columns": ["object", "amount"],
    "rows": [["pt893", "61"], ["pt910", "61"], ["pt919", "61"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16282,7 +16301,7 @@
    "valid_to": "2026-08-03",
    "columns": ["object", "amount"],
    "rows": [["pt1038", "71"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16304,7 +16323,7 @@
     ["pt652", null, "161"],
     ["pt652", "rush-2", "223"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16475,7 +16494,7 @@
     ["pt846", null, "161"],
     ["pt846", "rush-2", "223"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16487,7 +16506,7 @@
    "valid_to": "2026-05-20",
    "columns": ["object", "amount"],
    "rows": [["pt1088", "79"], ["pt1090", "106"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16510,7 +16529,7 @@
     ["pt1101", "31"],
     ["pt1102", "31"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16522,33 +16541,33 @@
    "columns": ["object", "time_class", "amount"],
    "rows": [
     ["pt234", null, "42"],
-    ["pt234", "rush-3", "58"],
+    ["pt234", "rush-4", "58"],
     ["pt236", null, "42"],
-    ["pt236", "rush-3", "58"],
+    ["pt236", "rush-4", "58"],
     ["pt238", null, "42"],
-    ["pt238", "rush-3", "58"],
+    ["pt238", "rush-4", "58"],
     ["pt240", null, "42"],
-    ["pt240", "rush-3", "58"],
+    ["pt240", "rush-4", "58"],
     ["pt242", null, "42"],
-    ["pt242", "rush-3", "58"],
+    ["pt242", "rush-4", "58"],
     ["pt244", null, "42"],
-    ["pt244", "rush-3", "58"],
+    ["pt244", "rush-4", "58"],
     ["pt246", null, "42"],
-    ["pt246", "rush-3", "58"],
+    ["pt246", "rush-4", "58"],
     ["pt248", null, "42"],
-    ["pt248", "rush-3", "58"],
+    ["pt248", "rush-4", "58"],
     ["pt250", null, "42"],
-    ["pt250", "rush-3", "58"],
+    ["pt250", "rush-4", "58"],
     ["pt252", null, "42"],
-    ["pt252", "rush-3", "58"],
+    ["pt252", "rush-4", "58"],
     ["pt254", null, "42"],
-    ["pt254", "rush-3", "58"],
+    ["pt254", "rush-4", "58"],
     ["pt256", null, "42"],
-    ["pt256", "rush-3", "58"],
+    ["pt256", "rush-4", "58"],
     ["pt258", null, "42"],
-    ["pt258", "rush-3", "58"]
+    ["pt258", "rush-4", "58"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16578,7 +16597,7 @@
     ["pt994", "88"],
     ["pt1033", "40"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16605,7 +16624,7 @@
     ["pt1089", "81"],
     ["pt1091", "111"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16616,7 +16635,7 @@
    "valid_from": "2026-05-22",
    "columns": ["object", "amount"],
    "rows": [["pt128", "428"], ["pt678", "35"], ["pt935", "129"], ["pt939", "129"], ["pt943", "129"], ["pt947", "129"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16654,7 +16673,7 @@
     ["pt816", "54"],
     ["pt1067", "32"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16681,7 +16700,7 @@
     ["pt1061", "51"],
     ["pt1063", "51"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16692,7 +16711,7 @@
    "valid_from": "2026-06-08",
    "columns": ["object", "amount"],
    "rows": [["pt1103", "68"], ["pt1104", "68"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16703,7 +16722,7 @@
    "valid_from": "2026-07-01",
    "columns": ["object", "amount"],
    "rows": [["pt1105", "42"], ["pt1106", "42"], ["pt1107", "42"], ["pt1108", "42"], ["pt1109", "42"], ["pt1110", "42"], ["pt1111", "42"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16753,7 +16772,7 @@
     ["pt1084", "76"],
     ["pt1086", "76"]
    ],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16765,7 +16784,7 @@
    "valid_to": "2026-08-04",
    "columns": ["object", "amount"],
    "rows": [["pt1112", "71"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16776,7 +16795,7 @@
    "valid_from": "2026-08-05",
    "columns": ["object", "amount"],
    "rows": [["pt1113", "76"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16787,7 +16806,7 @@
    "valid_from": "2026-10-05",
    "columns": ["object", "amount"],
    "rows": [["pt867", "63"], ["pt870", "63"], ["pt875", "170"], ["pt878", "63"], ["pt881", "63"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16798,7 +16817,7 @@
    "valid_from": "2026-10-15",
    "columns": ["object", "amount"],
    "rows": [["pt819", "81"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16809,7 +16828,7 @@
    "valid_from": "2026-10-27",
    "columns": ["object", "amount"],
    "rows": [["pt735", "119"], ["pt737", "119"], ["pt821", "119"], ["pt1073", "187"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   },
   {
@@ -16820,7 +16839,7 @@
    "valid_from": "2026-11-03",
    "columns": ["object", "amount"],
    "rows": [["pt1078", "102"], ["pt1114", "102"]],
-   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+   "sources": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"],
    "basis": "transcribed"
   }
  ],
