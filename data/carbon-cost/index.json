@@ -45,7 +45,7 @@
    "name": "Austrian HGV toll (GO-Maut)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "5af9c048d8f0fe20326bee61d1fcfa9f1bbfb8198270e3fa3cf7364b83f559d9",
+   "sha256": "d09fbbb6aa23bbd11a2ecd7bd8fa0a5d032269ecc6749608264d7913ea563ed4",
    "coverage": "complete"
   },
   {
@@ -474,7 +474,7 @@
    "name": "German HGV toll (Lkw-Maut)",
    "valid_from": "2024-07-01",
    "valid_to": null,
-   "sha256": "9a6f60e4e2bd3abc4e8de0cb0550f740b474622d4b97b86c75eb75f9b27779f5",
+   "sha256": "a3ff564f701bb3111a680bbc3b86bc80873859d86a2fda82400d4c129652a016",
    "coverage": "complete"
   },
   {
@@ -924,8 +924,19 @@
    "file": "fr/fr-2026-02-01.orct.json",
    "name": "French motorway tolls",
    "valid_from": "2026-02-01",
+   "valid_to": "2026-04-30",
+   "sha256": "d089a8e2881dbf7d37ddd956acff52188af283fcc7e9c22dbc81cba576aa66ae",
+   "coverage": "partial"
+  },
+  {
+   "id": "carbon-cost/fr/2026-05-01",
+   "scheme": "fr",
+   "country": "FR",
+   "file": "fr/fr-2026-05-01.orct.json",
+   "name": "French motorway tolls",
+   "valid_from": "2026-05-01",
    "valid_to": "2026-05-31",
-   "sha256": "96857d1205f95a3b4a23d2e6a3c14eba61ea73f0208743088f47f599ba50e3db",
+   "sha256": "630699d4a3528934a0ebd1afcb26758a962568a3b072ae5c1688bb2219742fe7",
    "coverage": "partial"
   },
   {
@@ -2201,7 +2212,7 @@
    "name": "Slovenian distance toll (DarsGo)",
    "valid_from": "2026-04-01",
    "valid_to": "2026-12-31",
-   "sha256": "743cf145aaa7cfff3e1cc806b193f9d173528965d7106cee2a7e2fada2cc6d70",
+   "sha256": "1330d72d515860a750c604f222e0ce013e831bc23e2c12f84b18877986937231",
    "coverage": "partial"
   },
   {
