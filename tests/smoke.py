@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 import jsonschema  # noqa: E402
 from orct_calc import calculate  # noqa: E402
 
-STATEMENT = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-statement-0.2.schema.json"))))
+STATEMENT = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-statement-0.3.schema.json"))))
 VEHICLE = {"train_mass_kg": 40000, "mass_kg": 18000, "train_axles": 5, "axles": 2, "train_length_m": 16.5,
            "euro_class": "6", "co2_class": 1, "energy": "diesel", "category": "N3", "trailer": True}
 
@@ -29,7 +29,7 @@ def main():
             cols = ch["columns"]
             row = dict(zip(cols, ch["rows"][0])) if ch["rows"] else {}
             objs = [row.get(k) for k in ("object", "entry", "exit") if row.get(k)] or ch.get("objects", [])
-            usage = {"orct_usage": "0.2", "vehicle": VEHICLE, "payment": ["electronic"],
+            usage = {"orct_usage": "0.3", "vehicle": VEHICLE, "payment": ["electronic"],
                      "events": [{"dataset": ds["id"], "object": o, "time": when, "km": 10} for o in objs]}
             if ch["type"] == "quantity":
                 usage["quantities"] = [{"dataset": ds["id"], "object": o, "unit": ch["unit"], "value": "1", "time": when} for o in objs]

@@ -69,7 +69,7 @@ def usages(d):
                         events.append(e)
                         if ch["type"] == "quantity":
                             quants.append({"dataset": ds["id"], "object": o, "unit": ch["unit"], "value": "2.5", "time": when})
-                    u = {"orct_usage": "0.2", "vehicle": v, "payment": ["electronic"] if (i + j) % 2 else [], "events": events}
+                    u = {"orct_usage": "0.3", "vehicle": v, "payment": ["electronic"] if (i + j) % 2 else [], "events": events}
                     if quants:
                         u["quantities"] = quants
                     yield u

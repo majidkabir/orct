@@ -1,11 +1,11 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.2.schema.json",
- "title": "ORCT 0.2 charge statement",
+ "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.3.schema.json",
+ "title": "ORCT 0.3 charge statement",
  "type": "object",
  "properties": {
   "orct_statement": {
-   "const": "0.2"
+   "const": "0.3"
   },
   "complete": {
    "type": "boolean"

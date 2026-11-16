@@ -14,6 +14,7 @@ ENERGY = ["diesel", "petrol", "lpg", "cng", "lng", "electric", "hydrogen", "hybr
 CATEGORY = ["M1", "M2", "M3", "N1", "N2", "N3", "L"]
 criteria = obj({
     "mass_kg": num_cond, "train_mass_kg": num_cond, "axles": num_cond, "train_axles": num_cond,
+    "trailer_mass_kg": num_cond, "trailer_axles": num_cond,
     "length_m": num_cond, "train_length_m": num_cond, "height_m": num_cond, "first_axle_height_m": num_cond,
     "width_m": num_cond, "euro_class": str_list(EURO),
     "co2_class": {"type": "array", "minItems": 1, "items": {"type": "integer", "minimum": 1, "maximum": 5}},
@@ -56,7 +57,7 @@ charge = obj({
     "rounding": obj({"increment": DEC, "mode": {"enum": ["half_up", "half_even", "up", "down"]},
                      "stage": {"enum": ["use", "line", "charge"]}}, ["increment", "mode", "stage"]),
     "tax": tax, "valid_from": DATE, "valid_to": DATE, "method": {"type": "string"},
-    "mass_basis": {"enum": ["mass_kg", "train_mass_kg"]}, "mass_cap_kg": {"type": "integer"},
+    "mass_basis": {"enum": ["mass_kg", "train_mass_kg", "trailer_mass_kg"]}, "mass_cap_kg": {"type": "integer"},
     "directed": {"type": "boolean"},
     "volume": obj({"per": {"enum": ["day", "month", "year"]}, "counts": {"enum": ["vehicle", "contract"]}}, ["per", "counts"]),
     "dynamic": obj({"url": {"type": "string"}, "note": {"type": "string"}}, ["url"]),
@@ -95,10 +96,10 @@ rule = {**obj({"id": ID, "kind": {"enum": list(PARAMS)},
         "allOf": [{"if": {"properties": {"kind": {"const": k}}}, "then": {"properties": {"params": v}}} for k, v in PARAMS.items()]}
 dataset = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.2.schema.json",
-    "title": "ORCT 0.2 dataset",
+    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.3.schema.json",
+    "title": "ORCT 0.3 dataset",
     **obj({
-        "orct": {"const": "0.2"},
+        "orct": {"const": "0.3"},
         "dataset": obj({
             "id": ID, "version": {"type": "string"},
             "scheme": obj({"id": ID, "name": {"type": "string"}, "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
@@ -165,11 +166,12 @@ dataset = {
 
 usage = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.2.schema.json",
-    "title": "ORCT 0.2 usage",
+    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.3.schema.json",
+    "title": "ORCT 0.3 usage",
     **obj({
-        "orct_usage": {"const": "0.2"},
+        "orct_usage": {"const": "0.3"},
         "vehicle": obj({"mass_kg": {"type": "integer"}, "train_mass_kg": {"type": "integer"}, "axles": {"type": "integer"},
+                        "trailer_mass_kg": {"type": "integer"}, "trailer_axles": {"type": "integer"},
                         "train_axles": {"type": "integer"}, "length_m": {"type": "number"}, "train_length_m": {"type": "number"},
                         "height_m": {"type": "number"}, "first_axle_height_m": {"type": "number"}, "width_m": {"type": "number"},
                         "euro_class": {"enum": EURO}, "co2_class": {"type": "integer", "minimum": 1, "maximum": 5},
@@ -189,10 +191,10 @@ usage = {
 
 statement = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.2.schema.json",
-    "title": "ORCT 0.2 charge statement",
+    "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.3.schema.json",
+    "title": "ORCT 0.3 charge statement",
     **obj({
-        "orct_statement": {"const": "0.2"},
+        "orct_statement": {"const": "0.3"},
         "complete": {"type": "boolean"},
         "lines": {"type": "array", "items": obj({
             "dataset": ID, "charge": ID, "component": {"enum": COMPONENTS},
@@ -206,6 +208,6 @@ statement = {
         "issues": {"type": "array", "items": obj({"code": {"type": "string"}, "message": {"type": "string"},
                                                   "dataset": {"type": "string"}, "charge": {"type": "string"}}, ["code", "message"])}},
         ["orct_statement", "complete", "lines", "totals", "issues"])}
-for name, s in (("orct-0.2", dataset), ("orct-usage-0.2", usage), ("orct-statement-0.2", statement)):
+for name, s in (("orct-0.3", dataset), ("orct-usage-0.3", usage), ("orct-statement-0.3", statement)):
     json.dump(s, open(f"schema/{name}.schema.json", "w"), indent=1)
 print("ok")

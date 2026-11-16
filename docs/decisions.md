@@ -2,7 +2,7 @@
 
 Each decision below is hard to change once datasets exist. Each lists the
 alternatives considered and why this one was chosen. Evidence is in
-[research.md](research.md). Status: proposed for ORCT 0.2, the working draft
+[research.md](research.md). Status: proposed for ORCT 0.3, the working draft
 for 1.0.
 
 ## D1. Position: an open encoding of the ISO EFC tariff model, plus what it lacks
@@ -256,3 +256,24 @@ JSON.
 **Decision.** Each line names the dataset version it was priced from and the
 charge's `basis`, so an invoice can be reconciled after a correction and an
 estimated amount is never presented as official.
+
+## D21. Each vehicle of a combination (0.3)
+
+**Decision.** The vehicle parameters include the towed vehicle's own
+`trailer_mass_kg` and `trailer_axles`, and a calculator derives the values
+that follow from the others (no trailer: trailer values 0 and train values
+equal to the motor vehicle's; `trailer_axles` = `train_axles` − `axles`).
+A law that charges the motor vehicle and the trailer separately, each by its
+own mass, is two charges: one with classes on `mass_kg` and `axles`, one on
+`trailer_mass_kg` and `trailer_axles`.
+
+**Alternatives.** A charge member naming the vehicle unit it applies to
+(more machinery for the same effect); classes on the combination's mass with
+an assumed split between tractor and trailer (a guess the law does not make).
+
+**Why.** Iceland's kílómetragjald (Lög nr. 100/2025) charges the motor
+vehicle and the trailer each on its own registered mass, capped by its
+axles, and the trailer at a reduced rate in 2026 and 2027. Registration
+documents give both masses (F.1 of each vehicle). The derived values only
+spell out what the definitions already say, so a usage need not repeat them,
+and a missing trailer mass stays undecided rather than guessed.

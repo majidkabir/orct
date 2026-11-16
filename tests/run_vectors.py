@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 import jsonschema  # noqa: E402
 from orct_calc import calculate  # noqa: E402
 
-STATEMENT = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-statement-0.2.schema.json"))))
-USAGE = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-usage-0.2.schema.json"))))
+STATEMENT = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-statement-0.3.schema.json"))))
+USAGE = jsonschema.Draft202012Validator(json.load(open(os.path.join(ROOT, "schema", "orct-usage-0.3.schema.json"))))
 
 
 def run(path):

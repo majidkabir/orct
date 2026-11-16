@@ -6,7 +6,7 @@ SID = "orct-tests/synthetic/2026-01-01"
 V40 = {"train_mass_kg": 40000, "train_axles": 5, "euro_class": "6", "co2_class": 1}
 V7 = {"train_mass_kg": 7500, "train_axles": 2, "euro_class": "6", "co2_class": 1}
 def ev(obj, time, **kw): return {"dataset": SID, "object": obj, "time": time, **kw}
-def usage(vehicle, events=(), **kw): return {"orct_usage": "0.2", "vehicle": vehicle, "events": list(events), **kw}
+def usage(vehicle, events=(), **kw): return {"orct_usage": "0.3", "vehicle": vehicle, "events": list(events), **kw}
 def tot(x, cur="EUR"): return [{"currency": cur, "amount": x}] if x is not None else []
 V = []
 def add(name, desc, clauses, ds, u, total, complete=True, lines=None, issues=None, currency="EUR"):
@@ -125,6 +125,16 @@ add("rounding-per-use", "Rounded per use before the rules: 2.345 is 2.35, less 1
     ["8.7"], [SYN], usage(V40, [ev("pier", M)]), "2.12", lines=[("pier-fee", "2.115")])
 add("dynamic-tariff", "A charge whose amounts are set in real time is not priced from its indicative rows.", ["6.10.1", "8.9"], [SYN],
     usage(V40, [ev("express", M)]), None, complete=False, issues=["dynamic_tariff"])
+UNI = {**V40, "mass_kg": 18000, "axles": 2}
+add("per-vehicle-unit", "The motor vehicle pays by its own mass (18 t: 0.12) and the trailer by its own (24 t: 0.09): 12 + 9 for 100 km.",
+    ["6.6.1", "8.4"], [SYN], usage({**UNI, "trailer_mass_kg": 24000}, [ev("uni", M, km=100)]), "21.00",
+    lines=[("motor-km", "12"), ("trailer-km", "9")])
+add("derived-no-trailer", "Without a trailer, trailer_mass_kg is derived as 0 (6.6.1): the trailer charge matches no row and is free; train_mass_kg is derived from mass_kg for the liable-vehicle test.",
+    ["6.6.1", "6.10.1"], [SYN], usage({"mass_kg": 18000, "axles": 2, "trailer": False, "euro_class": "6", "co2_class": 1}, [ev("uni", M, km=100)]),
+    "12.00", lines=[("motor-km", "12")])
+add("derived-trailer-mass-missing", "train_axles 5 and axles 2 derive a trailer of 3 axles, but its mass is not given: the trailer charge is unpriced, never guessed.",
+    ["6.6.1", "6.6.2", "8.9"], [SYN], usage(UNI, [ev("uni", M, km=100)]), "12.00", complete=False,
+    lines=[("motor-km", "12")], issues=["missing_parameter"])
 AT = "data/carbon-cost/at/at-2026-01-01.orct.json"; ATID = "carbon-cost/at/2026-01-01"
 src = "Sum of the 2026 parts of BGBl. II Nr. 298/2025 §§ 2, 8, 9, equal to the per-km totals the WKO publishes, as carbon-cost's TestAustriaTotals asserts them; 100 km."
 for name, ta, ax, euro, cls, want in (("e-2-axles", 2, 2, "6", 5, "5.87"), ("a-co2-1-3-axles", 3, 3, "6", 1, "38.56"),

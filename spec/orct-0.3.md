@@ -1,6 +1,6 @@
 # ORCT — Open Road Charge Tariff
 
-**Version 0.2 — Working Draft for 1.0 — 2026-11-15**
+**Version 0.3 — Working Draft for 1.0 — 2026-11-16**
 
 ## Contents
 
@@ -253,7 +253,7 @@ A dataset is a JSON object with these members:
 
 | Member | Req. | Content |
 | --- | --- | --- |
-| `orct` | yes | Specification version, `"0.2"`. |
+| `orct` | yes | Specification version, `"0.3"`. |
 | `dataset` | yes | Header (6.2). |
 | `sources` | yes | Cited documents (6.3). |
 | `tax` | yes | Tax basis (6.4). |
@@ -336,6 +336,8 @@ classify by.
 | `train_mass_kg` | integer | Maximum permissible laden mass of the whole vehicle combination, in kg; equals `mass_kg` without a trailer | VehicleWeightLimits.vehicleTrainMaximumWeight; registration F.3 [11] |
 | `axles` | integer | Number of axles of the motor vehicle | VehicleAxles; registration L [11] |
 | `train_axles` | integer | Number of axles of the combination | — |
+| `trailer_mass_kg` | integer | Technically permissible maximum laden mass of the towed vehicle, in kg; with two or more, their sum | registration F.1 of the towed vehicle [11] |
+| `trailer_axles` | integer | Number of axles of the towed vehicle; with two or more, their sum | registration L of the towed vehicle [11] |
 | `length_m` | number | Overall length of the motor vehicle, in m | VehicleDimensions |
 | `train_length_m` | number | Overall length of the combination, in m | — |
 | `height_m` | number | Overall height, in m | VehicleDimensions |
@@ -346,6 +348,19 @@ classify by.
 | `energy` | string | `diesel`, `petrol`, `lpg`, `cng`, `lng`, `electric`, `hydrogen`, `hybrid`, `other` | EngineCharacteristics |
 | `category` | string | UNECE vehicle category: `M1`, `M2`, `M3`, `N1`, `N2`, `N3`, `L` | registration J [11] |
 | `trailer` | boolean | Whether the vehicle tows a trailer or semi-trailer | — |
+
+**Derived values.** Where a usage does not give them, a calculator derives
+these values, and no others, until none is left to derive: with `trailer`
+`false`, `trailer_mass_kg` and `trailer_axles` are 0, `train_mass_kg` is
+`mass_kg` and `train_axles` is `axles`; `trailer_axles` is `train_axles` −
+`axles` when both are known; `trailer` is `true` if `trailer_axles` or
+`trailer_mass_kg` is more than 0, and `false` if `trailer_axles` is 0. A
+usage shall not give values that contradict these relations.
+
+A law that charges each vehicle of a combination by its own mass or axles
+(the motor vehicle and the trailer pay separately) is encoded as two charges:
+one whose classes test `mass_kg` and `axles`, one whose classes test
+`trailer_mass_kg` and `trailer_axles` (Annex D).
 
 #### 6.6.2 Criteria
 
@@ -512,7 +527,7 @@ The components are:
 
 | `type` | Prices | `unit` | Type-specific members |
 | --- | --- | --- | --- |
-| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter, default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
+| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter: `mass_kg`, `train_mass_kg` or `trailer_mass_kg`; default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
 | `section` | each use of a section | `use`, or `km` (per km of the section's `length_km`) | — |
 | `od` | each trip in a closed system, by entry and exit station | `trip` | `directed` (default `false`: a row prices both directions of its pair) |
 | `point` | each passage of a point | `passage` | — |
@@ -754,7 +769,7 @@ The totals of an incomplete statement sum the lines that could be priced.
 
 | Member | Req. | Content |
 | --- | --- | --- |
-| `orct_usage` | yes | Specification version, `"0.2"`. |
+| `orct_usage` | yes | Specification version, `"0.3"`. |
 | `vehicle` | yes | The vehicle's parameters (6.6.1); parameters not known are left out. |
 | `payment` | no | Payment means used (6.8). |
 | `user_classes` | no | `{dataset id: [user class ids]}`: user classes the user holds by contract. |
@@ -766,7 +781,7 @@ The totals of an incomplete statement sum the lines that could be priced.
 
 | Member | Req. | Content |
 | --- | --- | --- |
-| `orct_statement` | yes | Specification version, `"0.2"`. |
+| `orct_statement` | yes | Specification version, `"0.3"`. |
 | `complete` | yes | Boolean (8.9). |
 | `lines` | yes | `[{dataset, dataset_version, charge, component, objects, row, quantity, unit, rate, amount, currency, tax_basis, tax_rate, basis, sources, notes}]`. `dataset_version` is the dataset's `version`, when it has one; `row` is the 0-based index of the selected row; `rate` its amount as written; `basis` the charge's `basis` (6.10.1), so that an estimated amount stays visible. An adjustment made by `minimum`, `cap` or rounding at `stage: charge` is a line of its own, with unit `rule`, no `row` or `rate`, and as `charge` the charge 6.11 names. `dataset`, `charge`, `component`, `objects`, `quantity`, `unit`, `amount`, `currency`, `tax_basis` and `basis` are required. |
 | `totals` | yes | `[{currency, amount}]` (8.7). |
@@ -844,9 +859,9 @@ mobilityDCAT-AP [16]. Sources should cite legal acts by ELI [17].
 
 The JSON Schemas (draft 2020-12) of this document, identified by their `$id`:
 
-- Dataset: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.2.schema.json` ([schema/orct-0.2.schema.json](../schema/orct-0.2.schema.json))
-- Usage: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.2.schema.json` ([schema/orct-usage-0.2.schema.json](../schema/orct-usage-0.2.schema.json))
-- Charge statement: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.2.schema.json` ([schema/orct-statement-0.2.schema.json](../schema/orct-statement-0.2.schema.json))
+- Dataset: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.3.schema.json` ([schema/orct-0.3.schema.json](../schema/orct-0.3.schema.json))
+- Usage: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.3.schema.json` ([schema/orct-usage-0.3.schema.json](../schema/orct-usage-0.3.schema.json))
+- Charge statement: `https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-statement-0.3.schema.json` ([schema/orct-statement-0.3.schema.json](../schema/orct-statement-0.3.schema.json))
 
 A schema cannot express every requirement of clauses 6 and 7, such as unique
 identifiers, references and acyclic parents; the reference validator
@@ -889,7 +904,7 @@ by mass class, a night price, and 10 % off with an on-board unit.
 <!-- example: dataset -->
 ```json
 {
-  "orct": "0.2",
+  "orct": "0.3",
   "dataset": {
     "id": "example.org/bridge/2026-01-01",
     "scheme": {"id": "bridge", "name": "Example bridge toll (fictitious)", "country": "DK"},
@@ -932,7 +947,7 @@ by mass class, a night price, and 10 % off with an on-board unit.
 <!-- example: usage -->
 ```json
 {
-  "orct_usage": "0.2",
+  "orct_usage": "0.3",
   "vehicle": {"train_mass_kg": 40000, "train_axles": 5, "euro_class": "6", "co2_class": 1},
   "payment": ["electronic"],
   "events": [
@@ -949,7 +964,7 @@ night crossing row 3 (47.20), because `time_class` "night" ranks above
 <!-- example: statement -->
 ```json
 {
-  "orct_statement": "0.2",
+  "orct_statement": "0.3",
   "complete": true,
   "lines": [
     {"dataset": "example.org/bridge/2026-01-01", "charge": "crossing", "component": "infrastructure",
@@ -998,8 +1013,48 @@ through `priority`.
 }
 ```
 
-**D.6 Real datasets.** [data/carbon-cost/](../data/carbon-cost/) holds 208
-datasets for 35 countries, converted from a third party's tables; each cites
+**D.6 Each vehicle of a combination.** A fictitious per-km fee that the
+motor vehicle pays by its own permissible mass and the trailer by its own
+(6.6.1). The class sets:
+
+```json
+[{"id": "motor", "classes": [
+   {"id": "m18", "criteria": {"mass_kg": {"max": 18000}}},
+   {"id": "m26", "criteria": {"mass_kg": {"gt": 18000}}}]},
+ {"id": "towed", "classes": [
+   {"id": "t10", "criteria": {"trailer_mass_kg": {"gt": 0, "max": 10000}}},
+   {"id": "t24", "criteria": {"trailer_mass_kg": {"gt": 10000}}}]}]
+```
+
+and the two charges:
+
+<!-- example: charge -->
+```json
+{
+  "id": "motor-km", "type": "distance", "component": "unspecified", "unit": "km",
+  "basis": "transcribed", "sources": ["s1"], "objects": ["all-roads"],
+  "columns": ["vehicle_class", "amount"], "rows": [["m18", "0.12"], ["m26", "0.18"]]
+}
+```
+
+<!-- example: charge -->
+```json
+{
+  "id": "trailer-km", "type": "distance", "component": "unspecified", "unit": "km",
+  "basis": "transcribed", "sources": ["s1"], "objects": ["all-roads"], "unmatched": "free",
+  "columns": ["vehicle_class", "amount"], "rows": [["t10", "0.04"], ["t24", "0.09"]]
+}
+```
+
+A tractor of 18 t with a semi-trailer of 24 t pays 0.12 + 0.09 per km. A
+truck without a trailer (`trailer` `false`, so `trailer_mass_kg` is 0) is in
+no `towed` class, and the trailer charge, `unmatched` `free`, costs it
+nothing. A usage that gives `axles` and `train_axles` of a combination but
+not `trailer_mass_kg` leaves the `towed` class undecided: the trailer charge
+is unpriced (`missing_parameter`).
+
+**D.7 Real datasets.** [data/carbon-cost/](../data/carbon-cost/) holds 238
+datasets for 38 countries, converted from a third party's tables; each cites
 its sources.
 
 ## Bibliography

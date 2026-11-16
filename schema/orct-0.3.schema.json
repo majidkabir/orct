@@ -1,11 +1,11 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.2.schema.json",
- "title": "ORCT 0.2 dataset",
+ "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-0.3.schema.json",
+ "title": "ORCT 0.3 dataset",
  "type": "object",
  "properties": {
   "orct": {
-   "const": "0.2"
+   "const": "0.3"
   },
   "dataset": {
    "type": "object",
@@ -1203,6 +1203,42 @@
      },
      "additionalProperties": false
     },
+    "trailer_mass_kg": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "trailer_axles": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
     "length_m": {
      "type": "object",
      "properties": {
@@ -1604,7 +1640,8 @@
     "mass_basis": {
      "enum": [
       "mass_kg",
-      "train_mass_kg"
+      "train_mass_kg",
+      "trailer_mass_kg"
      ]
     },
     "mass_cap_kg": {

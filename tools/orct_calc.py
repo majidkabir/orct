@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reference calculator for ORCT 0.2 (spec clause 8).
+"""Reference calculator for ORCT 0.3 (spec clause 8).
 
 Usage: orct_calc.py <usage.json> <dataset.orct.json> ...   prints the charge statement
 
@@ -180,6 +180,29 @@ def _meets(criteria, vehicle):
     return (None, missing) if missing else (True, None)
 
 
+def derive(vehicle):
+    """The values 6.6.1 derives where the usage does not give them, until none is left to derive."""
+    v = dict(vehicle)
+    while True:
+        before = dict(v)
+        if v.get("trailer") is False:
+            v.setdefault("trailer_mass_kg", 0)
+            v.setdefault("trailer_axles", 0)
+            if "mass_kg" in v:
+                v.setdefault("train_mass_kg", v["mass_kg"])
+            if "axles" in v:
+                v.setdefault("train_axles", v["axles"])
+        if "trailer_axles" not in v and "train_axles" in v and "axles" in v:
+            v["trailer_axles"] = v["train_axles"] - v["axles"]
+        if "trailer" not in v:
+            if v.get("trailer_axles", 0) > 0 or v.get("trailer_mass_kg", 0) > 0:
+                v["trailer"] = True
+            elif v.get("trailer_axles") == 0:
+                v["trailer"] = False
+        if v == before:
+            return v
+
+
 def classify(ds, vehicle):
     """The vehicle's class in each set: the first it meets (6.6.3); Unknown recorded per set."""
     out = {}
@@ -195,7 +218,7 @@ class Calc:
     def __init__(self, datasets, usage):
         self.ds = {d.id: d for d in datasets}
         self.usage = usage
-        self.vehicle = usage.get("vehicle", {})
+        self.vehicle = derive(usage.get("vehicle", {}))
         self.lines, self.issues = [], []
         self.complete = True
 
@@ -741,7 +764,7 @@ class Calc:
                 if k in x:
                     x[k] = fmt(x[k])
             lines.append(x)
-        return {"orct_statement": "0.2", "complete": self.complete, "lines": lines, "totals": out_totals,
+        return {"orct_statement": "0.3", "complete": self.complete, "lines": lines, "totals": out_totals,
                 "issues": self.issues}
 
 

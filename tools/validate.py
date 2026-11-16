@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate ORCT 0.2 datasets: the JSON Schema, then the rules of clauses 6 and 7
+"""Validate ORCT 0.3 datasets: the JSON Schema, then the rules of clauses 6 and 7
 the schema can't express (references, parents, row keys, required features).
 
 Usage: validate.py <file or dir> ...   (exit 1 on any error)
@@ -13,7 +13,7 @@ from collections import Counter
 import jsonschema
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(HERE, "..", "schema", "orct-0.2.schema.json")) as fh:
+with open(os.path.join(HERE, "..", "schema", "orct-0.3.schema.json")) as fh:
     VALIDATOR = jsonschema.Draft202012Validator(json.load(fh))
 DECIMAL = re.compile(r"^-?[0-9]+(\.[0-9]+)?$")
 DURATION = re.compile(r"^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?$")

@@ -1,11 +1,11 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.2.schema.json",
- "title": "ORCT 0.2 usage",
+ "$id": "https://raw.githubusercontent.com/majidkabir/orct/main/schema/orct-usage-0.3.schema.json",
+ "title": "ORCT 0.3 usage",
  "type": "object",
  "properties": {
   "orct_usage": {
-   "const": "0.2"
+   "const": "0.3"
   },
   "vehicle": {
    "type": "object",
@@ -17,6 +17,12 @@
      "type": "integer"
     },
     "axles": {
+     "type": "integer"
+    },
+    "trailer_mass_kg": {
+     "type": "integer"
+    },
+    "trailer_axles": {
      "type": "integer"
     },
     "train_axles": {

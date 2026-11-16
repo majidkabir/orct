@@ -4,7 +4,7 @@ An open format for road charges (tolls, vignettes, zone and congestion
 charges, external-cost charges and carbon prices on fuel), and a normative
 method to compute the charges of one vehicle's trip from them.
 
-**Status: 0.2, working draft for 1.0.** Until 1.0 anything may change, without backward compatibility.
+**Status: 0.3, working draft for 1.0.** Until 1.0 anything may change, without backward compatibility.
 
 ## Why
 
@@ -49,15 +49,15 @@ reports an incomplete total instead of a wrong one.
 
 | Path | What |
 | --- | --- |
-| [spec/orct-0.2.md](spec/orct-0.2.md) | The specification |
+| [spec/orct-0.3.md](spec/orct-0.3.md) | The specification |
 | [schema/](schema/) | JSON Schemas for a dataset, a usage and a charge statement |
 | [docs/research.md](docs/research.md) | Survey of existing standards and law |
 | [docs/decisions.md](docs/decisions.md) | Design decisions and their reasons |
 | [docs/review.md](docs/review.md) | Review questions, answers and open items |
-| [data/carbon-cost/](data/carbon-cost/) | 208 datasets for 35 countries, as [carbon-cost](https://github.com/majidkabir/carbon-cost) keeps and prices them |
+| [data/carbon-cost/](data/carbon-cost/) | 238 datasets for 38 countries, as [carbon-cost](https://github.com/majidkabir/carbon-cost) keeps and prices them |
 | [tools/validate.py](tools/validate.py) | Validates datasets: schema, references, row keys |
 | [tools/orct_calc.py](tools/orct_calc.py) | Reference calculator |
-| [tests/vectors/](tests/vectors/) | Conformance vectors: 38 covering every feature, 20 from official tariffs |
+| [tests/vectors/](tests/vectors/) | Conformance vectors: 41 covering every feature, 20 from official tariffs |
 | [tests/record.py](tests/record.py) | Records the reference calculator's statements for sample usages of every charge, to compare another calculator with (the data workflow compares carbon-cost's) |
 | [tests/smoke.py](tests/smoke.py) | Prices one use of every charge in every dataset |
 | [tests/check_spec_examples.py](tests/check_spec_examples.py) | Checks the specification's Annex D examples against the schemas and the calculator |

@@ -26,14 +26,14 @@ def schema(name):
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "spec", "orct-0.2.md")
+    path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "spec", "orct-0.3.md")
     text = open(path, encoding="utf-8").read()
     blocks = re.findall(r"<!-- example: (\w+) -->\s*```json\n(.*?)\n```", text, re.S)
-    ds_schema = schema("orct-0.2.schema.json")
+    ds_schema = schema("orct-0.3.schema.json")
     validators = {
         "dataset": jsonschema.Draft202012Validator(ds_schema),
-        "usage": jsonschema.Draft202012Validator(schema("orct-usage-0.2.schema.json")),
-        "statement": jsonschema.Draft202012Validator(schema("orct-statement-0.2.schema.json")),
+        "usage": jsonschema.Draft202012Validator(schema("orct-usage-0.3.schema.json")),
+        "statement": jsonschema.Draft202012Validator(schema("orct-statement-0.3.schema.json")),
         "charge": jsonschema.Draft202012Validator({**ds_schema["$defs"]["charge"], "$defs": ds_schema["$defs"]}),
     }
     errs, dataset, usage = [], None, None
