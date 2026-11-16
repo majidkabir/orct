@@ -54,13 +54,11 @@ reports an incomplete total instead of a wrong one.
 | [docs/research.md](docs/research.md) | Survey of existing standards and law |
 | [docs/decisions.md](docs/decisions.md) | Design decisions and their reasons |
 | [docs/review.md](docs/review.md) | Review questions, answers and open items |
-| [data/carbon-cost/](data/carbon-cost/) | 208 datasets for 35 countries, converted from [carbon-cost](https://github.com/majidkabir/carbon-cost) |
+| [data/carbon-cost/](data/carbon-cost/) | 208 datasets for 35 countries, as [carbon-cost](https://github.com/majidkabir/carbon-cost) keeps and prices them |
 | [tools/validate.py](tools/validate.py) | Validates datasets: schema, references, row keys |
 | [tools/orct_calc.py](tools/orct_calc.py) | Reference calculator |
 | [tests/vectors/](tests/vectors/) | Conformance vectors: 38 covering every feature, 20 from official tariffs |
-| [tools/convert_carbon_cost.py](tools/convert_carbon_cost.py) | The conversion from carbon-cost |
-| [tools/check_lossless.py](tools/check_lossless.py) | Checks the conversion kept every price |
-| [tools/oracle/](tools/oracle/), [tools/check_oracle.py](tools/check_oracle.py) | Prices about 1.1 million cases with carbon-cost's own engine and with ORCT's reference calculator, and reports any difference |
+| [tests/record.py](tests/record.py) | Records the reference calculator's statements for sample usages of every charge, to compare another calculator with (the data workflow compares carbon-cost's) |
 | [tests/smoke.py](tests/smoke.py) | Prices one use of every charge in every dataset |
 | [tests/check_spec_examples.py](tests/check_spec_examples.py) | Checks the specification's Annex D examples against the schemas and the calculator |
 | [tools/gen_schema.py](tools/gen_schema.py) | Generates the schemas |
