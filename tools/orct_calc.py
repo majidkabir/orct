@@ -332,6 +332,8 @@ class Calc:
                             raise Unknown(f"vehicle parameter {basis} is missing", "missing_parameter")
                         cap = ch.get("mass_cap_kg") or mass
                         q = q * Decimal(min(mass, cap)) / 1000
+                elif t == "point" and ch["unit"] == "t":
+                    q = self.tonnes(ch)
                 elif t == "section" and ch["unit"] == "km":
                     km = ds.objects[e["object"]].get("length_km")
                     if km is None:
@@ -359,6 +361,14 @@ class Calc:
                     and ch.get("valid_from", "0000") <= ds.local(q["time"]).date().isoformat() <= ch.get("valid_to", "9999-12-31")]
         return []
 
+    def tonnes(self, ch):
+        """A `t` charge's quantity: the mass parameter `mass_basis` in tonnes (8.4)."""
+        basis = ch.get("mass_basis", "train_mass_kg")
+        mass = self.vehicle.get(basis)
+        if mass is None:
+            raise Unknown(f"vehicle parameter {basis} is missing", "missing_parameter")
+        return Decimal(mass) / 1000
+
     def od_uses(self, ds, ch, events):
         """8.4 od: the events form trips from entry to exit; a trip is priced from its first station to its last."""
         events = sorted(events, key=lambda e: e["time"])
@@ -378,7 +388,7 @@ class Calc:
             a, b = trip[0], trip[-1]
             when = b["time"] if ch.get("time_basis", "entry") == "exit" else a["time"]
             out.append(({"entry": a["object"], "exit": b["object"], "time": ds.local(when),
-                         "trip": (a["time"], b["time"])}, Decimal(1), [a["object"], b["object"]],
+                         "trip": (a["time"], b["time"])}, self.tonnes(ch) if ch["unit"] == "t" else Decimal(1), [a["object"], b["object"]],
                         b if ch.get("time_basis") == "exit" else a))
         return out
 

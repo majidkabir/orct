@@ -57,7 +57,7 @@ reports an incomplete total instead of a wrong one.
 | [data/carbon-cost/](data/carbon-cost/) | 238 datasets for 38 countries, as [carbon-cost](https://github.com/majidkabir/carbon-cost) keeps and prices them |
 | [tools/validate.py](tools/validate.py) | Validates datasets: schema, references, row keys |
 | [tools/orct_calc.py](tools/orct_calc.py) | Reference calculator |
-| [tests/vectors/](tests/vectors/) | Conformance vectors: 41 covering every feature, 20 from official tariffs |
+| [tests/vectors/](tests/vectors/) | Conformance vectors: 44 covering every feature, 20 from official tariffs |
 | [tests/record.py](tests/record.py) | Records the reference calculator's statements for sample usages of every charge, to compare another calculator with (the data workflow compares carbon-cost's) |
 | [tests/smoke.py](tests/smoke.py) | Prices one use of every charge in every dataset |
 | [tests/check_spec_examples.py](tests/check_spec_examples.py) | Checks the specification's Annex D examples against the schemas and the calculator |

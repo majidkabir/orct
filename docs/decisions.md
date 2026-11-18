@@ -277,3 +277,22 @@ axles, and the trailer at a reduced rate in 2026 and 2027. Registration
 documents give both masses (F.1 of each vehicle). The derived values only
 spell out what the definitions already say, so a usage need not repeat them,
 and a missing trailer mass stays undecided rather than guessed.
+
+## D22. Per tonne of load capacity (0.3)
+
+**Decision.** `od` and `point` charges may have unit `t`: the amount is per
+tonne of the vehicle parameter `mass_basis`, per trip or passage. The vehicle
+parameters include `load_capacity_kg`, the load capacity a carrier charges
+by: the semi-trailer's for a tractor with semi-trailer, else the motor
+vehicle's and its trailers' together.
+
+**Alternatives.** A class per tonne (dozens of rows for one rate); deriving
+the load capacity from the combination's maximum mass less an assumed tare
+(a guess the tariff does not make).
+
+**Why.** Croatia's state ferry lines (Jadrolinija's price lists) charge a
+goods vehicle with more than 5 t of load capacity a fare per tonne of it,
+and for a tractor with semi-trailer the semi-trailer's only. Registration
+documents give the masses it follows from (F.1 less G). A usage without the
+parameter leaves such a fare unpriced (`missing_parameter`) instead of
+guessed.

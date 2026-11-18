@@ -25,6 +25,9 @@
     "trailer_axles": {
      "type": "integer"
     },
+    "load_capacity_kg": {
+     "type": "integer"
+    },
     "train_axles": {
      "type": "integer"
     },

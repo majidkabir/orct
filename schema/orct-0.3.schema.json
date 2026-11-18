@@ -1239,6 +1239,24 @@
      },
      "additionalProperties": false
     },
+    "load_capacity_kg": {
+     "type": "object",
+     "properties": {
+      "min": {
+       "type": "number"
+      },
+      "max": {
+       "type": "number"
+      },
+      "gt": {
+       "type": "number"
+      },
+      "lt": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
     "length_m": {
      "type": "object",
      "properties": {
@@ -1488,6 +1506,7 @@
       "use",
       "trip",
       "passage",
+      "t",
       "day",
       "entry",
       "product",
@@ -1641,7 +1660,8 @@
      "enum": [
       "mass_kg",
       "train_mass_kg",
-      "trailer_mass_kg"
+      "trailer_mass_kg",
+      "load_capacity_kg"
      ]
     },
     "mass_cap_kg": {
@@ -1775,7 +1795,10 @@
      "then": {
       "properties": {
        "unit": {
-        "const": "trip"
+        "enum": [
+         "trip",
+         "t"
+        ]
        },
        "columns": {
         "allOf": [
@@ -1805,7 +1828,10 @@
      "then": {
       "properties": {
        "unit": {
-        "const": "passage"
+        "enum": [
+         "passage",
+         "t"
+        ]
        }
       }
      }

@@ -338,6 +338,7 @@ classify by.
 | `train_axles` | integer | Number of axles of the combination | — |
 | `trailer_mass_kg` | integer | Technically permissible maximum laden mass of the towed vehicle, in kg; with two or more, their sum | registration F.1 of the towed vehicle [11] |
 | `trailer_axles` | integer | Number of axles of the towed vehicle; with two or more, their sum | registration L of the towed vehicle [11] |
+| `load_capacity_kg` | integer | Load capacity (payload) a carrier charges by, in kg: the technically permissible maximum laden mass less the mass in running order, of the semi-trailer for a tractor with semi-trailer, else of the motor vehicle and its trailers together | registration F.1 less G [11] |
 | `length_m` | number | Overall length of the motor vehicle, in m | VehicleDimensions |
 | `train_length_m` | number | Overall length of the combination, in m | — |
 | `height_m` | number | Overall height, in m | VehicleDimensions |
@@ -527,10 +528,10 @@ The components are:
 
 | `type` | Prices | `unit` | Type-specific members |
 | --- | --- | --- | --- |
-| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter: `mass_kg`, `train_mass_kg` or `trailer_mass_kg`; default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
+| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg` or `load_capacity_kg`; default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
 | `section` | each use of a section | `use`, or `km` (per km of the section's `length_km`) | — |
-| `od` | each trip in a closed system, by entry and exit station | `trip` | `directed` (default `false`: a row prices both directions of its pair) |
-| `point` | each passage of a point | `passage` | — |
+| `od` | each trip in a closed system, by entry and exit station | `trip`, or `t` (per tonne of mass per trip) | `directed` (default `false`: a row prices both directions of its pair); `mass_basis` for `t` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg` or `load_capacity_kg`; default `train_mass_kg`) |
+| `point` | each passage of a point | `passage`, or `t` (per tonne of mass per passage) | `mass_basis` for `t`, as for `od` |
 | `area` | each day in a zone, or each entry into it | `day`, `entry` | — |
 | `period` | each product bought | `product` | `day_basis` (`calendar`, the default, or `rolling`) |
 | `quantity` | a quantity used in a jurisdiction | `t_co2`, `litre`, `kg` or `kwh` | — |
@@ -670,7 +671,8 @@ through `parents`, is in the charge's `objects` or in its rows' `object`,
   (`missing_km`).
 - `section`: each event on the charge is one use; for unit `km` the quantity
   is the section's `length_km`.
-- `point`: each event on the charge is one use.
+- `point`: each event on the charge is one use; for unit `t` its quantity is
+  the mass read from `mass_basis` / 1000.
 - `od`: the events on the charge, in time order, form trips: an event with
   role `entry` starts a trip, an event with role `exit` ends the trip, and
   other events continue the current trip or start one. Each trip is one use,
@@ -681,6 +683,8 @@ through `parents`, is in the charge's `objects` or in its rows' `object`,
   for example), each closed system is its own charge, and a station where
   the systems meet is a station of both; a journey through several systems
   is then one trip in each.
+  For unit `t` a trip's quantity is the mass read from `mass_basis` / 1000
+  (a ferry's fare per tonne of load capacity).
 - `area`: for unit `day`, each local date with at least one event on the
   charge is one use, priced at the highest amount that any of that date's
   events selects; the date is unpriced if any of these selections is
@@ -797,7 +801,7 @@ The issue codes are:
 | `unsupported_feature` | The dataset requires a feature the calculator does not implement. |
 | `unsupported_rule` | The dataset has a rule kind the calculator does not implement. |
 | `unsupported_product` | A product's duration is one the calculator does not implement. |
-| `missing_parameter` | A vehicle parameter needed by criteria or by a `tkm` charge is missing. |
+| `missing_parameter` | A vehicle parameter needed by criteria or by a `tkm` or `t` charge is missing. |
 | `missing_km` | A distance event has no `km`. |
 | `missing_count` | A charge is priced by volume and the usage does not give its `prior_uses`. |
 | `dynamic_tariff` | A use is of a charge whose amounts are set in real time. |

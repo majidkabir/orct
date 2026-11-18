@@ -38,6 +38,10 @@
   {"id": "towed", "name": "Towed vehicle by its own mass", "classes": [
    {"id": "ut10", "criteria": {"trailer_mass_kg": {"gt": 0, "max": 10000}}},
    {"id": "ut24", "criteria": {"trailer_mass_kg": {"gt": 10000}}}
+  ]},
+  {"id": "cap", "name": "Ferry fares by load capacity", "classes": [
+   {"id": "cap5", "criteria": {"load_capacity_kg": {"max": 5000}}},
+   {"id": "capt", "criteria": {"load_capacity_kg": {"gt": 5000}}}
   ]}
  ],
  "time_classes": [
@@ -60,6 +64,8 @@
   {"id": "st-a", "type": "station", "name": "A", "location": {"geometry": {"type": "Point", "coordinates": [2.3, 48.8]}}},
   {"id": "st-b", "type": "station", "name": "B", "location": {"geometry": {"type": "Point", "coordinates": [2.4, 48.9]}}},
   {"id": "st-d", "type": "station", "name": "D", "location": {"geometry": {"type": "Point", "coordinates": [2.5, 49.0]}}},
+  {"id": "quay-a", "type": "station", "name": "Quay A", "location": {"geometry": {"type": "Point", "coordinates": [3.1, 47.9]}}},
+  {"id": "quay-b", "type": "station", "name": "Quay B", "location": {"geometry": {"type": "Point", "coordinates": [3.2, 47.8]}}},
   {"id": "c1", "type": "station", "name": "C1", "location": {"geometry": {"type": "Point", "coordinates": [3.0, 48.0]}}},
   {"id": "c2", "type": "station", "name": "C2", "location": {"geometry": {"type": "Point", "coordinates": [3.1, 48.1]}}},
   {"id": "c3", "type": "station", "name": "C3", "location": {"geometry": {"type": "Point", "coordinates": [3.2, 48.2]}}},
@@ -133,7 +139,11 @@
   {"id": "motor-km", "type": "distance", "component": "unspecified", "unit": "km", "basis": "official", "sources": ["s1"],
    "objects": ["uni"], "columns": ["vehicle_class", "amount"], "rows": [["um18", "0.12"], ["um26", "0.18"]]},
   {"id": "trailer-km", "type": "distance", "component": "unspecified", "unit": "km", "unmatched": "free", "basis": "official", "sources": ["s1"],
-   "objects": ["uni"], "columns": ["vehicle_class", "amount"], "rows": [["ut10", "0.04"], ["ut24", "0.09"]]}
+   "objects": ["uni"], "columns": ["vehicle_class", "amount"], "rows": [["ut10", "0.04"], ["ut24", "0.09"]]},
+  {"id": "ferry", "type": "od", "component": "unspecified", "unit": "trip", "unmatched": "free", "basis": "official", "sources": ["s1"],
+   "columns": ["entry", "exit", "vehicle_class", "amount"], "rows": [["quay-a", "quay-b", "cap5", "45.70"]]},
+  {"id": "ferry-t", "type": "od", "component": "unspecified", "unit": "t", "mass_basis": "load_capacity_kg", "unmatched": "free", "basis": "official", "sources": ["s1"],
+   "columns": ["entry", "exit", "vehicle_class", "amount"], "rows": [["quay-a", "quay-b", "capt", "9.80"]]}
  ],
  "rules": [
   {"id": "r-exempt", "kind": "exemption", "applies_to": ["dist"], "params": {"criteria": {"co2_class": [5]}, "until": "2031-06-30"}},

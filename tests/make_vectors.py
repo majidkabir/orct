@@ -135,6 +135,15 @@ add("derived-no-trailer", "Without a trailer, trailer_mass_kg is derived as 0 (6
 add("derived-trailer-mass-missing", "train_axles 5 and axles 2 derive a trailer of 3 axles, but its mass is not given: the trailer charge is unpriced, never guessed.",
     ["6.6.1", "6.6.2", "8.9"], [SYN], usage(UNI, [ev("uni", M, km=100)]), "12.00", complete=False,
     lines=[("motor-km", "12")], issues=["missing_parameter"])
+add("od-per-tonne", "A ferry fare per tonne of load capacity (unit t, mass_basis load_capacity_kg): a semi-trailer of 30 t pays 30 × 9.80; the flat fare up to 5 t doesn't apply (unmatched: free).",
+    ["6.6.1", "6.10.2", "8.4"], [SYN], usage({**V40, "load_capacity_kg": 30000}, [ev("quay-a", M, role="entry"), ev("quay-b", "2026-11-16T11:00:00+01:00", role="exit")]),
+    "294.00", lines=[("ferry-t", "294.00")])
+add("od-per-tonne-light", "Up to 5 t of load capacity the flat fare applies.", ["6.10.2", "8.4"], [SYN],
+    usage({**V7, "load_capacity_kg": 4500}, [ev("quay-a", M, role="entry"), ev("quay-b", "2026-11-16T11:00:00+01:00", role="exit")]),
+    "45.70", lines=[("ferry", "45.70")])
+add("od-per-tonne-missing", "Without load_capacity_kg the fare can't be priced (missing_parameter), never guessed.", ["6.10.2", "8.4", "8.9"], [SYN],
+    usage(V40, [ev("quay-a", M, role="entry"), ev("quay-b", "2026-11-16T11:00:00+01:00", role="exit")]), None, complete=False,
+    lines=[], issues=["missing_parameter"])
 AT = "data/carbon-cost/at/at-2026-01-01.orct.json"; ATID = "carbon-cost/at/2026-01-01"
 src = "Sum of the 2026 parts of BGBl. II Nr. 298/2025 §§ 2, 8, 9, equal to the per-km totals the WKO publishes, as carbon-cost's TestAustriaTotals asserts them; 100 km."
 for name, ta, ax, euro, cls, want in (("e-2-axles", 2, 2, "6", 5, "5.87"), ("a-co2-1-3-axles", 3, 3, "6", 1, "38.56"),
