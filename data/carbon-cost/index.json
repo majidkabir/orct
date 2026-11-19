@@ -632,6 +632,83 @@
    "coverage": "complete"
   },
   {
+   "id": "carbon-cost/dk-aeroefaergerne/2026-01-03",
+   "scheme": "dk-aeroefaergerne",
+   "country": "DK",
+   "file": "dk/dk-aeroefaergerne-2026-01-03.orct.json",
+   "name": "Ærøfærgerne's ferries Svendborg–Ærøskøbing, Faaborg–Søby, Søby–Fynshav, trucks",
+   "valid_from": "2026-01-03",
+   "valid_to": "2027-01-04",
+   "sha256": "7d8083c6e576a4c0a4b2c21ea7b464e395b216708289433202d58ddfb6d9e338",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-aeroexpressen/2026-01-01",
+   "scheme": "dk-aeroexpressen",
+   "country": "DK",
+   "file": "dk/dk-aeroexpressen-2026-01-01.orct.json",
+   "name": "ÆrøXpressen's ferries Marstal–Rudkøbing, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-06-14",
+   "sha256": "696d1ccebb682f02a67009968548d5c24dcc71626993914420bab25b3c2602a6",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-aeroexpressen/2026-06-15",
+   "scheme": "dk-aeroexpressen",
+   "country": "DK",
+   "file": "dk/dk-aeroexpressen-2026-06-15.orct.json",
+   "name": "ÆrøXpressen's ferries Marstal–Rudkøbing, trucks",
+   "valid_from": "2026-06-15",
+   "valid_to": "2026-12-31",
+   "sha256": "6fe89baf460123bf77e222041dc7a8d650dfb3451bce69a6b4efe8563ac4ed3c",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-alslinjen/2026-01-01",
+   "scheme": "dk-alslinjen",
+   "country": "DK",
+   "file": "dk/dk-alslinjen-2026-01-01.orct.json",
+   "name": "ALSLINJEN's ferries Bøjden–Fynshav, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "sha256": "04ac979dfca4426619ca047ebfc8997f1aaa62ce30477867d915c0caae13f2a5",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-alslinjen/2027-01-01",
+   "scheme": "dk-alslinjen",
+   "country": "DK",
+   "file": "dk/dk-alslinjen-2027-01-01.orct.json",
+   "name": "ALSLINJEN's ferries Bøjden–Fynshav, trucks",
+   "valid_from": "2027-01-01",
+   "valid_to": "2027-12-31",
+   "sha256": "44dd96b419031053c0c891d762a8938f55425340555c1818714a31a7a352174e",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-bornholm/2026-01-01",
+   "scheme": "dk-bornholm",
+   "country": "DK",
+   "file": "dk/dk-bornholm-2026-01-01.orct.json",
+   "name": "Bornholmslinjen's ferries to Bornholm, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "sha256": "3c8f7aa9f318bf5dc2e187706d61da2a019d854151da1780926672e7683d5a2c",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-bornholm/2027-01-01",
+   "scheme": "dk-bornholm",
+   "country": "DK",
+   "file": "dk/dk-bornholm-2027-01-01.orct.json",
+   "name": "Bornholmslinjen's ferries to Bornholm, trucks",
+   "valid_from": "2027-01-01",
+   "valid_to": "2027-12-31",
+   "sha256": "cc9b3b18c4734c26cd5902629d165f303fdcfb5737fadb8af783f8607ab20a44",
+   "coverage": "complete"
+  },
+  {
    "id": "carbon-cost/dk-bridges/2024-01-01",
    "scheme": "dk-bridges",
    "country": "DK",
@@ -662,6 +739,72 @@
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
    "sha256": "24833735b0ef5e299251070c2035ee0df8377f2980f909f5edc6d8ee7c5c29d7",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-fanoelinjen/2026-01-01",
+   "scheme": "dk-fanoelinjen",
+   "country": "DK",
+   "file": "dk/dk-fanoelinjen-2026-01-01.orct.json",
+   "name": "FANØLINJEN's ferries Esbjerg–Nordby, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "sha256": "cb2b16167196f8a88a3917e8931633db751851150a235c2b6b9f10181de06b6c",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-langelandslinjen/2026-01-01",
+   "scheme": "dk-langelandslinjen",
+   "country": "DK",
+   "file": "dk/dk-langelandslinjen-2026-01-01.orct.json",
+   "name": "LANGELANDSLINJEN's ferries Spodsbjerg–Tårs, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "sha256": "825eac5e9cd3e6f71859ec7408b068758db4bce1a923ea657e6ae040f65f1bab",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-molslinjen/2026-11-19",
+   "scheme": "dk-molslinjen",
+   "country": "DK",
+   "file": "dk/dk-molslinjen-2026-11-19.orct.json",
+   "name": "MOLSLINJEN's ferries Aarhus–Odden, Ebeltoft–Odden, trucks",
+   "valid_from": "2026-11-19",
+   "valid_to": null,
+   "sha256": "d4bc9a250c2c9d27ba9232b6d50fb71162ba64977cecdece85f44d5008fa1eb2",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-samsoe-rederi/2026-11-19",
+   "scheme": "dk-samsoe-rederi",
+   "country": "DK",
+   "file": "dk/dk-samsoe-rederi-2026-11-19.orct.json",
+   "name": "Samsø Rederi's ferries Hou–Sælvig, trucks",
+   "valid_from": "2026-11-19",
+   "valid_to": null,
+   "sha256": "57e2d1cc93167303ac0c6c717a3971f5cd36ddfeeea438d6d5f1a7bac74ff0aa",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-samsoelinjen/2026-01-01",
+   "scheme": "dk-samsoelinjen",
+   "country": "DK",
+   "file": "dk/dk-samsoelinjen-2026-01-01.orct.json",
+   "name": "SAMSØLINJEN's ferries Kalundborg–Ballen, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-12-31",
+   "sha256": "6f4d9677930e66ce74f4e3aab98f6783b467b5e9d711b6f0d349bec4f7b84a4a",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/dk-samsoelinjen/2027-01-01",
+   "scheme": "dk-samsoelinjen",
+   "country": "DK",
+   "file": "dk/dk-samsoelinjen-2027-01-01.orct.json",
+   "name": "SAMSØLINJEN's ferries Kalundborg–Ballen, trucks",
+   "valid_from": "2027-01-01",
+   "valid_to": "2027-12-31",
+   "sha256": "16f93ebdd8eeb557297fa25d0121e29fe9eed6f71fa4dfb611c4e022fa43e297",
    "coverage": "complete"
   },
   {
@@ -709,6 +852,127 @@
    "coverage": "complete"
   },
   {
+   "id": "carbon-cost/scandlines/2026-01-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-01-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-01-01",
+   "valid_to": "2026-01-31",
+   "sha256": "b09ebdb9e7c0b90bc9eb6c8a256dc35f059d34b2dc53da5315a021f0dd5d42ca",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-02-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-02-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-02-01",
+   "valid_to": "2026-02-28",
+   "sha256": "cabd255ab5a644bce9ff85fa81f5dcfa65400890f816d4de8c109e44d94cd3e9",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-03-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-03-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-03-01",
+   "valid_to": "2026-03-31",
+   "sha256": "403aa9ba3155eae978d55075eba94147d3f4c754397f072f9f0a5ec864bf5004",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-04-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-04-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-04-01",
+   "valid_to": "2026-04-30",
+   "sha256": "abf0a10444083881aab7aa3c39028e6b1fab938d4ff83e089c0f53ec53f0af61",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-05-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-05-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-05-01",
+   "valid_to": "2026-05-31",
+   "sha256": "c73cb96e6f8d059dbb41561f4bd07403f1553a60ab4233ee72a59de2888f4ec0",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-06-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-06-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-06-01",
+   "valid_to": "2026-06-30",
+   "sha256": "68ef58ee580a39151a28c96cf69d785c651609551f89a4b91442dfda4ebbe7f1",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-07-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-07-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-07-01",
+   "valid_to": "2026-07-31",
+   "sha256": "9ba404b24bd8aa812cec6ec2a66b27bce8cce46180bed771e64def31b43957a1",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-08-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-08-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-08-01",
+   "valid_to": "2026-08-31",
+   "sha256": "7ba0f8d086af0f7e5d56802f93496d5288b13e1994513852adef8030b2da6794",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-09-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-09-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-09-01",
+   "valid_to": "2026-09-30",
+   "sha256": "84447d55d83efc74e394c8f7610743e53ccced9a37d3af3575a85a83e33746e1",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-10-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-10-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-10-01",
+   "valid_to": "2026-10-31",
+   "sha256": "88798c340eda9b3c9a310021ff1dd287715d466502d918f6475f08e115152ba5",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/scandlines/2026-11-01",
+   "scheme": "scandlines",
+   "country": "DK",
+   "file": "dk/scandlines-2026-11-01.orct.json",
+   "name": "Scandlines' ferries Puttgarden–Rødby and Rostock–Gedser and Øresundslinjen's Helsingør–Helsingborg, trucks",
+   "valid_from": "2026-11-01",
+   "valid_to": null,
+   "sha256": "e48570f0d1f63f73cec2c42852410102c8f3a1243ecf908e15bc2a1ce4246733",
+   "coverage": "complete"
+  },
+  {
    "id": "carbon-cost/ee/2024-01-01",
    "scheme": "ee",
    "country": "EE",
@@ -728,6 +992,17 @@
    "valid_from": "2026-01-01",
    "valid_to": null,
    "sha256": "607fe5399ff5946ef3e7532cdcc1f9884d7f8ce08dfcae8b5e25b2974a5fcc28",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/ee-ferries/2025-02-01",
+   "scheme": "ee-ferries",
+   "country": "EE",
+   "file": "ee/ee-ferries-2025-02-01.orct.json",
+   "name": "Estonia's state ferries to Muhu, Saaremaa and Hiiumaa, trucks",
+   "valid_from": "2025-02-01",
+   "valid_to": null,
+   "sha256": "d9f1a08a4ad6e0c0e90ff8f32f92fae0ef8b058ae5f9e07cc2919ba47d3476ad",
    "coverage": "complete"
   },
   {
@@ -991,7 +1266,7 @@
    "name": "Spanish state toll motorways (SEITT)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "6508318895e7ec86792e44dec51ea9394e1eb44bf9b81028e71c72ebe66f597b",
+   "sha256": "68e480835bb5574d46691649691321e78a83993bea76de9c456c012816dd39e5",
    "coverage": "complete"
   },
   {
@@ -1387,7 +1662,7 @@
    "name": "Greek motorway tolls (open toll stations)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "1939118a825d371c46441e807e3490ae838168d639831d668b8d46ef02115b9b",
+   "sha256": "a1857e30a280ad01229b64f92401be66be691bee32234f93b284ee0da5c952c1",
    "coverage": "complete"
   },
   {
@@ -1431,7 +1706,7 @@
    "name": "Jadrolinija's state ferry lines, goods vehicles",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "6608fd1df48318ca94f32115b2de695c2941ee28bbe4b0bcc15c94f942d7295a",
+   "sha256": "e77758cb76b3bad1d36417826e77b510bc22c70bc6a910a9d17e141fb7d8500a",
    "coverage": "complete"
   },
   {
@@ -1563,7 +1838,7 @@
    "name": "Irish national road tolls (M50 and the PPP toll roads)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "113d9870cf0627adc3a1dececf5ce5fc43e8a10e35e818f62efaad09ac1a685a",
+   "sha256": "b08afcf5358d7f5a27aaf93520ebf5ee5e9ab4462774eee3a13824fdf5298375",
    "coverage": "complete"
   },
   {
@@ -1739,7 +2014,7 @@
    "name": "Sicilian motorways A18 and A20 (Consorzio per le Autostrade Siciliane)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "0943eb92de03d3510e2431a00cef347ea8e4e89e16f116b0babcf2fb8e95a5df",
+   "sha256": "a6a85c07e3cb03cb1303efc53784eda568a3bd24055736e7a2141e3b80388e3a",
    "coverage": "complete"
   },
   {
@@ -1751,6 +2026,17 @@
    "valid_from": "2026-02-01",
    "valid_to": null,
    "sha256": "d483bd43c3ede3372c509a7cf2b6f73654162ca5c98198cb96b810bf356cdd41",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/it-messina/2026-11-01",
+   "scheme": "it-messina",
+   "country": "IT",
+   "file": "it/it-messina-2026-11-01.orct.json",
+   "name": "Strait of Messina ferry (Caronte & Tourist), trucks",
+   "valid_from": "2026-11-01",
+   "valid_to": null,
+   "sha256": "3c0ff7c0dbacc799763354ed330168a7902a678d68138828d858375249a82e23",
    "coverage": "complete"
   },
   {
@@ -2003,7 +2289,7 @@
    "name": "North Macedonian road tolls (патарина)",
    "valid_from": "2025-05-01",
    "valid_to": null,
-   "sha256": "b5dc71cdd6b5bcf0621c63ca957b6326ead4f4a4d07b27ec874f63b60af98617",
+   "sha256": "d966eac3dc028e0ee9163c377b46ace8b836bc1f867f777888a06251be5b7495",
    "coverage": "complete"
   },
   {
@@ -2359,6 +2645,105 @@
    "coverage": "complete"
   },
   {
+   "id": "carbon-cost/polsca/2026-03-30",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-03-30.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg and Gdańsk–Nynäshamn, trucks",
+   "valid_from": "2026-03-30",
+   "valid_to": "2026-03-31",
+   "sha256": "dc8ec43dfd7e8dc859027cbed864dbcfb087f8b11e17e35e3a5f14190caa3067",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-04-01",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-04-01.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg and Gdańsk–Nynäshamn, trucks",
+   "valid_from": "2026-04-01",
+   "valid_to": "2026-06-21",
+   "sha256": "58d5c3998676519334a2ee8d6ed82fffe82460ea1a205dabd636ae6093c11011",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-06-22",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-06-22.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg and Gdańsk–Nynäshamn, trucks",
+   "valid_from": "2026-06-22",
+   "valid_to": "2026-07-05",
+   "sha256": "e9925bcfb11165690c27bafb9f1c393e8628b356b2faacc4b9576410f8379567",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-07-06",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-07-06.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-07-06",
+   "valid_to": "2026-07-31",
+   "sha256": "d1eb368892247d890be3f5d86ef5637734e0fde023c8a9c4c3784bbec18b281e",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-08-01",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-08-01.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-08-01",
+   "valid_to": "2026-08-31",
+   "sha256": "411a8c5d6d9de865240ceebfca105d17da9f5016d319e177f7694cc473d62602",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-09-01",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-09-01.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-09-01",
+   "valid_to": "2026-09-17",
+   "sha256": "c670fa8c774491505290dcb745ec19f06347eb72d08241afee8359f81343ffa5",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-09-18",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-09-18.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-09-18",
+   "valid_to": "2026-09-30",
+   "sha256": "a748af995ab185b9ea31a80716ddd9be9f5efb86d77b7500712f0f981b3a21e7",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-10-01",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-10-01.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-10-01",
+   "valid_to": "2026-10-31",
+   "sha256": "f39addb5674d4f931405809504d28208529ddd32528fb146243650df9dc2db7a",
+   "coverage": "complete"
+  },
+  {
+   "id": "carbon-cost/polsca/2026-11-01",
+   "scheme": "polsca",
+   "country": "PL",
+   "file": "pl/polsca-2026-11-01.orct.json",
+   "name": "POLSCA Baltic Ferries' (Polferries, Unity Line) ferries Świnoujście–Ystad, Świnoujście–Trelleborg, Gdańsk–Nynäshamn and Gdańsk–Karlshamn, trucks",
+   "valid_from": "2026-11-01",
+   "valid_to": null,
+   "sha256": "8706e256a0bc88b897c72b059a1f6658e7d78cb24987d66309ee89532b67046e",
+   "coverage": "complete"
+  },
+  {
    "id": "carbon-cost/fuelco2-pt/2024-01-01",
    "scheme": "fuelco2-pt",
    "country": "PT",
@@ -2454,7 +2839,7 @@
    "name": "Portuguese motorway tolls (portagens)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "82aaca3026cff5e9fc8831e1f294f28df90c8785d837a685916a8671d67b628b",
+   "sha256": "894daba74db7ea69727e11f8bca011ea158f2bab2c559487f39ccbf4edbac4de",
    "coverage": "complete"
   },
   {
@@ -2608,7 +2993,7 @@
    "name": "Serbian motorway toll (putarina)",
    "valid_from": "2026-07-01",
    "valid_to": null,
-   "sha256": "2d6a37cf6f250741ee3f5fbfb293f8bcffbbf16a82dcc84bbd50d78efe75b637",
+   "sha256": "d8e1bfd0fcadeab9f0d33b4506fde75cb6b4013bf8d42f5b43b16e91d8079332",
    "coverage": "complete"
   },
   {
@@ -2619,7 +3004,7 @@
    "name": "Belgrade bypass toll (Obilaznica oko Beograda), category 4",
    "valid_from": "2026-04-01",
    "valid_to": null,
-   "sha256": "9c961d62a8e166bfae6a7322b0133cfda37b7a3e585e6983c572451f0c78114d",
+   "sha256": "aa14c250e92bdc3828ee764dcb6225f07d9e768d624b755df41e09f08c0e2cf8",
    "coverage": "complete"
   },
   {
@@ -2729,7 +3114,7 @@
    "name": "Swedish bridge infrastructure charges (broavgift)",
    "valid_from": "2024-05-01",
    "valid_to": null,
-   "sha256": "250a196d85692606cc1b004879ac1968473638c658e4b6cb690fc33fedc65cbd",
+   "sha256": "95efbc74dd52db30f27956f6af6eee871e2420744d38c47306f0e006c787147c",
    "coverage": "complete"
   },
   {
@@ -2740,7 +3125,7 @@
    "name": "Göteborg congestion tax (trängselskatt)",
    "valid_from": "2020-01-01",
    "valid_to": null,
-   "sha256": "749d661335fbe69223272a8018bd47e0d9f2afb29ff59a04f34df8d91c3046bb",
+   "sha256": "5f659ea2eccf9243bfd679e86fb0932a95d85eedc17a2d784b2e883074e25c01",
    "coverage": "complete"
   },
   {
@@ -2751,7 +3136,7 @@
    "name": "Stockholm congestion tax (trängselskatt)",
    "valid_from": "2020-01-01",
    "valid_to": null,
-   "sha256": "8f22132d0eebfbd85d7ae55fc1f4cde84eb825c233f7fcb7852e03769e9ba8ab",
+   "sha256": "190a619ac07b3782dee86e095e3c567ad8716b287e9541f118bb87c214ba8c2d",
    "coverage": "complete"
   },
   {
@@ -2993,7 +3378,7 @@
    "name": "Turkish motorway and bridge tolls (KGM)",
    "valid_from": "2026-07-01",
    "valid_to": null,
-   "sha256": "3968546e90471ecfaf2d28ba46b73e3070f0bd03df16c06cfbe9256025b03b0a",
+   "sha256": "663a2460c0861d7e55a47707ddbc903c83dda6528638c3a3ce59b3dfc42c1c21",
    "coverage": "complete"
   }
  ]
