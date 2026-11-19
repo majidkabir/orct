@@ -339,6 +339,7 @@ classify by.
 | `trailer_mass_kg` | integer | Technically permissible maximum laden mass of the towed vehicle, in kg; with two or more, their sum | registration F.1 of the towed vehicle [11] |
 | `trailer_axles` | integer | Number of axles of the towed vehicle; with two or more, their sum | registration L of the towed vehicle [11] |
 | `load_capacity_kg` | integer | Load capacity (payload) a carrier charges by, in kg: the technically permissible maximum laden mass less the mass in running order, of the semi-trailer for a tractor with semi-trailer, else of the motor vehicle and its trailers together | registration F.1 less G [11] |
+| `load_kg` | number | Mass of the load the vehicle carries on the trip, in kg (the goods, without the vehicle) | consignment gross weight (e-CMR) |
 | `length_m` | number | Overall length of the motor vehicle, in m | VehicleDimensions |
 | `train_length_m` | number | Overall length of the combination, in m | — |
 | `height_m` | number | Overall height, in m | VehicleDimensions |
@@ -528,10 +529,10 @@ The components are:
 
 | `type` | Prices | `unit` | Type-specific members |
 | --- | --- | --- | --- |
-| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg` or `load_capacity_kg`; default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count) |
+| `distance` | km driven on networks | `km`, or `tkm` (per tonne of mass and km) | `mass_basis` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg`, `load_capacity_kg` or `load_kg`; default `train_mass_kg`); `mass_cap_kg` (the mass above which `tkm` does not count); `mass_step_kg` (8.4) |
 | `section` | each use of a section | `use`, or `km` (per km of the section's `length_km`) | — |
-| `od` | each trip in a closed system, by entry and exit station | `trip`, or `t` (per tonne of mass per trip) | `directed` (default `false`: a row prices both directions of its pair); `mass_basis` for `t` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg` or `load_capacity_kg`; default `train_mass_kg`) |
-| `point` | each passage of a point | `passage`, or `t` (per tonne of mass per passage) | `mass_basis` for `t`, as for `od` |
+| `od` | each trip in a closed system, by entry and exit station | `trip`, or `t` (per tonne of mass per trip) | `directed` (default `false`: a row prices both directions of its pair); `mass_basis` for `t` (the mass parameter: `mass_kg`, `train_mass_kg`, `trailer_mass_kg`, `load_capacity_kg` or `load_kg`; default `train_mass_kg`); `mass_step_kg` for `t` (8.4) |
+| `point` | each passage of a point | `passage`, or `t` (per tonne of mass per passage) | `mass_basis` and `mass_step_kg` for `t`, as for `od` |
 | `area` | each day in a zone, or each entry into it | `day`, `entry` | — |
 | `period` | each product bought | `product` | `day_basis` (`calendar`, the default, or `rolling`) |
 | `quantity` | a quantity used in a jurisdiction | `t_co2`, `litre`, `kg` or `kwh` | — |
@@ -684,7 +685,11 @@ through `parents`, is in the charge's `objects` or in its rows' `object`,
   the systems meet is a station of both; a journey through several systems
   is then one trip in each.
   For unit `t` a trip's quantity is the mass read from `mass_basis` / 1000
-  (a ferry's fare per tonne of load capacity).
+  (a ferry's fare per tonne of load capacity, or of the load).
+
+With `mass_step_kg`, the mass of a `tkm` or `t` charge counts in whole steps
+of that many kg, a part of a step as a whole one, before `mass_cap_kg`: a
+fare per started 1,000 kg of a load of 20,500 kg counts 21 t.
 - `area`: for unit `day`, each local date with at least one event on the
   charge is one use, priced at the highest amount that any of that date's
   events selects; the date is unpriced if any of these selections is

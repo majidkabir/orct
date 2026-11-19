@@ -37,6 +37,16 @@ def easter(y):
     return date(y, (h + l - 7 * m + 114) // 31, (h + l - 7 * m + 114) % 31 + 1)
 
 
+
+def step_up(ch, mass):
+    """The mass in whole steps of the charge's `mass_step_kg`, a part of a step as a whole one (8.4)."""
+    step = ch.get("mass_step_kg")
+    if not step:
+        return mass
+    d, step = Decimal(str(mass)), Decimal(step)
+    n = (d / step).to_integral_value(rounding="ROUND_CEILING")
+    return n * step
+
 class Unknown(Exception):
     """Something the data or the usage does not decide (8.9). code is the issue code of 9.2."""
 
@@ -330,6 +340,7 @@ class Calc:
                         mass = self.vehicle.get(basis)
                         if mass is None:
                             raise Unknown(f"vehicle parameter {basis} is missing", "missing_parameter")
+                        mass = step_up(ch, mass)
                         cap = ch.get("mass_cap_kg") or mass
                         q = q * Decimal(min(mass, cap)) / 1000
                 elif t == "point" and ch["unit"] == "t":
@@ -367,7 +378,7 @@ class Calc:
         mass = self.vehicle.get(basis)
         if mass is None:
             raise Unknown(f"vehicle parameter {basis} is missing", "missing_parameter")
-        return Decimal(mass) / 1000
+        return Decimal(step_up(ch, mass)) / 1000
 
     def od_uses(self, ds, ch, events):
         """8.4 od: the events form trips from entry to exit; a trip is priced from its first station to its last."""

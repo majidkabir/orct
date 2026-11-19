@@ -1661,11 +1661,16 @@
       "mass_kg",
       "train_mass_kg",
       "trailer_mass_kg",
-      "load_capacity_kg"
+      "load_capacity_kg",
+      "load_kg"
      ]
     },
     "mass_cap_kg": {
      "type": "integer"
+    },
+    "mass_step_kg": {
+     "type": "integer",
+     "minimum": 1
     },
     "directed": {
      "type": "boolean"

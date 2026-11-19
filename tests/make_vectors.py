@@ -144,6 +144,12 @@ add("od-per-tonne-light", "Up to 5 t of load capacity the flat fare applies.", [
 add("od-per-tonne-missing", "Without load_capacity_kg the fare can't be priced (missing_parameter), never guessed.", ["6.10.2", "8.4", "8.9"], [SYN],
     usage(V40, [ev("quay-a", M, role="entry"), ev("quay-b", "2026-11-16T11:00:00+01:00", role="exit")]), None, complete=False,
     lines=[], issues=["missing_parameter"])
+add("od-per-started-tonne", "A ferry fare per started 1,000 kg of the load (unit t, mass_basis load_kg, mass_step_kg 1000): 20,500 kg counts 21 t × 1.26.",
+    ["6.6.1", "6.10.2", "8.4"], [SYN], usage({**V40, "load_kg": 20500}, [ev("bank-a", M, role="entry"), ev("bank-b", "2026-11-16T10:30:00+01:00", role="exit")]),
+    "26.46", lines=[("river-load", "26.46")])
+add("od-per-started-tonne-missing", "Without load_kg the fare per tonne of the load can't be priced (missing_parameter), never guessed.", ["6.10.2", "8.4", "8.9"], [SYN],
+    usage(V40, [ev("bank-a", M, role="entry"), ev("bank-b", "2026-11-16T10:30:00+01:00", role="exit")]), None, complete=False,
+    lines=[], issues=["missing_parameter"])
 AT = "data/carbon-cost/at/at-2026-01-01.orct.json"; ATID = "carbon-cost/at/2026-01-01"
 src = "Sum of the 2026 parts of BGBl. II Nr. 298/2025 §§ 2, 8, 9, equal to the per-km totals the WKO publishes, as carbon-cost's TestAustriaTotals asserts them; 100 km."
 for name, ta, ax, euro, cls, want in (("e-2-axles", 2, 2, "6", 5, "5.87"), ("a-co2-1-3-axles", 3, 3, "6", 1, "38.56"),

@@ -296,3 +296,21 @@ and for a tractor with semi-trailer the semi-trailer's only. Registration
 documents give the masses it follows from (F.1 less G). A usage without the
 parameter leaves such a fare unpriced (`missing_parameter`) instead of
 guessed.
+
+## D23. Per started tonne of the load (0.3)
+
+**Decision.** The vehicle parameters include `load_kg`, the mass of the load
+the vehicle carries on the trip. A `tkm` or `t` charge may have
+`mass_step_kg`: its mass counts in whole steps of that many kg, a part of a
+step as a whole one.
+
+**Alternatives.** A class per tonne of load (dozens of rows for one rate);
+taking the load capacity instead of the load (a different quantity from the
+one the tariff charges); rounding the amount instead of the mass (the
+tariff rounds the mass).
+
+**Why.** The Elbe ferry Glückstadt–Wischhafen (FRS Elbfähre's fares for
+trucks and cargo) charges a truck by its length and, on top, its load by
+weight, per started 1,000 kg. The load is the shipment's own mass, which a
+consignment note gives; it is not a property of the vehicle, so a usage
+without it leaves such a fare unpriced (`missing_parameter`).

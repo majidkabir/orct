@@ -28,6 +28,10 @@
     "load_capacity_kg": {
      "type": "integer"
     },
+    "load_kg": {
+     "type": "number",
+     "minimum": 0
+    },
     "train_axles": {
      "type": "integer"
     },
