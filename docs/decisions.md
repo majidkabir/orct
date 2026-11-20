@@ -318,9 +318,11 @@ without it leaves such a fare unpriced (`missing_parameter`).
 ## D24. A dataset may state that nothing is charged (0.3)
 
 **Decision.** A dataset may have `no_charge`: a description of the
-statement, the sources that make it, and the datasets that hold the charges
-it leaves out. Such a dataset has no charge objects, charges or rules; every
-other dataset still has at least one charge.
+statement and the sources that make it. Such a dataset has no charge
+objects, charges or rules; every other dataset still has at least one
+charge. A charge the statement leaves out (a tunnel's toll) is named in its
+description and held by a dataset of its own; no field links the two, as
+dataset identifiers change with each version.
 
 **Alternatives.** Leaving the area without a dataset (a calculation can't
 tell an area that charges nothing from one whose charges aren't known); a
@@ -328,9 +330,8 @@ charge whose rows are all zero (an invented rate table, with objects and
 classes that no source defines); a flag in a publisher's extension (the
 statement is about the area, not one publisher's tool).
 
-**Why.** Finland, Cyprus and Malta levy no road toll, user charge or
-vignette on heavy goods vehicles, and Andorra's and the Faroes' only tolls
-are a tunnel's: a user of the data needs to know that a trip there owes
-nothing beyond those, and on what authority. Finland's Transport and
-Communications Agency, for example, states that vignettes, distance-based
-road tolls and emission stickers are not used there.
+**Why.** Some countries levy no road toll, user charge or vignette on
+heavy goods vehicles: a user of the data needs to know that a trip there
+owes nothing, and on what authority, rather than finding no data. Finland's
+Transport and Communications Agency, for example, states that vignettes,
+distance-based road tolls and emission stickers are not used there.

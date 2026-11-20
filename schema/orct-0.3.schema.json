@@ -747,14 +747,6 @@
       "minLength": 1,
       "pattern": "^\\S(.*\\S)?$"
      }
-    },
-    "other_datasets": {
-     "type": "array",
-     "items": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "^\\S(.*\\S)?$"
-     }
     }
    },
    "additionalProperties": false,

@@ -157,8 +157,8 @@ dataset = {
                                  "region": {"type": "string", "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"}}, ["country"]),
             "note": {"type": "string"}}, ["id", "type"])},
         "charges": {"type": "array", "items": {"$ref": "#/$defs/charge"}},
-        "no_charge": obj({"description": {"type": "string", "minLength": 1}, "sources": {"type": "array", "minItems": 1, "items": ID},
-                          "other_datasets": {"type": "array", "items": ID}}, ["description", "sources"]),
+        "no_charge": obj({"description": {"type": "string", "minLength": 1}, "sources": {"type": "array", "minItems": 1, "items": ID}},
+                         ["description", "sources"]),
         "rules": {"type": "array", "items": rule},
         "coverage": {"type": "array", "minItems": 1, "items": obj({
             "scope": ID, "status": {"enum": ["complete", "partial", "unpriced"]}, "reason": {"type": "string"}},

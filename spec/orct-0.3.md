@@ -626,14 +626,13 @@ with nothing missing shall state `[{"scope": "dataset", "status": "complete"}]`.
 
 ### 6.13 No charge (`no_charge`)
 
-`{description, sources, other_datasets}` states that the area of the
-dataset's scheme levies no charge of the kind the scheme names on the
-vehicles of `liable_vehicles`: no road toll, user charge or vignette on a
-country's roads, say. `description` (required) states it as the sources do;
-`sources` (required) lists the identifiers of the sources (6.3) that state
-it, which should be the law or the authority in charge; `other_datasets`
-lists the identifiers of datasets that hold charges the statement leaves out
-in the same area (a tunnel's, a bridge's or a toll road's).
+`{description, sources}` states that the area of the dataset's scheme
+levies no charge of the kind the scheme names on the vehicles of
+`liable_vehicles`: no road toll, user charge or vignette on a country's
+roads, say. `description` (required) states it as the sources do, including
+any charge it leaves out (a tunnel's or a bridge's, which other datasets
+hold); `sources` (required) lists the identifiers of the sources (6.3) that
+state it, which should be the law or the authority in charge.
 
 A dataset with `no_charge` has no charge objects, charges or rules, and may
 have no vehicle class sets; a dataset without it has at least one charge and
