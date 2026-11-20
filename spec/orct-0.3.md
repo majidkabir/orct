@@ -262,10 +262,11 @@ A dataset is a JSON object with these members:
 | `time_classes` | no | Time classes (6.7). |
 | `calendars` | no | Explicit date lists (6.7). |
 | `user_classes` | no | User classes (6.8). |
-| `charge_objects` | yes | What is charged for (6.9). |
-| `charges` | yes | Rate tables (6.10). |
+| `charge_objects` | yes | What is charged for (6.9); empty with `no_charge`. |
+| `charges` | yes | Rate tables (6.10); at least one, none with `no_charge`. |
 | `rules` | no | Rules on charges (6.11). |
 | `coverage` | yes | What is not priced (6.12). |
+| `no_charge` | no | That the scheme's area charges nothing (6.13). |
 | `extensions` | no | Namespaced extensions (10.2). |
 
 Every identifier (`id`) of a source, vehicle class set, vehicle class, time
@@ -623,6 +624,24 @@ time class, user class, calendar, charge or rule; `status` is `complete`,
 `unpriced` (none of it is priced); `reason` says what is missing. A dataset
 with nothing missing shall state `[{"scope": "dataset", "status": "complete"}]`.
 
+### 6.13 No charge (`no_charge`)
+
+`{description, sources, other_datasets}` states that the area of the
+dataset's scheme levies no charge of the kind the scheme names on the
+vehicles of `liable_vehicles`: no road toll, user charge or vignette on a
+country's roads, say. `description` (required) states it as the sources do;
+`sources` (required) lists the identifiers of the sources (6.3) that state
+it, which should be the law or the authority in charge; `other_datasets`
+lists the identifiers of datasets that hold charges the statement leaves out
+in the same area (a tunnel's, a bridge's or a toll road's).
+
+A dataset with `no_charge` has no charge objects, charges or rules, and may
+have no vehicle class sets; a dataset without it has at least one charge and
+one vehicle class set. Its `coverage` is `complete` unless the statement
+leaves part of the area or of the vehicles open, which `coverage` then says.
+Without such a dataset, a calculation cannot tell an area that charges
+nothing from one whose charges are not known.
+
 ## 7 Encoding
 
 **7.1 JSON.** A dataset, a usage and a charge statement are each an I-JSON
@@ -657,7 +676,9 @@ whose object the dataset does not have, is not priced (`unknown_dataset`,
 is not priced (`outside_validity`). A charge prices only the events and
 quantities whose local date lies within its own validity. A vehicle that does
 not meet `liable_vehicles` owes nothing under the dataset; if that is
-undecided, nothing is priced for the dataset (`missing_parameter`).
+undecided, nothing is priced for the dataset (`missing_parameter`). A
+dataset with `no_charge` (6.13) has no objects for events to name: it adds
+no lines and no issues.
 
 **8.3 Classification.** The vehicle's class is determined in every class set
 (6.6.3), and the user classes the user holds (6.8).

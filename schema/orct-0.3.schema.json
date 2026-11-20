@@ -299,7 +299,6 @@
   },
   "vehicle_class_sets": {
    "type": "array",
-   "minItems": 1,
    "items": {
     "type": "object",
     "properties": {
@@ -729,10 +728,40 @@
   },
   "charges": {
    "type": "array",
-   "minItems": 1,
    "items": {
     "$ref": "#/$defs/charge"
    }
+  },
+  "no_charge": {
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string",
+     "minLength": 1
+    },
+    "sources": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     }
+    },
+    "other_datasets": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(.*\\S)?$"
+     }
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "description",
+    "sources"
+   ]
   },
   "rules": {
    "type": "array",
@@ -1127,6 +1156,34 @@
   "charges",
   "coverage"
  ],
+ "if": {
+  "required": [
+   "no_charge"
+  ]
+ },
+ "then": {
+  "properties": {
+   "charge_objects": {
+    "maxItems": 0
+   },
+   "charges": {
+    "maxItems": 0
+   },
+   "rules": {
+    "maxItems": 0
+   }
+  }
+ },
+ "else": {
+  "properties": {
+   "charges": {
+    "minItems": 1
+   },
+   "vehicle_class_sets": {
+    "minItems": 1
+   }
+  }
+ },
  "$defs": {
   "criteria": {
    "type": "object",

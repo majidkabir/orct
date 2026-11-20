@@ -150,6 +150,9 @@ add("od-per-started-tonne", "A ferry fare per started 1,000 kg of the load (unit
 add("od-per-started-tonne-missing", "Without load_kg the fare per tonne of the load can't be priced (missing_parameter), never guessed.", ["6.10.2", "8.4", "8.9"], [SYN],
     usage(V40, [ev("bank-a", M, role="entry"), ev("bank-b", "2026-11-16T10:30:00+01:00", role="exit")]), None, complete=False,
     lines=[], issues=["missing_parameter"])
+NC = "tests/fixtures/no-charge.orct.json"
+add("no-charge", "A dataset stating that the area levies no charge (no_charge) prices nothing: an empty, complete statement.", ["6.13", "8.2"], [NC],
+    usage(V40), None, lines=[])
 AT = "data/carbon-cost/at/at-2026-01-01.orct.json"; ATID = "carbon-cost/at/2026-01-01"
 src = "Sum of the 2026 parts of BGBl. II Nr. 298/2025 §§ 2, 8, 9, equal to the per-km totals the WKO publishes, as carbon-cost's TestAustriaTotals asserts them; 100 km."
 for name, ta, ax, euro, cls, want in (("e-2-axles", 2, 2, "6", 5, "5.87"), ("a-co2-1-3-axles", 3, 3, "6", 1, "38.56"),

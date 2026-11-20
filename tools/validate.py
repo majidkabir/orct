@@ -32,6 +32,9 @@ def check(d):
         return seen
 
     sources = unique(d["sources"], "source")
+    nc = d.get("no_charge")
+    if nc:  # 6.13: the statement's sources are the dataset's
+        errs += [f"no_charge: source {x} unknown" for x in nc["sources"] if x not in sources]
     sets = d["vehicle_class_sets"]
     class_set = {}
     for s in sets:

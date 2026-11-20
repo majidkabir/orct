@@ -125,7 +125,7 @@ dataset = {
             ["id", "title", "url"])},
         "tax": tax,
         "liable_vehicles": obj({"description": {"type": "string"}, "criteria": {"$ref": "#/$defs/criteria"}}, ["criteria"]),
-        "vehicle_class_sets": {"type": "array", "minItems": 1, "items": obj({
+        "vehicle_class_sets": {"type": "array", "items": obj({
             "id": ID, "name": {"type": "string"},
             "classes": {"type": "array", "minItems": 1, "items": obj({
                 "id": ID, "label": {"type": "string"}, "criteria": {"$ref": "#/$defs/criteria"}, "fallback": ID},
@@ -156,13 +156,20 @@ dataset = {
             "jurisdiction": obj({"country": {"type": "string", "pattern": "^[A-Z]{2}$"},
                                  "region": {"type": "string", "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"}}, ["country"]),
             "note": {"type": "string"}}, ["id", "type"])},
-        "charges": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/charge"}},
+        "charges": {"type": "array", "items": {"$ref": "#/$defs/charge"}},
+        "no_charge": obj({"description": {"type": "string", "minLength": 1}, "sources": {"type": "array", "minItems": 1, "items": ID},
+                          "other_datasets": {"type": "array", "items": ID}}, ["description", "sources"]),
         "rules": {"type": "array", "items": rule},
         "coverage": {"type": "array", "minItems": 1, "items": obj({
             "scope": ID, "status": {"enum": ["complete", "partial", "unpriced"]}, "reason": {"type": "string"}},
             ["scope", "status"])},
         "extensions": {"type": "object", "propertyNames": {"pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)+$"}}},
         ["orct", "dataset", "sources", "tax", "liable_vehicles", "vehicle_class_sets", "charge_objects", "charges", "coverage"]),
+    # 6.13: a dataset with no_charge has no charge objects, charges or rules;
+    # one without has at least one charge and one vehicle class set.
+    "if": {"required": ["no_charge"]},
+    "then": {"properties": {"charge_objects": {"maxItems": 0}, "charges": {"maxItems": 0}, "rules": {"maxItems": 0}}},
+    "else": {"properties": {"charges": {"minItems": 1}, "vehicle_class_sets": {"minItems": 1}}},
     "$defs": {"criteria": criteria, "geometry": geometry, "place": place, "charge": charge}}
 
 usage = {
