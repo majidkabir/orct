@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use the ORCT format, its method or its datasets, please cite it as below."
+type: software
+title: "ORCT: Open Road Charge Tariff"
+version: "0.3"
+abstract: >-
+  ORCT is an open format for road charges (tolls, vignettes, zone and
+  congestion charges, external-cost charges and carbon prices on fuel) and a
+  normative method to compute the charges of one vehicle's trip from them.
+  It encodes the ISO 17575-3 tariff concept model as open JSON, extends it to
+  closed entry-exit systems, time-based vignettes and carbon prices on fuel,
+  and adds exact money, tax basis, provenance and coverage. The repository
+  holds the specification, JSON schemas, conformance tests and datasets for
+  about 40 European countries, each sourced from the law or official tariff.
+authors:
+  - family-names: Ghafouri
+    given-names: Majid
+repository-code: "https://github.com/majidkabir/orct"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - road charges
+  - road tolls
+  - tariff data
+  - open standard
+  - ISO 17575-3
+  - Eurovignette
+  - carbon pricing
+  - ETS2
+  - freight transport
