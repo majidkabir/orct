@@ -1,5 +1,7 @@
 # ORCT: Open Road Charge Tariff
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24395796.svg)](https://doi.org/10.5281/zenodo.24395796)
+
 An open format for road charges (tolls, vignettes, zone and congestion
 charges, external-cost charges and carbon prices on fuel), and a normative
 method to compute the charges of one vehicle's trip from them.
