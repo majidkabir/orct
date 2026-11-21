@@ -237,13 +237,16 @@ dataset ── scheme, toll charger, publisher, validity, currency, time zone, l
    ├── calendars               explicit dates that time classes use
    ├── charges                 one rate table each: columns + rows
    ├── rules                   exemptions, discounts, caps, passage groups ...
-   └── coverage                what is not priced, and why
+   ├── coverage                what is not priced, and why
+   └── no_charge               or: that the area charges nothing, and on whose word
 ```
 
 A charge's rate table is ISO 17575-3's tariff table with its tariff class
 definitions folded in: each row is one combination of tariff determinants and
 its amount. A calculator turns the events of a usage into uses (8.4), selects
-one row per use (6.10.3), applies the rules (8.6) and rounds (8.7).
+one row per use (6.10.3), applies the rules (8.6) and rounds (8.7). A dataset
+with `no_charge` (6.13) has no charges: it states, with its sources, that the
+area charges nothing.
 
 ## 6 Dataset
 
