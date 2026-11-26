@@ -721,7 +721,10 @@ fare per started 1,000 kg of a load of 20,500 kg counts 21 t.
   of the events on the charge are covered by products. A product of duration
   D bought for date or instant s covers from s up to, not including, s + D,
   where months and years end on the same day of the month, or on the month's
-  last day when it has no such day, and weeks are 7 days. A product's price
+  last day when it has no such day, and weeks are 7 days. For `rolling`, the
+  months and years end at s's local time of day, and then each day adds 24
+  hours, whatever change of the clocks falls in it (P1D bought at 10:00 the
+  day before the clocks go back ends at 09:00 the next day). A product's price
   is the row selected for it at its start (at 00:00 local time for
   `calendar`). Of the sets of products, each bought at a date or instant of
   use, that cover every date or instant of use, the one with the lowest total

@@ -9,7 +9,7 @@ import calendar
 import json
 import re
 import sys
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from decimal import ROUND_DOWN, ROUND_HALF_EVEN, ROUND_HALF_UP, ROUND_UP, Decimal
 from zoneinfo import ZoneInfo
 
@@ -803,12 +803,16 @@ def duration_days(p):
 
 def product_end(start, p):
     """8.4: the first instant (or date) a product bought at start no longer covers. Months and years end
-    on the same day of the month, or on the month's last day if it has no such day."""
+    on the same day of the month, or on the month's last day if it has no such day; for an instant
+    (rolling), at its local time of day, and then each day is 24 hours, whatever change of the clocks."""
     y, mo, d = duration_days(p)
     months = start.month - 1 + mo + 12 * y
     year, month = start.year + months // 12, months % 12 + 1
     last = calendar.monthrange(year, month)[1]
-    return start.replace(year=year, month=month, day=min(start.day, last)) + timedelta(days=d)
+    end = start.replace(year=year, month=month, day=min(start.day, last))
+    if isinstance(end, datetime):
+        return (end.astimezone(timezone.utc) + timedelta(days=d)).astimezone(start.tzinfo)
+    return end + timedelta(days=d)
 
 
 MODES = {"half_up": ROUND_HALF_UP, "half_even": ROUND_HALF_EVEN, "up": ROUND_UP, "down": ROUND_DOWN}

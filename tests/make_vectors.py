@@ -167,6 +167,8 @@ for name, kg, cls, want in (("15t-co2-1", 15000, 1, "86.00"), ("26t-co2-1", 2600
     add(f"dk-{name}", f"Danish HGV toll 2026, {name}: {want} DKK. " + src, ["8.4"], [DK],
         usage({"train_mass_kg": kg, "mass_kg": kg, "train_axles": 5, "axles": 2, "euro_class": "6", "co2_class": cls},
               [{"dataset": DKID, "object": "roads", "time": "2026-06-01T10:00:00+02:00", "km": 100}]), want, currency="DKK")
+add("period-rolling-clocks-back", "A rolling P1D bought at 10:00 the day before the clocks go back lasts 24 hours, to 09:00: a use at 09:30 needs a second one (20).",
+    ["8.4"], [SYN], usage(V40, [ev("rnet", "2026-10-24T10:00:00+02:00"), ev("rnet", "2026-10-25T09:30:00+01:00")]), "20.00", lines=[("rvig", "10"), ("rvig", "10")])
 for old in glob.glob("tests/vectors/*.json"):
     os.remove(old)
 for i, (name, v) in enumerate(V, 1):
