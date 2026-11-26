@@ -749,7 +749,7 @@
    "name": "Danish road user charge (vejbenyttelsesafgift, Eurovignette)",
    "valid_from": "2020-01-01",
    "valid_to": "2024-12-31",
-   "sha256": "dc841118689f842fcdd10ea8c5ac6d047b008365f805196aa425da0a5f333d5a",
+   "sha256": "f0e047acabe3dcb2e78d4773972dfad39aec553f93075b8c28ae6606f18a9e12",
    "coverage": "complete"
   },
   {
@@ -958,7 +958,7 @@
    "name": "CO2-afgift on gas and diesel oil",
    "valid_from": "2024-01-01",
    "valid_to": "2024-12-31",
-   "sha256": "883343f333cbb0446811f22b38c7fe329a0c510537a377798482493ec1ffc077",
+   "sha256": "9884e45e0d9e531a5408aaddb5b487d9436a4d458a6908cb3badf82b257d3fd3",
    "coverage": "complete"
   },
   {
@@ -1464,7 +1464,7 @@
    "name": "French motorway tolls",
    "valid_from": "2024-01-01",
    "valid_to": "2024-01-31",
-   "sha256": "98df8308aac7ac0a3378ab074cd651a120edbd2725001957ceb243a081d22ac8",
+   "sha256": "35ffaa6a65bb26727d1d6a12b70111048d1fa48248adffac936fa5aae882dd9f",
    "coverage": "partial"
   },
   {
@@ -1475,7 +1475,7 @@
    "name": "French motorway tolls",
    "valid_from": "2024-02-01",
    "valid_to": "2025-01-31",
-   "sha256": "8702270537747ecd71a6fd21d8cd1e9934629341c5389f62a7dea5c63672f47a",
+   "sha256": "aa759ded2ad1ae761ba08aa457df312eae484e7434148017567adc071cd4555e",
    "coverage": "partial"
   },
   {
@@ -1519,7 +1519,7 @@
    "name": "French motorway tolls",
    "valid_from": "2026-06-01",
    "valid_to": "2027-01-31",
-   "sha256": "59af54f5e0b5bc32d407d89b20bba5a7219d91697c5dcb58622ecd5356a53867",
+   "sha256": "5d4f0be8725431f52be87b85980aeabd7a0c2eacd21b59d315b308e726535ce0",
    "coverage": "partial"
   },
   {
@@ -1706,7 +1706,7 @@
    "name": "Blackwall and Silvertown tunnels charge",
    "valid_from": "2025-04-07",
    "valid_to": "2026-09-20",
-   "sha256": "0c94912579403d30016e4df5b6d46fdb1adc9264bf8909d68104ae461bef4353",
+   "sha256": "0f60d5ae67671e1f7377585c0b7d0f5797754e0505cd496dbce880599766447f",
    "coverage": "complete"
   },
   {
@@ -1717,7 +1717,7 @@
    "name": "Blackwall and Silvertown tunnels charge",
    "valid_from": "2026-09-21",
    "valid_to": null,
-   "sha256": "b7d49024a8d214822edffaaa709daa9254844fd54241d67bb047404a7f1cce3a",
+   "sha256": "2f43283757c4cc42a0504048125020ba99f064c790eb19d4b82f038db33357e3",
    "coverage": "complete"
   },
   {
@@ -2102,7 +2102,7 @@
    "name": "Ring Road (1) through Hornafjörður",
    "valid_from": "2026-09-01",
    "valid_to": null,
-   "sha256": "9c4e4cf38caac1053088e8c206a61a16717381edf5cc0c2bdc89db7f91282268",
+   "sha256": "035a21f9df8c5199c1ee1b6fde1ee8e0821f05d3375fa752e35c6e794124faeb",
    "coverage": "complete"
   },
   {
@@ -2190,7 +2190,7 @@
    "name": "Strait of Messina ferry (Caronte & Tourist), trucks",
    "valid_from": "2026-11-01",
    "valid_to": null,
-   "sha256": "663b860ba67bc2d81beeaea0cf10da4da2bf72f538e848603f77d0164a15a94e",
+   "sha256": "f2e58dd6ca3e7193c581cc1b6c1d5238d9de69890fef3aea448839b465f382c7",
    "coverage": "complete"
   },
   {
@@ -2223,7 +2223,7 @@
    "name": "CO2 dedamoji of the excise duty on gas oils",
    "valid_from": "2025-01-01",
    "valid_to": "2025-12-31",
-   "sha256": "f48e0f78332e9946eea01af436334d0764a6a2255cf9706660db58b4eadde744",
+   "sha256": "5d173155f0b5277d1fafe61018b836896cfb7d6ab89d94358a7aa77793feda59",
    "coverage": "complete"
   },
   {
@@ -2234,7 +2234,7 @@
    "name": "CO2 dedamoji of the excise duty on gas oils",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "39893192d79f024acae203e2a71135684ef01094fce033421e8214ff3d35881a",
+   "sha256": "4b0315557e96b07750863c45fb77017bafc7d685e0113805d120827f95d5b1f8",
    "coverage": "complete"
   },
   {
@@ -2355,7 +2355,7 @@
    "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
    "valid_from": "2019-07-01",
    "valid_to": "2025-03-24",
-   "sha256": "3854f51cf336a5bce7bf9f5ffda5562526a185d37551e696fc71101df23c4e76",
+   "sha256": "f61321017ee2ebcc75d3725dd488a7dd85ac7720459697e393ddea89894127ba",
    "coverage": "complete"
   },
   {
@@ -2366,7 +2366,7 @@
    "name": "Luxembourg road user charge (Eurovignette, droit d'usage)",
    "valid_from": "2025-03-25",
    "valid_to": null,
-   "sha256": "d96dc013d0670f984d5719d66a77a6904c9b815eacbe0e3b5b654f104cd25735",
+   "sha256": "0989893f5ce0fd346f1bcbd94d5f8424dd4dd161939aaa2a34c1ecebb2575ff0",
    "coverage": "complete"
   },
   {
@@ -2454,7 +2454,7 @@
    "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
    "valid_from": "2024-01-01",
    "valid_to": "2025-03-24",
-   "sha256": "f900ae736063ce35a8eb6c61cff97125836018e551aa5e3e26547f777867db77",
+   "sha256": "25459f78af531b0282d8b35807d2a9d1cdf86db83c23af6de7c0ba6ef8a5cea7",
    "coverage": "complete"
   },
   {
@@ -2465,7 +2465,7 @@
    "name": "Dutch heavy vehicle tax (belasting zware motorrijtuigen, Eurovignette)",
    "valid_from": "2025-03-25",
    "valid_to": "2026-06-30",
-   "sha256": "1f37bbbd444fb71b4bcaa474c4e171b22a35feb2ad6a95c1433e0b5a26bc4ec3",
+   "sha256": "b09a3ff1dab4eb2dcaae070276f5327cca5e1d509fad1bfbd92c7ca9dc7f254f",
    "coverage": "complete"
   },
   {
@@ -3070,8 +3070,8 @@
    "name": "Romania's Danube bridge tolls (tarif de trecere)",
    "valid_from": "2026-10-01",
    "valid_to": null,
-   "sha256": "c7dbeaa2ac9aa9740feb232b2a4225dc48865f8b2a37d1ea2d811fb1c79f4ceb",
-   "coverage": "partial"
+   "sha256": "271ac404662dbd385e68a71b0d880a6775b79505ce6e0f5962d06dd3c5f48b98",
+   "coverage": "complete"
   },
   {
    "id": "carbon-cost/rs/2024-01-01",
@@ -3235,7 +3235,7 @@
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
    "valid_from": "2024-01-01",
    "valid_to": "2024-12-31",
-   "sha256": "e0e5a413fb58245e49245f38a535f21f29605ce869fbad2f35c114a6e46c33f6",
+   "sha256": "c3dccf09b6cf306197571c346e654b0922f71543d2831bd7319f3b009170d1cd",
    "coverage": "complete"
   },
   {
@@ -3246,7 +3246,7 @@
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
    "valid_from": "2025-01-01",
    "valid_to": "2025-03-24",
-   "sha256": "46866dadcd9138b8f6be65f8f9fbc13465123475bcbb9177c3a249f727e560eb",
+   "sha256": "fccf0fc6a38bfb45d17eb0a76c6266cbf9a812ae19bc7e2c94524199331e2527",
    "coverage": "complete"
   },
   {
@@ -3257,7 +3257,7 @@
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
    "valid_from": "2025-03-25",
    "valid_to": "2025-12-31",
-   "sha256": "35b0ee77b279af44dd0286912e25ef338ef1aceaf3092680e3a893d7b1f4060d",
+   "sha256": "0822186e2dca41598aae5172e66d6cd728e66f70e714b520af9d6d6af277d63d",
    "coverage": "complete"
   },
   {
@@ -3268,7 +3268,7 @@
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
    "valid_from": "2026-01-01",
    "valid_to": "2026-12-31",
-   "sha256": "c8e1ae0b0ac7ecbfe991f720f609689841597bad3b7cf7e9e2ab0b7188bef3da",
+   "sha256": "f199b755a8be2ff2b230d2092bad9cafb7c0d3c730c43abb8babad8f2f8ba2f8",
    "coverage": "complete"
   },
   {
@@ -3279,7 +3279,7 @@
    "name": "Swedish road charge for heavy goods vehicles (vägavgift, Eurovignette)",
    "valid_from": "2027-01-01",
    "valid_to": "2027-12-31",
-   "sha256": "807914579db48955669996da824fb226cc76e27d71134a62bc91288ae2d065ba",
+   "sha256": "93917346993b439079a105408ccc507d98e6bf180ed0e538dcb111880cf0bad4",
    "coverage": "complete"
   },
   {
@@ -3312,7 +3312,7 @@
    "name": "Stockholm congestion tax (trängselskatt)",
    "valid_from": "2020-01-01",
    "valid_to": null,
-   "sha256": "d2b8bc7b906df4e98e8471a4ba11946411e29ea4a41c19cb5d1d8a03f2d26297",
+   "sha256": "13fc4988c3522633f6cb09843ac0b298dbf9d1afa57e8836b47a1ca3ac25a475",
    "coverage": "complete"
   },
   {
